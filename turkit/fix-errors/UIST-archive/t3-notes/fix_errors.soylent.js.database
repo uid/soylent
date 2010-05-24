@@ -1,0 +1,2133 @@
+// begin:aa21
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269881159794E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269881159801E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/wnewao5lccxkxpaxnr3dub59gnr5rnxj.html",
+						"returnTime" : 1.269881159918E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/wnewao5lccxkxpaxnr3dub59gnr5rnxj.html\r\n"
+					},
+					{
+						"creationTime" : 1.26988115992E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+						"returnTime" : 1.269881160234E12,
+						"printOutput" : "created HIT: 1TX80G6JQEXJUN3MIK05XW6NK1BG2V\r\n        url: https://www.mturk.com/mturk/preview?groupId=1LYUUU2SD759V8WTB570607SVG7YG2\r\n"
+					},
+					{
+						"creationTime" : 1.269881160511E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+							"hitTypeId" : "1LYUUU2SD759V8WTB570607SVG7YG2",
+							"title" : "Find bad writing",
+							"description" : "This paragraph needs some help finding errors. You\'re way better than Microsoft Word\'s grammar checker.",
+							"keywords" : "undefined",
+							"reward" : 0.06,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/wnewao5lccxkxpaxnr3dub59gnr5rnxj.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.26988121E12,
+							"expiration" : 1.27048601E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1NMCFICA96TEEZ4HX263E5SWDV50EM",
+									"workerId" : "A34WBGUAUCSKD7",
+									"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885016E12,
+									"acceptTime" : 1.269881281E12,
+									"submitTime" : 1.269881416E12,
+									"answer" : {
+										"brackets" : "Panel: NoSQL in the Cloud\r\nBlah [[blah blah]] -- argument about whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud.  [[Probably]] [[unrealistic]].  To protect [[yourself,]] use an open software offering, and self-host or go with hosting solution that uses open offering."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1A7K0M0OHAWSLEYLNQCR16OZHKOSLN",
+									"workerId" : "A2RL28EX7BIT15",
+									"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885099E12,
+									"acceptTime" : 1.26988144E12,
+									"submitTime" : 1.269881499E12,
+									"answer" : {
+										"brackets" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard [[\"nosql]] storage\" API to protect developers storing their stuff in proprietary services in the cloud.  Probably unrealistic.  To protect yourself, use an open software offering, and self-host or go with hosting solution that uses open offering."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1OFLV6V93GTRX2P0BFDWG7EPG2S3VQ",
+									"workerId" : "A2YLF04UAKYVF1",
+									"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885223E12,
+									"acceptTime" : 1.269881609E12,
+									"submitTime" : 1.269881623E12,
+									"answer" : {
+										"brackets" : "Panel: NoSQL in the Cloud\r\n[[Blah blah blah]] -- argument about whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud.  Probably unrealistic.  To protect yourself, use an open software offering, and self-host or go with hosting solution that uses open offering."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1R8YQEV721TXAMVGI5PYNT1TQN2DQ4",
+									"workerId" : "A1JAQ4SYRHM2JL",
+									"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.26988536E12,
+									"acceptTime" : 1.269881725E12,
+									"submitTime" : 1.26988176E12,
+									"answer" : {
+										"brackets" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud.  Probably unrealistic.  To protect yourself, use an open software offering, [[and]] self-host or go with hosting solution that uses open offering."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "13MHY6EK8GRI9E16Z3S6EYSOMFPNSL",
+									"workerId" : "A2HM35CWB7IIFM",
+									"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885397E12,
+									"acceptTime" : 1.269881749E12,
+									"submitTime" : 1.269881797E12,
+									"answer" : {
+										"brackets" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud.  [[Probably unrealistic.]]  To protect yourself, use an open software offering, and self-host or go [[with hosting solution]] that uses open offering."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1E6GDRPQHW3ZHGW0ZN8E46OEBYLOE0",
+									"workerId" : "A1HFR4IA9HGYR",
+									"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885626E12,
+									"acceptTime" : 1.269882009E12,
+									"submitTime" : 1.269882026E12,
+									"answer" : {
+										"brackets" : "Panel: NoSQL in the Cloud\r\n[[Blah blah blah]] -- argument about whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud.  Probably unrealistic.  To protect yourself, use an open software offering, and self-host or go with hosting solution that uses open offering."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12RVX7EUJWCLJXXZJ49W6NS8VOPR92",
+									"workerId" : "A16PO174K6I9BR",
+									"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.26988574E12,
+									"acceptTime" : 1.269882071E12,
+									"submitTime" : 1.26988214E12,
+									"answer" : {
+										"brackets" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud.  [[Probably unrealistic]].  To protect yourself, use an open software offering, and self-host or go with hosting solution that uses open offering."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "15H3T50OKLXA4878TVFZKYQS8KI47L",
+									"workerId" : "A22ZAKZF3HOKBU",
+									"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1BG2V",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885953E12,
+									"acceptTime" : 1.269882238E12,
+									"submitTime" : 1.269882353E12,
+									"answer" : {
+										"brackets" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard [[\"nosql]] storage\" API to protect developers storing their stuff in proprietary services in the cloud.  Probably unrealistic.  To protect yourself, use an open software offering[[, and]] self-host or go with hosting solution that uses open offering."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.26988241908E12,
+						"printOutput" : "creation time: 1269881210000\r\nno longer waiting for hit: 1TX80G6JQEXJUN3MIK05XW6NK1BG2V\r\n"
+					},
+					{
+						"creationTime" : 1.269882419341E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269882420753E12,
+						"printOutput" : "disabled HIT: 1TX80G6JQEXJUN3MIK05XW6NK1BG2V\r\n"
+					},
+					{
+						"creationTime" : 1.269882420755E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269882420847E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/wnewao5lccxkxpaxnr3dub59gnr5rnxj.html\r\n"
+					},
+					{
+						"creationTime" : 1.269882421851E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269882421854E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o6nr42yq28f7jqjl4nryxk5o3321kdk5.html",
+								"returnTime" : 1.269882421931E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o6nr42yq28f7jqjl4nryxk5o3321kdk5.html\r\n"
+							},
+							{
+								"creationTime" : 1.269882421933E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "16R74G0UGJ5HPEZ7AHW1VKCNV1YO4M",
+								"returnTime" : 1.269882422085E12,
+								"printOutput" : "created HIT: 16R74G0UGJ5HPEZ7AHW1VKCNV1YO4M\r\n        url: https://www.mturk.com/mturk/preview?groupId=16W6XLMXH4NEP5W6IKH0OG5TYML15Q\r\n"
+							},
+							{
+								"creationTime" : 1.269882422293E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "16R74G0UGJ5HPEZ7AHW1VKCNV1YO4M",
+									"hitTypeId" : "16W6XLMXH4NEP5W6IKH0OG5TYML15Q",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o6nr42yq28f7jqjl4nryxk5o3321kdk5.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269882472E12,
+									"expiration" : 1.270487272E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1LW9FJ4W78FS0QXOVAWHAF8JBWEUYY",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "16R74G0UGJ5HPEZ7AHW1VKCNV1YO4M",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886128E12,
+											"acceptTime" : 1.269882504E12,
+											"submitTime" : 1.269882528E12,
+											"answer" : {
+												"description" : "Blah blah blah is unnecessary.",
+												"newText" : "Panel: NoSQL in the Cloud\r\n-- argument about whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "12O1VZLBJX6H0ZWRTOH6C051XS20K7",
+											"workerId" : "A1UQIATQ5Z2IFB",
+											"hitId" : "16R74G0UGJ5HPEZ7AHW1VKCNV1YO4M",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886519E12,
+											"acceptTime" : 1.269882818E12,
+											"submitTime" : 1.269882919E12,
+											"answer" : {
+												"description" : "colloquialism",
+												"newText" : "Panel: NoSQL in the Cloud -- This is an argument about whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1APUL1SR821ULTMY8WG7S62KOJZ7TK",
+											"workerId" : "AO6K9SJGX7C0T",
+											"hitId" : "16R74G0UGJ5HPEZ7AHW1VKCNV1YO4M",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886538E12,
+											"acceptTime" : 1.269882812E12,
+											"submitTime" : 1.269882938E12,
+											"answer" : {
+												"newText" : "Panel: NoSQL in the Cloud\r\nProprietary services- argument about whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud.",
+												"description" : "the expression blah blah blah does not make any sense"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1NGBDN1C4AEBTKM90323V39Z7JWG55",
+											"workerId" : "A22ZAKZF3HOKBU",
+											"hitId" : "16R74G0UGJ5HPEZ7AHW1VKCNV1YO4M",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886654E12,
+											"acceptTime" : 1.269882987E12,
+											"submitTime" : 1.269883054E12,
+											"answer" : {
+												"newText" : "Panel: NoSQL in the Cloud\r\nvarious arguements -- whether there should be a standard \"nosql storage\" API to protect developers storing their stuff in proprietary services in the cloud.",
+												"description" : "Style is unprofessional for a serious or important topic"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269883712418E12,
+								"printOutput" : "creation time: 1269882472000\r\nno longer waiting for hit: 16R74G0UGJ5HPEZ7AHW1VKCNV1YO4M\r\n"
+							},
+							{
+								"creationTime" : 1.269883712726E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883713501E12,
+								"printOutput" : "disabled HIT: 16R74G0UGJ5HPEZ7AHW1VKCNV1YO4M\r\n"
+							},
+							{
+								"creationTime" : 1.269883713503E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883713585E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o6nr42yq28f7jqjl4nryxk5o3321kdk5.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883713915E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/er2p0a0qm74kzb31qveb3040w2x53g01.html",
+								"returnTime" : 1.269883714013E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/er2p0a0qm74kzb31qveb3040w2x53g01.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883714015E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3",
+								"returnTime" : 1.269883714212E12,
+								"printOutput" : "created HIT: 13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3\r\n        url: https://www.mturk.com/mturk/preview?groupId=16CWK4PHNO422XCA2H26ZTO6T4BNCR\r\n"
+							},
+							{
+								"creationTime" : 1.269883714466E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3",
+									"hitTypeId" : "16CWK4PHNO422XCA2H26ZTO6T4BNCR",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/er2p0a0qm74kzb31qveb3040w2x53g01.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269883764E12,
+									"expiration" : 1.270488564E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1WR9OJBAZNMQLH8IK8ILKQ0OUVM4DF",
+											"workerId" : "A2RL28EX7BIT15",
+											"hitId" : "13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.26988762E12,
+											"acceptTime" : 1.269883987E12,
+											"submitTime" : 1.26988402E12,
+											"answer" : {
+												"reason" : "Style%20is%20unprofessional%20for%20a%20serious%20or%20important%20topic|Blah%20blah%20blah%20is%20unnecessary.|the%20expression%20blah%20blah%20blah%20does%20not%20make%20any%20sense|colloquialism",
+												"randomOrder" : "temp",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%0D%0A--%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22nosql%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud.|Panel%3A%20NoSQL%20in%20the%20Cloud%20--%20This%20is%20an%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22nosql%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "16WZMKBLWI9CEX9PQ4MRM1KHVH5CLG",
+											"workerId" : "A2HM35CWB7IIFM",
+											"hitId" : "13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887679E12,
+											"acceptTime" : 1.269884041E12,
+											"submitTime" : 1.269884079E12,
+											"answer" : {
+												"reason" : "Style%20is%20unprofessional%20for%20a%20serious%20or%20important%20topic",
+												"randomOrder" : "temp",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%20--%20This%20is%20an%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22nosql%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1MOA67F233U6ZJY6NEGTNNII466PQV",
+											"workerId" : "A1M8RMWAMY5R5J",
+											"hitId" : "13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887823E12,
+											"acceptTime" : 1.269884212E12,
+											"submitTime" : 1.269884223E12,
+											"answer" : {
+												"reason" : "the%20expression%20blah%20blah%20blah%20does%20not%20make%20any%20sense",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%20--%20This%20is%20an%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22nosql%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "18URCTWAIQD52O01NB9AV9JLCZTX8G",
+											"workerId" : "A1VKHE5L6QVFUV",
+											"hitId" : "13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887854E12,
+											"acceptTime" : 1.269884194E12,
+											"submitTime" : 1.269884254E12,
+											"answer" : {
+												"reason" : "Blah%20blah%20blah%20is%20unnecessary.|Style%20is%20unprofessional%20for%20a%20serious%20or%20important%20topic",
+												"randomOrder" : "temp",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%0D%0A--%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22nosql%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1G5G6HP5CUDRER9DR1TJJ1M7WSBIB1",
+											"workerId" : "A4DWN8EEB7ZYQ",
+											"hitId" : "13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269888074E12,
+											"acceptTime" : 1.269884414E12,
+											"submitTime" : 1.269884474E12,
+											"answer" : {
+												"reason" : "Blah%20blah%20blah%20is%20unnecessary.",
+												"randomOrder" : "temp",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%0D%0A--%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22nosql%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269884454989E12,
+								"printOutput" : "creation time: 1269883764000\r\nno longer waiting for hit: 13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3\r\n"
+							},
+							{
+								"creationTime" : 1.269884457679E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269884458375E12,
+								"printOutput" : "disabled HIT: 13WC1ZOA7BRIIFEP2ZQEMMAATMK1P3\r\n"
+							},
+							{
+								"creationTime" : 1.269884458378E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269884458438E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/er2p0a0qm74kzb31qveb3040w2x53g01.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269882422566E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269882422569E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qdmi31fckqhk9ukj31d6qbg4ugfmku86.html",
+								"returnTime" : 1.269882422633E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qdmi31fckqhk9ukj31d6qbg4ugfmku86.html\r\n"
+							},
+							{
+								"creationTime" : 1.269882422635E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX",
+								"returnTime" : 1.269882422868E12,
+								"printOutput" : "created HIT: 1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX\r\n        url: https://www.mturk.com/mturk/preview?groupId=16W6XLMXH4NEP5W6IKH0OG5TYML15Q\r\n"
+							},
+							{
+								"creationTime" : 1.269882423074E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX",
+									"hitTypeId" : "16W6XLMXH4NEP5W6IKH0OG5TYML15Q",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qdmi31fckqhk9ukj31d6qbg4ugfmku86.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269882473E12,
+									"expiration" : 1.270487273E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1RX7D9WTU5M5FKQEPJWLDI9N64WF55",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886147E12,
+											"acceptTime" : 1.269882532E12,
+											"submitTime" : 1.269882547E12,
+											"answer" : {
+												"newText" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard \"NoSql storage\" API to protect developers storing their stuff in proprietary services in the cloud.",
+												"description" : "N and S should be capitalized."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1GNCP6BD6EVNHV42VOJN8DTG19TCR5",
+											"workerId" : "A22ZAKZF3HOKBU",
+											"hitId" : "1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886469E12,
+											"acceptTime" : 1.269882804E12,
+											"submitTime" : 1.269882869E12,
+											"answer" : {
+												"newText" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard \"NoSQL storage\" API to protect developers storing their stuff in proprietary services in the cloud.",
+												"description" : "It would be NoSQL"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1NU1OD89C8IAOW1J51PEULSPEDAIC7",
+											"workerId" : "AFKNBZS03Q14D",
+											"hitId" : "1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886498E12,
+											"acceptTime" : 1.269882836E12,
+											"submitTime" : 1.269882898E12,
+											"answer" : {
+												"newText" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard \"NoSQL storage\" API to protect developers storing their stuff in proprietary services in the cloud.",
+												"description" : "This could be either a spelling or style error with \"nosql\".  It should be NoSQL."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "17CNQ8EVRA2X264F6YI0PUIAXH9T4M",
+											"workerId" : "A1UQIATQ5Z2IFB",
+											"hitId" : "1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886649E12,
+											"acceptTime" : 1.269883031E12,
+											"submitTime" : 1.269883049E12,
+											"answer" : {
+												"newText" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard \"NoSQL storage\" API to protect developers storing their stuff in proprietary services in the cloud.",
+												"description" : "capitalization"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1KRHH13PUHIFMU4SKIBHT9EGYJXGPR",
+											"workerId" : "AULQ3PRS1JKAR",
+											"hitId" : "1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886929E12,
+											"acceptTime" : 1.269883297E12,
+											"submitTime" : 1.269883329E12,
+											"answer" : {
+												"description" : "Is correct! NoSQL may be better",
+												"newText" : "Panel: NoSQL in the Cloud\r\nBlah blah blah -- argument about whether there should be a standard \"NoSQL storage\" API to protect developers storing their stuff in proprietary services in the cloud."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269883328583E12,
+								"printOutput" : "creation time: 1269882473000\r\nno longer waiting for hit: 1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX\r\n"
+							},
+							{
+								"creationTime" : 1.269883328868E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883329377E12,
+								"printOutput" : "disabled HIT: 1HJ1KCJ8YYRBP3F2B4V6ZXFCH41GEX\r\n"
+							},
+							{
+								"creationTime" : 1.269883329378E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883329661E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qdmi31fckqhk9ukj31d6qbg4ugfmku86.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883329991E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/slyluflvwjz360c9var751kqcz7c98aq.html",
+								"returnTime" : 1.26988333012E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/slyluflvwjz360c9var751kqcz7c98aq.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883330121E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ",
+								"returnTime" : 1.269883330337E12,
+								"printOutput" : "created HIT: 1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ\r\n        url: https://www.mturk.com/mturk/preview?groupId=16CWK4PHNO422XCA2H26ZTO6T4BNCR\r\n"
+							},
+							{
+								"creationTime" : 1.269883330597E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ",
+									"hitTypeId" : "16CWK4PHNO422XCA2H26ZTO6T4BNCR",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/slyluflvwjz360c9var751kqcz7c98aq.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.26988338E12,
+									"expiration" : 1.27048818E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1GUNJ0E5MTH08XQ7E1CC0EBU8B9QYQ",
+											"workerId" : "A3AVS0S9H2TTAZ",
+											"hitId" : "1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887057E12,
+											"acceptTime" : 1.269883439E12,
+											"submitTime" : 1.269883457E12,
+											"answer" : {
+												"reason" : "It%20would%20be%20NoSQL",
+												"randomOrder" : "temp",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%0D%0ABlah%20blah%20blah%20--%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22NoSql%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "15Y6RV1LXKL8U3JWNZX2SJQ28FSH9W",
+											"workerId" : "A1KO3YEZLKTV07",
+											"hitId" : "1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887225E12,
+											"acceptTime" : 1.269883598E12,
+											"submitTime" : 1.269883625E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%0D%0ABlah%20blah%20blah%20--%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22NoSQL%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud.",
+												"reason" : "Is%20correct%21%20NoSQL%20may%20be%20better"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1MHWZJ3RSN0FU818V4UDYGU1A63ETD",
+											"workerId" : "A2RL28EX7BIT15",
+											"hitId" : "1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887586E12,
+											"acceptTime" : 1.269883922E12,
+											"submitTime" : 1.269883986E12,
+											"answer" : {
+												"reason" : "capitalization|It%20would%20be%20NoSQL|This%20could%20be%20either%20a%20spelling%20or%20style%20error%20with%20%22nosql%22.%20%20It%20should%20be%20NoSQL.|N%20and%20S%20should%20be%20capitalized.",
+												"randomOrder" : "temp",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%0D%0ABlah%20blah%20blah%20--%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22NoSQL%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1GJ70QHVOZVZIA4FADJSYNYCNBCSC9",
+											"workerId" : "A2HM35CWB7IIFM",
+											"hitId" : "1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887641E12,
+											"acceptTime" : 1.269883986E12,
+											"submitTime" : 1.269884041E12,
+											"answer" : {
+												"reason" : "This%20could%20be%20either%20a%20spelling%20or%20style%20error%20with%20%22nosql%22.%20%20It%20should%20be%20NoSQL.",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%0D%0ABlah%20blah%20blah%20--%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22NoSQL%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1WFCW8N8O6RJRZQY4IAOSST5OD5PT9",
+											"workerId" : "A1M8RMWAMY5R5J",
+											"hitId" : "1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887838E12,
+											"acceptTime" : 1.269884229E12,
+											"submitTime" : 1.269884238E12,
+											"answer" : {
+												"reason" : "This%20could%20be%20either%20a%20spelling%20or%20style%20error%20with%20%22nosql%22.%20%20It%20should%20be%20NoSQL.",
+												"fix" : "Panel%3A%20NoSQL%20in%20the%20Cloud%0D%0ABlah%20blah%20blah%20--%20argument%20about%20whether%20there%20should%20be%20a%20standard%20%22NoSQL%20storage%22%20API%20to%20protect%20developers%20storing%20their%20stuff%20in%20proprietary%20services%20in%20the%20cloud.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269884284799E12,
+								"printOutput" : "creation time: 1269883380000\r\nno longer waiting for hit: 1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ\r\n"
+							},
+							{
+								"creationTime" : 1.269884287069E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.26988428808E12,
+								"printOutput" : "disabled HIT: 1ADOKF6JYWJP6XNP2WPQX1CSXMK7AQ\r\n"
+							},
+							{
+								"creationTime" : 1.269884288082E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269884288193E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/slyluflvwjz360c9var751kqcz7c98aq.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269882423322E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269882423324E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gekp8kva6w75g9gzi3zoayhrcgegctf4.html",
+								"returnTime" : 1.26988242345E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gekp8kva6w75g9gzi3zoayhrcgegctf4.html\r\n"
+							},
+							{
+								"creationTime" : 1.269882423452E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0",
+								"returnTime" : 1.269882423854E12,
+								"printOutput" : "created HIT: 1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0\r\n        url: https://www.mturk.com/mturk/preview?groupId=16W6XLMXH4NEP5W6IKH0OG5TYML15Q\r\n"
+							},
+							{
+								"creationTime" : 1.26988242403E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0",
+									"hitTypeId" : "16W6XLMXH4NEP5W6IKH0OG5TYML15Q",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gekp8kva6w75g9gzi3zoayhrcgegctf4.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269882474E12,
+									"expiration" : 1.270487274E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1VSXUV3K2KTA2TVE0M6PCN62RP0S6G",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886179E12,
+											"acceptTime" : 1.269882564E12,
+											"submitTime" : 1.269882579E12,
+											"answer" : {
+												"description" : "Can be deleted.",
+												"newText" : "To protect yourself, use an open software offering, and self-host or go with hosting solution that uses open offering."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1E1F924WWOJSIVWTWM85K8J4VXRZVJ",
+											"workerId" : "ABZ5VY37ET9Z4",
+											"hitId" : "1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886271E12,
+											"acceptTime" : 1.269882511E12,
+											"submitTime" : 1.269882671E12,
+											"answer" : {
+												"newText" : "It\'s probably unrealistic.  To protect yourself, use an open software offering and self-host or go with hosting solution that uses open offering.",
+												"description" : "Sentence fragment. Grammar error."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1S1NZ6ILTQOFDBZXAAZ6EGUM99QPZO",
+											"workerId" : "AFKNBZS03Q14D",
+											"hitId" : "1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886401E12,
+											"acceptTime" : 1.269882722E12,
+											"submitTime" : 1.269882801E12,
+											"answer" : {
+												"newText" : "Probably unrealistic.  To protect yourself, use an open software offering with self-host or go with hosting solution that uses open offering.",
+												"description" : "This section has a style error - there should be 2 spaces after the period."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "168KCM7P0UU12AVID6H4H9NQ1FN7X3",
+											"workerId" : "A22ZAKZF3HOKBU",
+											"hitId" : "1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886586E12,
+											"acceptTime" : 1.269882928E12,
+											"submitTime" : 1.269882986E12,
+											"answer" : {
+												"newText" : "contd with prev. sentence as \'which is\' probably unrealistic. To protect yourself, use an open software offering, and self-host or go with hosting solution that uses open offering.",
+												"description" : "Grammer error"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1L5PGPXAA37NYG0OGD9O01S7ZVTL6W",
+											"workerId" : "A1UQIATQ5Z2IFB",
+											"hitId" : "1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886626E12,
+											"acceptTime" : 1.269883007E12,
+											"submitTime" : 1.269883026E12,
+											"answer" : {
+												"description" : "Incomplete sentence",
+												"newText" : "This is probably unrealistic.  To protect yourself, use an open software offering, and self-host or go with hosting solution that uses open offering."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269883039822E12,
+								"printOutput" : "creation time: 1269882474000\r\nno longer waiting for hit: 1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0\r\n"
+							},
+							{
+								"creationTime" : 1.269883040053E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883041253E12,
+								"printOutput" : "disabled HIT: 1P7JWU6HSZFDAAZ4CGRBBUTOAT0BM0\r\n"
+							},
+							{
+								"creationTime" : 1.269883041254E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883041361E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gekp8kva6w75g9gzi3zoayhrcgegctf4.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883041648E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vmptxin9gt9bkbcldq8w4vo8zvfrmleb.html",
+								"returnTime" : 1.269883041742E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vmptxin9gt9bkbcldq8w4vo8zvfrmleb.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883041744E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1J1ENV70YW6GA77WJGZYRWB7IP4T1Z",
+								"returnTime" : 1.269883041974E12,
+								"printOutput" : "created HIT: 1J1ENV70YW6GA77WJGZYRWB7IP4T1Z\r\n        url: https://www.mturk.com/mturk/preview?groupId=16CWK4PHNO422XCA2H26ZTO6T4BNCR\r\n"
+							},
+							{
+								"creationTime" : 1.269883042192E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1J1ENV70YW6GA77WJGZYRWB7IP4T1Z",
+									"hitTypeId" : "16CWK4PHNO422XCA2H26ZTO6T4BNCR",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vmptxin9gt9bkbcldq8w4vo8zvfrmleb.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269883092E12,
+									"expiration" : 1.270487892E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1X7SVQ6PUURWR3FOJI6S8NYNQJOAOS",
+											"workerId" : "A11KK3ZOHQXV3R",
+											"hitId" : "1J1ENV70YW6GA77WJGZYRWB7IP4T1Z",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886763E12,
+											"acceptTime" : 1.269883121E12,
+											"submitTime" : 1.269883163E12,
+											"answer" : {
+												"reason" : "Incomplete%20sentence",
+												"randomOrder" : "temp",
+												"fix" : "contd%20with%20prev.%20sentence%20as%20%27which%20is%27%20probably%20unrealistic.%20To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%2C%20and%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "11Z0GF3DN4QA22N8Z9JTSYCGAU2TDZ",
+											"workerId" : "AYY0XHTC7WY8I",
+											"hitId" : "1J1ENV70YW6GA77WJGZYRWB7IP4T1Z",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886792E12,
+											"acceptTime" : 1.269883138E12,
+											"submitTime" : 1.269883192E12,
+											"answer" : {
+												"reason" : "Can%20be%20deleted.",
+												"fix" : "To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%2C%20and%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1V33LARFY00FAQNKUVMEARPR9UQNZR",
+											"workerId" : "A3AVS0S9H2TTAZ",
+											"hitId" : "1J1ENV70YW6GA77WJGZYRWB7IP4T1Z",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887012E12,
+											"acceptTime" : 1.269883358E12,
+											"submitTime" : 1.269883412E12,
+											"answer" : {
+												"reason" : "Can%20be%20deleted.",
+												"randomOrder" : "temp",
+												"fix" : "It%27s%20probably%20unrealistic.%20%20To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%20and%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering.|To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%2C%20and%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "140LZG3BF7NI8FM9MKMECWSS0VO8OM",
+											"workerId" : "A23BF2Z5VLQ2AV",
+											"hitId" : "1J1ENV70YW6GA77WJGZYRWB7IP4T1Z",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887103E12,
+											"acceptTime" : 1.269883446E12,
+											"submitTime" : 1.269883503E12,
+											"answer" : {
+												"reason" : "Incomplete%20sentence|Sentence%20fragment.%20Grammar%20error.",
+												"fix" : "This%20is%20probably%20unrealistic.%20%20To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%2C%20and%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering.|contd%20with%20prev.%20sentence%20as%20%27which%20is%27%20probably%20unrealistic.%20To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%2C%20and%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "17UQ4F6YZH6PFURX44J8TG017FIDVZ",
+											"workerId" : "A1KO3YEZLKTV07",
+											"hitId" : "1J1ENV70YW6GA77WJGZYRWB7IP4T1Z",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.26988725E12,
+											"acceptTime" : 1.269883629E12,
+											"submitTime" : 1.26988365E12,
+											"answer" : {
+												"reason" : "Incomplete%20sentence",
+												"fix" : "To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%2C%20and%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.26988363561E12,
+								"printOutput" : "creation time: 1269883092000\r\nno longer waiting for hit: 1J1ENV70YW6GA77WJGZYRWB7IP4T1Z\r\n"
+							},
+							{
+								"creationTime" : 1.269883638835E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883639451E12,
+								"printOutput" : "disabled HIT: 1J1ENV70YW6GA77WJGZYRWB7IP4T1Z\r\n"
+							},
+							{
+								"creationTime" : 1.269883639455E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883639771E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vmptxin9gt9bkbcldq8w4vo8zvfrmleb.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269882424704E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269882424708E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/eo8jcmk90jynq704d10z2fiu1f74bpa5.html",
+								"returnTime" : 1.269882424773E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/eo8jcmk90jynq704d10z2fiu1f74bpa5.html\r\n"
+							},
+							{
+								"creationTime" : 1.269882424775E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY",
+								"returnTime" : 1.269882424954E12,
+								"printOutput" : "created HIT: 1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY\r\n        url: https://www.mturk.com/mturk/preview?groupId=16W6XLMXH4NEP5W6IKH0OG5TYML15Q\r\n"
+							},
+							{
+								"creationTime" : 1.269882425134E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY",
+									"hitTypeId" : "16W6XLMXH4NEP5W6IKH0OG5TYML15Q",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/eo8jcmk90jynq704d10z2fiu1f74bpa5.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269882475E12,
+									"expiration" : 1.270487275E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1KMC2GPKLYVSWA41I1RCTK2JL9C7EU",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886227E12,
+											"acceptTime" : 1.269882582E12,
+											"submitTime" : 1.269882627E12,
+											"answer" : {
+												"newText" : "To protect yourself, use an open software offering, self-host or go with hosting solution that uses open offering.",
+												"description" : "and is unnecessary.."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1V0I9XB0L8WQ5VN5TDYTD69G1URXN3",
+											"workerId" : "AFKNBZS03Q14D",
+											"hitId" : "1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886308E12,
+											"acceptTime" : 1.269882547E12,
+											"submitTime" : 1.269882708E12,
+											"answer" : {
+												"newText" : "To protect yourself, use an open software offering with self-host or go with hosting solution that uses open offering.",
+												"description" : "style error - \", and\" should be replaced with \"with\""
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "16W0SZ85XE48F5Z5MKEAG6BFTN5G3F",
+											"workerId" : "A22ZAKZF3HOKBU",
+											"hitId" : "1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886528E12,
+											"acceptTime" : 1.269882869E12,
+											"submitTime" : 1.269882928E12,
+											"answer" : {
+												"newText" : "To protect yourself, use an open software offering self-host or go with hosting solution that uses open offering.",
+												"description" : "Grammer error"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1FFQYXHJIHIAFC2ZP43W3B49MHIAEO",
+											"workerId" : "A1UQIATQ5Z2IFB",
+											"hitId" : "1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886596E12,
+											"acceptTime" : 1.269882947E12,
+											"submitTime" : 1.269882996E12,
+											"answer" : {
+												"newText" : "To protect yourself, use an open software offering,  self-host, or go with hosting solution that uses open offering.",
+												"description" : "unnecessary \"and\""
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1MPKN0A6631B5A8WHK8R5KUIHYZ3SM",
+											"workerId" : "AULQ3PRS1JKAR",
+											"hitId" : "1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886887E12,
+											"acceptTime" : 1.26988325E12,
+											"submitTime" : 1.269883287E12,
+											"answer" : {
+												"description" : "No comma necesary",
+												"newText" : "To protect yourself, use an open software offering and self-host or go with hosting solution that uses open offering."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269883332626E12,
+								"printOutput" : "creation time: 1269882475000\r\nno longer waiting for hit: 1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY\r\n"
+							},
+							{
+								"creationTime" : 1.269883332853E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883334303E12,
+								"printOutput" : "disabled HIT: 1QHJMT6R9Z3Q5YG1JMI9DD8J7VA1HY\r\n"
+							},
+							{
+								"creationTime" : 1.269883334305E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883334353E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/eo8jcmk90jynq704d10z2fiu1f74bpa5.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883334696E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rmbg63hh35c2q5rkk3h0boa5k28xs6vw.html",
+								"returnTime" : 1.269883334806E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rmbg63hh35c2q5rkk3h0boa5k28xs6vw.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883334807E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "12OVCZ83OI54VPXW49YSS3DTKUXBQN",
+								"returnTime" : 1.269883335201E12,
+								"printOutput" : "created HIT: 12OVCZ83OI54VPXW49YSS3DTKUXBQN\r\n        url: https://www.mturk.com/mturk/preview?groupId=16CWK4PHNO422XCA2H26ZTO6T4BNCR\r\n"
+							},
+							{
+								"creationTime" : 1.269883335408E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "12OVCZ83OI54VPXW49YSS3DTKUXBQN",
+									"hitTypeId" : "16CWK4PHNO422XCA2H26ZTO6T4BNCR",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rmbg63hh35c2q5rkk3h0boa5k28xs6vw.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269883385E12,
+									"expiration" : 1.270488185E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1WL6Y381J8L81WK5GQ0GN6IJYJV3Y0",
+											"workerId" : "A3AVS0S9H2TTAZ",
+											"hitId" : "12OVCZ83OI54VPXW49YSS3DTKUXBQN",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.26988708E12,
+											"acceptTime" : 1.269883458E12,
+											"submitTime" : 1.26988348E12,
+											"answer" : {
+												"reason" : "unnecessary%20%22and%22",
+												"randomOrder" : "temp",
+												"fix" : "To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%20with%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering.|To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%2C%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1E66A4N1WNA86MUACC2Z1DRL4DZZ3N",
+											"workerId" : "A1KO3YEZLKTV07",
+											"hitId" : "12OVCZ83OI54VPXW49YSS3DTKUXBQN",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887292E12,
+											"acceptTime" : 1.269883669E12,
+											"submitTime" : 1.269883692E12,
+											"answer" : {
+												"reason" : "No%20comma%20necesary",
+												"randomOrder" : "temp",
+												"fix" : "To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%2C%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1PVQ0TS98P4EB37C7Q69XSSH49RKGU",
+											"workerId" : "A2RL28EX7BIT15",
+											"hitId" : "12OVCZ83OI54VPXW49YSS3DTKUXBQN",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887522E12,
+											"acceptTime" : 1.269883846E12,
+											"submitTime" : 1.269883922E12,
+											"answer" : {
+												"reason" : "Grammer%20error|No%20comma%20necesary|unnecessary%20%22and%22|and%20is%20unnecessary..|style%20error%20-%20%22%2C%20and%22%20should%20be%20replaced%20with%20%22with%22",
+												"randomOrder" : "temp",
+												"fix" : "To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%2C%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1I64BVALA9MVNZBLOBZDSEZSIIG1VY",
+											"workerId" : "A1VKHE5L6QVFUV",
+											"hitId" : "12OVCZ83OI54VPXW49YSS3DTKUXBQN",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887576E12,
+											"acceptTime" : 1.269883917E12,
+											"submitTime" : 1.269883976E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"fix" : "To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%20with%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering.",
+												"reason" : "style%20error%20-%20%22%2C%20and%22%20should%20be%20replaced%20with%20%22with%22"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "16CUDNK112LH2G81ENLTT6T4L3IPEJ",
+											"workerId" : "A2HM35CWB7IIFM",
+											"hitId" : "12OVCZ83OI54VPXW49YSS3DTKUXBQN",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.26988775E12,
+											"acceptTime" : 1.26988408E12,
+											"submitTime" : 1.26988415E12,
+											"answer" : {
+												"reason" : "No%20comma%20necesary",
+												"fix" : "To%20protect%20yourself%2C%20use%20an%20open%20software%20offering%20and%20self-host%20or%20go%20with%20hosting%20solution%20that%20uses%20open%20offering.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269884122071E12,
+								"printOutput" : "creation time: 1269883385000\r\nno longer waiting for hit: 12OVCZ83OI54VPXW49YSS3DTKUXBQN\r\n"
+							},
+							{
+								"creationTime" : 1.269884124573E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269884125763E12,
+								"printOutput" : "disabled HIT: 12OVCZ83OI54VPXW49YSS3DTKUXBQN\r\n"
+							},
+							{
+								"creationTime" : 1.269884125765E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269884125833E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rmbg63hh35c2q5rkk3h0boa5k28xs6vw.html\r\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269881160873E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269881160876E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o9si67aelowp6c79xci52rw3u7ytdxg6.html",
+						"returnTime" : 1.269881160972E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o9si67aelowp6c79xci52rw3u7ytdxg6.html\r\n"
+					},
+					{
+						"creationTime" : 1.269881160974E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+						"returnTime" : 1.26988116124E12,
+						"printOutput" : "created HIT: 1DM0SZ85XE48F5Z5MKEAG6BFQFBG36\r\n        url: https://www.mturk.com/mturk/preview?groupId=1LYUUU2SD759V8WTB570607SVG7YG2\r\n"
+					},
+					{
+						"creationTime" : 1.2698811615E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+							"hitTypeId" : "1LYUUU2SD759V8WTB570607SVG7YG2",
+							"title" : "Find bad writing",
+							"description" : "This paragraph needs some help finding errors. You\'re way better than Microsoft Word\'s grammar checker.",
+							"keywords" : "undefined",
+							"reward" : 0.06,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o9si67aelowp6c79xci52rw3u7ytdxg6.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269881211E12,
+							"expiration" : 1.270486011E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1I6R98KX2B0DYZV6NW8S7OM0WOJV89",
+									"workerId" : "A34WBGUAUCSKD7",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885078E12,
+									"acceptTime" : 1.269881417E12,
+									"submitTime" : 1.269881478E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider w/ diaster [[recovery]].  People kept talking about busses driving through [[datacenters]] or fires happening.  What about the simpler problem: a developer drops your entire DB. Need to protect w/ backups no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1PD42TDPDWQ269GN3Z7FPHD1D64Q59",
+									"workerId" : "A2RL28EX7BIT15",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885133E12,
+									"acceptTime" : 1.269881503E12,
+									"submitTime" : 1.269881533E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider [[w/ diaster]] recovery.  People kept talking about busses driving through datacenters or fires happening.  What about the simpler problem: a developer drops your entire DB. Need to protect w/ backups no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "18TTH5KI60GZSUTJPGJMAKFHZAD3QW",
+									"workerId" : "A2YLF04UAKYVF1",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885179E12,
+									"acceptTime" : 1.269881553E12,
+									"submitTime" : 1.269881579E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider w/ diaster recovery.  People kept talking about [[busses]] driving through datacenters or fires happening.  What about the simpler problem: a developer drops your entire DB. Need to protect w/ backups no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1RNKCTC5GBKY3QGAN7N668N4D2MB99",
+									"workerId" : "AHH9260A5DNXO",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885214E12,
+									"acceptTime" : 1.269881573E12,
+									"submitTime" : 1.269881614E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider w/ [[diaster recovery.]]  People kept talking about busses driving through datacenters or fires happening.  What about the simpler problem: a developer drops your entire DB. Need to protect w/ backups no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "11T4I7WSHCRTGLLXDNO33OCCM81DCZ",
+									"workerId" : "A1JAQ4SYRHM2JL",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885325E12,
+									"acceptTime" : 1.269881682E12,
+									"submitTime" : 1.269881725E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider w/ [[diaster]] recovery.  People kept talking about [[busses]] driving through datacenters or fires happening.  What about the simpler problem: a developer drops your entire DB. Need to protect w/ backups no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1U4J0BDOHYMA6GTRZNS8S46U4N1BDQ",
+									"workerId" : "A2HM35CWB7IIFM",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885349E12,
+									"acceptTime" : 1.269881692E12,
+									"submitTime" : 1.269881749E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider w/ [[diaster]] recovery.  People kept talking about busses driving through datacenters or fires happening.  What about the simpler problem: a developer drops your entire DB. [[Need to protect w/ backups]] no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1L2T2NHR5P5WEAZ1MXWT3MNC360956",
+									"workerId" : "A18OBAH8EXBADM",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885518E12,
+									"acceptTime" : 1.269881796E12,
+									"submitTime" : 1.269881918E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider w/ diaster recovery.  People kept talking about [[busses]] driving through datacenters or fires happening.  What about the simpler problem: a developer drops your entire DB. Need to protect w/ backups no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1SL3H58EAB0X1USR5IY2499QOE0OGH",
+									"workerId" : "A1HFR4IA9HGYR",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885639E12,
+									"acceptTime" : 1.269882026E12,
+									"submitTime" : 1.269882039E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider w/ [[diaster]] recovery.  People kept talking about busses driving through datacenters or fires happening.  What about the simpler problem: a developer drops your entire DB. Need to protect w/ backups no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1GUNJ0E5MTH08XQ7E1CC0EBU8B8YQX",
+									"workerId" : "A16PO174K6I9BR",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885657E12,
+									"acceptTime" : 1.26988187E12,
+									"submitTime" : 1.269882057E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider w/ [[diaster]] recovery.  People kept talking about [[busses]] driving through datacenters or fires [[happening]].  What about the simpler problem: a developer drops your entire DB. Need to protect w/ backups no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1TNCNRYZWM23I7A2NJY4O79KX4W425",
+									"workerId" : "A22ZAKZF3HOKBU",
+									"hitId" : "1DM0SZ85XE48F5Z5MKEAG6BFQFBG36",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269885831E12,
+									"acceptTime" : 1.269882171E12,
+									"submitTime" : 1.269882231E12,
+									"answer" : {
+										"brackets" : "Interesting discussion on disaster recovery.  Since you\'ve outsourced operations to the cloud, should you just trust the provider [[w/ diaster]] recovery.  People kept talking about busses driving through datacenters or fires happening.  What about the simpler problem: a developer drops your entire DB. Need to protect w/ backups no matter where you host."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269882222502E12,
+						"printOutput" : "creation time: 1269881211000\r\nno longer waiting for hit: 1DM0SZ85XE48F5Z5MKEAG6BFQFBG36\r\n"
+					},
+					{
+						"creationTime" : 1.269882222841E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269882223522E12,
+						"printOutput" : "disabled HIT: 1DM0SZ85XE48F5Z5MKEAG6BFQFBG36\r\n"
+					},
+					{
+						"creationTime" : 1.269882223524E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269882223613E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o9si67aelowp6c79xci52rw3u7ytdxg6.html\r\n"
+					},
+					{
+						"creationTime" : 1.269882225099E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269882225102E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/16tiwa28i3btrfevpqsszg9lt0mgzr4f.html",
+								"returnTime" : 1.269882225707E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/16tiwa28i3btrfevpqsszg9lt0mgzr4f.html\r\n"
+							},
+							{
+								"creationTime" : 1.269882225709E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1R6O2QYQT76FFX1DPN9AF2SEMUQ99P",
+								"returnTime" : 1.269882225976E12,
+								"printOutput" : "created HIT: 1R6O2QYQT76FFX1DPN9AF2SEMUQ99P\r\n        url: https://www.mturk.com/mturk/preview?groupId=16W6XLMXH4NEP5W6IKH0OG5TYML15Q\r\n"
+							},
+							{
+								"creationTime" : 1.269882226257E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1R6O2QYQT76FFX1DPN9AF2SEMUQ99P",
+									"hitTypeId" : "16W6XLMXH4NEP5W6IKH0OG5TYML15Q",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/16tiwa28i3btrfevpqsszg9lt0mgzr4f.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269882276E12,
+									"expiration" : 1.270487076E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1NAPDYNHSGQGI3TVGUZXRB3QAHP2DG",
+											"workerId" : "A1UQIATQ5Z2IFB",
+											"hitId" : "1R6O2QYQT76FFX1DPN9AF2SEMUQ99P",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269885933E12,
+											"acceptTime" : 1.269882301E12,
+											"submitTime" : 1.269882333E12,
+											"answer" : {
+												"newText" : "Since you\'ve outsourced operations to the cloud, should you just trust the provider with disaster recovery?",
+												"description" : "spelling & abbreviation"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1QO40210G95DGN7R70UNFB6BMU52FR",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "1R6O2QYQT76FFX1DPN9AF2SEMUQ99P",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269885946E12,
+											"acceptTime" : 1.269882326E12,
+											"submitTime" : 1.269882346E12,
+											"answer" : {
+												"newText" : "Since you\'ve outsourced operations to the cloud, should you just trust the provider with disaster recovery.",
+												"description" : "w/ should be with, and disaster is misspelled."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1JUNJUY4K24AS1QZZJ7TU9RAE0VCH8",
+											"workerId" : "AFKNBZS03Q14D",
+											"hitId" : "1R6O2QYQT76FFX1DPN9AF2SEMUQ99P",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886017E12,
+											"acceptTime" : 1.269882341E12,
+											"submitTime" : 1.269882417E12,
+											"answer" : {
+												"newText" : "Since you\'ve outsourced operations to the cloud, should you just trust the provider with disaster recovery.",
+												"description" : "grammar and spelling."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "13NOKF6JYWJP6XNP2WPQX1CS0UE7AZ",
+											"workerId" : "A1JQS9AN8LEAKZ",
+											"hitId" : "1R6O2QYQT76FFX1DPN9AF2SEMUQ99P",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886165E12,
+											"acceptTime" : 1.269882474E12,
+											"submitTime" : 1.269882565E12,
+											"answer" : {
+												"newText" : "Since you\'ve outsourced operations to the cloud, should you just trust the provider with disaster recovery?",
+												"description" : "spelling error"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1UET6850CVZUG9YC7U09LI6IQZ12XI",
+											"workerId" : "AO6K9SJGX7C0T",
+											"hitId" : "1R6O2QYQT76FFX1DPN9AF2SEMUQ99P",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886286E12,
+											"acceptTime" : 1.269882538E12,
+											"submitTime" : 1.269882686E12,
+											"answer" : {
+												"newText" : "Since you\'ve outsourced operations to the cloud, should you just trust the provider with disaster recovery.",
+												"description" : "w/ is used instead of \'with\', spelling mistake in disaster"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269882698669E12,
+								"printOutput" : "creation time: 1269882276000\r\nno longer waiting for hit: 1R6O2QYQT76FFX1DPN9AF2SEMUQ99P\r\n"
+							},
+							{
+								"creationTime" : 1.269882698907E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269882699268E12,
+								"printOutput" : "disabled HIT: 1R6O2QYQT76FFX1DPN9AF2SEMUQ99P\r\n"
+							},
+							{
+								"creationTime" : 1.26988269927E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269882699449E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/16tiwa28i3btrfevpqsszg9lt0mgzr4f.html\r\n"
+							},
+							{
+								"creationTime" : 1.269882699768E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/i0er6o61107mr7j42s33r6vuqk6noxgp.html",
+								"returnTime" : 1.269882699844E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/i0er6o61107mr7j42s33r6vuqk6noxgp.html\r\n"
+							},
+							{
+								"creationTime" : 1.269882699845E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1TATMYR164AVHJAF1UEXOFM15AXVS1",
+								"returnTime" : 1.269882700121E12,
+								"printOutput" : "created HIT: 1TATMYR164AVHJAF1UEXOFM15AXVS1\r\n        url: https://www.mturk.com/mturk/preview?groupId=16CWK4PHNO422XCA2H26ZTO6T4BNCR\r\n"
+							},
+							{
+								"creationTime" : 1.269882700317E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1TATMYR164AVHJAF1UEXOFM15AXVS1",
+									"hitTypeId" : "16CWK4PHNO422XCA2H26ZTO6T4BNCR",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/i0er6o61107mr7j42s33r6vuqk6noxgp.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.26988275E12,
+									"expiration" : 1.27048755E12,
+									"assignments" : [
+										{
+											"assignmentId" : "10NJ8ONH47XC52LQZG0RSDWIV3RG1N",
+											"workerId" : "A3AVS0S9H2TTAZ",
+											"hitId" : "1TATMYR164AVHJAF1UEXOFM15AXVS1",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886482E12,
+											"acceptTime" : 1.269882861E12,
+											"submitTime" : 1.269882882E12,
+											"answer" : {
+												"fix" : "Since%20you%27ve%20outsourced%20operations%20to%20the%20cloud%2C%20should%20you%20just%20trust%20the%20provider%20with%20disaster%20recovery%3F",
+												"reason" : "w/%20is%20used%20instead%20of%20%27with%27%2C%20spelling%20mistake%20in%20disaster",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1UXUFTH5DY85N6OZT9SCXTMOM5HADV",
+											"workerId" : "A26FXEEDWOZOAY",
+											"hitId" : "1TATMYR164AVHJAF1UEXOFM15AXVS1",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886559E12,
+											"acceptTime" : 1.269882878E12,
+											"submitTime" : 1.269882959E12,
+											"answer" : {
+												"reason" : "w/%20should%20be%20with%2C%20and%20disaster%20is%20misspelled.",
+												"randomOrder" : "temp",
+												"fix" : "Since%20you%27ve%20outsourced%20operations%20to%20the%20cloud%2C%20should%20you%20just%20trust%20the%20provider%20with%20disaster%20recovery%3F"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1CB1L8HCQYKYL7RHI18D66YFZ35T8T",
+											"workerId" : "A11KK3ZOHQXV3R",
+											"hitId" : "1TATMYR164AVHJAF1UEXOFM15AXVS1",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886721E12,
+											"acceptTime" : 1.269883085E12,
+											"submitTime" : 1.269883121E12,
+											"answer" : {
+												"reason" : "spelling%20error",
+												"randomOrder" : "temp",
+												"fix" : "Since%20you%27ve%20outsourced%20operations%20to%20the%20cloud%2C%20should%20you%20just%20trust%20the%20provider%20with%20disaster%20recovery%3F"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1Z0PJ6WYS4QOLICR6QQ0G6UTVEJLAM",
+											"workerId" : "AYY0XHTC7WY8I",
+											"hitId" : "1TATMYR164AVHJAF1UEXOFM15AXVS1",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886738E12,
+											"acceptTime" : 1.269883113E12,
+											"submitTime" : 1.269883138E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"fix" : "Since%20you%27ve%20outsourced%20operations%20to%20the%20cloud%2C%20should%20you%20just%20trust%20the%20provider%20with%20disaster%20recovery%3F",
+												"reason" : "w/%20should%20be%20with%2C%20and%20disaster%20is%20misspelled."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1CEIKWZD9Z70XAHUZDOI8SUYPUQTCZ",
+											"workerId" : "AEDRM8B46Y7SA",
+											"hitId" : "1TATMYR164AVHJAF1UEXOFM15AXVS1",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886797E12,
+											"acceptTime" : 1.26988316E12,
+											"submitTime" : 1.269883197E12,
+											"answer" : {
+												"reason" : "spelling%20%26%20abbreviation|grammar%20and%20spelling.|w/%20should%20be%20with%2C%20and%20disaster%20is%20misspelled.|w/%20is%20used%20instead%20of%20%27with%27%2C%20spelling%20mistake%20in%20disaster",
+												"fix" : "Since%20you%27ve%20outsourced%20operations%20to%20the%20cloud%2C%20should%20you%20just%20trust%20the%20provider%20with%20disaster%20recovery%3F",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269883260038E12,
+								"printOutput" : "creation time: 1269882750000\r\nno longer waiting for hit: 1TATMYR164AVHJAF1UEXOFM15AXVS1\r\n"
+							},
+							{
+								"creationTime" : 1.269883262371E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883262892E12,
+								"printOutput" : "disabled HIT: 1TATMYR164AVHJAF1UEXOFM15AXVS1\r\n"
+							},
+							{
+								"creationTime" : 1.269883262893E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883262984E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/i0er6o61107mr7j42s33r6vuqk6noxgp.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269882226472E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269882226474E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/j26b5jhqh8lhow12pvudabfncsgbac6s.html",
+								"returnTime" : 1.269882226859E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/j26b5jhqh8lhow12pvudabfncsgbac6s.html\r\n"
+							},
+							{
+								"creationTime" : 1.269882226861E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "104JUX6C0QOI67P6UQZDDJ3VI7SJ3D",
+								"returnTime" : 1.26988222724E12,
+								"printOutput" : "created HIT: 104JUX6C0QOI67P6UQZDDJ3VI7SJ3D\r\n        url: https://www.mturk.com/mturk/preview?groupId=16W6XLMXH4NEP5W6IKH0OG5TYML15Q\r\n"
+							},
+							{
+								"creationTime" : 1.269882227512E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "104JUX6C0QOI67P6UQZDDJ3VI7SJ3D",
+									"hitTypeId" : "16W6XLMXH4NEP5W6IKH0OG5TYML15Q",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/j26b5jhqh8lhow12pvudabfncsgbac6s.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269882277E12,
+									"expiration" : 1.270487077E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1JZ46Y257E8H6XF83MSQPCNR8AIP5H",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "104JUX6C0QOI67P6UQZDDJ3VI7SJ3D",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269885923E12,
+											"acceptTime" : 1.269882306E12,
+											"submitTime" : 1.269882323E12,
+											"answer" : {
+												"description" : "It should be \"buses\"",
+												"newText" : "People kept talking about buses driving through datacenters or fires happening."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1U1RJIHSE9H5GTJBS3FOV5EWW5AX94",
+											"workerId" : "A1UQIATQ5Z2IFB",
+											"hitId" : "104JUX6C0QOI67P6UQZDDJ3VI7SJ3D",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269885954E12,
+											"acceptTime" : 1.269882343E12,
+											"submitTime" : 1.269882354E12,
+											"answer" : {
+												"newText" : "People kept talking about buses driving through datacenters or fires happening.",
+												"description" : "spelling"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1E6GDRPQHW3ZHGW0ZN8E46OEBYLEOQ",
+											"workerId" : "AFKNBZS03Q14D",
+											"hitId" : "104JUX6C0QOI67P6UQZDDJ3VI7SJ3D",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886093E12,
+											"acceptTime" : 1.269882449E12,
+											"submitTime" : 1.269882493E12,
+											"answer" : {
+												"description" : "Spelling.",
+												"newText" : "People kept talking about buses driving through datacenters or fires happening."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1CCYEZXW4YNBKTFXMKFAMQEQ2RGXRR",
+											"workerId" : "A22ZAKZF3HOKBU",
+											"hitId" : "104JUX6C0QOI67P6UQZDDJ3VI7SJ3D",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886398E12,
+											"acceptTime" : 1.26988261E12,
+											"submitTime" : 1.269882798E12,
+											"answer" : {
+												"newText" : "n/a",
+												"description" : "There is no error in this sentence or the highlighted section"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "180E4LX2WM0V3V13N2L8INEZZJ00U4",
+											"workerId" : "A2SROETBLKYN05",
+											"hitId" : "104JUX6C0QOI67P6UQZDDJ3VI7SJ3D",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886727E12,
+											"acceptTime" : 1.269883109E12,
+											"submitTime" : 1.269883127E12,
+											"answer" : {
+												"description" : "spelling",
+												"newText" : "People kept talking about buses driving through data centers or fires happening."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269883116549E12,
+								"printOutput" : "creation time: 1269882277000\r\nno longer waiting for hit: 104JUX6C0QOI67P6UQZDDJ3VI7SJ3D\r\n"
+							},
+							{
+								"creationTime" : 1.269883116811E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.26988311739E12,
+								"printOutput" : "disabled HIT: 104JUX6C0QOI67P6UQZDDJ3VI7SJ3D\r\n"
+							},
+							{
+								"creationTime" : 1.269883117392E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883117491E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/j26b5jhqh8lhow12pvudabfncsgbac6s.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883117832E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ji8727qenuud5qxemkl3u0hnv1eyczxw.html",
+								"returnTime" : 1.269883118552E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ji8727qenuud5qxemkl3u0hnv1eyczxw.html\r\n"
+							},
+							{
+								"creationTime" : 1.269883118554E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1XXL65OTBQRIMK5JRCSSCSN3HTCO9I",
+								"returnTime" : 1.269883118733E12,
+								"printOutput" : "created HIT: 1XXL65OTBQRIMK5JRCSSCSN3HTCO9I\r\n        url: https://www.mturk.com/mturk/preview?groupId=16CWK4PHNO422XCA2H26ZTO6T4BNCR\r\n"
+							},
+							{
+								"creationTime" : 1.26988311897E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3HTCO9I",
+									"hitTypeId" : "16CWK4PHNO422XCA2H26ZTO6T4BNCR",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ji8727qenuud5qxemkl3u0hnv1eyczxw.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269883169E12,
+									"expiration" : 1.270487969E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1N0XMLFUI0HRAD3URNK4JVST2ZAITQ",
+											"workerId" : "AYY0XHTC7WY8I",
+											"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3HTCO9I",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886824E12,
+											"acceptTime" : 1.269883193E12,
+											"submitTime" : 1.269883224E12,
+											"answer" : {
+												"reason" : "spelling|It%20should%20be%20%22buses%22|Spelling.",
+												"randomOrder" : "temp",
+												"fix" : "People%20kept%20talking%20about%20buses%20driving%20through%20data%20centers%20or%20fires%20happening."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1IBHS3XFICI6AQIJRSAEOREVLDHIUH",
+											"workerId" : "AEDRM8B46Y7SA",
+											"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3HTCO9I",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269886842E12,
+											"acceptTime" : 1.269883202E12,
+											"submitTime" : 1.269883242E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"fix" : "People%20kept%20talking%20about%20buses%20driving%20through%20data%20centers%20or%20fires%20happening.",
+												"reason" : "It%20should%20be%20%22buses%22|Spelling."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1CFJKWC9QD1KTO7X5XKPERA7ZDMDI2",
+											"workerId" : "A3AVS0S9H2TTAZ",
+											"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3HTCO9I",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887039E12,
+											"acceptTime" : 1.269883417E12,
+											"submitTime" : 1.269883439E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"fix" : "n/a",
+												"reason" : "Spelling."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1R08M06A0W62UJR2UEO4FIJFEOKDW9",
+											"workerId" : "A1KO3YEZLKTV07",
+											"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3HTCO9I",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887269E12,
+											"acceptTime" : 1.26988365E12,
+											"submitTime" : 1.269883669E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"reason" : "It%20should%20be%20%22buses%22",
+												"fix" : "People%20kept%20talking%20about%20buses%20driving%20through%20data%20centers%20or%20fires%20happening."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1N52AMLO7JHMW4BR7MLUPQOYNV91JD",
+											"workerId" : "A14CUJENJIPG2G",
+											"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3HTCO9I",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269887404E12,
+											"acceptTime" : 1.269883779E12,
+											"submitTime" : 1.269883804E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"fix" : "People%20kept%20talking%20about%20buses%20driving%20through%20data%20centers%20or%20fires%20happening.",
+												"reason" : "spelling|Spelling."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.26988380707E12,
+								"printOutput" : "creation time: 1269883169000\r\nno longer waiting for hit: 1XXL65OTBQRIMK5JRCSSCSN3HTCO9I\r\n"
+							},
+							{
+								"creationTime" : 1.269883809724E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883810205E12,
+								"printOutput" : "disabled HIT: 1XXL65OTBQRIMK5JRCSSCSN3HTCO9I\r\n"
+							},
+							{
+								"creationTime" : 1.269883810207E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269883810527E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ji8727qenuud5qxemkl3u0hnv1eyczxw.html\r\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 6.720000000000002,
+	"hitsCreated" : 14
+}
+// end:aa21
