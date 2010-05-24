@@ -4,29 +4,52 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.IO;
+using System.Xml.Linq;
 
 namespace Soylent
 {
     class TurKit
     {
-        public static string directory = @"C:\Users\msbernst\Documents\Soylent\turkit\cut";
+        public string directory = null;
+        public string rootDirectory = null;
+        //public static string directory = @"C:\Users\msbernst\Documents\Soylent\turkit\cut";
+        private string amazonID;
+        private string amazonKEY;
 
         public TurKit(long request)
-        {            
+        {
+            rootDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            //rootDirectory = @"C:\Users\UID\Documents\soylent\";
+            if (rootDirectory.Length > 10)
+            {
+                if (rootDirectory.Substring(rootDirectory.Length - 11, 10) == @"\bin\Debug")
+                {
+                    rootDirectory = rootDirectory.Substring(0, rootDirectory.Length - 10);
+                }
+            }
+            //{
+            //    directory = directory.Substring(0, directory.Length - 10);
+            //}
+            directory = rootDirectory + @"\turkit\cut\template";
+            //string lastten = directory.Substring(directory.Length - 11, 10);
+
             string requestLine = "var request = " + request + ";";
             string[] script = File.ReadAllLines(directory + @"\cut.js");
-            
+
             string[] newScript = new string[1 + script.Length];
             newScript[0] = requestLine;
             Array.Copy(script, 0, newScript, 1, script.Length);
 
+
             string requestFile = directory + @"\cut." + request + ".js";
             File.WriteAllLines(requestFile, newScript);
+
+            InitializeAmazonKeys();
 
             string output = null;
             string error = null;
             ExecuteProcess( @"java"
-                            , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a amazonID -s amazonKEY -m sandbox -o 100 -h 1000"
+                            , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonID+" -s "+amazonKEY+" -m sandbox -o 100 -h 1000"
                             , directory
                             , out output
                             , out error);
@@ -34,7 +57,24 @@ namespace Soylent
             
             // TODO: if we wait, we could delete the file...google the original file back w/ ExecuteProcess
         }
+        
+        public void InitializeAmazonKeys()
+        {
+            //System.Xml.XmlTextReader amazonReader = new System.Xml.XmlTextReader("./amazon.template.xml");
+            XDocument doc = XDocument.Load(rootDirectory+@"\amazon.template.xml");
+            XElement id = doc.Root.Element("amazonID");
+            XElement key = doc.Root.Element("amazonKEY");
+            amazonID = id.Value;
+            amazonKEY = key.Value;
 
+            //Debug.Print(amazonID);
+            //Debug.Print(amazonKEY);
+            System.Diagnostics.Trace.WriteLine(amazonID);
+            System.Diagnostics.Trace.WriteLine(amazonKEY);
+            //Console.WriteLine(amazonID);
+            //Console.WriteLine(amazonKEY);
+        }
+         
         ///<summary>
         /// Executes a process and waits for it to end. 
         ///</summary>
