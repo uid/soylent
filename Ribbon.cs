@@ -127,12 +127,13 @@ namespace Soylent
 
         private void button2_Click(object sender, RibbonControlEventArgs e)
         {
-            TurKit turkit = new TurKit(1);
+            //TurKit turkit = new TurKit(1);
         }
 
-        public static int lastJob = 0;
+        private static int lastJob = 0;
         public static int generateJobNumber()
         {
+            System.Diagnostics.Trace.WriteLine(lastJob + 1);
             return ++lastJob;
         }
 

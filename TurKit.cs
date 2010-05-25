@@ -5,6 +5,12 @@ using System.Text;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Linq;
+using Word = Microsoft.Office.Interop.Word;
+using Office = Microsoft.Office.Core;
+using Microsoft.Office.Tools.Word;
+using Microsoft.Office.Tools.Word.Extensions;
+using System.Web.Script.Serialization;
+using System.Text.RegularExpressions;
 
 namespace Soylent
 {
@@ -16,7 +22,7 @@ namespace Soylent
         private string amazonSECRET;
         private string amazonKEY;
 
-        public TurKit(long request)
+        public TurKit(HITData hdata)
         {
             rootDirectory = AppDomain.CurrentDomain.BaseDirectory;
             //rootDirectory = @"C:\Users\UID\Documents\soylent\";
@@ -30,32 +36,79 @@ namespace Soylent
             //{
             //    directory = directory.Substring(0, directory.Length - 10);
             //}
-            directory = rootDirectory + @"\turkit\cut\template";
-            //string lastten = directory.Substring(directory.Length - 11, 10);
+            if (hdata is ShortenData)
+            {
+                ShortenData data = hdata as ShortenData;
 
-            string requestLine = "var request = " + request + ";";
-            string[] script = File.ReadAllLines(directory + @"\cut.js");
+                //IEnumerable<String> paragraphs = data.range.Paragraphs.Cast<String>();
+     
+                string[][] pgraphs = new string[data.range.Paragraphs.Count][];
+                int i = 0;
+                int j;
+                foreach(Word.Paragraph paragraph in data.range.Paragraphs){
+                    pgraphs[i] = new string[paragraph.Range.Sentences.Count];
+                    j = 0;
+                    foreach (Word.Range sentence in paragraph.Range.Sentences)
+                    {
+                        string temp = sentence.Text;
 
-            string[] newScript = new string[1 + script.Length];
-            newScript[0] = requestLine;
-            Array.Copy(script, 0, newScript, 1, script.Length);
+                        // Whitespace characters in the middle of sentences will not be removed
+                        temp = temp.Trim();
+                        pgraphs[i][j] = temp;
+
+                        //System.Diagnostics.Trace.WriteLine(sentence.Text);
+                        //System.Diagnostics.Trace.WriteLine("### end sentence");
+                        j++;
+                    }
+                    i++;
+                    //System.Diagnostics.Trace.WriteLine("*************** end paragraph");
+                }
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string paragraphs = js.Serialize(pgraphs);
+                //System.Diagnostics.Trace.WriteLine(sentences);
+                paragraphs = "var paragraphs = " + paragraphs + ";";
+
+                //string text = data.range.Text;
+                //System.Diagnostics.Trace.WriteLine(text);
+
+                int request = hdata.job;
+                directory = rootDirectory + @"\turkit\templates\shortn\";
+                //string lastten = directory.Substring(directory.Length - 11, 10);
+
+                string requestLine = "var soylentJob = " + request + ";";
+                string[] script = File.ReadAllLines(directory + @"\shortn.template.js");
+
+                string[] newScript = new string[2 + script.Length];
+                newScript[0] = requestLine;
+                newScript[1] = paragraphs;
+                Array.Copy(script, 0, newScript, 2, script.Length);
 
 
-            string requestFile = directory + @"\cut." + request + ".js";
-            File.WriteAllLines(requestFile, newScript);
+                string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".js";
+                File.WriteAllLines(requestFile, newScript);
 
-            InitializeAmazonKeys();
+                InitializeAmazonKeys();
 
-            string output = null;
-            string error = null;
-            ExecuteProcess( @"java"
-                            , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000"
-                            , directory
-                            , out output
-                            , out error);
-            Debug.Print(output);
-            
-            // TODO: if we wait, we could delete the file...google the original file back w/ ExecuteProcess
+                string output = null;
+                string error = null;
+                /*
+                ExecuteProcess( @"java"
+                                , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000"
+                                , rootDirectory + @"\turkit"
+                                , out output
+                                , out error);
+                */
+                ExecuteProcess(@"cmd"
+                                , " /k java -jar TurKit-0.2.3.jar -f " + requestFile + " -a " + amazonKEY + " -s " + amazonSECRET + " -m sandbox -o 100 -h 1000"
+                                , rootDirectory + @"\turkit"
+                                , out output
+                                , out error);
+
+                //System.Diagnostics.Trace.WriteLine(output);
+                //System.Diagnostics.Trace.WriteLine(error);
+
+                // TODO: if we wait, we could delete the file...google the original file back w/ ExecuteProcess
+            }
         }
         
         public void InitializeAmazonKeys()
@@ -85,14 +138,21 @@ namespace Soylent
             using( Process process = Process.Start( new ProcessStartInfo( cmd, cmdParams ) ) )
             {
                 process.StartInfo.WorkingDirectory = workingDirectory;
-                process.StartInfo.UseShellExecute = false;
-                process.StartInfo.RedirectStandardOutput = true;
-                process.StartInfo.RedirectStandardError = true;
-                process.StartInfo.CreateNoWindow = true;
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                //process.StartInfo.UseShellExecute = false;
+                //process.StartInfo.RedirectStandardOutput = true;
+                //process.StartInfo.RedirectStandardError = true;
+                //process.StartInfo.CreateNoWindow = true;
+                //process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+                //StreamReader out1 = process.StandardOutput;
                 process.Start( );
-                output = process.StandardOutput.ReadToEnd();
-                error = process.StandardError.ReadToEnd();
+                output = "foo";
+                error = "bar";
+                //process.StandardOutput
+                //output = process.StandardOutput.ReadToEnd();
+                //error = process.StandardError.ReadToEnd();
+                //System.Diagnostics.Trace.WriteLine(output);
+                //System.Diagnostics.Trace.WriteLine(error);
                 process.WaitForExit();
             }
         }
