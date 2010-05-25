@@ -47,8 +47,10 @@ namespace Soylent
         public IEnumerable<HITStatus> getHITs()
         {
             List<HITStatus> hits = new List<HITStatus>();
-            ElementHost[] hostControls = (ElementHost[]) Controls.Find(HOSTNAME, true);
-            return from control in hostControls select control.Child as HITStatus;
+            var temp = Controls.Find(HOSTNAME, true);
+            //ElementHost[] hostControls = (ElementHost[]) Controls.Find(HOSTNAME, true);
+            //return from control in hostControls select control.Child as HITStatus;
+            return null;
         }
     }
 }

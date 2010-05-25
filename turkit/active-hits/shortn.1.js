@@ -1,5 +1,5 @@
 var soylentJob = 1;
-var paragraphs = [["Debug.WriteLine(receivedObject.numCompleted);"],["Debug.WriteLine(receivedObject.numCompleted);"],["Debug.WriteLine(receivedObject.numCompleted);"],["Debug.WriteLine(receivedObject.numCompleted);"],["Debug.WriteLine(receivedObject.numCompleted);"],["Debug.WriteLine(receivedObject.numCompleted);"],["Debug.WriteLine(receivedObject.numCompleted);"],["Debug.WriteLine(receivedObject.numCompleted);"]];
+var paragraphs = [["Aaa bbb."],["ccc.","dddddd.","e eee."]];
 /*
 The specific soylentJob number and paragraphs array will be written by C#.  Here is an example:
 

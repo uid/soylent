@@ -13,13 +13,14 @@ namespace Soylent
 {
     public class HITData
     {
-        HITData h;
         public int job { get; set; }
         public Word.Range range { get; set; }
+        TurKit tk;
 
         public HITData(Word.Range range, int job)
         {
             this.range = range;
+            this.job = job;
             int unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
             string bookmarkName = "Soylent" + unixTime;
             //TODO: Use Word XML binding to text instead of bookmarks.
@@ -31,6 +32,13 @@ namespace Soylent
 
             object bkmkRange = (object)range;
             Globals.Soylent.Application.ActiveDocument.Bookmarks.Add(bookmarkName, ref bkmkRange);
+
+            tk = new TurKit(this);
+        }
+
+        public void startTask()
+        {
+            tk.startTask();
         }
     }
 }

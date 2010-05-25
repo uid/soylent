@@ -16,11 +16,12 @@ namespace Soylent
 {
     class TurKit
     {
-        public string directory = null;
-        public string rootDirectory = null;
+        public string directory;
+        public string rootDirectory;
         //public static string directory = @"C:\Users\msbernst\Documents\Soylent\turkit\cut";
         private string amazonSECRET;
         private string amazonKEY;
+        private HITData hdata;
 
         public TurKit(HITData hdata)
         {
@@ -36,6 +37,9 @@ namespace Soylent
             //{
             //    directory = directory.Substring(0, directory.Length - 10);
             //}
+            this.hdata = hdata;
+        }
+        public void startTask(){
             if (hdata is ShortenData)
             {
                 ShortenData data = hdata as ShortenData;
@@ -91,18 +95,20 @@ namespace Soylent
 
                 string output = null;
                 string error = null;
-                /*
+                
                 ExecuteProcess( @"java"
                                 , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000"
                                 , rootDirectory + @"\turkit"
                                 , out output
                                 , out error);
-                */
+                
+                /*
                 ExecuteProcess(@"cmd"
                                 , " /k java -jar TurKit-0.2.3.jar -f " + requestFile + " -a " + amazonKEY + " -s " + amazonSECRET + " -m sandbox -o 100 -h 1000"
                                 , rootDirectory + @"\turkit"
                                 , out output
                                 , out error);
+                 */
 
                 //System.Diagnostics.Trace.WriteLine(output);
                 //System.Diagnostics.Trace.WriteLine(error);
@@ -138,21 +144,17 @@ namespace Soylent
             using( Process process = Process.Start( new ProcessStartInfo( cmd, cmdParams ) ) )
             {
                 process.StartInfo.WorkingDirectory = workingDirectory;
-                //process.StartInfo.UseShellExecute = false;
-                //process.StartInfo.RedirectStandardOutput = true;
-                //process.StartInfo.RedirectStandardError = true;
-                //process.StartInfo.CreateNoWindow = true;
-                //process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.RedirectStandardError = true;
+                process.StartInfo.CreateNoWindow = true;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
-                //StreamReader out1 = process.StandardOutput;
                 process.Start( );
-                output = "foo";
-                error = "bar";
-                //process.StandardOutput
-                //output = process.StandardOutput.ReadToEnd();
-                //error = process.StandardError.ReadToEnd();
-                //System.Diagnostics.Trace.WriteLine(output);
-                //System.Diagnostics.Trace.WriteLine(error);
+                //output = "foo";
+                //error = "bar";
+                output = process.StandardOutput.ReadToEnd();
+                error = process.StandardError.ReadToEnd();
                 process.WaitForExit();
             }
         }

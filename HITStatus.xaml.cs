@@ -36,6 +36,15 @@ namespace Soylent
             stageList.Add(newStage);
         }
 
+        public void updateStage()
+        {
+            /*
+            foreach (StageStatus stage in stageList)
+            {
+                stage.updateProgress(4,2);
+            }
+             */
+        }
         
     }
 }

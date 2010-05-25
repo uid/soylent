@@ -27,6 +27,8 @@ namespace Soylent
 
             hit.stageList[0].updateProgress(10, 0.10);
             hit.stageList[1].updateProgress(3, 0.03);
+
+            data.startTask();
         }
     }
 }

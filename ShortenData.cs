@@ -50,6 +50,7 @@ namespace Soylent
                 return _longestLength;
             }
         }
+
         private int _longestLength = -1;    // for caching
 
         public ShortenData(Word.Range toShorten, int job) : base(toShorten, job)
