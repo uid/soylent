@@ -238,7 +238,7 @@ function writeCSVWait(csv, hit, title, paragraph_index)
 
 var FIND_STAGE = "find";
 var FIX_STAGE = "fix";
-var FILTER_STAGE = "filter";
+var FILTER_STAGE = "verify"; //#todo: rename FILTER_STAGE to VERIFY_STAGE
 function socketStatus(stage, numCompleted, paragraphNum) {
 	if (typeof(soylentJob) == "undefined") {
 		print("Not in socket mode, not writing.");

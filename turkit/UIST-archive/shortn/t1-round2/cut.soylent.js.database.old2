@@ -1,0 +1,816 @@
+// begin:e810
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269834778373E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269834778381E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ekoqwn9zgv2cdzwmyjmjvoedruxem9qx.html",
+						"returnTime" : 1.269834778462E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ekoqwn9zgv2cdzwmyjmjvoedruxem9qx.html\r\n"
+					},
+					{
+						"creationTime" : 1.269834778464E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "11UCVVX7R1LULOJQTL39SQU71X69ZW",
+						"returnTime" : 1.269834778686E12,
+						"printOutput" : "created HIT: 11UCVVX7R1LULOJQTL39SQU71X69ZW\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269834779105E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "11UCVVX7R1LULOJQTL39SQU71X69ZW",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ekoqwn9zgv2cdzwmyjmjvoedruxem9qx.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269834828E12,
+							"expiration" : 1.270439628E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1IEZ9YL3LBEVYTJ0KYIRQFQ0VVUC3I",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "11UCVVX7R1LULOJQTL39SQU71X69ZW",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838476E12,
+									"acceptTime" : 1.26983487E12,
+									"submitTime" : 1.269834876E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.  But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "15GX7RHBSQ2GELDFJU8DR25LFQG1B8",
+									"workerId" : "A3S23W6900IDMN",
+									"hitId" : "11UCVVX7R1LULOJQTL39SQU71X69ZW",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838576E12,
+									"acceptTime" : 1.26983496E12,
+									"submitTime" : 1.269834976E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad [[because they hope to finally be able to charge for their digital editions]].  But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "19EAZRTV6CXHZVWOY881PHO9LOYENT",
+									"workerId" : "A2RL28EX7BIT15",
+									"hitId" : "11UCVVX7R1LULOJQTL39SQU71X69ZW",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838775E12,
+									"acceptTime" : 1.269835154E12,
+									"submitTime" : 1.269835175E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.  But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web. [[ We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos]]."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1A7K0M0OHAWSLEYLNQCR16OZHK7LSZ",
+									"workerId" : "A3H3HF8E7HUIYP",
+									"hitId" : "11UCVVX7R1LULOJQTL39SQU71X69ZW",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838853E12,
+									"acceptTime" : 1.269835193E12,
+									"submitTime" : 1.269835253E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.  But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different [[that readers cannot get at the newsstand or on the open Web]].  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1QLP91MB7WED0DIZV5675JMHSIOYTS",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "11UCVVX7R1LULOJQTL39SQU71X69ZW",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.26983886E12,
+									"acceptTime" : 1.269835239E12,
+									"submitTime" : 1.26983526E12,
+									"answer" : {
+										"brackets" : "Print publishers [[are in a tizzy over Apple\'s new iPad because they]] hope to finally be able to charge for their digital editions.  But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "11B85YBME5ZD9HYNR5H5JWPXS5TZBV",
+									"workerId" : "A19DEIAB148KI7",
+									"hitId" : "11UCVVX7R1LULOJQTL39SQU71X69ZW",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839328E12,
+									"acceptTime" : 1.269835709E12,
+									"submitTime" : 1.269835728E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad [[because they hope to finally be able to charge for their digital editions.  But]] in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1WAKMXLYNGRP2F2XZE93XUYIT8QUD8",
+									"workerId" : "A7R1L4ZYYPOZM",
+									"hitId" : "11UCVVX7R1LULOJQTL39SQU71X69ZW",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839611E12,
+									"acceptTime" : 1.269835917E12,
+									"submitTime" : 1.269836011E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.  [[But]] in order to get people to pay for their magazine and newspaper apps, [[they are going to have to offer something different that readers cannot get at the newsstand or on the open Web]].  We\'ve already seen [[plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos]]."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269836038277E12,
+						"printOutput" : "creation time: 1269834828000\r\nno longer waiting for hit: 11UCVVX7R1LULOJQTL39SQU71X69ZW\r\n"
+					},
+					{
+						"creationTime" : 1.269836038643E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269836039732E12,
+						"printOutput" : "disabled HIT: 11UCVVX7R1LULOJQTL39SQU71X69ZW\r\n"
+					},
+					{
+						"creationTime" : 1.269836039734E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269836039833E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ekoqwn9zgv2cdzwmyjmjvoedruxem9qx.html\r\n"
+					},
+					{
+						"creationTime" : 1.269836041082E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269836041085E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/r02zt9i5uwriwd76bu82krm7oiaarevv.html",
+								"returnTime" : 1.269836041184E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/r02zt9i5uwriwd76bu82krm7oiaarevv.html\r\n"
+							},
+							{
+								"creationTime" : 1.269836041188E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1TEA67F233U6ZJY6NEGTNNII1Y3QPE",
+								"returnTime" : 1.269836041419E12,
+								"printOutput" : "created HIT: 1TEA67F233U6ZJY6NEGTNNII1Y3QPE\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269836041684E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269836041907E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.26983604191E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9k011r5tnylmundjaq9r7yp1hcfolk6r.html",
+								"returnTime" : 1.269836042005E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9k011r5tnylmundjaq9r7yp1hcfolk6r.html\r\n"
+							},
+							{
+								"creationTime" : 1.269836042008E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "141KMAHF1ABLG553JAG9WA7S9W9EJQ",
+								"returnTime" : 1.269836042371E12,
+								"printOutput" : "created HIT: 141KMAHF1ABLG553JAG9WA7S9W9EJQ\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.26983604258E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269836042756E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269836042759E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/4yxxxomtflp5ivtuv2alqh4rmw3i8ste.html",
+								"returnTime" : 1.26983604293E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/4yxxxomtflp5ivtuv2alqh4rmw3i8ste.html\r\n"
+							},
+							{
+								"creationTime" : 1.269836042931E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1Y48JSM46P5A89WKN3R5GMJTYHM16P",
+								"returnTime" : 1.269836043172E12,
+								"printOutput" : "created HIT: 1Y48JSM46P5A89WKN3R5GMJTYHM16P\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269836043351E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269834779401E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269834779404E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9vvkrkd62rsxa4u4mm7ti6lvul9fcrtj.html",
+						"returnTime" : 1.269834779475E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9vvkrkd62rsxa4u4mm7ti6lvul9fcrtj.html\r\n"
+					},
+					{
+						"creationTime" : 1.269834779477E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+						"returnTime" : 1.269834779658E12,
+						"printOutput" : "created HIT: 1DDOXHT9M4HBOMN5HX4HIM25P85A0K\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269834779868E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9vvkrkd62rsxa4u4mm7ti6lvul9fcrtj.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269834829E12,
+							"expiration" : 1.270439629E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1UE05LYN8LZPV9PUSQIACS5WT9DGLA",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838483E12,
+									"acceptTime" : 1.269834877E12,
+									"submitTime" : 1.269834883E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  After all, the cover is still the gateway to the magazine.  Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue.  One way these covers could change is that instead of simply repurposing the static photographs from the print edition, the background image itself could be some sort of video loop.  Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1SL3H58EAB0X1USR5IY2499QOEIGOR",
+									"workerId" : "A3S23W6900IDMN",
+									"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838612E12,
+									"acceptTime" : 1.269834994E12,
+									"submitTime" : 1.269835012E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  After all, the cover is still the gateway to the magazine.  Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue.  One way these covers could change is that instead of simply repurposing the static photographs from the print edition, the background image itself could be some sort of video loop.  Jesse Rosten, a photographer [[in California]], created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1EAXKYEPOTZ5B3J70KPOHCF0JXCEFM",
+									"workerId" : "A2RL28EX7BIT15",
+									"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838714E12,
+									"acceptTime" : 1.26983508E12,
+									"submitTime" : 1.269835114E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  After all, the cover is still the gateway to the magazine.  Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue.  One way these covers could change is that instead of simply repurposing the static photographs from the print edition, the background image itself could be some sort of video loop. [[ Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below)]]."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1YRFY045RJBDNM6SG9VIH1EYKV4LO2",
+									"workerId" : "A3H3HF8E7HUIYP",
+									"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838789E12,
+									"acceptTime" : 1.269835135E12,
+									"submitTime" : 1.269835189E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  [[After all, the cover is still the gateway to the magazine.]]  Theoretically, it will still be the first page people see[[, giving them hints of what\'s inside and enticing them to dive into the issue]].  One way these covers could change is that instead of simply repurposing the static photographs from the print edition, the background image itself could be some sort of video loop.  Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1E6GDRPQHW3ZHGW0ZN8E46OEBY3EO8",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838839E12,
+									"acceptTime" : 1.269835216E12,
+									"submitTime" : 1.269835239E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  After all, the cover is still the gateway to the magazine.  Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue.  One way these covers could change is that instead of simply repurposing the static photographs from the print edition, the background image itself could be some sort of video loop.  [[Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below).]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1HOGKMOZ0CL39ACNKRGQ9C9NX2DW6G",
+									"workerId" : "ADZ19Z0B3SIIS",
+									"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839003E12,
+									"acceptTime" : 1.269835146E12,
+									"submitTime" : 1.269835403E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  After all, the cover is still the gateway to the magazine.  Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue.  One way these covers could change is that [[instead of simply repurposing the static photographs from the print edition,]] the background image itself could be some sort of video loop.  Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1NHGFVIZRGEQ8YWEZZFV6S7SUBKM7F",
+									"workerId" : "A2E98G8WU8WRQL",
+									"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839082E12,
+									"acceptTime" : 1.269835412E12,
+									"submitTime" : 1.269835482E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  After all, the cover is still the gateway to the magazine.  Theoretically, it will still be the first page people see[[, giving them hints of what\'s inside and enticing them to dive into the issue]].  One way these covers could change is that instead of simply repurposing the static photographs from the print edition, the background image itself could be some sort of video loop.  Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1BLHVIQVOPQKMRRN29D5PFHS9WTR4O",
+									"workerId" : "A19DEIAB148KI7",
+									"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839394E12,
+									"acceptTime" : 1.269835758E12,
+									"submitTime" : 1.269835794E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  After all, the cover is still the gateway to the magazine.  Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue.  One way these covers could change is that instead of simply repurposing the static photographs from the print edition, the background image itself could be some sort of video loop. [[ Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below).]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "16QB4JRD7JA8W8AKR4JTAH5FFRBWS3",
+									"workerId" : "A7R1L4ZYYPOZM",
+									"hitId" : "1DDOXHT9M4HBOMN5HX4HIM25P85A0K",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839517E12,
+									"acceptTime" : 1.269835851E12,
+									"submitTime" : 1.269835917E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  [[After all, the cover is still the gateway to the magazine]].  Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue.  One way these covers could change is that instead of simply repurposing the static photographs from the print edition, the background image itself could be some sort of video loop.  Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269836044205E12,
+						"printOutput" : "creation time: 1269834829000\r\nno longer waiting for hit: 1DDOXHT9M4HBOMN5HX4HIM25P85A0K\r\n"
+					},
+					{
+						"creationTime" : 1.269836044503E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269836045405E12,
+						"printOutput" : "disabled HIT: 1DDOXHT9M4HBOMN5HX4HIM25P85A0K\r\n"
+					},
+					{
+						"creationTime" : 1.269836045407E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269836045454E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9vvkrkd62rsxa4u4mm7ti6lvul9fcrtj.html\r\n"
+					},
+					{
+						"creationTime" : 1.269836046837E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.26983604684E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hpgbepef8oiu1ehzwuvykqoo41bklxyg.html",
+								"returnTime" : 1.269836046897E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hpgbepef8oiu1ehzwuvykqoo41bklxyg.html\r\n"
+							},
+							{
+								"creationTime" : 1.2698360469E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1X7GSX5PFOCCQNWUE0UMRDX5JPU0MU",
+								"returnTime" : 1.269836047133E12,
+								"printOutput" : "created HIT: 1X7GSX5PFOCCQNWUE0UMRDX5JPU0MU\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269836047346E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269836047514E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269836047517E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o85wu5apg6oox42cvkk62w4pa4fnrd7o.html",
+								"returnTime" : 1.269836047596E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o85wu5apg6oox42cvkk62w4pa4fnrd7o.html\r\n"
+							},
+							{
+								"creationTime" : 1.269836047598E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1EZ0JZ1WXT2PDWUTSOWKQM6WN3BPJM",
+								"returnTime" : 1.269836047771E12,
+								"printOutput" : "created HIT: 1EZ0JZ1WXT2PDWUTSOWKQM6WN3BPJM\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.26983604812E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269836048317E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.26983604832E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/08jvzbwexztgvhmh79wtkg20gxj764lf.html",
+								"returnTime" : 1.269836048398E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/08jvzbwexztgvhmh79wtkg20gxj764lf.html\r\n"
+							},
+							{
+								"creationTime" : 1.269836048399E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "17C8YB5LAZWI85HUQ19M4SM5OF40NU",
+								"returnTime" : 1.269836048633E12,
+								"printOutput" : "created HIT: 17C8YB5LAZWI85HUQ19M4SM5OF40NU\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269836048817E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.2698347801E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269834780102E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ty8z3s2pk8i4y9ty9kdjbqnj1nevzzv9.html",
+						"returnTime" : 1.269834780165E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ty8z3s2pk8i4y9ty9kdjbqnj1nevzzv9.html\r\n"
+					},
+					{
+						"creationTime" : 1.269834780166E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+						"returnTime" : 1.269834780575E12,
+						"printOutput" : "created HIT: 1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269834780796E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ty8z3s2pk8i4y9ty9kdjbqnj1nevzzv9.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.26983483E12,
+							"expiration" : 1.27043963E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1YP7HFJHEB76DBNHGY4M75L8PHUC27",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838469E12,
+									"acceptTime" : 1.26983486E12,
+									"submitTime" : 1.269834869E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits.  He points out that these kinds of videos will have to be shot in a vertical orientation rather than a horizontal landscape one.  This is just a mockup Rosten came up with on his own, but the designers of these new magazine apps should take note.  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1WGFX1PWJ9USD5MO006M61A2P34VY5",
+									"workerId" : "A3S23W6900IDMN",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838593E12,
+									"acceptTime" : 1.269834977E12,
+									"submitTime" : 1.269834993E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits.  He points out that these kinds of videos will have to be shot in a vertical orientation rather than a horizontal landscape one.  This is just a mockup Rosten came up with [[on his own]], but the designers of these new magazine apps should take note.  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1GZD17FZF62RBVT3MVSMCPKKGTYLEY",
+									"workerId" : "A14CUJENJIPG2G",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838645E12,
+									"acceptTime" : 1.269835027E12,
+									"submitTime" : 1.269835045E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits.  He points out that these kinds of videos will have to be shot in a vertical orientation rather than a horizontal landscape one.  [[This is just a mockup Rosten came up with on his own, but the designers of these new magazine apps should take note.]]  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1Q5HDWE90Z00M657KVQ6TE4Q3F0GQZ",
+									"workerId" : "A3H3HF8E7HUIYP",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838731E12,
+									"acceptTime" : 1.26983504E12,
+									"submitTime" : 1.269835131E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves [[gently lapping a beach]] as the title of the magazine [[and other typographical elements]] appear on the page almost like movie credits.  He points out that these kinds of videos will have to be shot in a vertical orientation [[rather than a horizontal landscape one]].  This is just a mockup Rosten came up with on his own, but the designers of these new magazine apps should take note.  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1TEJUX6C0QOI67P6UQZDDJ3VLF33JN",
+									"workerId" : "A2RL28EX7BIT15",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269838754E12,
+									"acceptTime" : 1.269835115E12,
+									"submitTime" : 1.269835154E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits.  He points out that these kinds of videos will have to be shot in a vertical orientation rather than a horizontal landscape one.  This is just a mockup Rosten came up with on his own,[[ but the designers of these new magazine apps should take note]].  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1LW9FJ4W78FS0QXOVAWHAF8JBWVYUJ",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.26983889E12,
+									"acceptTime" : 1.26983526E12,
+									"submitTime" : 1.26983529E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits.  He points out that these kinds of videos will have to be shot in a vertical orientation rather than a horizontal landscape one.  This is just a mockup [[Rosten came up with on his own,]] but the designers of these new magazine apps should take note.  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1IKV76SOR3DCKALB6KDHFPQ4JHU3TS",
+									"workerId" : "A2E98G8WU8WRQL",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839E12,
+									"acceptTime" : 1.269835315E12,
+									"submitTime" : 1.2698354E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves gently lapping a beach as the title of the magazine [[and other typographical elements]] appear on the page almost like movie credits.  He points out that these kinds of videos will have to be shot in a vertical orientation [[rather than a horizontal landscape one]].  This is just a mockup Rosten came up with on his own, but the designers of these new magazine apps should take note.  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1PVQ0TS98P4EB37C7Q69XSSH498KGB",
+									"workerId" : "A7R1L4ZYYPOZM",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839433E12,
+									"acceptTime" : 1.269835718E12,
+									"submitTime" : 1.269835833E12,
+									"answer" : {
+										"brackets" : "The video [[shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits]].  He points out that these kinds of videos will have to be shot in a vertical orientation [[rather than a horizontal landscape one]].  This is just a mockup Rosten [[came up with on his own]], but the designers of these new magazine apps should take note.  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1ESSP6DM2DZ7XXDK641BBBFMMNV4H4",
+									"workerId" : "A19DEIAB148KI7",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839436E12,
+									"acceptTime" : 1.269835822E12,
+									"submitTime" : 1.269835836E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits.  He points out that these kinds of videos will have to be shot in a vertical orientation rather than a horizontal landscape one.[[  This is just a mockup Rosten came up with on his own, but the designers of these new magazine apps should take note.]]  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1V739F40LEYSEZCO14AB3F1F606UGI",
+									"workerId" : "A2YLF04UAKYVF1",
+									"hitId" : "1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269839646E12,
+									"acceptTime" : 1.269835999E12,
+									"submitTime" : 1.269836046E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits.  He points out that these kinds of videos will have to be shot in a vertical orientation rather than a horizontal landscape one.  This is just a mockup Rosten came up with on his own, but the designers of these new magazine apps should take note.  The only way people are going to pay for these apps is if they create new experiences[[ for readers]]."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269836049498E12,
+						"printOutput" : "creation time: 1269834830000\r\nno longer waiting for hit: 1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4\r\n"
+					},
+					{
+						"creationTime" : 1.269836049796E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269836050769E12,
+						"printOutput" : "disabled HIT: 1GRRNN8M3MJJ6ZW4GA7U63YD38AHW4\r\n"
+					},
+					{
+						"creationTime" : 1.26983605077E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269836050823E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ty8z3s2pk8i4y9ty9kdjbqnj1nevzzv9.html\r\n"
+					},
+					{
+						"creationTime" : 1.269836052042E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269836052045E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/d15catt3syv867yay3t5fk7rjynpp0w5.html",
+								"returnTime" : 1.269836052132E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/d15catt3syv867yay3t5fk7rjynpp0w5.html\r\n"
+							},
+							{
+								"creationTime" : 1.269836052134E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1C4ECB1GLJ20QQH6RG9ZJHMAEP90O9",
+								"returnTime" : 1.269836052377E12,
+								"printOutput" : "created HIT: 1C4ECB1GLJ20QQH6RG9ZJHMAEP90O9\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269836052625E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269836052794E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269836052796E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5unqpnxb7f4khsy484coouim9ou6n8xr.html",
+								"returnTime" : 1.269836052901E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5unqpnxb7f4khsy484coouim9ou6n8xr.html\r\n"
+							},
+							{
+								"creationTime" : 1.269836052904E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1H6UQSTTR71TC9AP6DWXM0JPTS617O",
+								"returnTime" : 1.269836053145E12,
+								"printOutput" : "created HIT: 1H6UQSTTR71TC9AP6DWXM0JPTS617O\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269836053309E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.26983605354E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269836053542E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/geuwl0o7r6mfm4yrfxs2uhhs7c3mh7du.html",
+								"returnTime" : 1.269836053625E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/geuwl0o7r6mfm4yrfxs2uhhs7c3mh7du.html\r\n"
+							},
+							{
+								"creationTime" : 1.269836053627E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1LNUUU2SD759V8WTB570607SZGXYGL",
+								"returnTime" : 1.269836053786E12,
+								"printOutput" : "created HIT: 1LNUUU2SD759V8WTB570607SZGXYGL\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269836053994E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 6.509999999999998,
+	"hitsCreated" : 12
+}
+// end:e810

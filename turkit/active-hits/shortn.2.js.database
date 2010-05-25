@@ -1,0 +1,64 @@
+// begin:1bb0
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"sequencialFrames" : [
+					{
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAJG573IAAHMPOUMIA.TurKit/f8syhpia8jr51f61zcmwu98lxyajozfo.html",
+						"returnTime" : 1.27481924931E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAJG573IAAHMPOUMIA.TurKit/f8syhpia8jr51f61zcmwu98lxyajozfo.html\r\n"
+					},
+					{
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1QHJMT6R9Z3Q5YG1JMI9BD8J3AJH1B",
+						"returnTime" : 1.274819249727E12,
+						"printOutput" : "created HIT: 1QHJMT6R9Z3Q5YG1JMI9BD8J3AJH1B\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=17LCMGUEPTA5H13V3HFQNKA4II3LLF\r\n"
+					},
+					{
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n"
+					}
+				]
+			},
+			{
+				"sequencialFrames" : [
+					{
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAJG573IAAHMPOUMIA.TurKit/g8sz0ibafwdmpuoqu7dmnwh547ue4ab9.html",
+						"returnTime" : 1.27481925026E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAJG573IAAHMPOUMIA.TurKit/g8sz0ibafwdmpuoqu7dmnwh547ue4ab9.html\r\n"
+					},
+					{
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "19UGWECW4NJ9MTQH17VJ6NAB6QKD0V",
+						"returnTime" : 1.274819250497E12,
+						"printOutput" : "created HIT: 19UGWECW4NJ9MTQH17VJ6NAB6QKD0V\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=17LCMGUEPTA5H13V3HFQNKA4II3LLF\r\n"
+					},
+					{
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n"
+					}
+				]
+			}
+		]
+	}
+}
+__S3_Objects = {
+	"http://s3.amazonaws.com/AKIAJG573IAAHMPOUMIA.TurKit/f8syhpia8jr51f61zcmwu98lxyajozfo.html" : {
+	},
+	"http://s3.amazonaws.com/AKIAJG573IAAHMPOUMIA.TurKit/g8sz0ibafwdmpuoqu7dmnwh547ue4ab9.html" : {
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 2.24,
+	"hitsCreated" : 2
+}
+__HITs = {
+	"sandbox:1QHJMT6R9Z3Q5YG1JMI9BD8J3AJH1B" : {
+		"url" : "https://workersandbox.mturk.com/mturk/preview?groupId=17LCMGUEPTA5H13V3HFQNKA4II3LLF"
+	},
+	"sandbox:19UGWECW4NJ9MTQH17VJ6NAB6QKD0V" : {
+		"url" : "https://workersandbox.mturk.com/mturk/preview?groupId=17LCMGUEPTA5H13V3HFQNKA4II3LLF"
+	}
+}
+// end:1bb0
