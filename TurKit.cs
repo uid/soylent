@@ -13,7 +13,7 @@ namespace Soylent
         public string directory = null;
         public string rootDirectory = null;
         //public static string directory = @"C:\Users\msbernst\Documents\Soylent\turkit\cut";
-        private string amazonID;
+        private string amazonSECRET;
         private string amazonKEY;
 
         public TurKit(long request)
@@ -49,7 +49,7 @@ namespace Soylent
             string output = null;
             string error = null;
             ExecuteProcess( @"java"
-                            , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonID+" -s "+amazonKEY+" -m sandbox -o 100 -h 1000"
+                            , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000"
                             , directory
                             , out output
                             , out error);
@@ -61,18 +61,14 @@ namespace Soylent
         public void InitializeAmazonKeys()
         {
             //System.Xml.XmlTextReader amazonReader = new System.Xml.XmlTextReader("./amazon.template.xml");
-            XDocument doc = XDocument.Load(rootDirectory+@"\amazon.template.xml");
-            XElement id = doc.Root.Element("amazonID");
+            XDocument doc = XDocument.Load(rootDirectory+@"\amazon.xml");
+            XElement secret = doc.Root.Element("amazonSECRET");
             XElement key = doc.Root.Element("amazonKEY");
-            amazonID = id.Value;
+            amazonSECRET = secret.Value;
             amazonKEY = key.Value;
 
-            //Debug.Print(amazonID);
-            //Debug.Print(amazonKEY);
-            System.Diagnostics.Trace.WriteLine(amazonID);
-            System.Diagnostics.Trace.WriteLine(amazonKEY);
-            //Console.WriteLine(amazonID);
-            //Console.WriteLine(amazonKEY);
+            //System.Diagnostics.Trace.WriteLine(amazonKEY);
+            //System.Diagnostics.Trace.WriteLine(amazonSECRET);
         }
          
         ///<summary>
