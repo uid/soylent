@@ -96,20 +96,23 @@ namespace Soylent
                 string output = null;
                 string error = null;
                 
+                /*
                 ExecuteProcess( @"java"
                                 , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000"
                                 , rootDirectory + @"\turkit"
                                 , out output
-                                , out error);
+                                , out error
+                               , false);
+                */
                 
-                /*
                 ExecuteProcess(@"cmd"
                                 , " /k java -jar TurKit-0.2.3.jar -f " + requestFile + " -a " + amazonKEY + " -s " + amazonSECRET + " -m sandbox -o 100 -h 1000"
                                 , rootDirectory + @"\turkit"
                                 , out output
-                                , out error);
+                                , out error
+                                , true);
                  
-                */
+                
                 //System.Diagnostics.Trace.WriteLine(output);
                 //System.Diagnostics.Trace.WriteLine(error);
 
@@ -139,22 +142,29 @@ namespace Soylent
         ///<param name="timeout">Time to wait for process to end</param>
         ///<param name="stdOutput">Redirected standard output of process</param>
         ///<returns>Process exit code</returns>
-        private void ExecuteProcess(string cmd, string cmdParams, string workingDirectory, out string output, out string error)
+        private void ExecuteProcess(string cmd, string cmdParams, string workingDirectory, out string output, out string error, bool showWindow)
         {
             using( Process process = Process.Start( new ProcessStartInfo( cmd, cmdParams ) ) )
             {
                 process.StartInfo.WorkingDirectory = workingDirectory;
                 process.StartInfo.UseShellExecute = false;
-                process.StartInfo.RedirectStandardOutput = true;
-                process.StartInfo.RedirectStandardError = true;
-                process.StartInfo.CreateNoWindow = true;
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                
+                if (!showWindow)
+                {
+                    process.StartInfo.CreateNoWindow = true;
+                    process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    process.StartInfo.RedirectStandardOutput = true;
+                    process.StartInfo.RedirectStandardError = true;
+                }
                 process.Start( );
-                //output = "foo";
-                //error = "bar";
-                output = process.StandardOutput.ReadToEnd();
-                error = process.StandardError.ReadToEnd();
+                if (!showWindow)
+                {
+                    output = process.StandardOutput.ReadToEnd();
+                    error = process.StandardError.ReadToEnd();
+                }
+                else
+                {
+                    output = error = null;
+                }
                 process.WaitForExit();
             }
         }

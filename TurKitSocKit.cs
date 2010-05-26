@@ -162,7 +162,9 @@ namespace Soylent
             public int job;
             public string stage;
             public int numCompleted;
+            public int totalRequested;
             public int paragraph;
+            public double reward;
         }
 
         public class TurKitShortn
