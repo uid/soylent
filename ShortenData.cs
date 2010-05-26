@@ -67,7 +67,7 @@ namespace Soylent
 
         new public void updateStatus(TurKitSocKit.TurKitStatus status)
         {
-            string stringtype = status.method;
+            string stringtype = status.stage;
             System.Diagnostics.Debug.WriteLine(stringtype);
             System.Diagnostics.Debug.WriteLine("^^^^^ stringtype ^^^^^^");
             ResultType type = typeMap[stringtype];

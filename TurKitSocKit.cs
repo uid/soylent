@@ -110,15 +110,16 @@ namespace Soylent
                     if (messageType == "status")
                     {
                         TurKitStatus receivedObject = serializer.Deserialize<TurKitStatus>(incomingString);
-
+                        
                         HITData concernedHIT = Globals.Soylent.soylent.jobMap[receivedObject.job];
                         ShortenData shortenData = concernedHIT as ShortenData;
-                        Debug.WriteLine("method: " + receivedObject.method);
+                        Debug.WriteLine("method: " + receivedObject.stage);
                         Debug.WriteLine("numCompleted: " + receivedObject.job);
                         if (shortenData != null)
                         {
                             shortenData.updateStatus(receivedObject);
                         }
+
                         //Debug.WriteLine(receivedObject.numCompleted);
                     }
                     else if (messageType == "shorten")
@@ -152,36 +153,20 @@ namespace Soylent
             lock (_connections) _connections.Remove(ci);
         }
 
-        [Serializable]
         public class TurKitStatus
         {
-            [XmlElement("job")]
-            public int job { get; set; }
-
-            [XmlElement("stage")]
-            public string method { get; set; }
-
-            [XmlElement("numCompleted")]
-            public int numCompleted { get; set; }
-
-            [XmlElement("paragraph")]
-            public int paragraph { get; set; }
+            public int job;
+            public string stage;
+            public int numCompleted;
+            public int paragraph;
         }
 
-        [Serializable]
         public class TurKitShortn
         {
-            [XmlElement("start")]
-            public int start { get; set; }
-
-            [XmlElement("end")]
-            public int end { get; set; }
-
-            [XmlElement("options")]
-            public string[] options { get; set; }
-
-            [XmlElement("paragraph")]
-            public string[] paragraph { get; set; }
+            public int start;
+            public int end;
+            public List<string> options;
+            public List<string> paragraph;
         }
     }
 }

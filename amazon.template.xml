@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
-	<amazonID>9999999</amazonID>
-	<amazonKEY>8888</amazonKEY>
+	<amazonKEY>AmazonKeyHere</amazonKEY>
+	<amazonSECRET>AmazonSecretHere</amazonSECRET>
 </root>
