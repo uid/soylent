@@ -1,0 +1,2083 @@
+// begin:dbdc
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269785270148E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269785270157E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/blans3z3wzy155ifqy6lzkz7yvksq52y.html",
+						"returnTime" : 1.269785270581E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/blans3z3wzy155ifqy6lzkz7yvksq52y.html\r\n"
+					},
+					{
+						"creationTime" : 1.269785270584E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+						"returnTime" : 1.269785271124E12,
+						"printOutput" : "created HIT: 1JVIPN0FS47ZOQ5LXU482MB3U3S1CC\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.269785271435E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+							"hitTypeId" : "1H5OKCVIGDPGJRIMUDXO4AC04LWVOD",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/blans3z3wzy155ifqy6lzkz7yvksq52y.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.26978532E12,
+							"expiration" : 1.27039012E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1O4WAG97DFU3E7LQ81OPYINIP4IOPE",
+									"workerId" : "A2YLF04UAKYVF1",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785506E12,
+									"acceptTime" : 1.269785395E12,
+									"submitTime" : 1.269785446E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  [[At the same time]], the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785767E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12FTLA9Y0IYESIS4P34XAFP7UDM3PY",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785509E12,
+									"acceptTime" : 1.269785433E12,
+									"submitTime" : 1.269785449E12,
+									"answer" : {
+										"brackets" : "[[The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785767E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "14FU8VBA6YI74YI9GPA30E7WZZDM6R",
+									"workerId" : "A1TYV8UYNBQAHE",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785671E12,
+									"acceptTime" : 1.269785592E12,
+									"submitTime" : 1.269785611E12,
+									"answer" : {
+										"brackets" : "[[The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1VCH10IWAHQ87FVRXNC5TBVCP8BM3L",
+									"workerId" : "A1VKHE5L6QVFUV",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785702E12,
+									"acceptTime" : 1.26978556E12,
+									"submitTime" : 1.269785642E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction [[which has dominated the last decade of interface design]].  At the same time, the GUI approach falls short in many respects, [[particularly in embracing the rich interface modalities between people and the physical environments they inhabit]].  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1W6ZZCYMZD50TFYA1KZT1WXIAZEP8C",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785763E12,
+									"acceptTime" : 1.26978569E12,
+									"submitTime" : 1.269785703E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "15H3T50OKLXA4878TVFZKYQS8JC47D",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785849E12,
+									"acceptTime" : 1.269785669E12,
+									"submitTime" : 1.269785789E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, [[these efforts have often taken]] the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1GK8S5J0VBU3USU4FRU3RHAPXBW1RW",
+									"workerId" : "A1J8GDYHOT5FBH",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785887E12,
+									"acceptTime" : 1.269785811E12,
+									"submitTime" : 1.269785827E12,
+									"answer" : {
+										"brackets" : "[[The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1ZYAUMEAS7OYC864YH6K5COK9QYC5J",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.2697859E12,
+									"acceptTime" : 1.269785691E12,
+									"submitTime" : 1.26978584E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  At the same time, the GUI approach falls short [[in many respects]], particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1AGHO535J9FBN9UA5Y5C1A6XA5878N",
+									"workerId" : "A39PN4D2JWMEN6",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785928E12,
+									"acceptTime" : 1.269785713E12,
+									"submitTime" : 1.269785868E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction [[which has dominated the last decade of interface design]].  [[At the same time]], the GUI approach falls short in many respects, particularly in embracing the [[rich]] interface modalities between people and the physical environments they inhabit.  Systems exploring [[augmented reality and ubiquitous]] computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of [[much of]] the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "13YYT698WUZTOIDECQ7IBIJRICOZ4Z",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785937E12,
+									"acceptTime" : 1.269785675E12,
+									"submitTime" : 1.269785877E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  At the same time, the GUI approach falls short[[ in many respects, particularly]] in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1QXTYWZGBPTV8MITV98X61JOUZDPLY",
+									"workerId" : "A3NUEE1L5RTCE7",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785998E12,
+									"acceptTime" : 1.269785929E12,
+									"submitTime" : 1.269785938E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction [[which has dominated the last decade of interface design]].  At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786071E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1FJ98NKNIMWYVZ1UQF3G8MCKFHDHX7",
+									"workerId" : "A1GA6VXI5QH07",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786048E12,
+									"acceptTime" : 1.269785976E12,
+									"submitTime" : 1.269785988E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  At the same time, the GUI approach falls short [[in many respects]], particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786071E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1JG9ZGW0JQ41YOQSU26Q5ONN2Y1F6D",
+									"workerId" : "A2T3MP92LA6X7S",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786087E12,
+									"acceptTime" : 1.269785908E12,
+									"submitTime" : 1.269786027E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven [[both]] a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  At the same time, the GUI approach falls short in many respects, particularly in embracing the [[rich]] interface modalities between people and the physical environments [[they inhabit]].  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to [[more]] world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1C8TPJ3EMJNNL8FA19FFC0JMOSUXS8",
+									"workerId" : "A33J4SSJGN076U",
+									"hitId" : "1JVIPN0FS47ZOQ5LXU482MB3U3S1CC",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.26978634E12,
+									"acceptTime" : 1.269786234E12,
+									"submitTime" : 1.26978628E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.  [[At the same time,]] the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269786317515E12,
+						"printOutput" : "hit completed: 1JVIPN0FS47ZOQ5LXU482MB3U3S1CC\r\n"
+					},
+					{
+						"creationTime" : 1.269786317857E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786318415E12,
+						"printOutput" : "disabled HIT: 1JVIPN0FS47ZOQ5LXU482MB3U3S1CC\r\n"
+					},
+					{
+						"creationTime" : 1.269786318417E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786318789E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/blans3z3wzy155ifqy6lzkz7yvksq52y.html\r\n"
+					},
+					{
+						"creationTime" : 1.269786320358E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786320364E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/scfm57df7sevtj10h9w05tvldn6lay3d.html",
+								"returnTime" : 1.269786320514E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/scfm57df7sevtj10h9w05tvldn6lay3d.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786320519E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1RHHH13PUHIFMU4SKIBHT9EGVBPGP4",
+								"returnTime" : 1.269786321022E12,
+								"printOutput" : "created HIT: 1RHHH13PUHIFMU4SKIBHT9EGVBPGP4\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.269786321275E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.26978632147E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786321477E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6gtlgtpo9cvbf7x5pkqt1l869bd15af9.html",
+								"returnTime" : 1.269786321571E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6gtlgtpo9cvbf7x5pkqt1l869bd15af9.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786321574E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1TUF0M19ZO7KHURJ0F74UM7N26OYX8",
+								"returnTime" : 1.269786321888E12,
+								"printOutput" : "created HIT: 1TUF0M19ZO7KHURJ0F74UM7N26OYX8\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.269786322294E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269786322503E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786322507E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rhbkkec5bpkev057yyhzvzydc82cwvq0.html",
+								"returnTime" : 1.269786322584E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rhbkkec5bpkev057yyhzvzydc82cwvq0.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786322587E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1BC00Y2OZ1M9HZHT5BT6D0EW4CIYYE",
+								"returnTime" : 1.269786322898E12,
+								"printOutput" : "created HIT: 1BC00Y2OZ1M9HZHT5BT6D0EW4CIYYE\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.269786323148E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269785271728E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269785271734E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/yi1v5i6cg15d5j0dogdgh14b5riht7q2.html",
+						"returnTime" : 1.269785271833E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/yi1v5i6cg15d5j0dogdgh14b5riht7q2.html\r\n"
+					},
+					{
+						"creationTime" : 1.269785271835E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+						"returnTime" : 1.269785272024E12,
+						"printOutput" : "created HIT: 18AQVGIV0GZ9SAQWZRMKN62NNQL6E8\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.269785272207E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+							"hitTypeId" : "1H5OKCVIGDPGJRIMUDXO4AC04LWVOD",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/yi1v5i6cg15d5j0dogdgh14b5riht7q2.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269785321E12,
+							"expiration" : 1.270390121E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1790JZ1WXT2PDWUTSOWKQM6WQA8JPQ",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785566E12,
+									"acceptTime" : 1.269785489E12,
+									"submitTime" : 1.269785506E12,
+									"answer" : {
+										"brackets" : "[[In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a prototype application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785767E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1S0IULE290QAGZ2MEKC0KBJ9PVV9LN",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785701E12,
+									"acceptTime" : 1.269785532E12,
+									"submitTime" : 1.269785641E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a [[prototype]] application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "173NVZFXAF2WTMS64FYQJOZF5XC41G",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785703E12,
+									"acceptTime" : 1.269785535E12,
+									"submitTime" : 1.269785643E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a [[prototype]] application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1ORZ2WUO1ERL7WIZ6PKW1XI3Z1I9QC",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785718E12,
+									"acceptTime" : 1.269785614E12,
+									"submitTime" : 1.269785658E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a [[prototype]] application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1OJ9YI5RZ94QRTELIYJ2TM0PN2Z9WG",
+									"workerId" : "A1TYV8UYNBQAHE",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785756E12,
+									"acceptTime" : 1.26978568E12,
+									"submitTime" : 1.269785696E12,
+									"answer" : {
+										"brackets" : "[[In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a prototype application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1IEZ9YL3LBEVYTJ0KYIRQFQ0VU7C3T",
+									"workerId" : "A1VKHE5L6QVFUV",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785781E12,
+									"acceptTime" : 1.269785694E12,
+									"submitTime" : 1.269785721E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) [[- user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information]].  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a prototype application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786068E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1YC5UPV9GPPHDV8G17J1HSTMVMHC9A",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785803E12,
+									"acceptTime" : 1.269785727E12,
+									"submitTime" : 1.269785743E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a prototype application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1KRHH13PUHIFMU4SKIBHT9EGYIRPGS",
+									"workerId" : "A1J8GDYHOT5FBH",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785919E12,
+									"acceptTime" : 1.269785844E12,
+									"submitTime" : 1.269785859E12,
+									"answer" : {
+										"brackets" : "[[In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a prototype application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1N867ND1IMI6J7LPNJAE6M7PRRTCJ5",
+									"workerId" : "A33J4SSJGN076U",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786131E12,
+									"acceptTime" : 1.269786013E12,
+									"submitTime" : 1.269786071E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a prototype application driving an interaction with geographical space, Tangible Geospace, [[to illustrate our approach]]."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786371E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1X4WYLGDU0AJRO6240FNXT5HCMSUQO",
+									"workerId" : "A2T3MP92LA6X7S",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786153E12,
+									"acceptTime" : 1.269786035E12,
+									"submitTime" : 1.269786093E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  [[In particular,]] we present the metaDESK system, a graphically intensive system driven by interaction with [[graspable]] physical objects.  [[In addition,]] we introduce a prototype application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786371E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1YVW57T4YG7JH9TZH6CSU75KSTQFLL",
+									"workerId" : "A3NUEE1L5RTCE7",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.26978618E12,
+									"acceptTime" : 1.269786076E12,
+									"submitTime" : 1.26978612E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable [[physical]] objects.  In addition, we introduce a prototype application [[driving an interaction with geographical space]], Tangible Geospace, to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786372E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1UG2LJELT3E154CZRT3F5CP5R49IH8",
+									"workerId" : "A2XVLENAJYX691",
+									"hitId" : "18AQVGIV0GZ9SAQWZRMKN62NNQL6E8",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786553E12,
+									"acceptTime" : 1.269786337E12,
+									"submitTime" : 1.269786493E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing [[physical]] objects, instruments, surfaces, and spaces as physical interfaces to digital information.  In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.  In addition, we introduce a prototype application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269786531035E12,
+						"printOutput" : "no longer waiting for hit: 18AQVGIV0GZ9SAQWZRMKN62NNQL6E8\r\n"
+					},
+					{
+						"creationTime" : 1.269786531372E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.26978653193E12,
+						"printOutput" : "disabled HIT: 18AQVGIV0GZ9SAQWZRMKN62NNQL6E8\r\n"
+					},
+					{
+						"creationTime" : 1.269786531933E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786532024E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/yi1v5i6cg15d5j0dogdgh14b5riht7q2.html\r\n"
+					},
+					{
+						"creationTime" : 1.26978653325E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786533253E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l0i0cxw68b8gq2s0xes3f7pf8vqf9and.html",
+								"returnTime" : 1.269786533326E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l0i0cxw68b8gq2s0xes3f7pf8vqf9and.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786533327E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1TX0CZHOCGB9MPRY1XVPR7NYA6MYZ5",
+								"returnTime" : 1.269786533607E12,
+								"printOutput" : "created HIT: 1TX0CZHOCGB9MPRY1XVPR7NYA6MYZ5\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.269786533833E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269785272447E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269785272452E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/d5j1x8ztdg63uigtsbkr1o0o8dt78u7c.html",
+						"returnTime" : 1.269785272514E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/d5j1x8ztdg63uigtsbkr1o0o8dt78u7c.html\r\n"
+					},
+					{
+						"creationTime" : 1.269785272516E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+						"returnTime" : 1.269785272746E12,
+						"printOutput" : "created HIT: 1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.269785272924E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+							"hitTypeId" : "1H5OKCVIGDPGJRIMUDXO4AC04LWVOD",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/d5j1x8ztdg63uigtsbkr1o0o8dt78u7c.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269785322E12,
+							"expiration" : 1.270390122E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1QLP91MB7WED0DIZV5675JMHSH1YT3",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785492E12,
+									"acceptTime" : 1.269785418E12,
+									"submitTime" : 1.269785432E12,
+									"answer" : {
+										"brackets" : "[[The metaDESK effort is part of the larger Tangible Bits project.  The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  Together, these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785767E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1N6Y5M00FCYIYAHDUWCCBVNU63X6XV",
+									"workerId" : "A1TYV8UYNBQAHE",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785646E12,
+									"acceptTime" : 1.269785569E12,
+									"submitTime" : 1.269785586E12,
+									"answer" : {
+										"brackets" : "[[The metaDESK effort is part of the larger Tangible Bits project.  The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  Together, these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1M8W4A4TBS0ELOPZTLA3SAB6IM61EJ",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785742E12,
+									"acceptTime" : 1.269785672E12,
+									"submitTime" : 1.269785682E12,
+									"answer" : {
+										"brackets" : "The metaDESK effort is part of the larger Tangible Bits project.  The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  Together, these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "11FDWS0ZGJPJMAMUJBS33DZ8UFBJYK",
+									"workerId" : "A2T3MP92LA6X7S",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785874E12,
+									"acceptTime" : 1.269785677E12,
+									"submitTime" : 1.269785814E12,
+									"answer" : {
+										"brackets" : "The metaDESK effort is part of the [[larger]] Tangible Bits project.  The Tangible Bits [[vision paper]] introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  Together, these platforms explore [[both]] graspable physical objects and ambient environmental displays [[as means]] for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "197YQ2DG7K4FE40EVL9C6EYDU43MPX",
+									"workerId" : "A1J8GDYHOT5FBH",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785971E12,
+									"acceptTime" : 1.26978589E12,
+									"submitTime" : 1.269785911E12,
+									"answer" : {
+										"brackets" : "[[The metaDESK effort is part of the larger Tangible Bits project.  The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  Together, these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1ME6IKM6750LT191R7BKF4IIZFCNN2",
+									"workerId" : "A33J4SSJGN076U",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786289E12,
+									"acceptTime" : 1.269786193E12,
+									"submitTime" : 1.269786229E12,
+									"answer" : {
+										"brackets" : "The metaDESK effort is part of the larger Tangible Bits project.  The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  [[Together,]] these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786373E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "10SONX7VWS28NGNHUSY6SV9LR3RXOB",
+									"workerId" : "A2XVLENAJYX691",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786388E12,
+									"acceptTime" : 1.269786207E12,
+									"submitTime" : 1.269786328E12,
+									"answer" : {
+										"brackets" : "The metaDESK effort is part of the larger Tangible Bits project.  The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  Together, these platforms explore both graspable physical objects and ambient environmental displays [[as means]] for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "154NHW7LABUAZ8AL5OVJC9KQ3DM35D",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786457E12,
+									"acceptTime" : 1.2697863E12,
+									"submitTime" : 1.269786397E12,
+									"answer" : {
+										"brackets" : "The metaDESK effort is part of the larger [[Tangible Bits]] project.  The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  [[Together,]] [[these platforms]] explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1JZ46Y257E8H6XF83MSQPCNR89E5PR",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786458E12,
+									"acceptTime" : 1.26978634E12,
+									"submitTime" : 1.269786398E12,
+									"answer" : {
+										"brackets" : "The metaDESK effort is part of the larger Tangible Bits project.  The [[Tangible Bits]] vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  Together, these [[platforms]] explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1RTQ627UN8QZLX37OMFB0CI1Y4I5OA",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786467E12,
+									"acceptTime" : 1.269786336E12,
+									"submitTime" : 1.269786407E12,
+									"answer" : {
+										"brackets" : "The metaDESK effort is part of the larger [[Tangible Bits]] project.  The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  [[Together, these platforms explore]] both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "16TINWTKDHMA2UJC9S6MKFOY5PE8LY",
+									"workerId" : "A277O5OV5EQ4R1",
+									"hitId" : "1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786499E12,
+									"acceptTime" : 1.269786326E12,
+									"submitTime" : 1.269786439E12,
+									"answer" : {
+										"brackets" : "The metaDESK effort is part of the larger Tangible Bits project.  The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  [[Together,]] these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.26978653454E12,
+						"printOutput" : "no longer waiting for hit: 1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ\r\n"
+					},
+					{
+						"creationTime" : 1.26978653485E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786535487E12,
+						"printOutput" : "disabled HIT: 1Q69ZGW0JQ41YOQSU26Q5ONNZR06FQ\r\n"
+					},
+					{
+						"creationTime" : 1.269786535489E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786535529E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/d5j1x8ztdg63uigtsbkr1o0o8dt78u7c.html\r\n"
+					},
+					{
+						"creationTime" : 1.269786536659E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786536662E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9mbd9i3t25dvtawkv838nhk85w8a04sm.html",
+								"returnTime" : 1.269786536733E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9mbd9i3t25dvtawkv838nhk85w8a04sm.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786536735E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1FB3DRVL4VT4CRP51PIS29X3K3O3WF",
+								"returnTime" : 1.269786537016E12,
+								"printOutput" : "created HIT: 1FB3DRVL4VT4CRP51PIS29X3K3O3WF\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.269786537215E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.26978527318E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269785273186E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/667uj30ml7mpiud29zsjq8sn76m8214p.html",
+						"returnTime" : 1.26978527327E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/667uj30ml7mpiud29zsjq8sn76m8214p.html\r\n"
+					},
+					{
+						"creationTime" : 1.269785273272E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+						"returnTime" : 1.269785273673E12,
+						"printOutput" : "created HIT: 1MFH0T1T79KBXLYMV6Y5PLM60JLIOH\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.269785273927E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+							"hitTypeId" : "1H5OKCVIGDPGJRIMUDXO4AC04LWVOD",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/667uj30ml7mpiud29zsjq8sn76m8214p.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269785323E12,
+							"expiration" : 1.270390123E12,
+							"assignments" : [
+								{
+									"assignmentId" : "15GX7RHBSQ2GELDFJU8DR25LFPT1BJ",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785527E12,
+									"acceptTime" : 1.26978545E12,
+									"submitTime" : 1.269785467E12,
+									"answer" : {
+										"brackets" : "[[The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments which are used on desk\'s surface.  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785767E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1UA62XVUHSPTYGIRKN2KQCVEI1LOW9",
+									"workerId" : "A2T3MP92LA6X7S",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785724E12,
+									"acceptTime" : 1.269785621E12,
+									"submitTime" : 1.269785664E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; [[and an assortment of physical objects and instruments which are used on desk\'s surface]].  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1IPMBD27OQI2512P9AVE0STVYR0JUM",
+									"workerId" : "A1TYV8UYNBQAHE",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785739E12,
+									"acceptTime" : 1.269785662E12,
+									"submitTime" : 1.269785679E12,
+									"answer" : {
+										"brackets" : "[[The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments which are used on desk\'s surface.  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1PSOHY7VGV0OJVBMCJ8EHWA64AI761",
+									"workerId" : "A1GA6VXI5QH07",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.26978579E12,
+									"acceptTime" : 1.269785708E12,
+									"submitTime" : 1.26978573E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface [[through which the desk projects]]; and an assortment of physical objects and instruments which are used on desk\'s surface.  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786068E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "17CO2VL6W5UN9D64153CK0CPCRHHGF",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785828E12,
+									"acceptTime" : 1.269785744E12,
+									"submitTime" : 1.269785768E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments which are used on desk\'s surface.  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "180E4LX2WM0V3V13N2L8INEZZIUU0Q",
+									"workerId" : "A1J8GDYHOT5FBH",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785903E12,
+									"acceptTime" : 1.269785828E12,
+									"submitTime" : 1.269785843E12,
+									"answer" : {
+										"brackets" : "[[The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments which are used on desk\'s surface.  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1LEJT4T2BTYKOG0BA9WWR1695Z8KPQ",
+									"workerId" : "A2XVLENAJYX691",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786173E12,
+									"acceptTime" : 1.269786087E12,
+									"submitTime" : 1.269786113E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments which are used on desk\'s surface.  These components are sensed by [[an array of]] optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786372E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1C9EC6MACUGFBJO1F6WK2PTIUP2NM2",
+									"workerId" : "A3NUEE1L5RTCE7",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786239E12,
+									"acceptTime" : 1.269786169E12,
+									"submitTime" : 1.269786179E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, [[an optically transparent surface]] through which the desk projects; and an assortment of physical objects and instruments which are used on desk\'s surface.  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786373E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1KUSES6Y9RIFPRTB7Z9SDS2U9DSSSV",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.26978626E12,
+									"acceptTime" : 1.269786113E12,
+									"submitTime" : 1.2697862E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments [[which are used on desk\'s surface]].  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786373E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1DQOCMR4RGNBWW2JQZ9X3G4PTE7UVI",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786265E12,
+									"acceptTime" : 1.269786108E12,
+									"submitTime" : 1.269786205E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments [[which are used on desk\'s surface]].  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786373E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1JKKM3I28NFVGAQ3SSVDE9GIDP3V0G",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786268E12,
+									"acceptTime" : 1.269786109E12,
+									"submitTime" : 1.269786208E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments [[which are]] used on desk\'s surface.  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786373E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12EEZ9EQXB4E81HQCFU8YWWXPACO77",
+									"workerId" : "A33J4SSJGN076U",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786434E12,
+									"acceptTime" : 1.269786285E12,
+									"submitTime" : 1.269786374E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments [[which are used on desk\'s surface]].  These components are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1D9VWK7OXXKEIXB2AJQ9EQH6IR5IQ4",
+									"workerId" : "A277O5OV5EQ4R1",
+									"hitId" : "1MFH0T1T79KBXLYMV6Y5PLM60JLIOH",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786629E12,
+									"acceptTime" : 1.26978644E12,
+									"submitTime" : 1.269786569E12,
+									"answer" : {
+										"brackets" : "The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments which are used on desk\'s surface.  These [[components]] are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269786538034E12,
+						"printOutput" : "no longer waiting for hit: 1MFH0T1T79KBXLYMV6Y5PLM60JLIOH\r\n"
+					},
+					{
+						"creationTime" : 1.269786538355E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786539114E12,
+						"printOutput" : "disabled HIT: 1MFH0T1T79KBXLYMV6Y5PLM60JLIOH\r\n"
+					},
+					{
+						"creationTime" : 1.269786539116E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786539154E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/667uj30ml7mpiud29zsjq8sn76m8214p.html\r\n"
+					},
+					{
+						"creationTime" : 1.269786540872E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786540874E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ehdm3wifi9i3lmc0k826n9c5j1f6x9uv.html",
+								"returnTime" : 1.26978654093E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ehdm3wifi9i3lmc0k826n9c5j1f6x9uv.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786540932E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1NDCP6BD6EVNHV42VOJN8DTGY1LRCX",
+								"returnTime" : 1.269786541192E12,
+								"printOutput" : "created HIT: 1NDCP6BD6EVNHV42VOJN8DTGY1LRCX\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.269786541464E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269785274217E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269785274223E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/si6f1uqxnixxn071rz7w3sbaoieesh3u.html",
+						"returnTime" : 1.269785274323E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/si6f1uqxnixxn071rz7w3sbaoieesh3u.html\r\n"
+					},
+					{
+						"creationTime" : 1.269785274326E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+						"returnTime" : 1.269785274543E12,
+						"printOutput" : "created HIT: 130KMXLYNGRP2F2XZE93XUYIQ01UD4\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.269785274777E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+							"hitTypeId" : "1H5OKCVIGDPGJRIMUDXO4AC04LWVOD",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/si6f1uqxnixxn071rz7w3sbaoieesh3u.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269785324E12,
+							"expiration" : 1.270390124E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1UIW6BKRJXCOEJM58E3EYNDSU04OQ5",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785548E12,
+									"acceptTime" : 1.269785468E12,
+									"submitTime" : 1.269785488E12,
+									"answer" : {
+										"brackets" : "[[Our research with the metaDESK system focuses on the use of tangible objects - real physical entities which can be touched and grasped - as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785767E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12O1VZLBJX6H0ZWRTOH6C051XRWK0J",
+									"workerId" : "A1TYV8UYNBQAHE",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785721E12,
+									"acceptTime" : 1.269785632E12,
+									"submitTime" : 1.269785661E12,
+									"answer" : {
+										"brackets" : "[[Our research with the metaDESK system focuses on the use of tangible objects - real physical entities which can be touched and grasped - as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "16CUDNK112LH2G81ENLTT6T4L2CPEB",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785858E12,
+									"acceptTime" : 1.269785768E12,
+									"submitTime" : 1.269785798E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects - real physical entities which can be touched and grasped - as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1BUA101APLUT5KP7AUSX8V0FR7W700",
+									"workerId" : "A1W595SA35URZH",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785864E12,
+									"acceptTime" : 1.26978561E12,
+									"submitTime" : 1.269785804E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects - real physical entities which can be touched and grasped - as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, [[physically instantiating]] many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1I372HY4X7XBGKA71WJVK4VIV1JEZL",
+									"workerId" : "A1J8GDYHOT5FBH",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.26978587E12,
+									"acceptTime" : 1.269785794E12,
+									"submitTime" : 1.26978581E12,
+									"answer" : {
+										"brackets" : "[[Our research with the metaDESK system focuses on the use of tangible objects - real physical entities which can be touched and grasped - as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "159VKMV4GS2T6BS8C1HWB18NBDEA8H",
+									"workerId" : "A1GA6VXI5QH07",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785932E12,
+									"acceptTime" : 1.269785854E12,
+									"submitTime" : 1.269785872E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects [[- real physical entities which can be touched and grasped -]] as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "13VHV6MZZ9OTMQZ34OTZE9QHDI4HPJ",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786009E12,
+									"acceptTime" : 1.269785921E12,
+									"submitTime" : 1.269785949E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects - real physical entities which can be touched and grasped - as driving elements of human-computer interaction.  In particular,[[ we are interested in pushing back from the GUI into the real world]], physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786071E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1YG2GWYIVF67PZLN9Z1A7SEI11EAAL",
+									"workerId" : "A3NUEE1L5RTCE7",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786054E12,
+									"acceptTime" : 1.269785976E12,
+									"submitTime" : 1.269785994E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects [[- real physical entities which can be touched and grasped -]] as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786071E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "18U4EGMYQOZNROGGOQ0VGZWDYSHX1O",
+									"workerId" : "A2XVLENAJYX691",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786112E12,
+									"acceptTime" : 1.269786013E12,
+									"submitTime" : 1.269786052E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on [[the use of]] tangible objects - real physical entities which can be touched and grasped - as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786371E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1OFLV6V93GTRX2P0BFDWG7EPG1NV3B",
+									"workerId" : "A2T3MP92LA6X7S",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786296E12,
+									"acceptTime" : 1.269786162E12,
+									"submitTime" : 1.269786236E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects - [[real]] physical entities which can be touched and grasped - as driving elements of human-computer interaction.  [[In particular,]] we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  [[Simultaneously,]] we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various [[historical]] instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786374E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1MOYBELJOJAJG4A2M5ESY5H5MF3VRF",
+									"workerId" : "A33J4SSJGN076U",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.26978649E12,
+									"acceptTime" : 1.269786379E12,
+									"submitTime" : 1.26978643E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects - real physical entities which can be touched and grasped - as driving elements of human-computer interaction.  [[In particular,]] we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  [[Simultaneously,]] we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1ADWSL3MN9C2153AB08SYLB3S703FW",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786583E12,
+									"acceptTime" : 1.26978641E12,
+									"submitTime" : 1.269786523E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects - real physical entities [[which can be touched and grasped]] - as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1PQQSBOW8D66WYMT7Z31JYDN4QZQNS",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "130KMXLYNGRP2F2XZE93XUYIQ01UD4",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786583E12,
+									"acceptTime" : 1.269786413E12,
+									"submitTime" : 1.269786523E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects - real physical entities [[which can be touched and grasped]] - as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269786542346E12,
+						"printOutput" : "no longer waiting for hit: 130KMXLYNGRP2F2XZE93XUYIQ01UD4\r\n"
+					},
+					{
+						"creationTime" : 1.269786542636E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.26978654298E12,
+						"printOutput" : "disabled HIT: 130KMXLYNGRP2F2XZE93XUYIQ01UD4\r\n"
+					},
+					{
+						"creationTime" : 1.269786542982E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786543024E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/si6f1uqxnixxn071rz7w3sbaoieesh3u.html\r\n"
+					},
+					{
+						"creationTime" : 1.269786544894E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786544897E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/iouykt08vruuvqwabfhcqa1tof0fqh7h.html",
+								"returnTime" : 1.269786544987E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/iouykt08vruuvqwabfhcqa1tof0fqh7h.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786544989E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1BUF8AIYU256R2PVOWU9ASW6RGK1FN",
+								"returnTime" : 1.269786701202E12,
+								"printOutput" : "created HIT: 1BUF8AIYU256R2PVOWU9ASW6RGK1FN\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.269786701426E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269785275021E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269785275025E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u90xfrezj17uvb7r1ljhpn980p2z50gn.html",
+						"returnTime" : 1.269785275143E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u90xfrezj17uvb7r1ljhpn980p2z50gn.html\r\n"
+					},
+					{
+						"creationTime" : 1.269785275145E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+						"returnTime" : 1.269785275552E12,
+						"printOutput" : "created HIT: 1ELV0PW4RF2TILANA6BKELRWAOHIPY\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.26978527583E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+							"hitTypeId" : "1H5OKCVIGDPGJRIMUDXO4AC04LWVOD",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u90xfrezj17uvb7r1ljhpn980p2z50gn.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Unassignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269785325E12,
+							"expiration" : 1.270390125E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1AGNN53LGBZF8LPSEOXN09LK3EGYPY",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785477E12,
+									"acceptTime" : 1.269785404E12,
+									"submitTime" : 1.269785417E12,
+									"answer" : {
+										"brackets" : "[[In addition, we more broadly explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785767E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1Q7L65OTBQRIMK5JRCSSCSN3K009O4",
+									"workerId" : "A2YLF04UAKYVF1",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785665E12,
+									"acceptTime" : 1.269785594E12,
+									"submitTime" : 1.269785605E12,
+									"answer" : {
+										"brackets" : "In addition, we more broadly explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.  [[In this way]], the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "11ALKRDULJDH7OH9P7L6Q5OB2J21K3",
+									"workerId" : "A1TYV8UYNBQAHE",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.26978577E12,
+									"acceptTime" : 1.269785697E12,
+									"submitTime" : 1.26978571E12,
+									"answer" : {
+										"brackets" : "[[In addition, we more broadly explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786068E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1GT8NEIYC6U43C6DHAEDXNTKPUNRTV",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785786E12,
+									"acceptTime" : 1.269785718E12,
+									"submitTime" : 1.269785726E12,
+									"answer" : {
+										"brackets" : "In addition, we more broadly explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786068E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12N7WQWGRM3C2JJ4638AUQ4CGUAU46",
+									"workerId" : "A1J8GDYHOT5FBH",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785934E12,
+									"acceptTime" : 1.26978586E12,
+									"submitTime" : 1.269785874E12,
+									"answer" : {
+										"brackets" : "[[In addition, we more broadly explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1JUNJUY4K24AS1QZZJ7TU9RAEZPCH0",
+									"workerId" : "A3NUEE1L5RTCE7",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785941E12,
+									"acceptTime" : 1.26978582E12,
+									"submitTime" : 1.269785881E12,
+									"answer" : {
+										"brackets" : "In addition, we [[more broadly]] explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12CMTGAXBOM82OBQEL49EGI6PQB1WZ",
+									"workerId" : "A2T3MP92LA6X7S",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785957E12,
+									"acceptTime" : 1.269785826E12,
+									"submitTime" : 1.269785897E12,
+									"answer" : {
+										"brackets" : "In addition, we [[more broadly]] explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.  [[In this way]], the active lens has a certain legibility of interface [[in]] that its affordances suggest and support user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "16Y18XGA9OX3CBEYFVKNISNTRP7SQ6",
+									"workerId" : "A2XVLENAJYX691",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786229E12,
+									"acceptTime" : 1.269786149E12,
+									"submitTime" : 1.269786169E12,
+									"answer" : {
+										"brackets" : "In addition, we more broadly explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations [[from the device]]."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786372E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1YP7HFJHEB76DBNHGY4M75L8PG82C9",
+									"workerId" : "A33J4SSJGN076U",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786248E12,
+									"acceptTime" : 1.269786076E12,
+									"submitTime" : 1.269786188E12,
+									"answer" : {
+										"brackets" : "In addition, we more broadly explore the use of physical affordances within TUI design.  [[For example]], our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786373E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1V0I9XB0L8WQ5VN5TDYTD69G1TMNXM",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786359E12,
+									"acceptTime" : 1.269786228E12,
+									"submitTime" : 1.269786299E12,
+									"answer" : {
+										"brackets" : "In addition, we [[more broadly ]]explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; [[it]] also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786374E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1JPBN5178M6B41OK8IP7VEOZM5B03P",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786362E12,
+									"acceptTime" : 1.269786216E12,
+									"submitTime" : 1.269786302E12,
+									"answer" : {
+										"brackets" : "In addition, we [[more broadly]] explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; [[it]] also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786374E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1V0I9XB0L8WQ5VN5TDYTD69G1TMXNW",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "1ELV0PW4RF2TILANA6BKELRWAOHIPY",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786368E12,
+									"acceptTime" : 1.269786215E12,
+									"submitTime" : 1.269786308E12,
+									"answer" : {
+										"brackets" : "In addition, we [[more broadly]] explore the use of physical affordances within TUI design.  For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; [[it]] also looks, acts, and is manipulated like such a device.  In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786669E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269786702314E12,
+						"printOutput" : "no longer waiting for hit: 1ELV0PW4RF2TILANA6BKELRWAOHIPY\r\n"
+					},
+					{
+						"creationTime" : 1.269786702673E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786703014E12,
+						"printOutput" : "disabled HIT: 1ELV0PW4RF2TILANA6BKELRWAOHIPY\r\n"
+					},
+					{
+						"creationTime" : 1.269786703018E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786703106E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u90xfrezj17uvb7r1ljhpn980p2z50gn.html\r\n"
+					},
+					{
+						"creationTime" : 1.269786704516E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786704519E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rvksw2254is0cjpvj3i7d9s9nsx081t0.html",
+								"returnTime" : 1.269786704594E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rvksw2254is0cjpvj3i7d9s9nsx081t0.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786704596E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1G1511AU1UWCPUVDTPKGZFTEYT7Z05",
+								"returnTime" : 1.269786704935E12,
+								"printOutput" : "created HIT: 1G1511AU1UWCPUVDTPKGZFTEYT7Z05\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.269786705137E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269786705298E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786705301E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/x1rduiador7rpt1nzdqraj5ia3hqyobf.html",
+								"returnTime" : 1.269786705425E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/x1rduiador7rpt1nzdqraj5ia3hqyobf.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786705427E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "12X39F40LEYSEZCO14AB3F1F3SHGU0",
+								"returnTime" : 1.269786705656E12,
+								"printOutput" : "created HIT: 12X39F40LEYSEZCO14AB3F1F3SHGU0\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.26978670584E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269785276135E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269785276139E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/m4j5b82ci7yv3x1nl9s5qrfdurfak5te.html",
+						"returnTime" : 1.26978527625E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/m4j5b82ci7yv3x1nl9s5qrfdurfak5te.html\r\n"
+					},
+					{
+						"creationTime" : 1.269785276252E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+						"returnTime" : 1.269785276513E12,
+						"printOutput" : "created HIT: 1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.269785276726E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+							"hitTypeId" : "1H5OKCVIGDPGJRIMUDXO4AC04LWVOD",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/m4j5b82ci7yv3x1nl9s5qrfdurfak5te.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269785326E12,
+							"expiration" : 1.270390126E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1TX1YH2I3QXPPZADVADOKXRDZB2EHV",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785463E12,
+									"acceptTime" : 1.269785385E12,
+									"submitTime" : 1.269785403E12,
+									"answer" : {
+										"brackets" : "[[In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785468E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "13DB3VCJQAR9NISFM85VJ5RPY95YM2",
+									"workerId" : "A1VKHE5L6QVFUV",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785575E12,
+									"acceptTime" : 1.269785467E12,
+									"submitTime" : 1.269785515E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation, [[including display, sensor, and software architectures]]. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1JRJMT6R9Z3Q5YG1JMI9DD8JA2YH1F",
+									"workerId" : "A1TYV8UYNBQAHE",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785691E12,
+									"acceptTime" : 1.269785612E12,
+									"submitTime" : 1.269785631E12,
+									"answer" : {
+										"brackets" : "[[In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269785768E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "18F5FD24Y7NKXTWDZF24EF9SZZ1HD5",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785777E12,
+									"acceptTime" : 1.269785704E12,
+									"submitTime" : 1.269785717E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786068E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1DO5XRCN4GA91R7FS2JPC5KLTDGMGT",
+									"workerId" : "A1GA6VXI5QH07",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785846E12,
+									"acceptTime" : 1.269785767E12,
+									"submitTime" : 1.269785786E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation[[, including display, sensor, and software architectures]]. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "106OZPAU7SUJSTXG084S9IC1L5XMJX",
+									"workerId" : "A3NUEE1L5RTCE7",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269785869E12,
+									"acceptTime" : 1.269785769E12,
+									"submitTime" : 1.269785809E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues [[encountered with the prototype]] are then discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786069E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1NHGFVIZRGEQ8YWEZZFV6S7SUAX7MB",
+									"workerId" : "A1J8GDYHOT5FBH",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.26978595E12,
+									"acceptTime" : 1.269785875E12,
+									"submitTime" : 1.26978589E12,
+									"answer" : {
+										"brackets" : "[[In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26978607E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1TLUH886VK70QHGT8DD1B9YSVMRMRP",
+									"workerId" : "A2XVLENAJYX691",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786013E12,
+									"acceptTime" : 1.26978592E12,
+									"submitTime" : 1.269785953E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues [[encountered with the prototype]] are then discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786071E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12N7WQWGRM3C2JJ4638AUQ4CGUA4UG",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786127E12,
+									"acceptTime" : 1.269785902E12,
+									"submitTime" : 1.269786067E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario [[of the Tangible Geospace prototype]] is then presented.  [[This is followed by a description]] of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786371E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1GJ70QHVOZVZIA4FADJSYNYCNA6SC1",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786143E12,
+									"acceptTime" : 1.26978596E12,
+									"submitTime" : 1.269786083E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  [[The operating scenario]] of the Tangible Geospace prototype is then presented.  [[This is]] followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786371E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1BHC62WD6AQWN6R0HYDAFPMOVXPS4O",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786156E12,
+									"acceptTime" : 1.269785917E12,
+									"submitTime" : 1.269786096E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario [[of the Tangible Geospace prototype]] is then presented. [[ This is]] followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786372E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1OWEGNTH1TNC7PIO2DXHJZ6OLBANDK",
+									"workerId" : "A2T3MP92LA6X7S",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786216E12,
+									"acceptTime" : 1.269786101E12,
+									"submitTime" : 1.269786156E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is [[then]] presented.  This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are [[then]] discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786372E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1QY7DB97ARXBZJXL5051R7PKRG6DK6",
+									"workerId" : "A33J4SSJGN076U",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269786533E12,
+									"acceptTime" : 1.269786438E12,
+									"submitTime" : 1.269786473E12,
+									"answer" : {
+										"brackets" : "[[In the following sections,]] we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269786669E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1IKV76SOR3DCKALB6KDHFPQ4JG83T4",
+									"workerId" : "A277O5OV5EQ4R1",
+									"hitId" : "1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269786738E12,
+									"acceptTime" : 1.269786573E12,
+									"submitTime" : 1.269786678E12,
+									"answer" : {
+										"brackets" : "In the following sections, we present our design approach towards making user interfaces tangible.  The operating scenario of the Tangible Geospace prototype is then presented.  This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, [[followed]] by future work and conclusions."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.26978670665E12,
+						"printOutput" : "hit completed: 1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG\r\n"
+					},
+					{
+						"creationTime" : 1.269786706976E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.26978670745E12,
+						"printOutput" : "disabled HIT: 1SM9FJ4W78FS0QXOVAWHAF8J8O7YUG\r\n"
+					},
+					{
+						"creationTime" : 1.269786707452E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269786707498E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/m4j5b82ci7yv3x1nl9s5qrfdurfak5te.html\r\n"
+					},
+					{
+						"creationTime" : 1.269786708836E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269786708839E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/iyckabk5t6qf3qusubffvpcxna2mzpyb.html",
+								"returnTime" : 1.269786708905E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/iyckabk5t6qf3qusubffvpcxna2mzpyb.html\r\n"
+							},
+							{
+								"creationTime" : 1.269786708907E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "13B6Y381J8L81WK5GQ0GN6IJVBO3YE",
+								"returnTime" : 1.269786709146E12,
+								"printOutput" : "created HIT: 13B6Y381J8L81WK5GQ0GN6IJVBO3YE\r\n        url: https://www.mturk.com/mturk/preview?groupId=1Z2NZ6ILTQOFDBZXAAZ6EGUM21YPZO\r\n"
+							},
+							{
+								"creationTime" : 1.269786709319E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 11.339999999999998,
+	"hitsCreated" : 17
+}
+// end:dbdc

@@ -1,0 +1,1934 @@
+// begin:275a
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269815069153E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269815069159E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/mvfu9s8ci8spy0kmv1a7utr4wooqgcc1.html",
+						"returnTime" : 1.269815069685E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/mvfu9s8ci8spy0kmv1a7utr4wooqgcc1.html\r\n"
+					},
+					{
+						"creationTime" : 1.269815069689E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+						"returnTime" : 1.269815069976E12,
+						"printOutput" : "created HIT: 1K8399CFLLBF50DFY9KVWKGP0SGNYF\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269815070201E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/mvfu9s8ci8spy0kmv1a7utr4wooqgcc1.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269815119E12,
+							"expiration" : 1.270419919E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1ZBWK4PHNO422XCA2H26ZTO60BCNCY",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818758E12,
+									"acceptTime" : 1.269815149E12,
+									"submitTime" : 1.269815158E12,
+									"answer" : {
+										"brackets" : "FAWN-DS uses an in-memory (DRAM) Hash Index to map 160-bit keys to a value stored in the Data Log.  It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key (and the value) from the log and verifies that the key it read was, [[in fact]], the correct key.  This design trades a small and configurable chance of requiring two reads from flash (we set it to roughly 1 in 32,768 accesses) for drastically reduced memory requirements (only six bytes of DRAM per key-value pair)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "19YKWEBQPQZ8QYUGTHFNSVRH8RFI9W",
+									"workerId" : "A1HFR4IA9HGYR",
+									"hitId" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818765E12,
+									"acceptTime" : 1.269815151E12,
+									"submitTime" : 1.269815165E12,
+									"answer" : {
+										"brackets" : "FAWN-DS uses an in-memory (DRAM) Hash Index to map 160-bit keys to a value stored in the Data Log.  It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key (and the value) from the log and verifies that the key it read was, in fact, the correct key.  This design trades a small and configurable chance of requiring two reads from flash (we set it to roughly 1 in 32,768 accesses) for drastically reduced memory requirements [[(only six bytes of DRAM per key-value pair).]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "19EAZRTV6CXHZVWOY881PHO9LNPNER",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818818E12,
+									"acceptTime" : 1.269815201E12,
+									"submitTime" : 1.269815218E12,
+									"answer" : {
+										"brackets" : "FAWN-DS uses an in-memory (DRAM) Hash Index to map 160-bit keys to a value stored in the Data Log.  It stores only a fragment of the actual key in memory to find a location in the log; [[it then reads the full key (and the value) from the log and verifies that the key it read was,]] in fact, the correct key.  This design trades a small and configurable chance of requiring two reads from flash (we set it to roughly 1 in 32,768 accesses) for drastically reduced memory requirements (only six bytes of DRAM per key-value pair)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "15OAVUUAHE1H18G32Q0QM6BKSJSSKR",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818926E12,
+									"acceptTime" : 1.269815312E12,
+									"submitTime" : 1.269815326E12,
+									"answer" : {
+										"brackets" : "FAWN-DS uses an in-memory (DRAM) Hash Index to map 160-bit keys to a value stored in the Data Log.  It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key (and the value) [[from the log and verifies that the key it read was, in fact,]] the correct key.  This design trades a small and configurable chance of requiring two reads from flash (we set it to roughly 1 in 32,768 accesses) for drastically reduced memory requirements (only six bytes of DRAM per key-value pair)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1PD42TDPDWQ269GN3Z7FPHD1D5DQ5G",
+									"workerId" : "A15MN5MDG4D7Q9",
+									"hitId" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269819131E12,
+									"acceptTime" : 1.26981549E12,
+									"submitTime" : 1.269815531E12,
+									"answer" : {
+										"brackets" : "FAWN-DS uses an in-memory (DRAM) Hash Index to map 160-bit keys to a value stored in the Data Log.  It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key (and the value) from the log and [[verifies that the key it read was, in fact, the correct key]].  This design trades a small and configurable chance of requiring two reads from flash (we set it to roughly 1 in 32,768 accesses) for drastically reduced memory requirements (only six bytes of DRAM per key-value pair)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1D15S6IRVSXJ2U7OMSPF6FZS6S0IWM",
+									"workerId" : "AHPILXNALBBB2",
+									"hitId" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269819269E12,
+									"acceptTime" : 1.26981561E12,
+									"submitTime" : 1.269815669E12,
+									"answer" : {
+										"brackets" : "FAWN-DS uses an in-memory (DRAM) Hash Index to map 160-bit keys to a value stored in the Data Log.  It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key (and the value) from the log and verifies that the key it read was, in fact, the correct key. [[ This design trades a small and configurable chance of requiring two reads from flash (we set it to roughly 1 in 32,768 accesses) for drastically reduced memory requirements (only six bytes of DRAM per key-value pair).]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1S9PCQV6STJF23EYKHAPUSI2R5CB5P",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269819532E12,
+									"acceptTime" : 1.269815906E12,
+									"submitTime" : 1.269815932E12,
+									"answer" : {
+										"brackets" : "FAWN-DS uses an in-memory (DRAM) Hash Index to map 160-bit keys to a value stored in the Data Log.  It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key (and the value) from the log and verifies that the key it read was[[, in fact,]] the correct key.  This design trades a small and configurable chance of requiring two reads from flash (we set it to roughly 1 in 32,768 accesses) for drastically reduced memory requirements (only six bytes of DRAM per key-value pair)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1E1F924WWOJSIVWTWM85K8J4VW0VZM",
+									"workerId" : "A7R1L4ZYYPOZM",
+									"hitId" : "1K8399CFLLBF50DFY9KVWKGP0SGNYF",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269819775E12,
+									"acceptTime" : 1.269816116E12,
+									"submitTime" : 1.269816175E12,
+									"answer" : {
+										"brackets" : "FAWN-DS uses an in-memory (DRAM) Hash Index to map 160-bit keys to a value stored in the Data Log.  It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key (and the value) from the log and verifies that the key it read was, in fact, the correct key.  [[This design trades a small and configurable chance of requiring two reads from flash (we set it to roughly 1 in 32,768 accesses) for drastically reduced memory requirements (only six bytes of DRAM per key-value pair).]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269816334071E12,
+						"printOutput" : "creation time: 1269815119000\r\nno longer waiting for hit: 1K8399CFLLBF50DFY9KVWKGP0SGNYF\r\n"
+					},
+					{
+						"creationTime" : 1.269816334351E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269816335069E12,
+						"printOutput" : "disabled HIT: 1K8399CFLLBF50DFY9KVWKGP0SGNYF\r\n"
+					},
+					{
+						"creationTime" : 1.269816335071E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269816335244E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/mvfu9s8ci8spy0kmv1a7utr4wooqgcc1.html\r\n"
+					},
+					{
+						"creationTime" : 1.269816336441E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269816336445E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2ioftxb97tezv5sgphmd5bvbknn1wkpv.html",
+								"returnTime" : 1.269816336564E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2ioftxb97tezv5sgphmd5bvbknn1wkpv.html\r\n"
+							},
+							{
+								"creationTime" : 1.269816336566E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "135CW8N8O6RJRZQY4IAOSST5L5ZPTO",
+								"returnTime" : 1.269816336851E12,
+								"printOutput" : "created HIT: 135CW8N8O6RJRZQY4IAOSST5L5ZPTO\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269816337039E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "135CW8N8O6RJRZQY4IAOSST5L5ZPTO",
+									"hitTypeId" : "1SGFS5SY06L04Z57QXSFX3NYNJ8N9A",
+									"title" : "Shorten Rambling Text",
+									"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+									"keywords" : "undefined",
+									"reward" : 0.05,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2ioftxb97tezv5sgphmd5bvbknn1wkpv.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269816386E12,
+									"expiration" : 1.270421186E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1Z5OBNPTNG1NJ1MEBEDB8Q3967AF47",
+											"workerId" : "A2T5NXTLARB8J5",
+											"hitId" : "135CW8N8O6RJRZQY4IAOSST5L5ZPTO",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820452E12,
+											"acceptTime" : 1.269816793E12,
+											"submitTime" : 1.269816852E12,
+											"answer" : {
+												"newText" : "It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key and value from the log and verifies that the key it read was the correct key.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1NHGFVIZRGEQ8YWEZZFV6S7SUAC7MQ",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "135CW8N8O6RJRZQY4IAOSST5L5ZPTO",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820661E12,
+											"acceptTime" : 1.269816984E12,
+											"submitTime" : 1.269817061E12,
+											"answer" : {
+												"newText" : "It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key and value from the log, verifying that the read key was the correct key.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269817598422E12,
+								"printOutput" : "creation time: 1269816386000\r\nno longer waiting for hit: 135CW8N8O6RJRZQY4IAOSST5L5ZPTO\r\n"
+							},
+							{
+								"creationTime" : 1.26981759864E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817599402E12,
+								"printOutput" : "disabled HIT: 135CW8N8O6RJRZQY4IAOSST5L5ZPTO\r\n"
+							},
+							{
+								"creationTime" : 1.269817599404E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817599618E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2ioftxb97tezv5sgphmd5bvbknn1wkpv.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817599674E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/cyjqjl4ycbmferr87s7tmcce6xuu9ahn.html",
+								"returnTime" : 1.269817599765E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/cyjqjl4ycbmferr87s7tmcce6xuu9ahn.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817599767E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "141KMAHF1ABLG553JAG9WA7S9W6JES",
+								"returnTime" : 1.269817600035E12,
+								"printOutput" : "created HIT: 141KMAHF1ABLG553JAG9WA7S9W6JES\r\n        url: https://www.mturk.com/mturk/preview?groupId=1BGU8VBA6YI74YI9GPA30E7WSSR6MJ\r\n"
+							},
+							{
+								"creationTime" : 1.269817600204E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "141KMAHF1ABLG553JAG9WA7S9W6JES",
+									"hitTypeId" : "1BGU8VBA6YI74YI9GPA30E7WSSR6MJ",
+									"title" : "Did I shorten text correctly?",
+									"description" : "I need to shorten some text -- which version is best?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/cyjqjl4ycbmferr87s7tmcce6xuu9ahn.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.26981765E12,
+									"expiration" : 1.27042245E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1WF9UI1DDUQKV36J69LYNM0J0HFGXM",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "141KMAHF1ABLG553JAG9WA7S9W6JES",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.26982172E12,
+											"acceptTime" : 1.269818108E12,
+											"submitTime" : 1.26981812E12,
+											"answer" : {
+												"grammar" : "It%20stores%20only%20a%20fragment%20of%20the%20actual%20key%20in%20memory%20to%20find%20a%20location%20in%20the%20log%3B%20it%20then%20reads%20the%20full%20key%20and%20value%20from%20the%20log%2C%20verifying%20that%20the%20read%20key%20was%20the%20correct%20key.",
+												"meaning" : "It%20stores%20only%20a%20fragment%20of%20the%20actual%20key%20in%20memory%20to%20find%20a%20location%20in%20the%20log%3B%20it%20then%20reads%20the%20full%20key%20and%20value%20from%20the%20log%20and%20verifies%20that%20the%20key%20it%20read%20was%20the%20correct%20key.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269818853978E12,
+								"printOutput" : "creation time: 1269817650000\r\nno longer waiting for hit: 141KMAHF1ABLG553JAG9WA7S9W6JES\r\n"
+							},
+							{
+								"creationTime" : 1.269818854182E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269818854741E12,
+								"printOutput" : "disabled HIT: 141KMAHF1ABLG553JAG9WA7S9W6JES\r\n"
+							},
+							{
+								"creationTime" : 1.269818854743E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269818854801E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/cyjqjl4ycbmferr87s7tmcce6xuu9ahn.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269816337236E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.26981633724E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/z0loz2vnoie4b08y7sj4y60optfrba9n.html",
+								"returnTime" : 1.269816337378E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/z0loz2vnoie4b08y7sj4y60optfrba9n.html\r\n"
+							},
+							{
+								"creationTime" : 1.26981633738E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "12T3LARFY00FAQNKUVMEARPR6MKNZ6",
+								"returnTime" : 1.26981633757E12,
+								"printOutput" : "created HIT: 12T3LARFY00FAQNKUVMEARPR6MKNZ6\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269816337781E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "12T3LARFY00FAQNKUVMEARPR6MKNZ6",
+									"hitTypeId" : "1SGFS5SY06L04Z57QXSFX3NYNJ8N9A",
+									"title" : "Shorten Rambling Text",
+									"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+									"keywords" : "undefined",
+									"reward" : 0.05,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/z0loz2vnoie4b08y7sj4y60optfrba9n.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269816387E12,
+									"expiration" : 1.270421187E12,
+									"assignments" : [
+										{
+											"assignmentId" : "100H8IYU9X3WNI4DLIIX24AIQM5UBQ",
+											"workerId" : "A2I71A09DUDQR9",
+											"hitId" : "12T3LARFY00FAQNKUVMEARPR6MKNZ6",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820153E12,
+											"acceptTime" : 1.269816532E12,
+											"submitTime" : 1.269816553E12,
+											"answer" : {
+												"newText" : "This design trades a small and configurable chance of requiring two reads from flash [[(we set it to roughly 1 in 32,768 accesses)]] for drastically reduced memory requirements (only six bytes of DRAM per key-value pair).",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1XLL076P675KAQCNPUO5KP7ND9J4QQ",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "12T3LARFY00FAQNKUVMEARPR6MKNZ6",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820692E12,
+											"acceptTime" : 1.269817065E12,
+											"submitTime" : 1.269817092E12,
+											"answer" : {
+												"newText" : "This design trades a small and configurable chance of requiring two reads from flash for drastically reduced memory requirements.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269817600795E12,
+								"printOutput" : "creation time: 1269816387000\r\nno longer waiting for hit: 12T3LARFY00FAQNKUVMEARPR6MKNZ6\r\n"
+							},
+							{
+								"creationTime" : 1.269817600995E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817601441E12,
+								"printOutput" : "disabled HIT: 12T3LARFY00FAQNKUVMEARPR6MKNZ6\r\n"
+							},
+							{
+								"creationTime" : 1.269817601443E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.2698176015E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/z0loz2vnoie4b08y7sj4y60optfrba9n.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817601524E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hi19zp7uu0zg3rcvrnoi7vbdfn3qet9t.html",
+								"returnTime" : 1.269817601645E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hi19zp7uu0zg3rcvrnoi7vbdfn3qet9t.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817601648E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1YG5P0VUOF7CK4L8X3IXL8KCSZ5Y0F",
+								"returnTime" : 1.269817602057E12,
+								"printOutput" : "created HIT: 1YG5P0VUOF7CK4L8X3IXL8KCSZ5Y0F\r\n        url: https://www.mturk.com/mturk/preview?groupId=1BGU8VBA6YI74YI9GPA30E7WSSR6MJ\r\n"
+							},
+							{
+								"creationTime" : 1.269817602216E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1YG5P0VUOF7CK4L8X3IXL8KCSZ5Y0F",
+									"hitTypeId" : "1BGU8VBA6YI74YI9GPA30E7WSSR6MJ",
+									"title" : "Did I shorten text correctly?",
+									"description" : "I need to shorten some text -- which version is best?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hi19zp7uu0zg3rcvrnoi7vbdfn3qet9t.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269817651E12,
+									"expiration" : 1.270422451E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1U91QG4Z5ZZZ7TZV92WOGVCI8ZX4N6",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "1YG5P0VUOF7CK4L8X3IXL8KCSZ5Y0F",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269822728E12,
+											"acceptTime" : 1.269819115E12,
+											"submitTime" : 1.269819128E12,
+											"answer" : {
+												"meaning" : "This%20design%20trades%20a%20small%20and%20configurable%20chance%20of%20requiring%20two%20reads%20from%20flash%20for%20drastically%20reduced%20memory%20requirements.",
+												"randomOrder" : "temp",
+												"grammar" : "This%20design%20trades%20a%20small%20and%20configurable%20chance%20of%20requiring%20two%20reads%20from%20flash%20for%20drastically%20reduced%20memory%20requirements."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.26981916192E12,
+								"printOutput" : "creation time: 1269817651000\r\nno longer waiting for hit: 1YG5P0VUOF7CK4L8X3IXL8KCSZ5Y0F\r\n"
+							},
+							{
+								"creationTime" : 1.269819162097E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819162663E12,
+								"printOutput" : "disabled HIT: 1YG5P0VUOF7CK4L8X3IXL8KCSZ5Y0F\r\n"
+							},
+							{
+								"creationTime" : 1.269819162667E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.26981916277E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hi19zp7uu0zg3rcvrnoi7vbdfn3qet9t.html\r\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269815070489E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269815070493E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/n6me6apy1zeon9ppkzf37be2c8ai7qdw.html",
+						"returnTime" : 1.26981507062E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/n6me6apy1zeon9ppkzf37be2c8ai7qdw.html\r\n"
+					},
+					{
+						"creationTime" : 1.269815070623E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1C18ELPTV63XUJYX2QINIWIOZ1CH2J",
+						"returnTime" : 1.269815070808E12,
+						"printOutput" : "created HIT: 1C18ELPTV63XUJYX2QINIWIOZ1CH2J\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269815071039E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1C18ELPTV63XUJYX2QINIWIOZ1CH2J",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/n6me6apy1zeon9ppkzf37be2c8ai7qdw.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.26981512E12,
+							"expiration" : 1.27041992E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1LW9FJ4W78FS0QXOVAWHAF8JBVMUY4",
+									"workerId" : "A1HFR4IA9HGYR",
+									"hitId" : "1C18ELPTV63XUJYX2QINIWIOZ1CH2J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818751E12,
+									"acceptTime" : 1.269815136E12,
+									"submitTime" : 1.269815151E12,
+									"answer" : {
+										"brackets" : "Figure 3 shows the pseudocode that implements this design for Lookup.  FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key [[(the index bits)]] and the next 15 low order bits (the key fragment).  FAWN-DS uses the index bits to select a bucket from the Hash Index, which contains 2i hash buckets.  Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location in the Data Log where the full entry is stored."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1QO40210G95DGN7R70UNFB6BMTD2FX",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "1C18ELPTV63XUJYX2QINIWIOZ1CH2J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818771E12,
+									"acceptTime" : 1.269815159E12,
+									"submitTime" : 1.269815171E12,
+									"answer" : {
+										"brackets" : "Figure 3 shows the pseudocode that implements this design for Lookup.  FAWN-DS extracts two fields from the 160-bit key: [[the i low order bits of the key]] (the index bits) and the next 15 low order bits (the key fragment).  FAWN-DS uses the index bits to select a bucket from the Hash Index, which contains 2i hash buckets.  Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location in the Data Log where the full entry is stored."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1418JR4X02LCZMKKCZFBOEJRL2BSGO",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "1C18ELPTV63XUJYX2QINIWIOZ1CH2J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818849E12,
+									"acceptTime" : 1.269815237E12,
+									"submitTime" : 1.269815249E12,
+									"answer" : {
+										"brackets" : "Figure 3 shows the pseudocode that implements this design for Lookup.  FAWN-DS extracts two fields from the 160-bit key: [[the i low order bits of the key]] (the index bits) and the next 15 low order bits (the key fragment).  FAWN-DS uses the index bits to select a bucket from the Hash Index, which contains 2i hash buckets.  Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location in the Data Log where the full entry is stored."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "13YS827BB723B2UM6T138MHAWX2Q0V",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "1C18ELPTV63XUJYX2QINIWIOZ1CH2J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818939E12,
+									"acceptTime" : 1.269815326E12,
+									"submitTime" : 1.269815339E12,
+									"answer" : {
+										"brackets" : "Figure 3 shows the pseudocode that implements this design for Lookup.  FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key (the index bits)[[ and the next 15 low order bits (the key fragment)]].  FAWN-DS uses the index bits to select a bucket from the Hash Index, which contains 2i hash buckets.  Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location in the Data Log where the full entry is stored."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1N0XMLFUI0HRAD3URNK4JVST2YIITW",
+									"workerId" : "A15MN5MDG4D7Q9",
+									"hitId" : "1C18ELPTV63XUJYX2QINIWIOZ1CH2J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269819089E12,
+									"acceptTime" : 1.269815448E12,
+									"submitTime" : 1.269815489E12,
+									"answer" : {
+										"brackets" : "Figure 3 shows the pseudocode that implements this design for Lookup.  FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key (the index bits) and the next 15 low order bits (the key fragment).  FAWN-DS uses the index bits to select a bucket from the Hash Index, which contains 2i hash buckets.  Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location [[in the Data Log]] where the full entry is stored."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1Z7E4OSHW44T4SHJC4QWBHEZDVCLBN",
+									"workerId" : "AHPILXNALBBB2",
+									"hitId" : "1C18ELPTV63XUJYX2QINIWIOZ1CH2J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269819141E12,
+									"acceptTime" : 1.269815457E12,
+									"submitTime" : 1.269815541E12,
+									"answer" : {
+										"brackets" : "Figure 3 shows the pseudocode that implements this design for Lookup.  FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key (the index bits) [[and the next 15 low order bits (the key fragment).]]  FAWN-DS uses the index bits to select a bucket from the Hash Index, which contains 2i hash buckets. [[ Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location in the Data Log where the full entry is stored.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.26981633848E12,
+						"printOutput" : "creation time: 1269815120000\r\nno longer waiting for hit: 1C18ELPTV63XUJYX2QINIWIOZ1CH2J\r\n"
+					},
+					{
+						"creationTime" : 1.269816338814E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.26981633924E12,
+						"printOutput" : "disabled HIT: 1C18ELPTV63XUJYX2QINIWIOZ1CH2J\r\n"
+					},
+					{
+						"creationTime" : 1.269816339242E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269816339283E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/n6me6apy1zeon9ppkzf37be2c8ai7qdw.html\r\n"
+					},
+					{
+						"creationTime" : 1.269816340402E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269816340405E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/udah757bgotnza1soor7v8x3j4mg0c9h.html",
+								"returnTime" : 1.269816340479E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/udah757bgotnza1soor7v8x3j4mg0c9h.html\r\n"
+							},
+							{
+								"creationTime" : 1.269816340481E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "18P0GF3DN4QA22N8Z9JTSYCG7MWDTY",
+								"returnTime" : 1.26981634082E12,
+								"printOutput" : "created HIT: 18P0GF3DN4QA22N8Z9JTSYCG7MWDTY\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269816341034E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "18P0GF3DN4QA22N8Z9JTSYCG7MWDTY",
+									"hitTypeId" : "1SGFS5SY06L04Z57QXSFX3NYNJ8N9A",
+									"title" : "Shorten Rambling Text",
+									"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+									"keywords" : "undefined",
+									"reward" : 0.05,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/udah757bgotnza1soor7v8x3j4mg0c9h.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.26981639E12,
+									"expiration" : 1.27042119E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1THPSSEOD57CRWG6N2D61J3OHOOMSR",
+											"workerId" : "A2I71A09DUDQR9",
+											"hitId" : "18P0GF3DN4QA22N8Z9JTSYCG7MWDTY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820165E12,
+											"acceptTime" : 1.269816554E12,
+											"submitTime" : 1.269816565E12,
+											"answer" : {
+												"newText" : "FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key (the index bits) and the next 15 low order bits (the key fragment).",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1FMUK002VE0N0U19RXR157SVNHPZH0",
+											"workerId" : "A2T5NXTLARB8J5",
+											"hitId" : "18P0GF3DN4QA22N8Z9JTSYCG7MWDTY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820269E12,
+											"acceptTime" : 1.269816618E12,
+											"submitTime" : 1.269816669E12,
+											"answer" : {
+												"newText" : "FAWN-DS extracts two fields from the 160-bit key: the i low order key bits (the index bits) and the next 15 low order bits (the key fragment).",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1CYDGGJHGOLMZMT1F5B2OE1MEWJAHB",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "18P0GF3DN4QA22N8Z9JTSYCG7MWDTY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820721E12,
+											"acceptTime" : 1.269817103E12,
+											"submitTime" : 1.269817121E12,
+											"answer" : {
+												"cuttable" : "Yes",
+												"newText" : "FAWN-DS extracts two fields from the 160-bit key: the index bits and the next 15 low order bits (the key fragment)."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1P0064RF26AMF1UG6QWS16NG8MR3H8",
+											"workerId" : "A2HM35CWB7IIFM",
+											"hitId" : "18P0GF3DN4QA22N8Z9JTSYCG7MWDTY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269821169E12,
+											"acceptTime" : 1.269817481E12,
+											"submitTime" : 1.269817569E12,
+											"answer" : {
+												"newText" : "FAWN-DS extracts two fields from the 160-bit key: the i low order [[bits of the key (the]] index bits[[]]) and the next 15 low order bits (the key fragment).",
+												"cuttable" : "Yes"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1SPKOCXDH8W3VHFY6FFCHF0CWCJGFV",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "18P0GF3DN4QA22N8Z9JTSYCG7MWDTY",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.26982124E12,
+											"acceptTime" : 1.269817632E12,
+											"submitTime" : 1.26981764E12,
+											"answer" : {
+												"newText" : "FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key (the index bits) and the next 15 low order bits (the key fragment).",
+												"cuttable" : "Yes"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269817604541E12,
+								"printOutput" : "creation time: 1269816390000\r\nno longer waiting for hit: 18P0GF3DN4QA22N8Z9JTSYCG7MWDTY\r\n"
+							},
+							{
+								"creationTime" : 1.269817604548E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817604692E12,
+								"printOutput" : "rejected assignment 1THPSSEOD57CRWG6N2D61J3OHOOMSR\r\n"
+							},
+							{
+								"creationTime" : 1.269817604695E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817604827E12,
+								"printOutput" : "rejected assignment 1SPKOCXDH8W3VHFY6FFCHF0CWCJGFV\r\n"
+							},
+							{
+								"creationTime" : 1.269817605006E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817605457E12,
+								"printOutput" : "disabled HIT: 18P0GF3DN4QA22N8Z9JTSYCG7MWDTY\r\n"
+							},
+							{
+								"creationTime" : 1.269817605459E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817605533E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/udah757bgotnza1soor7v8x3j4mg0c9h.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817605565E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjmxt7pffz5x3166hx8py8wvxcz9gii5.html",
+								"returnTime" : 1.269817605691E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjmxt7pffz5x3166hx8py8wvxcz9gii5.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817605694E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1NF3YYOGURUG4R6QWZEINXYG8P6ST7",
+								"returnTime" : 1.269817605953E12,
+								"printOutput" : "created HIT: 1NF3YYOGURUG4R6QWZEINXYG8P6ST7\r\n        url: https://www.mturk.com/mturk/preview?groupId=1BGU8VBA6YI74YI9GPA30E7WSSR6MJ\r\n"
+							},
+							{
+								"creationTime" : 1.269817606128E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1NF3YYOGURUG4R6QWZEINXYG8P6ST7",
+									"hitTypeId" : "1BGU8VBA6YI74YI9GPA30E7WSSR6MJ",
+									"title" : "Did I shorten text correctly?",
+									"description" : "I need to shorten some text -- which version is best?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjmxt7pffz5x3166hx8py8wvxcz9gii5.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269817655E12,
+									"expiration" : 1.270422455E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1XLL076P675KAQCNPUO5KP7NDAK4QT",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "1NF3YYOGURUG4R6QWZEINXYG8P6ST7",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269822872E12,
+											"acceptTime" : 1.269819229E12,
+											"submitTime" : 1.269819272E12,
+											"answer" : {
+												"grammar" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20%5B%5Bbits%20of%20the%20key%20%28the%5D%5D%20index%20bits%5B%5B%5D%5D%29%20and%20the%20next%2015%20low%20order%20bits%20%28the%20key%20fragment%29.",
+												"meaning" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20%5B%5Bbits%20of%20the%20key%20%28the%5D%5D%20index%20bits%5B%5B%5D%5D%29%20and%20the%20next%2015%20low%20order%20bits%20%28the%20key%20fragment%29.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269819252381E12,
+								"printOutput" : "creation time: 1269817655000\r\nno longer waiting for hit: 1NF3YYOGURUG4R6QWZEINXYG8P6ST7\r\n"
+							},
+							{
+								"creationTime" : 1.269819252613E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819253226E12,
+								"printOutput" : "disabled HIT: 1NF3YYOGURUG4R6QWZEINXYG8P6ST7\r\n"
+							},
+							{
+								"creationTime" : 1.269819253229E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819253322E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjmxt7pffz5x3166hx8py8wvxcz9gii5.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269816341285E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269816341288E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5wwojsdlhfdh394hnpq0wadb1w7bykst.html",
+								"returnTime" : 1.269816341364E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5wwojsdlhfdh394hnpq0wadb1w7bykst.html\r\n"
+							},
+							{
+								"creationTime" : 1.269816341366E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1YGW2Q5TOISYRC5N4N0YXOF74J6PUF",
+								"returnTime" : 1.269816341615E12,
+								"printOutput" : "created HIT: 1YGW2Q5TOISYRC5N4N0YXOF74J6PUF\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269816341856E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1YGW2Q5TOISYRC5N4N0YXOF74J6PUF",
+									"hitTypeId" : "1SGFS5SY06L04Z57QXSFX3NYNJ8N9A",
+									"title" : "Shorten Rambling Text",
+									"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+									"keywords" : "undefined",
+									"reward" : 0.05,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5wwojsdlhfdh394hnpq0wadb1w7bykst.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269816391E12,
+									"expiration" : 1.270421191E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1LFFS5SY06L04Z57QXSFX3NYUQA9N4",
+											"workerId" : "A2I71A09DUDQR9",
+											"hitId" : "1YGW2Q5TOISYRC5N4N0YXOF74J6PUF",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820185E12,
+											"acceptTime" : 1.269816565E12,
+											"submitTime" : 1.269816585E12,
+											"answer" : {
+												"newText" : "FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key (the index bits) and the next 15 low order bits [[(the key fragment)]].",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "16UGTZLVPYAWVTA7CFJOK70JTOJRWZ",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "1YGW2Q5TOISYRC5N4N0YXOF74J6PUF",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.26982058E12,
+											"acceptTime" : 1.269816911E12,
+											"submitTime" : 1.26981698E12,
+											"answer" : {
+												"newText" : "FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key (the index bits) and 15 low order bits (key fragment).",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269817606701E12,
+								"printOutput" : "creation time: 1269816391000\r\nno longer waiting for hit: 1YGW2Q5TOISYRC5N4N0YXOF74J6PUF\r\n"
+							},
+							{
+								"creationTime" : 1.26981760693E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817607169E12,
+								"printOutput" : "disabled HIT: 1YGW2Q5TOISYRC5N4N0YXOF74J6PUF\r\n"
+							},
+							{
+								"creationTime" : 1.26981760717E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817607238E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5wwojsdlhfdh394hnpq0wadb1w7bykst.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817607258E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qhf185o5rj5btd4sfgtzqeaj0zepvjeq.html",
+								"returnTime" : 1.269817607373E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qhf185o5rj5btd4sfgtzqeaj0zepvjeq.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817607374E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "14BBJDYQSON6OEW7518BEMDXSIIDZE",
+								"returnTime" : 1.269817607595E12,
+								"printOutput" : "created HIT: 14BBJDYQSON6OEW7518BEMDXSIIDZE\r\n        url: https://www.mturk.com/mturk/preview?groupId=1BGU8VBA6YI74YI9GPA30E7WSSR6MJ\r\n"
+							},
+							{
+								"creationTime" : 1.269817607773E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "14BBJDYQSON6OEW7518BEMDXSIIDZE",
+									"hitTypeId" : "1BGU8VBA6YI74YI9GPA30E7WSSR6MJ",
+									"title" : "Did I shorten text correctly?",
+									"description" : "I need to shorten some text -- which version is best?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qhf185o5rj5btd4sfgtzqeaj0zepvjeq.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269817657E12,
+									"expiration" : 1.270422457E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1Y1Z6U88EDSQGO0SOWH0TNNVYP17GL",
+											"workerId" : "A39PN4D2JWMEN6",
+											"hitId" : "14BBJDYQSON6OEW7518BEMDXSIIDZE",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269822938E12,
+											"acceptTime" : 1.269819315E12,
+											"submitTime" : 1.269819338E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"grammar" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20bits%20of%20the%20key%20%28the%20index%20bits%29%20and%2015%20low%20order%20bits%20%28key%20fragment%29.",
+												"meaning" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20bits%20of%20the%20key%20%28the%20index%20bits%29%20and%2015%20low%20order%20bits%20%28key%20fragment%29."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "126IU464FF8BJHDJL9ZS7U26F7DUU8",
+											"workerId" : "A2HM35CWB7IIFM",
+											"hitId" : "14BBJDYQSON6OEW7518BEMDXSIIDZE",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269822945E12,
+											"acceptTime" : 1.269819306E12,
+											"submitTime" : 1.269819345E12,
+											"answer" : {
+												"meaning" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20bits%20of%20the%20key%20%28the%20index%20bits%29%20and%2015%20low%20order%20bits%20%28key%20fragment%29.",
+												"randomOrder" : "temp",
+												"grammar" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20bits%20of%20the%20key%20%28the%20index%20bits%29%20and%2015%20low%20order%20bits%20%28key%20fragment%29."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1BIP6K6GHXV75EM20KM0KK0CVS2A37",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "14BBJDYQSON6OEW7518BEMDXSIIDZE",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269822951E12,
+											"acceptTime" : 1.269819328E12,
+											"submitTime" : 1.269819351E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"grammar" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20bits%20of%20the%20key%20%28the%20index%20bits%29%20and%20the%20next%2015%20low%20order%20bits%20%5B%5B%28the%20key%20fragment%29%5D%5D.",
+												"meaning" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20bits%20of%20the%20key%20%28the%20index%20bits%29%20and%2015%20low%20order%20bits%20%28key%20fragment%29."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1XDVWTHS42IPUN8913NBCEP91B14WX",
+											"workerId" : "AHP9GFQCJM2QV",
+											"hitId" : "14BBJDYQSON6OEW7518BEMDXSIIDZE",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269822973E12,
+											"acceptTime" : 1.269819354E12,
+											"submitTime" : 1.269819373E12,
+											"answer" : {
+												"grammar" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20bits%20of%20the%20key%20%28the%20index%20bits%29%20and%2015%20low%20order%20bits%20%28key%20fragment%29.",
+												"meaning" : "FAWN-DS%20extracts%20two%20fields%20from%20the%20160-bit%20key%3A%20the%20i%20low%20order%20bits%20of%20the%20key%20%28the%20index%20bits%29%20and%2015%20low%20order%20bits%20%28key%20fragment%29.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269819345768E12,
+								"printOutput" : "creation time: 1269817657000\r\nno longer waiting for hit: 14BBJDYQSON6OEW7518BEMDXSIIDZE\r\n"
+							},
+							{
+								"creationTime" : 1.269819346033E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819347095E12,
+								"printOutput" : "disabled HIT: 14BBJDYQSON6OEW7518BEMDXSIIDZE\r\n"
+							},
+							{
+								"creationTime" : 1.269819347098E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819347184E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qhf185o5rj5btd4sfgtzqeaj0zepvjeq.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269816342037E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.26981634204E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/99wop980xezi8n8dkab6qgl0ma3vugpx.html",
+								"returnTime" : 1.269816342112E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/99wop980xezi8n8dkab6qgl0ma3vugpx.html\r\n"
+							},
+							{
+								"creationTime" : 1.269816342114E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1WQ064RF26AMF1UG6QWS16NG5FCH3U",
+								"returnTime" : 1.269816342254E12,
+								"printOutput" : "created HIT: 1WQ064RF26AMF1UG6QWS16NG5FCH3U\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269816342466E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1WQ064RF26AMF1UG6QWS16NG5FCH3U",
+									"hitTypeId" : "1SGFS5SY06L04Z57QXSFX3NYNJ8N9A",
+									"title" : "Shorten Rambling Text",
+									"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+									"keywords" : "undefined",
+									"reward" : 0.05,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/99wop980xezi8n8dkab6qgl0ma3vugpx.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269816392E12,
+									"expiration" : 1.270421192E12,
+									"assignments" : [
+										{
+											"assignmentId" : "15SFKAOSZT150TGQN10LWW6O6HARK3",
+											"workerId" : "A2I71A09DUDQR9",
+											"hitId" : "1WQ064RF26AMF1UG6QWS16NG5FCH3U",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820131E12,
+											"acceptTime" : 1.269816479E12,
+											"submitTime" : 1.269816531E12,
+											"answer" : {
+												"newText" : "Each bucket is [[only]] six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location in the Data Log where the full entry is stored.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1NRXRCGW15HQ1TRLP40UDP9YAFSI1O",
+											"workerId" : "A2T5NXTLARB8J5",
+											"hitId" : "1WQ064RF26AMF1UG6QWS16NG5FCH3U",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820516E12,
+											"acceptTime" : 1.269816852E12,
+											"submitTime" : 1.269816916E12,
+											"answer" : {
+												"cuttable" : "No",
+												"newText" : "Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the Data Log location where the full entry is stored."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1VSXUV3K2KTA2TVE0M6PCN62RO9S6N",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "1WQ064RF26AMF1UG6QWS16NG5FCH3U",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820757E12,
+											"acceptTime" : 1.269817124E12,
+											"submitTime" : 1.269817157E12,
+											"answer" : {
+												"newText" : "Each bucket is only six bytes.",
+												"cuttable" : "Yes"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1JXSWGZKG6AUM5WKEF61KZSZS9VXJ6",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "1WQ064RF26AMF1UG6QWS16NG5FCH3U",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269821191E12,
+											"acceptTime" : 1.269817581E12,
+											"submitTime" : 1.269817591E12,
+											"answer" : {
+												"newText" : "Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location in the Data Log where the full entry is stored.",
+												"cuttable" : "Yes"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1LFFS5SY06L04Z57QXSFX3NYUQAN9I",
+											"workerId" : "A31J3DB7WF55NF",
+											"hitId" : "1WQ064RF26AMF1UG6QWS16NG5FCH3U",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269821239E12,
+											"acceptTime" : 1.26981757E12,
+											"submitTime" : 1.269817639E12,
+											"answer" : {
+												"newText" : "Each bucket is six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the place in the Data Log where the full entry is stored.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269817608444E12,
+								"printOutput" : "creation time: 1269816392000\r\nno longer waiting for hit: 1WQ064RF26AMF1UG6QWS16NG5FCH3U\r\n"
+							},
+							{
+								"creationTime" : 1.269817608448E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817608578E12,
+								"printOutput" : "rejected assignment 1JXSWGZKG6AUM5WKEF61KZSZS9VXJ6\r\n"
+							},
+							{
+								"creationTime" : 1.269817608865E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817609434E12,
+								"printOutput" : "disabled HIT: 1WQ064RF26AMF1UG6QWS16NG5FCH3U\r\n"
+							},
+							{
+								"creationTime" : 1.269817609436E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817609696E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/99wop980xezi8n8dkab6qgl0ma3vugpx.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817609737E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/be5ihrgomre0epnrmj2dqqusqol8vin5.html",
+								"returnTime" : 1.269817609812E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/be5ihrgomre0epnrmj2dqqusqol8vin5.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817609815E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1C4ECB1GLJ20QQH6RG9ZJHMAEP70O7",
+								"returnTime" : 1.269817610004E12,
+								"printOutput" : "created HIT: 1C4ECB1GLJ20QQH6RG9ZJHMAEP70O7\r\n        url: https://www.mturk.com/mturk/preview?groupId=1BGU8VBA6YI74YI9GPA30E7WSSR6MJ\r\n"
+							},
+							{
+								"creationTime" : 1.269817610232E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1C4ECB1GLJ20QQH6RG9ZJHMAEP70O7",
+									"hitTypeId" : "1BGU8VBA6YI74YI9GPA30E7WSSR6MJ",
+									"title" : "Did I shorten text correctly?",
+									"description" : "I need to shorten some text -- which version is best?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/be5ihrgomre0epnrmj2dqqusqol8vin5.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.26981766E12,
+									"expiration" : 1.27042246E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1Y3DDZKTYN2LCKHYPSUQ89Z0IDT6HH",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "1C4ECB1GLJ20QQH6RG9ZJHMAEP70O7",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269822771E12,
+											"acceptTime" : 1.269819149E12,
+											"submitTime" : 1.269819171E12,
+											"answer" : {
+												"grammar" : "Each%20bucket%20is%20only%20six%20bytes.",
+												"meaning" : "Each%20bucket%20is%20only%20six%20bytes%3A%20a%2015-bit%20key%20fragment%2C%20a%20valid%20bit%2C%20and%20a%204-byte%20pointer%20to%20the%20Data%20Log%20location%20where%20the%20full%20entry%20is%20stored.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269819169883E12,
+								"printOutput" : "creation time: 1269817660000\r\nno longer waiting for hit: 1C4ECB1GLJ20QQH6RG9ZJHMAEP70O7\r\n"
+							},
+							{
+								"creationTime" : 1.269819170092E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819170352E12,
+								"printOutput" : "disabled HIT: 1C4ECB1GLJ20QQH6RG9ZJHMAEP70O7\r\n"
+							},
+							{
+								"creationTime" : 1.269819170355E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819170432E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/be5ihrgomre0epnrmj2dqqusqol8vin5.html\r\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269815071233E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269815071237E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ynnbdeid2o4j07r9lpl5mg6cek7dnkh8.html",
+						"returnTime" : 1.269815071319E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ynnbdeid2o4j07r9lpl5mg6cek7dnkh8.html\r\n"
+					},
+					{
+						"creationTime" : 1.269815071321E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1HOUFLZJ7MYLKMCA89N6SG1FW37J5R",
+						"returnTime" : 1.269815071557E12,
+						"printOutput" : "created HIT: 1HOUFLZJ7MYLKMCA89N6SG1FW37J5R\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269815071773E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1HOUFLZJ7MYLKMCA89N6SG1FW37J5R",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ynnbdeid2o4j07r9lpl5mg6cek7dnkh8.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269815121E12,
+							"expiration" : 1.270419921E12,
+							"assignments" : [
+								{
+									"assignmentId" : "168KCM7P0UU12AVID6H4H9NQ1EV7X9",
+									"workerId" : "A1AHQ02OWHB4XU",
+									"hitId" : "1HOUFLZJ7MYLKMCA89N6SG1FW37J5R",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818748E12,
+									"acceptTime" : 1.269815132E12,
+									"submitTime" : 1.269815148E12,
+									"answer" : {
+										"brackets" : "Lookup proceeds, then, by locating a bucket using the index bitsand comparing the key against the key fragment.  If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. Once it finds a matching key fragment, FAWN-DS reads the record off of the flash.  If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  Otherwise, FAWN-DS resumes its hash chaining search of the inmemory hash table and searches additional records.  [[With the 15-bit key fragment]], only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1LEJT4T2BTYKOG0BA9WWR1695ZMKP4",
+									"workerId" : "A2C0DRQ4KPEPIN",
+									"hitId" : "1HOUFLZJ7MYLKMCA89N6SG1FW37J5R",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818836E12,
+									"acceptTime" : 1.269815222E12,
+									"submitTime" : 1.269815236E12,
+									"answer" : {
+										"brackets" : "Lookup proceeds, then, by locating a bucket using the index bitsand comparing the key against the key fragment.  If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. [[Once it finds a matching key fragment]], FAWN-DS reads the record off of the flash.  If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  Otherwise, FAWN-DS resumes its hash chaining search of the inmemory hash table and searches additional records.  With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1X2B6LRQU66PXP22W06DLESC7YUXK4",
+									"workerId" : "AF3AWEFL5FR4M",
+									"hitId" : "1HOUFLZJ7MYLKMCA89N6SG1FW37J5R",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269818964E12,
+									"acceptTime" : 1.26981534E12,
+									"submitTime" : 1.269815364E12,
+									"answer" : {
+										"brackets" : "Lookup proceeds, then, by locating a bucket using the index bitsand comparing the key against the key fragment.  If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. [[Once it finds a matching key fragment]], FAWN-DS reads the record off of the flash.  If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  Otherwise, FAWN-DS resumes its hash chaining search of the inmemory hash table and searches additional records.  With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1REVH5WGYRJSJ9G5MO0KVW61FU2863",
+									"workerId" : "A15MN5MDG4D7Q9",
+									"hitId" : "1HOUFLZJ7MYLKMCA89N6SG1FW37J5R",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269819048E12,
+									"acceptTime" : 1.269815303E12,
+									"submitTime" : 1.269815448E12,
+									"answer" : {
+										"brackets" : "Lookup proceeds, then, by locating a bucket using the index bitsand comparing the key against the key fragment.  If the fragments do not match, [[FAWN-DS uses hash chaining to continue searching the hash table]]. Once it finds a matching key fragment, FAWN-DS reads the record off of the flash.  If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  Otherwise, FAWN-DS resumes its hash chaining search of the inmemory hash table and searches additional records.  With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "15B8ELPTV63XUJYX2QINIWIO28Q2HV",
+									"workerId" : "AHPILXNALBBB2",
+									"hitId" : "1HOUFLZJ7MYLKMCA89N6SG1FW37J5R",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269819206E12,
+									"acceptTime" : 1.269815558E12,
+									"submitTime" : 1.269815606E12,
+									"answer" : {
+										"brackets" : "Lookup proceeds, then, by locating a bucket using the index bitsand comparing the key against the key fragment.  If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. Once it finds a matching key fragment, FAWN-DS reads the record off of the flash.  If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.[[  Otherwise, FAWN-DS resumes its hash chaining search of the inmemory hash table and searches additional records.  With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "15CI6CZN5TJY16IATYXBPLCVLISVN5",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "1HOUFLZJ7MYLKMCA89N6SG1FW37J5R",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269819503E12,
+									"acceptTime" : 1.269815853E12,
+									"submitTime" : 1.269815903E12,
+									"answer" : {
+										"brackets" : "[[Lookup proceeds, then,]] by locating a bucket using the index bitsand comparing the key against the key fragment.  If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. Once it finds a matching key fragment, FAWN-DS reads the record off of the flash.  If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  Otherwise, FAWN-DS resumes its hash chaining search of the inmemory hash table and searches additional records.  With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269816343254E12,
+						"printOutput" : "creation time: 1269815121000\r\nno longer waiting for hit: 1HOUFLZJ7MYLKMCA89N6SG1FW37J5R\r\n"
+					},
+					{
+						"creationTime" : 1.269816343714E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269816345032E12,
+						"printOutput" : "disabled HIT: 1HOUFLZJ7MYLKMCA89N6SG1FW37J5R\r\n"
+					},
+					{
+						"creationTime" : 1.269816345034E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269816345078E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ynnbdeid2o4j07r9lpl5mg6cek7dnkh8.html\r\n"
+					},
+					{
+						"creationTime" : 1.269816346217E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.26981634622E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/4v7gtrr72d1hyufp6eos77p6sp7xs10d.html",
+								"returnTime" : 1.269816346314E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/4v7gtrr72d1hyufp6eos77p6sp7xs10d.html\r\n"
+							},
+							{
+								"creationTime" : 1.269816346316E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "14ZMVR7ORAIS0RB870Y9PQW6587576",
+								"returnTime" : 1.269816346765E12,
+								"printOutput" : "created HIT: 14ZMVR7ORAIS0RB870Y9PQW6587576\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269816347021E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6587576",
+									"hitTypeId" : "1SGFS5SY06L04Z57QXSFX3NYNJ8N9A",
+									"title" : "Shorten Rambling Text",
+									"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+									"keywords" : "undefined",
+									"reward" : 0.05,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/4v7gtrr72d1hyufp6eos77p6sp7xs10d.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269816396E12,
+									"expiration" : 1.270421196E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1FD8IJZ3BXZ5YDXF77N7Y869N1KWMG",
+											"workerId" : "A2T5NXTLARB8J5",
+											"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6587576",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820217E12,
+											"acceptTime" : 1.269816585E12,
+											"submitTime" : 1.269816617E12,
+											"answer" : {
+												"newText" : "If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. Once a match is found, FAWN-DS reads the record off of the flash.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1QB2DCDSINNOG7SQS992PYEPSZOF93",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6587576",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820507E12,
+											"acceptTime" : 1.269816836E12,
+											"submitTime" : 1.269816907E12,
+											"answer" : {
+												"newText" : "If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. It finds a matching key fragment and reads the record off of the flash.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1UXUFTH5DY85N6OZT9SCXTMOM4QDA5",
+											"workerId" : "A2I71A09DUDQR9",
+											"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6587576",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820949E12,
+											"acceptTime" : 1.269817335E12,
+											"submitTime" : 1.269817349E12,
+											"answer" : {
+												"newText" : "If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. Once it finds a matching key fragment, FAWN-DS reads the record off of the flash.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1A9FLEENGCGW7IG3A3RILFKHK853OW",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6587576",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269821199E12,
+											"acceptTime" : 1.269817591E12,
+											"submitTime" : 1.269817599E12,
+											"answer" : {
+												"newText" : "If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. Once it finds a matching key fragment, FAWN-DS reads the record off of the flash.",
+												"cuttable" : "Yes"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.26981761256E12,
+								"printOutput" : "creation time: 1269816396000\r\nno longer waiting for hit: 14ZMVR7ORAIS0RB870Y9PQW6587576\r\n"
+							},
+							{
+								"creationTime" : 1.269817612565E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.26981761267E12,
+								"printOutput" : "rejected assignment 1UXUFTH5DY85N6OZT9SCXTMOM4QDA5\r\n"
+							},
+							{
+								"creationTime" : 1.269817612673E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817612784E12,
+								"printOutput" : "rejected assignment 1A9FLEENGCGW7IG3A3RILFKHK853OW\r\n"
+							},
+							{
+								"creationTime" : 1.269817613048E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817613469E12,
+								"printOutput" : "disabled HIT: 14ZMVR7ORAIS0RB870Y9PQW6587576\r\n"
+							},
+							{
+								"creationTime" : 1.269817613471E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817613514E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/4v7gtrr72d1hyufp6eos77p6sp7xs10d.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817613544E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hfs6pdjmsnlo2zmlj4no32ju0qhkhoec.html",
+								"returnTime" : 1.269817613603E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hfs6pdjmsnlo2zmlj4no32ju0qhkhoec.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817613605E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "18UJKGF3A5L8Q7TVLRH9OL5R7FLAZ9",
+								"returnTime" : 1.269817613984E12,
+								"printOutput" : "created HIT: 18UJKGF3A5L8Q7TVLRH9OL5R7FLAZ9\r\n        url: https://www.mturk.com/mturk/preview?groupId=1BGU8VBA6YI74YI9GPA30E7WSSR6MJ\r\n"
+							},
+							{
+								"creationTime" : 1.269817614168E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "18UJKGF3A5L8Q7TVLRH9OL5R7FLAZ9",
+									"hitTypeId" : "1BGU8VBA6YI74YI9GPA30E7WSSR6MJ",
+									"title" : "Did I shorten text correctly?",
+									"description" : "I need to shorten some text -- which version is best?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hfs6pdjmsnlo2zmlj4no32ju0qhkhoec.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269817663E12,
+									"expiration" : 1.270422463E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1LYBFWRJ3PG9S82KIU7EXC0R43PMZX",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "18UJKGF3A5L8Q7TVLRH9OL5R7FLAZ9",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269822778E12,
+											"acceptTime" : 1.269819117E12,
+											"submitTime" : 1.269819178E12,
+											"answer" : {
+												"meaning" : "If%20the%20fragments%20do%20not%20match%2C%20FAWN-DS%20uses%20hash%20chaining%20to%20continue%20searching%20the%20hash%20table.%20It%20finds%20a%20matching%20key%20fragment%20and%20reads%20the%20record%20off%20of%20the%20flash.",
+												"randomOrder" : "temp",
+												"grammar" : "If%20the%20fragments%20do%20not%20match%2C%20FAWN-DS%20uses%20hash%20chaining%20to%20continue%20searching%20the%20hash%20table.%20It%20finds%20a%20matching%20key%20fragment%20and%20reads%20the%20record%20off%20of%20the%20flash."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269819175496E12,
+								"printOutput" : "creation time: 1269817663000\r\nno longer waiting for hit: 18UJKGF3A5L8Q7TVLRH9OL5R7FLAZ9\r\n"
+							},
+							{
+								"creationTime" : 1.269819175754E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819175938E12,
+								"printOutput" : "disabled HIT: 18UJKGF3A5L8Q7TVLRH9OL5R7FLAZ9\r\n"
+							},
+							{
+								"creationTime" : 1.269819175941E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819176047E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hfs6pdjmsnlo2zmlj4no32ju0qhkhoec.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269816347213E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269816347216E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1znqm7edelgmdezj8maup76m2h2kxabp.html",
+								"returnTime" : 1.269816347402E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1znqm7edelgmdezj8maup76m2h2kxabp.html\r\n"
+							},
+							{
+								"creationTime" : 1.269816347404E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1LOUXPOHJWF3D0WEV4KKNN3TKPOXV0",
+								"returnTime" : 1.269816347904E12,
+								"printOutput" : "created HIT: 1LOUXPOHJWF3D0WEV4KKNN3TKPOXV0\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.26981634809E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1LOUXPOHJWF3D0WEV4KKNN3TKPOXV0",
+									"hitTypeId" : "1SGFS5SY06L04Z57QXSFX3NYNJ8N9A",
+									"title" : "Shorten Rambling Text",
+									"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+									"keywords" : "undefined",
+									"reward" : 0.05,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1znqm7edelgmdezj8maup76m2h2kxabp.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269816397E12,
+									"expiration" : 1.270421197E12,
+									"assignments" : [
+										{
+											"assignmentId" : "10O61IZ8LLF6BKD60T5TSDSN0RGPR2",
+											"workerId" : "A2I71A09DUDQR9",
+											"hitId" : "1LOUXPOHJWF3D0WEV4KKNN3TKPOXV0",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820207E12,
+											"acceptTime" : 1.269816585E12,
+											"submitTime" : 1.269816607E12,
+											"answer" : {
+												"newText" : "If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  [[Otherwise,]] FAWN-DS resumes its hash chaining search of the in memory hash table and searches additional records.  With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1KTQPGMYRTO4FDGE4EUV5FK0JVJ296",
+											"workerId" : "A2T5NXTLARB8J5",
+											"hitId" : "1LOUXPOHJWF3D0WEV4KKNN3TKPOXV0",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820392E12,
+											"acceptTime" : 1.26981667E12,
+											"submitTime" : 1.269816792E12,
+											"answer" : {
+												"newText" : "If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  Otherwise, FAWN-DS resumes its search of the in memory hash table.  With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "18URCTWAIQD52O01NB9AV9JLCY1X8M",
+											"workerId" : "A7R1L4ZYYPOZM",
+											"hitId" : "1LOUXPOHJWF3D0WEV4KKNN3TKPOXV0",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269820874E12,
+											"acceptTime" : 1.269817162E12,
+											"submitTime" : 1.269817274E12,
+											"answer" : {
+												"newText" : "If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  If not, FAWN-DS searches additional records.",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1AT1KCJ8YYRBP3F2B4V6ZXFCKB4GED",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "1LOUXPOHJWF3D0WEV4KKNN3TKPOXV0",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269821231E12,
+											"acceptTime" : 1.26981762E12,
+											"submitTime" : 1.269817631E12,
+											"answer" : {
+												"newText" : "If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  Otherwise, FAWN-DS resumes its hash chaining search of the in memory hash table and searches additional records.  With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record.",
+												"cuttable" : "Yes"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269817614853E12,
+								"printOutput" : "creation time: 1269816397000\r\nno longer waiting for hit: 1LOUXPOHJWF3D0WEV4KKNN3TKPOXV0\r\n"
+							},
+							{
+								"creationTime" : 1.269817614859E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817614981E12,
+								"printOutput" : "rejected assignment 1AT1KCJ8YYRBP3F2B4V6ZXFCKB4GED\r\n"
+							},
+							{
+								"creationTime" : 1.269817615205E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817616031E12,
+								"printOutput" : "disabled HIT: 1LOUXPOHJWF3D0WEV4KKNN3TKPOXV0\r\n"
+							},
+							{
+								"creationTime" : 1.269817616033E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269817616088E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1znqm7edelgmdezj8maup76m2h2kxabp.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817616339E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/xb4oy7i6bdvow5g9lgz974138viz6pxb.html",
+								"returnTime" : 1.269817616396E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/xb4oy7i6bdvow5g9lgz974138viz6pxb.html\r\n"
+							},
+							{
+								"creationTime" : 1.269817616397E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1UCCFICA96TEEZ4HX263E5SWAN0E0G",
+								"returnTime" : 1.269817616689E12,
+								"printOutput" : "created HIT: 1UCCFICA96TEEZ4HX263E5SWAN0E0G\r\n        url: https://www.mturk.com/mturk/preview?groupId=1BGU8VBA6YI74YI9GPA30E7WSSR6MJ\r\n"
+							},
+							{
+								"creationTime" : 1.269817616857E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1UCCFICA96TEEZ4HX263E5SWAN0E0G",
+									"hitTypeId" : "1BGU8VBA6YI74YI9GPA30E7WSSR6MJ",
+									"title" : "Did I shorten text correctly?",
+									"description" : "I need to shorten some text -- which version is best?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/xb4oy7i6bdvow5g9lgz974138viz6pxb.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269817666E12,
+									"expiration" : 1.270422466E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1JM8PJA7NKENWPCTXF9M5JTANU5ZIU",
+											"workerId" : "AHP9GFQCJM2QV",
+											"hitId" : "1UCCFICA96TEEZ4HX263E5SWAN0E0G",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269822821E12,
+											"acceptTime" : 1.269819209E12,
+											"submitTime" : 1.269819221E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"grammar" : "If%20the%20stored%20full%20key%20in%20the%20on-flash%20record%20matches%20the%20desired%20lookup%20key%2C%20the%20operation%20is%20complete.%20%20Otherwise%2C%20FAWN-DS%20resumes%20its%20search%20of%20the%20in%20memory%20hash%20table.%20%20With%20the%2015-bit%20key%20fragment%2C%20only%201%20in%2032%2C768%20retrievals%20from%20the%20flash%20will%20be%20incorrect%20and%20require%20fetching%20an%20additional%20record.",
+												"meaning" : "If%20the%20stored%20full%20key%20in%20the%20on-flash%20record%20matches%20the%20desired%20lookup%20key%2C%20the%20operation%20is%20complete.%20%20%5B%5BOtherwise%2C%5D%5D%20FAWN-DS%20resumes%20its%20hash%20chaining%20search%20of%20the%20in%20memory%20hash%20table%20and%20searches%20additional%20records.%20%20With%20the%2015-bit%20key%20fragment%2C%20only%201%20in%2032%2C768%20retrievals%20from%20the%20flash%20will%20be%20incorrect%20and%20require%20fetching%20an%20additional%20record."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269819266176E12,
+								"printOutput" : "creation time: 1269817666000\r\nno longer waiting for hit: 1UCCFICA96TEEZ4HX263E5SWAN0E0G\r\n"
+							},
+							{
+								"creationTime" : 1.269819266451E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819266716E12,
+								"printOutput" : "disabled HIT: 1UCCFICA96TEEZ4HX263E5SWAN0E0G\r\n"
+							},
+							{
+								"creationTime" : 1.269819266718E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269819266815E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/xb4oy7i6bdvow5g9lgz974138viz6pxb.html\r\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 7.7700000000000005,
+	"hitsCreated" : 17
+}
+// end:275a

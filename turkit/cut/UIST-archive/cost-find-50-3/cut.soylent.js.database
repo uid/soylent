@@ -1,0 +1,64 @@
+// begin:2531
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.27008375034E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.270083750348E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/3h4j7kpwnumj494qodtmuqn8umcdmyu9.html",
+						"returnTime" : 1.270083750537E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/3h4j7kpwnumj494qodtmuqn8umcdmyu9.html\r\n"
+					},
+					{
+						"creationTime" : 1.270083750539E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1H1PP2U6ZPWGKZY881CMBWJ3SC7LRJ",
+						"returnTime" : 1.270083750787E12,
+						"printOutput" : "created HIT: 1H1PP2U6ZPWGKZY881CMBWJ3SC7LRJ\r\n        url: https://www.mturk.com/mturk/preview?groupId=1HQUL1SR821ULTMY8WG7S62KHB6T75\r\n"
+					},
+					{
+						"creationTime" : 1.270085174338E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.270085175039E12,
+						"printOutput" : "disabled HIT: 1H1PP2U6ZPWGKZY881CMBWJ3SC7LRJ\r\n"
+					},
+					{
+						"creationTime" : 1.270085175041E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.270085175138E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/3h4j7kpwnumj494qodtmuqn8umcdmyu9.html\r\n"
+					},
+					{
+						"creationTime" : 1.270085176377E12
+					},
+					{
+						"creationTime" : 1.270085176691E12
+					},
+					{
+						"creationTime" : 1.27008517698E12
+					},
+					{
+						"creationTime" : 1.270085177256E12
+					},
+					{
+						"creationTime" : 1.270085177554E12
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 7,
+	"hitsCreated" : 1
+}
+// end:2531

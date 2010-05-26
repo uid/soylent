@@ -1,0 +1,229 @@
+// begin:72f2
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269271506712E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/538wm712c7b2q5bg8t7pf8u1dl77oior.html",
+				"returnTime" : 1.269271506793E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/538wm712c7b2q5bg8t7pf8u1dl77oior.html\r\n"
+			},
+			{
+				"creationTime" : 1.269271506794E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1C6X7RHBSQ2GELDFJU8DP25L8NF1BW",
+				"returnTime" : 1.269271507011E12,
+				"printOutput" : "created HIT: 1C6X7RHBSQ2GELDFJU8DP25L8NF1BW\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=13G9UI1DDUQKV36J69LYLM0JTAQXG6\r\n"
+			},
+			{
+				"creationTime" : 1.269271507012E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/lcdspxqpq9dbw0822tb4oed0e8pthfr2.html",
+				"returnTime" : 1.269271507111E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/lcdspxqpq9dbw0822tb4oed0e8pthfr2.html\r\n"
+			},
+			{
+				"creationTime" : 1.269271507111E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1W80OXZZ68JBGVIFJ8279NV9LP1WNE",
+				"returnTime" : 1.269271507309E12,
+				"printOutput" : "created HIT: 1W80OXZZ68JBGVIFJ8279NV9LP1WNE\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=13G9UI1DDUQKV36J69LYLM0JTAQXG6\r\n"
+			},
+			{
+				"creationTime" : 1.269271507311E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/98zm6lvvw7g6dmg8qetdjijapfpskeax.html",
+				"returnTime" : 1.269271507411E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/98zm6lvvw7g6dmg8qetdjijapfpskeax.html\r\n"
+			},
+			{
+				"creationTime" : 1.269271507412E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1JVIPN0FS47ZOQ5LXU480MB3Q8F1C3",
+				"returnTime" : 1.269271507597E12,
+				"printOutput" : "created HIT: 1JVIPN0FS47ZOQ5LXU480MB3Q8F1C3\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=13G9UI1DDUQKV36J69LYLM0JTAQXG6\r\n"
+			},
+			{
+				"creationTime" : 1.269271507721E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1C6X7RHBSQ2GELDFJU8DP25L8NF1BW",
+					"hitTypeId" : "13G9UI1DDUQKV36J69LYLM0JTAQXG6",
+					"title" : "Find rambling text",
+					"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+					"keywords" : "undefined",
+					"reward" : 0.08,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/538wm712c7b2q5bg8t7pf8u1dl77oior.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269271545E12,
+					"expiration" : 1.269876345E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1VNWJF0TQRGMF6HZPD27HP9U3255XC",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1C6X7RHBSQ2GELDFJU8DP25L8NF1BW",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269271622E12,
+							"acceptTime" : 1.269271558E12,
+							"submitTime" : 1.269271562E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records sdfneed to be edited differently, but it isn\'t perfect.",
+								"cuttable" : "No"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269271531199E12,
+				"printOutput" : "hit completed: 1C6X7RHBSQ2GELDFJU8DP25L8NF1BW\r\n"
+			},
+			{
+				"creationTime" : 1.269271661422E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/zhoxt5nlikr2aq5d3tt9ra2izpigt63h.html",
+				"returnTime" : 1.26927166161E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/zhoxt5nlikr2aq5d3tt9ra2izpigt63h.html\r\n"
+			},
+			{
+				"creationTime" : 1.269271661611E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "11062XVUHSPTYGIRKN2KOCVEBZ6WOT",
+				"returnTime" : 1.26927166186E12,
+				"printOutput" : "created HIT: 11062XVUHSPTYGIRKN2KOCVEBZ6WOT\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1VXBL8TZXVMFR9TMXP4NHZSBAPG2W0\r\n"
+			},
+			{
+				"creationTime" : 1.269271661985E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1W80OXZZ68JBGVIFJ8279NV9LP1WNE",
+					"hitTypeId" : "13G9UI1DDUQKV36J69LYLM0JTAQXG6",
+					"title" : "Find rambling text",
+					"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+					"keywords" : "undefined",
+					"reward" : 0.08,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/lcdspxqpq9dbw0822tb4oed0e8pthfr2.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269271545E12,
+					"expiration" : 1.269876345E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1CJCJUI7EMWUGY9LXZ1QCJL5R4I9YD",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1W80OXZZ68JBGVIFJ8279NV9LP1WNE",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269271627E12,
+							"acceptTime" : 1.269271563E12,
+							"submitTime" : 1.269271567E12,
+							"answer" : {
+								"newText" : "One solution to this problem would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge sdfasplit clusters.",
+								"cuttable" : "Yes"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269271662144E12,
+				"printOutput" : "hit completed: 1W80OXZZ68JBGVIFJ8279NV9LP1WNE\r\n"
+			},
+			{
+				"creationTime" : 1.269271662147E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/iveqjec3q56dnvtyx29t2pylr2zm00eo.html",
+				"returnTime" : 1.269271662247E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/iveqjec3q56dnvtyx29t2pylr2zm00eo.html\r\n"
+			},
+			{
+				"creationTime" : 1.269271662247E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "18G0L64F69Q9TIBZXQZJKSTLB8R1D3",
+				"returnTime" : 1.269271662444E12,
+				"printOutput" : "created HIT: 18G0L64F69Q9TIBZXQZJKSTLB8R1D3\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1VXBL8TZXVMFR9TMXP4NHZSBAPG2W0\r\n"
+			},
+			{
+				"creationTime" : 1.269271662595E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1JVIPN0FS47ZOQ5LXU480MB3Q8F1C3",
+					"hitTypeId" : "13G9UI1DDUQKV36J69LYLM0JTAQXG6",
+					"title" : "Find rambling text",
+					"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+					"keywords" : "undefined",
+					"reward" : 0.08,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/98zm6lvvw7g6dmg8qetdjijapfpskeax.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269271546E12,
+					"expiration" : 1.269876346E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1U1RJIHSE9H5GTJBS3FOT5EWPYO9X7",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1JVIPN0FS47ZOQ5LXU480MB3Q8F1C3",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269271618E12,
+							"acceptTime" : 1.269271551E12,
+							"submitTime" : 1.269271558E12,
+							"answer" : {
+								"newText" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, times, etc.",
+								"cuttable" : "Yes"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269271662742E12,
+				"printOutput" : "hit completed: 1JVIPN0FS47ZOQ5LXU480MB3Q8F1C3\r\n"
+			},
+			{
+				"creationTime" : 1.269271662746E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/44xyu1n6376fy5lnsxcx3atzd9egmdt5.html",
+				"returnTime" : 1.26927166281E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/44xyu1n6376fy5lnsxcx3atzd9egmdt5.html\r\n"
+			},
+			{
+				"creationTime" : 1.26927166281E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1TYW4A4TBS0ELOPZTLA3QAB6BKS1EW",
+				"returnTime" : 1.269271662988E12,
+				"printOutput" : "created HIT: 1TYW4A4TBS0ELOPZTLA3QAB6BKS1EW\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1VXBL8TZXVMFR9TMXP4NHZSBAPG2W0\r\n"
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.30000000000000004,
+	"hitsCreated" : 6
+}
+// end:72f2
