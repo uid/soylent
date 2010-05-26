@@ -110,10 +110,12 @@ namespace Soylent
                     if (messageType == "status")
                     {
                         TurKitStatus receivedObject = serializer.Deserialize<TurKitStatus>(incomingString);
+                        //receivedObject.stage = "find";
                         
                         HITData concernedHIT = Globals.Soylent.soylent.jobMap[receivedObject.job];
                         ShortenData shortenData = concernedHIT as ShortenData;
                         Debug.WriteLine("method: " + receivedObject.stage);
+                        //Debug.WriteLine("numCompleted: " + receivedObject.job);
                         Debug.WriteLine("numCompleted: " + receivedObject.job);
                         if (shortenData != null)
                         {
@@ -125,6 +127,8 @@ namespace Soylent
                     else if (messageType == "shorten")
                     {
                         TurKitShortn receivedObject = serializer.Deserialize<TurKitShortn>(incomingString);
+                        //Debug.WriteLine(receivedObject.start + " to " + receivedObject.end);
+                        //Debug.WriteLine(receivedObject.paragraph[0]);
                         Debug.WriteLine(receivedObject.options[0]);
                     }
                     Debug.WriteLine("got it!");
