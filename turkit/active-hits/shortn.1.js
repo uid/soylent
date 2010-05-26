@@ -1,5 +1,5 @@
 var soylentJob = 1;
-var paragraphs = [["I know you want to leave me.","But I refuuuse to let you go."],["If I have to beg, plead for your sympathy, I don’t mind cuz you mean that much to me."]];
+var paragraphs = [[""]];
 /*
 The specific soylentJob number and paragraphs array will be written by C#.  Here is an example:
 

@@ -114,9 +114,8 @@ namespace Soylent
                         
                         HITData concernedHIT = Globals.Soylent.soylent.jobMap[receivedObject.job];
                         ShortenData shortenData = concernedHIT as ShortenData;
-                        Debug.WriteLine("method: " + receivedObject.stage);
+                        //Debug.WriteLine("method: " + receivedObject.stage);
                         //Debug.WriteLine("numCompleted: " + receivedObject.job);
-                        Debug.WriteLine("numCompleted: " + receivedObject.job);
                         if (shortenData != null)
                         {
                             shortenData.updateStatus(receivedObject);

@@ -108,8 +108,8 @@ namespace Soylent
                                 , rootDirectory + @"\turkit"
                                 , out output
                                 , out error);
-                 */
-
+                 
+                */
                 //System.Diagnostics.Trace.WriteLine(output);
                 //System.Diagnostics.Trace.WriteLine(error);
 
@@ -149,7 +149,7 @@ namespace Soylent
                 process.StartInfo.RedirectStandardError = true;
                 process.StartInfo.CreateNoWindow = true;
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
+                
                 process.Start( );
                 //output = "foo";
                 //error = "bar";
