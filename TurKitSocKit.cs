@@ -153,6 +153,7 @@ namespace Soylent
             lock (_connections) _connections.Remove(ci);
         }
 
+
         public class TurKitStatus
         {
             public int job;
