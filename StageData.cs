@@ -18,7 +18,12 @@ namespace Soylent
             this.type = type;
             this.numCompleted = numCompleted;
             this.numParagraphs = numParagraphs;
-            numCperP = new List<int>(numParagraphs);
+            numCperP = new List<int>();
+            for (int i = 0; i < numParagraphs; i++)
+            {
+                numCperP.Add(0);
+                //numCperP[i] = 0;
+            }
         }
         public void registerListener(StageView sview)
         {

@@ -59,10 +59,11 @@ namespace Soylent
             DoubleAnimation doubleanimation = new DoubleAnimation(100 * percentDone, duration);
             hitProgress.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
         }
+        public delegate void updateProgressDelegate(int curTurkers);
         public void notify()
         {
-            updateProgress(stagedata.numCompleted);
+            Globals.Soylent.soylent.Invoke(new updateProgressDelegate(this.updateProgress), new object[] { stagedata.numCompleted });
+            //updateProgress(stagedata.numCompleted);
         }
-
     }
 }

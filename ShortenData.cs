@@ -69,12 +69,12 @@ namespace Soylent
         {
             string stringtype = status.stage;
             System.Diagnostics.Debug.WriteLine(stringtype);
-            System.Diagnostics.Debug.WriteLine("^^^^^ stringtype ^^^^^^");
+            //System.Diagnostics.Debug.WriteLine("^^^^^ stringtype ^^^^^^");
             ResultType type = typeMap[stringtype];
             StageData stage = stages[type];
-            //stage.updateStage(status.numCompleted, status.paragraph);
-            stage.updateStage(1, status.paragraph);
-            System.Diagnostics.Debug.WriteLine("GOT A ************");
+            stage.updateStage(status.numCompleted, status.paragraph);
+            //stage.updateStage(1, status.paragraph);
+            //System.Diagnostics.Debug.WriteLine("GOT A ************");
         }
 
         Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();
