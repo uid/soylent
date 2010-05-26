@@ -269,6 +269,7 @@ function sendSocketMessage(message) {
 	}
 	var stringMessage = json(message);
 	stringMessage = stringMessage.substring(1, stringMessage.length-1);
+    print(stringMessage);
 	socketOut.println(stringMessage);
 }
 

@@ -230,8 +230,7 @@ function requestPatches(paragraph) {
 function joinPatches(cut_hit, paragraph, paragraph_index) {
 	var status = mturk.getHIT(cut_hit, true)
 	print("completed by " + status.assignments.length + " turkers");
-    print(json(status));
-	socketStatus(FIND_STAGE, status.assignments.length, paragraph_index);
+	socketStatus(FIND_STAGE, status.assignments.length, status.maxAssignments, paragraph_index, status.reward);
 	
 	var hit = mturk.boundedWaitForHIT(cut_hit, wait_time, 6, search_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
@@ -352,7 +351,7 @@ function joinEdits(edit_hit, originalSentence, paragraph_index) {
 	print("checking to see if HIT is done")
 	var status = mturk.getHIT(hitId, true)	
 	print("completed by " + status.assignments.length + " turkers");
-	socketStatus(FIX_STAGE, status.assignments.length, paragraph_index);
+	socketStatus(FIX_STAGE, status.assignments.length, status.maxAssignments, paragraph_index, status.reward);
 	
 	var hit = mturk.boundedWaitForHIT(hitId, wait_time, 3, edit_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
@@ -451,7 +450,7 @@ function joinVotes(vote_hit, paragraph_index) {
 	var hitId = vote_hit;
 	var status = mturk.getHIT(hitId, true)	
 	print("completed by " + status.assignments.length + " turkers");
-	socketStatus(FILTER_STAGE, status.assignments.length, paragraph_index);
+	socketStatus(FILTER_STAGE, status.assignments.length, status.maxAssignments, paragraph_index, status.reward);
 	
 	var hit = mturk.boundedWaitForHIT(hitId, wait_time, 3, verify_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
