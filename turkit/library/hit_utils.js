@@ -1,5 +1,4 @@
-/**
- * Deletes all HIT resources
+/** * Deletes all HIT resources
  */
 function cleanUp(hitId) {
 	var hit = mturk.getHIT(hitId, true);
@@ -239,7 +238,7 @@ function writeCSVWait(csv, hit, title, paragraph_index)
 var FIND_STAGE = "find";
 var FIX_STAGE = "fix";
 var FILTER_STAGE = "verify"; //#todo: rename FILTER_STAGE to VERIFY_STAGE
-function socketStatus(stage, numCompleted, paragraphNum) {
+function socketStatus(stage, numCompleted, maxAssignments, paragraphNum, reward) {
 	if (typeof(soylentJob) == "undefined") {
 		print("Not in socket mode, not writing.");
 		return;
@@ -249,6 +248,8 @@ function socketStatus(stage, numCompleted, paragraphNum) {
 		stage: stage,
 		job: soylentJob,
 		numCompleted: numCompleted,
+        totalRequested: maxAssignments,
+        payment: reward,
 		paragraph: paragraphNum,
 		__type__: 'status'
 	};
