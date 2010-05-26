@@ -55,6 +55,26 @@ namespace Soylent
 
         public ShortenData(Word.Range toShorten, int job) : base(toShorten, job)
         {
+            stages[ResultType.Find] = new StageData(ResultType.Find, 0, numParagraphs);
+            stages[ResultType.Fix] = new StageData(ResultType.Fix, 0, numParagraphs);
+            stages[ResultType.Verify] = new StageData(ResultType.Verify, 0, numParagraphs);
+
+            typeMap = new Dictionary<string,ResultType>();
+            typeMap["find"] = ResultType.Find;
+            typeMap["fix"] = ResultType.Fix;
+            typeMap["verify"] = ResultType.Verify;
+        }
+
+        new public void updateStatus(TurKitSocKit.TurKitStatus status)
+        {
+            string stringtype = status.method;
+            System.Diagnostics.Debug.WriteLine(stringtype);
+            System.Diagnostics.Debug.WriteLine("^^^^^ stringtype ^^^^^^");
+            ResultType type = typeMap[stringtype];
+            StageData stage = stages[type];
+            //stage.updateStage(status.numCompleted, status.paragraph);
+            stage.updateStage(1, status.paragraph);
+            System.Diagnostics.Debug.WriteLine("GOT A ************");
         }
 
         Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();

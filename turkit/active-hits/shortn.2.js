@@ -1,5 +1,5 @@
 var soylentJob = 2;
-var paragraphs = [["How’s it going?","Not bad."],["Are you sure?","Yep.","Life’s good."]];
+var paragraphs = [["I don’t know why."],["I don’t just make the button add text."],["I don’t just make the button add text."]];
 /*
 The specific soylentJob number and paragraphs array will be written by C#.  Here is an example:
 

@@ -29,9 +29,10 @@ namespace Soylent
         private void shortenBtn_Click(object sender, RibbonControlEventArgs e)
         {
             Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            ShortenData newHIT = new ShortenData(toShorten, generateJobNumber());
+            int jobNumber = generateJobNumber();
+            ShortenData newHIT = new ShortenData(toShorten, jobNumber);
             allHITs[newHIT.job] = newHIT;
-            Shorten s = new Shorten(newHIT);
+            Shorten s = new Shorten(newHIT, jobNumber);
         }
 
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)

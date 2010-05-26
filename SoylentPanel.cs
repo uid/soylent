@@ -12,18 +12,23 @@ namespace Soylent
 {
     public partial class SoylentPanel : UserControl
     {
-        public static string HOSTNAME = "HITStatusHost";
+        public static string HOSTNAME = "HITViewHost";
+
+        //TODO: figure out where to actually store this.
+        public Dictionary<int, HITData> jobMap { get; private set; }
 
         public SoylentPanel()
         {
             InitializeComponent();
+            jobMap = new Dictionary<int,HITData>();
         }
 
         private void WPFContainer_Load(object sender, EventArgs e)
         {
         }
 
-        public HITStatus addHIT(string name, string text)
+        //public HITView addHIT(string name, string text)
+        public HITView addHIT(string name, HITData data, int jobNumber)
         {
             // Create the ElementHost control for hosting the
             // WPF UserControl.
@@ -32,7 +37,10 @@ namespace Soylent
             host.Dock = DockStyle.Fill;
 
             // Create the WPF UserControl.
-            HITStatus hs = new HITStatus(name, text);
+
+            //HITView hs = new HITView(name, text);
+            HITView hs = new HITView(name, data);
+            jobMap[jobNumber] = data;
 
             // Assign the WPF UserControl to the ElementHost control's
             // Child property.
@@ -44,13 +52,13 @@ namespace Soylent
             return hs;
         }
 
-        public IEnumerable<HITStatus> getHITs()
+        public IEnumerable<HITView> getHITs()
         {
-            List<HITStatus> hits = new List<HITStatus>();
+            List<HITView> hits = new List<HITView>();
             var temp = Controls.Find(HOSTNAME, true);
-            //ElementHost[] hostControls = (ElementHost[]) Controls.Find(HOSTNAME, true);
-            //return from control in hostControls select control.Child as HITStatus;
-            return null;
+            ElementHost[] hostControls = (ElementHost[]) Controls.Find(HOSTNAME, true);
+            return from control in hostControls select control.Child as HITView;
+            //return null;
         }
     }
 }

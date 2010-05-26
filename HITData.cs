@@ -15,6 +15,11 @@ namespace Soylent
     {
         public int job { get; set; }
         public Word.Range range { get; set; }
+        public string originalText;
+        public enum ResultType { Find, Fix, Verify };
+        public Dictionary<ResultType, StageData> stages;
+        public Dictionary<string, ResultType> typeMap;// = new Dictionary<string,ResultType>();
+        public int numParagraphs;
         TurKit tk;
 
         public HITData(Word.Range range, int job)
@@ -23,6 +28,12 @@ namespace Soylent
             this.job = job;
             int unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
             string bookmarkName = "Soylent" + unixTime;
+
+            typeMap = new Dictionary<string,ResultType>();
+
+            numParagraphs = range.Paragraphs.Count;
+
+            stages = new Dictionary<ResultType, StageData>();
             //TODO: Use Word XML binding to text instead of bookmarks.
             /*
              * Improved Data Mapping Provides Separation Between a Document's Data and Its Formatting
@@ -39,6 +50,17 @@ namespace Soylent
         public void startTask()
         {
             tk.startTask();
+        }
+
+        public void updateStatus(TurKitSocKit.TurKitStatus status)
+        {
+            System.Diagnostics.Debug.WriteLine("GOT A STATUSSSSSSS");
+            /* moved to ShortenData.cs
+            string stringtype = status.method;
+            ResultType type = typeMap[stringtype];
+            StageData stage = stages[type];
+            stage.updateStage(status.numCompleted);
+            */
         }
     }
 }

@@ -14,14 +14,14 @@ namespace Soylent
 {
     public partial class Soylent
     {
-        private Microsoft.Office.Tools.CustomTaskPane hitStatus;
+        private Microsoft.Office.Tools.CustomTaskPane HITView;
         public SoylentPanel soylent;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             soylent = new SoylentPanel();
-            hitStatus = this.CustomTaskPanes.Add(soylent, "Soylent");
-            hitStatus.Visible = true;
+            HITView = this.CustomTaskPanes.Add(soylent, "Soylent");
+            HITView.Visible = true;
         }
 
 
@@ -34,7 +34,7 @@ namespace Soylent
             //        VstoSmartTags.Remove(tag);
             //    }
             //}
-            //this.CustomTaskPanes.Remove(hitStatus);
+            //this.CustomTaskPanes.Remove(HITView);
         }
 
         #region VSTO generated code

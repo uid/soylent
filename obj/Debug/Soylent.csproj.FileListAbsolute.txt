@@ -50,14 +50,10 @@ C:\Users\UID\Documents\soylent\bin\Debug\Soylent.vsto
 C:\Users\UID\Documents\soylent\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\UID\Documents\soylent\obj\Debug\segd-arrow-symbols-icons [WPF Paths].baml
 C:\Users\UID\Documents\soylent\obj\Debug\ShortenDialog.baml
-C:\Users\UID\Documents\soylent\obj\Debug\StageStatus.baml
-C:\Users\UID\Documents\soylent\obj\Debug\HITStatus.g.cs
 C:\Users\UID\Documents\soylent\obj\Debug\HumanMacroDialog.g.cs
 C:\Users\UID\Documents\soylent\obj\Debug\ShortenDialog.g.cs
-C:\Users\UID\Documents\soylent\obj\Debug\StageStatus.g.cs
 C:\Users\UID\Documents\soylent\obj\Debug\Soylent_MarkupCompile.cache
 C:\Users\UID\Documents\soylent\obj\Debug\Soylent_MarkupCompile.lref
-C:\Users\UID\Documents\soylent\obj\Debug\HITStatus.baml
 C:\Users\UID\Documents\soylent\obj\Debug\HumanMacroDialog.baml
 C:\Users\UID\Documents\soylent\obj\Debug\Soylent.g.resources
 C:\Users\UID\Documents\soylent\obj\Debug\Soylent.Properties.Resources.resources
@@ -67,3 +63,7 @@ C:\Users\UID\Documents\soylent\obj\Debug\GenerateResource-ResGen.read.1.tlog
 C:\Users\UID\Documents\soylent\obj\Debug\GenerateResource-ResGen.write.1.tlog
 C:\Users\UID\Documents\soylent\obj\Debug\Soylent.dll
 C:\Users\UID\Documents\soylent\obj\Debug\Soylent.pdb
+C:\Users\UID\Documents\soylent\obj\Debug\StageView.baml
+C:\Users\UID\Documents\soylent\obj\Debug\HITView.g.cs
+C:\Users\UID\Documents\soylent\obj\Debug\StageView.g.cs
+C:\Users\UID\Documents\soylent\obj\Debug\HITView.baml

@@ -14,7 +14,7 @@ namespace Soylent
     /**
      * Connects to a TurKit instance
      */
-    class TurKitSocKit
+    public class TurKitSocKit
     {
         private int port = 11000;
         private List<ConnectionInfo> _connections = new List<ConnectionInfo>();
@@ -110,11 +110,20 @@ namespace Soylent
                     if (messageType == "status")
                     {
                         TurKitStatus receivedObject = serializer.Deserialize<TurKitStatus>(incomingString);
-                        Debug.WriteLine(receivedObject.numCompleted);
+
+                        HITData concernedHIT = Globals.Soylent.soylent.jobMap[receivedObject.job];
+                        ShortenData shortenData = concernedHIT as ShortenData;
+                        Debug.WriteLine("method: " + receivedObject.method);
+                        Debug.WriteLine("numCompleted: " + receivedObject.job);
+                        if (shortenData != null)
+                        {
+                            shortenData.updateStatus(receivedObject);
+                        }
+                        //Debug.WriteLine(receivedObject.numCompleted);
                     }
                     else if (messageType == "shorten")
                     {
-                        TurKitShorten receivedObject = serializer.Deserialize<TurKitShorten>(incomingString);
+                        TurKitShortn receivedObject = serializer.Deserialize<TurKitShortn>(incomingString);
                         Debug.WriteLine(receivedObject.options[0]);
                     }
                     Debug.WriteLine("got it!");
@@ -160,7 +169,7 @@ namespace Soylent
         }
 
         [Serializable]
-        public class TurKitShorten
+        public class TurKitShortn
         {
             [XmlElement("start")]
             public int start { get; set; }

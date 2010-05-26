@@ -216,6 +216,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="StageData.cs" />
     <Compile Include="HITData.cs" />
     <Compile Include="HumanMacroDialog.xaml.cs">
       <DependentUpon>HumanMacroDialog.xaml</DependentUpon>
@@ -225,8 +226,8 @@
     <Compile Include="ProofreadingData.cs" />
     <Compile Include="ProofreadingPatch.cs" />
     <Compile Include="ShortenData.cs" />
-    <Compile Include="HITStatus.xaml.cs">
-      <DependentUpon>HITStatus.xaml</DependentUpon>
+    <Compile Include="HITView.xaml.cs">
+      <DependentUpon>HITView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -266,8 +267,8 @@
     <Compile Include="ShortenDialog.xaml.cs">
       <DependentUpon>ShortenDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StageStatus.xaml.cs">
-      <DependentUpon>StageStatus.xaml</DependentUpon>
+    <Compile Include="StageView.xaml.cs">
+      <DependentUpon>StageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Soylent.cs">
       <SubType>Code</SubType>
@@ -290,7 +291,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="HITStatus.xaml">
+    <Page Include="HITView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
@@ -314,7 +315,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="StageStatus.xaml">
+    <Page Include="StageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
