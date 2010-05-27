@@ -16,25 +16,22 @@ namespace Soylent
     {
         private Microsoft.Office.Tools.CustomTaskPane HITView;
         public SoylentPanel soylent;
+        private TurKitSocKit tksc;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             soylent = new SoylentPanel();
             HITView = this.CustomTaskPanes.Add(soylent, "Soylent");
             HITView.Visible = true;
+
+            tksc = new TurKitSocKit();
+            tksc.Listen();
         }
 
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
-            //foreach (Microsoft.Office.Tools.SmartTagBase tag in VstoSmartTags)
-            //{
-            //    if (tag.GetType().Namespace == HumanMacroResult.NAMESPACE)
-            //    {
-            //        VstoSmartTags.Remove(tag);
-            //    }
-            //}
-            //this.CustomTaskPanes.Remove(HITView);
+
         }
 
         #region VSTO generated code

@@ -238,19 +238,25 @@ function writeCSVWait(csv, hit, title, paragraph_index)
 var FIND_STAGE = "find";
 var FIX_STAGE = "fix";
 var FILTER_STAGE = "verify"; //#todo: rename FILTER_STAGE to VERIFY_STAGE
-function socketStatus(stage, numCompleted, maxAssignments, paragraphNum, reward) {
+function socketStatus(stage, hit, paragraphNum) {//stage, numCompleted, maxAssignments, paragraphNum, reward, hitURL) {
 	if (typeof(soylentJob) == "undefined") {
 		print("Not in socket mode, not writing.");
 		return;
 	}
-	
+
+	var url = (javaTurKit.mode == "sandbox"
+					? "https://workersandbox.mturk.com/mturk/preview?groupId="
+					: "https://www.mturk.com/mturk/preview?groupId=")
+			+ hit.hitTypeId
+    
 	var message = {
 		stage: stage,
 		job: soylentJob,
-		numCompleted: numCompleted,
-        totalRequested: maxAssignments,
-        payment: reward,
+		numCompleted: hit.assignments.length,
+        totalRequested: hit.maxAssignments,
+        payment: hit.reward,
 		paragraph: paragraphNum,
+        hitURL: url,
 		__type__: 'status'
 	};
 	sendSocketMessage(message);
