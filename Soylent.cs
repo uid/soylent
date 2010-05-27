@@ -16,7 +16,7 @@ namespace Soylent
     {
         private Microsoft.Office.Tools.CustomTaskPane HITView;
         public SoylentPanel soylent;
-        public TurKitSocKit tksc;
+        private TurKitSocKit tksc;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
