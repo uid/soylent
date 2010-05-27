@@ -172,7 +172,7 @@ namespace Soylent
             public int numCompleted;
             public int totalRequested;
             public int paragraph;
-            public double reward;
+            public double payment;
         }
 
         public class TurKitShortn
