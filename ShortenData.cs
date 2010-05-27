@@ -72,8 +72,8 @@ namespace Soylent
             //System.Diagnostics.Debug.WriteLine("^^^^^ stringtype ^^^^^^");
             ResultType type = typeMap[stringtype];
             StageData stage = stages[type];
-            stage.updateStage(status.numCompleted, status.paragraph);
-            //stage.updateStage(1, status.paragraph);
+            //stage.updateStage(status.numCompleted, status.paragraph);
+            stage.updateStage(status);
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
         }
 

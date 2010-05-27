@@ -47,25 +47,18 @@ namespace Soylent
                 //IEnumerable<String> paragraphs = data.range.Paragraphs.Cast<String>();
      
                 string[][] pgraphs = new string[data.range.Paragraphs.Count][];
-                int i = 0;
-                int j;
-                foreach(Word.Paragraph paragraph in data.range.Paragraphs){
+                for(int i = 0; i < data.range.Paragraphs.Count; i++){
+                    Word.Paragraph paragraph = data.range.Paragraphs[i];
                     pgraphs[i] = new string[paragraph.Range.Sentences.Count];
-                    j = 0;
-                    foreach (Word.Range sentence in paragraph.Range.Sentences)
+                    for (int j = 0; j < paragraph.Range.Sentences.Count; j++ )
                     {
+                        Word.Range sentence = paragraph.Range.Sentences[j];
                         string temp = sentence.Text;
 
                         // Whitespace characters in the middle of sentences will not be removed
                         temp = temp.Trim();
                         pgraphs[i][j] = temp;
-
-                        //System.Diagnostics.Trace.WriteLine(sentence.Text);
-                        //System.Diagnostics.Trace.WriteLine("### end sentence");
-                        j++;
                     }
-                    i++;
-                    //System.Diagnostics.Trace.WriteLine("*************** end paragraph");
                 }
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string paragraphs = js.Serialize(pgraphs);

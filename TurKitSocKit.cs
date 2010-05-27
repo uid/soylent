@@ -124,6 +124,7 @@ namespace Soylent
                         ShortenData shortenData = concernedHIT as ShortenData;
                         //Debug.WriteLine("method: " + receivedObject.stage);
                         //Debug.WriteLine("numCompleted: " + receivedObject.job);
+                        
                         if (shortenData != null)
                         {
                             shortenData.updateStatus(receivedObject);
