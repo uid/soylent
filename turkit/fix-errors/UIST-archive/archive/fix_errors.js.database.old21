@@ -1,0 +1,651 @@
+// begin:d327
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269202322813E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/miepylloigbiv5qga4y8z4e5ge297v8n.html",
+				"returnTime" : 1.269202322915E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/miepylloigbiv5qga4y8z4e5ge297v8n.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202322916E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "16U6SULVYZNFYP8FK31ASMOOQAJT5V",
+				"returnTime" : 1.269202323178E12,
+				"printOutput" : "created HIT: 16U6SULVYZNFYP8FK31ASMOOQAJT5V\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1P74BVALA9MVNZBLOBZDQEZSBA01V8\r\n"
+			},
+			{
+				"creationTime" : 1.26920232318E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5ecn3zc0t8d2w35crinvg8eyytgnrsgh.html",
+				"returnTime" : 1.269202323376E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5ecn3zc0t8d2w35crinvg8eyytgnrsgh.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202323376E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1YD8E1L2NK5BHT8TPMBFKS2OM5UT6B",
+				"returnTime" : 1.269202323554E12,
+				"printOutput" : "created HIT: 1YD8E1L2NK5BHT8TPMBFKS2OM5UT6B\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1P74BVALA9MVNZBLOBZDQEZSBA01V8\r\n"
+			},
+			{
+				"creationTime" : 1.269202323556E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/v46owtxdffrpbigxgiflfcg9wrx8be3x.html",
+				"returnTime" : 1.269202323635E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/v46owtxdffrpbigxgiflfcg9wrx8be3x.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202323636E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1YIJPZ4MHBG5OS1QAMBLP6WJ3TFQKZ",
+				"returnTime" : 1.269202323766E12,
+				"printOutput" : "created HIT: 1YIJPZ4MHBG5OS1QAMBLP6WJ3TFQKZ\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1P74BVALA9MVNZBLOBZDQEZSBA01V8\r\n"
+			},
+			{
+				"creationTime" : 1.269202323768E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/khj85nffoscfu1isr4fd1sz88ufs4s6l.html",
+				"returnTime" : 1.269202323868E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/khj85nffoscfu1isr4fd1sz88ufs4s6l.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202323868E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1HFUL1SR821ULTMY8WG7Q62KHGET7A",
+				"returnTime" : 1.26920232408E12,
+				"printOutput" : "created HIT: 1HFUL1SR821ULTMY8WG7Q62KHGET7A\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1P74BVALA9MVNZBLOBZDQEZSBA01V8\r\n"
+			},
+			{
+				"creationTime" : 1.269202324081E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjojrpaqv7dwt45bt0jph8kkf0knaawb.html",
+				"returnTime" : 1.269202324131E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjojrpaqv7dwt45bt0jph8kkf0knaawb.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202324132E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "131TURA0H7BG8YJ8VMNM469YSTKQL2",
+				"returnTime" : 1.269202324252E12,
+				"printOutput" : "created HIT: 131TURA0H7BG8YJ8VMNM469YSTKQL2\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1P74BVALA9MVNZBLOBZDQEZSBA01V8\r\n"
+			},
+			{
+				"creationTime" : 1.2692023244E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "16U6SULVYZNFYP8FK31ASMOOQAJT5V",
+					"hitTypeId" : "1P74BVALA9MVNZBLOBZDQEZSBA01V8",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/miepylloigbiv5qga4y8z4e5ge297v8n.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269202361E12,
+					"expiration" : 1.269807161E12,
+					"assignments" : [
+						{
+							"assignmentId" : "16Y18XGA9OX3CBEYFVKNGSNTKJPQS1",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "16U6SULVYZNFYP8FK31ASMOOQAJT5V",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269202437E12,
+							"acceptTime" : 1.269202372E12,
+							"submitTime" : 1.269202377E12,
+							"answer" : {
+								"newText" : "The theme of loneliness features throughout many scenes in Of Mice and Men and is often the dominant theme of sections during this story.asdf"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269202349954E12,
+				"printOutput" : "hit completed: 16U6SULVYZNFYP8FK31ASMOOQAJT5V\r\n"
+			},
+			{
+				"creationTime" : 1.269202349989E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269202350101E12,
+				"printOutput" : "disabled HIT: 16U6SULVYZNFYP8FK31ASMOOQAJT5V\r\n"
+			},
+			{
+				"creationTime" : 1.269202350101E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269202350163E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjojrpaqv7dwt45bt0jph8kkf0knaawb.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202350291E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1YD8E1L2NK5BHT8TPMBFKS2OM5UT6B",
+					"hitTypeId" : "1P74BVALA9MVNZBLOBZDQEZSBA01V8",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5ecn3zc0t8d2w35crinvg8eyytgnrsgh.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269202361E12,
+					"expiration" : 1.269807161E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1CEIKWZD9Z70XAHUZDOI6SUYIN2TCO",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1YD8E1L2NK5BHT8TPMBFKS2OM5UT6B",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269202432E12,
+							"acceptTime" : 1.269202369E12,
+							"submitTime" : 1.269202372E12,
+							"answer" : {
+								"newText" : "The theme of loneliness features throughout many scenes in Of Mice and Men and is often the dominant theme of sections during this story.asdf"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269202350457E12,
+				"printOutput" : "hit completed: 1YD8E1L2NK5BHT8TPMBFKS2OM5UT6B\r\n"
+			},
+			{
+				"creationTime" : 1.269202350491E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269202350598E12,
+				"printOutput" : "disabled HIT: 1YD8E1L2NK5BHT8TPMBFKS2OM5UT6B\r\n"
+			},
+			{
+				"creationTime" : 1.269202350599E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269202350704E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjojrpaqv7dwt45bt0jph8kkf0knaawb.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202350872E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1YIJPZ4MHBG5OS1QAMBLP6WJ3TFQKZ",
+					"hitTypeId" : "1P74BVALA9MVNZBLOBZDQEZSBA01V8",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/v46owtxdffrpbigxgiflfcg9wrx8be3x.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269202362E12,
+					"expiration" : 1.269807162E12,
+					"assignments" : [
+						{
+							"assignmentId" : "12TCS3YSUO94RBRD4VPDQXJFM23QTQ",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1YIJPZ4MHBG5OS1QAMBLP6WJ3TFQKZ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.26920244E12,
+							"acceptTime" : 1.269202377E12,
+							"submitTime" : 1.26920238E12,
+							"answer" : {
+								"newText" : "In my mind for a theme to be pervasive is must be present during every element of the story.asdf"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269202350999E12,
+				"printOutput" : "hit completed: 1YIJPZ4MHBG5OS1QAMBLP6WJ3TFQKZ\r\n"
+			},
+			{
+				"creationTime" : 1.269202351032E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269202351154E12,
+				"printOutput" : "disabled HIT: 1YIJPZ4MHBG5OS1QAMBLP6WJ3TFQKZ\r\n"
+			},
+			{
+				"creationTime" : 1.269202351154E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269202351201E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjojrpaqv7dwt45bt0jph8kkf0knaawb.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202351339E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1HFUL1SR821ULTMY8WG7Q62KHGET7A",
+					"hitTypeId" : "1P74BVALA9MVNZBLOBZDQEZSBA01V8",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/khj85nffoscfu1isr4fd1sz88ufs4s6l.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269202362E12,
+					"expiration" : 1.269807162E12,
+					"assignments" : [
+						{
+							"assignmentId" : "11Z0GF3DN4QA22N8Z9JTQYCG3NETDO",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1HFUL1SR821ULTMY8WG7Q62KHGET7A",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269202444E12,
+							"acceptTime" : 1.26920238E12,
+							"submitTime" : 1.269202384E12,
+							"answer" : {
+								"newText" : "There are many themes that are present most of the way through such as sacrifice, frienasdfdship and comradship."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269202351534E12,
+				"printOutput" : "hit completed: 1HFUL1SR821ULTMY8WG7Q62KHGET7A\r\n"
+			},
+			{
+				"creationTime" : 1.269202351568E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.26920235168E12,
+				"printOutput" : "disabled HIT: 1HFUL1SR821ULTMY8WG7Q62KHGET7A\r\n"
+			},
+			{
+				"creationTime" : 1.26920235168E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269202351715E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjojrpaqv7dwt45bt0jph8kkf0knaawb.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202351876E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "131TURA0H7BG8YJ8VMNM469YSTKQL2",
+					"hitTypeId" : "1P74BVALA9MVNZBLOBZDQEZSBA01V8",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjojrpaqv7dwt45bt0jph8kkf0knaawb.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269202362E12,
+					"expiration" : 1.269807162E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1626XDASR3XRBWEL06KIQIIXYH6QRD",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "131TURA0H7BG8YJ8VMNM469YSTKQL2",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269202429E12,
+							"acceptTime" : 1.269202365E12,
+							"submitTime" : 1.269202369E12,
+							"answer" : {
+								"newText" : "There are many themes that are present most of the way through such as sacrifice, friendship aasdfnd comradship."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269202352013E12,
+				"printOutput" : "hit completed: 131TURA0H7BG8YJ8VMNM469YSTKQL2\r\n"
+			},
+			{
+				"creationTime" : 1.269202352047E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.26920235216E12,
+				"printOutput" : "disabled HIT: 131TURA0H7BG8YJ8VMNM469YSTKQL2\r\n"
+			},
+			{
+				"creationTime" : 1.269202352161E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.2692023522E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/vjojrpaqv7dwt45bt0jph8kkf0knaawb.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202352209E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/fg150bsumqdhrf4cvjyzecwdlffj7sdm.html",
+				"returnTime" : 1.269202352337E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/fg150bsumqdhrf4cvjyzecwdlffj7sdm.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202352337E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1MBYMXO0D2M0EG1TVYO14JONSYAQM4",
+				"returnTime" : 1.269202352471E12,
+				"printOutput" : "created HIT: 1MBYMXO0D2M0EG1TVYO14JONSYAQM4\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.269202352479E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/236pxa051snldq0xyg7w0nzmxkqqsrpb.html",
+				"returnTime" : 1.269202352651E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/236pxa051snldq0xyg7w0nzmxkqqsrpb.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202352651E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1J11L8HCQYKYL7RHI18D46YFS0KT8X",
+				"returnTime" : 1.269202352828E12,
+				"printOutput" : "created HIT: 1J11L8HCQYKYL7RHI18D46YFS0KT8X\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.269202352835E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o8rjeib0bvpsw5y0nn4podgowblb2mit.html",
+				"returnTime" : 1.269202353101E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o8rjeib0bvpsw5y0nn4podgowblb2mit.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202353101E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "118W6BKRJXCOEJM58E3EWNDSNYPOQH",
+				"returnTime" : 1.269202353281E12,
+				"printOutput" : "created HIT: 118W6BKRJXCOEJM58E3EWNDSNYPOQH\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.269202353288E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/guztjau1shyin4lfboo034er15nshd94.html",
+				"returnTime" : 1.269202353369E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/guztjau1shyin4lfboo034er15nshd94.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202353369E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1F8S1M4X1FXOQK15LTSE1DNXJKRORI",
+				"returnTime" : 1.269202353585E12,
+				"printOutput" : "created HIT: 1F8S1M4X1FXOQK15LTSE1DNXJKRORI\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.269202353592E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/3fgmyujvklj88fbka0cywb93dgt588io.html",
+				"returnTime" : 1.26920235369E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/3fgmyujvklj88fbka0cywb93dgt588io.html\r\n"
+			},
+			{
+				"creationTime" : 1.269202353691E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1581SX2UMHOYZCARNTER42TQC62T9M",
+				"returnTime" : 1.269202353885E12,
+				"printOutput" : "created HIT: 1581SX2UMHOYZCARNTER42TQC62T9M\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.269202354047E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1MBYMXO0D2M0EG1TVYO14JONSYAQM4",
+					"hitTypeId" : "1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5",
+					"title" : "Vote on writing suggestions",
+					"description" : "Which sentence improvement should I use?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/fg150bsumqdhrf4cvjyzecwdlffj7sdm.html?random=true</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.26920239E12,
+					"expiration" : 1.26980719E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1O41PMIWZ09A7CX0LG5HPAAPMPQQ2Y",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1MBYMXO0D2M0EG1TVYO14JONSYAQM4",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269202494E12,
+							"acceptTime" : 1.269202431E12,
+							"submitTime" : 1.269202434E12,
+							"answer" : {
+								"improvement" : "\"The theme of loneliness features throughout many scenes in Of Mice and Men and is often the dominant theme of sections during this story.asdf\"",
+								"randomOrder" : "1,0"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269202404615E12,
+				"printOutput" : "hit completed: 1MBYMXO0D2M0EG1TVYO14JONSYAQM4\r\n"
+			},
+			{
+				"creationTime" : 1.269202404792E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1J11L8HCQYKYL7RHI18D46YFS0KT8X",
+					"hitTypeId" : "1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5",
+					"title" : "Vote on writing suggestions",
+					"description" : "Which sentence improvement should I use?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/236pxa051snldq0xyg7w0nzmxkqqsrpb.html?random=true</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269202391E12,
+					"expiration" : 1.269807191E12,
+					"assignments" : [
+						{
+							"assignmentId" : "12KCXUZUDT93IRF42C53KR0KUJCQ1H",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1J11L8HCQYKYL7RHI18D46YFS0KT8X",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269202487E12,
+							"acceptTime" : 1.269202424E12,
+							"submitTime" : 1.269202427E12,
+							"answer" : {
+								"randomOrder" : "0,1",
+								"improvement" : "\"The theme of loneliness features throughout many scenes in Of Mice and Men and is often the dominant theme of sections during this story.asdf\""
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269202404946E12,
+				"printOutput" : "hit completed: 1J11L8HCQYKYL7RHI18D46YFS0KT8X\r\n"
+			},
+			{
+				"creationTime" : 1.269202405091E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "118W6BKRJXCOEJM58E3EWNDSNYPOQH",
+					"hitTypeId" : "1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5",
+					"title" : "Vote on writing suggestions",
+					"description" : "Which sentence improvement should I use?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/o8rjeib0bvpsw5y0nn4podgowblb2mit.html?random=true</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269202391E12,
+					"expiration" : 1.269807191E12,
+					"assignments" : [
+						{
+							"assignmentId" : "18TTH5KI60GZSUTJPGJM8KFHS3QQ39",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "118W6BKRJXCOEJM58E3EWNDSNYPOQH",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269202497E12,
+							"acceptTime" : 1.269202435E12,
+							"submitTime" : 1.269202437E12,
+							"answer" : {
+								"improvement" : "\"In my mind for a theme to be pervasive is must be present during every element of the story.asdf\"",
+								"randomOrder" : "0,1"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.26920240524E12,
+				"printOutput" : "hit completed: 118W6BKRJXCOEJM58E3EWNDSNYPOQH\r\n"
+			},
+			{
+				"creationTime" : 1.269202405367E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1F8S1M4X1FXOQK15LTSE1DNXJKRORI",
+					"hitTypeId" : "1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5",
+					"title" : "Vote on writing suggestions",
+					"description" : "Which sentence improvement should I use?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/guztjau1shyin4lfboo034er15nshd94.html?random=true</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269202391E12,
+					"expiration" : 1.269807191E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1MHWZJ3RSN0FU818V4UDWGU13ZFTEH",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1F8S1M4X1FXOQK15LTSE1DNXJKRORI",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269202483E12,
+							"acceptTime" : 1.269202394E12,
+							"submitTime" : 1.269202423E12,
+							"answer" : {
+								"improvement" : "\"There are many themes that are present most of the way through such as sacrifice, friendship and comradship.\"",
+								"randomOrder" : "0,1"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269202405517E12,
+				"printOutput" : "hit completed: 1F8S1M4X1FXOQK15LTSE1DNXJKRORI\r\n"
+			},
+			{
+				"creationTime" : 1.269202405653E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1581SX2UMHOYZCARNTER42TQC62T9M",
+					"hitTypeId" : "1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5",
+					"title" : "Vote on writing suggestions",
+					"description" : "Which sentence improvement should I use?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/3fgmyujvklj88fbka0cywb93dgt588io.html?random=true</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269202392E12,
+					"expiration" : 1.269807192E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1X4WYLGDU0AJRO6240FNVT5H5GAQUH",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1581SX2UMHOYZCARNTER42TQC62T9M",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269202491E12,
+							"acceptTime" : 1.269202428E12,
+							"submitTime" : 1.269202431E12,
+							"answer" : {
+								"improvement" : "\"There are many themes that are present most of the way through such as sacrifice, friendship aasdfnd comradship.\"",
+								"randomOrder" : "0,1"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269202405779E12,
+				"printOutput" : "hit completed: 1581SX2UMHOYZCARNTER42TQC62T9M\r\n"
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.6000000000000001,
+	"hitsCreated" : 10
+}
+// end:d327
