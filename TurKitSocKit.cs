@@ -37,13 +37,10 @@ namespace Soylent
         }
 
         public void Listen() {
-            //IPHostEntry ipHostInfo = Dns.GetHostEntry("localhost");//Dns.GetHostName());
-            //IPEndPoint localEP = new IPEndPoint(ipHostInfo.AddressList[1], port);
             IPAddress address = IPAddress.Parse("127.0.0.1");
             IPEndPoint localEP = new IPEndPoint(address, port);
             Debug.WriteLine("Local address and port : " + localEP.ToString());
             serverSocket = new Socket(localEP.Address.AddressFamily, SocketType.Stream, ProtocolType.IP);
-            //serverSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, 1);
 
             try
             {
@@ -122,20 +119,15 @@ namespace Soylent
                         
                         HITData concernedHIT = Globals.Soylent.soylent.jobMap[receivedObject.job];
                         ShortenData shortenData = concernedHIT as ShortenData;
-                        //Debug.WriteLine("method: " + receivedObject.stage);
-                        //Debug.WriteLine("numCompleted: " + receivedObject.job);
+
                         if (shortenData != null)
                         {
                             shortenData.updateStatus(receivedObject);
                         }
-
-                        //Debug.WriteLine(receivedObject.numCompleted);
                     }
                     else if (messageType == "shorten")
                     {
                         TurKitShortn receivedObject = serializer.Deserialize<TurKitShortn>(incomingString);
-                        //Debug.WriteLine(receivedObject.start + " to " + receivedObject.end);
-                        //Debug.WriteLine(receivedObject.paragraph[0]);
                         Debug.WriteLine(receivedObject.options[0]);
                     }
                     Debug.WriteLine("got it!");
