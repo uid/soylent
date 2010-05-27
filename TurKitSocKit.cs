@@ -165,6 +165,7 @@ namespace Soylent
             public int totalRequested;
             public int paragraph;
             public double payment;
+            public string hitURL;
         }
 
         public class TurKitShortn

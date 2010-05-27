@@ -13,17 +13,7 @@ namespace Soylent
 {
     public class ShortenData: HITData
     {
-        //private Word.Range range;
         public List<Patch> patches;
-
-        public string originalText
-        {
-            get
-            {
-                object bookmark = (object)range.BookmarkID;
-                return ((Microsoft.Office.Interop.Word.Bookmark)Globals.Soylent.Application.ActiveDocument.Bookmarks.get_Item(ref bookmark)).Range.Text;
-            }
-        }
 
         public int shortestLength
         {

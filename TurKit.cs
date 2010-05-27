@@ -87,22 +87,12 @@ namespace Soylent
                 string output = null;
                 string error = null;
                 
-                
                 ExecuteProcess( @"java"
                                 , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000"
                                 , rootDirectory + @"\turkit"
                                 , out output
                                 , out error
-                               , false);
-                
-                /*
-                ExecuteProcess(@"cmd"
-                                , " /k java -jar TurKit-0.2.3.jar -f " + requestFile + " -a " + amazonKEY + " -s " + amazonSECRET + " -m sandbox -o 100 -h 1000"
-                                , rootDirectory + @"\turkit"
-                                , out output
-                                , out error
-                                , true);
-                 */
+                               , true);
 
                 // TODO: if we wait, we could delete the file...google the original file back w/ ExecuteProcess
             }
@@ -129,6 +119,12 @@ namespace Soylent
         ///<returns>Process exit code</returns>
         private void ExecuteProcess(string cmd, string cmdParams, string workingDirectory, out string output, out string error, bool showWindow)
         {
+            if (showWindow)
+            {
+                cmdParams = " /k " + cmd + cmdParams;
+                cmd = "cmd";
+            }
+
             using( Process process = Process.Start( new ProcessStartInfo( cmd, cmdParams ) ) )
             {
                 process.StartInfo.WorkingDirectory = workingDirectory;

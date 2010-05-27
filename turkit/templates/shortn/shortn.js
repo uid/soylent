@@ -230,7 +230,7 @@ function requestPatches(paragraph) {
 function joinPatches(cut_hit, paragraph, paragraph_index) {
 	var status = mturk.getHIT(cut_hit, true)
 	print("completed by " + status.assignments.length + " turkers");
-	socketStatus(FIND_STAGE, status.assignments.length, status.maxAssignments, paragraph_index, status.reward);
+	socketStatus(FIND_STAGE, status, paragraph_index);
 	
 	var hit = mturk.boundedWaitForHIT(cut_hit, wait_time, 6, search_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
