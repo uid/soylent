@@ -5,6 +5,7 @@ using System.Text;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Linq;
+using System.Threading;
 using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
@@ -21,6 +22,7 @@ namespace Soylent
         private string amazonSECRET;
         private string amazonKEY;
         private HITData hdata;
+        private Timer turkitLoopTimer;
 
         public TurKit(HITData hdata)
         {
@@ -56,19 +58,13 @@ namespace Soylent
                         j++;
                     }
                     i++;
-                    //System.Diagnostics.Trace.WriteLine("*************** end paragraph");
                 }
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string paragraphs = js.Serialize(pgraphs);
-                //System.Diagnostics.Trace.WriteLine(sentences);
                 paragraphs = "var paragraphs = " + paragraphs + ";";
-
-                //string text = data.range.Text;
-                //System.Diagnostics.Trace.WriteLine(text);
 
                 int request = hdata.job;
                 directory = rootDirectory + @"\turkit\templates\shortn\";
-                //string lastten = directory.Substring(directory.Length - 11, 10);
 
                 string requestLine = "var soylentJob = " + request + ";";
                 string[] script = File.ReadAllLines(directory + @"\shortn.template.js");
@@ -83,18 +79,13 @@ namespace Soylent
                 File.WriteAllLines(requestFile, newScript);
 
                 InitializeAmazonKeys();
-
-                string output = null;
-                string error = null;
                 
-                ExecuteProcess( @"java"
-                                , " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000"
-                                , rootDirectory + @"\turkit"
-                                , out output
-                                , out error
-                               , true);
-
-                // TODO: if we wait, we could delete the file...google the original file back w/ ExecuteProcess
+                ProcessInformation info = new ProcessInformation("java", 
+                    " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000", 
+                    rootDirectory + @"\turkit", 
+                    false);
+                TimerCallback callback = ExecuteProcess;
+                turkitLoopTimer = new Timer(callback, info, 0, 60 * 1000);  // starts the timer every 60 seconds
             }
         }
         
@@ -117,19 +108,22 @@ namespace Soylent
         ///<param name="timeout">Time to wait for process to end</param>
         ///<param name="stdOutput">Redirected standard output of process</param>
         ///<returns>Process exit code</returns>
-        private void ExecuteProcess(string cmd, string cmdParams, string workingDirectory, out string output, out string error, bool showWindow)
+        private void ExecuteProcess(object infoObject)
         {
-            if (showWindow)
+            string output, error;
+
+            ProcessInformation info = (ProcessInformation) infoObject;
+            if (info.showWindow)
             {
-                cmdParams = " /k " + cmd + cmdParams;
-                cmd = "cmd";
+                info.cmdParams = " /k " + info.cmd + info.cmdParams;
+                info.cmd = "cmd";
             }
 
-            using( Process process = Process.Start( new ProcessStartInfo( cmd, cmdParams ) ) )
+            using( Process process = Process.Start( new ProcessStartInfo( info.cmd, info.cmdParams ) ) )
             {
-                process.StartInfo.WorkingDirectory = workingDirectory;
+                process.StartInfo.WorkingDirectory = info.workingDirectory;
                 process.StartInfo.UseShellExecute = false;
-                if (!showWindow)
+                if (!info.showWindow)
                 {
                     process.StartInfo.CreateNoWindow = true;
                     process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -137,16 +131,32 @@ namespace Soylent
                     process.StartInfo.RedirectStandardError = true;
                 }
                 process.Start( );
-                if (!showWindow)
+                if (!info.showWindow)
                 {
                     output = process.StandardOutput.ReadToEnd();
                     error = process.StandardError.ReadToEnd();
                 }
                 else
                 {
-                    output = error = null;
+                    output = null;
+                    error = null;
                 }
-                process.WaitForExit();
+                //process.WaitForExit();
+            }
+        }
+
+        private class ProcessInformation
+        {
+            public string cmd { get; set; }
+            public string cmdParams { get; set; }
+            public string workingDirectory { get ; set; }
+            public bool showWindow { get; set; }
+
+            public ProcessInformation(string cmd, string cmdParams, string workingDirectory, bool showWindow) {
+                this.cmd = cmd;
+                this.cmdParams = cmdParams;
+                this.workingDirectory = workingDirectory;
+                this.showWindow = showWindow;
             }
         }
     }
