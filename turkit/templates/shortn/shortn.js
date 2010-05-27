@@ -35,12 +35,12 @@ if (typeof(soylentJob) == "undefined") {
 
 // main program
 function main() {
-	var output = new java.io.FileWriter("active_hits\shortn-results." + soylentJob + ".html");
-	var lag_output = new java.io.FileWriter("active-hits\shortn-" + soylentJob + "-fix_errors_lag.csv");
+	var output = new java.io.FileWriter("active-hits/shortn-results." + soylentJob + ".html");
+	var lag_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_lag.csv");
 	lag_output.write("Stage,Assignment,Wait Type,Time,Paragraph\n");
-	var payment_output = new java.io.FileWriter("active-hits\shortn-" + soylentJob + "-fix_errors_payment.csv");
+	var payment_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_payment.csv");
 	payment_output.write("Stage,Assignment,Cost,Paragraph\n");
-	var patchesOutput = new java.io.FileWriter("active_hits\shortn-patches." + soylentJob +".json");	
+	var patchesOutput = new java.io.FileWriter("active-hits/shortn-patches." + soylentJob +".json");	
 	
 	if (debug)
 	{
