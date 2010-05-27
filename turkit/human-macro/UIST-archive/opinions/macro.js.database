@@ -1,0 +1,155 @@
+// begin:1bae
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.26974121408E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269741214085E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ygtekodye3c2u6oq4wgmp98dcwrui027.html",
+						"returnTime" : 1.269741214195E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ygtekodye3c2u6oq4wgmp98dcwrui027.html\r\n"
+					},
+					{
+						"creationTime" : 1.269741214197E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1IG7QO03UP8J0J1UP56XWDS4MCDJG1",
+						"returnTime" : 1.269741214737E12,
+						"printOutput" : "created HIT: 1IG7QO03UP8J0J1UP56XWDS4MCDJG1\r\n        url: https://www.mturk.com/mturk/preview?groupId=1PCVCXTQA8DBBQ9241T79J79KQU130\r\n"
+					},
+					{
+						"creationTime" : 1.269741214943E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1IG7QO03UP8J0J1UP56XWDS4MCDJG1",
+							"hitTypeId" : "1PCVCXTQA8DBBQ9241T79J79KQU130",
+							"title" : "Opinions on my blog post",
+							"description" : "What could I do to make it more persuasive?",
+							"keywords" : "undefined",
+							"reward" : 0.15,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ygtekodye3c2u6oq4wgmp98dcwrui027.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 600,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269741264E12,
+							"expiration" : 1.270346064E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1JJND6USASAYRUCEWXL18YDZFU8XIW",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "1IG7QO03UP8J0J1UP56XWDS4MCDJG1",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269741486E12,
+									"acceptTime" : 1.269741377E12,
+									"submitTime" : 1.269741426E12,
+									"answer" : {
+										"userText" : "Take a look at your computer.Think about how you launch programs, edit documents, and browse the web.Don\'t you feel a bit lonely? There are millions of people using the same software you use, but your computer interface only hears one of them: you. Every time you launch a program or write an email, you do it in a void.Those millions of people have probably done exactly what you\'re doing maybe even more skillfully than you but your computer doesn\'t really care."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269741669E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1ESSP6DM2DZ7XXDK641BBBFMMMP4HW",
+									"workerId" : "A1TYV8UYNBQAHE",
+									"hitId" : "1IG7QO03UP8J0J1UP56XWDS4MCDJG1",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269742402E12,
+									"acceptTime" : 1.26974229E12,
+									"submitTime" : 1.269742342E12,
+									"answer" : {
+										"userText" : "Take a look at your computer. Think about how you launch programs, edit documents, and browse the web. Don\'t you feel a bit lonely? There are millions of people using the same software you use but your computer interface only hears one of them: you. Every time you launch a program or write an email, you do it in a void. Those millions of people have probably done exactly what you\'re doing  maybe even more skillfully than you but your computer doesn\'t really care."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269742568E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1CWSMOB3HD0BLUIVB60Y88TW34LM5U",
+									"workerId" : "A3I22FTRJLDXK5",
+									"hitId" : "1IG7QO03UP8J0J1UP56XWDS4MCDJG1",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269747136E12,
+									"acceptTime" : 1.269746862E12,
+									"submitTime" : 1.269747076E12,
+									"answer" : {
+										"userText" : "To improve this, you should try adding a little more emotion to increase the impact on the recipient as you intended, like for example \" Look at you computer keenly, it feels nothing, looking back at you, waiting to convey all your mistakes online without any feelings\" staff like that. The impact it is intended to create should be big"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26974737E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1FZDZU1JTVW7COMN5MC8N9NZ3DNG6Z",
+									"workerId" : "A2C6OW5GIP7QLZ",
+									"hitId" : "1IG7QO03UP8J0J1UP56XWDS4MCDJG1",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269752584E12,
+									"acceptTime" : 1.269752025E12,
+									"submitTime" : 1.269752524E12,
+									"answer" : {
+										"userText" : "Take a look at your programs,just think how you lanch programs, edit documents, and browse the web. There are millions of people using the same software you use, but your computer interface only take commands from you only.Every time you launch a program or write an email, you do it in a void. Those millions of people have probably done exactly what you\'re doing -- maybe even more skillfully than you! -- but you are ultimate master for your computer to give a commands rest other doesn\'t really care."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269752782E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1OQ5CY84079Q2FLSI2360NUZ3K27YS",
+									"workerId" : "A3K302ALIEEZ17",
+									"hitId" : "1IG7QO03UP8J0J1UP56XWDS4MCDJG1",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269761915E12,
+									"acceptTime" : 1.269761605E12,
+									"submitTime" : 1.269761855E12,
+									"answer" : {
+										"userText" : "\"but your computer doesn\'t really care\" is the weakest part. The best word could be \'But your computer has limited role in your endeavor\'. \r\n\r\nSimilarly the sentence \"Don\'t you feel a bit lonely?\" could be replaced with \"Don\'t you feel a bit lonely and your work is repetitive?\""
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269761878283E12,
+						"printOutput" : "hit completed: 1IG7QO03UP8J0J1UP56XWDS4MCDJG1\r\n"
+					},
+					{
+						"creationTime" : 1.269761878601E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269761879094E12,
+						"printOutput" : "disabled HIT: 1IG7QO03UP8J0J1UP56XWDS4MCDJG1\r\n"
+					},
+					{
+						"creationTime" : 1.269761879099E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269761879212E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ygtekodye3c2u6oq4wgmp98dcwrui027.html\r\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.75,
+	"hitsCreated" : 1
+}
+// end:1bae

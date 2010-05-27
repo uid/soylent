@@ -1,0 +1,159 @@
+// begin:5996
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269404590482E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269404590487E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l0rtbvpr38dr2aco7iggc7kkcmc03emt.html",
+						"returnTime" : 1.26940459357E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l0rtbvpr38dr2aco7iggc7kkcmc03emt.html\r\n"
+					},
+					{
+						"creationTime" : 1.269404593572E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1OIG51LCSZ1UULGXV9KN1CG3MHYEUH",
+						"returnTime" : 1.269404593808E12,
+						"printOutput" : "created HIT: 1OIG51LCSZ1UULGXV9KN1CG3MHYEUH\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=165GJCP6GFLN44Q1M6GSL2KYEPW7DC\r\n"
+					},
+					{
+						"creationTime" : 1.269404593926E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1OIG51LCSZ1UULGXV9KN1CG3MHYEUH",
+							"hitTypeId" : "165GJCP6GFLN44Q1M6GSL2KYEPW7DC",
+							"title" : "Fix Writing Errors",
+							"description" : "My grammar checker doesn\'t know what to do with these.",
+							"keywords" : "undefined",
+							"reward" : 0.05,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l0rtbvpr38dr2aco7iggc7kkcmc03emt.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 1,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269404633E12,
+							"expiration" : 1.270009433E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1NRKPPQ8T7V8CTB6OP99QZW6HF48IJ",
+									"workerId" : "AC4FRIRZ7913H",
+									"hitId" : "1OIG51LCSZ1UULGXV9KN1CG3MHYEUH",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.2694047E12,
+									"acceptTime" : 1.269404636E12,
+									"submitTime" : 1.26940464E12,
+									"answer" : {
+										"newText" : "The theme of loneliness featured throughout many scenes in Of Mice and Men and is often the dominant theme of sections during this story."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.26940460312E12,
+						"printOutput" : "hit completed: 1OIG51LCSZ1UULGXV9KN1CG3MHYEUH\r\n"
+					},
+					{
+						"creationTime" : 1.269404625636E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/cvpzqfgt504z556wmp6wxa8h6tgkbrpy.html",
+						"returnTime" : 1.269404625885E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/cvpzqfgt504z556wmp6wxa8h6tgkbrpy.html\r\n"
+					},
+					{
+						"creationTime" : 1.269404625886E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1Z2MNJ6C40GU705X0ZUSXYIM0O7EV6",
+						"returnTime" : 1.269404626095E12,
+						"printOutput" : "created HIT: 1Z2MNJ6C40GU705X0ZUSXYIM0O7EV6\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1EDNQ8EVRA2X264F6YI0NUIAQ9U4T8\r\n"
+					},
+					{
+						"creationTime" : 1.26940462623E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1Z2MNJ6C40GU705X0ZUSXYIM0O7EV6",
+							"hitTypeId" : "1EDNQ8EVRA2X264F6YI0NUIAQ9U4T8",
+							"title" : "Vote on writing suggestions",
+							"description" : "Which sentence improvement should I use?",
+							"keywords" : "undefined",
+							"reward" : 0.03,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/cvpzqfgt504z556wmp6wxa8h6tgkbrpy.html?random=true</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 1,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269404665E12,
+							"expiration" : 1.270009465E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1YNR1EU1ZFKC89QFFD1603YOCDKABG",
+									"workerId" : "AVQI8ULTH36W4",
+									"hitId" : "1Z2MNJ6C40GU705X0ZUSXYIM0O7EV6",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269404794E12,
+									"acceptTime" : 1.26940473E12,
+									"submitTime" : 1.269404734E12,
+									"answer" : {
+										"randomOrder" : "temp",
+										"improvement" : "The%20theme%20of%20loneliness%20featured%20throughout%20many%20scenes%20in%20Of%20Mice%20and%20Men%20and%20is%20often%20the%20dominant%20theme%20of%20sections%20during%20this%20story."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269404699386E12,
+						"printOutput" : "hit completed: 1Z2MNJ6C40GU705X0ZUSXYIM0O7EV6\r\n"
+					},
+					{
+						"creationTime" : 1.269404773584E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269404773684E12,
+						"printOutput" : "disabled HIT: 1OIG51LCSZ1UULGXV9KN1CG3MHYEUH\r\n"
+					},
+					{
+						"creationTime" : 1.269404773685E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.2694047738E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l0rtbvpr38dr2aco7iggc7kkcmc03emt.html\r\n"
+					},
+					{
+						"creationTime" : 1.269404773948E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269404774014E12,
+						"printOutput" : "disabled HIT: 1Z2MNJ6C40GU705X0ZUSXYIM0O7EV6\r\n"
+					},
+					{
+						"creationTime" : 1.269404774016E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.08,
+	"hitsCreated" : 2
+}
+// end:5996

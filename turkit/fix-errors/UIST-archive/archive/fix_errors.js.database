@@ -1,0 +1,1257 @@
+// begin:31b0
+__HITs = {
+	"real:1J5JKWC9QD1KTO7X5XKPERA7W57IDD" : {
+		"url" : "https://www.mturk.com/mturk/preview?groupId=128Q0YZRAIZSJOXAHXIBC6NV9LHVMY"
+	},
+	"real:118W6BKRJXCOEJM58E3EYNDSRTWOQK" : {
+		"url" : "https://www.mturk.com/mturk/preview?groupId=1EVQ4F6YZH6PFURX44J8TG0107MVDD"
+	}
+}
+__S3_Objects = {
+	"http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/tuh2r1eff43e95wrsmpn0owjo7hxp4wq.html" : {
+	},
+	"http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/w53b68ltihtlxrm6q8qm39hnoxckerxl.html" : {
+	}
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269731047651E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269731047656E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/94nn7xqbghxmcwgyjx79xd4750o0n38n.html",
+						"returnTime" : 1.26973104775E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/94nn7xqbghxmcwgyjx79xd4750o0n38n.html\r\n"
+					},
+					{
+						"creationTime" : 1.269731047751E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+						"returnTime" : 1.269731048179E12,
+						"printOutput" : "created HIT: 13WZZCYMZD50TFYA1KZT1WXI7S48P8\r\n        url: https://www.mturk.com/mturk/preview?groupId=1JYL8SLRENO8D6FPHLHWCT869GRVLW\r\n"
+					},
+					{
+						"creationTime" : 1.269731048401E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+							"hitTypeId" : "1JYL8SLRENO8D6FPHLHWCT869GRVLW",
+							"title" : "Find bad writing",
+							"description" : "This paragraph needs some help finding errors. You\'re way better than Microsoft Word\'s grammar checker.",
+							"keywords" : "undefined",
+							"reward" : 0.06,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/94nn7xqbghxmcwgyjx79xd4750o0n38n.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 10,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269731097E12,
+							"expiration" : 1.270335897E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1GYRLZTM8UZMVH4LLNTNOQ21E8VAIZ",
+									"workerId" : "A2RQW6XF9H6GW8",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269731352E12,
+									"acceptTime" : 1.269731174E12,
+									"submitTime" : 1.269731292E12,
+									"answer" : {
+										"brackets" : "However, [[while GUI made using computers be more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently]].  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269731466E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1NAPDYNHSGQGI3TVGUZXRB3QAFW2DJ",
+									"workerId" : "A2HM35CWB7IIFM",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269731412E12,
+									"acceptTime" : 1.269731256E12,
+									"submitTime" : 1.269731352E12,
+									"answer" : {
+										"brackets" : "However, while GUI made using computers [[be more]] intuitive and easier to learn, it didn\'t let people be able to control computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application [[is a big black box, which usually have]] no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269731466E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "13MHY6EK8GRI9E16Z3S6EYSOMDWSNT",
+									"workerId" : "A29T08K39MCP2B",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269731508E12,
+									"acceptTime" : 1.269731332E12,
+									"submitTime" : 1.269731448E12,
+									"answer" : {
+										"brackets" : "However, while [[GUI]] made using computers be more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269731771E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1APUL1SR821ULTMY8WG7S62KOH5T78",
+									"workerId" : "A21G31QPD13YQM",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269731962E12,
+									"acceptTime" : 1.269731888E12,
+									"submitTime" : 1.269731902E12,
+									"answer" : {
+										"brackets" : "However, [[while GUI made using computers be more intuitive and easier to learn]], it didn\'t let people be able to control computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269732067E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1O41PMIWZ09A7CX0LG5HRAAPTUL2QO",
+									"workerId" : "AI11CQ3COUF5V",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269732012E12,
+									"acceptTime" : 1.269731885E12,
+									"submitTime" : 1.269731952E12,
+									"answer" : {
+										"brackets" : "However, while GUI made using computers [[be more intuitive]] and easier to learn, it didn\'t let people be able to control computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually [[have]] no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269732068E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1Z174G0UGJ5HPEZ7AHW1VKCNY7YO4X",
+									"workerId" : "A2AVWXK2DZHYCM",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269732181E12,
+									"acceptTime" : 1.269731841E12,
+									"submitTime" : 1.269732121E12,
+									"answer" : {
+										"brackets" : "However, while GUI made using computers [[be]] more intuitive and easier to learn, it didn\'t [[let people be able to]] control computers efficiently.  [[Masses only can]] use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is [[a little chance]] that she can write a program to automate everything.  Why is there only [[a little chance?]]  In fact, each GUI application is a big black box, which usually [[have]] no outward interfaces for connecting to other programs.  In other words, this [[truth]] builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work [[in front of a computer.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269732369E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "14DF3JHWBX570M14QFEJGYF1M5OTFC",
+									"workerId" : "A23BF2Z5VLQ2AV",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269732531E12,
+									"acceptTime" : 1.269732415E12,
+									"submitTime" : 1.269732471E12,
+									"answer" : {
+										"brackets" : "However, while GUI made using computers be more intuitive and easier to learn, it [[didn\'t let people be able to control]] computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269732669E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "177B0RRPJT1SK5E9EOT7R0IGMQE0LD",
+									"workerId" : "A2XVLENAJYX691",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269732959E12,
+									"acceptTime" : 1.269732837E12,
+									"submitTime" : 1.269732899E12,
+									"answer" : {
+										"brackets" : "[[However, while GUI made using computers be more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently.]]  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269732966E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "19PR2E4QTQHTLPTNQQL8U9Y3FZTJ2E",
+									"workerId" : "AEWD6DSAQW37X",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269733486E12,
+									"acceptTime" : 1.269733179E12,
+									"submitTime" : 1.269733426E12,
+									"answer" : {
+										"brackets" : "However, while GUI [[made using computers be more intuitive]] and easier to learn, it didn\'t [[let people be able]] to control computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  [[In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday]], the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, [[there is a little chance]] that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a [[big black box, which usually have]] no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26973357E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12KCXUZUDT93IRF42C53MR0K1O8Q1W",
+									"workerId" : "AMQF6G93SKYEW",
+									"hitId" : "13WZZCYMZD50TFYA1KZT1WXI7S48P8",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269736765E12,
+									"acceptTime" : 1.269736628E12,
+									"submitTime" : 1.269736705E12,
+									"answer" : {
+										"brackets" : "However, while GUI made using computers [[be more]] intuitive and easier to learn, it didn\'t [[let people be able]] to control computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete [[her job everyday,]] the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269736737983E12,
+						"printOutput" : "hit completed: 13WZZCYMZD50TFYA1KZT1WXI7S48P8\r\n"
+					},
+					{
+						"creationTime" : 1.269736738298E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269736739079E12,
+						"printOutput" : "disabled HIT: 13WZZCYMZD50TFYA1KZT1WXI7S48P8\r\n"
+					},
+					{
+						"creationTime" : 1.26973673908E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269736739192E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/94nn7xqbghxmcwgyjx79xd4750o0n38n.html\r\n"
+					},
+					{
+						"creationTime" : 1.269736740468E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.26973674047E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p9icpkdzjk2n9owf0c8uingngk5y4ygn.html",
+								"returnTime" : 1.269736740572E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p9icpkdzjk2n9owf0c8uingngk5y4ygn.html\r\n"
+							},
+							{
+								"creationTime" : 1.269736740573E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "19UGWECW4NJ9MTQH17VJ8NABABQD0D",
+								"returnTime" : 1.269736740854E12,
+								"printOutput" : "created HIT: 19UGWECW4NJ9MTQH17VJ8NABABQD0D\r\n        url: https://www.mturk.com/mturk/preview?groupId=128Q0YZRAIZSJOXAHXIBC6NV9LHVMY\r\n"
+							},
+							{
+								"creationTime" : 1.26973674105E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+								"returnValue" : {
+									"hitId" : "19UGWECW4NJ9MTQH17VJ8NABABQD0D",
+									"hitTypeId" : "128Q0YZRAIZSJOXAHXIBC6NV9LHVMY",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p9icpkdzjk2n9owf0c8uingngk5y4ygn.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 5,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 60,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Reviewable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.26973679E12,
+									"expiration" : 1.27034159E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1V7Q0YZRAIZSJOXAHXIBC6NVGRIVM3",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "19UGWECW4NJ9MTQH17VJ8NABABQD0D",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269736937E12,
+											"acceptTime" : 1.269736853E12,
+											"submitTime" : 1.269736877E12,
+											"answer" : {
+												"description" : "be able to is unnecessary.",
+												"newText" : "However, while GUI made using computers be more intuitive and easier to learn, it didn\'t let people control computers efficiently."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737168E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1JUHEM8ELOLPNJLG3TG5PXPTPTGLMA",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "19UGWECW4NJ9MTQH17VJ8NABABQD0D",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269736964E12,
+											"acceptTime" : 1.269736854E12,
+											"submitTime" : 1.269736904E12,
+											"answer" : {
+												"description" : "However, while GUI made using computers be more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently.",
+												"newText" : "Masses only can use the software developed by software companies, unless they know how to write programs. In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time. But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything. Why is there only a little chance? In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs. In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently. People still do much tedious and repetitive work in front of a computer."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737169E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "10W5U4WU3PYEH3AOVPFG5107Z1EXF1",
+											"workerId" : "A1WB17ZFGUXEW2",
+											"hitId" : "19UGWECW4NJ9MTQH17VJ8NABABQD0D",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269737173E12,
+											"acceptTime" : 1.269737062E12,
+											"submitTime" : 1.269737113E12,
+											"answer" : {
+												"description" : "The word \"be\" should not be there in both cases.",
+												"newText" : "However, while GUI made using computers more intuitive and easier to learn, it didn\'t make people able to control computers efficiently."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737466E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1PQQSBOW8D66WYMT7Z31JYDN4PDNQ1",
+											"workerId" : "A3P24NWYZX4IB2",
+											"hitId" : "19UGWECW4NJ9MTQH17VJ8NABABQD0D",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269737345E12,
+											"acceptTime" : 1.26973715E12,
+											"submitTime" : 1.269737285E12,
+											"answer" : {
+												"description" : "awkward sentence",
+												"newText" : "While a GUI made computers more intuitive and easier to learn, it didn\'t let users control computers efficiently."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737467E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "11QNJJERYB4R4IVKWB8Y12GTWFQ8DU",
+											"workerId" : "A2MN1MDFIH9CEW",
+											"hitId" : "19UGWECW4NJ9MTQH17VJ8NABABQD0D",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269737738E12,
+											"acceptTime" : 1.269737609E12,
+											"submitTime" : 1.269737678E12,
+											"answer" : {
+												"newText" : "However, while GUI made using computers was more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently.",
+												"description" : "grammatical error \'be\' replaced with \'was\'"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : true
+								},
+								"returnTime" : 1.269737699075E12,
+								"printOutput" : "hit completed: 19UGWECW4NJ9MTQH17VJ8NABABQD0D\r\n"
+							},
+							{
+								"creationTime" : 1.269737700451E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/19fl6926tioge41aeaiekfvpnancsvnv.html",
+								"returnTime" : 1.269737700572E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/19fl6926tioge41aeaiekfvpnancsvnv.html\r\n"
+							},
+							{
+								"creationTime" : 1.269737700573E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1NF3YYOGURUG4R6QWZEINXYG8PWSTX",
+								"returnTime" : 1.269737700919E12,
+								"printOutput" : "created HIT: 1NF3YYOGURUG4R6QWZEINXYG8PWSTX\r\n        url: https://www.mturk.com/mturk/preview?groupId=1EVQ4F6YZH6PFURX44J8TG0107MVDD\r\n"
+							},
+							{
+								"creationTime" : 1.269737701176E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+								"returnValue" : {
+									"hitId" : "1NF3YYOGURUG4R6QWZEINXYG8PWSTX",
+									"hitTypeId" : "1EVQ4F6YZH6PFURX44J8TG0107MVDD",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.03,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/19fl6926tioge41aeaiekfvpnancsvnv.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 5,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 60,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Reviewable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.26973775E12,
+									"expiration" : 1.27034255E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1B4STW0JCIVJ3PL2HF4N2JFM879RUZ",
+											"workerId" : "A22F86JLD8WA1D",
+											"hitId" : "1NF3YYOGURUG4R6QWZEINXYG8PWSTX",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269738493E12,
+											"acceptTime" : 1.269738372E12,
+											"submitTime" : 1.269738433E12,
+											"answer" : {
+												"reason" : "The%20word%20%22be%22%20should%20not%20be%20there%20in%20both%20cases.|be%20able%20to%20is%20unnecessary.",
+												"fix" : "While%20a%20GUI%20made%20computers%20more%20intuitive%20and%20easier%20to%20learn%2C%20it%20didn%27t%20let%20users%20control%20computers%20efficiently.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738668E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1K5ZX1E87DWQY9VJN3E9Z8P9597H0P",
+											"workerId" : "A1HI3IYQNISJOZ",
+											"hitId" : "1NF3YYOGURUG4R6QWZEINXYG8PWSTX",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269738503E12,
+											"acceptTime" : 1.269738345E12,
+											"submitTime" : 1.269738443E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"reason" : "awkward%20sentence|The%20word%20%22be%22%20should%20not%20be%20there%20in%20both%20cases.|be%20able%20to%20is%20unnecessary.|grammatical%20error%20%27be%27%20replaced%20with%20%27was%27",
+												"fix" : "While%20a%20GUI%20made%20computers%20more%20intuitive%20and%20easier%20to%20learn%2C%20it%20didn%27t%20let%20users%20control%20computers%20efficiently.|However%2C%20while%20GUI%20made%20using%20computers%20be%20more%20intuitive%20and%20easier%20to%20learn%2C%20it%20didn%27t%20let%20people%20control%20computers%20efficiently."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738668E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1RNWA5WMLT5AP9A85G09VH6BRRBJRV",
+											"workerId" : "A23C8PF66JMSNV",
+											"hitId" : "1NF3YYOGURUG4R6QWZEINXYG8PWSTX",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269738537E12,
+											"acceptTime" : 1.269738374E12,
+											"submitTime" : 1.269738477E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"fix" : "While%20a%20GUI%20made%20computers%20more%20intuitive%20and%20easier%20to%20learn%2C%20it%20didn%27t%20let%20users%20control%20computers%20efficiently.",
+												"reason" : "grammatical%20error%20%27be%27%20replaced%20with%20%27was%27|awkward%20sentence|be%20able%20to%20is%20unnecessary."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738668E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1WNHVUONFSJB1EDKAQBQ1618UA597R",
+											"workerId" : "A1MEDNRTAZ8LEM",
+											"hitId" : "1NF3YYOGURUG4R6QWZEINXYG8PWSTX",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269738661E12,
+											"acceptTime" : 1.269738387E12,
+											"submitTime" : 1.269738601E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"fix" : "While%20a%20GUI%20made%20computers%20more%20intuitive%20and%20easier%20to%20learn%2C%20it%20didn%27t%20let%20users%20control%20computers%20efficiently.",
+												"reason" : "The%20word%20%22be%22%20should%20not%20be%20there%20in%20both%20cases."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738669E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1418JR4X02LCZMKKCZFBOEJRL2EGSF",
+											"workerId" : "A31J3DB7WF55NF",
+											"hitId" : "1NF3YYOGURUG4R6QWZEINXYG8PWSTX",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269740101E12,
+											"acceptTime" : 1.269739958E12,
+											"submitTime" : 1.269740041E12,
+											"answer" : {
+												"reason" : "be%20able%20to%20is%20unnecessary.|grammatical%20error%20%27be%27%20replaced%20with%20%27was%27",
+												"randomOrder" : "temp",
+												"fix" : "However%2C%20while%20GUI%20made%20using%20computers%20was%20more%20intuitive%20and%20easier%20to%20learn%2C%20it%20didn%27t%20let%20people%20be%20able%20to%20control%20computers%20efficiently.|While%20a%20GUI%20made%20computers%20more%20intuitive%20and%20easier%20to%20learn%2C%20it%20didn%27t%20let%20users%20control%20computers%20efficiently.|However%2C%20while%20GUI%20made%20using%20computers%20be%20more%20intuitive%20and%20easier%20to%20learn%2C%20it%20didn%27t%20let%20people%20control%20computers%20efficiently."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : true
+								},
+								"returnTime" : 1.269740059773E12,
+								"printOutput" : "hit completed: 1NF3YYOGURUG4R6QWZEINXYG8PWSTX\r\n"
+							},
+							{
+								"creationTime" : 1.269740063255E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269740063472E12,
+								"printOutput" : "disabled HIT: 19UGWECW4NJ9MTQH17VJ8NABABQD0D\r\n"
+							},
+							{
+								"creationTime" : 1.269740063473E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.26974006357E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p9icpkdzjk2n9owf0c8uingngk5y4ygn.html\r\n"
+							},
+							{
+								"creationTime" : 1.269740063857E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269740064271E12,
+								"printOutput" : "disabled HIT: 1NF3YYOGURUG4R6QWZEINXYG8PWSTX\r\n"
+							},
+							{
+								"creationTime" : 1.269740064272E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269740064318E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/19fl6926tioge41aeaiekfvpnancsvnv.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269736741053E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269736741054E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/tuh2r1eff43e95wrsmpn0owjo7hxp4wq.html",
+								"returnTime" : 1.26973674112E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/tuh2r1eff43e95wrsmpn0owjo7hxp4wq.html\r\n"
+							},
+							{
+								"creationTime" : 1.269736741121E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1J5JKWC9QD1KTO7X5XKPERA7W57IDD",
+								"returnTime" : 1.269736741289E12,
+								"printOutput" : "created HIT: 1J5JKWC9QD1KTO7X5XKPERA7W57IDD\r\n        url: https://www.mturk.com/mturk/preview?groupId=128Q0YZRAIZSJOXAHXIBC6NV9LHVMY\r\n"
+							},
+							{
+								"creationTime" : 1.269736741497E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+								"returnValue" : {
+									"hitId" : "1J5JKWC9QD1KTO7X5XKPERA7W57IDD",
+									"hitTypeId" : "128Q0YZRAIZSJOXAHXIBC6NV9LHVMY",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/tuh2r1eff43e95wrsmpn0owjo7hxp4wq.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 5,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 60,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Reviewable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.26973679E12,
+									"expiration" : 1.27034159E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1TS11UEBJAP0JX574PE4BUXFJJ2FDH",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "1J5JKWC9QD1KTO7X5XKPERA7W57IDD",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269737049E12,
+											"acceptTime" : 1.269736912E12,
+											"submitTime" : 1.269736989E12,
+											"answer" : {
+												"description" : "In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday",
+												"newText" : "However, while GUI made using computers be more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently. Masses only can use the software developed by software companies, unless they know how to write programs.  the only thing she can do is simply to click through those buttons by hand every time. But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything. Why is there only a little chance? In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs. In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently. People still do much tedious and repetitive work in front of a computer."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737169E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "17CNQ8EVRA2X264F6YI0PUIAXFH4T1",
+											"workerId" : "A6GVEPH4VJWDV",
+											"hitId" : "1J5JKWC9QD1KTO7X5XKPERA7W57IDD",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269737164E12,
+											"acceptTime" : 1.269737068E12,
+											"submitTime" : 1.269737104E12,
+											"answer" : {
+												"newText" : "In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is to simply click through those buttons by hand every time.",
+												"description" : "word order"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737466E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1PC0CYW6Y5JD6WTLC2IWBOZAJ62TML",
+											"workerId" : "A2MN1MDFIH9CEW",
+											"hitId" : "1J5JKWC9QD1KTO7X5XKPERA7W57IDD",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.26973761E12,
+											"acceptTime" : 1.269737478E12,
+											"submitTime" : 1.26973755E12,
+											"answer" : {
+												"description" : "no errors",
+												"newText" : "In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737766E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1C521YF0KOZRIWYTLJBYJPLSWD4BH5",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "1J5JKWC9QD1KTO7X5XKPERA7W57IDD",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269738127E12,
+											"acceptTime" : 1.269737873E12,
+											"submitTime" : 1.269738067E12,
+											"answer" : {
+												"newText" : "In other words, if a nonprogrammer needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply click through those buttons by hand every time.",
+												"description" : "one who knows can be shortened to \"someone\""
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738366E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1LSHFVG6YS3P4FK85OD0NGFKOK22N7",
+											"workerId" : "A1TYV8UYNBQAHE",
+											"hitId" : "1J5JKWC9QD1KTO7X5XKPERA7W57IDD",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269742471E12,
+											"acceptTime" : 1.26974237E12,
+											"submitTime" : 1.269742411E12,
+											"answer" : {
+												"newText" : "However, while GUI made using computers be more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently. Masses only can use the software developed by software companies, unless they know how to write programs. In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time. But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything. Why is there only a little chance? In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs. In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently. People still do much tedious and repetitive work in front of a computer.",
+												"description" : "In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday,"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : true
+								},
+								"returnTime" : 1.269742426677E12,
+								"printOutput" : "hit completed: 1J5JKWC9QD1KTO7X5XKPERA7W57IDD\r\n"
+							},
+							{
+								"creationTime" : 1.269742428051E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/w53b68ltihtlxrm6q8qm39hnoxckerxl.html",
+								"returnTime" : 1.269742428197E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/w53b68ltihtlxrm6q8qm39hnoxckerxl.html\r\n"
+							},
+							{
+								"creationTime" : 1.269742428197E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "118W6BKRJXCOEJM58E3EYNDSRTWOQK",
+								"returnTime" : 1.269742428446E12,
+								"printOutput" : "created HIT: 118W6BKRJXCOEJM58E3EYNDSRTWOQK\r\n        url: https://www.mturk.com/mturk/preview?groupId=1EVQ4F6YZH6PFURX44J8TG0107MVDD\r\n"
+							},
+							{
+								"creationTime" : 1.269742428646E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269736741499E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.2697367415E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/42g18zrunqvhp7azu612l3uigzjby1a3.html",
+								"returnTime" : 1.26973674159E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/42g18zrunqvhp7azu612l3uigzjby1a3.html\r\n"
+							},
+							{
+								"creationTime" : 1.269736741591E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "127HI3FLANSMJPF3Q0H2672ZD91LDU",
+								"returnTime" : 1.269736741783E12,
+								"printOutput" : "created HIT: 127HI3FLANSMJPF3Q0H2672ZD91LDU\r\n        url: https://www.mturk.com/mturk/preview?groupId=128Q0YZRAIZSJOXAHXIBC6NV9LHVMY\r\n"
+							},
+							{
+								"creationTime" : 1.26973674197E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+								"returnValue" : {
+									"hitId" : "127HI3FLANSMJPF3Q0H2672ZD91LDU",
+									"hitTypeId" : "128Q0YZRAIZSJOXAHXIBC6NV9LHVMY",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/42g18zrunqvhp7azu612l3uigzjby1a3.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 5,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 60,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Reviewable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269736791E12,
+									"expiration" : 1.270341591E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1ZBWK4PHNO422XCA2H26ZTO60ACNCW",
+											"workerId" : "A3P24NWYZX4IB2",
+											"hitId" : "127HI3FLANSMJPF3Q0H2672ZD91LDU",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269736958E12,
+											"acceptTime" : 1.269736838E12,
+											"submitTime" : 1.269736898E12,
+											"answer" : {
+												"newText" : "But if she happens to be a computer programmer, there is little chance that she can write a program to automate everything.",
+												"description" : "unnecessary word added"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737169E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "16XXHAVT4J0TJ5NQO9G7AKLMD2HNH5",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "127HI3FLANSMJPF3Q0H2672ZD91LDU",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.26973697E12,
+											"acceptTime" : 1.269736887E12,
+											"submitTime" : 1.26973691E12,
+											"answer" : {
+												"newText" : "But if she happens to be a computer programmer, there is little chance that she can write a program to automate everything.",
+												"description" : "\"a\" is not necessary before \"little chance\""
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737169E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1E1F924WWOJSIVWTWM85K8J4VV0VZK",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "127HI3FLANSMJPF3Q0H2672ZD91LDU",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269737158E12,
+											"acceptTime" : 1.26973699E12,
+											"submitTime" : 1.269737098E12,
+											"answer" : {
+												"newText" : "However, while GUI made using computers be more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently. Masses only can use the software developed by software companies, unless they know how to write programs. In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time. But if she happens to be a computer programmer,  that she can write a program to automate everything. Why is there only a little chance? In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs. In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently. People still do much tedious and repetitive work in front of a computer.\r\nHowever, while GUI made using computers be more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently. Masses only can use the software developed by software companies, unless they know how to write programs. In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time. But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything. Why is there only a little chance? In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs. In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently. People still do much tedious and repetitive work in front of a computer..",
+												"description" : "there is a little chance"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737169E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1X7SVQ6PUURWR3FOJI6S8NYNQHWAOW",
+											"workerId" : "A6GVEPH4VJWDV",
+											"hitId" : "127HI3FLANSMJPF3Q0H2672ZD91LDU",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269737206E12,
+											"acceptTime" : 1.269737128E12,
+											"submitTime" : 1.269737146E12,
+											"answer" : {
+												"description" : "meaning",
+												"newText" : "But if she happens to be a computer programmer, there is a chance that she can write a program to automate everything."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737466E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1WL6Y381J8L81WK5GQ0GN6IJYH3Y3Z",
+											"workerId" : "A2MN1MDFIH9CEW",
+											"hitId" : "127HI3FLANSMJPF3Q0H2672ZD91LDU",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269737669E12,
+											"acceptTime" : 1.269737551E12,
+											"submitTime" : 1.269737609E12,
+											"answer" : {
+												"description" : "word \'then\' missing",
+												"newText" : "But if she happens to be a computer programmer then there is a little chance that she can write a program to automate everything."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : true
+								},
+								"returnTime" : 1.269737568261E12,
+								"printOutput" : "hit completed: 127HI3FLANSMJPF3Q0H2672ZD91LDU\r\n"
+							},
+							{
+								"creationTime" : 1.269737568559E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2qkl2d4kgtupr3vuxa93fcimsz4t7u9e.html",
+								"returnTime" : 1.269737568689E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2qkl2d4kgtupr3vuxa93fcimsz4t7u9e.html\r\n"
+							},
+							{
+								"creationTime" : 1.26973756869E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1TX80G6JQEXJUN3MIK05XW6NK1QG2A",
+								"returnTime" : 1.269737569018E12,
+								"printOutput" : "created HIT: 1TX80G6JQEXJUN3MIK05XW6NK1QG2A\r\n        url: https://www.mturk.com/mturk/preview?groupId=1EVQ4F6YZH6PFURX44J8TG0107MVDD\r\n"
+							},
+							{
+								"creationTime" : 1.269737569234E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+								"returnValue" : {
+									"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1QG2A",
+									"hitTypeId" : "1EVQ4F6YZH6PFURX44J8TG0107MVDD",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.03,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2qkl2d4kgtupr3vuxa93fcimsz4t7u9e.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 5,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 60,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Reviewable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269737618E12,
+									"expiration" : 1.270342418E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1TAA01ARY0KEIRV18SDJYUHY38F947",
+											"workerId" : "A1MEDNRTAZ8LEM",
+											"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1QG2A",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269738407E12,
+											"acceptTime" : 1.269738286E12,
+											"submitTime" : 1.269738347E12,
+											"answer" : {
+												"reason" : "%22a%22%20is%20not%20necessary%20before%20%22little%20chance%22",
+												"randomOrder" : "temp",
+												"fix" : "But%20if%20she%20happens%20to%20be%20a%20computer%20programmer%2C%20there%20is%20little%20chance%20that%20she%20can%20write%20a%20program%20to%20automate%20everything."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738668E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1BG3WF9LFA7GRPBL1VGLXP75RRLEKC",
+											"workerId" : "A22F86JLD8WA1D",
+											"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1QG2A",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269738528E12,
+											"acceptTime" : 1.269738447E12,
+											"submitTime" : 1.269738468E12,
+											"answer" : {
+												"reason" : "%22a%22%20is%20not%20necessary%20before%20%22little%20chance%22",
+												"fix" : "But%20if%20she%20happens%20to%20be%20a%20computer%20programmer%2C%20there%20is%20little%20chance%20that%20she%20can%20write%20a%20program%20to%20automate%20everything.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738668E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1WBUN4KPEX9YZNESCP48O3VEE2R4KW",
+											"workerId" : "A1HI3IYQNISJOZ",
+											"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1QG2A",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269738587E12,
+											"acceptTime" : 1.269738447E12,
+											"submitTime" : 1.269738527E12,
+											"answer" : {
+												"reason" : "unnecessary%20word%20added",
+												"fix" : "But%20if%20she%20happens%20to%20be%20a%20computer%20programmer%2C%20there%20is%20a%20chance%20that%20she%20can%20write%20a%20program%20to%20automate%20everything.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738669E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1O8DHNY6KCQ98U8X9Y5ZBOE4X26PF6",
+											"workerId" : "A23C8PF66JMSNV",
+											"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1QG2A",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.26973864E12,
+											"acceptTime" : 1.269738528E12,
+											"submitTime" : 1.26973858E12,
+											"answer" : {
+												"reason" : "unnecessary%20word%20added|%22a%22%20is%20not%20necessary%20before%20%22little%20chance%22",
+												"randomOrder" : "temp",
+												"fix" : "But%20if%20she%20happens%20to%20be%20a%20computer%20programmer%2C%20there%20is%20a%20chance%20that%20she%20can%20write%20a%20program%20to%20automate%20everything.|But%20if%20she%20happens%20to%20be%20a%20computer%20programmer%2C%20there%20is%20little%20chance%20that%20she%20can%20write%20a%20program%20to%20automate%20everything."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738669E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1U4J0BDOHYMA6GTRZNS8S46U4MCBDZ",
+											"workerId" : "A31J3DB7WF55NF",
+											"hitId" : "1TX80G6JQEXJUN3MIK05XW6NK1QG2A",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269740141E12,
+											"acceptTime" : 1.269740048E12,
+											"submitTime" : 1.269740081E12,
+											"answer" : {
+												"reason" : "%22a%22%20is%20not%20necessary%20before%20%22little%20chance%22|unnecessary%20word%20added",
+												"randomOrder" : "temp",
+												"fix" : "But%20if%20she%20happens%20to%20be%20a%20computer%20programmer%2C%20there%20is%20little%20chance%20that%20she%20can%20write%20a%20program%20to%20automate%20everything."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : true
+								},
+								"returnTime" : 1.269740065605E12,
+								"printOutput" : "hit completed: 1TX80G6JQEXJUN3MIK05XW6NK1QG2A\r\n"
+							},
+							{
+								"creationTime" : 1.269740068197E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269740068403E12,
+								"printOutput" : "disabled HIT: 127HI3FLANSMJPF3Q0H2672ZD91LDU\r\n"
+							},
+							{
+								"creationTime" : 1.269740068404E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269740068446E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/42g18zrunqvhp7azu612l3uigzjby1a3.html\r\n"
+							},
+							{
+								"creationTime" : 1.269740068685E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269740068954E12,
+								"printOutput" : "disabled HIT: 1TX80G6JQEXJUN3MIK05XW6NK1QG2A\r\n"
+							},
+							{
+								"creationTime" : 1.269740068955E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269740069008E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2qkl2d4kgtupr3vuxa93fcimsz4t7u9e.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269736741971E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269736741974E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/q54hfgc9nogbxxhrlq8gmegarzmijrpd.html",
+								"returnTime" : 1.269736742028E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/q54hfgc9nogbxxhrlq8gmegarzmijrpd.html\r\n"
+							},
+							{
+								"creationTime" : 1.269736742029E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1X12DCDSINNOG7SQS992PYEPPS09FW",
+								"returnTime" : 1.26973674244E12,
+								"printOutput" : "created HIT: 1X12DCDSINNOG7SQS992PYEPPS09FW\r\n        url: https://www.mturk.com/mturk/preview?groupId=128Q0YZRAIZSJOXAHXIBC6NV9LHVMY\r\n"
+							},
+							{
+								"creationTime" : 1.269736742688E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+								"returnValue" : {
+									"hitId" : "1X12DCDSINNOG7SQS992PYEPPS09FW",
+									"hitTypeId" : "128Q0YZRAIZSJOXAHXIBC6NV9LHVMY",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/q54hfgc9nogbxxhrlq8gmegarzmijrpd.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 5,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 60,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Reviewable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269736791E12,
+									"expiration" : 1.270341591E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1E3LYR7MJV6J1RUVBUEE4SBAWB9X3S",
+											"workerId" : "A2E6QLLJKLWFU4",
+											"hitId" : "1X12DCDSINNOG7SQS992PYEPPS09FW",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269736899E12,
+											"acceptTime" : 1.269736822E12,
+											"submitTime" : 1.269736839E12,
+											"answer" : {
+												"newText" : "In fact, each GUI application is a big black box, which usually has no outward interfaces for connecting to other programs.",
+												"description" : "have should be has"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737168E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "12C9RTK93Q0QDOVBD6DOTQ5E3VVW8Q",
+											"workerId" : "A6GVEPH4VJWDV",
+											"hitId" : "1X12DCDSINNOG7SQS992PYEPPS09FW",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269737235E12,
+											"acceptTime" : 1.269737151E12,
+											"submitTime" : 1.269737175E12,
+											"answer" : {
+												"newText" : "In fact, each GUI application is a big black box, which usually has no outward interfaces for connecting to other programs.",
+												"description" : "agreement"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737466E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1CBE1WJTZBRCQ3FP2R309LZXWR6SZC",
+											"workerId" : "A521UZVFXBVWZ",
+											"hitId" : "1X12DCDSINNOG7SQS992PYEPPS09FW",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.26973726E12,
+											"acceptTime" : 1.269737099E12,
+											"submitTime" : 1.2697372E12,
+											"answer" : {
+												"description" : "is a big black box, which usually have",
+												"newText" : "However, while GUI made using computers be more intuitive and easier to learn, it didn\'t let people be able to control computers efficiently. Masses only can use the software developed by software companies, unless they know how to write programs. In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time. But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything. Why is there only a little chance? In fact, each GUI application  no outward interfaces for connecting to other programs. In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently. People still do much tedious and repetitive work in front of a computer."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269737467E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1DFABGNJ16XFX5RU4AAFIGESJ6PWJA",
+											"workerId" : "A2CMMU7C3OHUI8",
+											"hitId" : "1X12DCDSINNOG7SQS992PYEPPS09FW",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269737503E12,
+											"acceptTime" : 1.269737384E12,
+											"submitTime" : 1.269737443E12,
+											"answer" : {
+												"description" : "The subject is singular but the verb is plural.",
+												"newText" : "In fact, each GUI application is a big black box, which usually has no outward interfaces for connecting to other programs."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1EYUXPOHJWF3D0WEV4KKNN3TNV2XVP",
+											"workerId" : "A29Y2HUDMJODD8",
+											"hitId" : "1X12DCDSINNOG7SQS992PYEPPS09FW",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269737511E12,
+											"acceptTime" : 1.269737389E12,
+											"submitTime" : 1.269737451E12,
+											"answer" : {
+												"description" : "The subject and verb do not agree",
+												"newText" : "In fact, each GUI application is a big black box, which usually has no outward interfaces for connecting to other programs."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : true
+								},
+								"returnTime" : 1.269737438415E12,
+								"printOutput" : "hit completed: 1X12DCDSINNOG7SQS992PYEPPS09FW\r\n"
+							},
+							{
+								"creationTime" : 1.26973743973E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rz4pd11fokx5xuygpb4xohxftfts7v59.html",
+								"returnTime" : 1.269737439884E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rz4pd11fokx5xuygpb4xohxftfts7v59.html\r\n"
+							},
+							{
+								"creationTime" : 1.269737439885E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1SLQ3JB4QXCKND25HCJT0RKGTW3XMA",
+								"returnTime" : 1.269737440173E12,
+								"printOutput" : "created HIT: 1SLQ3JB4QXCKND25HCJT0RKGTW3XMA\r\n        url: https://www.mturk.com/mturk/preview?groupId=1EVQ4F6YZH6PFURX44J8TG0107MVDD\r\n"
+							},
+							{
+								"creationTime" : 1.269737440389E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+								"returnValue" : {
+									"hitId" : "1SLQ3JB4QXCKND25HCJT0RKGTW3XMA",
+									"hitTypeId" : "1EVQ4F6YZH6PFURX44J8TG0107MVDD",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.03,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rz4pd11fokx5xuygpb4xohxftfts7v59.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 5,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 60,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Reviewable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269737489E12,
+									"expiration" : 1.270342289E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1P5EYFOSBR37Q6C9F86LH6VN15V5WY",
+											"workerId" : "A2MN1MDFIH9CEW",
+											"hitId" : "1SLQ3JB4QXCKND25HCJT0RKGTW3XMA",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269737817E12,
+											"acceptTime" : 1.269737706E12,
+											"submitTime" : 1.269737757E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"fix" : "In%20fact%2C%20each%20GUI%20application%20is%20a%20big%20black%20box%2C%20which%20usually%20has%20no%20outward%20interfaces%20for%20connecting%20to%20other%20programs.",
+												"reason" : "have%20should%20be%20has"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738071E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "15H97EIS5SAEPXGR9OR56QKCUX03NF",
+											"workerId" : "A29T08K39MCP2B",
+											"hitId" : "1SLQ3JB4QXCKND25HCJT0RKGTW3XMA",
+											"assignmentStatus" : "Approved",
+											"autoApprovalTime" : 1.269737933E12,
+											"acceptTime" : 1.269737816E12,
+											"submitTime" : 1.269737873E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"reason" : "The%20subject%20is%20singular%20but%20the%20verb%20is%20plural.|have%20should%20be%20has|The%20subject%20and%20verb%20do%20not%20agree|agreement",
+												"fix" : "In%20fact%2C%20each%20GUI%20application%20is%20a%20big%20black%20box%2C%20which%20usually%20has%20no%20outward%20interfaces%20for%20connecting%20to%20other%20programs."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : 1.269738071E12,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1FFQYXHJIHIAFC2ZP43W3B49MFREAX",
+											"workerId" : "AWQA4T219D3PS",
+											"hitId" : "1SLQ3JB4QXCKND25HCJT0RKGTW3XMA",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269738381E12,
+											"acceptTime" : 1.269738304E12,
+											"submitTime" : 1.269738321E12,
+											"answer" : {
+												"reason" : "agreement|The%20subject%20and%20verb%20do%20not%20agree|The%20subject%20is%20singular%20but%20the%20verb%20is%20plural.|have%20should%20be%20has",
+												"randomOrder" : "temp",
+												"fix" : "In%20fact%2C%20each%20GUI%20application%20is%20a%20big%20black%20box%2C%20which%20usually%20has%20no%20outward%20interfaces%20for%20connecting%20to%20other%20programs."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1RNKCTC5GBKY3QGAN7N668N4D0W9BD",
+											"workerId" : "A22F86JLD8WA1D",
+											"hitId" : "1SLQ3JB4QXCKND25HCJT0RKGTW3XMA",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269738577E12,
+											"acceptTime" : 1.269738472E12,
+											"submitTime" : 1.269738517E12,
+											"answer" : {
+												"reason" : "have%20should%20be%20has",
+												"fix" : "In%20fact%2C%20each%20GUI%20application%20is%20a%20big%20black%20box%2C%20which%20usually%20has%20no%20outward%20interfaces%20for%20connecting%20to%20other%20programs.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1QCPESNDQ1ECRT6QTMMXZD3M0XQ1YB",
+											"workerId" : "A23C8PF66JMSNV",
+											"hitId" : "1SLQ3JB4QXCKND25HCJT0RKGTW3XMA",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269738581E12,
+											"acceptTime" : 1.269738485E12,
+											"submitTime" : 1.269738521E12,
+											"answer" : {
+												"reason" : "have%20should%20be%20has|The%20subject%20is%20singular%20but%20the%20verb%20is%20plural.",
+												"randomOrder" : "temp",
+												"fix" : "In%20fact%2C%20each%20GUI%20application%20is%20a%20big%20black%20box%2C%20which%20usually%20has%20no%20outward%20interfaces%20for%20connecting%20to%20other%20programs."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : true
+								},
+								"returnTime" : 1.269738507267E12,
+								"printOutput" : "hit completed: 1SLQ3JB4QXCKND25HCJT0RKGTW3XMA\r\n"
+							},
+							{
+								"creationTime" : 1.269738510774E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269738510972E12,
+								"printOutput" : "disabled HIT: 1X12DCDSINNOG7SQS992PYEPPS09FW\r\n"
+							},
+							{
+								"creationTime" : 1.269738510972E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269738511079E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/q54hfgc9nogbxxhrlq8gmegarzmijrpd.html\r\n"
+							},
+							{
+								"creationTime" : 1.269738511272E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269738511757E12,
+								"printOutput" : "disabled HIT: 1SLQ3JB4QXCKND25HCJT0RKGTW3XMA\r\n"
+							},
+							{
+								"creationTime" : 1.269738511757E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269738511803E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rz4pd11fokx5xuygpb4xohxftfts7v59.html\r\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 2.7999999999999994,
+	"hitsCreated" : 9
+}
+// end:31b0
