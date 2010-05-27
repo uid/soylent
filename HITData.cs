@@ -15,12 +15,20 @@ namespace Soylent
     {
         public int job { get; set; }
         public Word.Range range { get; set; }
-        public string originalText;
         public enum ResultType { Find, Fix, Verify };
         public Dictionary<ResultType, StageData> stages;
         public Dictionary<string, ResultType> typeMap;// = new Dictionary<string,ResultType>();
         public int numParagraphs;
         TurKit tk;
+
+        public string originalText
+        {
+            get
+            {
+                object bookmark = (object)range.BookmarkID;
+                return ((Microsoft.Office.Interop.Word.Bookmark)Globals.Soylent.Application.ActiveDocument.Bookmarks.get_Item(ref bookmark)).Range.Text;
+            }
+        }
 
         public HITData(Word.Range range, int job)
         {
@@ -37,8 +45,10 @@ namespace Soylent
             //TODO: Use Word XML binding to text instead of bookmarks.
             /*
              * Improved Data Mapping Provides Separation Between a Document's Data and Its Formatting
-
-                XML mapping allows you to attach XML data to Word documents and link XML elements to placeholders in the document. Combined with content controls, XML mapping becomes a powerful tool for developers. These features provide you with the capability to position content controls in the document and then link them to XML elements. This type of data and view separation allows you to access Word document data to repurpose and integrate with other systems and applications.
+             *  XML mapping allows you to attach XML data to Word documents and link XML elements to placeholders in the document. 
+             *  Combined with content controls, XML mapping becomes a powerful tool for developers. 
+             *  These features provide you with the capability to position content controls in the document and then link them to XML elements. 
+             *  This type of data and view separation allows you to access Word document data to repurpose and integrate with other systems and applications.
              */
 
             object bkmkRange = (object)range;
