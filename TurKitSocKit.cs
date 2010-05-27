@@ -30,6 +30,12 @@ namespace Soylent
         {
         }
 
+        ~TurKitSocKit()
+        {
+            // destructor to make sure that socket is closed
+            serverSocket.Close();
+        }
+
         public void Listen() {
             //IPHostEntry ipHostInfo = Dns.GetHostEntry("localhost");//Dns.GetHostName());
             //IPEndPoint localEP = new IPEndPoint(ipHostInfo.AddressList[1], port);
@@ -37,6 +43,7 @@ namespace Soylent
             IPEndPoint localEP = new IPEndPoint(address, port);
             Debug.WriteLine("Local address and port : " + localEP.ToString());
             serverSocket = new Socket(localEP.Address.AddressFamily, SocketType.Stream, ProtocolType.IP);
+            //serverSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, 1);
 
             try
             {
@@ -49,7 +56,8 @@ namespace Soylent
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine(e.Message);
+                throw e;
             }
 
             Console.WriteLine("Closing the listener...");
@@ -100,7 +108,7 @@ namespace Soylent
                      *      ...
                      * }
                      */
-                    string incomingString = System.Text.ASCIIEncoding.ASCII.GetString(connection.Buffer, 0, bytesRead);
+                    string incomingString = System.Text.ASCIIEncoding.ASCII.GetString(connection.Buffer, 0, bytesRead); 
                     Debug.WriteLine(incomingString);
                     Regex typeRegex = new Regex("\"__type__\"\\s*:\\s*\"(?<messageType>.*)\"");
                     Match regexResult = typeRegex.Match(incomingString);
