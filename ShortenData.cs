@@ -135,7 +135,7 @@ namespace Soylent
 
             // Create the WPF UserControl.
             //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            ShortenDialog sd = new ShortenDialog(Globals.Soylent.soylent.jobMap[1] as ShortenData);
+            ShortenDialog sd = new ShortenDialog(Globals.Soylent.soylent.jobMap[job] as ShortenData);
 
             // Assign the WPF UserControl to the ElementHost control's
             // Child property.

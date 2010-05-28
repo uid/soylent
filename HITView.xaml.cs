@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
+using System.Windows.Forms.Integration;
 
 namespace Soylent
 {
@@ -57,6 +59,30 @@ namespace Soylent
         {
             foreach(StageView stageview in stageList.Values)
             {
+                System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
+                newForm.Width = 1195;
+                newForm.Height = 380;
+                newForm.BackColor = System.Drawing.Color.White;
+
+                // Create the ElementHost control for hosting the
+                // WPF UserControl.
+                ElementHost host = new ElementHost();
+                host.Width = newForm.Width;
+                host.Height = newForm.Height;
+
+                // Create the WPF UserControl.
+                //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
+                ShortenDialog sd = new ShortenDialog(data as ShortenData);
+
+                // Assign the WPF UserControl to the ElementHost control's
+                // Child property.
+
+                host.Child = sd;
+
+                // Add the ElementHost control to the form's
+                // collection of child controls.
+                newForm.Controls.Add(host);
+                newForm.Show();
                // data.
                 //stageview.hitProgress.Foreground = Brushes.Blue;
             }
