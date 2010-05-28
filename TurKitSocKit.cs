@@ -145,11 +145,6 @@ namespace Soylent
                 CloseConnection(connection);
                 Console.WriteLine("Socket exception: " + exc.SocketErrorCode);
             }
-            catch (Exception exc)
-            {
-                CloseConnection(connection);
-                Console.WriteLine("Exception: " + exc);
-            }
         }
 
         private void CloseConnection(ConnectionInfo ci)
