@@ -119,6 +119,7 @@ namespace Soylent
                         HITData concernedHIT = Globals.Soylent.soylent.jobMap[receivedObject.job];
                         ShortenData shortenData = concernedHIT as ShortenData;
 
+                        
                         if (shortenData != null)
                         {
                             shortenData.updateStatus(receivedObject);
@@ -127,7 +128,9 @@ namespace Soylent
                     else if (messageType == "shortn")
                     {
                         TurKitShortn receivedObject = serializer.Deserialize<TurKitShortn>(incomingString);
-                        Debug.WriteLine(receivedObject.patches[0]);
+                        ShortenData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortenData;
+                        shortenData.processSocKitMessage(receivedObject);
+                        //Debug.WriteLine(receivedObject.options[0]);
                     }
                     Debug.WriteLine("got it!");
                      
