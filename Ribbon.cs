@@ -130,7 +130,7 @@ namespace Soylent
         {
            
             TurKitSocKit.TurKitShortnPatch p1 = new TurKitSocKit.TurKitShortnPatch();
-            p1.start = 4; p1.end = 20;
+            p1.start = 4; p1.end = 24;
             p1.options = new List<TurKitSocKit.TurKitShortnPatchOption>();
             TurKitSocKit.TurKitShortnPatchOption p1a = new TurKitSocKit.TurKitShortnPatchOption();
             TurKitSocKit.TurKitShortnPatchOption p1b = new TurKitSocKit.TurKitShortnPatchOption();

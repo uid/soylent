@@ -13,7 +13,7 @@ namespace Soylent
 {
     class DummyPatch : Patch
     {
-        DummyPatch(Word.Range range) : base(range, new List<string> { range.Text })
+        public DummyPatch(Word.Range range) : base(range, new List<string> { range.Text })
         {
             // Creates a patch with the only option being itself
         }

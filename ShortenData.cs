@@ -73,16 +73,35 @@ namespace Soylent
         public void processSocKitMessage(TurKitSocKit.TurKitShortn message)
         {
             Word.Range curParagraphRange = range.Paragraphs[message.paragraph].Range;
+            int nextStart = 0;
+            int nextEnd;
             foreach (TurKitSocKit.TurKitShortnPatch tkspatch in message.patches)
             {
+                if (tkspatch.start > nextStart)
+                {
+                    nextEnd = tkspatch.start;
+                    Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
+                    DummyPatch dummyPatch = new DummyPatch(dummyRange);
+
+                    patches.Add(dummyPatch);
+                }
+
                 int start = curParagraphRange.Start + tkspatch.start;
-                int end = start + tkspatch.end;
+                int end = curParagraphRange.Start + tkspatch.end;
                 //TODO: How do I make a range?
                 //Word.Range patchRange = null;//Globals.Soylent.
                 Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end);
 
                 Patch thisPatch = new Patch(patchRange, (from option in tkspatch.options select option.text).ToList());
                 patches.Add(thisPatch);
+                nextStart = tkspatch.end;
+            }
+            if (nextStart < (curParagraphRange.Text.Length - 1)){
+                nextEnd = curParagraphRange.Text.Length;
+                Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
+                DummyPatch dummyPatch = new DummyPatch(dummyRange);
+
+                patches.Add(dummyPatch);
             }
             paragraphsCompleted++;
 
