@@ -239,11 +239,6 @@ var FIND_STAGE = "find";
 var FIX_STAGE = "fix";
 var FILTER_STAGE = "verify"; //#todo: rename FILTER_STAGE to VERIFY_STAGE
 function socketStatus(stage, hit, paragraphNum) {//stage, numCompleted, maxAssignments, paragraphNum, reward, hitURL) {
-	if (typeof(soylentJob) == "undefined") {
-		print("Not in socket mode, not writing.");
-		return;
-	}
-
 	var url = (javaTurKit.mode == "sandbox"
 					? "https://workersandbox.mturk.com/mturk/preview?groupId="
 					: "https://www.mturk.com/mturk/preview?groupId=")
@@ -251,30 +246,26 @@ function socketStatus(stage, hit, paragraphNum) {//stage, numCompleted, maxAssig
     
 	var message = {
 		stage: stage,
-		job: soylentJob,
 		numCompleted: hit.assignments.length,
         totalRequested: hit.maxAssignments,
         payment: hit.reward,
 		paragraph: paragraphNum,
         hitURL: url,
-		__type__: 'status'
 	};
-	sendSocketMessage(message);
+	sendSocketMessage("status", message);
 }
 
-function socketShorten(patch)
-{
-	patch.__type__ = 'shorten';
-	sendSocketMessage(patch);
-}
-
-function sendSocketMessage(message) {
+function sendSocketMessage(messageType, message) {
 	if (socketOut == null) {
-		print("Socket is not open, not writing.");
+		print("Not in socket mode, not writing.");
 		return;
 	}
+    
+    message.job = soylentJob;
+    message.__type__ = messageType;
+    
 	var stringMessage = json(message);
-	stringMessage = stringMessage.substring(1, stringMessage.length-1);
+	stringMessage = stringMessage.substring(1, stringMessage.length-1); // remove the { } encasing the JSON. C# hates that.
     print(stringMessage);
 	socketOut.println(stringMessage);
 }

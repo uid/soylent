@@ -83,7 +83,7 @@ namespace Soylent
                 ProcessInformation info = new ProcessInformation("java", 
                     " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000", 
                     rootDirectory + @"\turkit", 
-                    false);
+                    true);
                 TimerCallback callback = ExecuteProcess;
                 turkitLoopTimer = new Timer(callback, info, 0, 60 * 1000);  // starts the timer every 60 seconds
             }

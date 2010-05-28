@@ -124,7 +124,7 @@ namespace Soylent
                             shortenData.updateStatus(receivedObject);
                         }
                     }
-                    else if (messageType == "shorten")
+                    else if (messageType == "shortn")
                     {
                         TurKitShortn receivedObject = serializer.Deserialize<TurKitShortn>(incomingString);
                         Debug.WriteLine(receivedObject.patches[0]);
@@ -155,7 +155,9 @@ namespace Soylent
             lock (_connections) _connections.Remove(ci);
         }
 
-
+        /// <summary>
+        /// High-level status report from TurKit
+        /// </summary>
         public class TurKitStatus
         {
             public int job;
@@ -167,6 +169,9 @@ namespace Soylent
             public string hitURL;
         }
 
+        /// <summary>
+        /// Data returned from a Shortn task
+        /// </summary>
         public class TurKitShortn
         {
             public int job;
@@ -178,7 +183,18 @@ namespace Soylent
         {
             public int start;
             public int end;
-            public List<string> options;
+            public int numEditors;
+            public bool canCut;
+            public int cutVotes;
+            public List<TurKitShortnPatchOption> options;
+        }
+
+        public class TurKitShortnPatchOption
+        {
+            public string text;
+            public int meaningVotes;
+            public int grammarVotes;
+            public int numVoters;
         }
     }
 }
