@@ -216,6 +216,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="DummyPatch.cs" />
     <Compile Include="StageData.cs" />
     <Compile Include="HITData.cs" />
     <Compile Include="HumanMacroDialog.xaml.cs">
