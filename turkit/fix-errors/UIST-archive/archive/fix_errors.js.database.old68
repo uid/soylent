@@ -1,0 +1,131 @@
+// begin:5cd8
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269401885926E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269401885931E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/mm454cn9exu5qph9i94on74082povucb.html",
+						"returnTime" : 1.269401886079E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/mm454cn9exu5qph9i94on74082povucb.html\r\n"
+					},
+					{
+						"creationTime" : 1.269401886079E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1FWPL21BKB3D53S4RR8QHQVJR9YZTF",
+						"returnTime" : 1.269401886314E12,
+						"printOutput" : "created HIT: 1FWPL21BKB3D53S4RR8QHQVJR9YZTF\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=165GJCP6GFLN44Q1M6GSL2KYEPW7DC\r\n"
+					},
+					{
+						"creationTime" : 1.26940188642E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269401886465E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269401886467E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/w2e0qy474luupe15bty90of4rnhvj8yg.html",
+						"returnTime" : 1.269401886568E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/w2e0qy474luupe15bty90of4rnhvj8yg.html\r\n"
+					},
+					{
+						"creationTime" : 1.269401886569E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1NCXFMP8KOU5SUMTQABIQ3TGP9CWYB",
+						"returnTime" : 1.269401886673E12,
+						"printOutput" : "created HIT: 1NCXFMP8KOU5SUMTQABIQ3TGP9CWYB\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=165GJCP6GFLN44Q1M6GSL2KYEPW7DC\r\n"
+					},
+					{
+						"creationTime" : 1.269401886814E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269401886816E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269401886818E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qeyk4meyjrbtcxqgjpewom1d5e9sguue.html",
+						"returnTime" : 1.269401886879E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qeyk4meyjrbtcxqgjpewom1d5e9sguue.html\r\n"
+					},
+					{
+						"creationTime" : 1.26940188688E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1A79RKJWKN4S5G7TRWY0MMHLAN5ZU6",
+						"returnTime" : 1.269401887071E12,
+						"printOutput" : "created HIT: 1A79RKJWKN4S5G7TRWY0MMHLAN5ZU6\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=165GJCP6GFLN44Q1M6GSL2KYEPW7DC\r\n"
+					},
+					{
+						"creationTime" : 1.269401887201E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269401887203E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269401887205E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/dp83ti5eb6m8ppi4nd3xf4ao6px2rs8n.html",
+						"returnTime" : 1.269401887273E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/dp83ti5eb6m8ppi4nd3xf4ao6px2rs8n.html\r\n"
+					},
+					{
+						"creationTime" : 1.269401887273E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1LRF924WWOJSIVWTWM85I8J4OUEZVV",
+						"returnTime" : 1.2694018875E12,
+						"printOutput" : "created HIT: 1LRF924WWOJSIVWTWM85I8J4OUEZVV\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=165GJCP6GFLN44Q1M6GSL2KYEPW7DC\r\n"
+					},
+					{
+						"creationTime" : 1.26940188765E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269401887651E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269401887652E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2pfzozb74474kuwr8g2r5h8peawj5yq2.html",
+						"returnTime" : 1.269401887782E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2pfzozb74474kuwr8g2r5h8peawj5yq2.html\r\n"
+					},
+					{
+						"creationTime" : 1.269401887783E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "15XXRN48X3J5XKWYMWD14A2IV3GZW5",
+						"returnTime" : 1.26940188798E12,
+						"printOutput" : "created HIT: 15XXRN48X3J5XKWYMWD14A2IV3GZW5\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=165GJCP6GFLN44Q1M6GSL2KYEPW7DC\r\n"
+					},
+					{
+						"creationTime" : 1.269401888095E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.25,
+	"hitsCreated" : 5
+}
+// end:5cd8

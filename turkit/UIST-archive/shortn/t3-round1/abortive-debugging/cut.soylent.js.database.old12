@@ -1,0 +1,100 @@
+// begin:29c8
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269791091185E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.26979109119E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7r0cpbg4acfx6vtigmvjn25wf6hlggp0.html",
+						"returnTime" : 1.269791091571E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7r0cpbg4acfx6vtigmvjn25wf6hlggp0.html\r\n"
+					},
+					{
+						"creationTime" : 1.269791091573E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1BT2Y4LCY8AKKICM3W2JCIOBJKYCOC",
+						"returnTime" : 1.269791091811E12,
+						"printOutput" : "created HIT: 1BT2Y4LCY8AKKICM3W2JCIOBJKYCOC\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=17LCMGUEPTA5H13V3HFQNKA4II3LLF\r\n"
+					},
+					{
+						"creationTime" : 1.269791091995E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1BT2Y4LCY8AKKICM3W2JCIOBJKYCOC",
+							"hitTypeId" : "17LCMGUEPTA5H13V3HFQNKA4II3LLF",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7r0cpbg4acfx6vtigmvjn25wf6hlggp0.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269791141E12,
+							"expiration" : 1.270395941E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1Y8QSMYAX1STRLRVXBR0RQKKA5TJJW",
+									"workerId" : "AC4FRIRZ7913H",
+									"hitId" : "1BT2Y4LCY8AKKICM3W2JCIOBJKYCOC",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269794749E12,
+									"acceptTime" : 1.269791145E12,
+									"submitTime" : 1.269791149E12,
+									"answer" : {
+										"brackets" : "[[Too often]], even the best information retrieval tools cannot help us find what we are seeking, because the information we want was never entered.  This can happen for many reasons.  Sometimes, we simply do not recognize that the information might be needed later.  At other times, the perceived cost to launch and navigate through multiple applications to capture the information seems too high for the currently perceived value of the information.  Lastly, our strong desire to record some information can be stymied by the fact that there is no natural place for it---no place where we have confidence that we will be able to find it when we need it, or, similarly, no native application that may be associated with the particular kind of data being entered."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1P64EQPLSDKWKFRAQGN6KEZ6OFFMCP",
+									"workerId" : "A26E3IY5VI4YBE",
+									"hitId" : "1BT2Y4LCY8AKKICM3W2JCIOBJKYCOC",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269794763E12,
+									"acceptTime" : 1.269791159E12,
+									"submitTime" : 1.269791163E12,
+									"answer" : {
+										"brackets" : "Too often, even the best information retrieval tools cannot help us find what we are seeking, because the information we want was never entered.  This can happen for many reasons.  Sometimes, we simply do not recognize that the information might be needed later.  At other times, the perceived cost to launch and navigate through multiple applications to capture the information seems too high for the currently perceived value of the information.  Lastly, our strong desire to record some information can be stymied by the fact that there is no natural place for it---no place where we have confidence that we will be able to find it when we need it, or, similarly, no native application that may be associated with the particular kind of data being [[entered]]."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269791168694E12,
+						"printOutput" : "creation time: 1269791141000\r\nno longer waiting for hit: 1BT2Y4LCY8AKKICM3W2JCIOBJKYCOC\r\n"
+					},
+					{
+						"creationTime" : 1.26979116871E12,
+						"onceFunc" : "\nfunction getExtensionTime() {\n    return new Date();\n}\n",
+						"returnValue" : null,
+						"returnTime" : 1.269791168713E12,
+						"printOutput" : ""
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.4,
+	"hitsCreated" : 1
+}
+// end:29c8
