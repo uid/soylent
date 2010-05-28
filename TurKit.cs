@@ -99,7 +99,12 @@ namespace Soylent
                 ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
 
                 TimerCallback callback = ExecuteProcess;
-                turkitLoopTimer = new Timer(callback, info, 0, 60 * 1000);  // starts the timer every 60 seconds
+                int timer = 60 * 1000;
+                if (Soylent.DEBUG)
+                {
+                    timer = 15 * 1000;
+                }
+                turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
             }
         }
         
