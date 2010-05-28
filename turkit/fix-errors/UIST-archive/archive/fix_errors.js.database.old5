@@ -1,0 +1,104 @@
+// begin:b04c
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269041568872E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/kd2b64gmocrac8y5dkxdui5uh0lewrpr.html",
+				"returnTime" : 1.269041568987E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/kd2b64gmocrac8y5dkxdui5uh0lewrpr.html\r\n"
+			},
+			{
+				"creationTime" : 1.269041568988E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "12XQ0YZRAIZSJOXAHXIBA6NV9QKVMY",
+				"returnTime" : 1.269041569197E12,
+				"printOutput" : "created HIT: 12XQ0YZRAIZSJOXAHXIBA6NV9QKVMY\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=19JV6G3P480K2O4XDCBI92NJQ2B7FM\r\n"
+			},
+			{
+				"creationTime" : 1.26904156935E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "12XQ0YZRAIZSJOXAHXIBA6NV9QKVMY",
+					"hitTypeId" : "19JV6G3P480K2O4XDCBI92NJQ2B7FM",
+					"title" : "Find writing errors",
+					"description" : "Find grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/kd2b64gmocrac8y5dkxdui5uh0lewrpr.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269041606E12,
+					"expiration" : 1.269646406E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1GT8NEIYC6U43C6DHAEDVNTKIO4RTR",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "12XQ0YZRAIZSJOXAHXIBA6NV9QKVMY",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269041692E12,
+							"acceptTime" : 1.269041622E12,
+							"submitTime" : 1.269041632E12,
+							"answer" : {
+								"newText" : "The theme of loneliness is prominent throughout many scenes in Of Mice and Men and is often the dominant theme of sections during this story. This theme occurs during many circumstances but is not present from start to finish. In my mind for a theme to be pervasive is must be present during every element of the story. There are many themes that are present most of the way through such as sacrifice, friendship and comradship. But in my opinion there is only one theme that is present from beginning to end, this theme is pursuit of dreams."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269041599648E12,
+				"printOutput" : "hit completed: 12XQ0YZRAIZSJOXAHXIBA6NV9QKVMY\r\n"
+			},
+			{
+				"creationTime" : 1.269041599743E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269041599826E12,
+				"printOutput" : "disabled HIT: 12XQ0YZRAIZSJOXAHXIBA6NV9QKVMY\r\n"
+			},
+			{
+				"creationTime" : 1.269041599826E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269041599891E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/kd2b64gmocrac8y5dkxdui5uh0lewrpr.html\r\n"
+			},
+			{
+				"creationTime" : 1.269041599892E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/230ch1inlzn7281p3zxjmqf5xuu96wrj.html",
+				"returnTime" : 1.269041599988E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/230ch1inlzn7281p3zxjmqf5xuu96wrj.html\r\n"
+			},
+			{
+				"creationTime" : 1.269041599989E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1C2I6CZN5TJY16IATYXBNLCVEGUVNY",
+				"returnTime" : 1.269041600204E12,
+				"printOutput" : "created HIT: 1C2I6CZN5TJY16IATYXBNLCVEGUVNY\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=19JV6G3P480K2O4XDCBI92NJQ2B7FM\r\n"
+			},
+			{
+				"creationTime" : 1.269041600326E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.2,
+	"hitsCreated" : 2
+}
+// end:b04c

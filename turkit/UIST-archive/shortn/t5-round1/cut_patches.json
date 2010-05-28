@@ -1,0 +1,138 @@
+(function () {
+	var data = {
+	"paragraphs" : [
+		{
+			"sentences" : [
+				"FAWN-DS uses an in-memory (DRAM) Hash Index to map 160-bit keys to a value stored in the Data Log.",
+				"It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key (and the value) from the log and verifies that the key it read was, in fact, the correct key.",
+				"This design trades a small and configurable chance of requiring two reads from flash (we set it to roughly 1 in 32,768 accesses) for drastically reduced memory requirements (only six bytes of DRAM per key-value pair)."
+			],
+			"patches" : [
+				{
+					"start" : 306,
+					"end" : 524,
+					"options" : [
+					],
+					"paragraph" : /* data["paragraphs"][0]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 1,
+					"numEditors" : 3,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 185,
+					"end" : 304,
+					"options" : [
+						"It stores only a fragment of the actual key in memory to find a location in the log; it then reads the full key and value from the log and verifies that the key it read was the correct key."
+					],
+					"paragraph" : /* data["paragraphs"][0]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 3,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"Figure 3 shows the pseudocode that implements this design for Lookup.",
+				"FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key (the index bits) and the next 15 low order bits (the key fragment).",
+				"FAWN-DS uses the index bits to select a bucket from the Hash Index, which contains 2i hash buckets.",
+				"Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location in the Data Log where the full entry is stored."
+			],
+			"patches" : [
+				{
+					"start" : 169,
+					"end" : 220,
+					"options" : [
+						"FAWN-DS extracts two fields from the 160-bit key: the i low order bits of the key (the index bits) and the next 15 low order bits [[(the key fragment)]]."
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 1,
+					"numEditors" : 3,
+					"numVoters" : 4,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 322,
+					"end" : 474,
+					"options" : [
+						"Each bucket is [[only]] six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the location in the Data Log where the full entry is stored.",
+						"Each bucket is only six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the Data Log location where the full entry is stored.",
+						"Each bucket is six bytes: a 15-bit key fragment, a valid bit, and a 4-byte pointer to the place in the Data Log where the full entry is stored."
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 2,
+					"numEditors" : 5,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 121,
+					"end" : 152,
+					"options" : [
+						"FAWN-DS extracts two fields from the 160-bit key: the i low order key bits (the index bits) and the next 15 low order bits (the key fragment).",
+						"FAWN-DS extracts two fields from the 160-bit key: the index bits and the next 15 low order bits (the key fragment)."
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 3,
+					"numEditors" : 5,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"Lookup proceeds, then, by locating a bucket using the index bits and comparing the key against the key fragment.",
+				"If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. Once it finds a matching key fragment, FAWN-DS reads the record off of the flash.",
+				"If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.",
+				"Otherwise, FAWN-DS resumes its hash chaining search of the in memory hash table and searches additional records.",
+				"With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record."
+			],
+			"patches" : [
+				{
+					"start" : 396,
+					"end" : 644,
+					"options" : [
+						"If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  Otherwise, FAWN-DS resumes its search of the in memory hash table.  With the 15-bit key fragment, only 1 in 32,768 retrievals from the flash will be incorrect and require fetching an additional record.",
+						"If the stored full key in the on-flash record matches the desired lookup key, the operation is complete.  If not, FAWN-DS searches additional records."
+					],
+					"paragraph" : /* data["paragraphs"][2]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 1,
+					"numEditors" : 5,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 209,
+					"end" : 246,
+					"options" : [
+						"If the fragments do not match, FAWN-DS uses hash chaining to continue searching the hash table. Once a match is found, FAWN-DS reads the record off of the flash."
+					],
+					"paragraph" : /* data["paragraphs"][2]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 1,
+					"numEditors" : 4,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				}
+			]
+		}
+	]
+}
+	data["paragraphs"][0]["patches"][0]["paragraph"] = data["paragraphs"][0]["sentences"]
+	data["paragraphs"][0]["patches"][1]["paragraph"] = data["paragraphs"][0]["sentences"]
+	data["paragraphs"][1]["patches"][0]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][1]["patches"][1]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][1]["patches"][2]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][2]["patches"][0]["paragraph"] = data["paragraphs"][2]["sentences"]
+	data["paragraphs"][2]["patches"][1]["paragraph"] = data["paragraphs"][2]["sentences"]
+	return data
+})()

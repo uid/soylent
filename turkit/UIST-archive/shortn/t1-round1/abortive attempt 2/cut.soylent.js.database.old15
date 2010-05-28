@@ -1,0 +1,310 @@
+// begin:d3fe
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269744027179E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269744027183E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/jnaygicahfujbucjnpiyh7wuzujchfis.html",
+						"returnTime" : 1.269744027264E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/jnaygicahfujbucjnpiyh7wuzujchfis.html\r\n"
+					},
+					{
+						"creationTime" : 1.269744027265E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1LW6A4N1WNA86MUACC2ZZDRLXBO3Z7",
+						"returnTime" : 1.26974402739E12,
+						"printOutput" : "created HIT: 1LW6A4N1WNA86MUACC2ZZDRLXBO3Z7\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1HAFLEENGCGW7IG3A3RIJFKHD1HO3L\r\n"
+					},
+					{
+						"creationTime" : 1.269744027533E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (hit.done) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1LW6A4N1WNA86MUACC2ZZDRLXBO3Z7",
+							"hitTypeId" : "1HAFLEENGCGW7IG3A3RIJFKHD1HO3L",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/jnaygicahfujbucjnpiyh7wuzujchfis.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 10,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269744077E12,
+							"expiration" : 1.270348877E12,
+							"assignments" : [
+								{
+									"assignmentId" : "147J5BAB556QE5ZT4TJTPOFXRE3FCB",
+									"workerId" : "AC4FRIRZ7913H",
+									"hitId" : "1LW6A4N1WNA86MUACC2ZZDRLXBO3Z7",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269744156E12,
+									"acceptTime" : 1.269744091E12,
+									"submitTime" : 1.269744096E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.  But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo sli[[de shows, and embedde]]d videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269744085268E12,
+						"printOutput" : "no longer waiting for hit: 1LW6A4N1WNA86MUACC2ZZDRLXBO3Z7\r\n"
+					},
+					{
+						"creationTime" : 1.269744085414E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269744085509E12,
+						"printOutput" : "disabled HIT: 1LW6A4N1WNA86MUACC2ZZDRLXBO3Z7\r\n"
+					},
+					{
+						"creationTime" : 1.269744085511E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269744085687E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/jnaygicahfujbucjnpiyh7wuzujchfis.html\r\n"
+					},
+					{
+						"creationTime" : 1.269744086228E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269744086232E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/3pew2rnwlh4q6prwrk17v3actf8ww2fp.html",
+								"returnTime" : 1.269744086318E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/3pew2rnwlh4q6prwrk17v3actf8ww2fp.html\r\n"
+							},
+							{
+								"creationTime" : 1.26974408632E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "10DCNRYZWM23I7A2NJY4M79KQ2L42L",
+								"returnTime" : 1.269744086471E12,
+								"printOutput" : "created HIT: 10DCNRYZWM23I7A2NJY4M79KQ2L42L\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1FP2G31D61PJ43V29QPSRF70JMSQVS\r\n"
+							},
+							{
+								"creationTime" : 1.26974408661E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269744027713E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269744027716E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h6i2c6j9guo3nyqya7nzazqlftkp65ix.html",
+						"returnTime" : 1.26974402782E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h6i2c6j9guo3nyqya7nzazqlftkp65ix.html\r\n"
+					},
+					{
+						"creationTime" : 1.269744027822E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1F7367NE8TVWMX7O8WUQ3JG5T41401",
+						"returnTime" : 1.269744027936E12,
+						"printOutput" : "created HIT: 1F7367NE8TVWMX7O8WUQ3JG5T41401\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1HAFLEENGCGW7IG3A3RIJFKHD1HO3L\r\n"
+					},
+					{
+						"creationTime" : 1.269744028075E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (hit.done) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1F7367NE8TVWMX7O8WUQ3JG5T41401",
+							"hitTypeId" : "1HAFLEENGCGW7IG3A3RIJFKHD1HO3L",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h6i2c6j9guo3nyqya7nzazqlftkp65ix.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 10,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269744077E12,
+							"expiration" : 1.270348877E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1TS11UEBJAP0JX574PE49UXFCEFFDB",
+									"workerId" : "AC4FRIRZ7913H",
+									"hitId" : "1F7367NE8TVWMX7O8WUQ3JG5T41401",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269744162E12,
+									"acceptTime" : 1.269744099E12,
+									"submitTime" : 1.269744102E12,
+									"answer" : {
+										"brackets" : "But what should a magazine cover look like on the iPad?  After all, the cover is still the gateway to the magazine.  Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue.  One way these covers could change is that instead [[of simply repurposing th]]e static photographs from the print edition, the background image itself could be some sort of video loop.  Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below)."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269744086897E12,
+						"printOutput" : "no longer waiting for hit: 1F7367NE8TVWMX7O8WUQ3JG5T41401\r\n"
+					},
+					{
+						"creationTime" : 1.269744087049E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269744087185E12,
+						"printOutput" : "disabled HIT: 1F7367NE8TVWMX7O8WUQ3JG5T41401\r\n"
+					},
+					{
+						"creationTime" : 1.269744087187E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269744087243E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h6i2c6j9guo3nyqya7nzazqlftkp65ix.html\r\n"
+					},
+					{
+						"creationTime" : 1.269744087788E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269744087791E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/evd90sst7zjgbd9q35j9tkui2gbx7xac.html",
+								"returnTime" : 1.269744087871E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/evd90sst7zjgbd9q35j9tkui2gbx7xac.html\r\n"
+							},
+							{
+								"creationTime" : 1.269744087873E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "17DJ8ONH47XC52LQZG0RQDWIO1G1GO",
+								"returnTime" : 1.269744088049E12,
+								"printOutput" : "created HIT: 17DJ8ONH47XC52LQZG0RQDWIO1G1GO\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1FP2G31D61PJ43V29QPSRF70JMSQVS\r\n"
+							},
+							{
+								"creationTime" : 1.269744088173E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269744028201E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269744028204E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7jujh0cwx5wq38iqt731gr68l3icpr17.html",
+						"returnTime" : 1.269744028293E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7jujh0cwx5wq38iqt731gr68l3icpr17.html\r\n"
+					},
+					{
+						"creationTime" : 1.269744028294E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1ETNVZFXAF2WTMS64FYQHOZFYW7414",
+						"returnTime" : 1.26974402841E12,
+						"printOutput" : "created HIT: 1ETNVZFXAF2WTMS64FYQHOZFYW7414\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1HAFLEENGCGW7IG3A3RIJFKHD1HO3L\r\n"
+					},
+					{
+						"creationTime" : 1.269744028568E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (hit.done) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1ETNVZFXAF2WTMS64FYQHOZFYW7414",
+							"hitTypeId" : "1HAFLEENGCGW7IG3A3RIJFKHD1HO3L",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7jujh0cwx5wq38iqt731gr68l3icpr17.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 10,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269744078E12,
+							"expiration" : 1.270348878E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1W9GY0GNIES25IONIWFY1IT1TKQCPB",
+									"workerId" : "AC4FRIRZ7913H",
+									"hitId" : "1ETNVZFXAF2WTMS64FYQHOZFYW7414",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269744148E12,
+									"acceptTime" : 1.269744083E12,
+									"submitTime" : 1.269744088E12,
+									"answer" : {
+										"brackets" : "The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits.  He points out that these kinds of[[ videos wi]]ll have to be shot in a vertical orientation rather than a horizontal landscape one.  This is just a mockup Rosten came up with on his own, but the designers of these new magazine apps should take note.  The only way people are going to pay for these apps is if they create new experiences for readers."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269744088438E12,
+						"printOutput" : "no longer waiting for hit: 1ETNVZFXAF2WTMS64FYQHOZFYW7414\r\n"
+					},
+					{
+						"creationTime" : 1.26974408859E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269744088747E12,
+						"printOutput" : "disabled HIT: 1ETNVZFXAF2WTMS64FYQHOZFYW7414\r\n"
+					},
+					{
+						"creationTime" : 1.269744088748E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269744088793E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7jujh0cwx5wq38iqt731gr68l3icpr17.html\r\n"
+					},
+					{
+						"creationTime" : 1.269744089666E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.26974408967E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6zrlqnt1h278mc7k2simd452doeritf9.html",
+								"returnTime" : 1.269744089728E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6zrlqnt1h278mc7k2simd452doeritf9.html\r\n"
+							},
+							{
+								"creationTime" : 1.269744089731E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1BFFCNG9C3WKMK1OW19N6TGP46OZX2",
+								"returnTime" : 1.269744089936E12,
+								"printOutput" : "created HIT: 1BFFCNG9C3WKMK1OW19N6TGP46OZX2\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1FP2G31D61PJ43V29QPSRF70JMSQVS\r\n"
+							},
+							{
+								"creationTime" : 1.269744090194E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 3.1500000000000004,
+	"hitsCreated" : 6
+}
+// end:d3fe

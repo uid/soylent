@@ -1,0 +1,59 @@
+// begin:6025
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.270090579458E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.270090579466E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.27009057947E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/pwghttomp6o7au1d4v71zvpod9kpfcwb.html",
+								"returnTime" : 1.270090579936E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/pwghttomp6o7au1d4v71zvpod9kpfcwb.html\r\n"
+							},
+							{
+								"creationTime" : 1.270090579941E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1A4OF73H7V030L7EQEAFR11A6KLUXI",
+								"returnTime" : 1.270090580311E12,
+								"printOutput" : "created HIT: 1A4OF73H7V030L7EQEAFR11A6KLUXI\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.270090580749E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.270090580753E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/r4fk2k9f709447m3z9azyr749dmf7qqg.html",
+								"returnTime" : 1.270090580844E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/r4fk2k9f709447m3z9azyr749dmf7qqg.html\r\n"
+							},
+							{
+								"creationTime" : 1.270090580847E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1W1518JUTFH6XX12F9KMTFXRHUVDG0",
+								"returnTime" : 1.270090581294E12,
+								"printOutput" : "created HIT: 1W1518JUTFH6XX12F9KMTFXRHUVDG0\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.7000000000000001,
+	"hitsCreated" : 2
+}
+// end:6025

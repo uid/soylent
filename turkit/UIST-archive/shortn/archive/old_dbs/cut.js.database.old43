@@ -1,0 +1,219 @@
+// begin:eaac
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.26936418437E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/j7bskv0d1o5h1rdhkiokbka7y6a1ai12.html",
+				"returnTime" : 1.269364184477E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/j7bskv0d1o5h1rdhkiokbka7y6a1ai12.html\r\n"
+			},
+			{
+				"creationTime" : 1.269364184481E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1XXL65OTBQRIMK5JRCSSCSN3GQOO9N",
+				"returnTime" : 1.269364184768E12,
+				"printOutput" : "created HIT: 1XXL65OTBQRIMK5JRCSSCSN3GQOO9N\r\n        url: https://www.mturk.com/mturk/preview?groupId=1DS9RXP0XFDSRE1O6UKGZ13YDZ3VGO\r\n"
+			},
+			{
+				"creationTime" : 1.269364184986E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3GQOO9N",
+					"hitTypeId" : "1DS9RXP0XFDSRE1O6UKGZ13YDZ3VGO",
+					"title" : "Find unnecessary text",
+					"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/j7bskv0d1o5h1rdhkiokbka7y6a1ai12.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269364223E12,
+					"expiration" : 1.269969023E12,
+					"assignments" : [
+						{
+							"assignmentId" : "19R2MSWQ20CZOG74BANW2I3S0W4ARC",
+							"workerId" : "A2DJHZAX61Y6LX",
+							"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3GQOO9N",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269364474E12,
+							"acceptTime" : 1.269364331E12,
+							"submitTime" : 1.269364414E12,
+							"answer" : {
+								"brackets" : "Automatic clustering [[generally]] helps separate different kinds of records that need to be edited differently[[, but it isn\'t perfect]].  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s [[particular]] editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269364569E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1H51XD74UBI3NRBKHID7UKK9RPJFM7",
+							"workerId" : "A2E98G8WU8WRQL",
+							"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3GQOO9N",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269364675E12,
+							"acceptTime" : 1.269364442E12,
+							"submitTime" : 1.269364615E12,
+							"answer" : {
+								"brackets" : "Automatic clustering generally helps separate different kinds of records [[that need to be edited differently]], but it isn\'t perfect.  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution [[to this problem]] would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269364874E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1C9EC6MACUGFBJO1F6WK2PTITG6MNM",
+							"workerId" : "A23C8PF66JMSNV",
+							"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3GQOO9N",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269364708E12,
+							"acceptTime" : 1.269364517E12,
+							"submitTime" : 1.269364648E12,
+							"answer" : {
+								"brackets" : "Automatic clustering generally helps separate different kinds of records [[that need to be edited differently,]] but it isn\'t perfect.  Sometimes it creates more clusters than needed, [[as structure differences aren\'t important to the user\'s particular editing task.]]  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269364875E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1N9JHZGFS42735HSVE0X8G35DUYZ65",
+							"workerId" : "A3MJTB2ZJKYA9C",
+							"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3GQOO9N",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269364756E12,
+							"acceptTime" : 1.269364469E12,
+							"submitTime" : 1.269364696E12,
+							"answer" : {
+								"brackets" : "Automatic clustering generally helps separate [[different kinds of]] records that need to be edited differently, but it isn\'t perfect.  Sometimes it creates more clusters than needed, as structure differences aren\'t important [[to the user\'s particular editing task]].  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution [[to this problem]] would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269364875E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1N0XMLFUI0HRAD3URNK4JVST1PETIK",
+							"workerId" : "A23FS6DGIGF7BY",
+							"hitId" : "1XXL65OTBQRIMK5JRCSSCSN3GQOO9N",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269365516E12,
+							"acceptTime" : 1.269365362E12,
+							"submitTime" : 1.269365456E12,
+							"answer" : {
+								"brackets" : "Automatic clustering generally helps separate different kinds of records that need to be edited differently[[, but it isn\'t perfect]].  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  [[Conversely]], sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure [[like URLs, filenames, email addresses, dates, times, etc]]."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269365519064E12,
+				"printOutput" : "hit completed: 1XXL65OTBQRIMK5JRCSSCSN3GQOO9N\r\n"
+			},
+			{
+				"creationTime" : 1.269365519609E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269365520041E12,
+				"printOutput" : "disabled HIT: 1XXL65OTBQRIMK5JRCSSCSN3GQOO9N\r\n"
+			},
+			{
+				"creationTime" : 1.269365520044E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269365520141E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/j7bskv0d1o5h1rdhkiokbka7y6a1ai12.html\r\n"
+			},
+			{
+				"creationTime" : 1.269365520143E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269365520147E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/053dpd1iuecnzxhdqps8v7gn8108ayyo.html",
+						"returnTime" : 1.269365520203E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/053dpd1iuecnzxhdqps8v7gn8108ayyo.html\r\n"
+					},
+					{
+						"creationTime" : 1.269365520206E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "17GN5PFUFAYWS5VOFDPB99F9VP0GC9",
+						"returnTime" : 1.269365520507E12,
+						"printOutput" : "created HIT: 17GN5PFUFAYWS5VOFDPB99F9VP0GC9\r\n        url: https://www.mturk.com/mturk/preview?groupId=1AEB3VCJQAR9NISFM85VJ5RPR2HMYW\r\n"
+					},
+					{
+						"creationTime" : 1.269365520734E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269365520741E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269365520744E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u1qqgj397kg6qhohar9tftsjs6mawo1s.html",
+						"returnTime" : 1.26936552091E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u1qqgj397kg6qhohar9tftsjs6mawo1s.html\r\n"
+					},
+					{
+						"creationTime" : 1.269365520912E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1W1518JUTFH6XX12F9KMTFXRGPCGD9",
+						"returnTime" : 1.269365521064E12,
+						"printOutput" : "created HIT: 1W1518JUTFH6XX12F9KMTFXRGPCGD9\r\n        url: https://www.mturk.com/mturk/preview?groupId=1AEB3VCJQAR9NISFM85VJ5RPR2HMYW\r\n"
+					},
+					{
+						"creationTime" : 1.269365521291E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269365521295E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269365521299E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rnukosbnkzr7dp36kxsbngva5zx48kxy.html",
+						"returnTime" : 1.269365521395E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rnukosbnkzr7dp36kxsbngva5zx48kxy.html\r\n"
+					},
+					{
+						"creationTime" : 1.269365521398E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1LNUUU2SD759V8WTB570607SYDIYGZ",
+						"returnTime" : 1.269365521791E12,
+						"printOutput" : "created HIT: 1LNUUU2SD759V8WTB570607SYDIYGZ\r\n        url: https://www.mturk.com/mturk/preview?groupId=1AEB3VCJQAR9NISFM85VJ5RPR2HMYW\r\n"
+					},
+					{
+						"creationTime" : 1.26936552202E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 2,
+	"hitsCreated" : 4
+}
+// end:eaac

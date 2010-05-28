@@ -1,0 +1,1 @@
+This folder is where currently active HITs reside.
