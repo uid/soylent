@@ -128,7 +128,22 @@ namespace Soylent
 
         private void button2_Click(object sender, RibbonControlEventArgs e)
         {
-            //TurKit turkit = new TurKit(1);
+            TurKitSocKit.TurKitShortnPatch p1 = new TurKitSocKit.TurKitShortnPatch();
+            p1.start = 0; p1.end = 5;
+            p1.options = new List<string>();
+            p1.options.Add("It could be better"); p1.options.Add("second option."); p1.options.Add("Third thing.");
+
+            TurKitSocKit.TurKitShortnPatch p2 = new TurKitSocKit.TurKitShortnPatch();
+            p1.start = 7; p1.end = 12;
+            p1.options = new List<string>();
+            p1.options.Add("2It could be better"); p1.options.Add("2second option."); p1.options.Add("2Third thing.");
+
+            TurKitSocKit.TurKitShortn tks = new TurKitSocKit.TurKitShortn();
+            tks.job = 1; tks.paragraph = 0; tks.patches = new List<TurKitSocKit.TurKitShortnPatch>();
+            tks.patches.Add(p1); tks.patches.Add(p2);
+
+            ShortenData shortenData = Globals.Soylent.soylent.jobMap[tks.job] as ShortenData;
+            shortenData.processSocKitMessage(tks);
         }
 
         private static int lastJob = 0;
