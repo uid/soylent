@@ -75,6 +75,11 @@ function main() {
 				patches: []
 			};
 			
+            var finishedArray = new Array();
+            for (var i=0; i<cuts.length; i++) {
+                finishedArray[i] = false;
+            }
+            
 			for (var i=0; i<cuts.length; i++) {
 				print('Patch #' + i + '\n\n');
 				var cut = cuts[i];
@@ -93,10 +98,16 @@ function main() {
                     finalPatches.patches.push(patch);
                     
 					outputEdits(output, lag_output, payment_output, paragraph, cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, patch);
+                    finishedArray[i] = true;
 				});
 				print('\n\n\n');
 			}
 			
+            if (!finishedPatches(finishedArray)) {
+                // wait if not all the patches for the paragraph are complete
+                stop();
+            }
+            
 			finalPatches.patches.sort( function(a, b) { return a.start - b.start; } );
             socketShortn(finalPatches);
             
@@ -649,4 +660,12 @@ function initializeDebug() {
 function socketShortn(patch)
 {
 	sendSocketMessage("shortn", patch);
+}
+
+function finishedPatches(finishedArray) {
+    print(json(finishedArray));
+    // returns true if all array elements are true, e.g., all patches have been cut
+    return finishedArray.reduce( function(previousValue, currentValue, index, array) {
+        return previousValue && currentValue;
+    });
 }

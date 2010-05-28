@@ -75,7 +75,7 @@ var find = true;
 var fix = true;
 var filter = true;
 
-main();
+attempt(main);  // do the main program, and if it has to wait, close the socket
 
 if (socket != null) {
 	try {

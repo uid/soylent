@@ -96,7 +96,7 @@ namespace Soylent
                     arguments += " -m sandbox";
                 }
 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;
