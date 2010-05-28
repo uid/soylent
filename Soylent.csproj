@@ -216,6 +216,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="ShortnView.cs" />
     <Compile Include="DummyPatch.cs" />
     <Compile Include="StageData.cs" />
     <Compile Include="HITData.cs" />

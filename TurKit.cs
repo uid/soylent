@@ -15,14 +15,14 @@ using System.Text.RegularExpressions;
 
 namespace Soylent
 {
-    class TurKit
+    public class TurKit
     {
         public string directory;
         public string rootDirectory;
         private string amazonSECRET;
         private string amazonKEY;
         private HITData hdata;
-        private Timer turkitLoopTimer;
+        public Timer turkitLoopTimer;
 
         public TurKit(HITData hdata)
         {

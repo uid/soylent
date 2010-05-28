@@ -19,7 +19,7 @@ namespace Soylent
         public Dictionary<ResultType, StageData> stages;
         public Dictionary<string, ResultType> typeMap;// = new Dictionary<string,ResultType>();
         public int numParagraphs;
-        TurKit tk;
+        public TurKit tk;
 
         public string originalText
         {
