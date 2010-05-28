@@ -50,19 +50,23 @@ namespace Soylent
             DoubleAnimation doubleanimation = new DoubleAnimation(100 * percentDone, duration);
             hitProgress.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
         }
-        public void updateProgress(int curTurkers)
+        public void updateProgress()
         {
+            totalTurkers = stagedata.totalRequested;
+            totalCost = stagedata.moneySpent;
+            int curTurkers = stagedata.numCompleted;
             numTurkers.Content = curTurkers + " of " + totalTurkers + " workers";
+            cost.Content = String.Format("{0:c}", totalCost);
 
             double percentDone = ((double)curTurkers) / totalTurkers;
             Duration duration = new Duration(TimeSpan.FromSeconds(1));
             DoubleAnimation doubleanimation = new DoubleAnimation(100 * percentDone, duration);
             hitProgress.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
         }
-        public delegate void updateProgressDelegate(int curTurkers);
+        public delegate void updateProgressDelegate();
         public void notify()
         {
-            Globals.Soylent.soylent.Invoke(new updateProgressDelegate(this.updateProgress), new object[] { stagedata.numCompleted });
+            Globals.Soylent.soylent.Invoke(new updateProgressDelegate(this.updateProgress), new object[] { });
             //updateProgress(stagedata.numCompleted);
         }
     }
