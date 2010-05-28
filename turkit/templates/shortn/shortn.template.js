@@ -68,7 +68,6 @@ else {
 	stop();
 }
 
-var debug = false;
 // imports
 eval(read("../templates/shortn/shortn.js"));
 

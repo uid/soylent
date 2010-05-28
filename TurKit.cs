@@ -64,23 +64,40 @@ namespace Soylent
                 directory = rootDirectory + @"\turkit\templates\shortn\";
 
                 string requestLine = "var soylentJob = " + request + ";";
+                string debug = "var debug = " + (Soylent.DEBUG ? "true" : "false") + ";";
+
                 string[] script = File.ReadAllLines(directory + @"\shortn.template.js");
 
-                string[] newScript = new string[2 + script.Length];
+                string[] newScript = new string[3 + script.Length];
                 newScript[0] = requestLine;
                 newScript[1] = paragraphs;
-                Array.Copy(script, 0, newScript, 2, script.Length);
+                newScript[2] = debug;
+                Array.Copy(script, 0, newScript, 3, script.Length);
 
+                // Delete old files
+                if (!Soylent.DEBUG)
+                {
+                    DirectoryInfo di = new DirectoryInfo(rootDirectory + @"\turkit\active-hits\");
+                    FileInfo[] rgFiles = di.GetFiles("shortn." + request + "*");
+                    foreach (FileInfo file in rgFiles)
+                    {
+                        file.Delete();
+                    }
+                }
 
                 string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".js";
                 File.WriteAllLines(requestFile, newScript);
 
                 InitializeAmazonKeys();
-                
-                ProcessInformation info = new ProcessInformation("java", 
-                    " -jar TurKit-0.2.3.jar -f " + requestFile + " -a "+amazonKEY+" -s "+amazonSECRET+" -m sandbox -o 100 -h 1000", 
-                    rootDirectory + @"\turkit", 
-                    false);
+
+                string arguments = " -jar TurKit-0.2.3.jar -f " + requestFile + " -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
+                if (Soylent.DEBUG)
+                {
+                    arguments += " -m sandbox";
+                }
+
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
+
                 TimerCallback callback = ExecuteProcess;
                 turkitLoopTimer = new Timer(callback, info, 0, 60 * 1000);  // starts the timer every 60 seconds
             }
