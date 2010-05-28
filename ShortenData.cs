@@ -8,6 +8,7 @@ using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
+using System.Windows.Forms.Integration;
 
 namespace Soylent
 {
@@ -72,7 +73,7 @@ namespace Soylent
 
         public void processSocKitMessage(TurKitSocKit.TurKitShortn message)
         {
-            Word.Range curParagraphRange = range.Paragraphs[message.paragraph].Range;
+            Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
             int nextStart = 0;
             int nextEnd;
             foreach (TurKitSocKit.TurKitShortnPatch tkspatch in message.patches)
@@ -108,14 +109,43 @@ namespace Soylent
             if (paragraphsCompleted == numParagraphs)
             {
                 //TODO: use a delegate.
+                this.tk.turkitLoopTimer.Dispose();
                 returnShortnResults();
             }
         }
 
         public void returnShortnResults()
         {
-            //TODO: magic.  Make the button enabled and whatever else we decide.
-            System.Diagnostics.Debug.WriteLine("ALTERING THE INTERFACE");
+            Globals.Soylent.soylent.Invoke(new popupShortnWindowDelegate(this.popupShortnWindow), new object[] { });
+        }
+
+        public delegate void popupShortnWindowDelegate();
+        public void popupShortnWindow()
+        {
+            System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
+            newForm.Width = 1195;
+            newForm.Height = 380;
+            newForm.BackColor = System.Drawing.Color.White;
+
+            // Create the ElementHost control for hosting the
+            // WPF UserControl.
+            ElementHost host = new ElementHost();
+            host.Width = newForm.Width;
+            host.Height = newForm.Height;
+
+            // Create the WPF UserControl.
+            //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
+            ShortenDialog sd = new ShortenDialog(Globals.Soylent.soylent.jobMap[1] as ShortenData);
+
+            // Assign the WPF UserControl to the ElementHost control's
+            // Child property.
+
+            host.Child = sd;
+
+            // Add the ElementHost control to the form's
+            // collection of child controls.
+            newForm.Controls.Add(host);
+            newForm.Show();
         }
 
         Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();

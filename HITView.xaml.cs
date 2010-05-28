@@ -20,7 +20,7 @@ namespace Soylent
     public partial class HITView : UserControl
     {
         public Dictionary<HITData.ResultType, StageView> stageList;
-        private HITData data;
+        public HITData data;
 
         //public HITView(string workType, string originalText)
         public HITView(string workType, HITData data)
@@ -50,6 +50,16 @@ namespace Soylent
                 stage.updateProgress(4,2);
             }
              */
+        }
+
+        //TODO: Move to subclass
+        public void Shortn_Clicked(object sender, RoutedEventArgs e)
+        {
+            foreach(StageView stageview in stageList.Values)
+            {
+               // data.
+                //stageview.hitProgress.Foreground = Brushes.Blue;
+            }
         }
         
     }

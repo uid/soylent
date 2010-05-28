@@ -12,6 +12,7 @@
         </TextBlock>
         <StackPanel Margin="0,50,0,30" Name="stages">
             <Button VerticalAlignment="Bottom" Height="22.725" Name="cancelBtn" Width="51.813" HorizontalAlignment="Right" FontSize="10" Margin="5">Cancel</Button>
+            <Button Content="Shortn" Height="23" Name="ShortnButton" Width="80" IsEnabled="True" Click="Shortn_Clicked"/>
         </StackPanel>
     </Grid>
 </UserControl>
