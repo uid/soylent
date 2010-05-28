@@ -22,7 +22,6 @@ var rejectedWorkers = []
 var findStageOn = true;
 var fixStageOn = true;
 var verifyStageOn = true;
-var debug = true;
 
 var output;
 var lag_output;
@@ -39,6 +38,9 @@ if (typeof(soylentJob) == "undefined") {
 	}
 
 	main();
+}
+if (typeof(debug) == "undefined") {
+    var debug = false;
 }
 
 // main program
