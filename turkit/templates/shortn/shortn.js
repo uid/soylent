@@ -70,7 +70,7 @@ function main() {
             var findTime = getHITEndTime(cut_hit) - getHITStartTime(cut_hit);
 			print("Find time: " + findTime);            
 
-			var finalPatches = {
+			var patches = {
 				paragraph: paragraph_index,
 				patches: []
 			};
@@ -95,7 +95,7 @@ function main() {
 					minFixVerifyTime = Math.min(fixTime+verifyTime, minFixVerifyTime);
 					
                     var patch = generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index);
-                    finalPatches.patches.push(patch);
+                    patches.patches.push(patch);
                     
 					outputEdits(output, lag_output, payment_output, paragraph, cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, patch);
                     finishedArray[i] = true;
@@ -108,10 +108,10 @@ function main() {
                 stop();
             }
             
-			finalPatches.patches.sort( function(a, b) { return a.start - b.start; } );
-            socketShortn(finalPatches);
+			patches.patches.sort( function(a, b) { return a.start - b.start; } );
+            socketShortn(patches);
             
-			result.paragraphs.push(finalPatches);
+			result.paragraphs.push(patches);
 			
 			print('Find: ' + findTime);
 			print('Longest Fix+Verify: ' + maxFixVerifyTime);
@@ -536,18 +536,48 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
 	}
     
     if (suggestions != null) {
+        var dmp = new diff_match_patch();
 		for (var i = 0; i < suggestions.length; i++) {
 			// this will be one of the alternatives they generated
 			var newText = suggestions[i];
-			
+
 			var this_grammar_votes = grammar_votes[newText] ? grammar_votes[newText] : 0;
 			var this_meaning_votes = meaning_votes[newText] ? meaning_votes[newText] : 0;
-			
 			var passesGrammar = (this_grammar_votes / vote_hit.assignments.length) < .5;
 			var passesMeaning = (this_meaning_votes / vote_hit.assignments.length) < .5;
+            
+            var diff = dmp.diff_main(cut.plaintextSentence(), newText);
+            dmp.diff_cleanupSemantic(diff);
+            
+            var original_index = 0;
+            var edit_start = -1;
+            var edit_end = -1;
+            for (var j = 0; j < diff.length; j++) {
+                // if it's an insert or delete, and this is the first one, mark it
+                if (diff[j][0] != 0 && edit_start == -1) { 
+                    edit_start = original_index;
+                }
+                
+                // if we are removing something, mark the end of the deletion as a possible last point
+                if (diff[j][0] == -1) {
+                    edit_end = original_index + diff[j][1].length;
+                }
+                // if we are adding something, mark the beginning of the insertion as a possible last point
+                if (diff[j][0] == 1) {
+                    edit_end = original_index;
+                }                
+                
+                // if it's keeping it the same, or removing things, (meaning we're in the original string), increment the counter
+                if (diff[j][0] == 0 || diff[j][0] == -1) {
+                    original_index += diff[j][1].length;
+                }
+            }
+            
 			if (passesGrammar && passesMeaning) {
 				patch.options.push({
                     text: newText,
+                    editStart: edit_start,
+                    editEnd: edit_end,
                     numVoters: vote_hit.assignments.length,
                     meaningVotes: this_meaning_votes,
                     grammarVotes: this_grammar_votes

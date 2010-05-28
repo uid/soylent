@@ -255,19 +255,19 @@ function socketStatus(stage, hit, paragraphNum) {//stage, numCompleted, maxAssig
 	sendSocketMessage("status", message);
 }
 
-function sendSocketMessage(messageType, message) {
-	if (socketOut == null) {
-		print("Not in socket mode, not writing.");
-		return;
-	}
-    
+function sendSocketMessage(messageType, message) {    
     message.job = soylentJob;
     message.__type__ = messageType;
     
-	var stringMessage = json(message);
+    var stringMessage = json(message);
 	stringMessage = stringMessage.substring(1, stringMessage.length-1); // remove the { } encasing the JSON. C# hates that.
     print(stringMessage);
-	socketOut.println(stringMessage);
+    
+    if (socketOut == null) {
+		print("Not in socket mode, not writing.");
+	} else {
+    	socketOut.println(stringMessage);
+    }
 }
 
 function extendHit(theHit, buffer_redundancy) {
