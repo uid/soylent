@@ -14,6 +14,7 @@ namespace Soylent
     public class ShortenData: HITData
     {
         public List<Patch> patches;
+        public int paragraphsCompleted = 0;
 
         public int shortestLength
         {
@@ -53,6 +54,8 @@ namespace Soylent
             typeMap["find"] = ResultType.Find;
             typeMap["fix"] = ResultType.Fix;
             typeMap["verify"] = ResultType.Verify;
+
+            patches = new List<Patch>();
         }
 
         new public void updateStatus(TurKitSocKit.TurKitStatus status)
@@ -62,9 +65,38 @@ namespace Soylent
             //System.Diagnostics.Debug.WriteLine("^^^^^ stringtype ^^^^^^");
             ResultType type = typeMap[stringtype];
             StageData stage = stages[type];
-            stage.updateStage(status.numCompleted, status.paragraph);
-            //stage.updateStage(1, status.paragraph);
+            //stage.updateStage(status.numCompleted, status.paragraph);
+            stage.updateStage(status);
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
+        }
+
+        public void processSocKitMessage(TurKitSocKit.TurKitShortn message)
+        {
+            Word.Range curParagraphRange = range.Paragraphs[message.paragraph].Range;
+            foreach (TurKitSocKit.TurKitShortnPatch tkspatch in message.patches)
+            {
+                int start = curParagraphRange.Start + tkspatch.start;
+                int end = start + tkspatch.end;
+                //TODO: How do I make a range?
+                //Word.Range patchRange = null;//Globals.Soylent.
+                Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end);
+
+                Patch thisPatch = new Patch(patchRange, (from option in tkspatch.options select option.text).ToList());
+                patches.Add(thisPatch);
+            }
+            paragraphsCompleted++;
+
+            if (paragraphsCompleted == numParagraphs)
+            {
+                //TODO: use a delegate.
+                returnShortnResults();
+            }
+        }
+
+        public void returnShortnResults()
+        {
+            //TODO: magic.  Make the button enabled and whatever else we decide.
+            System.Diagnostics.Debug.WriteLine("ALTERING THE INTERFACE");
         }
 
         Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();
