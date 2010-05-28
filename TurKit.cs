@@ -42,22 +42,19 @@ namespace Soylent
                 ShortenData data = hdata as ShortenData;
      
                 string[][] pgraphs = new string[data.range.Paragraphs.Count][];
-                int i = 0;
-                int j;
-                foreach(Word.Paragraph paragraph in data.range.Paragraphs){
+                // Range.Paragraphs and Range.Sentences are 1 INDEXED
+                for(int i = 0; i < data.range.Paragraphs.Count; i++){
+                    Word.Paragraph paragraph = data.range.Paragraphs[i+1];
                     pgraphs[i] = new string[paragraph.Range.Sentences.Count];
-                    j = 0;
-                    foreach (Word.Range sentence in paragraph.Range.Sentences)
+                    for (int j = 0; j < paragraph.Range.Sentences.Count; j++ )
                     {
+                        Word.Range sentence = paragraph.Range.Sentences[j+1];
                         string temp = sentence.Text;
 
                         // Whitespace characters in the middle of sentences will not be removed
                         temp = temp.Trim();
                         pgraphs[i][j] = temp;
-
-                        j++;
                     }
-                    i++;
                 }
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string paragraphs = js.Serialize(pgraphs);

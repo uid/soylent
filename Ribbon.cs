@@ -128,7 +128,49 @@ namespace Soylent
 
         private void button2_Click(object sender, RibbonControlEventArgs e)
         {
-            //TurKit turkit = new TurKit(1);
+           
+            TurKitSocKit.TurKitShortnPatch p1 = new TurKitSocKit.TurKitShortnPatch();
+            p1.start = 0; p1.end = 5;
+            p1.options = new List<string>();
+            p1.options.Add("11"); p1.options.Add("122"); p1.options.Add("1333");
+
+            TurKitSocKit.TurKitShortnPatch p2 = new TurKitSocKit.TurKitShortnPatch();
+            p2.start = 7; p2.end = 12;
+            p2.options = new List<string>();
+            p2.options.Add("21"); p2.options.Add("222"); p2.options.Add("2333");
+
+            TurKitSocKit.TurKitShortn tks = new TurKitSocKit.TurKitShortn();
+            tks.job = 1; tks.paragraph = 1; tks.patches = new List<TurKitSocKit.TurKitShortnPatch>();
+            tks.patches.Add(p1); tks.patches.Add(p2);
+
+            ShortenData shortenData = Globals.Soylent.soylent.jobMap[tks.job] as ShortenData;
+            shortenData.processSocKitMessage(tks);
+            
+
+            System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
+            newForm.Width = 1195;
+            newForm.Height = 380;
+            newForm.BackColor = System.Drawing.Color.White;
+
+            // Create the ElementHost control for hosting the
+            // WPF UserControl.
+            ElementHost host = new ElementHost();
+            host.Width = newForm.Width;
+            host.Height = newForm.Height;
+
+            // Create the WPF UserControl.
+            //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
+            ShortenDialog sd = new ShortenDialog(Globals.Soylent.soylent.jobMap[1] as ShortenData);
+
+            // Assign the WPF UserControl to the ElementHost control's
+            // Child property.
+
+            host.Child = sd;
+
+            // Add the ElementHost control to the form's
+            // collection of child controls.
+            newForm.Controls.Add(host);
+            newForm.Show();
         }
 
         private static int lastJob = 0;
