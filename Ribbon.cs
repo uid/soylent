@@ -130,22 +130,22 @@ namespace Soylent
         {
            
             TurKitSocKit.TurKitShortnPatch p1 = new TurKitSocKit.TurKitShortnPatch();
-            p1.start = 0; p1.end = 5;
+            p1.start = 4; p1.end = 20;
             p1.options = new List<TurKitSocKit.TurKitShortnPatchOption>();
             TurKitSocKit.TurKitShortnPatchOption p1a = new TurKitSocKit.TurKitShortnPatchOption();
             TurKitSocKit.TurKitShortnPatchOption p1b = new TurKitSocKit.TurKitShortnPatchOption();
             TurKitSocKit.TurKitShortnPatchOption p1c = new TurKitSocKit.TurKitShortnPatchOption();
-            p1a.text="1;"; p1b.text="12;"; p1c.text="133;";
+            p1a.text="figuring"; p1b.text="trying to figure"; p1c.text="working out";
             
             p1.options.Add(p1a); p1.options.Add(p1b); p1.options.Add(p1c);
 
             TurKitSocKit.TurKitShortnPatch p2 = new TurKitSocKit.TurKitShortnPatch();
-            p2.start = 7; p2.end = 12;
+            p2.start = 64; p2.end = 70;
             p2.options = new List<TurKitSocKit.TurKitShortnPatchOption>();
             TurKitSocKit.TurKitShortnPatchOption p2a = new TurKitSocKit.TurKitShortnPatchOption();
             TurKitSocKit.TurKitShortnPatchOption p2b = new TurKitSocKit.TurKitShortnPatchOption();
             TurKitSocKit.TurKitShortnPatchOption p2c = new TurKitSocKit.TurKitShortnPatchOption();
-            p2a.text = "2;"; p2b.text = "22;"; p2c.text = "233;";
+            p2a.text = "proper"; p2b.text = "right"; p2c.text = "yes";
             p2.options.Add(p2a); p2.options.Add(p2b); p2.options.Add(p2c);
 
             TurKitSocKit.TurKitShortn tks = new TurKitSocKit.TurKitShortn();
