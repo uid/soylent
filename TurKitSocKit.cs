@@ -129,7 +129,9 @@ namespace Soylent
                     else if (messageType == "shorten")
                     {
                         TurKitShortn receivedObject = serializer.Deserialize<TurKitShortn>(incomingString);
-                        Debug.WriteLine(receivedObject.options[0]);
+                        ShortenData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortenData;
+                        shortenData.processSocKitMessage(receivedObject);
+                        //Debug.WriteLine(receivedObject.options[0]);
                     }
                     Debug.WriteLine("got it!");
                      
@@ -171,10 +173,16 @@ namespace Soylent
 
         public class TurKitShortn
         {
+            public int job;
+            public int paragraph;
+            public List<TurKitShortnPatch> patches;
+        }
+
+        public class TurKitShortnPatch
+        {
             public int start;
             public int end;
             public List<string> options;
-            public List<string> paragraph;
         }
     }
 }
