@@ -73,8 +73,16 @@ namespace Soylent
         public void processSocKitMessage(TurKitSocKit.TurKitShortn message)
         {
             Word.Range curParagraphRange = range.Paragraphs[message.paragraph].Range;
+            int nextStart = 0;
+            int nextEnd;
             foreach (TurKitSocKit.TurKitShortnPatch tkspatch in message.patches)
             {
+                if (tkspatch.start > nextStart)
+                {
+                    nextEnd = tkspatch.start;
+                    Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(nextStart, nextEnd);
+                }
+
                 int start = curParagraphRange.Start + tkspatch.start;
                 int end = start + tkspatch.end;
                 //TODO: How do I make a range?
