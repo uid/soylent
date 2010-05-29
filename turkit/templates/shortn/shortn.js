@@ -519,8 +519,8 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
 	var patch = {
 		start: cut.start,   // beginning of the identified patch
 		end: cut.end,
-        editStart = cut.start,  // beginning of the region that revisions touch -- to be changed later in this function
-        editEnd = cut.end,
+        editStart: cut.start,  // beginning of the region that revisions touch -- to be changed later in this function
+        editEnd: cut.end,
 		options: [],
 		paragraph: paragraph_index,
         canCut: false,
@@ -602,8 +602,8 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
         patch.editEnd = patch.options[0].editEnd;
         
         // We make sure that the original patch location is at least covered by the edit area
-        patch.editStart = min(patch.editStart, patch.start);
-        patch.editEnd = max(patch.editEnd, patch.end);
+        patch.editStart = Math.min(patch.editStart, patch.start);
+        patch.editEnd = Math.max(patch.editEnd, patch.end);
     }
     // return to original sort order
     patch.options.sort( function(a, b) { return a.start - b.start; } );    
@@ -762,7 +762,7 @@ function doMerge(patches, startPatch, endPatch, paragraph_index) {
         newPatch.options = new Array();
         
         for (var i=startPatch; i<=endPatch; i++) {
-            newPatch.options.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index);
+            newPatch.options = newPatch.options.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index));
         }
     }
 }
