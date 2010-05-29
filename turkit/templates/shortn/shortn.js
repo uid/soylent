@@ -99,7 +99,7 @@ function main() {
                     
 					outputEdits(output, lag_output, payment_output, paragraph, cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, patch);
                     finishedArray[i] = true;
-				});
+				} );
 				print('\n\n\n');
 			}
 			
@@ -107,6 +107,10 @@ function main() {
                 // wait if not all the patches for the paragraph are complete
                 stop();
             }
+            
+            // Now we merge patch revision bounds to see if there is any overlap between edits in various patches.
+            // If so, we merge the patches together.
+            patches.patches = mergePatches(patches.patches, paragraph_index);
             
 			patches.patches.sort( function(a, b) { return a.start - b.start; } );
             socketShortn(patches);
@@ -513,10 +517,15 @@ function joinVotes(vote_hit, paragraph_index) {
 
 function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index) {
 	var patch = {
-		start: cut.start,
+		start: cut.start,   // beginning of the identified patch
 		end: cut.end,
+        editStart = cut.start,  // beginning of the region that revisions touch -- to be changed later in this function
+        editEnd = cut.end,
 		options: [],
-		paragraph: paragraph_index
+		paragraph: paragraph_index,
+        canCut: false,
+        cutVotes: 0,
+        numEditors: 0
 	}
     
     if (edit_hit != null) {
@@ -586,6 +595,18 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
 		}
 	}
     
+    if (patch.options.length > 0) {
+        patch.options.sort( function(a, b) { return a.editStart - b.editStart; } ); // ascending by location of first edit
+        patch.editStart = patch.options[0].editStart;
+        patch.options.sort( function(a, b) { return b.editEnd - a.editEnd; } ); // descending by location of last edit
+        patch.editEnd = patch.options[0].editEnd;
+        
+        // We make sure that the original patch location is at least covered by the edit area
+        patch.editStart = min(patch.editStart, patch.start);
+        patch.editEnd = max(patch.editEnd, patch.end);
+    }
+    // return to original sort order
+    patch.options.sort( function(a, b) { return a.start - b.start; } );    
     return patch;
 }
 
@@ -698,4 +719,70 @@ function finishedPatches(finishedArray) {
     return finishedArray.reduce( function(previousValue, currentValue, index, array) {
         return previousValue && currentValue;
     });
+}
+
+/**
+ * Looks for patches with overlapping edit bounds and merges them together for the purposes
+ * of the user interface.
+ */
+function mergePatches(patches, paragraph_index) {
+    patches.sort( function(a, b) { return a.editStart - b.editStart; } );
+    var mergedPatches = new Array();
+    
+    var openPatch = 0;
+    var openIndex = 0;
+    var closeIndex = 0;
+    for (var i=0; i<patches.length; i++) {
+        if (closeIndex < patches[i].editStart) {    // if we start a new region
+            doMerge(patches, openPatch, i, paragraph_index);
+            openPatch = i;
+            openIndex = patches[i].editStart;
+            
+            closeIndex = patches[i].editEnd;
+        } else {    // we need to mark this one as mergeable; it starts before the closeindex
+            closeIndex = max(closeIndex, patches[i].editEnd);
+        }
+    }
+    
+    return mergedPatches;
+}
+
+function doMerge(patches, startPatch, endPatch, paragraph_index) {
+    if (startPatch == endPatch) {
+        return patches[startPatch];
+    }
+    else {
+        var newPatch = prune(startPatch, 10^10);    // do a deep copy of the object, 10^10 takes us to pretty much artibrary depth
+        // get the largest end value of the patches
+        newPatch.end = max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.end; } ) );
+        newPatch.editEnd = max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editEnd; } ) );
+        newPatch.canCut = false;    // we're going to embed the individual cuttability estimates in the options, since now you can only cut part of the patch
+        newPatch.cutVotes = 0;
+        newPatch.numEditors = Stats.sum(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.numEditors; } ) );
+        newPatch.options = new Array();
+        
+        for (var i=startPatch; i<=endPatch; i++) {
+            newPatch.options.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index);
+        }
+    }
+}
+
+function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index) {
+    var options = new Array();
+    
+    var prefix = getParagraph(paragraphs[paragraph_index]).substring(patches[startPatch].startEdit, patches[curPatch].startEdit);
+    var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].endEdit, patches[endPatch].endEdit);
+    for (var i=0; i<patches[curPatch].options.length; i++) {
+        var option = prefix + patches[curPatch].options[i];
+        options.push(prefix + option + postfix);
+    }
+    
+    if (patches[curPatch].canCut) {
+        // create an option that cuts the entire original patch, if it was voted cuttable
+        var prefix = getParagraph(paragraphs[paragraph_index]).substring(patches[startPatch].startEdit, patches[curPatch].start);
+        var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[startPatch].end, patches[endPatch].endEdit);
+        options.push(prefix + postfix);
+    }
+    
+    return options;
 }
