@@ -149,6 +149,14 @@ Array.prototype.unique = function () {
 	return r;
 }
 
+Array.max = function( array ){
+    return Math.max.apply( Math, array );
+};
+
+Array.min = function( array ){
+    return Math.min.apply( Math, array );
+};
+
 function get_vote(assignments, extractVoteFromAnswer, multipleVotes) {
 	if (!multipleVotes)
 	{
