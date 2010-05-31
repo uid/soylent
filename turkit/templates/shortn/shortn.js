@@ -532,7 +532,9 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
 		paragraph: paragraph_index,
         canCut: false,
         cutVotes: 0,
-        numEditors: 0
+        numEditors: 0,
+        merged: false,
+        originalText: cut.plaintextSentence()
 	}
     
     if (edit_hit != null) {
@@ -562,6 +564,7 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
 			var passesGrammar = (this_grammar_votes / vote_hit.assignments.length) < .5;
 			var passesMeaning = (this_meaning_votes / vote_hit.assignments.length) < .5;
             
+            // Now we calculate the beginning of the edit and the end of the edit region
             var diff = dmp.diff_main(cut.plaintextSentence(), newText);
             dmp.diff_cleanupSemantic(diff);
             
@@ -596,7 +599,8 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
                     editEnd: edit_end,
                     numVoters: vote_hit.assignments.length,
                     meaningVotes: this_meaning_votes,
-                    grammarVotes: this_grammar_votes
+                    grammarVotes: this_grammar_votes,
+                    diff: diff
                 });
 			}
 		}
@@ -770,38 +774,85 @@ function doMerge(patches, startPatch, endPatch, paragraph_index) {
         print('Merging ' + startPatch + ' to ' + endPatch);
         var newPatch = prune(startPatch, 10^10);    // do a deep copy of the object, 10^10 takes us to pretty much artibrary depth
         // get the largest end value of the patches
-        print('end options:')
-        print(Math.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.end; } ) ))
-        newPatch.end = Math.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.end; } ) );
-        newPatch.editEnd = Math.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editEnd; } ) );
+        newPatch.end = Array.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.end; } ) );
+        newPatch.editStart = Array.min(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editStart; } ) );
+        newPatch.editEnd = Array.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editEnd; } ) );
         newPatch.canCut = false;    // we're going to embed the individual cuttability estimates in the options, since now you can only cut part of the patch
         newPatch.cutVotes = 0;
         newPatch.numEditors = Stats.sum(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.numEditors; } ) );
+        newPatch.merged = true;
         newPatch.options = new Array();
         
         for (var i=startPatch; i<=endPatch; i++) {
-            newPatch.options = newPatch.options.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index));
+            newPatch.options = newPatch.options.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index, newPatch.editStart, newPatch.editEnd));
         }
-        print(json(newPatch));
         return newPatch;
     }
 }
 
-function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index) {
+function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, editStart, editEnd) {
     var options = new Array();
     
-    var prefix = getParagraph(paragraphs[paragraph_index]).substring(patches[startPatch].startEdit, patches[curPatch].startEdit);
-    var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].endEdit, patches[endPatch].endEdit);
+    print('\n\nPatch merging ' + curPatch);
+    print('start patch')
+    print(json(patches[startPatch]))
+    print('current patch')
+    print(json(patches[curPatch]))
+    print('end patch')
+    print(json(patches[endPatch]))
+    print('edit start: ' + editStart)
+    print('edit end: ' + editEnd)
+    var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].editStart);
+    print('prefix:')
+    print(prefix)
+    var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd, editEnd);
+    print('postfix:')
+    print(postfix)
+    var dmp = new diff_match_patch();
     for (var i=0; i<patches[curPatch].options.length; i++) {
-        var option = prefix + patches[curPatch].options[i];
-        options.push(prefix + option + postfix);
+        var option = patches[curPatch].options[i];
+        print('diffs')
+        print(option.diff)
+        print('patches')
+        var dmp_patch = dmp.patch_make(option.diff);
+        print(dmp.patch_toText(dmp_patch))
+        print('original text')
+        print(patches[curPatch].originalText)
+        print('applied')
+        print(dmp.patch_apply(dmp_patch, patches[curPatch].originalText))
+        
+        // diff[0] and diff[length-1] will always be the edges that are untouched, so we need to subtract them out
+        var editRegion = option.text.slice(option.diff[0][1].length, -1 * option.diff[option.diff.length-1][1].length)
+        
+        var newOption = {
+            text: prefix + editRegion + postfix,
+            editStart: editStart,
+            editEnd: editEnd,
+            numVoters: option.numVoters,
+            meaningVotes: option.meaningVotes,
+            grammarVotes: option.grammarVotes
+        }
+        options.push(newOption);
+        print(json(newOption));
     }
     
     if (patches[curPatch].canCut) {
         // create an option that cuts the entire original patch, if it was voted cuttable
-        var prefix = getParagraph(paragraphs[paragraph_index]).substring(patches[startPatch].startEdit, patches[curPatch].start);
-        var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[startPatch].end, patches[endPatch].endEdit);
-        options.push(prefix + postfix);
+        var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].start);
+        var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].end, editEnd);
+        print('prefix:')
+        print(prefix)
+        print('postfix:')
+        print(postfix)
+        var newOption = {
+            text: prefix + postfix,
+            editStart: editStart,
+            editEnd: editEnd,
+            numVoters: patches[curPatch].numEditors,
+            meaningVotes: 0,    // not strictly correct, but hey, what can we do? TODO: we should merge cuttability to create an option earlier in the code before spinning off a verify step
+            grammarVotes: 0
+        }
+        options.push(newOption);
     }
     
     return options;
