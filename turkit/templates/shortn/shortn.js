@@ -31,6 +31,8 @@ var patchesOutput;
 var overallFastestParagraph = Number.MAX_VALUE;
 var overallSlowestParagraph = Number.MIN_VALUE;	
 
+var fileOutputOn = false;
+
 var client = null;
 if (typeof(soylentJob) == "undefined") {
 	if (typeof(paragraphs) == "undefined") {
@@ -128,12 +130,15 @@ function main() {
 			overallSlowestParagraph = Math.max(overallSlowestParagraph, (findTime + maxFixVerifyTime));			
 		});	
 	}
-	payment_output.close();
-	lag_output.close();	
-	output.close();
+    
+    if (fileOutputOn) {    
+        payment_output.close();
+        lag_output.close();	
+        output.close();
 
-	patchesOutput.write(json(result));
-	patchesOutput.close();
+        patchesOutput.write(json(result));
+        patchesOutput.close();
+    }
 	
 	print(json(result));
 	
@@ -168,11 +173,13 @@ function findPatches(paragraph, paragraph_index, output, payment_output, lag_out
         }
         cleanUp(cut_hit);
         
-        output.write(getPaymentString(cut_hit, "Find"));	
-        output.write(getTimingString(cut_hit, "Find"));
+        if (fileOutputOn) {
+            output.write(getPaymentString(cut_hit, "Find"));	
+            output.write(getTimingString(cut_hit, "Find"));
 
-        writeCSVPayment(payment_output, cut_hit, "Find", paragraph_index);
-        writeCSVWait(lag_output, cut_hit, "Find", paragraph_index);
+            writeCSVPayment(payment_output, cut_hit, "Find", paragraph_index);
+            writeCSVWait(lag_output, cut_hit, "Find", paragraph_index);
+        }
     }
     return [cuts, cut_hit];
 }
@@ -616,6 +623,10 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
  */
 function outputEdits(output, lag_output, payment_output, paragraph, cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, patch)
 {	
+    if (!fileOutputOn) {
+        return;
+    }
+    
 	output.write(preWrap(getParagraph(paragraph)));
 
 	if (cut_hit != null) {
@@ -679,19 +690,18 @@ function outputEdits(output, lag_output, payment_output, paragraph, cut, cut_hit
 			output.write("<div>How many people thought this changed the meaning most? <b>" + this_meaning_votes + "</b> of " + vote_hit.assignments.length + " turkers.</div>");		
 			output.flush();
 		}
-	}
-    
-    // Print timing information
-    
+	}   
 }
 
 function initializeOutput() {
-	output = new java.io.FileWriter("active-hits/shortn-results." + soylentJob + ".html");
-	lag_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_lag.csv");
-	lag_output.write("Stage,Assignment,Wait Type,Time,Paragraph\n");
-	payment_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_payment.csv");
-	payment_output.write("Stage,Assignment,Cost,Paragraph\n");
-	patchesOutput = new java.io.FileWriter("active-hits/shortn-patches." + soylentJob +".json");
+    if (fileOutputOn) {
+        output = new java.io.FileWriter("active-hits/shortn-results." + soylentJob + ".html");
+        lag_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_lag.csv");
+        lag_output.write("Stage,Assignment,Wait Type,Time,Paragraph\n");
+        payment_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_payment.csv");
+        payment_output.write("Stage,Assignment,Cost,Paragraph\n");
+        patchesOutput = new java.io.FileWriter("active-hits/shortn-patches." + soylentJob +".json");
+    }
 }
 
 function initializeDebug() {
@@ -726,36 +736,44 @@ function finishedPatches(finishedArray) {
  * of the user interface.
  */
 function mergePatches(patches, paragraph_index) {
+    print('merging...')
     patches.sort( function(a, b) { return a.editStart - b.editStart; } );
     var mergedPatches = new Array();
     
     var openPatch = 0;
-    var openIndex = 0;
-    var closeIndex = 0;
+    var openIndex = patches[0].editStart;
+    var closeIndex = patches[0].editEnd;
     for (var i=0; i<patches.length; i++) {
         if (closeIndex < patches[i].editStart) {    // if we start a new region
-            doMerge(patches, openPatch, i, paragraph_index);
+            var mergedPatch = doMerge(patches, openPatch, i-1, paragraph_index);
+            mergedPatches.push(mergedPatch);
             openPatch = i;
             openIndex = patches[i].editStart;
-            
             closeIndex = patches[i].editEnd;
         } else {    // we need to mark this one as mergeable; it starts before the closeindex
-            closeIndex = max(closeIndex, patches[i].editEnd);
+            closeIndex = Math.max(closeIndex, patches[i].editEnd);
         }
     }
+    // merge final open patch
+    var mergedPatch = doMerge(patches, openPatch, patches.length-1, paragraph_index);
+    mergedPatches.push(mergedPatch);    
     
     return mergedPatches;
 }
 
 function doMerge(patches, startPatch, endPatch, paragraph_index) {
     if (startPatch == endPatch) {
+        print('Merging a singleton.');
         return patches[startPatch];
     }
     else {
+        print('Merging ' + startPatch + ' to ' + endPatch);
         var newPatch = prune(startPatch, 10^10);    // do a deep copy of the object, 10^10 takes us to pretty much artibrary depth
         // get the largest end value of the patches
-        newPatch.end = max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.end; } ) );
-        newPatch.editEnd = max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editEnd; } ) );
+        print('end options:')
+        print(Math.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.end; } ) ))
+        newPatch.end = Math.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.end; } ) );
+        newPatch.editEnd = Math.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editEnd; } ) );
         newPatch.canCut = false;    // we're going to embed the individual cuttability estimates in the options, since now you can only cut part of the patch
         newPatch.cutVotes = 0;
         newPatch.numEditors = Stats.sum(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.numEditors; } ) );
@@ -764,6 +782,8 @@ function doMerge(patches, startPatch, endPatch, paragraph_index) {
         for (var i=startPatch; i<=endPatch; i++) {
             newPatch.options = newPatch.options.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index));
         }
+        print(json(newPatch));
+        return newPatch;
     }
 }
 
