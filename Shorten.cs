@@ -23,7 +23,8 @@ namespace Soylent
             this.jobNumber = jobNumber;
 
             //HITView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data.originalText);
-            HITView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data, jobNumber);
+            //HITView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data, jobNumber);
+            ShortnView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data, jobNumber) as ShortnView;
             hit.addStage(1, HITData.ResultType.Find, "Find Shortenable Regions", 10, 0.10);
             hit.addStage(2, HITData.ResultType.Fix, "Shorten Text", 5, 0.05);
             hit.addStage(3, HITData.ResultType.Verify, "Verify Work", 5, 0.05);

@@ -16,6 +16,7 @@ namespace Soylent
     {
         public List<Patch> patches;
         public int paragraphsCompleted = 0;
+        private ShortnView shortnview;
 
         public int shortestLength
         {
@@ -57,6 +58,11 @@ namespace Soylent
             typeMap["verify"] = ResultType.Verify;
 
             patches = new List<Patch>();
+        }
+
+        public void register(HITView hview)
+        {
+            shortnview = hview as ShortnView;
         }
 
         new public void updateStatus(TurKitSocKit.TurKitStatus status)
@@ -124,33 +130,7 @@ namespace Soylent
         public delegate void popupShortnWindowDelegate();
         public void popupShortnWindow()
         {
-            view.shortenDataReceived();
-            /*
-            System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
-            newForm.Width = 1195;
-            newForm.Height = 380;
-            newForm.BackColor = System.Drawing.Color.White;
-
-            // Create the ElementHost control for hosting the
-            // WPF UserControl.
-            ElementHost host = new ElementHost();
-            host.Width = newForm.Width;
-            host.Height = newForm.Height;
-
-            // Create the WPF UserControl.
-            //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            ShortenDialog sd = new ShortenDialog(this);
-
-            // Assign the WPF UserControl to the ElementHost control's
-            // Child property.
-
-            host.Child = sd;
-
-            // Add the ElementHost control to the form's
-            // collection of child controls.
-            newForm.Controls.Add(host);
-            newForm.Show();
-             */
+            shortnview.shortenDataReceived();
         }
 
         Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();

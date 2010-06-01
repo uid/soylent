@@ -39,7 +39,15 @@ namespace Soylent
             // Create the WPF UserControl.
 
             //HITView hs = new HITView(name, text);
-            HITView hs = new HITView(name, data);
+            HITView hs;
+            if (name == Shorten.HIT_TYPE)
+            {
+                hs = new ShortnView(name, data as ShortenData);
+            }
+            else
+            {
+                hs = new HITView(name, data);
+            }
             jobMap[jobNumber] = data;
 
             // Assign the WPF UserControl to the ElementHost control's
