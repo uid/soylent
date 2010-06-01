@@ -1,0 +1,275 @@
+// begin:c768
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269898831729E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269898831736E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9e5c2ttksp26algewrsj8dbor8tr40jb.html",
+						"returnTime" : 1.269898831885E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9e5c2ttksp26algewrsj8dbor8tr40jb.html\r\n"
+					},
+					{
+						"creationTime" : 1.269898831887E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1CEJ5Y1FFPD7YF7NZSYEU9U353H6YG",
+						"returnTime" : 1.269898832141E12,
+						"printOutput" : "created HIT: 1CEJ5Y1FFPD7YF7NZSYEU9U353H6YG\r\n        url: https://www.mturk.com/mturk/preview?groupId=1LYUUU2SD759V8WTB570607SVG7YG2\r\n"
+					},
+					{
+						"creationTime" : 1.269898832352E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1CEJ5Y1FFPD7YF7NZSYEU9U353H6YG",
+							"hitTypeId" : "1LYUUU2SD759V8WTB570607SVG7YG2",
+							"title" : "Find bad writing",
+							"description" : "This paragraph needs some help finding errors. You\'re way better than Microsoft Word\'s grammar checker.",
+							"keywords" : "undefined",
+							"reward" : 0.06,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9e5c2ttksp26algewrsj8dbor8tr40jb.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269898882E12,
+							"expiration" : 1.270503682E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1PD42TDPDWQ269GN3Z7FPHD1D7NQ5U",
+									"workerId" : "A327WVDWI0GMMB",
+									"hitId" : "1CEJ5Y1FFPD7YF7NZSYEU9U353H6YG",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269903968E12,
+									"acceptTime" : 1.269900259E12,
+									"submitTime" : 1.269900368E12,
+									"answer" : {
+										"brackets" : "Many of these problems vanish if we turn to a much older recording technology---text.  Recording a fragment of text simply requires picking up a pen or typing at a keyboard.  When we enter text, each (pen or key) stroke is being used to record the actual information we care about---none is wasted on application navigation or configuration.  The linear structure of text means there\'s always an obvious place to put anything[[---]]at the end.  And the free form of text means we can record anything we want to about anything, without worrying whether it fits some application schema or should be split over multiple applications.  All of this means that we have to do less to record text, which makes it more efficient and also less of an interruption and distraction than using a complex application."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269900377161E12,
+						"printOutput" : "creation time: 1269898882000\r\nno longer waiting for hit: 1CEJ5Y1FFPD7YF7NZSYEU9U353H6YG\r\n"
+					},
+					{
+						"creationTime" : 1.26990037749E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269900377976E12,
+						"printOutput" : "disabled HIT: 1CEJ5Y1FFPD7YF7NZSYEU9U353H6YG\r\n"
+					},
+					{
+						"creationTime" : 1.269900377978E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269900378161E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9e5c2ttksp26algewrsj8dbor8tr40jb.html\r\n"
+					},
+					{
+						"creationTime" : 1.269900379043E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269900379047E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ygi5hp9ewvi7hd1q7781zpyxatt5rnwx.html",
+								"returnTime" : 1.269900379237E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ygi5hp9ewvi7hd1q7781zpyxatt5rnwx.html\r\n"
+							},
+							{
+								"creationTime" : 1.26990037924E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1Q9J8F03XQW8LHJQP5FQAEWP1M9AYC",
+								"returnTime" : 1.26990037951E12,
+								"printOutput" : "created HIT: 1Q9J8F03XQW8LHJQP5FQAEWP1M9AYC\r\n        url: https://www.mturk.com/mturk/preview?groupId=16W6XLMXH4NEP5W6IKH0OG5TYML15Q\r\n"
+							},
+							{
+								"creationTime" : 1.269900379715E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1Q9J8F03XQW8LHJQP5FQAEWP1M9AYC",
+									"hitTypeId" : "16W6XLMXH4NEP5W6IKH0OG5TYML15Q",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ygi5hp9ewvi7hd1q7781zpyxatt5rnwx.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269900429E12,
+									"expiration" : 1.270505229E12,
+									"assignments" : [
+										{
+											"assignmentId" : "18ENC6AFJ0X0RZ1I0ISJTNSTCQDOSM",
+											"workerId" : "A17ASXYNGE73F8",
+											"hitId" : "1Q9J8F03XQW8LHJQP5FQAEWP1M9AYC",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269904291E12,
+											"acceptTime" : 1.269900663E12,
+											"submitTime" : 1.269900691E12,
+											"answer" : {
+												"newText" : "The linear structure of text means there\'s always an obvious place to put anything--at the end.",
+												"description" : "three hypens when there should be only two"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269901643385E12,
+								"printOutput" : "creation time: 1269900429000\r\nno longer waiting for hit: 1Q9J8F03XQW8LHJQP5FQAEWP1M9AYC\r\n"
+							},
+							{
+								"creationTime" : 1.2699016436E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.26990164405E12,
+								"printOutput" : "disabled HIT: 1Q9J8F03XQW8LHJQP5FQAEWP1M9AYC\r\n"
+							},
+							{
+								"creationTime" : 1.269901644052E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269901644162E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ygi5hp9ewvi7hd1q7781zpyxatt5rnwx.html\r\n"
+							},
+							{
+								"creationTime" : 1.269901644349E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/al1dg94e6ptfo6zj6a8qpeodptq8euml.html",
+								"returnTime" : 1.269901644419E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/al1dg94e6ptfo6zj6a8qpeodptq8euml.html\r\n"
+							},
+							{
+								"creationTime" : 1.269901644421E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1O8EO9R25JJ3R0VPIEIDX4IC5FBILX",
+								"returnTime" : 1.269901644714E12,
+								"printOutput" : "created HIT: 1O8EO9R25JJ3R0VPIEIDX4IC5FBILX\r\n        url: https://www.mturk.com/mturk/preview?groupId=16CWK4PHNO422XCA2H26ZTO6T4BNCR\r\n"
+							},
+							{
+								"creationTime" : 1.269901644933E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers, maxWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "1O8EO9R25JJ3R0VPIEIDX4IC5FBILX",
+									"hitTypeId" : "16CWK4PHNO422XCA2H26ZTO6T4BNCR",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/al1dg94e6ptfo6zj6a8qpeodptq8euml.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269901695E12,
+									"expiration" : 1.270506495E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1TVNALIFUDX6N57JWIKJKDGEZL9VI4",
+											"workerId" : "A14WHTITJT8PWK",
+											"hitId" : "1O8EO9R25JJ3R0VPIEIDX4IC5FBILX",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269905366E12,
+											"acceptTime" : 1.269901748E12,
+											"submitTime" : 1.269901766E12,
+											"answer" : {
+												"reason" : "three%20hypens%20when%20there%20should%20be%20only%20two",
+												"fix" : "The%20linear%20structure%20of%20text%20means%20there%27s%20always%20an%20obvious%20place%20to%20put%20anything--at%20the%20end.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1SDKHB2A7M8ZGFHNTBXLAOBVJRAL20",
+											"workerId" : "A3FDZ18585Y0Q4",
+											"hitId" : "1O8EO9R25JJ3R0VPIEIDX4IC5FBILX",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269905448E12,
+											"acceptTime" : 1.269901828E12,
+											"submitTime" : 1.269901848E12,
+											"answer" : {
+												"reason" : "three%20hypens%20when%20there%20should%20be%20only%20two",
+												"randomOrder" : "temp",
+												"fix" : "The%20linear%20structure%20of%20text%20means%20there%27s%20always%20an%20obvious%20place%20to%20put%20anything--at%20the%20end."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1GCW49YEE8ZIQSOR35EN0RH1RQXJA3",
+											"workerId" : "A17V9UJOCSM3OF",
+											"hitId" : "1O8EO9R25JJ3R0VPIEIDX4IC5FBILX",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269905506E12,
+											"acceptTime" : 1.269901795E12,
+											"submitTime" : 1.269901906E12,
+											"answer" : {
+												"reason" : "three%20hypens%20when%20there%20should%20be%20only%20two",
+												"randomOrder" : "temp",
+												"fix" : "The%20linear%20structure%20of%20text%20means%20there%27s%20always%20an%20obvious%20place%20to%20put%20anything---at%20the%20end."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269902924017E12,
+								"printOutput" : "creation time: 1269901695000\r\nno longer waiting for hit: 1O8EO9R25JJ3R0VPIEIDX4IC5FBILX\r\n"
+							},
+							{
+								"creationTime" : 1.269902926372E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269902927463E12,
+								"printOutput" : "disabled HIT: 1O8EO9R25JJ3R0VPIEIDX4IC5FBILX\r\n"
+							},
+							{
+								"creationTime" : 1.269902927465E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.26990292758E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/al1dg94e6ptfo6zj6a8qpeodptq8euml.html\r\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 1.68,
+	"hitsCreated" : 3
+}
+// end:c768

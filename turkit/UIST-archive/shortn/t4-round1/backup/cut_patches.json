@@ -1,0 +1,236 @@
+({
+	"paragraphs" : [
+		{
+			"sentences" : [
+				"Lyne,\nMy name is Mark Bain and I\'m the Web Site Adminstrator for the Mariners.",
+				"I would be glad to help out in any way.",
+				"Please pass this email and my phone numbers (281-555-555 hm. 281-555-5555 wk.) to your website person.",
+				"I put alot of info in this email to help get started but if it is a little overwhelming, just call."
+			],
+			"patches" : [
+				{
+					"start" : 81,
+					"end" : 119,
+					"options" : [
+						"I would be glad to help out.",
+						"I would be glad to help.",
+						"I am here to help.",
+						""
+					],
+					"canCut" : false,
+					"cutVotes" : 3,
+					"numEditors" : 7,
+					"numVoters" : 7
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"A previous board member, Steve Burleigh, created our web site last year and gave me alot of ideas.",
+				"For this year, I found a web site called eTeamZ that hosts web sites for sports groups.",
+				"Check out our new page: http://www.eteamz.com/swimmariners/"
+			],
+			"patches" : [
+				{
+					"start" : 100,
+					"end" : 113,
+					"options" : [
+						"I found a web site called eTeamZ that hosts web sites for sports groups.",
+						"I found a web site called eTeamZ that hosts sites for sports groups.",
+						"This year, I found a web site called eTeamZ that hosts web sites for sports groups."
+					],
+					"canCut" : true,
+					"cutVotes" : 5,
+					"numEditors" : 7,
+					"numVoters" : 4
+				},
+				{
+					"start" : 0,
+					"end" : 98,
+					"options" : [
+						"Steve Burleigh created our web site last year and gave me alot of ideas.",
+						"",
+						"The former board member who created our site, Steve Burleigh, gave me a lot of ideas.",
+						"A former board member, Steve Burleigh, created our web site last year and gave me ideas."
+					],
+					"canCut" : false,
+					"cutVotes" : 2,
+					"numEditors" : 7,
+					"numVoters" : 3
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"eTeamsZ is really easy to use and does not require much web site knowledge.",
+				"They do the formatting and you supply the info.",
+				"If your web guru wants to get creative, they can do some custome stuff as well.",
+				"The best part, however, is that it is FREE.",
+				"Of course with free you have to put up with a little advertising but since this site is tailor made for sports (meetschedules, practice schedules calendars, news, maps, etc.) , I think it is worth it."
+			],
+			"patches" : [
+				{
+					"start" : 252,
+					"end" : 452,
+					"options" : [
+						"site is tailor made for sports (meetschedules, practice schedules calendars, news, maps, etc.) , I think it is worth it.",
+						"put up with a little advertising but since this site is tailor made for sports (meetschedules, practice schedules calendars, news, maps, etc.) , I think it is worth it.",
+						"Of course with free you have to put up with a little advertising but since this site is tailor made for sports, I think it is worth it.",
+						"",
+						"Since this tailor-made site (meetschedules, practice schedules calendars, news, maps, etc.). is free, it\'s worth putting up with a little advertising.",
+						"Of courseut up with a little advertising but since this site is tailor made for sports (meetschedules, practice schedules calendars, news, maps, etc.) , I think it is worth it."
+					],
+					"canCut" : true,
+					"cutVotes" : 4,
+					"numEditors" : 7,
+					"numVoters" : 4
+				},
+				{
+					"start" : 143,
+					"end" : 204,
+					"options" : [
+						"If your web guru want to get creative, they can do some customizations.",
+						"they can do some custome stuff as well.",
+						"If your web guru wants to get creative, the site is easily customized.",
+						"If your web guru wants to get creative, some custome stuff as well."
+					],
+					"canCut" : false,
+					"cutVotes" : 1,
+					"numEditors" : 7,
+					"numVoters" : 3
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"If you don\'t decide to use eTeamZ, that\'s fine too.",
+				"I\'ve created some other web sites and should be able to answer some questions.",
+				"Sounds like you have some experience so it should be no problem.",
+				"Good luck and let me know what else you need."
+			],
+			"patches" : [
+				{
+					"start" : 87,
+					"end" : 131,
+					"options" : [
+						"I\'ve created some other web sites.",
+						"I\'ve created some other web sites, so I\'ve some experience.",
+						"I\'ve created some other web sites",
+						"I\'ve created some other web sites. I should be able to answer some questions."
+					],
+					"canCut" : false,
+					"cutVotes" : 3,
+					"numEditors" : 7,
+					"numVoters" : 5
+				},
+				{
+					"start" : 133,
+					"end" : 244,
+					"options" : [
+						"",
+						"If you have experience, it should be easy.  Good luck and let me know what else you need."
+					],
+					"canCut" : false,
+					"cutVotes" : 3,
+					"numEditors" : 7,
+					"numVoters" : 4
+				},
+				{
+					"start" : 0,
+					"end" : 26,
+					"options" : [
+						"use eTeamZ, that\'s fine too.",
+						"If you don\'t want to use eTeamZ, that\'s OK too.",
+						"If you decide not to use eTeamZ, that\'s fine too."
+					],
+					"canCut" : true,
+					"cutVotes" : 4,
+					"numEditors" : 7,
+					"numVoters" : 6
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"eTeamZ TIPS: \nOh, here are some tips on getting started with eTeamZ.",
+				"(difficulties that I had anyway): Registration- http://www.eteamz.com/company/sites/register/",
+				"The toughest part was coming up with a nickname and a user name for the websites.",
+				"Seems that most of the users are into baseball and Mariners was taken.",
+				"I think I used Mariners Swim Team for nickname and goMariners for the username because I kept hitting other name that were being used."
+			],
+			"patches" : [
+				{
+					"start" : 68,
+					"end" : 103,
+					"options" : [
+						"eTeamZ TIPS: \r\nOh, here are some tips on getting started with eTeamZ.   Registration- http://www.eteamz.com/company/sites/register/",
+						"eTeamZ TIPS: \r\nOh, here are some tips on getting started with eTeamZ.  : Registration- http://www.eteamz.com/company/sites/register/",
+						"eTeamZ TIPS: \r\nOh, here are some tips on getting started with eTeamZ.  (difficulties that I had anyway): Registration- http://www.eteamz.com/company/sites/register/",
+						"eTeamZ TIPS: \r\nOh, here are some tips on getting started with eTeamZ: Registration- http://www.eteamz.com/company/sites/register/",
+						"eTeamZ TIPS: \r\nOh, here are some tips on getting started with eTeamZ. Registration- http://www.eteamz.com/company/sites/register/",
+						"eTeamZ TIPS: \r\n started with eTeamZ.  (difficulties that I had anyway): Registration- http://www.eteamz.com/company/sites/register/"
+					],
+					"canCut" : true,
+					"cutVotes" : 6,
+					"numEditors" : 7,
+					"numVoters" : 6
+				},
+				{
+					"start" : 15,
+					"end" : 19,
+					"options" : [
+						"Oh, here are some tips on getting started with eTeamZ.",
+						"eTeamZ TIPS: \r\nhere are some tips on getting started with eTeamZ.",
+						"here are some tips on getting started with eTeamZ.",
+						"eTeamZ TIPS: \r\nOh, here are some tips on getting started with eTeamZ.",
+						"eTeamZ TIPS: \r\nOh, here are some tips on getting started.",
+						"eTeamZ TIPS: \r\nHere are some tips on getting started with eTeamZ."
+					],
+					"canCut" : true,
+					"cutVotes" : 6,
+					"numEditors" : 7,
+					"numVoters" : 6
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"WebSite- When I got to the \"build you web\" page, I chose Team Web Site.",
+				"They also had options for Leagues and Orgs.",
+				"My best advice is to start populating things via the admin page and bring up another windows to check the progress of what is actually displayed.",
+				"PLUS - They have a premium service called PLUS that you pay for but I didn\'t see much use for it except you get rid of some of the advertising banners.",
+				"They also show that you can use this site for registration and other things but we are keeping it pretty simple."
+			],
+			"patches" : [
+				{
+					"start" : 481,
+					"end" : 530,
+					"options" : [
+						"They also show that you can use this site for registration and other simple tasks.",
+						"They also show that you can use this site for registration, etc.",
+						"They also show that you can use this site for registration and other things, but we are keeping it simple.",
+						"They also show that you can use this site for registration"
+					],
+					"canCut" : false,
+					"cutVotes" : 2,
+					"numEditors" : 7,
+					"numVoters" : 4
+				},
+				{
+					"start" : 118,
+					"end" : 166,
+					"options" : [
+						"My best advice is to start populating things via the admin page and bring up another windows.",
+						"The first step is to populating things via the admin page and bring up another windows to check the progress of what is actually displayed.",
+						"Start populating things via the admin page and bring up another window to check the progress of what is actually displayed.",
+						"start populating things via the admin page and bring up another windows to check the progress of what is actually displayed."
+					],
+					"canCut" : false,
+					"cutVotes" : 1,
+					"numEditors" : 7,
+					"numVoters" : 4
+				}
+			]
+		}
+	]
+})

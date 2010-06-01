@@ -1,0 +1,440 @@
+// begin:5b62
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.26921748942E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1ai9c4w9uqy3ft6sz8vopdpyeb6qnejy.html",
+				"returnTime" : 1.269217489495E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1ai9c4w9uqy3ft6sz8vopdpyeb6qnejy.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217489496E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "10JLYFKFMTPDZPPGNY419YFSVK9U9E",
+				"returnTime" : 1.2692174897E12,
+				"printOutput" : "created HIT: 10JLYFKFMTPDZPPGNY419YFSVK9U9E\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1PR1TR7CTIRP70WLL3QSP5KFHSD2P5\r\n"
+			},
+			{
+				"creationTime" : 1.269217489703E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/95sgkxnwd28y36mtzxtb7ffdidu22q79.html",
+				"returnTime" : 1.269217489776E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/95sgkxnwd28y36mtzxtb7ffdidu22q79.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217489777E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1YZRRVRUFF5EUYQ2NYF9HGRB7BSRIQ",
+				"returnTime" : 1.269217489901E12,
+				"printOutput" : "created HIT: 1YZRRVRUFF5EUYQ2NYF9HGRB7BSRIQ\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1PR1TR7CTIRP70WLL3QSP5KFHSD2P5\r\n"
+			},
+			{
+				"creationTime" : 1.269217489904E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/adj0er7a16oey5dikahvk318vv3slvin.html",
+				"returnTime" : 1.269217489958E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/adj0er7a16oey5dikahvk318vv3slvin.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217489958E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "17JSN02B5XPR48ZLF4I15TQC12RUAT",
+				"returnTime" : 1.269217490144E12,
+				"printOutput" : "created HIT: 17JSN02B5XPR48ZLF4I15TQC12RUAT\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1PR1TR7CTIRP70WLL3QSP5KFHSD2P5\r\n"
+			},
+			{
+				"creationTime" : 1.269217490146E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/0tg6notfpimjvyw1i7mxg5zixdqul79g.html",
+				"returnTime" : 1.26921749024E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/0tg6notfpimjvyw1i7mxg5zixdqul79g.html\r\n"
+			},
+			{
+				"creationTime" : 1.26921749024E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1YDWA5WMLT5AP9A85G09TH6BKQHRJ2",
+				"returnTime" : 1.269217490339E12,
+				"printOutput" : "created HIT: 1YDWA5WMLT5AP9A85G09TH6BKQHRJ2\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1PR1TR7CTIRP70WLL3QSP5KFHSD2P5\r\n"
+			},
+			{
+				"creationTime" : 1.269217490342E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u5q8vukfumlaup7ng4s42xcbnw72xls4.html",
+				"returnTime" : 1.269217490397E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u5q8vukfumlaup7ng4s42xcbnw72xls4.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217490397E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "17QH8IYU9X3WNI4DLIIX04AIJKCUBO",
+				"returnTime" : 1.269217490586E12,
+				"printOutput" : "created HIT: 17QH8IYU9X3WNI4DLIIX04AIJKCUBO\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1PR1TR7CTIRP70WLL3QSP5KFHSD2P5\r\n"
+			},
+			{
+				"creationTime" : 1.269217490714E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "10JLYFKFMTPDZPPGNY419YFSVK9U9E",
+					"hitTypeId" : "1PR1TR7CTIRP70WLL3QSP5KFHSD2P5",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.06,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1ai9c4w9uqy3ft6sz8vopdpyeb6qnejy.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269217527E12,
+					"expiration" : 1.269217827E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1YC2JODQMG2B8S0X95QAF04LZYRXQG",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "10JLYFKFMTPDZPPGNY419YFSVK9U9E",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269217599E12,
+							"acceptTime" : 1.269217537E12,
+							"submitTime" : 1.269217539E12,
+							"answer" : {
+								"newText" : "foo"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269217510331E12,
+				"printOutput" : "hit completed: 10JLYFKFMTPDZPPGNY419YFSVK9U9E\r\n"
+			},
+			{
+				"creationTime" : 1.26921751035E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217510472E12,
+				"printOutput" : "disabled HIT: 10JLYFKFMTPDZPPGNY419YFSVK9U9E\r\n"
+			},
+			{
+				"creationTime" : 1.269217510472E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217510529E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1ai9c4w9uqy3ft6sz8vopdpyeb6qnejy.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217510789E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1YZRRVRUFF5EUYQ2NYF9HGRB7BSRIQ",
+					"hitTypeId" : "1PR1TR7CTIRP70WLL3QSP5KFHSD2P5",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.06,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/95sgkxnwd28y36mtzxtb7ffdidu22q79.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269217528E12,
+					"expiration" : 1.269217828E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1IF4649JR4MWWJNUQUJNWKIN3UIVTP",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1YZRRVRUFF5EUYQ2NYF9HGRB7BSRIQ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269217595E12,
+							"acceptTime" : 1.269217532E12,
+							"submitTime" : 1.269217535E12,
+							"answer" : {
+								"newText" : "foo"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269217510931E12,
+				"printOutput" : "hit completed: 1YZRRVRUFF5EUYQ2NYF9HGRB7BSRIQ\r\n"
+			},
+			{
+				"creationTime" : 1.269217510949E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217511142E12,
+				"printOutput" : "disabled HIT: 1YZRRVRUFF5EUYQ2NYF9HGRB7BSRIQ\r\n"
+			},
+			{
+				"creationTime" : 1.269217511143E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217511186E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/95sgkxnwd28y36mtzxtb7ffdidu22q79.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217511327E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "17JSN02B5XPR48ZLF4I15TQC12RUAT",
+					"hitTypeId" : "1PR1TR7CTIRP70WLL3QSP5KFHSD2P5",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.06,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/adj0er7a16oey5dikahvk318vv3slvin.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269217528E12,
+					"expiration" : 1.269217828E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1OAUU4C43H2B9BRJVPJ2X2680FYVV5",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "17JSN02B5XPR48ZLF4I15TQC12RUAT",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269217601E12,
+							"acceptTime" : 1.269217539E12,
+							"submitTime" : 1.269217541E12,
+							"answer" : {
+								"newText" : "foo"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269217511457E12,
+				"printOutput" : "hit completed: 17JSN02B5XPR48ZLF4I15TQC12RUAT\r\n"
+			},
+			{
+				"creationTime" : 1.269217511474E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217511603E12,
+				"printOutput" : "disabled HIT: 17JSN02B5XPR48ZLF4I15TQC12RUAT\r\n"
+			},
+			{
+				"creationTime" : 1.269217511604E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217511639E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/adj0er7a16oey5dikahvk318vv3slvin.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217511776E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1YDWA5WMLT5AP9A85G09TH6BKQHRJ2",
+					"hitTypeId" : "1PR1TR7CTIRP70WLL3QSP5KFHSD2P5",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.06,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/0tg6notfpimjvyw1i7mxg5zixdqul79g.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269217528E12,
+					"expiration" : 1.269217828E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1CCYEZXW4YNBKTFXMKFAKQEQVKTXRH",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1YDWA5WMLT5AP9A85G09TH6BKQHRJ2",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269217603E12,
+							"acceptTime" : 1.269217541E12,
+							"submitTime" : 1.269217543E12,
+							"answer" : {
+								"newText" : "foo"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269217511927E12,
+				"printOutput" : "hit completed: 1YDWA5WMLT5AP9A85G09TH6BKQHRJ2\r\n"
+			},
+			{
+				"creationTime" : 1.269217511944E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217512072E12,
+				"printOutput" : "disabled HIT: 1YDWA5WMLT5AP9A85G09TH6BKQHRJ2\r\n"
+			},
+			{
+				"creationTime" : 1.269217512073E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217512114E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/0tg6notfpimjvyw1i7mxg5zixdqul79g.html\r\n"
+			},
+			{
+				"creationTime" : 1.26921751225E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "17QH8IYU9X3WNI4DLIIX04AIJKCUBO",
+					"hitTypeId" : "1PR1TR7CTIRP70WLL3QSP5KFHSD2P5",
+					"title" : "Fix writing errors",
+					"description" : "Fix grammar, spelling and style errors in my paper.",
+					"keywords" : "undefined",
+					"reward" : 0.06,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u5q8vukfumlaup7ng4s42xcbnw72xls4.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 3600,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269217528E12,
+					"expiration" : 1.269217828E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1DQOCMR4RGNBWW2JQZ9X1G4PM8PVUG",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "17QH8IYU9X3WNI4DLIIX04AIJKCUBO",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269217597E12,
+							"acceptTime" : 1.269217535E12,
+							"submitTime" : 1.269217537E12,
+							"answer" : {
+								"newText" : "foo"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269217512391E12,
+				"printOutput" : "hit completed: 17QH8IYU9X3WNI4DLIIX04AIJKCUBO\r\n"
+			},
+			{
+				"creationTime" : 1.269217512408E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217512524E12,
+				"printOutput" : "disabled HIT: 17QH8IYU9X3WNI4DLIIX04AIJKCUBO\r\n"
+			},
+			{
+				"creationTime" : 1.269217512525E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269217512555E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u5q8vukfumlaup7ng4s42xcbnw72xls4.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217512566E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/amxgbey6ea671hgbqkz89k1qojr5omm0.html",
+				"returnTime" : 1.269217512749E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/amxgbey6ea671hgbqkz89k1qojr5omm0.html\r\n"
+			},
+			{
+				"creationTime" : 1.26921751275E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1EF2QEHY9B8FXNWJZIESBOG015CUCV",
+				"returnTime" : 1.269217512959E12,
+				"printOutput" : "created HIT: 1EF2QEHY9B8FXNWJZIESBOG015CUCV\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.269217512971E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/dtggbhxvloql2vgkf1zptt8h6w65xor8.html",
+				"returnTime" : 1.26921751336E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/dtggbhxvloql2vgkf1zptt8h6w65xor8.html\r\n"
+			},
+			{
+				"creationTime" : 1.26921751336E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1XNTYWZGBPTV8MITV98X41JONXYPLA",
+				"returnTime" : 1.269217513779E12,
+				"printOutput" : "created HIT: 1XNTYWZGBPTV8MITV98X41JONXYPLA\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.269217513789E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ms4slebu9a8w0nbs0igealbibh22wv77.html",
+				"returnTime" : 1.269217513847E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ms4slebu9a8w0nbs0igealbibh22wv77.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217513847E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "130KMXLYNGRP2F2XZE93VUYIM5OUDV",
+				"returnTime" : 1.26921751405E12,
+				"printOutput" : "created HIT: 130KMXLYNGRP2F2XZE93VUYIM5OUDV\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.26921751406E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/fnq2ylq99rzsadqsiv8lr6h6uxzoucnl.html",
+				"returnTime" : 1.269217514127E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/fnq2ylq99rzsadqsiv8lr6h6uxzoucnl.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217514127E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1GXYQ2DG7K4FE40EVL9C4EYDN2OPMC",
+				"returnTime" : 1.269217514327E12,
+				"printOutput" : "created HIT: 1GXYQ2DG7K4FE40EVL9C4EYDN2OPMC\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.269217514338E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/8jdpty07ymcxqdlmlks1mizylfj07ki6.html",
+				"returnTime" : 1.269217514448E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/8jdpty07ymcxqdlmlks1mizylfj07ki6.html\r\n"
+			},
+			{
+				"creationTime" : 1.269217514448E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1CIFKAOSZT150TGQN10LUW6OZFHRK1",
+				"returnTime" : 1.269217514582E12,
+				"printOutput" : "created HIT: 1CIFKAOSZT150TGQN10LUW6OZFHRK1\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1AI9RKJWKN4S5G7TRWY0MMHLAI3ZU5\r\n"
+			},
+			{
+				"creationTime" : 1.269217514729E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.4000000000000001,
+	"hitsCreated" : 10
+}
+// end:5b62

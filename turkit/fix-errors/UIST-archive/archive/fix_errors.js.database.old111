@@ -1,0 +1,211 @@
+// begin:052b
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269724155681E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269724155687E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/nut3egvgach0ox47so7r3kqdrnw4pck2.html",
+						"returnTime" : 1.269724155767E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/nut3egvgach0ox47so7r3kqdrnw4pck2.html\r\n"
+					},
+					{
+						"creationTime" : 1.269724155769E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1A30X4XVVEB2IAVNGEWFS7N62QVR5R",
+						"returnTime" : 1.269724155936E12,
+						"printOutput" : "created HIT: 1A30X4XVVEB2IAVNGEWFS7N62QVR5R\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1KJ399CFLLBF50DFY9KVUKGPWS7NYB\r\n"
+					},
+					{
+						"creationTime" : 1.269724156079E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1A30X4XVVEB2IAVNGEWFS7N62QVR5R",
+							"hitTypeId" : "1KJ399CFLLBF50DFY9KVUKGPWS7NYB",
+							"title" : "Find bad writing",
+							"description" : "This paragraph needs some help finding errors. You\'re way better than Microsoft Word\'s grammar checker.",
+							"keywords" : "undefined",
+							"reward" : 0.06,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/nut3egvgach0ox47so7r3kqdrnw4pck2.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 1,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269724205E12,
+							"expiration" : 1.270329005E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1L2T2NHR5P5WEAZ1MXWT1MNCWZM955",
+									"workerId" : "AC4FRIRZ7913H",
+									"hitId" : "1A30X4XVVEB2IAVNGEWFS7N62QVR5R",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269724274E12,
+									"acceptTime" : 1.269724209E12,
+									"submitTime" : 1.269724214E12,
+									"answer" : {
+										"brackets" : "Marketing [[are]] bad for brand big and small.  You Know What I am Saying.  It is no wondering that advertisings are bad for company in America, Chicago and Germany.  Updating of brand image are bad for processes in one company and many companies."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269724168267E12,
+						"printOutput" : "hit completed: 1A30X4XVVEB2IAVNGEWFS7N62QVR5R\r\n"
+					},
+					{
+						"creationTime" : 1.26972416842E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269724168491E12,
+						"printOutput" : "disabled HIT: 1A30X4XVVEB2IAVNGEWFS7N62QVR5R\r\n"
+					},
+					{
+						"creationTime" : 1.269724168491E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269724168549E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/nut3egvgach0ox47so7r3kqdrnw4pck2.html\r\n"
+					},
+					{
+						"creationTime" : 1.269724168838E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269724168841E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/w3jkv2r6898vuo3qeyfzuv8of04oygkr.html",
+								"returnTime" : 1.269724168907E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/w3jkv2r6898vuo3qeyfzuv8of04oygkr.html\r\n"
+							},
+							{
+								"creationTime" : 1.269724168908E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1W80OXZZ68JBGVIFJ8279NV9LQANWG",
+								"returnTime" : 1.269724169123E12,
+								"printOutput" : "created HIT: 1W80OXZZ68JBGVIFJ8279NV9LQANWG\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1TPA67F233U6ZJY6NEGTLNIIXYRQP7\r\n"
+							},
+							{
+								"creationTime" : 1.269724169272E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+								"returnValue" : {
+									"hitId" : "1W80OXZZ68JBGVIFJ8279NV9LQANWG",
+									"hitTypeId" : "1TPA67F233U6ZJY6NEGTLNIIXYRQP7",
+									"title" : "Fix Writing Errors",
+									"description" : "My grammar checker doesn\'t know what to do with these.",
+									"keywords" : "undefined",
+									"reward" : 0.08,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/w3jkv2r6898vuo3qeyfzuv8of04oygkr.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 1,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 60,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Reviewable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269724218E12,
+									"expiration" : 1.270329018E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1DLVOUHYUANSXEZFRG6YTS1CSUX96L",
+											"workerId" : "AC4FRIRZ7913H",
+											"hitId" : "1W80OXZZ68JBGVIFJ8279NV9LQANWG",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269724288E12,
+											"acceptTime" : 1.269724222E12,
+											"submitTime" : 1.269724228E12,
+											"answer" : {
+												"description" : "subject/verb agreement",
+												"newText" : "Marketing is bad for brand big and small."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : true
+								},
+								"returnTime" : 1.269724182281E12,
+								"printOutput" : "hit completed: 1W80OXZZ68JBGVIFJ8279NV9LQANWG\r\n"
+							},
+							{
+								"creationTime" : 1.269724182434E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/t9866ixm444faed911xvid1qjfoiprm2.html",
+								"returnTime" : 1.269724182581E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/t9866ixm444faed911xvid1qjfoiprm2.html\r\n"
+							},
+							{
+								"creationTime" : 1.269724182581E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "12QI9XB0L8WQ5VN5TDYTB69GUSGNX9",
+								"returnTime" : 1.26972418282E12,
+								"printOutput" : "created HIT: 12QI9XB0L8WQ5VN5TDYTB69GUSGNX9\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1EDNQ8EVRA2X264F6YI0NUIAQ9U4T8\r\n"
+							},
+							{
+								"creationTime" : 1.269724182993E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+								"returnValue" : {
+									"hitId" : "12QI9XB0L8WQ5VN5TDYTB69GUSGNX9",
+									"hitTypeId" : "1EDNQ8EVRA2X264F6YI0NUIAQ9U4T8",
+									"title" : "Vote on writing suggestions",
+									"description" : "Which sentence improvement should I use?",
+									"keywords" : "undefined",
+									"reward" : 0.03,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/t9866ixm444faed911xvid1qjfoiprm2.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 1,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 60,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Reviewable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269724232E12,
+									"expiration" : 1.270329032E12,
+									"assignments" : [
+										{
+											"assignmentId" : "154PW9LV24E9N2ATA9E3GTGU149DSS",
+											"workerId" : "A26E3IY5VI4YBE",
+											"hitId" : "12QI9XB0L8WQ5VN5TDYTB69GUSGNX9",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269724312E12,
+											"acceptTime" : 1.269724239E12,
+											"submitTime" : 1.269724252E12,
+											"answer" : {
+												"reason" : "subject/verb%20agreement",
+												"fix" : "Marketing%20is%20bad%20for%20brand%20big%20and%20small.",
+												"randomOrder" : "temp"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : true
+								},
+								"returnTime" : 1.269724206459E12,
+								"printOutput" : "hit completed: 12QI9XB0L8WQ5VN5TDYTB69GUSGNX9\r\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.17,
+	"hitsCreated" : 3
+}
+// end:052b
