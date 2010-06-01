@@ -97,6 +97,8 @@ function main() {
 					minFixVerifyTime = Math.min(fixTime+verifyTime, minFixVerifyTime);
 					
                     var patch = generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index);
+                    print('new patch yay')
+                    print(json(patch))
                     patches.patches.push(patch);
                     
 					outputEdits(output, lag_output, payment_output, paragraph, cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, patch);
@@ -341,7 +343,6 @@ function aggregatePatchSuggestions(patch_suggestions, num_votes, sentences) {
 			}			
 		}
 	}
-	print(json(patches));
 	return patches;
 }
 
@@ -514,11 +515,6 @@ function joinVotes(vote_hit, paragraph_index) {
 		return results;		
 	}, true);
 	
-	print('grammar');
-	print(json(grammar_votes));
-	print('meaning');
-	print(json(meaning_votes));
-	
 	return [grammar_votes, meaning_votes];
 }
 
@@ -592,11 +588,14 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
                 }
             }
             
+            // we need to know what offset the cut starts at, by summing together the lengths of the previous sentences
+            var editOffset = cut.sentences.slice(0, cut.sentenceRange().startSentence).join(Patch.sentence_separator).length;
+            
 			if (passesGrammar && passesMeaning) {
 				patch.options.push({
                     text: newText,
-                    editStart: edit_start,
-                    editEnd: edit_end,
+                    editStart: edit_start + editOffset,
+                    editEnd: edit_end + editOffset,
                     numVoters: vote_hit.assignments.length,
                     meaningVotes: this_meaning_votes,
                     grammarVotes: this_grammar_votes,
@@ -728,7 +727,6 @@ function socketShortn(patch)
 }
 
 function finishedPatches(finishedArray) {
-    print(json(finishedArray));
     // returns true if all array elements are true, e.g., all patches have been cut
     return finishedArray.reduce( function(previousValue, currentValue, index, array) {
         return previousValue && currentValue;
@@ -794,32 +792,11 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
     var options = new Array();
     
     print('\n\nPatch merging ' + curPatch);
-    print('start patch')
-    print(json(patches[startPatch]))
-    print('current patch')
-    print(json(patches[curPatch]))
-    print('end patch')
-    print(json(patches[endPatch]))
-    print('edit start: ' + editStart)
-    print('edit end: ' + editEnd)
     var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].editStart);
-    print('prefix:')
-    print(prefix)
     var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd, editEnd);
-    print('postfix:')
-    print(postfix)
     var dmp = new diff_match_patch();
     for (var i=0; i<patches[curPatch].options.length; i++) {
         var option = patches[curPatch].options[i];
-        print('diffs')
-        print(option.diff)
-        print('patches')
-        var dmp_patch = dmp.patch_make(option.diff);
-        print(dmp.patch_toText(dmp_patch))
-        print('original text')
-        print(patches[curPatch].originalText)
-        print('applied')
-        print(dmp.patch_apply(dmp_patch, patches[curPatch].originalText))
         
         // diff[0] and diff[length-1] will always be the edges that are untouched, so we need to subtract them out
         var editRegion = option.text.slice(option.diff[0][1].length, -1 * option.diff[option.diff.length-1][1].length)
@@ -833,17 +810,13 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
             grammarVotes: option.grammarVotes
         }
         options.push(newOption);
-        print(json(newOption));
     }
     
     if (patches[curPatch].canCut) {
         // create an option that cuts the entire original patch, if it was voted cuttable
         var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].start);
         var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].end, editEnd);
-        print('prefix:')
-        print(prefix)
-        print('postfix:')
-        print(postfix)
+
         var newOption = {
             text: prefix + postfix,
             editStart: editStart,
