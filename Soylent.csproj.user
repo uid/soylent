@@ -4,6 +4,7 @@
     <PublishUrlHistory />
     <InstallUrlHistory />
     <SupportUrlHistory />
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <ProjectExtensions />
 </Project>
