@@ -20,6 +20,7 @@ namespace Soylent
         public Dictionary<string, ResultType> typeMap;// = new Dictionary<string,ResultType>();
         public int numParagraphs;
         public TurKit tk;
+        public HITView view;
 
         public string originalText
         {
@@ -60,6 +61,11 @@ namespace Soylent
         public void startTask()
         {
             tk.startTask();
+        }
+
+        public void register(HITView hview)
+        {
+            view = hview;
         }
 
         public void updateStatus(TurKitSocKit.TurKitStatus status)

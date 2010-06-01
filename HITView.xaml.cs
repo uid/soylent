@@ -11,7 +11,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 
 namespace Soylent
@@ -30,7 +29,9 @@ namespace Soylent
             InitializeComponent();
 
             hitType.Content = workType;
+
             this.data = data;
+            data.register(this);
             previewText.Text = data.originalText;
             stageList = new Dictionary<HITData.ResultType,StageView>();
         }
@@ -57,8 +58,6 @@ namespace Soylent
         //TODO: Move to subclass
         public void Shortn_Clicked(object sender, RoutedEventArgs e)
         {
-            foreach(StageView stageview in stageList.Values)
-            {
                 System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
                 newForm.Width = 1195;
                 newForm.Height = 380;
@@ -85,8 +84,14 @@ namespace Soylent
                 newForm.Show();
                // data.
                 //stageview.hitProgress.Foreground = Brushes.Blue;
-            }
         }
-        
+        public void shortenDataReceived()
+        {
+            foreach (StageView stageview in stageList.Values)
+            {
+                stageview.hitProgress.Foreground = Brushes.Blue;
+            }
+            this.ShortnButton.IsEnabled = true;
+        }
     }
 }

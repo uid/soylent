@@ -114,6 +114,8 @@ namespace Soylent
             }
         }
 
+      
+
         public void returnShortnResults()
         {
             Globals.Soylent.soylent.Invoke(new popupShortnWindowDelegate(this.popupShortnWindow), new object[] { });
@@ -122,6 +124,8 @@ namespace Soylent
         public delegate void popupShortnWindowDelegate();
         public void popupShortnWindow()
         {
+            view.shortenDataReceived();
+            /*
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
             newForm.Width = 1195;
             newForm.Height = 380;
@@ -135,7 +139,7 @@ namespace Soylent
 
             // Create the WPF UserControl.
             //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            ShortenDialog sd = new ShortenDialog(Globals.Soylent.soylent.jobMap[job] as ShortenData);
+            ShortenDialog sd = new ShortenDialog(this);
 
             // Assign the WPF UserControl to the ElementHost control's
             // Child property.
@@ -146,6 +150,7 @@ namespace Soylent
             // collection of child controls.
             newForm.Controls.Add(host);
             newForm.Show();
+             */
         }
 
         Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();
