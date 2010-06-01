@@ -594,6 +594,7 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
 			if (passesGrammar && passesMeaning) {
 				patch.options.push({
                     text: newText,
+                    editedText: newText,    // will be updated in a moment
                     editStart: edit_start + editOffset,
                     editEnd: edit_end + editOffset,
                     numVoters: vote_hit.assignments.length,
@@ -614,6 +615,41 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
         // We make sure that the original patch location is at least covered by the edit area
         patch.editStart = Math.min(patch.editStart, patch.start);
         patch.editEnd = Math.max(patch.editEnd, patch.end);
+        
+        // For each option we need to edit it back down to just the changed portion, removing the extraenous parts of the sentence
+        // e.g., we need to prune to just [patch.editStart, patch.editEnd]
+        var editOffset = cut.sentences.slice(0, cut.sentenceRange().startSentence).join(Patch.sentence_separator).length;
+        for (var i=0; i<patch.options.length; i++) {
+            // To remove the extraneous parts of the text, we turn the first and last elements of the diff
+            // (the prefix and postfix) into deletions
+            var diff_cut = prune(patch.options[i].diff, 1000000);    // copy it very deep
+            
+            // First we remove the unnecessary parts of the prefix from the text, keeping only what everybody has edited
+            var startOffset = patch.editStart - editOffset;
+            var prefixCut = diff_cut[0][1].substring(0, startOffset);
+            var prefixKeep = diff_cut[0][1].substring(startOffset);
+            var cutStartDiffElement = [-1, prefixCut];   // -1 == delete
+            var keepStartDiffElement = [0, prefixKeep];  // 0 == keep
+            diff_cut.splice(0, 1, cutStartDiffElement, keepStartDiffElement); // remove the original first element and replace it with our cut and keep
+            
+            // Now we do the same with the end
+            var endLength = cut.sentences.slice(0, cut.sentenceRange().endSentence+1).join(Patch.sentence_separator).substring(patch.editEnd).length;
+            //print('end length: ' + endLength);
+            var postfixString = diff_cut[diff_cut.length-1][1];
+            var postfixKeep = postfixString.substring(0, postfixString.length - endLength);
+            //print('postfix keep: ' + postfixKeep);
+            var postfixCut = diff_cut[diff_cut.length-1][1].substring(postfixString.length - endLength);
+            //print('postfix cut: ' + postfixCut);
+            keepEndDiffElement = [0, postfixKeep];  // 0 == keep
+            cutEndDiffElement = [-1, postfixCut];   // -1 == delete
+            diff_cut.splice(diff_cut.length-1, 1, keepEndDiffElement, cutEndDiffElement); // remove the original first element and replace it with our cut and keep            
+            
+            //print('tweaked diff_cut:');
+            //print(json(diff_cut));
+            
+            var editedText = dmp.patch_apply(dmp.patch_make(diff_cut), cut.plaintextSentence())[0];
+            patch.options[i].editedText = editedText;
+        }
     }
     // return to original sort order
     patch.options.sort( function(a, b) { return a.start - b.start; } );    
