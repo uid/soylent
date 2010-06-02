@@ -530,7 +530,7 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
         cutVotes: 0,
         numEditors: 0,
         merged: false,
-        originalText: cut.plaintextSentence()
+        originalText: cut.plaintextSentence()   // also to be changed once we know editStart and editEnd
 	}
     
     if (edit_hit != null) {
@@ -606,6 +606,9 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
 		}
 	}
     
+    var previousSentences = cut.sentences.slice(0, cut.sentenceRange().startSentence);
+    previousSentences.push(""); // to simulate the sentence that we're starting
+    var editOffset = previousSentences.join(sentence_separator).length;
     if (patch.options.length > 0) {
         patch.options.sort( function(a, b) { return a.editStart - b.editStart; } ); // ascending by location of first edit
         patch.editStart = patch.options[0].editStart;
@@ -617,40 +620,45 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
         patch.editEnd = Math.max(patch.editEnd, patch.end);
         
         // For each option we need to edit it back down to just the changed portion, removing the extraenous parts of the sentence
-        // e.g., we need to prune to just [patch.editStart, patch.editEnd]
-        var editOffset = cut.sentences.slice(0, cut.sentenceRange().startSentence).join(Patch.sentence_separator).length;
+        // e.g., we need to prune to just [patch.editStart, patch.editEnd]        
         for (var i=0; i<patch.options.length; i++) {
             // To remove the extraneous parts of the text, we turn the first and last elements of the diff
             // (the prefix and postfix) into deletions
             var diff_cut = prune(patch.options[i].diff, 1000000);    // copy it very deep
             
             // First we remove the unnecessary parts of the prefix from the text, keeping only what everybody has edited
-            var startOffset = patch.editStart - editOffset;
-            var prefixCut = diff_cut[0][1].substring(0, startOffset);
-            var prefixKeep = diff_cut[0][1].substring(startOffset);
-            var cutStartDiffElement = [-1, prefixCut];   // -1 == delete
-            var keepStartDiffElement = [0, prefixKeep];  // 0 == keep
-            diff_cut.splice(0, 1, cutStartDiffElement, keepStartDiffElement); // remove the original first element and replace it with our cut and keep
+            if (diff_cut[0][0] == 0) {
+                var startOffset = patch.editStart - editOffset;
+                var prefixCut = diff_cut[0][1].substring(0, startOffset);
+                var prefixKeep = diff_cut[0][1].substring(startOffset);
+                var cutStartDiffElement = [-1, prefixCut];   // -1 == delete
+                var keepStartDiffElement = [0, prefixKeep];  // 0 == keep
+                diff_cut.splice(0, 1, cutStartDiffElement, keepStartDiffElement); // remove the original first element and replace it with our cut and keep
+            }
             
             // Now we do the same with the end
-            var endLength = cut.sentences.slice(0, cut.sentenceRange().endSentence+1).join(Patch.sentence_separator).substring(patch.editEnd).length;
-            //print('end length: ' + endLength);
-            var postfixString = diff_cut[diff_cut.length-1][1];
-            var postfixKeep = postfixString.substring(0, postfixString.length - endLength);
-            //print('postfix keep: ' + postfixKeep);
-            var postfixCut = diff_cut[diff_cut.length-1][1].substring(postfixString.length - endLength);
-            //print('postfix cut: ' + postfixCut);
-            keepEndDiffElement = [0, postfixKeep];  // 0 == keep
-            cutEndDiffElement = [-1, postfixCut];   // -1 == delete
-            diff_cut.splice(diff_cut.length-1, 1, keepEndDiffElement, cutEndDiffElement); // remove the original first element and replace it with our cut and keep            
-            
-            //print('tweaked diff_cut:');
-            //print(json(diff_cut));
+            if (diff_cut[diff_cut.length-1][0] == 0) {
+                var endLength = cut.sentences.slice(0, cut.sentenceRange().endSentence+1).join(sentence_separator).substring(patch.editEnd).length;
+                var postfixString = diff_cut[diff_cut.length-1][1];
+                var postfixKeep = postfixString.substring(0, postfixString.length - endLength);
+                var postfixCut = diff_cut[diff_cut.length-1][1].substring(postfixString.length - endLength);
+                keepEndDiffElement = [0, postfixKeep];  // 0 == keep
+                cutEndDiffElement = [-1, postfixCut];   // -1 == delete
+                diff_cut.splice(diff_cut.length-1, 1, keepEndDiffElement, cutEndDiffElement); // remove the original first element and replace it with our cut and keep            
+            }
             
             var editedText = dmp.patch_apply(dmp.patch_make(diff_cut), cut.plaintextSentence())[0];
             patch.options[i].editedText = editedText;
         }
     }
+    
+    print('edit offset yoyoyoyo')
+    print(editOffset);
+    print(patch.editStart - editOffset);
+    print(patch.originalText);
+    patch.originalText = patch.originalText.substring(patch.editStart - editOffset, patch.editEnd - editOffset);
+    print(patch.originalText);
+    
     // return to original sort order
     patch.options.sort( function(a, b) { return a.start - b.start; } );    
     return patch;

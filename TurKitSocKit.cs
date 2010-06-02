@@ -190,6 +190,7 @@ namespace Soylent
             public bool canCut;
             public int cutVotes;
             public List<TurKitShortnPatchOption> options;
+            public string originalText;
         }
 
         public class TurKitShortnPatchOption
