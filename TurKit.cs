@@ -96,13 +96,13 @@ namespace Soylent
                     arguments += " -m sandbox";
                 }
 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;
                 if (Soylent.DEBUG)
                 {
-                    timer = 15 * 1000;
+                    timer = 30 * 1000;
                 }
                 turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
             }

@@ -839,6 +839,7 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
         
         var newOption = {
             text: prefix + editRegion + postfix,
+            editedText: prefix + editRegion + postfix,   // already cropped to the correct region
             editStart: editStart,
             editEnd: editEnd,
             numVoters: option.numVoters,

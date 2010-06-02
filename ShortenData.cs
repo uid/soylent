@@ -78,22 +78,22 @@ namespace Soylent
             int nextEnd;
             foreach (TurKitSocKit.TurKitShortnPatch tkspatch in message.patches)
             {
-                if (tkspatch.start > nextStart)
+                if (tkspatch.editStart > nextStart)
                 {
-                    nextEnd = tkspatch.start;
+                    nextEnd = tkspatch.editStart;
                     Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
                     DummyPatch dummyPatch = new DummyPatch(dummyRange);
 
                     patches.Add(dummyPatch);
                 }
 
-                int start = curParagraphRange.Start + tkspatch.start;
-                int end = curParagraphRange.Start + tkspatch.end;
+                int start = curParagraphRange.Start + tkspatch.editStart;
+                int end = curParagraphRange.Start + tkspatch.editEnd;
                 //TODO: How do I make a range?
                 //Word.Range patchRange = null;//Globals.Soylent.
                 Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end);
 
-                Patch thisPatch = new Patch(patchRange, (from option in tkspatch.options select option.text).ToList());
+                Patch thisPatch = new Patch(patchRange, (from option in tkspatch.options select option.editedText).ToList());
                 patches.Add(thisPatch);
                 nextStart = tkspatch.end;
             }
