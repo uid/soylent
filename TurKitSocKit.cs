@@ -183,7 +183,10 @@ namespace Soylent
         {
             public int start;
             public int end;
+            public int editStart;
+            public int editEnd;
             public int numEditors;
+            public bool merged;
             public bool canCut;
             public int cutVotes;
             public List<TurKitShortnPatchOption> options;
@@ -192,6 +195,9 @@ namespace Soylent
         public class TurKitShortnPatchOption
         {
             public string text;
+            public string editedText;
+            public int editStart;
+            public int editEnd;
             public int meaningVotes;
             public int grammarVotes;
             public int numVoters;
