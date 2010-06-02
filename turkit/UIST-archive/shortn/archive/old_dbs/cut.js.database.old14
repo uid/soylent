@@ -1,0 +1,2182 @@
+// begin:6a76
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269274384862E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ze4ln2d3xaerel25poc76degezz2t5ad.html",
+				"returnTime" : 1.269274384932E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ze4ln2d3xaerel25poc76degezz2t5ad.html\r\n"
+			},
+			{
+				"creationTime" : 1.269274384933E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI",
+				"returnTime" : 1.269274385247E12,
+				"printOutput" : "created HIT: 1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI\r\n        url: https://www.mturk.com/mturk/preview?groupId=1DRB4JRD7JA8W8AKR4JTAH5F8JYSWE\r\n"
+			},
+			{
+				"creationTime" : 1.26927438525E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/srucu3oisk0d4zx2foyg8i8nm2fkjl5u.html",
+				"returnTime" : 1.269274385311E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/srucu3oisk0d4zx2foyg8i8nm2fkjl5u.html\r\n"
+			},
+			{
+				"creationTime" : 1.269274385312E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1LHMA9TL6I36P7XOQCIH6KHOC7PMDG",
+				"returnTime" : 1.26927438552E12,
+				"printOutput" : "created HIT: 1LHMA9TL6I36P7XOQCIH6KHOC7PMDG\r\n        url: https://www.mturk.com/mturk/preview?groupId=1DRB4JRD7JA8W8AKR4JTAH5F8JYSWE\r\n"
+			},
+			{
+				"creationTime" : 1.269274385523E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/wazuislathjaue6o03d5zf861v08pxj4.html",
+				"returnTime" : 1.269274385587E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/wazuislathjaue6o03d5zf861v08pxj4.html\r\n"
+			},
+			{
+				"creationTime" : 1.269274385588E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1RVZX1E87DWQY9VJN3E9Z8P91WHH09",
+				"returnTime" : 1.26927438599E12,
+				"printOutput" : "created HIT: 1RVZX1E87DWQY9VJN3E9Z8P91WHH09\r\n        url: https://www.mturk.com/mturk/preview?groupId=1DRB4JRD7JA8W8AKR4JTAH5F8JYSWE\r\n"
+			},
+			{
+				"creationTime" : 1.269274386244E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI",
+					"hitTypeId" : "1DRB4JRD7JA8W8AKR4JTAH5F8JYSWE",
+					"title" : "Find rambling text",
+					"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ze4ln2d3xaerel25poc76degezz2t5ad.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269274423E12,
+					"expiration" : 1.269879223E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1D15S6IRVSXJ2U7OMSPF6FZS5B0WI1",
+							"workerId" : "A2NNGXQ7Q9YZJH",
+							"hitId" : "1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269274623E12,
+							"acceptTime" : 1.269274503E12,
+							"submitTime" : 1.269274563E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records needing to be edited, but it isn\'t perfect.",
+								"cuttable" : "No"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.26927487E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1IQ1TR7CTIRP70WLL3QSR5KFNI1P2P",
+							"workerId" : "A1CACMTLA4XX5P",
+							"hitId" : "1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927475E12,
+							"acceptTime" : 1.269274596E12,
+							"submitTime" : 1.26927469E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect.",
+								"cuttable" : "Yes"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269274871E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1PV9528A27J6RAWZQ02YK1FZYPKHVK",
+							"workerId" : "A6EDKXVDA4IYJ",
+							"hitId" : "1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269274754E12,
+							"acceptTime" : 1.269274674E12,
+							"submitTime" : 1.269274694E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records for editing, but it isn\'t perfect.",
+								"cuttable" : "No"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269274871E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1U91QG4Z5ZZZ7TZV92WOGVCI7HWN4N",
+							"workerId" : "A15MN5MDG4D7Q9",
+							"hitId" : "1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927496E12,
+							"acceptTime" : 1.269274794E12,
+							"submitTime" : 1.2692749E12,
+							"answer" : {
+								"cuttable" : "No",
+								"newText" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.26927517E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1Y9OV1D8XO2F1SI3KV3WF6X34FC89J",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269275391E12,
+							"acceptTime" : 1.269275276E12,
+							"submitTime" : 1.269275331E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect.",
+								"cuttable" : "Yes"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269275354635E12,
+				"printOutput" : "hit completed: 1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI\r\n"
+			},
+			{
+				"creationTime" : 1.269275354657E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ss9692nff2klqfvzj66w33yfzmk7ly0t.html",
+				"returnTime" : 1.269275356244E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ss9692nff2klqfvzj66w33yfzmk7ly0t.html\r\n"
+			},
+			{
+				"creationTime" : 1.269275356244E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+				"returnTime" : 1.269275356529E12,
+				"printOutput" : "created HIT: 1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD\r\n        url: https://www.mturk.com/mturk/preview?groupId=13M6Y381J8L81WK5GQ0GN6IJRB03YX\r\n"
+			},
+			{
+				"creationTime" : 1.269275356783E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1LHMA9TL6I36P7XOQCIH6KHOC7PMDG",
+					"hitTypeId" : "1DRB4JRD7JA8W8AKR4JTAH5F8JYSWE",
+					"title" : "Find rambling text",
+					"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/srucu3oisk0d4zx2foyg8i8nm2fkjl5u.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269274424E12,
+					"expiration" : 1.269879224E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1XW6U7RGSVNOBL2OG9ETPIN3Z6NWU9",
+							"workerId" : "A6EDKXVDA4IYJ",
+							"hitId" : "1LHMA9TL6I36P7XOQCIH6KHOC7PMDG",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269274734E12,
+							"acceptTime" : 1.269274653E12,
+							"submitTime" : 1.269274674E12,
+							"answer" : {
+								"newText" : "One solution would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters.",
+								"cuttable" : "No"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269274871E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "15IVJIQFSGY6KD4DSDQ9WNDWOEUF0S",
+							"workerId" : "A2NNGXQ7Q9YZJH",
+							"hitId" : "1LHMA9TL6I36P7XOQCIH6KHOC7PMDG",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927479E12,
+							"acceptTime" : 1.269274598E12,
+							"submitTime" : 1.26927473E12,
+							"answer" : {
+								"newText" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"cuttable" : "No"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269274871E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1PVQ0TS98P4EB37C7Q69XSSH3R0KG2",
+							"workerId" : "A1CACMTLA4XX5P",
+							"hitId" : "1LHMA9TL6I36P7XOQCIH6KHOC7PMDG",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269274796E12,
+							"acceptTime" : 1.2692747E12,
+							"submitTime" : 1.269274736E12,
+							"answer" : {
+								"newText" : "One solution would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters.",
+								"cuttable" : "No"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269274871E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1PV9528A27J6RAWZQ02YK1FZYPKVHY",
+							"workerId" : "A15MN5MDG4D7Q9",
+							"hitId" : "1LHMA9TL6I36P7XOQCIH6KHOC7PMDG",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269274854E12,
+							"acceptTime" : 1.269274765E12,
+							"submitTime" : 1.269274794E12,
+							"answer" : {
+								"cuttable" : "No",
+								"newText" : "A solution would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269274871E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1PQQSBOW8D66WYMT7Z31JYDN39EQN8",
+							"workerId" : "A1CEVOS7L50JQI",
+							"hitId" : "1LHMA9TL6I36P7XOQCIH6KHOC7PMDG",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269275513E12,
+							"acceptTime" : 1.269275268E12,
+							"submitTime" : 1.269275453E12,
+							"answer" : {
+								"newText" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters",
+								"cuttable" : "No"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269275478553E12,
+				"printOutput" : "hit completed: 1LHMA9TL6I36P7XOQCIH6KHOC7PMDG\r\n"
+			},
+			{
+				"creationTime" : 1.269275478594E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6eayx1efg47x1d61r8ss87keeviufrnk.html",
+				"returnTime" : 1.26927547875E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6eayx1efg47x1d61r8ss87keeviufrnk.html\r\n"
+			},
+			{
+				"creationTime" : 1.26927547875E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+				"returnTime" : 1.269275479228E12,
+				"printOutput" : "created HIT: 122H10IWAHQ87FVRXNC5TBVCLU03MZ\r\n        url: https://www.mturk.com/mturk/preview?groupId=13M6Y381J8L81WK5GQ0GN6IJRB03YX\r\n"
+			},
+			{
+				"creationTime" : 1.269275479431E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1RVZX1E87DWQY9VJN3E9Z8P91WHH09",
+					"hitTypeId" : "1DRB4JRD7JA8W8AKR4JTAH5F8JYSWE",
+					"title" : "Find rambling text",
+					"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+					"keywords" : "undefined",
+					"reward" : 0.1,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/wazuislathjaue6o03d5zf861v08pxj4.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269274424E12,
+					"expiration" : 1.269879224E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1LVQ3JB4QXCKND25HCJT0RKGVMRMX1",
+							"workerId" : "A6EDKXVDA4IYJ",
+							"hitId" : "1RVZX1E87DWQY9VJN3E9Z8P91WHH09",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269274772E12,
+							"acceptTime" : 1.269274694E12,
+							"submitTime" : 1.269274712E12,
+							"answer" : {
+								"newText" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"cuttable" : "No"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269274871E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XIYNFR75R17407NQTNYG49FFIRFBE",
+							"workerId" : "A15MN5MDG4D7Q9",
+							"hitId" : "1RVZX1E87DWQY9VJN3E9Z8P91WHH09",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269274825E12,
+							"acceptTime" : 1.269274687E12,
+							"submitTime" : 1.269274765E12,
+							"answer" : {
+								"newText" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, dates, etc.",
+								"cuttable" : "Yes"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269274871E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1KUSES6Y9RIFPRTB7Z9SDS2U8W7SSB",
+							"workerId" : "A3QCCGUVQQQNQ",
+							"hitId" : "1RVZX1E87DWQY9VJN3E9Z8P91WHH09",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269274893E12,
+							"acceptTime" : 1.269274768E12,
+							"submitTime" : 1.269274833E12,
+							"answer" : {
+								"newText" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, files, email addresses, dates, times, etc.",
+								"cuttable" : "Yes"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.26927517E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1V0I9XB0L8WQ5VN5TDYTD69G0C1NX2",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1RVZX1E87DWQY9VJN3E9Z8P91WHH09",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275334E12,
+							"acceptTime" : 1.269275254E12,
+							"submitTime" : 1.269275274E12,
+							"answer" : {
+								"newText" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs.",
+								"cuttable" : "Yes"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275467E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1DI399CFLLBF50DFY9KVWKGP2IVNY8",
+							"workerId" : "A1JQS9AN8LEAKZ",
+							"hitId" : "1RVZX1E87DWQY9VJN3E9Z8P91WHH09",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275438E12,
+							"acceptTime" : 1.269275293E12,
+							"submitTime" : 1.269275378E12,
+							"answer" : {
+								"newText" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields.",
+								"cuttable" : "No"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275467E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269275479664E12,
+				"printOutput" : "hit completed: 1RVZX1E87DWQY9VJN3E9Z8P91WHH09\r\n"
+			},
+			{
+				"creationTime" : 1.269275479694E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h82ck952l081efzy1v3oqkqh8c7tu4bl.html",
+				"returnTime" : 1.269275479779E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h82ck952l081efzy1v3oqkqh8c7tu4bl.html\r\n"
+			},
+			{
+				"creationTime" : 1.269275479779E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+				"returnTime" : 1.269275480493E12,
+				"printOutput" : "created HIT: 1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP\r\n        url: https://www.mturk.com/mturk/preview?groupId=13M6Y381J8L81WK5GQ0GN6IJRB03YX\r\n"
+			},
+			{
+				"creationTime" : 1.269275481002E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ss9692nff2klqfvzj66w33yfzmk7ly0t.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275395E12,
+					"expiration" : 1.269880195E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1YUL9CTIRNSXWA7PFT60HP5K3GTJIX",
+							"workerId" : "A2J6NWJH8MS4ZC",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275669E12,
+							"acceptTime" : 1.269275554E12,
+							"submitTime" : 1.269275609E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records for editing, but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1FFQYXHJIHIAFC2ZP43W3B49L0SEA3",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927568E12,
+							"acceptTime" : 1.269275589E12,
+							"submitTime" : 1.26927562E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1BNP9HGA3HJJMXZ8TNY0A1QKIERM2T",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275751E12,
+							"acceptTime" : 1.269275607E12,
+							"submitTime" : 1.269275691E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "11KQVGIV0GZ9SAQWZRMKN62NPH26E5",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275947E12,
+							"acceptTime" : 1.269275803E12,
+							"submitTime" : 1.269275887E12,
+							"answer" : {
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1LFVPD5Z3BNLEQE21OHETZFYWJ152M",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276122E12,
+							"acceptTime" : 1.26927603E12,
+							"submitTime" : 1.269276062E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276160215E12,
+				"printOutput" : "hit completed: 1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD\r\n"
+			},
+			{
+				"creationTime" : 1.269276160519E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ss9692nff2klqfvzj66w33yfzmk7ly0t.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275395E12,
+					"expiration" : 1.269880195E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1YUL9CTIRNSXWA7PFT60HP5K3GTJIX",
+							"workerId" : "A2J6NWJH8MS4ZC",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275669E12,
+							"acceptTime" : 1.269275554E12,
+							"submitTime" : 1.269275609E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records for editing, but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1FFQYXHJIHIAFC2ZP43W3B49L0SEA3",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927568E12,
+							"acceptTime" : 1.269275589E12,
+							"submitTime" : 1.26927562E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1BNP9HGA3HJJMXZ8TNY0A1QKIERM2T",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275751E12,
+							"acceptTime" : 1.269275607E12,
+							"submitTime" : 1.269275691E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "11KQVGIV0GZ9SAQWZRMKN62NPH26E5",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275947E12,
+							"acceptTime" : 1.269275803E12,
+							"submitTime" : 1.269275887E12,
+							"answer" : {
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1LFVPD5Z3BNLEQE21OHETZFYWJ152M",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276122E12,
+							"acceptTime" : 1.26927603E12,
+							"submitTime" : 1.269276062E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276160752E12,
+				"printOutput" : "hit completed: 1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD\r\n"
+			},
+			{
+				"creationTime" : 1.269276161063E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ss9692nff2klqfvzj66w33yfzmk7ly0t.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275395E12,
+					"expiration" : 1.269880195E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1YUL9CTIRNSXWA7PFT60HP5K3GTJIX",
+							"workerId" : "A2J6NWJH8MS4ZC",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275669E12,
+							"acceptTime" : 1.269275554E12,
+							"submitTime" : 1.269275609E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records for editing, but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1FFQYXHJIHIAFC2ZP43W3B49L0SEA3",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927568E12,
+							"acceptTime" : 1.269275589E12,
+							"submitTime" : 1.26927562E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1BNP9HGA3HJJMXZ8TNY0A1QKIERM2T",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275751E12,
+							"acceptTime" : 1.269275607E12,
+							"submitTime" : 1.269275691E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "11KQVGIV0GZ9SAQWZRMKN62NPH26E5",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275947E12,
+							"acceptTime" : 1.269275803E12,
+							"submitTime" : 1.269275887E12,
+							"answer" : {
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1LFVPD5Z3BNLEQE21OHETZFYWJ152M",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276122E12,
+							"acceptTime" : 1.26927603E12,
+							"submitTime" : 1.269276062E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276161333E12,
+				"printOutput" : "hit completed: 1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD\r\n"
+			},
+			{
+				"creationTime" : 1.269276161643E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ss9692nff2klqfvzj66w33yfzmk7ly0t.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275395E12,
+					"expiration" : 1.269880195E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1YUL9CTIRNSXWA7PFT60HP5K3GTJIX",
+							"workerId" : "A2J6NWJH8MS4ZC",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275669E12,
+							"acceptTime" : 1.269275554E12,
+							"submitTime" : 1.269275609E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records for editing, but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1FFQYXHJIHIAFC2ZP43W3B49L0SEA3",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927568E12,
+							"acceptTime" : 1.269275589E12,
+							"submitTime" : 1.26927562E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1BNP9HGA3HJJMXZ8TNY0A1QKIERM2T",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275751E12,
+							"acceptTime" : 1.269275607E12,
+							"submitTime" : 1.269275691E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "11KQVGIV0GZ9SAQWZRMKN62NPH26E5",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275947E12,
+							"acceptTime" : 1.269275803E12,
+							"submitTime" : 1.269275887E12,
+							"answer" : {
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1LFVPD5Z3BNLEQE21OHETZFYWJ152M",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276122E12,
+							"acceptTime" : 1.26927603E12,
+							"submitTime" : 1.269276062E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.26927616186E12,
+				"printOutput" : "hit completed: 1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD\r\n"
+			},
+			{
+				"creationTime" : 1.269276162137E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ss9692nff2klqfvzj66w33yfzmk7ly0t.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275395E12,
+					"expiration" : 1.269880195E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1YUL9CTIRNSXWA7PFT60HP5K3GTJIX",
+							"workerId" : "A2J6NWJH8MS4ZC",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275669E12,
+							"acceptTime" : 1.269275554E12,
+							"submitTime" : 1.269275609E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records for editing, but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1FFQYXHJIHIAFC2ZP43W3B49L0SEA3",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927568E12,
+							"acceptTime" : 1.269275589E12,
+							"submitTime" : 1.26927562E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1BNP9HGA3HJJMXZ8TNY0A1QKIERM2T",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275751E12,
+							"acceptTime" : 1.269275607E12,
+							"submitTime" : 1.269275691E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "11KQVGIV0GZ9SAQWZRMKN62NPH26E5",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275947E12,
+							"acceptTime" : 1.269275803E12,
+							"submitTime" : 1.269275887E12,
+							"answer" : {
+								"meaning" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1LFVPD5Z3BNLEQE21OHETZFYWJ152M",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276122E12,
+							"acceptTime" : 1.26927603E12,
+							"submitTime" : 1.269276062E12,
+							"answer" : {
+								"grammar" : "Automatic clustering generally helps separate different kinds of records (to be edited differently), but it isn\'t perfect.",
+								"meaning" : "Automatic clustering generally helps separate different kinds of records, but it isn\'t perfect."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276162403E12,
+				"printOutput" : "hit completed: 1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD\r\n"
+			},
+			{
+				"creationTime" : 1.269276163023E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6eayx1efg47x1d61r8ss87keeviufrnk.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275517E12,
+					"expiration" : 1.269880317E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1H957NBO46WVDNMIG3T5Q8I9TQWE4S",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275678E12,
+							"acceptTime" : 1.269275574E12,
+							"submitTime" : 1.269275618E12,
+							"answer" : {
+								"meaning" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "16R9RXP0XFDSRE1O6UKGZ13YJQ8GVN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927577E12,
+							"acceptTime" : 1.269275621E12,
+							"submitTime" : 1.26927571E12,
+							"answer" : {
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1E6GDRPQHW3ZHGW0ZN8E46OEAHWEO2",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275862E12,
+							"acceptTime" : 1.269275769E12,
+							"submitTime" : 1.269275802E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "18URCTWAIQD52O01NB9AV9JLBI38X2",
+							"workerId" : "A1JOL7OV8C8NP3",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275963E12,
+							"acceptTime" : 1.269275805E12,
+							"submitTime" : 1.269275903E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1TX1YH2I3QXPPZADVADOKXRDYVIHEH",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276147E12,
+							"acceptTime" : 1.269276001E12,
+							"submitTime" : 1.269276087E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276163333E12,
+				"printOutput" : "hit completed: 122H10IWAHQ87FVRXNC5TBVCLU03MZ\r\n"
+			},
+			{
+				"creationTime" : 1.269276163646E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6eayx1efg47x1d61r8ss87keeviufrnk.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275517E12,
+					"expiration" : 1.269880317E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1H957NBO46WVDNMIG3T5Q8I9TQWE4S",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275678E12,
+							"acceptTime" : 1.269275574E12,
+							"submitTime" : 1.269275618E12,
+							"answer" : {
+								"meaning" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "16R9RXP0XFDSRE1O6UKGZ13YJQ8GVN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927577E12,
+							"acceptTime" : 1.269275621E12,
+							"submitTime" : 1.26927571E12,
+							"answer" : {
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1E6GDRPQHW3ZHGW0ZN8E46OEAHWEO2",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275862E12,
+							"acceptTime" : 1.269275769E12,
+							"submitTime" : 1.269275802E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "18URCTWAIQD52O01NB9AV9JLBI38X2",
+							"workerId" : "A1JOL7OV8C8NP3",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275963E12,
+							"acceptTime" : 1.269275805E12,
+							"submitTime" : 1.269275903E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1TX1YH2I3QXPPZADVADOKXRDYVIHEH",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276147E12,
+							"acceptTime" : 1.269276001E12,
+							"submitTime" : 1.269276087E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276163843E12,
+				"printOutput" : "hit completed: 122H10IWAHQ87FVRXNC5TBVCLU03MZ\r\n"
+			},
+			{
+				"creationTime" : 1.269276164069E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6eayx1efg47x1d61r8ss87keeviufrnk.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275517E12,
+					"expiration" : 1.269880317E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1H957NBO46WVDNMIG3T5Q8I9TQWE4S",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275678E12,
+							"acceptTime" : 1.269275574E12,
+							"submitTime" : 1.269275618E12,
+							"answer" : {
+								"meaning" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "16R9RXP0XFDSRE1O6UKGZ13YJQ8GVN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927577E12,
+							"acceptTime" : 1.269275621E12,
+							"submitTime" : 1.26927571E12,
+							"answer" : {
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1E6GDRPQHW3ZHGW0ZN8E46OEAHWEO2",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275862E12,
+							"acceptTime" : 1.269275769E12,
+							"submitTime" : 1.269275802E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "18URCTWAIQD52O01NB9AV9JLBI38X2",
+							"workerId" : "A1JOL7OV8C8NP3",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275963E12,
+							"acceptTime" : 1.269275805E12,
+							"submitTime" : 1.269275903E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1TX1YH2I3QXPPZADVADOKXRDYVIHEH",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276147E12,
+							"acceptTime" : 1.269276001E12,
+							"submitTime" : 1.269276087E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276164311E12,
+				"printOutput" : "hit completed: 122H10IWAHQ87FVRXNC5TBVCLU03MZ\r\n"
+			},
+			{
+				"creationTime" : 1.269276164567E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6eayx1efg47x1d61r8ss87keeviufrnk.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275517E12,
+					"expiration" : 1.269880317E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1H957NBO46WVDNMIG3T5Q8I9TQWE4S",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275678E12,
+							"acceptTime" : 1.269275574E12,
+							"submitTime" : 1.269275618E12,
+							"answer" : {
+								"meaning" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "16R9RXP0XFDSRE1O6UKGZ13YJQ8GVN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927577E12,
+							"acceptTime" : 1.269275621E12,
+							"submitTime" : 1.26927571E12,
+							"answer" : {
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1E6GDRPQHW3ZHGW0ZN8E46OEAHWEO2",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275862E12,
+							"acceptTime" : 1.269275769E12,
+							"submitTime" : 1.269275802E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "18URCTWAIQD52O01NB9AV9JLBI38X2",
+							"workerId" : "A1JOL7OV8C8NP3",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275963E12,
+							"acceptTime" : 1.269275805E12,
+							"submitTime" : 1.269275903E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1TX1YH2I3QXPPZADVADOKXRDYVIHEH",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276147E12,
+							"acceptTime" : 1.269276001E12,
+							"submitTime" : 1.269276087E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276164796E12,
+				"printOutput" : "hit completed: 122H10IWAHQ87FVRXNC5TBVCLU03MZ\r\n"
+			},
+			{
+				"creationTime" : 1.269276165056E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6eayx1efg47x1d61r8ss87keeviufrnk.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275517E12,
+					"expiration" : 1.269880317E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1H957NBO46WVDNMIG3T5Q8I9TQWE4S",
+							"workerId" : "ADAGUJNWMEPT6",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275678E12,
+							"acceptTime" : 1.269275574E12,
+							"submitTime" : 1.269275618E12,
+							"answer" : {
+								"meaning" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269275767E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "16R9RXP0XFDSRE1O6UKGZ13YJQ8GVN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26927577E12,
+							"acceptTime" : 1.269275621E12,
+							"submitTime" : 1.26927571E12,
+							"answer" : {
+								"grammar" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1E6GDRPQHW3ZHGW0ZN8E46OEAHWEO2",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275862E12,
+							"acceptTime" : 1.269275769E12,
+							"submitTime" : 1.269275802E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "18URCTWAIQD52O01NB9AV9JLBI38X2",
+							"workerId" : "A1JOL7OV8C8NP3",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275963E12,
+							"acceptTime" : 1.269275805E12,
+							"submitTime" : 1.269275903E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1TX1YH2I3QXPPZADVADOKXRDYVIHEH",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "122H10IWAHQ87FVRXNC5TBVCLU03MZ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276147E12,
+							"acceptTime" : 1.269276001E12,
+							"submitTime" : 1.269276087E12,
+							"answer" : {
+								"grammar" : "One solution could be to allow the using of drag-and-drop to merge and split clusters manually.",
+								"meaning" : "The solution to this problem would let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276165261E12,
+				"printOutput" : "hit completed: 122H10IWAHQ87FVRXNC5TBVCLU03MZ\r\n"
+			},
+			{
+				"creationTime" : 1.269276165852E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h82ck952l081efzy1v3oqkqh8c7tu4bl.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275519E12,
+					"expiration" : 1.269880319E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1VYVCZ83OI54VPXW49YSS3DTML1BQ7",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275828E12,
+							"acceptTime" : 1.269275691E12,
+							"submitTime" : 1.269275768E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, dates, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1W6C1ZOA7BRIIFEP2ZQEMMAAVDO1PN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275833E12,
+							"acceptTime" : 1.269275711E12,
+							"submitTime" : 1.269275773E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "19EAZRTV6CXHZVWOY881PHO9K7RENN",
+							"workerId" : "ATCC468GXNYRT",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275859E12,
+							"acceptTime" : 1.269275739E12,
+							"submitTime" : 1.269275799E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XKSC7WR5PKIBQT76GME8HR0QLIP08",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269276054E12,
+							"acceptTime" : 1.269275895E12,
+							"submitTime" : 1.269275994E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XEHG828YU51ADKGPW6O3YIT7KJBOZ",
+							"workerId" : "A1HGSRZBR1OGPO",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276121E12,
+							"acceptTime" : 1.269275906E12,
+							"submitTime" : 1.269276061E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, files, email addresses, dates, times, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276166106E12,
+				"printOutput" : "hit completed: 1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP\r\n"
+			},
+			{
+				"creationTime" : 1.269276166355E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h82ck952l081efzy1v3oqkqh8c7tu4bl.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275519E12,
+					"expiration" : 1.269880319E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1VYVCZ83OI54VPXW49YSS3DTML1BQ7",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275828E12,
+							"acceptTime" : 1.269275691E12,
+							"submitTime" : 1.269275768E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, dates, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1W6C1ZOA7BRIIFEP2ZQEMMAAVDO1PN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275833E12,
+							"acceptTime" : 1.269275711E12,
+							"submitTime" : 1.269275773E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "19EAZRTV6CXHZVWOY881PHO9K7RENN",
+							"workerId" : "ATCC468GXNYRT",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275859E12,
+							"acceptTime" : 1.269275739E12,
+							"submitTime" : 1.269275799E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XKSC7WR5PKIBQT76GME8HR0QLIP08",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269276054E12,
+							"acceptTime" : 1.269275895E12,
+							"submitTime" : 1.269275994E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XEHG828YU51ADKGPW6O3YIT7KJBOZ",
+							"workerId" : "A1HGSRZBR1OGPO",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276121E12,
+							"acceptTime" : 1.269275906E12,
+							"submitTime" : 1.269276061E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, files, email addresses, dates, times, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276166662E12,
+				"printOutput" : "hit completed: 1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP\r\n"
+			},
+			{
+				"creationTime" : 1.269276166956E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h82ck952l081efzy1v3oqkqh8c7tu4bl.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275519E12,
+					"expiration" : 1.269880319E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1VYVCZ83OI54VPXW49YSS3DTML1BQ7",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275828E12,
+							"acceptTime" : 1.269275691E12,
+							"submitTime" : 1.269275768E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, dates, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1W6C1ZOA7BRIIFEP2ZQEMMAAVDO1PN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275833E12,
+							"acceptTime" : 1.269275711E12,
+							"submitTime" : 1.269275773E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "19EAZRTV6CXHZVWOY881PHO9K7RENN",
+							"workerId" : "ATCC468GXNYRT",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275859E12,
+							"acceptTime" : 1.269275739E12,
+							"submitTime" : 1.269275799E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XKSC7WR5PKIBQT76GME8HR0QLIP08",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269276054E12,
+							"acceptTime" : 1.269275895E12,
+							"submitTime" : 1.269275994E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XEHG828YU51ADKGPW6O3YIT7KJBOZ",
+							"workerId" : "A1HGSRZBR1OGPO",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276121E12,
+							"acceptTime" : 1.269275906E12,
+							"submitTime" : 1.269276061E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, files, email addresses, dates, times, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.26927616722E12,
+				"printOutput" : "hit completed: 1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP\r\n"
+			},
+			{
+				"creationTime" : 1.269276167552E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h82ck952l081efzy1v3oqkqh8c7tu4bl.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275519E12,
+					"expiration" : 1.269880319E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1VYVCZ83OI54VPXW49YSS3DTML1BQ7",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275828E12,
+							"acceptTime" : 1.269275691E12,
+							"submitTime" : 1.269275768E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, dates, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1W6C1ZOA7BRIIFEP2ZQEMMAAVDO1PN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275833E12,
+							"acceptTime" : 1.269275711E12,
+							"submitTime" : 1.269275773E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "19EAZRTV6CXHZVWOY881PHO9K7RENN",
+							"workerId" : "ATCC468GXNYRT",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275859E12,
+							"acceptTime" : 1.269275739E12,
+							"submitTime" : 1.269275799E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XKSC7WR5PKIBQT76GME8HR0QLIP08",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269276054E12,
+							"acceptTime" : 1.269275895E12,
+							"submitTime" : 1.269275994E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XEHG828YU51ADKGPW6O3YIT7KJBOZ",
+							"workerId" : "A1HGSRZBR1OGPO",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276121E12,
+							"acceptTime" : 1.269275906E12,
+							"submitTime" : 1.269276061E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, files, email addresses, dates, times, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276167773E12,
+				"printOutput" : "hit completed: 1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP\r\n"
+			},
+			{
+				"creationTime" : 1.269276168077E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+					"hitTypeId" : "13M6Y381J8L81WK5GQ0GN6IJRB03YX",
+					"title" : "Did I shorten text correctly?",
+					"description" : "I need to shorten some text -- which version is good?",
+					"keywords" : "undefined",
+					"reward" : 0.02,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h82ck952l081efzy1v3oqkqh8c7tu4bl.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 5,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269275519E12,
+					"expiration" : 1.269880319E12,
+					"assignments" : [
+						{
+							"assignmentId" : "1VYVCZ83OI54VPXW49YSS3DTML1BQ7",
+							"workerId" : "A2I8VBHRESMG9S",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275828E12,
+							"acceptTime" : 1.269275691E12,
+							"submitTime" : 1.269275768E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, dates, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1W6C1ZOA7BRIIFEP2ZQEMMAAVDO1PN",
+							"workerId" : "A34WBGUAUCSKD7",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275833E12,
+							"acceptTime" : 1.269275711E12,
+							"submitTime" : 1.269275773E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "19EAZRTV6CXHZVWOY881PHO9K7RENN",
+							"workerId" : "ATCC468GXNYRT",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269275859E12,
+							"acceptTime" : 1.269275739E12,
+							"submitTime" : 1.269275799E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276068E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XKSC7WR5PKIBQT76GME8HR0QLIP08",
+							"workerId" : "AIR4UQNPIMFCJ",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269276054E12,
+							"acceptTime" : 1.269275895E12,
+							"submitTime" : 1.269275994E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates..",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs or dates.."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269276069E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XEHG828YU51ADKGPW6O3YIT7KJBOZ",
+							"workerId" : "A1HGSRZBR1OGPO",
+							"hitId" : "1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269276121E12,
+							"acceptTime" : 1.269275906E12,
+							"submitTime" : 1.269276061E12,
+							"answer" : {
+								"grammar" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs, files, email addresses, dates, times, etc.",
+								"meaning" : "Clustering and selection generalization would also be improved by recognizing common text structure like URLs and other relevant fields."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269276168358E12,
+				"printOutput" : "hit completed: 1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP\r\n"
+			},
+			{
+				"creationTime" : 1.26927616864E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276168935E12,
+				"printOutput" : "disabled HIT: 1G2PFOGIV4Z4L9EMBZ0N4W6HHSF9JI\r\n"
+			},
+			{
+				"creationTime" : 1.269276168935E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276169126E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ze4ln2d3xaerel25poc76degezz2t5ad.html\r\n"
+			},
+			{
+				"creationTime" : 1.269276169323E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276169558E12,
+				"printOutput" : "disabled HIT: 1LHMA9TL6I36P7XOQCIH6KHOC7PMDG\r\n"
+			},
+			{
+				"creationTime" : 1.269276169559E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276169612E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/srucu3oisk0d4zx2foyg8i8nm2fkjl5u.html\r\n"
+			},
+			{
+				"creationTime" : 1.269276170061E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276170281E12,
+				"printOutput" : "disabled HIT: 1RVZX1E87DWQY9VJN3E9Z8P91WHH09\r\n"
+			},
+			{
+				"creationTime" : 1.269276170282E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276170319E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/wazuislathjaue6o03d5zf861v08pxj4.html\r\n"
+			},
+			{
+				"creationTime" : 1.269276170512E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276170994E12,
+				"printOutput" : "disabled HIT: 1ORKQ6I5NEMXT4ODGLWXHETNGLWMOD\r\n"
+			},
+			{
+				"creationTime" : 1.269276170994E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276171032E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ss9692nff2klqfvzj66w33yfzmk7ly0t.html\r\n"
+			},
+			{
+				"creationTime" : 1.269276171269E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.26927617147E12,
+				"printOutput" : "disabled HIT: 122H10IWAHQ87FVRXNC5TBVCLU03MZ\r\n"
+			},
+			{
+				"creationTime" : 1.269276171471E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276171508E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6eayx1efg47x1d61r8ss87keeviufrnk.html\r\n"
+			},
+			{
+				"creationTime" : 1.269276172015E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276172445E12,
+				"printOutput" : "disabled HIT: 1XGQ4TFRP2O2ETOGRFPIY1TJI6PERP\r\n"
+			},
+			{
+				"creationTime" : 1.269276172446E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269276172511E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h82ck952l081efzy1v3oqkqh8c7tu4bl.html\r\n"
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 1.8000000000000003,
+	"hitsCreated" : 6
+}
+// end:6a76
