@@ -56,12 +56,17 @@ namespace Soylent
 
             host.Child = sd;
 
+            newForm.Visible = false;
             // Add the ElementHost control to the form's
             // collection of child controls.
             newForm.Controls.Add(host);
             newForm.Show();
-            // data.
-            //stageview.hitProgress.Foreground = Brushes.Blue;
+
+            double beforeHeight = sd.before.DesiredSize.Height;
+            newForm.Height = (int)(beforeHeight + 60);
+            sd.lengthSlider.Height = (int)(beforeHeight - 20);
+
+            newForm.Visible = true;
 
             foreach (StageView stageview in stageList.Values)
             {

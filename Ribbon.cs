@@ -39,7 +39,7 @@ namespace Soylent
         {
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
             newForm.Width = 1195;
-            newForm.Height = 380;
+            newForm.Height = 1000;
             newForm.BackColor = System.Drawing.Color.White;
 
             // Create the ElementHost control for hosting the
@@ -56,10 +56,18 @@ namespace Soylent
             // Child property.
             host.Child = sd;
 
+
+            newForm.Visible = false;
             // Add the ElementHost control to the form's
             // collection of child controls.
             newForm.Controls.Add(host);
             newForm.Show();
+
+            double beforeHeight = sd.before.DesiredSize.Height;
+            newForm.Height = (int)(beforeHeight + 60);
+            sd.lengthSlider.Height = (int)(beforeHeight - 20);
+            
+            newForm.Visible = true;
         }
 
         private void humanMacroBtn_Click(object sender, RibbonControlEventArgs e)
