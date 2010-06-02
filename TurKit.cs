@@ -75,6 +75,7 @@ namespace Soylent
                 Array.Copy(script, 0, newScript, 3, script.Length);
 
                 // Delete old files
+                /*
                 if (!Soylent.DEBUG)
                 {
                     DirectoryInfo di = new DirectoryInfo(rootDirectory + @"\turkit\active-hits\");
@@ -84,6 +85,7 @@ namespace Soylent
                         file.Delete();
                     }
                 }
+                 */
 
                 string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".js";
                 File.WriteAllLines(requestFile, newScript);
@@ -95,6 +97,10 @@ namespace Soylent
                 {
                     arguments += " -m sandbox";
                 }
+                else
+                {
+                    arguments += " -m real";
+                }
 
                 ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
@@ -102,7 +108,7 @@ namespace Soylent
                 int timer = 60 * 1000;
                 if (Soylent.DEBUG)
                 {
-                    timer = 15 * 1000;
+                    timer = 30 * 1000;
                 }
                 turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
             }
