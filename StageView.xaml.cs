@@ -52,7 +52,7 @@ namespace Soylent
         }
         public void updateProgress()
         {
-            totalTurkers = stagedata.totalRequested;
+            totalTurkers = stagedata.numRequested;
             totalCost = stagedata.moneySpent;
             int curTurkers = stagedata.numCompleted;
             numTurkers.Content = curTurkers + " of " + totalTurkers + " workers";

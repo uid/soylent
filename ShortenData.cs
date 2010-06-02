@@ -48,9 +48,9 @@ namespace Soylent
 
         public ShortenData(Word.Range toShorten, int job) : base(toShorten, job)
         {
-            stages[ResultType.Find] = new StageData(ResultType.Find, 0, numParagraphs);
-            stages[ResultType.Fix] = new StageData(ResultType.Fix, 0, numParagraphs);
-            stages[ResultType.Verify] = new StageData(ResultType.Verify, 0, numParagraphs);
+            stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
+            stages[ResultType.Fix] = new StageData(ResultType.Fix, numParagraphs);
+            stages[ResultType.Verify] = new StageData(ResultType.Verify, numParagraphs);
 
             typeMap = new Dictionary<string,ResultType>();
             typeMap["find"] = ResultType.Find;
