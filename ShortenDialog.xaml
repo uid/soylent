@@ -19,7 +19,7 @@
         </Grid.Resources>
 
 
-        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold">Shortn It</Label>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold">Shortn</Label>
         <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Auto">
                 <TextBlock Name="before" TextWrapping="Wrap" Text="before textbox" FontSize="16" />
         </ScrollViewer>            
