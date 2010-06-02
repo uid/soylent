@@ -94,6 +94,14 @@ namespace Soylent
                 Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end);
 
                 Patch thisPatch = new Patch(patchRange, (from option in tkspatch.options select option.editedText).ToList());
+                // add the original as an option
+                thisPatch.replacements.Add(tkspatch.originalText);
+                // if it's cuttable, add the empty string as an option
+                if (tkspatch.canCut)
+                {
+                    thisPatch.replacements.Add("| ");  // means "cuttable" for now
+                }
+
                 patches.Add(thisPatch);
                 nextStart = tkspatch.end;
             }
