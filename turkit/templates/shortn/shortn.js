@@ -86,19 +86,15 @@ function main() {
 				print('Patch #' + i + '\n\n');
 				var cut = cuts[i];
 				attempt(function() {
-                    [suggestions, edit_hit] = fixPatches(cut, paragraph_index);
-                    [grammar_votes, meaning_votes, vote_hit] = verifyPatches(cut, edit_hit, suggestions, paragraph_index);
+                    [suggestions, edit_hit] = fixPatches(cut, paragraph_index, i, cuts.length);
+                    [grammar_votes, meaning_votes, vote_hit] = verifyPatches(cut, edit_hit, suggestions, paragraph_index, i, cuts.length);
                     
 					var fixTime = getHITEndTime(edit_hit) - getHITStartTime(edit_hit);
 					var verifyTime = getHITEndTime(vote_hit) - getHITStartTime(vote_hit);
-					print('fix time: ' + fixTime);
-					print('verify time: ' + verifyTime);
 					maxFixVerifyTime = Math.max(fixTime+verifyTime, maxFixVerifyTime);
 					minFixVerifyTime = Math.min(fixTime+verifyTime, minFixVerifyTime);
 					
                     var patch = generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index);
-                    print('new patch yay')
-                    print(json(patch))
                     patches.patches.push(patch);
                     
 					outputEdits(output, lag_output, payment_output, paragraph, cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, patch);
@@ -186,7 +182,7 @@ function findPatches(paragraph, paragraph_index, output, payment_output, lag_out
     return [cuts, cut_hit];
 }
 
-function fixPatches(cut, paragraph_index) {
+function fixPatches(cut, paragraph_index, patchNumber, totalPatches) {
     if (fixStageOn) {
         print("requesting edits");
         var edit_hit = requestEdits(cut);					
@@ -194,12 +190,12 @@ function fixPatches(cut, paragraph_index) {
         
         var suggestions = []
         while (true) {	
-            suggestions = joinEdits(edit_hit, cut.plaintextSentence(), paragraph_index);
+            suggestions = joinEdits(edit_hit, cut.plaintextSentence(), paragraph_index, patchNumber, totalPatches);
             if (suggestions.length > 0) {
                 break;
             }
             else {
-                extendHit(edit_hit, buffer_redundancy);
+                extendHit(edit_hit, buffer_redundancy, patchNumber);
             }	
         }		
         
@@ -209,7 +205,7 @@ function fixPatches(cut, paragraph_index) {
     return [suggestions, edit_hit];
 }
 
-function verifyPatches(cut, edit_hit, suggestions, paragraph_index) {
+function verifyPatches(cut, edit_hit, suggestions, paragraph_index, patchNumber, totalPatches) {
     if (verifyStageOn) {
         print("requesting votes");					
         var vote_hit = requestVotes(cut, suggestions, edit_hit);
@@ -217,7 +213,7 @@ function verifyPatches(cut, edit_hit, suggestions, paragraph_index) {
         var grammar_votes = [];
         var meaning_votes = [];
         while (true) {
-            [grammar_votes, meaning_votes] = joinVotes(vote_hit, paragraph_index);
+            [grammar_votes, meaning_votes] = joinVotes(vote_hit, paragraph_index, patchNumber, totalPatches);
             
             if (numVotes(grammar_votes) > 0 && numVotes(meaning_votes) > 0) {
                 break;
@@ -260,15 +256,13 @@ function requestPatches(paragraph) {
 function joinPatches(cut_hit, paragraph, paragraph_index) {
 	var status = mturk.getHIT(cut_hit, true)
 	print("completed by " + status.assignments.length + " turkers");
-	socketStatus(FIND_STAGE, status, paragraph_index);
+	socketStatus(FIND_STAGE, status, paragraph_index, 0, 1);
 	
 	var hit = mturk.boundedWaitForHIT(cut_hit, wait_time, 6, search_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
 
 	var patch_suggestions = generatePatchSuggestions(hit.assignments, paragraph);
-	//print(json(patch_suggestions));
 	var patches = aggregatePatchSuggestions(patch_suggestions, hit.assignments.length, paragraph);
-	//print(json(patches));
 
 	print('\n\n\n');
 
@@ -375,12 +369,12 @@ function requestEdits(cut) {
  * Waits for all the edits to be completed
  * @return: all the unique strings that turkers suggested
  */
-function joinEdits(edit_hit, originalSentence, paragraph_index) {
+function joinEdits(edit_hit, originalSentence, paragraph_index, patchNumber, totalPatches) {
 	var hitId = edit_hit;
 	print("checking to see if HIT is done")
 	var status = mturk.getHIT(hitId, true)	
 	print("completed by " + status.assignments.length + " turkers");
-	socketStatus(FIX_STAGE, status, paragraph_index);
+	socketStatus(FIX_STAGE, status, paragraph_index, patchNumber, totalPatches);
 	
 	var hit = mturk.boundedWaitForHIT(hitId, wait_time, 3, edit_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
@@ -474,12 +468,12 @@ function requestVotes(cut, options, edit_hit) {
 	return vote_hit;
 }
 
-function joinVotes(vote_hit, paragraph_index) {
+function joinVotes(vote_hit, paragraph_index, patchNumber, totalPatches) {
 	// get the votes
 	var hitId = vote_hit;
 	var status = mturk.getHIT(hitId, true)	
 	print("completed by " + status.assignments.length + " turkers");
-	socketStatus(FILTER_STAGE, status, paragraph_index);
+	socketStatus(FILTER_STAGE, status, paragraph_index, patchNumber, totalPatches);
 	
 	var hit = mturk.boundedWaitForHIT(hitId, wait_time, 3, verify_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
@@ -652,12 +646,7 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
         }
     }
     
-    print('edit offset yoyoyoyo')
-    print(editOffset);
-    print(patch.editStart - editOffset);
-    print(patch.originalText);
     patch.originalText = patch.originalText.substring(patch.editStart - editOffset, patch.editEnd - editOffset);
-    print(patch.originalText);
     
     // return to original sort order
     patch.options.sort( function(a, b) { return a.start - b.start; } );    
