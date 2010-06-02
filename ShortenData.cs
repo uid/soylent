@@ -60,7 +60,7 @@ namespace Soylent
             patches = new List<Patch>();
         }
 
-        public void register(HITView hview)
+        public override void register(HITView hview)
         {
             shortnview = hview as ShortnView;
         }
@@ -105,7 +105,7 @@ namespace Soylent
                 // if it's cuttable, add the empty string as an option
                 if (tkspatch.canCut)
                 {
-                    thisPatch.replacements.Add("| ");  // means "cuttable" for now
+                    thisPatch.replacements.Add("");  // means "cuttable" for now
                 }
 
                 patches.Add(thisPatch);
@@ -192,7 +192,7 @@ namespace Soylent
             List<List<PatchSelection>> results = new List<List<PatchSelection>>();
             if (patches.Count == 1)
             {
-                results.Add(options);
+                results.AddRange((from option in options select new List<PatchSelection> { option }).ToList() );
                 return results;
             }
 

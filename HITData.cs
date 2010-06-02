@@ -63,7 +63,7 @@ namespace Soylent
             tk.startTask();
         }
 
-        public void register(HITView hview)
+        public virtual void register(HITView hview)
         {
             view = hview;
         }
