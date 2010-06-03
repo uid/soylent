@@ -38,8 +38,8 @@ namespace Soylent
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)
         {
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
-            newForm.Width = 1195;
-            newForm.Height = 800;
+            //newForm.Width = 1195;
+            //newForm.Height = 800;
             newForm.BackColor = System.Drawing.Color.White;
 
             // Create the ElementHost control for hosting the
