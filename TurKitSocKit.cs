@@ -92,8 +92,8 @@ namespace Soylent
         {
             Console.WriteLine("Receiving data");
             ConnectionInfo connection = (ConnectionInfo)result.AsyncState;
-            try
-            {
+            /*try
+            {*/
                 int bytesRead = connection.Socket.EndReceive(result);
                 if (0 != bytesRead)
                 {
@@ -141,12 +141,13 @@ namespace Soylent
                         new AsyncCallback(ReceiveCallback), connection);
                 }
                 else CloseConnection(connection);
-            }
-            catch (SocketException exc)
-            {
-                CloseConnection(connection);
-                Console.WriteLine("Socket exception: " + exc.SocketErrorCode);
-            }
+            /*}
+catch (SocketException exc)
+{
+    CloseConnection(connection);
+    Console.WriteLine("Socket exception: " + exc.SocketErrorCode);
+}
+ */
         }
 
         private void CloseConnection(ConnectionInfo ci)
@@ -167,6 +168,8 @@ namespace Soylent
             public int paragraph;
             public double payment;
             public string hitURL;
+            public int patchNumber;
+            public int totalPatches;
         }
 
         /// <summary>

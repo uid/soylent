@@ -48,9 +48,9 @@ namespace Soylent
 
         public ShortenData(Word.Range toShorten, int job) : base(toShorten, job)
         {
-            stages[ResultType.Find] = new StageData(ResultType.Find, 0, numParagraphs);
-            stages[ResultType.Fix] = new StageData(ResultType.Fix, 0, numParagraphs);
-            stages[ResultType.Verify] = new StageData(ResultType.Verify, 0, numParagraphs);
+            stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
+            stages[ResultType.Fix] = new StageData(ResultType.Fix, numParagraphs);
+            stages[ResultType.Verify] = new StageData(ResultType.Verify, numParagraphs);
 
             typeMap = new Dictionary<string,ResultType>();
             typeMap["find"] = ResultType.Find;
@@ -60,7 +60,7 @@ namespace Soylent
             patches = new List<Patch>();
         }
 
-        public void register(HITView hview)
+        public override void register(HITView hview)
         {
             shortnview = hview as ShortnView;
         }
@@ -108,7 +108,7 @@ namespace Soylent
                 // if it's cuttable, add the empty string as an option
                 if (tkspatch.canCut)
                 {
-                    thisPatch.replacements.Add("| ");  // means "cuttable" for now
+                    thisPatch.replacements.Add("");  // means "cuttable" for now
                 }
 
                 patches.Add(thisPatch);
@@ -195,7 +195,7 @@ namespace Soylent
             List<List<PatchSelection>> results = new List<List<PatchSelection>>();
             if (patches.Count == 1)
             {
-                results.Add(options);
+                results.AddRange((from option in options select new List<PatchSelection> { option }).ToList() );
                 return results;
             }
 

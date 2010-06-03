@@ -246,11 +246,11 @@ function writeCSVWait(csv, hit, title, paragraph_index)
 var FIND_STAGE = "find";
 var FIX_STAGE = "fix";
 var FILTER_STAGE = "verify"; //#todo: rename FILTER_STAGE to VERIFY_STAGE
-function socketStatus(stage, hit, paragraphNum) {//stage, numCompleted, maxAssignments, paragraphNum, reward, hitURL) {
+function socketStatus(stage, hit, paragraphNum, patchNumber, totalPatches) {
 	var url = (javaTurKit.mode == "sandbox"
 					? "https://workersandbox.mturk.com/mturk/preview?groupId="
 					: "https://www.mturk.com/mturk/preview?groupId=")
-			+ hit.hitTypeId
+			+ hit.hitTypeId;            
     
 	var message = {
 		stage: stage,
@@ -259,11 +259,19 @@ function socketStatus(stage, hit, paragraphNum) {//stage, numCompleted, maxAssig
         payment: hit.reward,
 		paragraph: paragraphNum,
         hitURL: url,
+        patchNumber: patchNumber,
+        totalPatches: totalPatches
 	};
+    if (message.stage == FIND_STAGE) {
+        message.totalRequested -= 2 * buffer_redundancy;
+    } else if (message.stage == FIX_STAGE || message.stage == FILTER_STAGE) {
+        message.totalRequested -= buffer_redundancy;
+    }
+    
 	sendSocketMessage("status", message);
 }
 
-function sendSocketMessage(messageType, message) {    
+function sendSocketMessage(messageType, message) {
     message.job = soylentJob;
     message.__type__ = messageType;
     
