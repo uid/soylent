@@ -1,0 +1,61 @@
+// begin:f67c
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269900357012E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269900357022E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/xwesbz9c4frwfzvdrjlnvz1fv2w9zrf9.html",
+						"returnTime" : 1.269900360429E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/xwesbz9c4frwfzvdrjlnvz1fv2w9zrf9.html\r\n"
+					},
+					{
+						"creationTime" : 1.269900360434E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "18RY83ZOXDHJLCTGK9TOR0PGZGFAX6",
+						"returnTime" : 1.269900360802E12,
+						"printOutput" : "created HIT: 18RY83ZOXDHJLCTGK9TOR0PGZGFAX6\r\n        url: https://www.mturk.com/mturk/preview?groupId=18KLF0CS2EDIG8TIRQ5GWB76NV6KT2\r\n"
+					},
+					{
+						"creationTime" : 1.269928852436E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269928853229E12,
+						"printOutput" : "disabled HIT: 18RY83ZOXDHJLCTGK9TOR0PGZGFAX6\r\n"
+					},
+					{
+						"creationTime" : 1.269928853231E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269928853357E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/xwesbz9c4frwfzvdrjlnvz1fv2w9zrf9.html\r\n"
+					},
+					{
+						"creationTime" : 1.269928854531E12
+					},
+					{
+						"creationTime" : 1.269928854813E12
+					},
+					{
+						"creationTime" : 1.269928855077E12
+					},
+					{
+						"creationTime" : 1.269928855343E12
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.7000000000000001,
+	"hitsCreated" : 1
+}
+// end:f67c

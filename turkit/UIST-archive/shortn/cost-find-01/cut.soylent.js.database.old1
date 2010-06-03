@@ -1,0 +1,35 @@
+// begin:d35a
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269932485843E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269932485852E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2lo5cpsj1ezercno0pux6qfkebpdkikq.html",
+						"returnTime" : 1.269932486278E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2lo5cpsj1ezercno0pux6qfkebpdkikq.html\r\n"
+					},
+					{
+						"creationTime" : 1.269932486282E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1C797EIS5SAEPXGR9OR54QKCNXRN3L",
+						"returnTime" : 1.269932486709E12,
+						"printOutput" : "created HIT: 1C797EIS5SAEPXGR9OR54QKCNXRN3L\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1PB9N98AW5HXNLDRZOK899GUM2COYR\r\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.14,
+	"hitsCreated" : 1
+}
+// end:d35a

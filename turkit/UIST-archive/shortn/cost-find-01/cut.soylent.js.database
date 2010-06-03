@@ -1,0 +1,65 @@
+// begin:58be
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269932501903E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269932501911E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/0pptpwicy1h9qq66nhse9ei2is72n0tc.html",
+						"returnTime" : 1.26993250203E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/0pptpwicy1h9qq66nhse9ei2is72n0tc.html\r\n"
+					},
+					{
+						"creationTime" : 1.269932502033E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "148Q70IBFWJHJJWS4JKQH1XMKJGXDZ",
+						"returnTime" : 1.269932502515E12,
+						"printOutput" : "created HIT: 148Q70IBFWJHJJWS4JKQH1XMKJGXDZ\r\n        url: https://www.mturk.com/mturk/preview?groupId=18R0L64F69Q9TIBZXQZJMSTLB3J1DY\r\n"
+					},
+					{
+						"creationTime" : 1.269961607831E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n"
+					},
+					{
+						"creationTime" : 1.269961608433E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269961608955E12,
+						"printOutput" : "disabled HIT: 148Q70IBFWJHJJWS4JKQH1XMKJGXDZ\r\n"
+					},
+					{
+						"creationTime" : 1.269961608957E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269961609089E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/0pptpwicy1h9qq66nhse9ei2is72n0tc.html\r\n"
+					},
+					{
+						"creationTime" : 1.269961610594E12
+					},
+					{
+						"creationTime" : 1.269961610883E12
+					},
+					{
+						"creationTime" : 1.269961611206E12
+					},
+					{
+						"creationTime" : 1.269961611552E12
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.14,
+	"hitsCreated" : 1
+}
+// end:58be

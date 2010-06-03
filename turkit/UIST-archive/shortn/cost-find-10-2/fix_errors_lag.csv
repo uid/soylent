@@ -1,0 +1,21 @@
+Stage,Assignment,Wait Type,Time
+Find,1,work,11
+Find,1,wait,159
+Find,2,work,16
+Find,2,wait,159
+Find,3,work,35
+Find,3,wait,281
+Find,4,work,6
+Find,4,wait,320
+Find,5,work,80
+Find,5,wait,409
+Find,6,work,23
+Find,6,wait,592
+Find,7,work,57
+Find,7,wait,669
+Find,8,work,64
+Find,8,wait,1012
+Find,9,work,60
+Find,9,wait,1078
+Find,10,work,44
+Find,10,wait,3305
