@@ -144,30 +144,29 @@ namespace Soylent
                 info.cmd = "cmd";
             }
 
-            using( Process process = Process.Start( new ProcessStartInfo( info.cmd, info.cmdParams ) ) )
+            Process process = new Process();
+            process.StartInfo = new ProcessStartInfo(info.cmd, info.cmdParams);
+            process.StartInfo.WorkingDirectory = info.workingDirectory;
+            process.StartInfo.UseShellExecute = false;
+            if (!info.showWindow)
             {
-                process.StartInfo.WorkingDirectory = info.workingDirectory;
-                process.StartInfo.UseShellExecute = false;
-                if (!info.showWindow)
-                {
-                    process.StartInfo.CreateNoWindow = true;
-                    process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    process.StartInfo.RedirectStandardOutput = true;
-                    process.StartInfo.RedirectStandardError = true;
-                }
-                process.Start( );
-                if (!info.showWindow)
-                {
-                    output = process.StandardOutput.ReadToEnd();
-                    error = process.StandardError.ReadToEnd();
-                }
-                else
-                {
-                    output = null;
-                    error = null;
-                }
-                //process.WaitForExit();
+                process.StartInfo.CreateNoWindow = true;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.RedirectStandardError = true;
             }
+            process.Start( );
+            if (!info.showWindow)
+            {
+                output = process.StandardOutput.ReadToEnd();
+                error = process.StandardError.ReadToEnd();
+            }
+            else
+            {
+                output = null;
+                error = null;
+            }
+            process.WaitForExit();
         }
 
         private class ProcessInformation
