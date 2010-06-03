@@ -155,6 +155,7 @@ namespace Soylent
             IEnumerable<int> lengthList = cachedSelections.Keys.OrderByDescending(len => len);
             if (desiredLength > lengthList.ElementAt(0))
             {
+                //makeChangesInDocument(cachedSelections[lengthList.ElementAt(0)]);
                 return cachedSelections[lengthList.ElementAt(0)];
             }
 
@@ -162,12 +163,24 @@ namespace Soylent
             {
                 if (lengthList.ElementAt(i) < desiredLength)
                 {
+                    //makeChangesInDocument(cachedSelections[lengthList.ElementAt(i-1)]);
                     return cachedSelections[lengthList.ElementAt(i-1)];
                 }
             }
             //return (from patch in patches select new PatchSelection(patch, patch.replacements[0])).ToList();
             // return the smallest one we got
             return cachedSelections[lengthList.ElementAt(lengthList.Count()-1)];
+        }
+
+        public void makeChangesInDocument(int desiredLength)
+        {
+            List<PatchSelection> pSelections = getPatchSelections(desiredLength);
+            for (int i=pSelections.Count - 1; i>=0; i--)
+            {
+                PatchSelection selection = pSelections[i];
+                selection.patch.original.Text = selection.selection;
+                //break;
+            }
         }
 
         public List<int> possibleLengths()
@@ -220,7 +233,8 @@ namespace Soylent
         public static ShortenData getCannedData()
         {
             // insert text
-            Globals.Soylent.Application.Selection.Range.InsertAfter("Automatic clustering generally helps separate different kinds of records that need to be edited differently, but it isn't perfect. Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant, and it isn't necessary to split based on those differences.  Conversely, sometimes the clustering isn't fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc. Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  Automatic clustering generally helps separate different kinds of records that need to be edited differently, but it isn't perfect. Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant, and it isn't necessary to split based on those differences.  Conversely, sometimes the clustering isn't fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc. Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  ");
+            Globals.Soylent.Application.Selection.Range.InsertAfter("Automatic clustering generally helps separate different kinds of records that need to be edited differently, but it isn't perfect. Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant, and it isn't necessary to split based on those differences.  Conversely, sometimes the clustering isn't fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc. ");
+            //Globals.Soylent.Application.Selection.Range.InsertAfter("A. B. C. Sentence 4.");
             // select it
             Word.Range canned_range = Globals.Soylent.Application.ActiveDocument.Paragraphs[1].Range;
 

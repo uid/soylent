@@ -73,6 +73,7 @@ namespace Soylent
             double percent = e.NewValue / max;
 
             updateParagraphs(percent);
+            data.makeChangesInDocument((int)Math.Round(data.longestLength * percent));
         }
 
         private void updateParagraphs(double percent)
