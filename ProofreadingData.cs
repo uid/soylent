@@ -29,7 +29,7 @@ namespace Soylent
             {
                 string tag = HumanMacroResult.NAMESPACE + "#soylent" + DateTime.Now.Ticks;
                 SmartTag resultTag = new SmartTag(tag, pp.reasons[0]);
-                Regex pattern = new Regex(pp.original.Text.Trim().Replace(" ", "\\s"), RegexOptions.IgnorePatternWhitespace);
+                Regex pattern = new Regex(pp.range.Text.Trim().Replace(" ", "\\s"), RegexOptions.IgnorePatternWhitespace);
                 resultTag.Expressions.Add(pattern);
 
                 List<VSTO.Action> actions = new List<Microsoft.Office.Tools.Word.Action>();
