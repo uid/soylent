@@ -82,9 +82,11 @@ namespace Soylent
             }
         }
 
-        /* When ShortenData receives a status from a later stage for this patch in this paragraph,
-         * we need to signal the fact that this patch is done to the user. 
-         */
+        /// <summary>
+        /// When ShortnData receives a StageComplete message, this should be called to reveal early termination to the user.
+        /// </summary>
+        /// <param name="paragraph">Paragraph number</param>
+        /// <param name="patch">Patch number</param>
         public void terminatePatch(int paragraph, int patch)
         {
             if (done[paragraph][patch]) { return; }

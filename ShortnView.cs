@@ -39,10 +39,14 @@ namespace Soylent
             openShortnDialog(data as ShortenData);
             foreach (StageView stageview in stageList.Values)
             {
-                stageview.hitProgress.Foreground = Brushes.LightSkyBlue;
+                stageview.hitProgress.Foreground = Brushes.LightSkyBlue; //Yay light blue
             }
         }
 
+        /// <summary>
+        /// Open the Shortn dialog window.  Used internally after the Shortn button is pressed, and by Ribbon for the debugging
+        /// </summary>
+        /// <param name="data"></param>
         public static void openShortnDialog(ShortenData data)
         {
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
@@ -78,13 +82,16 @@ namespace Soylent
             newForm.Visible = true;
         }
 
+        /// <summary>
+        /// If the ShortenData model has received the final data, it should call this function. Turns progress bars blue and enables the Shortn button.
+        /// </summary>
         public void shortenDataReceived()
         {
             foreach (StageView stageview in stageList.Values)
             {
-                stageview.hitProgress.Foreground = Brushes.Blue;
+                stageview.hitProgress.Foreground = Brushes.Blue; //Turn the bars blue
             }
-            this.ShortnButton.IsEnabled = true;
+            this.ShortnButton.IsEnabled = true; //Enable the Shortn button
         }
     }
 }
