@@ -86,19 +86,22 @@ namespace Soylent
             stage.terminatePatch(donezo.paragraph, donezo.patchNumber);
         }
 
+        /// <summary>
+        /// Processes a shortn message, one that contains the final results of the algorithm. One per paragraph
+        /// </summary>
+        /// <param name="message"></param>
         public void processSocKitMessage(TurKitSocKit.TurKitShortn message)
         {
             Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
-            int nextStart = 0;
-            int nextEnd;
-
-            //curParagraphRange
+            int nextStart = 0; //Is always the location where the next patch (dummy or otherwise) should start.
+            int nextEnd; //Is where the last patch ended.  Kinda poorly named. Tells us if we need to add a dummy patch after the last real patch
 
             foreach (TurKitSocKit.TurKitShortnPatch tkspatch in message.patches)
             {
+                //For text in between patches, we create dummy patches.
                 if (tkspatch.editStart > nextStart)
                 {
-                    nextEnd = tkspatch.editStart;
+                    nextEnd = tkspatch.editStart; 
                     Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
                     DummyPatch dummyPatch = new DummyPatch(dummyRange);
 
@@ -107,9 +110,7 @@ namespace Soylent
 
                 int start = curParagraphRange.Start + tkspatch.editStart;
                 int end = curParagraphRange.Start + tkspatch.editEnd;
-                //TODO: How do I make a range?
-                //Word.Range patchRange = null;//Globals.Soylent.
-                Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end);
+                Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end); //New range for this patch, yay!
 
                 Patch thisPatch = new Patch(patchRange, (from option in tkspatch.options select option.editedText).ToList());
                 // add the original as an option
@@ -123,6 +124,7 @@ namespace Soylent
                 patches.Add(thisPatch);
                 nextStart = tkspatch.end;
             }
+            //If the last patch we found isn't the end of the paragraph, create a DummyPatch
             if (nextStart < (curParagraphRange.Text.Length - 1)){
                 nextEnd = curParagraphRange.Text.Length;
                 Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
@@ -132,7 +134,7 @@ namespace Soylent
             }
             paragraphsCompleted++;
 
-            if (paragraphsCompleted == numParagraphs)
+            if (paragraphsCompleted == numParagraphs) //If we have done all paragraphs, make them available to the user!
             {
                 //TODO: use a delegate.
                 this.tk.turkitLoopTimer.Dispose();
@@ -140,9 +142,7 @@ namespace Soylent
             }
         }
 
-      
-
-        public void returnShortnResults()
+        private void returnShortnResults()
         {
             Globals.Soylent.soylent.Invoke(new popupShortnWindowDelegate(this.popupShortnWindow), new object[] { });
         }
@@ -164,7 +164,6 @@ namespace Soylent
             IEnumerable<int> lengthList = cachedSelections.Keys.OrderByDescending(len => len);
             if (desiredLength > lengthList.ElementAt(0))
             {
-                //makeChangesInDocument(cachedSelections[lengthList.ElementAt(0)]);
                 return cachedSelections[lengthList.ElementAt(0)];
             }
 
@@ -172,7 +171,6 @@ namespace Soylent
             {
                 if (lengthList.ElementAt(i) < desiredLength)
                 {
-                    //makeChangesInDocument(cachedSelections[lengthList.ElementAt(i-1)]);
                     return cachedSelections[lengthList.ElementAt(i-1)];
                 }
             }
@@ -181,7 +179,7 @@ namespace Soylent
             return cachedSelections[lengthList.ElementAt(lengthList.Count()-1)];
         }
 
-        /** This is the way we have to make changes in the document when the slider moves.
+        /* This is the way we have to make changes in the document when the slider moves.
          * What we should be able to do: Range.Text = PatchSelection.selection
          * What we have to do instead:
          * Collapse the patch's range to the beginning of the range
@@ -195,14 +193,11 @@ namespace Soylent
          */
         public void makeChangesInDocument(int desiredLength)
         {
-            List<PatchSelection> pSelections = getPatchSelections(desiredLength);
-            //for (int i=pSelections.Count - 1; i>=0; i--)
-            
+            List<PatchSelection> pSelections = getPatchSelections(desiredLength);          
             for (int i = 0; i < pSelections.Count; i++)
             {
                 PatchSelection selection1 = pSelections[i];
                 if (selection1.isCurrent) { continue; }
-                //selection.patch.original.Text = selection.selection;
                 int originalLength = selection1.patch.range.End - selection1.patch.range.Start;
                 string newString = selection1.selection;
                 int newLength = newString.Length;
@@ -210,32 +205,10 @@ namespace Soylent
                 selection1.patch.range.InsertAfter(newString); //Insert the new text
                 int newStart = selection1.patch.range.Start;
                 int newEnd = selection1.patch.range.End;
-                selection1.patch.range.Collapse(Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseEnd);
-                //selection1.patch.original.End = selection1.patch.original.Start + originalLength;
-                selection1.patch.range.Delete(Microsoft.Office.Interop.Word.WdUnits.wdCharacter, originalLength);
-                selection1.patch.range.SetRange(newStart, newEnd);
-                //break;
+                selection1.patch.range.Collapse(Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseEnd); //Collapse to the end
+                selection1.patch.range.Delete(Microsoft.Office.Interop.Word.WdUnits.wdCharacter, originalLength); //Delete old text
+                selection1.patch.range.SetRange(newStart, newEnd); // Fix the range
             }
-            /*
-            PatchSelection selection1 = pSelections[0];
-            PatchSelection selection2 = pSelections[1];
-            PatchSelection selection3 = pSelections[2];
-            int originalLength = selection1.patch.original.End - selection1.patch.original.Start;
-            string newString = "33333";
-            int newLength = newString.Length;
-            selection1.patch.original.Collapse(); //Collapse to the beginning
-            selection1.patch.original.InsertAfter(newString); //Insert the new text
-            int newStart = selection1.patch.original.Start;
-            int newEnd = selection1.patch.original.End;
-            selection1.patch.original.Collapse(Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseEnd);
-            //selection1.patch.original.End = selection1.patch.original.Start + originalLength;
-            selection1.patch.original.Delete(Microsoft.Office.Interop.Word.WdUnits.wdCharacter, originalLength);
-            selection1.patch.original.SetRange(newStart, newEnd);
-            //selection1.patch.original.Text = selection1.patch.original.Text + "a";
-            //selection2.patch.original.InsertBefore("2222");
-            //selection1.patch.original.InsertAfter("33333333");
-            int end1 = selection1.patch.original.End;
-            */
         }
 
         public List<int> possibleLengths()
