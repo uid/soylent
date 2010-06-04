@@ -39,38 +39,7 @@ namespace Soylent
 
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)
         {
-            System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
-            newForm.Width = 1200;
-            newForm.Height = int.MaxValue;
-            newForm.BackColor = Color.White;
-
-            // Create the ElementHost control for hosting the
-            // WPF UserControl.
-            ElementHost host = new ElementHost();
-            host.Dock = System.Windows.Forms.DockStyle.Fill;
-
-            // Create the WPF UserControl.
-            Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            ShortenDialog sd = new ShortenDialog(ShortenData.getCannedData());
-
-            // Assign the WPF UserControl to the ElementHost control's
-            // Child property.
-            host.Child = sd;
-            
-            newForm.Visible = false;
-            // Add the ElementHost control to the form's
-            // collection of child controls.
-            newForm.Controls.Add(host);
-            newForm.Show();
-
-            // set the form's height based on what the textbox wants to be
-            newForm.Height = (int)(sd.DesiredSize.Height + newForm.Padding.Vertical + System.Windows.Forms.SystemInformation.CaptionHeight);
-            sd.grid.Height = sd.grid.DesiredSize.Height - System.Windows.SystemParameters.ScrollWidth;
-            newForm.Width = 1200;
-            host.MaximumSize = new Size(1200, SystemInformation.VirtualScreen.Height);
-            newForm.FormBorderStyle = FormBorderStyle.Fixed3D;
-
-            newForm.Visible = true;
+            ShortnView.openShortnDialog(ShortenData.getCannedData());
         }
 
         private void humanMacroBtn_Click(object sender, RibbonControlEventArgs e)
