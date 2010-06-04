@@ -26,7 +26,7 @@
             <TextBlock Name="after" Grid.Column="2" Grid.Row="1" TextWrapping="Wrap" Text="after textbox" FontSize="16" />
             <Grid Grid.Row="1" Grid.Column="1">
                 <Path x:Name="Path_59" Width="180" Height="144" Canvas.Left="470.556" Canvas.Top="215.917" Stretch="Fill" Fill="#F2DBDB" Data="F1 M 521.366,234.074L 501.451,252.085L 501.451,243.591L 470.556,252.23L 470.556,215.917L 501.451,224.555L 501.451,216.062L 521.366,234.074 Z " />
-                <Slider HorizontalAlignment="Center" Width="30" VerticalAlignment="Stretch" Name="lengthSlider" Minimum="0" Maximum="100" SelectionStart="50" SelectionEnd="100" IsSnapToTickEnabled="True" IsSelectionRangeEnabled="True" Value="100" ValueChanged="lengthSlider_ValueChanged" Orientation="Vertical" IsDirectionReversed="True" TickPlacement="BottomRight"/>
+                <Slider HorizontalAlignment="Center" IsTabStop="False" Width="30" VerticalAlignment="Stretch" Name="lengthSlider" Minimum="0" Maximum="100" SelectionStart="50" SelectionEnd="100" IsSnapToTickEnabled="True" IsSelectionRangeEnabled="True" Value="100" ValueChanged="lengthSlider_ValueChanged" Orientation="Vertical" IsDirectionReversed="True" TickPlacement="BottomRight"/>
             </Grid>
         </Grid>
 </UserControl>
