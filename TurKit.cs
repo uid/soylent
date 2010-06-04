@@ -94,7 +94,7 @@ namespace Soylent
 
                 InitializeAmazonKeys();
 
-                string arguments = " -jar TurKit-0.2.3.jar -f " + requestFile + " -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
+                string arguments = " -jar TurKit-0.2.3.jar -f \"" + requestFile + "\" -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
                 if (Soylent.DEBUG)
                 {
                     arguments += " -m sandbox";
