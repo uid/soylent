@@ -36,24 +36,30 @@ namespace Soylent
         }
         public void Shortn_Clicked(object sender, RoutedEventArgs e)
         {
+            openShortnDialog(data as ShortenData);
+            foreach (StageView stageview in stageList.Values)
+            {
+                stageview.hitProgress.Foreground = Brushes.LightSkyBlue;
+            }
+        }
+
+        public static void openShortnDialog(ShortenData data)
+        {
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
-            newForm.Width = 1195;
-            newForm.Height = 380;
+            newForm.Width = 1200;
+            newForm.Height = int.MaxValue;
             newForm.BackColor = System.Drawing.Color.White;
 
             // Create the ElementHost control for hosting the
             // WPF UserControl.
             ElementHost host = new ElementHost();
-            host.Width = newForm.Width;
-            host.Height = newForm.Height;
+            host.Dock = System.Windows.Forms.DockStyle.Fill;
 
             // Create the WPF UserControl.
-            //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            ShortenDialog sd = new ShortenDialog(data as ShortenData);
+            ShortenDialog sd = new ShortenDialog(data);
 
             // Assign the WPF UserControl to the ElementHost control's
             // Child property.
-
             host.Child = sd;
 
             newForm.Visible = false;
@@ -62,17 +68,16 @@ namespace Soylent
             newForm.Controls.Add(host);
             newForm.Show();
 
-            double beforeHeight = sd.before.DesiredSize.Height;
-            newForm.Height = (int)(beforeHeight + 60);
-            sd.lengthSlider.Height = (int)(beforeHeight - 20);
+            // set the form's height based on what the textbox wants to be
+            newForm.Height = (int)(sd.DesiredSize.Height + newForm.Padding.Vertical + System.Windows.Forms.SystemInformation.CaptionHeight);
+            sd.grid.Height = sd.grid.DesiredSize.Height - System.Windows.SystemParameters.ScrollWidth;
+            newForm.Width = 1200;
+            host.MaximumSize = new System.Drawing.Size(1200, System.Windows.Forms.SystemInformation.VirtualScreen.Height);
+            newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 
             newForm.Visible = true;
-
-            foreach (StageView stageview in stageList.Values)
-            {
-                stageview.hitProgress.Foreground = Brushes.LightSkyBlue;
-            }
         }
+
         public void shortenDataReceived()
         {
             foreach (StageView stageview in stageList.Values)
