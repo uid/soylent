@@ -38,15 +38,15 @@ namespace Soylent
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)
         {
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
-            newForm.Width = 1195;
-            newForm.Height = 380;
+            //newForm.Width = 1195;
+            //newForm.Height = 800;
             newForm.BackColor = System.Drawing.Color.White;
 
             // Create the ElementHost control for hosting the
             // WPF UserControl.
             ElementHost host = new ElementHost();
-            host.Width = newForm.Width;
-            host.Height = newForm.Height;
+            host.Dock = System.Windows.Forms.DockStyle.Fill;
+            host.MaximumSize = new System.Drawing.Size(1200, 800);
 
             // Create the WPF UserControl.
             Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
@@ -56,10 +56,20 @@ namespace Soylent
             // Child property.
             host.Child = sd;
 
+            
+            newForm.Visible = false;
             // Add the ElementHost control to the form's
             // collection of child controls.
             newForm.Controls.Add(host);
             newForm.Show();
+
+            //sd.before.Measure(new System.Windows.Size(newForm.Width, int.MaxValue));
+            //double beforeHeight = sd.before.DesiredSize.Height;
+            //newForm.Height = (int)(beforeHeight + 60);
+            //sd.lengthSlider.Height = (int)(beforeHeight - 20);
+
+            //newForm.Show();
+            newForm.Visible = true;
         }
 
         private void humanMacroBtn_Click(object sender, RibbonControlEventArgs e)
@@ -157,8 +167,8 @@ namespace Soylent
             
 
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
-            newForm.Width = 1195;
-            newForm.Height = 380;
+            //newForm.Width = 1195;
+            //newForm.Height = 380;
             newForm.BackColor = System.Drawing.Color.White;
 
             // Create the ElementHost control for hosting the
