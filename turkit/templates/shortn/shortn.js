@@ -804,6 +804,7 @@ function doMerge(patches, startPatch, endPatch, paragraph_index) {
     else {
         print('Merging ' + startPatch + ' to ' + endPatch);
         var newPatch = prune(startPatch, 10^10);    // do a deep copy of the object, 10^10 takes us to pretty much artibrary depth
+		newPatch.start = startPatch.start;
         // get the largest end value of the patches
         newPatch.end = Array.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.end; } ) );
         newPatch.editStart = Array.min(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editStart; } ) );
@@ -813,6 +814,7 @@ function doMerge(patches, startPatch, endPatch, paragraph_index) {
         newPatch.numEditors = Stats.sum(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.numEditors; } ) );
         newPatch.merged = true;
         newPatch.options = new Array();
+		newPatch.originalText = getParagraph(paragraphs[paragraph_index]).substring(newPatch.editStart, newPatch.editEnd);
         
         for (var i=startPatch; i<=endPatch; i++) {
             newPatch.options = newPatch.options.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index, newPatch.editStart, newPatch.editEnd));
@@ -825,8 +827,10 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
     var options = new Array();
     
     print('\n\nPatch merging ' + curPatch);
+	print(json(patches[curPatch]))
     var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].editStart);
     var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd, editEnd);
+	
     var dmp = new diff_match_patch();
     for (var i=0; i<patches[curPatch].options.length; i++) {
         var option = patches[curPatch].options[i];
@@ -841,7 +845,8 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
             editEnd: editEnd,
             numVoters: option.numVoters,
             meaningVotes: option.meaningVotes,
-            grammarVotes: option.grammarVotes
+            grammarVotes: option.grammarVotes,
+			originalText: getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd)
         }
         options.push(newOption);
     }
@@ -853,11 +858,13 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
 
         var newOption = {
             text: prefix + postfix,
+			editedText: prefix + postfix,
             editStart: editStart,
             editEnd: editEnd,
             numVoters: patches[curPatch].numEditors,
             meaningVotes: 0,    // not strictly correct, but hey, what can we do? TODO: we should merge cuttability to create an option earlier in the code before spinning off a verify step
-            grammarVotes: 0
+            grammarVotes: 0,
+			originalText: getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd)
         }
         options.push(newOption);
     }
