@@ -13,13 +13,15 @@ namespace Soylent
 {
     public class Patch
     {
-        public Word.Range original;
+        public Word.Range range;
         public List<string> replacements;
+        public string original;
 
-        public Patch(Word.Range original, List<string> replacements)
+        public Patch(Word.Range range, List<string> replacements)
         {
-            this.original = original;
+            this.range = range;
             this.replacements = replacements;
+            this.original = range.Text;
         }
     }
 
@@ -27,9 +29,16 @@ namespace Soylent
     {
         public Patch patch;
         public string selection;
-        public bool isOriginal {
+        public bool isCurrent {
             get {
-                return (patch.original.Text == selection);
+                return (patch.range.Text == selection);
+            }
+        }
+        public bool isOriginal
+        {
+            get
+            {
+                return (patch.original == selection);
             }
         }
 

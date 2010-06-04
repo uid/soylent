@@ -180,19 +180,19 @@ namespace Soylent
             for (int i = 0; i < pSelections.Count; i++)
             {
                 PatchSelection selection1 = pSelections[i];
-                if (selection1.isOriginal) { continue; }
+                if (selection1.isCurrent) { continue; }
                 //selection.patch.original.Text = selection.selection;
-                int originalLength = selection1.patch.original.End - selection1.patch.original.Start;
+                int originalLength = selection1.patch.range.End - selection1.patch.range.Start;
                 string newString = selection1.selection;
                 int newLength = newString.Length;
-                selection1.patch.original.Collapse(); //Collapse to the beginning
-                selection1.patch.original.InsertAfter(newString); //Insert the new text
-                int newStart = selection1.patch.original.Start;
-                int newEnd = selection1.patch.original.End;
-                selection1.patch.original.Collapse(Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseEnd);
+                selection1.patch.range.Collapse(); //Collapse to the beginning
+                selection1.patch.range.InsertAfter(newString); //Insert the new text
+                int newStart = selection1.patch.range.Start;
+                int newEnd = selection1.patch.range.End;
+                selection1.patch.range.Collapse(Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseEnd);
                 //selection1.patch.original.End = selection1.patch.original.Start + originalLength;
-                selection1.patch.original.Delete(Microsoft.Office.Interop.Word.WdUnits.wdCharacter, originalLength);
-                selection1.patch.original.SetRange(newStart, newEnd);
+                selection1.patch.range.Delete(Microsoft.Office.Interop.Word.WdUnits.wdCharacter, originalLength);
+                selection1.patch.range.SetRange(newStart, newEnd);
                 //break;
             }
             /*

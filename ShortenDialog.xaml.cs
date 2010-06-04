@@ -35,7 +35,7 @@ namespace Soylent
 
             foreach (PatchSelection selection in selections)
             {
-                Run r = new Run(selection.patch.original.Text);
+                Run r = new Run(selection.patch.original);
 
                 if (!selection.isOriginal)
                 {
