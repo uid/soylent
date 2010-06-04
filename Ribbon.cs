@@ -9,6 +9,7 @@ using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms.Integration;
+using System.Windows.Forms;
 
 namespace Soylent
 {
@@ -38,15 +39,15 @@ namespace Soylent
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)
         {
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
-            //newForm.Width = 1195;
-            //newForm.Height = 800;
+            newForm.Width = 1195;
+            newForm.Height = int.MaxValue;
             newForm.BackColor = System.Drawing.Color.White;
 
             // Create the ElementHost control for hosting the
             // WPF UserControl.
             ElementHost host = new ElementHost();
             host.Dock = System.Windows.Forms.DockStyle.Fill;
-            host.MaximumSize = new System.Drawing.Size(1200, 800);
+            host.MaximumSize = new System.Drawing.Size(SystemInformation.VirtualScreen.Width, SystemInformation.VirtualScreen.Height);
 
             // Create the WPF UserControl.
             Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
@@ -64,7 +65,9 @@ namespace Soylent
             newForm.Show();
 
             //sd.before.Measure(new System.Windows.Size(newForm.Width, int.MaxValue));
-            //double beforeHeight = sd.before.DesiredSize.Height;
+            double beforeHeight = sd.before.DesiredSize.Height;
+            double wholeHeight = sd.DesiredSize.Height;
+            newForm.Height = (int) (sd.DesiredSize.Height + 0);
             //newForm.Height = (int)(beforeHeight + 60);
             //sd.lengthSlider.Height = (int)(beforeHeight - 20);
 
