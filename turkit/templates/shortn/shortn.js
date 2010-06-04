@@ -9,12 +9,15 @@ var wait_time = 20 * 60 * 1000;	// seconds
 var search_reward = 0.08;
 var search_redundancy = 10;
 var search_minimum_agreement = 0.20
+var search_minimum_workers = 6;
 
 var edit_reward = 0.05;
 var edit_redundancy = 5;  // number of turkers requested for each HIT
+var edit_minimum_workers = 3;
 
 var verify_reward = 0.04;
 var verify_redundancy = 5;
+var verify_minimum_workers = 3;
 
 var time_bounded = true;
 var rejectedWorkers = []
@@ -170,6 +173,8 @@ function findPatches(paragraph, paragraph_index, output, payment_output, lag_out
             }	
         }
         cleanUp(cut_hit);
+		
+		socketStageComplete(FIND_STAGE, paragraph_index, mturk.getHIT(cut_hit, true), 0, 1);
         
         if (fileOutputOn) {
             output.write(getPaymentString(cut_hit, "Find"));	
@@ -200,6 +205,7 @@ function fixPatches(cut, paragraph_index, patchNumber, totalPatches) {
         }		
         
         cleanUp(edit_hit);
+		socketStageComplete(FIX_STAGE, paragraph_index, mturk.getHIT(edit_hit, true), patchNumber, totalPatches);
     }
     
     return [suggestions, edit_hit];
@@ -224,6 +230,7 @@ function verifyPatches(cut, edit_hit, suggestions, paragraph_index, patchNumber,
         }				
         
         cleanUp(vote_hit);
+		socketStageComplete(FILTER_STAGE, paragraph_index, mturk.getHIT(vote_hit, true), patchNumber, totalPatches);
     }
     return [grammar_votes, meaning_votes, vote_hit]
 }
@@ -258,7 +265,7 @@ function joinPatches(cut_hit, paragraph, paragraph_index) {
 	print("completed by " + status.assignments.length + " turkers");
 	socketStatus(FIND_STAGE, status, paragraph_index, 0, 1);
 	
-	var hit = mturk.boundedWaitForHIT(cut_hit, wait_time, 6, search_redundancy);
+	var hit = mturk.boundedWaitForHIT(cut_hit, wait_time, search_minimum_workers, search_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
 
 	var patch_suggestions = generatePatchSuggestions(hit.assignments, paragraph);
@@ -376,7 +383,7 @@ function joinEdits(edit_hit, originalSentence, paragraph_index, patchNumber, tot
 	print("completed by " + status.assignments.length + " turkers");
 	socketStatus(FIX_STAGE, status, paragraph_index, patchNumber, totalPatches);
 	
-	var hit = mturk.boundedWaitForHIT(hitId, wait_time, 3, edit_redundancy);
+	var hit = mturk.boundedWaitForHIT(hitId, wait_time, edit_minimum_workers, edit_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
 	
 	var options = new Array();
@@ -475,7 +482,7 @@ function joinVotes(vote_hit, paragraph_index, patchNumber, totalPatches) {
 	print("completed by " + status.assignments.length + " turkers");
 	socketStatus(FILTER_STAGE, status, paragraph_index, patchNumber, totalPatches);
 	
-	var hit = mturk.boundedWaitForHIT(hitId, wait_time, 3, verify_redundancy);
+	var hit = mturk.boundedWaitForHIT(hitId, wait_time, verify_minimum_workers, verify_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
 	
 	foreach(hit.assignments, function(assignment) {
@@ -744,13 +751,16 @@ function initializeDebug() {
 	if (debug)
 	{
 		print('debug version');
-		search_redundancy = 1;
-		edit_redundancy = 1;
-		verify_redundancy = 1;
+		search_redundancy = 2;
+		search_minimum_workers = 1;
+		edit_redundancy = 2;
+		edit_minimum_workers = 1;
+		verify_redundancy = 2;
+		verify_minimum_workers = 1;
         buffer_redundancy = 0;
 		paragraphs = [ paragraphs[0] ]; 	//remove the parallelism for now
-		wait_time = 5 * 1000;
-		search_minimum_agreement = .6;
+		wait_time = 20 * 1000;
+		search_minimum_agreement = .0001;
 	}
 }
 
