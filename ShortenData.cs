@@ -17,6 +17,7 @@ namespace Soylent
         public List<Patch> patches;
         public int paragraphsCompleted = 0;
         private ShortnView shortnview;
+        private Dictionary<ResultType, List<List<bool>>> gottenOneYet;
 
         public int shortestLength
         {
@@ -58,6 +59,7 @@ namespace Soylent
             typeMap["verify"] = ResultType.Verify;
 
             patches = new List<Patch>();
+            gottenOneYet = new Dictionary<ResultType, List<List<bool>>>();
         }
 
         public override void register(HITView hview)
@@ -73,8 +75,15 @@ namespace Soylent
             ResultType type = typeMap[stringtype];
             StageData stage = stages[type];
             //stage.updateStage(status.numCompleted, status.paragraph);
+              
             stage.updateStage(status);
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
+        }
+
+        public void stageCompleted(TurKitSocKit.TurKitStageComplete donezo){
+            ResultType type = typeMap[donezo.stage];
+            StageData stage = stages[type];
+            stage.terminatePatch(donezo.paragraph, donezo.patchNumber);
         }
 
         public void processSocKitMessage(TurKitSocKit.TurKitShortn message)
@@ -172,6 +181,18 @@ namespace Soylent
             return cachedSelections[lengthList.ElementAt(lengthList.Count()-1)];
         }
 
+        /** This is the way we have to make changes in the document when the slider moves.
+         * What we should be able to do: Range.Text = PatchSelection.selection
+         * What we have to do instead:
+         * Collapse the patch's range to the beginning of the range
+         * Add the new text after this 0-length range.  The range now extends to contain this new text.
+         * Collapse the range to it's end.  This puts a 0-length range between the new text and the old text to be deleted.
+         * Delete the next n characters, where n is the length of the old text.  i.e. delete the old text. 
+         * Move the starting point of the range to the beginning of the new text. Now the range reflects the location of the new text.
+         * 
+         * Why do we have to do this? Ranges behave weirdly when you add/remove text at the point where ranges touch.
+         * By doing this convoluted process, we ensure that we never add/remove text in a way that causes ranges to overlap.
+         */
         public void makeChangesInDocument(int desiredLength)
         {
             List<PatchSelection> pSelections = getPatchSelections(desiredLength);
@@ -214,7 +235,7 @@ namespace Soylent
             //selection2.patch.original.InsertBefore("2222");
             //selection1.patch.original.InsertAfter("33333333");
             int end1 = selection1.patch.original.End;
-             * */
+            */
         }
 
         public List<int> possibleLengths()

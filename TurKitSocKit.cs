@@ -126,6 +126,14 @@ namespace Soylent
                             shortenData.updateStatus(receivedObject);
                         }
                     }
+                    else if (messageType == "stageComplete")
+                    {
+                        Debug.WriteLine("Stage complete message");
+                        TurKitStageComplete receivedObject = serializer.Deserialize<TurKitStageComplete>(incomingString);
+
+                        ShortenData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortenData;
+                        shortenData.stageCompleted(receivedObject);
+                    }
                     else if (messageType == "shortn")
                     {
                         Debug.WriteLine("GOTT SHORTN MESSAGE********************");
@@ -168,6 +176,17 @@ catch (SocketException exc)
             public int paragraph;
             public double payment;
             public string hitURL;
+            public int patchNumber;
+            public int totalPatches;
+        }
+
+        public class TurKitStageComplete
+        {
+            public int job;
+            public string stage;
+            public int totalRequested;
+            public double payment;
+            public int paragraph;
             public int patchNumber;
             public int totalPatches;
         }

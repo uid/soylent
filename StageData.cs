@@ -28,6 +28,7 @@ namespace Soylent
         public double moneySpent;
         private List<List<int>> totalRequested;    // list of number of workers requested per patch per paragraph
         private List<int> numPatches;
+        private List<List<bool>> done;
 
         public StageData(HITData.ResultType type, int numParagraphs)
         {
@@ -37,11 +38,14 @@ namespace Soylent
             this.numPatches = new List<int>();
             this.totalRequested = new List<List<int>>();
             this.numCompletedperParagraph = new List<List<int>>();   // per patch
+            done = new List<List<bool>>();
             for (int i = 0; i < numParagraphs; i++)
             {
                 numPatches.Add(1);
                 numCompletedperParagraph.Add(new List<int> { 0 } );
                 totalRequested.Add(new List<int> { 0 });
+                done.Add(new List<bool>());
+                done[i].Add(false);
             }
         }
         public void registerListener(StageView sview)
@@ -59,16 +63,33 @@ namespace Soylent
                 // need to initialize the list for the number of patches we have
                 for (int i = 0; i < status.totalPatches; i++)
                 {
+
                     numCompletedperParagraph[status.paragraph].Add(0);
                     totalRequested[status.paragraph].Add(0);
+                    done[status.paragraph].Add(false);
                 }
             }
 
+            if (done[status.paragraph][status.patchNumber]) { return; }
             numCompletedperParagraph[status.paragraph][status.patchNumber] = status.numCompleted;
             moneySpent = status.payment * numCompleted;
 
             totalRequested[status.paragraph][status.patchNumber] = status.totalRequested;
 
+            if (listener != null)
+            {
+                listener.notify();
+            }
+        }
+
+        /* When ShortenData receives a status from a later stage for this patch in this paragraph,
+         * we need to signal the fact that this patch is done to the user. 
+         */
+        public void terminatePatch(int paragraph, int patch)
+        {
+            if (done[paragraph][patch]) { return; }
+            totalRequested[paragraph][patch] = numCompletedperParagraph[paragraph][patch];
+            done[paragraph][patch] = true;
             if (listener != null)
             {
                 listener.notify();
