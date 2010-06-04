@@ -47,7 +47,6 @@ namespace Soylent
             // WPF UserControl.
             ElementHost host = new ElementHost();
             host.Dock = System.Windows.Forms.DockStyle.Fill;
-            host.MaximumSize = new System.Drawing.Size(SystemInformation.VirtualScreen.Width, SystemInformation.VirtualScreen.Height);
 
             // Create the WPF UserControl.
             Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
@@ -56,7 +55,6 @@ namespace Soylent
             // Assign the WPF UserControl to the ElementHost control's
             // Child property.
             host.Child = sd;
-
             
             newForm.Visible = false;
             // Add the ElementHost control to the form's
@@ -67,9 +65,9 @@ namespace Soylent
             //sd.before.Measure(new System.Windows.Size(newForm.Width, int.MaxValue));
             double beforeHeight = sd.before.DesiredSize.Height;
             double wholeHeight = sd.DesiredSize.Height;
-            newForm.Height = (int) (sd.DesiredSize.Height + 0);
+            newForm.Height = (int)(sd.DesiredSize.Height + newForm.Padding.Vertical + System.Windows.Forms.SystemInformation.CaptionHeight);
+            host.MaximumSize = new System.Drawing.Size(SystemInformation.VirtualScreen.Width, SystemInformation.VirtualScreen.Height);
             //newForm.Height = (int)(beforeHeight + 60);
-            //sd.lengthSlider.Height = (int)(beforeHeight - 20);
 
             //newForm.Show();
             newForm.Visible = true;
