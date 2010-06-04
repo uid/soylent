@@ -35,7 +35,7 @@ namespace Soylent
 
             foreach (PatchSelection selection in selections)
             {
-                Run r = new Run(selection.patch.original.Text);
+                Run r = new Run(selection.patch.original);
 
                 if (!selection.isOriginal)
                 {
@@ -73,6 +73,15 @@ namespace Soylent
             double percent = e.NewValue / max;
 
             updateParagraphs(percent);
+            //data.makeChangesInDocument((int)Math.Round(data.longestLength * percent));
+            //Globals.Soylent.soylent.Invoke(new makeChangesInDocumentDelegate(this.makeChangesInDocument), new object[] { (int)Math.Round(data.longestLength * percent) });
+            makeChangesInDocument((int)Math.Round(data.longestLength * percent));
+        }
+
+        public delegate void makeChangesInDocumentDelegate(int var);
+        public void makeChangesInDocument(int var)
+        {
+            data.makeChangesInDocument(var);
         }
 
         private void updateParagraphs(double percent)
