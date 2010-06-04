@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 using Microsoft.Office.Tools.Ribbon;
 
 using Word = Microsoft.Office.Interop.Word;
@@ -39,9 +40,9 @@ namespace Soylent
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)
         {
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
-            newForm.Width = 1195;
+            newForm.Width = 1200;
             newForm.Height = int.MaxValue;
-            newForm.BackColor = System.Drawing.Color.White;
+            newForm.BackColor = Color.White;
 
             // Create the ElementHost control for hosting the
             // WPF UserControl.
@@ -62,14 +63,13 @@ namespace Soylent
             newForm.Controls.Add(host);
             newForm.Show();
 
-            //sd.before.Measure(new System.Windows.Size(newForm.Width, int.MaxValue));
-            double beforeHeight = sd.before.DesiredSize.Height;
-            double wholeHeight = sd.DesiredSize.Height;
+            // set the form's height based on what the textbox wants to be
             newForm.Height = (int)(sd.DesiredSize.Height + newForm.Padding.Vertical + System.Windows.Forms.SystemInformation.CaptionHeight);
-            host.MaximumSize = new System.Drawing.Size(SystemInformation.VirtualScreen.Width, SystemInformation.VirtualScreen.Height);
-            //newForm.Height = (int)(beforeHeight + 60);
+            sd.grid.Height = sd.grid.DesiredSize.Height - System.Windows.SystemParameters.ScrollWidth;
+            newForm.Width = 1200;
+            host.MaximumSize = new Size(1200, SystemInformation.VirtualScreen.Height);
+            newForm.FormBorderStyle = FormBorderStyle.Fixed3D;
 
-            //newForm.Show();
             newForm.Visible = true;
         }
 
