@@ -4,6 +4,6 @@ syntax: glob
 bin
 obj
 amazon.xml
-turkit\active-hits\s*
+turkit\active-hits\*
 turkit\turkit.properties
 Soylent.suo

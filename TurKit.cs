@@ -58,6 +58,8 @@ namespace Soylent
                 }
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string paragraphs = js.Serialize(pgraphs);
+                //string paragraphs = JsonConvert.SerializeObject(pgraphs);
+
                 paragraphs = "var paragraphs = " + paragraphs + ";";
 
                 int request = hdata.job;
@@ -88,7 +90,7 @@ namespace Soylent
                  */
 
                 string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".js";
-                File.WriteAllLines(requestFile, newScript);
+                File.WriteAllLines(requestFile, newScript, Encoding.UTF8);   // TODO: Encoding.UTF8 once TurKit can handle UTF8 files  //, Encoding.UTF8);
 
                 InitializeAmazonKeys();
 
