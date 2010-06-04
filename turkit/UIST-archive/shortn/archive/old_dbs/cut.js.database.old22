@@ -1,0 +1,382 @@
+// begin:90be
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269318207402E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/e3nvkby6odmhbqswboqxcs2svbrw0mf2.html",
+				"returnTime" : 1.269318207653E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/e3nvkby6odmhbqswboqxcs2svbrw0mf2.html\r\n"
+			},
+			{
+				"creationTime" : 1.269318207654E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+				"returnTime" : 1.269318208018E12,
+				"printOutput" : "created HIT: 1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1\r\n        url: https://www.mturk.com/mturk/preview?groupId=1U68XWN75URQZIFVW5XT9EVSTVMSHF\r\n"
+			},
+			{
+				"creationTime" : 1.269318208282E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+					"hitTypeId" : "1U68XWN75URQZIFVW5XT9EVSTVMSHF",
+					"title" : "Find rambling text",
+					"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+					"keywords" : "undefined",
+					"reward" : 0.06,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/e3nvkby6odmhbqswboqxcs2svbrw0mf2.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 10,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269318246E12,
+					"expiration" : 1.269923046E12,
+					"assignments" : [
+						{
+							"assignmentId" : "16TINWTKDHMA2UJC9S6MKFOY4BTL8X",
+							"workerId" : "A2RL28EX7BIT15",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269318838E12,
+							"acceptTime" : 1.269318721E12,
+							"submitTime" : 1.269318778E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records that need to be edited differently,[[ but it isn\'t perfect]].  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269318968E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "13Q24OIE92F8VZQ8I2090BZWJKLW0E",
+							"workerId" : "AC4FRIRZ7913H",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269318855E12,
+							"acceptTime" : 1.269318786E12,
+							"submitTime" : 1.269318795E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records that need to be edited differently, but it isn\'t perfect.  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure [[like URLs, filenames, email addresses, dates, times, etc]]."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269318968E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1J0JH25PQU3REISAL52JJJRE175THN",
+							"workerId" : "A17ASXYNGE73F8",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269318865E12,
+							"acceptTime" : 1.26931876E12,
+							"submitTime" : 1.269318805E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records that need to be edited[[ differently]], but it isn\'t perfect.  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269318968E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1Z5OBNPTNG1NJ1MEBEDB8Q395TIF4M",
+							"workerId" : "A3865AOMHNQVJT",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269321181E12,
+							"acceptTime" : 1.269321083E12,
+							"submitTime" : 1.269321121E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records [that need to be edited differently], but it isn\'t perfect.  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269321373E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1XIY21ONZXLQULCIUHBUNAQ9PEC6VM",
+							"workerId" : "A1JTOXUBRNJDVQ",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269321234E12,
+							"acceptTime" : 1.269320934E12,
+							"submitTime" : 1.269321174E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records that need to be edited differently, but [[it isn\'t perfect]].  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, the user only needs to edit each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  [One solution] to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, file names, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269321373E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "11FDWS0ZGJPJMAMUJBS33DZ8T11YJW",
+							"workerId" : "A20F5KOFDCQMSN",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269322142E12,
+							"acceptTime" : 1.269322033E12,
+							"submitTime" : 1.269322082E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records that need to be edited differently, but it isn\'t perfect.  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  [One solution to this problem would be to let the user rearrange the clustering manually].  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269322269E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "147BNP4ZVL362GETZNEG6FS3TR17LA",
+							"workerId" : "A3AU5617E64GTD",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269323314E12,
+							"acceptTime" : 1.269323093E12,
+							"submitTime" : 1.269323254E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records that need to be edited differently, [[but it isn\'t perfect]].  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  [[For example]], if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269323466E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "120SVH8KZ3UMKSCDDKUMMAPQA582SO",
+							"workerId" : "A3UNBGQD32C4N3",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269328541E12,
+							"acceptTime" : 1.269328423E12,
+							"submitTime" : 1.269328481E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records [[that need to be edited differently, but it isn\'t perfect]].  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269328571E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1CFJQCDBHQR0POFCN23VJBU19COZR5",
+							"workerId" : "A2T6PEV3L70Q50",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269328899E12,
+							"acceptTime" : 1.269328674E12,
+							"submitTime" : 1.269328839E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records that need to be edited differently. Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, file names, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269329168E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "19CPFOGIV4Z4L9EMBZ0N4W6HKT99JD",
+							"workerId" : "A1F6ZP6L8NLWUT",
+							"hitId" : "1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269329916E12,
+							"acceptTime" : 1.269329585E12,
+							"submitTime" : 1.269329856E12,
+							"answer" : {
+								"newText" : "Automatic clustering generally helps separate different kinds of records that need to be edited differently, but it isn\'t perfect.  Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  Conversely, sometimes [[the clustering isn\'t fine enough,]] leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269330067E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269351147868E12,
+				"printOutput" : "hit completed: 1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1\r\n"
+			},
+			{
+				"creationTime" : 1.269351148082E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269351148093E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/bl398vlfa6x6p5lhm8ptn1dqhd4kjyel.html",
+						"returnTime" : 1.26935114835E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/bl398vlfa6x6p5lhm8ptn1dqhd4kjyel.html\r\n"
+					},
+					{
+						"creationTime" : 1.269351148352E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1XO7DB97ARXBZJXL5051R7PKN6RDK7",
+						"returnTime" : 1.269351148839E12,
+						"printOutput" : "created HIT: 1XO7DB97ARXBZJXL5051R7PKN6RDK7\r\n        url: https://www.mturk.com/mturk/preview?groupId=1AEB3VCJQAR9NISFM85VJ5RPR2HMYW\r\n"
+					},
+					{
+						"creationTime" : 1.269351149054E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1XO7DB97ARXBZJXL5051R7PKN6RDK7",
+							"hitTypeId" : "1AEB3VCJQAR9NISFM85VJ5RPR2HMYW",
+							"title" : "Shorten Rambling Text",
+							"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+							"keywords" : "undefined",
+							"reward" : 0.1,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/bl398vlfa6x6p5lhm8ptn1dqhd4kjyel.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269351187E12,
+							"expiration" : 1.269955987E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1DVFDOA9RFERKN006P3RKLC61J9U3T",
+									"workerId" : "A3QTDW5WP4GFKV",
+									"hitId" : "1XO7DB97ARXBZJXL5051R7PKN6RDK7",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269351387E12,
+									"acceptTime" : 1.269351286E12,
+									"submitTime" : 1.269351327E12,
+									"answer" : {
+										"newText" : "Automatic clustering generally helps separate different kinds of records but it isn\'t perfect.",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269351667E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1BHC62WD6AQWN6R0HYDAFPMOUMK4S8",
+									"workerId" : "A4ZL73EIYDXTX",
+									"hitId" : "1XO7DB97ARXBZJXL5051R7PKN6RDK7",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269351391E12,
+									"acceptTime" : 1.269351274E12,
+									"submitTime" : 1.269351331E12,
+									"answer" : {
+										"newText" : "Automatic clustering generally helps separate different kinds of records.",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269351667E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1LFVPD5Z3BNLEQE21OHETZFYWOH52C",
+									"workerId" : "A6G8BGVGSE7QH",
+									"hitId" : "1XO7DB97ARXBZJXL5051R7PKN6RDK7",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269351434E12,
+									"acceptTime" : 1.269351328E12,
+									"submitTime" : 1.269351374E12,
+									"answer" : {
+										"newText" : "that need to be edited , but it isn\'t perfect",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269351667E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1UO4ZWM3W89IKMZ1R4EVWH1KNKOKBD",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "1XO7DB97ARXBZJXL5051R7PKN6RDK7",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269351448E12,
+									"acceptTime" : 1.269351298E12,
+									"submitTime" : 1.269351388E12,
+									"answer" : {
+										"newText" : "Automatic clustering generally helps separate different kinds of records . Sometimes it creates more clusters than needed, as structure differences aren\'t important to the user\'s particular editing task. For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant. Conversely, sometimes the clustering isn\'t fine enough, leaving heterogeneous clusters that must be edited one line at a time. One solution to this problem would be to let the user rearrange the clustering manually. Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc.",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269351668E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1ORZ2WUO1ERL7WIZ6PKW1XI3YQHQ95",
+									"workerId" : "A1WIE19U6IIAGZ",
+									"hitId" : "1XO7DB97ARXBZJXL5051R7PKN6RDK7",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269352076E12,
+									"acceptTime" : 1.269351987E12,
+									"submitTime" : 1.269352016E12,
+									"answer" : {
+										"newText" : "Repeated clustering usually helps to split different types of records that want to be edited in a different way, but it  is not ideal. occasionally it creates more clusters than wanted, as structure differences are not significant to the user\'s exacting editing task. For instance, if the user only wants to edit near the conclusion of each line, then variations at the start of the line are largely extraneous. Conversely, occasionally the clustering is not well enough, leaving varied clusters that must be edited single line at a instance. One resolution to this crisis would be to let the user reorganize the clustering manually. Clustering and assortment simplification would also be improved by recognizing common text arrangement like URLs, filenames, email addresses, dates, times, etc.",
+										"cuttable" : "No"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269352266E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269352352189E12,
+						"printOutput" : "hit completed: 1XO7DB97ARXBZJXL5051R7PKN6RDK7\r\n"
+					},
+					{
+						"creationTime" : 1.269352352269E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/0ezumsgd9fq7mzfktvu1869d4j6n8cc2.html",
+						"returnTime" : 1.269352352415E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/0ezumsgd9fq7mzfktvu1869d4j6n8cc2.html\r\n"
+					},
+					{
+						"creationTime" : 1.269352352416E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "12ESB1UCXLTTX1I9MYJTQB3L3CHG4U",
+						"returnTime" : 1.269352352858E12,
+						"printOutput" : "created HIT: 12ESB1UCXLTTX1I9MYJTQB3L3CHG4U\r\n        url: https://www.mturk.com/mturk/preview?groupId=1NBAAC4IXLCLZ7XRN114NIS8S2PPP1\r\n"
+					},
+					{
+						"creationTime" : 1.269352353046E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+					}
+				],
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269355065153E12,
+				"printOutput" : "already deleted HIT: 1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1\r\n"
+			},
+			{
+				"creationTime" : 1.269351149369E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269351149876E12,
+				"printOutput" : "disabled HIT: 1ZRNZ6ILTQOFDBZXAAZ6EGUM5WJZP1\r\n"
+			},
+			{
+				"creationTime" : 1.269351149878E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269351150147E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/e3nvkby6odmhbqswboqxcs2svbrw0mf2.html\r\n"
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 1.3,
+	"hitsCreated" : 3
+}
+// end:90be

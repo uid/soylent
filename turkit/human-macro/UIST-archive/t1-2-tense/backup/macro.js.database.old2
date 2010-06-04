@@ -1,0 +1,139 @@
+// begin:e8c6
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269900907958E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269900907965E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1yluku61fnfeb5d507ny6yyuk7yav8s1.html",
+						"returnTime" : 1.269900908058E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1yluku61fnfeb5d507ny6yyuk7yav8s1.html\r\n"
+					},
+					{
+						"creationTime" : 1.269900908062E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1FB3DRVL4VT4CRP51PIS29X3K4I3WB",
+						"returnTime" : 1.269900908632E12,
+						"printOutput" : "created HIT: 1FB3DRVL4VT4CRP51PIS29X3K4I3WB\r\n        url: https://www.mturk.com/mturk/preview?groupId=1YBT3R70PM2959WKTJS77Z99QH3NF2\r\n"
+					},
+					{
+						"creationTime" : 1.26990090884E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1FB3DRVL4VT4CRP51PIS29X3K4I3WB",
+							"hitTypeId" : "1YBT3R70PM2959WKTJS77Z99QH3NF2",
+							"title" : "Change tense of paragraph",
+							"description" : "Change the verb tense of this paragraph from past to present.",
+							"keywords" : "undefined",
+							"reward" : 0.1,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1yluku61fnfeb5d507ny6yyuk7yav8s1.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 4,
+							"assignmentDurationInSeconds" : 600,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269900958E12,
+							"expiration" : 1.270505758E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1DVFDOA9RFERKN006P3RKLC62W2U3D",
+									"workerId" : "AYY0XHTC7WY8I",
+									"hitId" : "1FB3DRVL4VT4CRP51PIS29X3K4I3WB",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269904737E12,
+									"acceptTime" : 1.269901006E12,
+									"submitTime" : 1.269901137E12,
+									"answer" : {
+										"userText" : "I give one final glance around before descending from the barrow. As I do so, my eye catches something, not a shape, but a movement beyond a cluster of trees. I crouch low and stare at it, trying to resolve what I am seeing. In a few moments, the animal emerges. A horse. Black and tall. Myblack. She stares toward me. Slowly I stand again. She is too far off to go chasing after her. She must have fled when the Piebalds captured Nighteyes and the Fool. I wonder what is becoming of Malta. I watch her for a moment longer, but she only stands and stares back at me. I turn my back on her and descend to the Prince."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "13NOKF6JYWJP6XNP2WPQX1CS0VX7AK",
+									"workerId" : "A17ASXYNGE73F8",
+									"hitId" : "1FB3DRVL4VT4CRP51PIS29X3K4I3WB",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269904749E12,
+									"acceptTime" : 1.269901039E12,
+									"submitTime" : 1.269901149E12,
+									"answer" : {
+										"userText" : "I give one final glance around before descending from the barrow. As I do so, my eye catches something, not a shape, but a movement beyond a cluster of trees. I crouch low and stare at it, trying to resolve what I have seen. In a few moments, the animal emerges. A horse. Black and tall. Myblack. She stars toward me. Slowly I stand again. She is too far off to go chasing after her. She must have fled when the Piebalds captured Nighteyes and the Fool. I wonder what has become of Malta. I watch her for a moment longer, but she only stands and stares back at me. I turn my back on her and descended to the Prince."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1TTLYFKFMTPDZPPGNY41BYFS2OCU9U",
+									"workerId" : "ARNJ43DVZBT6C",
+									"hitId" : "1FB3DRVL4VT4CRP51PIS29X3K4I3WB",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269904949E12,
+									"acceptTime" : 1.269901152E12,
+									"submitTime" : 1.269901349E12,
+									"answer" : {
+										"userText" : "I give one final glance around before descending from the barrow. As I did so, my eye catch something, not a shape, but a movement beyond a cluster of trees. I crouch low and stare at it, trying to resolve what I see. In a few moments the animal emerge. A horse. Black and tall. Myblack. She stare toward me. Slowly I stand again. She was too far off to go chasing after her. She must have flee when the Piebalds capture Nighteyes and the Fool. I wonder what had become of Malta. I watch her for a moment longer, but she only stand and stare back at me. I turn my back on her and descend to the Prince."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "10Q2RMVOLUHMDAQS31LIFQ9JSE07WV",
+									"workerId" : "ATCC468GXNYRT",
+									"hitId" : "1FB3DRVL4VT4CRP51PIS29X3K4I3WB",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269905179E12,
+									"acceptTime" : 1.269901391E12,
+									"submitTime" : 1.269901579E12,
+									"answer" : {
+										"userText" : "I give one final glance around before descending from the barrow. As I do so, my eye catches something not a shape, but a movement beyond a cluster of trees. I crouch low and stare at it, trying to resolve what I see. In a few moments, the animal emerges. A horse. Black and tall. My black. She stares toward me. Slowly I stand again. She is too far off to go chasing after her. She must have fled when the Pieblads cptured Nighteyes and the Fool. I wonder what became of Malta. I watch her for a moment longer, but she shands and stares back at me. I turn my back on her and descend to the Prince."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.26990157513E12,
+						"printOutput" : "hit completed: 1FB3DRVL4VT4CRP51PIS29X3K4I3WB\r\n"
+					},
+					{
+						"creationTime" : 1.269901575376E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269901576102E12,
+						"printOutput" : "disabled HIT: 1FB3DRVL4VT4CRP51PIS29X3K4I3WB\r\n"
+					},
+					{
+						"creationTime" : 1.269901576104E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269901576819E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1yluku61fnfeb5d507ny6yyuk7yav8s1.html\r\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.4,
+	"hitsCreated" : 1
+}
+// end:e8c6

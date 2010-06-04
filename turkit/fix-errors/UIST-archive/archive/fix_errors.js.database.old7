@@ -1,0 +1,90 @@
+// begin:6c09
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.26904184638E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/fwksv3msi9opfilul2py9vtkxf49nb78.html",
+				"returnTime" : 1.26904184652E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/fwksv3msi9opfilul2py9vtkxf49nb78.html\r\n"
+			},
+			{
+				"creationTime" : 1.269041846521E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1G1511AU1UWCPUVDTPKGXFTEUYQ0ZT",
+				"returnTime" : 1.269041846711E12,
+				"printOutput" : "created HIT: 1G1511AU1UWCPUVDTPKGXFTEUYQ0ZT\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=19JV6G3P480K2O4XDCBI92NJQ2B7FM\r\n"
+			},
+			{
+				"creationTime" : 1.269041846713E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7vf9erzy1px0hahjzpqqr91jbg7v1eer.html",
+				"returnTime" : 1.269041846808E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7vf9erzy1px0hahjzpqqr91jbg7v1eer.html\r\n"
+			},
+			{
+				"creationTime" : 1.269041846809E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1HUOKCVIGDPGJRIMUDXO2AC04QZVOD",
+				"returnTime" : 1.269041846987E12,
+				"printOutput" : "created HIT: 1HUOKCVIGDPGJRIMUDXO2AC04QZVOD\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=19JV6G3P480K2O4XDCBI92NJQ2B7FM\r\n"
+			},
+			{
+				"creationTime" : 1.269041846989E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/pyej9lxra98s3sq307zqdy900chykja1.html",
+				"returnTime" : 1.269041847124E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/pyej9lxra98s3sq307zqdy900chykja1.html\r\n"
+			},
+			{
+				"creationTime" : 1.269041847126E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1K6U3UGJFFZFUYA5LEBO5L92HJD105",
+				"returnTime" : 1.269041847235E12,
+				"printOutput" : "created HIT: 1K6U3UGJFFZFUYA5LEBO5L92HJD105\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=19JV6G3P480K2O4XDCBI92NJQ2B7FM\r\n"
+			},
+			{
+				"creationTime" : 1.269041847238E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5pktg0cbp4nsawwqbmaqz0nlns3yy2op.html",
+				"returnTime" : 1.269041847302E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5pktg0cbp4nsawwqbmaqz0nlns3yy2op.html\r\n"
+			},
+			{
+				"creationTime" : 1.269041847302E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1902K8QT0J7Y4RUN9DA3RAHQEVVVPU",
+				"returnTime" : 1.269041847474E12,
+				"printOutput" : "created HIT: 1902K8QT0J7Y4RUN9DA3RAHQEVVVPU\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=19JV6G3P480K2O4XDCBI92NJQ2B7FM\r\n"
+			},
+			{
+				"creationTime" : 1.269041847477E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/oztdr19xa7olspn388hwmft7ckvmtz6c.html",
+				"returnTime" : 1.269041847571E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/oztdr19xa7olspn388hwmft7ckvmtz6c.html\r\n"
+			},
+			{
+				"creationTime" : 1.269041847572E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "1QG8TXWM1QAD4ROIVJFM3PGVF8IYBL",
+				"returnTime" : 1.269041847772E12,
+				"printOutput" : "created HIT: 1QG8TXWM1QAD4ROIVJFM3PGVF8IYBL\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=19JV6G3P480K2O4XDCBI92NJQ2B7FM\r\n"
+			},
+			{
+				"creationTime" : 1.269041847911E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.5,
+	"hitsCreated" : 5
+}
+// end:6c09
