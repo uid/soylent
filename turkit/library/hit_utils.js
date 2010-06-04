@@ -271,6 +271,19 @@ function socketStatus(stage, hit, paragraphNum, patchNumber, totalPatches) {
 	sendSocketMessage("status", message);
 }
 
+function socketStageComplete(stage, paragraphNum, hit, patchNumber, totalPatches) {
+	var message = {
+		stage: stage,
+		totalRequested: hit.assignments.length,
+		payment: hit.reward,
+		paragraph: paragraphNum,
+		patchNumber: patchNumber,
+		totalPatches: totalPatches
+	}
+	
+	sendSocketMessage("stageComplete", message);
+}
+
 function sendSocketMessage(messageType, message) {
     message.job = soylentJob;
     message.__type__ = messageType;
