@@ -299,6 +299,43 @@ function sendSocketMessage(messageType, message) {
     }
 }
 
+function setupSocket() {
+    if (typeof(soylentJob) != "undefined") {
+        var host = "localhost";
+        var port = 11000;
+        var timeout = 2000; // seconds
+        socket = new java.net.Socket();
+        var endpoint = new java.net.InetSocketAddress(host, port);
+
+        if (endpoint.isUnresolved()) {
+            print("Failure :" + endpoint.toString());
+        }
+        else {
+            try {
+                    socket.connect(endpoint, timeout);
+                    print("Success: " + endpoint.toString());
+                    socketOut = new java.io.PrintWriter(socket.getOutputStream(), true);
+            } catch (e) {
+                print("Failure: " + e.rhinoException);
+            }
+        }
+    }
+    else {
+        print("WARNING: unknown job. No socket communication");
+        stop();
+    }
+}
+
+function teardownSocket() {
+    if (socket != null) {
+        try {
+            socket.close();
+        } catch (e) {
+            print(e.rhinoException);
+        }
+    }
+}
+
 function extendHit(theHit, buffer_redundancy) {
 	var extendTime;
 	extendTime = once(getExtensionTime);

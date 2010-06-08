@@ -68,7 +68,7 @@ namespace Soylent
                 string requestLine = "var soylentJob = " + request + ";";
                 string debug = "var debug = " + (Soylent.DEBUG ? "true" : "false") + ";";
 
-                string[] script = File.ReadAllLines(directory + @"\shortn.template.js");
+                string[] script = File.ReadAllLines(directory + @"\shortn.data.js");
 
                 string[] newScript = new string[3 + script.Length];
                 newScript[0] = requestLine;
@@ -89,8 +89,8 @@ namespace Soylent
                 }
                  */
 
-                string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".js";
-                File.WriteAllLines(requestFile, newScript, Encoding.UTF8);   // TODO: Encoding.UTF8 once TurKit can handle UTF8 files  //, Encoding.UTF8);
+                string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".data.js";
+                File.WriteAllLines(requestFile, newScript, Encoding.UTF8);
 
                 InitializeAmazonKeys();
 

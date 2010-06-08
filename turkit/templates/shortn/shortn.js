@@ -37,22 +37,31 @@ var overallSlowestParagraph = Number.MIN_VALUE;
 var fileOutputOn = false;
 
 var client = null;
-if (typeof(soylentJob) == "undefined") {
-	if (typeof(paragraphs) == "undefined") {
-		paragraphs = [ ["This is the first sentence of the first paragraph."] ]; 
-	}
 
-	main();
-}
-if (typeof(debug) == "undefined") {
-    var debug = false;
+var socket = null; // TODO: create Socket.js class to manage all this state
+var socketOut = null; // TODO: create Socket.js class to manage all this state
+
+function main() {
+    setupSocket();
+    initializeOutput();	
+    initializeDebug();
+    
+    if (typeof(soylentJob) == "undefined") {
+        if (typeof(paragraphs) == "undefined") {
+            paragraphs = [ ["This is the first sentence of the first paragraph."] ]; 
+        }
+    }
+    if (typeof(debug) == "undefined") {
+        var debug = false;
+    }
+    
+    // do the main program, and if it has to wait, close the socket
+    attempt(shortn);  
+    teardownSocket();
 }
 
 // main program
-function main() {
-    initializeOutput();	
-    initializeDebug();
-	
+function shortn() {	
 	var result = {
 		paragraphs: []
 	}
@@ -353,6 +362,7 @@ function aggregatePatchSuggestions(patch_suggestions, num_votes, sentences) {
 function requestEdits(cut) {	
 	var full_text = cut.highlightedParagraph();
 	var editable = cut.plaintextSentence();
+    print('testing');
 
 	var webpage = s3.putString(slurp("../templates/shortn/shortn-fix.html").replace(/___TEXT___/g, full_text)
 					.replace(/___EDITABLE___/g, editable));
