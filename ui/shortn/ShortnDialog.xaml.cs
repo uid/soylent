@@ -17,11 +17,11 @@ namespace Soylent
     /// <summary>
     /// Interaction logic for ShortenDialog.xaml
     /// </summary>
-    public partial class ShortenDialog : UserControl
+    public partial class ShortnDialog : UserControl
     {
-        private ShortenData data;
+        private ShortnData data;
 
-        public ShortenDialog(ShortenData data)
+        public ShortnDialog(ShortnData data)
         {
             InitializeComponent();
             this.data = data;

@@ -13,11 +13,11 @@ using VSTO = Microsoft.Office.Tools.Word;
 
 namespace Soylent
 {
-    class ProofreadingData : HITData
+    class CrowdproofData : HITData
     {
-        public List<ProofreadingPatch> patches { get; set;}
+        public List<CrowdproofPatch> patches { get; set;}
 
-        public ProofreadingData(Word.Range range, int job)
+        public CrowdproofData(Word.Range range, int job)
             : base(range, job)
         {
         }
@@ -25,7 +25,7 @@ namespace Soylent
         public void AnnotateResult()
         {
             Word.Range text = range;
-            foreach (ProofreadingPatch pp in patches)
+            foreach (CrowdproofPatch pp in patches)
             {
                 string tag = HumanMacroResult.NAMESPACE + "#soylent" + DateTime.Now.Ticks;
                 SmartTag resultTag = new SmartTag(tag, pp.reasons[0]);
@@ -52,14 +52,14 @@ namespace Soylent
             }
         }
 
-        public static ProofreadingData getCannedData()
+        public static CrowdproofData getCannedData()
         {
             // insert text
             Globals.Soylent.Application.Selection.Range.InsertAfter("However, while GUI made using computers be more intuitive and easier to learn, it didn't let people be able to control computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer.");
             // select it
             Word.Range canned_range = Globals.Soylent.Application.ActiveDocument.Paragraphs[1].Range;
 
-            List<ProofreadingPatch> patches = new List<ProofreadingPatch>();
+            List<CrowdproofPatch> patches = new List<CrowdproofPatch>();
 
             string[] onesToFind = {"GUI made using computers be more intuitive and easier to learn", "let people be able to control", "Masses only can use"};
             foreach (Word.Range r in canned_range.Sentences)
@@ -97,13 +97,13 @@ namespace Soylent
                             explanations.Add("Bad word usage");
                         }
 
-                        ProofreadingPatch patch = new ProofreadingPatch(newRange, replacements, explanations);
+                        CrowdproofPatch patch = new CrowdproofPatch(newRange, replacements, explanations);
                         patches.Add(patch);
                     }
                 }
             }
 
-            ProofreadingData pd = new ProofreadingData(canned_range, Ribbon.generateJobNumber());
+            CrowdproofData pd = new CrowdproofData(canned_range, SoylentRibbon.generateJobNumber());
             pd.patches = patches;
             return pd;
         }
