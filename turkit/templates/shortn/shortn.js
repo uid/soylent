@@ -600,7 +600,10 @@ function generatePatch(cut, cut_hit, edit_hit, vote_hit, grammar_votes, meaning_
             }
             
             // we need to know what offset the cut starts at, by summing together the lengths of the previous sentences
-            var editOffset = cut.sentences.slice(0, cut.sentenceRange().startSentence).join(Patch.sentence_separator).length;
+            var editOffset = cut.sentences.slice(0, cut.sentenceRange().startSentence).join(sentence_separator).length;
+            if (cut.sentenceRange().startSentence > 0) {
+                editOffset += sentence_separator.length;   // add the extra space after the previous sentences and before this one.
+            }
             
 			if (passesGrammar && passesMeaning) {
 				patch.options.push({
