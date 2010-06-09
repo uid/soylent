@@ -14,9 +14,10 @@ namespace Soylent
 {
     public partial class Soylent
     {
-        private Microsoft.Office.Tools.CustomTaskPane HITView;
+        public Microsoft.Office.Tools.CustomTaskPane HITView;
         public SoylentPanel soylent;
         private TurKitSocKit tksc;
+        private SoylentRibbon ribbon;
 
         public static bool DEBUG = false;
 
@@ -25,14 +26,24 @@ namespace Soylent
             soylent = new SoylentPanel();
             HITView = this.CustomTaskPanes.Add(soylent, "Soylent");
             HITView.Visible = true;
+            HITView.VisibleChanged += new EventHandler(hitviewVisibleChanged);
 
             tksc = new TurKitSocKit();
             tksc.Listen();
+
+            // TODO: figure out ribbon and set it to the private variable
         }
 
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
+
+        }
+
+        void hitviewVisibleChanged(object sender, EventArgs e)
+        {
+            // TODO: set ribbon here
+            //Globals.Ribbons.SoylentRibbon.IsTaskPaneVisible = ctp.Visible;
 
         }
 

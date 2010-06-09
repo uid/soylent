@@ -39,9 +39,9 @@ namespace Soylent
             this.hdata = hdata;
         }
         public void startTask(){
-            if (hdata is ShortenData)
+            if (hdata is ShortnData)
             {
-                ShortenData data = hdata as ShortenData;
+                ShortnData data = hdata as ShortnData;
      
                 string[][] pgraphs = new string[data.range.Paragraphs.Count][];
                 // Range.Paragraphs and Range.Sentences are 1 INDEXED
