@@ -1,4 +1,5 @@
-var sentence_separator = "  ";
+// this variable now gets passed from c#
+//var sentence_separator = " ";
 
 function getParagraph(sentences) {
 	return sentences.join(sentence_separator);
