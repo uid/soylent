@@ -40,9 +40,9 @@ namespace Soylent
 
             //HITView hs = new HITView(name, text);
             HITView hs;
-            if (name == Shorten.HIT_TYPE)
+            if (name == Shortn.HIT_TYPE)
             {
-                hs = new ShortnView(name, data as ShortenData);
+                hs = new ShortnView(name, data as ShortnData);
             }
             else
             {

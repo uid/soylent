@@ -18,7 +18,7 @@ namespace Soylent
     public class ShortnView : HITView
     {
         Button ShortnButton;
-        public ShortnView(string workType, ShortenData data) : base(workType, data)
+        public ShortnView(string workType, ShortnData data) : base(workType, data)
         {
             //Globals.Soylent.soylent.Controls.Add(new System.Windows.Forms.Button());
             ShortnButton = new Button();
@@ -36,7 +36,7 @@ namespace Soylent
         }
         public void Shortn_Clicked(object sender, RoutedEventArgs e)
         {
-            openShortnDialog(data as ShortenData);
+            openShortnDialog(data as ShortnData);
             foreach (StageView stageview in stageList.Values)
             {
                 stageview.hitProgress.Foreground = Brushes.LightSkyBlue; //Yay light blue
@@ -47,7 +47,7 @@ namespace Soylent
         /// Open the Shortn dialog window.  Used internally after the Shortn button is pressed, and by Ribbon for the debugging
         /// </summary>
         /// <param name="data"></param>
-        public static void openShortnDialog(ShortenData data)
+        public static void openShortnDialog(ShortnData data)
         {
             System.Windows.Forms.Form newForm = new System.Windows.Forms.Form();
             newForm.Width = 1200;
@@ -60,7 +60,7 @@ namespace Soylent
             host.Dock = System.Windows.Forms.DockStyle.Fill;
 
             // Create the WPF UserControl.
-            ShortenDialog sd = new ShortenDialog(data);
+            ShortnDialog sd = new ShortnDialog(data);
 
             // Assign the WPF UserControl to the ElementHost control's
             // Child property.
