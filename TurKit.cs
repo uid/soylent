@@ -24,6 +24,8 @@ namespace Soylent
         private HITData hdata;
         public Timer turkitLoopTimer;
 
+        public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
+
         public TurKit(HITData hdata)
         {
             rootDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -94,7 +96,7 @@ namespace Soylent
 
                 InitializeAmazonKeys();
 
-                string arguments = " -jar TurKit-0.2.3.jar -f \"" + requestFile + "\" -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
                 if (Soylent.DEBUG)
                 {
                     arguments += " -m sandbox";
