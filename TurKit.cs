@@ -64,6 +64,15 @@ namespace Soylent
 
                 paragraphs = "var paragraphs = " + paragraphs + ";";
 
+                // figure out whether there are one or two spaces between sentences
+                string firstSentence = data.range.Paragraphs[1].Range.Sentences[1].Text;
+                string spacesBetweenSentences = " ";
+                if (firstSentence.EndsWith("  "))
+                {
+                    spacesBetweenSentences = "  ";
+                }
+                string numSpaces = "var sentence_separator = '" + spacesBetweenSentences + "';";
+
                 int request = hdata.job;
                 directory = rootDirectory + @"\turkit\templates\shortn\";
 
@@ -72,11 +81,13 @@ namespace Soylent
 
                 string[] script = File.ReadAllLines(directory + @"\shortn.data.js");
 
-                string[] newScript = new string[3 + script.Length];
+                int new_lines = 4;
+                string[] newScript = new string[new_lines + script.Length];
                 newScript[0] = requestLine;
                 newScript[1] = paragraphs;
                 newScript[2] = debug;
-                Array.Copy(script, 0, newScript, 3, script.Length);
+                newScript[3] = numSpaces;
+                Array.Copy(script, 0, newScript, new_lines, script.Length);
 
                 // Delete old files
                 /*

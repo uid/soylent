@@ -1,3 +1,5 @@
+
+
 // run the program
 eval(read("../templates/shortn/shortn.js"));
 main();
