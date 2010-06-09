@@ -73,8 +73,9 @@ namespace Soylent
             newForm.Show();
 
             // set the form's height based on what the textbox wants to be
-            newForm.Height = (int)(sd.DesiredSize.Height + newForm.Padding.Vertical + System.Windows.Forms.SystemInformation.CaptionHeight);
-            sd.grid.Height = sd.grid.DesiredSize.Height - System.Windows.SystemParameters.ScrollWidth;
+            int dialogHeight = (int)sd.grid.DesiredSize.Height;
+            newForm.Height = (int)(sd.DesiredSize.Height + newForm.Padding.Vertical + System.Windows.Forms.SystemInformation.CaptionHeight + System.Windows.SystemParameters.ScrollWidth);
+            sd.grid.Height = sd.grid.DesiredSize.Height;
             newForm.Width = 1200;
             host.MaximumSize = new System.Drawing.Size(1200, System.Windows.Forms.SystemInformation.VirtualScreen.Height);
             newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
