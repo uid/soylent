@@ -18,7 +18,7 @@ namespace Soylent
         public SoylentPanel soylent;
         private TurKitSocKit tksc;
 
-        public static bool DEBUG = true;
+        public static bool DEBUG = false;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
