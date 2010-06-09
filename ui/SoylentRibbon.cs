@@ -14,32 +14,32 @@ using System.Windows.Forms;
 
 namespace Soylent
 {
-    public partial class Ribbon : OfficeRibbon
+    public partial class SoylentRibbon : OfficeRibbon
     {
         public Dictionary<int, HITData> allHITs = new Dictionary<int,HITData>();
 
-        public Ribbon()
+        public SoylentRibbon()
         {
             InitializeComponent();
         }
 
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
-
+            IsTaskPaneVisible = Globals.Soylent.HITView.Visible;
         }
 
         private void shortenBtn_Click(object sender, RibbonControlEventArgs e)
         {
             Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
             int jobNumber = generateJobNumber();
-            ShortenData newHIT = new ShortenData(toShorten, jobNumber);
+            ShortnData newHIT = new ShortnData(toShorten, jobNumber);
             allHITs[newHIT.job] = newHIT;
-            Shorten s = new Shorten(newHIT, jobNumber);
+            Shortn s = new Shortn(newHIT, jobNumber);
         }
 
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)
         {
-            ShortnView.openShortnDialog(ShortenData.getCannedData());
+            ShortnView.openShortnDialog(ShortnData.getCannedData());
         }
 
         private void humanMacroBtn_Click(object sender, RibbonControlEventArgs e)
@@ -132,7 +132,7 @@ namespace Soylent
             tks.job = 1; tks.paragraph = 1; tks.patches = new List<TurKitSocKit.TurKitShortnPatch>();
             tks.patches.Add(p1); tks.patches.Add(p2);
 
-            ShortenData shortenData = Globals.Soylent.soylent.jobMap[tks.job] as ShortenData;
+            ShortnData shortenData = Globals.Soylent.soylent.jobMap[tks.job] as ShortnData;
             shortenData.processSocKitMessage(tks);
             
 
@@ -149,7 +149,7 @@ namespace Soylent
 
             // Create the WPF UserControl.
             //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            ShortenDialog sd = new ShortenDialog(Globals.Soylent.soylent.jobMap[1] as ShortenData);
+            ShortnDialog sd = new ShortnDialog(Globals.Soylent.soylent.jobMap[1] as ShortnData);
 
             // Assign the WPF UserControl to the ElementHost control's
             // Child property.
@@ -171,8 +171,27 @@ namespace Soylent
 
         private void button3_Click(object sender, RibbonControlEventArgs e)
         {
-            ProofreadingData data = ProofreadingData.getCannedData();
+            CrowdproofData data = CrowdproofData.getCannedData();
             data.AnnotateResult();
+        }
+
+        private void jobStatus_Click(object sender, RibbonControlEventArgs e)
+        {
+             //IsTaskPaneVisible
+        }
+
+        private bool isTaskPaneVisible;
+        public bool IsTaskPaneVisible
+        {
+            get
+            {
+                return isTaskPaneVisible;
+            }
+            set
+            {
+                isTaskPaneVisible = value;
+                jobStatus.Checked = value;
+            }
         }
     }
 }

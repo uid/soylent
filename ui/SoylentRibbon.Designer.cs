@@ -1,6 +1,6 @@
 ﻿namespace Soylent
 {
-    partial class Ribbon
+    partial class SoylentRibbon
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@
         {
             this.Soylent = new Microsoft.Office.Tools.Ribbon.RibbonTab();
             this.group3 = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
+            this.button3 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.group1 = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.shortenBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.directManipulate = new Microsoft.Office.Tools.Ribbon.RibbonButton();
@@ -40,16 +41,19 @@
             this.group4 = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.button1 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button2 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.button3 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            this.viewGroup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
+            this.jobStatus = new Microsoft.Office.Tools.Ribbon.RibbonToggleButton();
             this.Soylent.SuspendLayout();
             this.group3.SuspendLayout();
             this.group1.SuspendLayout();
             this.group2.SuspendLayout();
             this.group4.SuspendLayout();
+            this.viewGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // Soylent
             // 
+            this.Soylent.Groups.Add(this.viewGroup);
             this.Soylent.Groups.Add(this.group3);
             this.Soylent.Groups.Add(this.group1);
             this.Soylent.Groups.Add(this.group2);
@@ -62,6 +66,12 @@
             this.group3.Items.Add(this.button3);
             this.group3.Label = "Proofreading";
             this.group3.Name = "group3";
+            // 
+            // button3
+            // 
+            this.button3.Label = "Proofread";
+            this.button3.Name = "button3";
+            this.button3.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button3_Click);
             // 
             // group1
             // 
@@ -129,11 +139,17 @@
             this.button2.Name = "button2";
             this.button2.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button2_Click);
             // 
-            // button3
+            // viewGroup
             // 
-            this.button3.Label = "Proofread";
-            this.button3.Name = "button3";
-            this.button3.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button3_Click);
+            this.viewGroup.Items.Add(this.jobStatus);
+            this.viewGroup.Label = "View";
+            this.viewGroup.Name = "viewGroup";
+            // 
+            // jobStatus
+            // 
+            this.jobStatus.Label = "Job Status";
+            this.jobStatus.Name = "jobStatus";
+            this.jobStatus.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.jobStatus_Click);
             // 
             // Ribbon
             // 
@@ -151,6 +167,8 @@
             this.group2.PerformLayout();
             this.group4.ResumeLayout(false);
             this.group4.PerformLayout();
+            this.viewGroup.ResumeLayout(false);
+            this.viewGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -170,13 +188,15 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button2;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button3;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup viewGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton jobStatus;
     }
 
     partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonReadOnlyCollection
     {
-        internal Ribbon Ribbon
+        internal SoylentRibbon Ribbon
         {
-            get { return this.GetRibbon<Ribbon>(); }
+            get { return this.GetRibbon<SoylentRibbon>(); }
         }
     }
 }

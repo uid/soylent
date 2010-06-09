@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Soylent
 {
-    class ProofreadingPatch : Patch
+    class CrowdproofPatch : Patch
     {
         public List<string> reasons { get; set; }
 
-        public ProofreadingPatch(Word.Range original, List<string> replacements, List<string> reasons)
+        public CrowdproofPatch(Word.Range original, List<string> replacements, List<string> reasons)
             : base(original, replacements)
         {
             this.reasons = reasons;
