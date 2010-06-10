@@ -1,0 +1,1271 @@
+// begin:1f9f
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269817986772E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269817986781E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/r26r7jgrf37kwrlpxaiv659bc3t1731v.html",
+						"returnTime" : 1.269817986889E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/r26r7jgrf37kwrlpxaiv659bc3t1731v.html\r\n"
+					},
+					{
+						"creationTime" : 1.269817986891E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6",
+						"returnTime" : 1.269817987135E12,
+						"printOutput" : "created HIT: 1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269817987346E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/r26r7jgrf37kwrlpxaiv659bc3t1731v.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269818037E12,
+							"expiration" : 1.270422837E12,
+							"assignments" : [
+								{
+									"assignmentId" : "139V8O3DDZBEJPV0V3WKKHS2VTZ5SL",
+									"workerId" : "A15MN5MDG4D7Q9",
+									"hitId" : "1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269822089E12,
+									"acceptTime" : 1.269818366E12,
+									"submitTime" : 1.269818489E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction.  At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction [[they seek to augment]]."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "17CO2VL6W5UN9D64153CK0CPCRWHGU",
+									"workerId" : "A7R1L4ZYYPOZM",
+									"hitId" : "1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269822196E12,
+									"acceptTime" : 1.269818516E12,
+									"submitTime" : 1.269818596E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction.  [[At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit]].  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "173NVZFXAF2WTMS64FYQJOZF5YS41Y",
+									"workerId" : "A2HM35CWB7IIFM",
+									"hitId" : "1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269822329E12,
+									"acceptTime" : 1.269818634E12,
+									"submitTime" : 1.269818729E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction.  At the same time, the GUI approach falls short [[in many respects,]] particularly in embracing the rich interface modalities between people and the physical environment[[s they inhabit]].  Systems [[exploring augmented reality and ubiquitous computing]] have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1TTLYFKFMTPDZPPGNY41BYFS2N49UZ",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269822677E12,
+									"acceptTime" : 1.269819047E12,
+									"submitTime" : 1.269819077E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction.  [[At the same time]], the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1O5D2KODZJAQU463TLWUZKQO5ONI0O",
+									"workerId" : "A39PN4D2JWMEN6",
+									"hitId" : "1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269823531E12,
+									"acceptTime" : 1.269819736E12,
+									"submitTime" : 1.269819931E12,
+									"answer" : {
+										"brackets" : "The graphical user interface (GUI) [[has proven both a]] successful and durable model for human-computer interaction.  [[At the same time, ]]the GUI approach falls short [[in many respects, particularly]] in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have [[often taken the form]] of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1APUL1SR821ULTMY8WG7S62KOJ9T7G",
+									"workerId" : "A521UZVFXBVWZ",
+									"hitId" : "1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269824398E12,
+									"acceptTime" : 1.269820778E12,
+									"submitTime" : 1.269820798E12,
+									"answer" : {
+										"brackets" : "[[The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction.  At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.  Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.  However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269820779324E12,
+						"printOutput" : "creation time: 1269818037000\r\nno longer waiting for hit: 1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6\r\n"
+					},
+					{
+						"creationTime" : 1.269820779333E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269820779487E12,
+						"printOutput" : "rejected assignment 1APUL1SR821ULTMY8WG7S62KOJ9T7G\r\n"
+					},
+					{
+						"creationTime" : 1.269820779724E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269820780383E12,
+						"printOutput" : "disabled HIT: 1DH9RXP0XFDSRE1O6UKGZ13YHZSVG6\r\n"
+					},
+					{
+						"creationTime" : 1.269820780386E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.26982078049E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/r26r7jgrf37kwrlpxaiv659bc3t1731v.html\r\n"
+					},
+					{
+						"creationTime" : 1.269820781965E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269820781969E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ckp8x4rlrf75q0fk3rnxc2xwr85su912.html",
+								"returnTime" : 1.269820782083E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ckp8x4rlrf75q0fk3rnxc2xwr85su912.html\r\n"
+							},
+							{
+								"creationTime" : 1.269820782086E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "13I5BWVX98GN1N2QC817X5WM56TMHF",
+								"returnTime" : 1.269820782373E12,
+								"printOutput" : "created HIT: 13I5BWVX98GN1N2QC817X5WM56TMHF\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269820782561E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "13I5BWVX98GN1N2QC817X5WM56TMHF",
+									"hitTypeId" : "1SGFS5SY06L04Z57QXSFX3NYNJ8N9A",
+									"title" : "Shorten Rambling Text",
+									"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+									"keywords" : "undefined",
+									"reward" : 0.05,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ckp8x4rlrf75q0fk3rnxc2xwr85su912.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.269820832E12,
+									"expiration" : 1.270425632E12,
+									"assignments" : [
+										{
+											"assignmentId" : "1X4WYLGDU0AJRO6240FNXT5HCN8QU2",
+											"workerId" : "AVHF02BYOQDQP",
+											"hitId" : "13I5BWVX98GN1N2QC817X5WM56TMHF",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269824632E12,
+											"acceptTime" : 1.269820927E12,
+											"submitTime" : 1.269821032E12,
+											"answer" : {
+												"newText" : "At the same time, the GUI approach falls short[[ in many respects]], particularly in embracing the rich interface modalities between people and their physical environments[[ they inhabit]].",
+												"cuttable" : "No"
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269822039032E12,
+								"printOutput" : "creation time: 1269820832000\r\nno longer waiting for hit: 13I5BWVX98GN1N2QC817X5WM56TMHF\r\n"
+							},
+							{
+								"creationTime" : 1.269822039239E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.26982203952E12,
+								"printOutput" : "disabled HIT: 13I5BWVX98GN1N2QC817X5WM56TMHF\r\n"
+							},
+							{
+								"creationTime" : 1.269822039522E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269822039666E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ckp8x4rlrf75q0fk3rnxc2xwr85su912.html\r\n"
+							},
+							{
+								"creationTime" : 1.269822039691E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p077bhu2ifs9m8jpwkhbz6oveezl4pfg.html",
+								"returnTime" : 1.269822039793E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p077bhu2ifs9m8jpwkhbz6oveezl4pfg.html\r\n"
+							},
+							{
+								"creationTime" : 1.269822039795E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "10P9K08AGZ5V516GFUV52CETRDDNLO",
+								"returnTime" : 1.269822040108E12,
+								"printOutput" : "created HIT: 10P9K08AGZ5V516GFUV52CETRDDNLO\r\n        url: https://www.mturk.com/mturk/preview?groupId=1BGU8VBA6YI74YI9GPA30E7WSSR6MJ\r\n"
+							},
+							{
+								"creationTime" : 1.269822040394E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+								"returnValue" : {
+									"hitId" : "10P9K08AGZ5V516GFUV52CETRDDNLO",
+									"hitTypeId" : "1BGU8VBA6YI74YI9GPA30E7WSSR6MJ",
+									"title" : "Did I shorten text correctly?",
+									"description" : "I need to shorten some text -- which version is best?",
+									"keywords" : "undefined",
+									"reward" : 0.04,
+									"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p077bhu2ifs9m8jpwkhbz6oveezl4pfg.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+									"maxAssignments" : 7,
+									"assignmentDurationInSeconds" : 300,
+									"autoApprovalDelayInSeconds" : 3600,
+									"requesterAnnotation" : null,
+									"hitStatus" : "Assignable",
+									"hitReviewStatus" : "NotReviewed",
+									"creationTime" : 1.26982209E12,
+									"expiration" : 1.27042689E12,
+									"assignments" : [
+										{
+											"assignmentId" : "13EOF73H7V030L7EQEAFR11A9QVXU6",
+											"workerId" : "ANS8IEGL3QA1P",
+											"hitId" : "10P9K08AGZ5V516GFUV52CETRDDNLO",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269825994E12,
+											"acceptTime" : 1.269822339E12,
+											"submitTime" : 1.269822394E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"grammar" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%5B%5B%20in%20many%20respects%5D%5D%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20their%20physical%20environments%5B%5B%20they%20inhabit%5D%5D.",
+												"meaning" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%5B%5B%20in%20many%20respects%5D%5D%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20their%20physical%20environments%5B%5B%20they%20inhabit%5D%5D."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "11U4SWQ3ET49JTWAXPG9338T34YL4M",
+											"workerId" : "A24CTZJL5S2942",
+											"hitId" : "10P9K08AGZ5V516GFUV52CETRDDNLO",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269826176E12,
+											"acceptTime" : 1.269822429E12,
+											"submitTime" : 1.269822576E12,
+											"answer" : {
+												"meaning" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%5B%5B%20in%20many%20respects%5D%5D%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20their%20physical%20environments%5B%5B%20they%20inhabit%5D%5D.",
+												"randomOrder" : "temp",
+												"grammar" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%5B%5B%20in%20many%20respects%5D%5D%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20their%20physical%20environments%5B%5B%20they%20inhabit%5D%5D."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1NUACJWW7QDOW9Z58BLKVOYGUQX2K4",
+											"workerId" : "A2Q2ZA3RXHCNAJ",
+											"hitId" : "10P9K08AGZ5V516GFUV52CETRDDNLO",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269826265E12,
+											"acceptTime" : 1.269822555E12,
+											"submitTime" : 1.269822665E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"grammar" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%20in%20many%20respects%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20the%20physical%20environments%20they%20inhabit.",
+												"meaning" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%5B%5B%20in%20many%20respects%5D%5D%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20their%20physical%20environments%5B%5B%20they%20inhabit%5D%5D."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1ZVTVYW9961W05GRH5QF3QS1J0U85S",
+											"workerId" : "A22UMPCTYJRBED",
+											"hitId" : "10P9K08AGZ5V516GFUV52CETRDDNLO",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269826467E12,
+											"acceptTime" : 1.269822786E12,
+											"submitTime" : 1.269822867E12,
+											"answer" : {
+												"randomOrder" : "temp",
+												"grammar" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%20in%20many%20respects%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20the%20physical%20environments%20they%20inhabit.",
+												"meaning" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%20in%20many%20respects%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20the%20physical%20environments%20they%20inhabit."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										},
+										{
+											"assignmentId" : "1PD42TDPDWQ269GN3Z7FPHD1D6G5Q0",
+											"workerId" : "A1RZ07P6NSDEBN",
+											"hitId" : "10P9K08AGZ5V516GFUV52CETRDDNLO",
+											"assignmentStatus" : "Submitted",
+											"autoApprovalTime" : 1.269826673E12,
+											"acceptTime" : 1.269823029E12,
+											"submitTime" : 1.269823073E12,
+											"answer" : {
+												"meaning" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%20in%20many%20respects%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20the%20physical%20environments%20they%20inhabit.",
+												"randomOrder" : "temp",
+												"grammar" : "At%20the%20same%20time%2C%20the%20GUI%20approach%20falls%20short%20in%20many%20respects%2C%20particularly%20in%20embracing%20the%20rich%20interface%20modalities%20between%20people%20and%20the%20physical%20environments%20they%20inhabit."
+											},
+											"requesterFeedback" : null,
+											"approvalTime" : null,
+											"deadline" : null,
+											"rejectionTime" : null
+										}
+									],
+									"done" : false
+								},
+								"returnTime" : 1.269823338925E12,
+								"printOutput" : "creation time: 1269822090000\r\nno longer waiting for hit: 10P9K08AGZ5V516GFUV52CETRDDNLO\r\n"
+							},
+							{
+								"creationTime" : 1.269823339279E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269823340058E12,
+								"printOutput" : "disabled HIT: 10P9K08AGZ5V516GFUV52CETRDDNLO\r\n"
+							},
+							{
+								"creationTime" : 1.26982334006E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269823340228E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p077bhu2ifs9m8jpwkhbz6oveezl4pfg.html\r\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.26981798764E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269817987643E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gypk8j4cw8a755ai2whjunohrtbiz8du.html",
+						"returnTime" : 1.269817987706E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gypk8j4cw8a755ai2whjunohrtbiz8du.html\r\n"
+					},
+					{
+						"creationTime" : 1.269817987709E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "19ACXUZUDT93IRF42C53MR0KYIUQ17",
+						"returnTime" : 1.269817987944E12,
+						"printOutput" : "created HIT: 19ACXUZUDT93IRF42C53MR0KYIUQ17\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269817988118E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "19ACXUZUDT93IRF42C53MR0KYIUQ17",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gypk8j4cw8a755ai2whjunohrtbiz8du.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269818037E12,
+							"expiration" : 1.270422837E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1K36BPYJUFGPH0AUMW4GJSC0Y4VYLG",
+									"workerId" : "A15MN5MDG4D7Q9",
+									"hitId" : "19ACXUZUDT93IRF42C53MR0KYIUQ17",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269821965E12,
+									"acceptTime" : 1.269818314E12,
+									"submitTime" : 1.269818365E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) as physical interfaces to digital information.  The metaDESK system is a graphically intensive system driven by interaction with graspable [[physical]] objects.  We introduce a prototype application driving an interaction with geographical space to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26982207E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1X4WYLGDU0AJRO6240FNXT5HCM7QUZ",
+									"workerId" : "A7R1L4ZYYPOZM",
+									"hitId" : "19ACXUZUDT93IRF42C53MR0KYIUQ17",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822282E12,
+									"acceptTime" : 1.269818647E12,
+									"submitTime" : 1.269818682E12,
+									"answer" : {
+										"brackets" : "[[In this paper, we present research]] developing \"Tangible User Interfaces\" (TUIs) as physical interfaces to digital information.  The metaDESK system is a graphically intensive system driven by interaction with graspable physical objects.  We introduce a prototype application driving an interaction with geographical space to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269822371E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "106OZPAU7SUJSTXG084S9IC1L5CMJC",
+									"workerId" : "A2HM35CWB7IIFM",
+									"hitId" : "19ACXUZUDT93IRF42C53MR0KYIUQ17",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822355E12,
+									"acceptTime" : 1.269818729E12,
+									"submitTime" : 1.269818755E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) as physical interfaces to digital information.  The metaDESK system is [[a graphically intensive system]] driven by interaction with graspable physical objects.  We introduce a prototype application driving an interaction with geographical space to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269822371E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1R6CWKI1IP63BM9DSMBXUTINPPWONX",
+									"workerId" : "A1HI38WI4I4LPV",
+									"hitId" : "19ACXUZUDT93IRF42C53MR0KYIUQ17",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822718E12,
+									"acceptTime" : 1.269819085E12,
+									"submitTime" : 1.269819118E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) as physical interfaces to digital information.  The metaDESK system is a graphically intensive system driven by interaction with graspable physical objects.  We introduce a prototype application [[driving an interaction with geographical space]] to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269822969E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1IDZ61J4VW907KHK6C571SSTU5BP9G",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "19ACXUZUDT93IRF42C53MR0KYIUQ17",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269823037E12,
+									"acceptTime" : 1.269819418E12,
+									"submitTime" : 1.269819437E12,
+									"answer" : {
+										"brackets" : "[[In this paper,]] we present research developing \"Tangible User Interfaces\" (TUIs) as physical interfaces to digital information.  The metaDESK system is a graphically intensive system driven by interaction with graspable physical objects.  We introduce a prototype application driving an interaction with geographical space to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1N5P8ZV0ZLV474VC67U940B611PJ8P",
+									"workerId" : "A3D2QH24NWAIFC",
+									"hitId" : "19ACXUZUDT93IRF42C53MR0KYIUQ17",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269826786E12,
+									"acceptTime" : 1.26982302E12,
+									"submitTime" : 1.269823186E12,
+									"answer" : {
+										"brackets" : "In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) as physical interfaces to digital information.  The metaDESK system is a graphically intensive system [[driven by interaction with graspable physical objects]].  We introduce a prototype application driving an interaction with geographical space to illustrate our approach."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269823190695E12,
+						"printOutput" : "creation time: 1269818037000\r\nno longer waiting for hit: 19ACXUZUDT93IRF42C53MR0KYIUQ17\r\n"
+					},
+					{
+						"creationTime" : 1.269823190975E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269823191768E12,
+						"printOutput" : "disabled HIT: 19ACXUZUDT93IRF42C53MR0KYIUQ17\r\n"
+					},
+					{
+						"creationTime" : 1.26982319177E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269823191874E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gypk8j4cw8a755ai2whjunohrtbiz8du.html\r\n"
+					},
+					{
+						"creationTime" : 1.269823192876E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269823192879E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/g69wejqoylqhpf9hi48396o9ismsdhuj.html",
+								"returnTime" : 1.269823192956E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/g69wejqoylqhpf9hi48396o9ismsdhuj.html\r\n"
+							},
+							{
+								"creationTime" : 1.269823192958E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "13OIAKEWT9CLT79PT1BA9IISCSNOOL",
+								"returnTime" : 1.269823193125E12,
+								"printOutput" : "created HIT: 13OIAKEWT9CLT79PT1BA9IISCSNOOL\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269823193323E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269823193495E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269823193497E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hr24hwgwdvykv4zqvh0y22lfe6s9ns1z.html",
+								"returnTime" : 1.269823193566E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/hr24hwgwdvykv4zqvh0y22lfe6s9ns1z.html\r\n"
+							},
+							{
+								"creationTime" : 1.269823193569E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1BR8JR4X02LCZMKKCZFBOEJRIVZGSN",
+								"returnTime" : 1.269823193794E12,
+								"printOutput" : "created HIT: 1BR8JR4X02LCZMKKCZFBOEJRIVZGSN\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269823194031E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269817988303E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269817988306E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7yorkh53sp21nbj5vimg3b2qt682ye0r.html",
+						"returnTime" : 1.26981798848E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7yorkh53sp21nbj5vimg3b2qt682ye0r.html\r\n"
+					},
+					{
+						"creationTime" : 1.269817988481E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1TATMYR164AVHJAF1UEXOFM15AMSVN",
+						"returnTime" : 1.269817988714E12,
+						"printOutput" : "created HIT: 1TATMYR164AVHJAF1UEXOFM15AMSVN\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269817988901E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1TATMYR164AVHJAF1UEXOFM15AMSVN",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7yorkh53sp21nbj5vimg3b2qt682ye0r.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269818038E12,
+							"expiration" : 1.270422838E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1Z174G0UGJ5HPEZ7AHW1VKCNY81O42",
+									"workerId" : "A7R1L4ZYYPOZM",
+									"hitId" : "1TATMYR164AVHJAF1UEXOFM15AMSVN",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822003E12,
+									"acceptTime" : 1.269818349E12,
+									"submitTime" : 1.269818403E12,
+									"answer" : {
+										"brackets" : "The Tangible Bits vision paper introduced the metaDESK [[along with two companion platforms, the transBOARD and ambientROOM]].  Together, these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26982207E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1JR6K6G311H8GY0MI7ROSNVRO8JH8E",
+									"workerId" : "A2HM35CWB7IIFM",
+									"hitId" : "1TATMYR164AVHJAF1UEXOFM15AMSVN",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822045E12,
+									"acceptTime" : 1.269818403E12,
+									"submitTime" : 1.269818445E12,
+									"answer" : {
+										"brackets" : "The Tangible Bits vision paper introduced the metaDESK along with [[two companion platforms, ]]the transBOARD and ambientROOM.  Together, these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269822071E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "13DB3VCJQAR9NISFM85VJ5RPY9LMY6",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "1TATMYR164AVHJAF1UEXOFM15AMSVN",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822863E12,
+									"acceptTime" : 1.269819081E12,
+									"submitTime" : 1.269819263E12,
+									"answer" : {
+										"brackets" : "The Tangible Bits vision paper introduced the metaDESK along with [[two]] companion platforms, the transBOARD and ambientROOM.  [[Together,]] these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26982297E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1CWE6K6FC8EJGEOMCQMB4WDRS552YY",
+									"workerId" : "A1GA6VXI5QH07",
+									"hitId" : "1TATMYR164AVHJAF1UEXOFM15AMSVN",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269824078E12,
+									"acceptTime" : 1.269820456E12,
+									"submitTime" : 1.269820478E12,
+									"answer" : {
+										"brackets" : "The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.  [[Together,]] these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1AYUFLZJ7MYLKMCA89N6SG1FZBN5J8",
+									"workerId" : "A22IHC4Z4IXHLI",
+									"hitId" : "1TATMYR164AVHJAF1UEXOFM15AMSVN",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269824155E12,
+									"acceptTime" : 1.269820493E12,
+									"submitTime" : 1.269820555E12,
+									"answer" : {
+										"brackets" : "The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, [[the transBOARD and ambientROOM]].  Together, these platforms explore both [[graspable]] physical objects and [[ambient]] environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1QHGSX5PFOCCQNWUE0UMRDX5MX80MN",
+									"workerId" : "ANS8IEGL3QA1P",
+									"hitId" : "1TATMYR164AVHJAF1UEXOFM15AMSVN",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269826672E12,
+									"acceptTime" : 1.269823019E12,
+									"submitTime" : 1.269823072E12,
+									"answer" : {
+										"brackets" : "The Tangible Bits [[vision paper ]]introduced the metaDESK [[along]] with two companion platforms, the transBOARD and ambientROOM.  [[Together, ]]these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269823050692E12,
+						"printOutput" : "creation time: 1269818038000\r\nno longer waiting for hit: 1TATMYR164AVHJAF1UEXOFM15AMSVN\r\n"
+					},
+					{
+						"creationTime" : 1.269823051031E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269823051707E12,
+						"printOutput" : "disabled HIT: 1TATMYR164AVHJAF1UEXOFM15AMSVN\r\n"
+					},
+					{
+						"creationTime" : 1.269823051709E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269823051827E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/7yorkh53sp21nbj5vimg3b2qt682ye0r.html\r\n"
+					},
+					{
+						"creationTime" : 1.269823052763E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269823052766E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/17s5a8jvuog4jah935tsjt3e4obtoann.html",
+								"returnTime" : 1.269823052857E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/17s5a8jvuog4jah935tsjt3e4obtoann.html\r\n"
+							},
+							{
+								"creationTime" : 1.269823052858E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1XGQ4TFRP2O2ETOGRFPIY1TJJD1RET",
+								"returnTime" : 1.269823053148E12,
+								"printOutput" : "created HIT: 1XGQ4TFRP2O2ETOGRFPIY1TJJD1RET\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269823053301E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269823053507E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.26982305351E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qzt21ola5t9bhgypgde49odsoidgzc6v.html",
+								"returnTime" : 1.26982305362E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qzt21ola5t9bhgypgde49odsoidgzc6v.html\r\n"
+							},
+							{
+								"creationTime" : 1.269823053622E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1FC98TTW8CTUK7OCMQ9OGJEJVEGRFB",
+								"returnTime" : 1.269823053847E12,
+								"printOutput" : "created HIT: 1FC98TTW8CTUK7OCMQ9OGJEJVEGRFB\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269823054006E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269817989091E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269817989095E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1ex4doajpeac78kycln7l26chv1j2aek.html",
+						"returnTime" : 1.269817989159E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/1ex4doajpeac78kycln7l26chv1j2aek.html\r\n"
+					},
+					{
+						"creationTime" : 1.269817989161E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1DGB4JRD7JA8W8AKR4JTAH5FCJOSWX",
+						"returnTime" : 1.269817989394E12,
+						"printOutput" : "created HIT: 1DGB4JRD7JA8W8AKR4JTAH5FCJOSWX\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269817989623E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269817989795E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269817989798E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/lxtw7m47d3hfa796f0tq0sr4883bqmqa.html",
+						"returnTime" : 1.269817989854E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/lxtw7m47d3hfa796f0tq0sr4883bqmqa.html\r\n"
+					},
+					{
+						"creationTime" : 1.269817989856E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "14ASC7WR5PKIBQT76GME8HR0OU30PO",
+						"returnTime" : 1.269817990057E12,
+						"printOutput" : "created HIT: 14ASC7WR5PKIBQT76GME8HR0OU30PO\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269817990243E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "14ASC7WR5PKIBQT76GME8HR0OU30PO",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/lxtw7m47d3hfa796f0tq0sr4883bqmqa.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.26981804E12,
+							"expiration" : 1.27042284E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1DFABGNJ16XFX5RU4AAFIGESJ7QWJD",
+									"workerId" : "A7R1L4ZYYPOZM",
+									"hitId" : "14ASC7WR5PKIBQT76GME8HR0OU30PO",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822116E12,
+									"acceptTime" : 1.26981847E12,
+									"submitTime" : 1.269818516E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of [[various historical instruments and devices often \"obsoleted\" by the advent of the computer]]."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26982237E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1D15S6IRVSXJ2U7OMSPF6FZS6S1WI1",
+									"workerId" : "A2HM35CWB7IIFM",
+									"hitId" : "14ASC7WR5PKIBQT76GME8HR0OU30PO",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822121E12,
+									"acceptTime" : 1.269818446E12,
+									"submitTime" : 1.269818521E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects as driving elements of human-computer interaction[[.  In particular, we are interested in]] pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26982237E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1WU5LIUD2QEXGL87RVVQ17T8DGFUKB",
+									"workerId" : "A1HI38WI4I4LPV",
+									"hitId" : "14ASC7WR5PKIBQT76GME8HR0OU30PO",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822779E12,
+									"acceptTime" : 1.269819118E12,
+									"submitTime" : 1.269819179E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have [[attempted to push forward from]] the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26982297E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "17MYTDPLY87VAKMLJLP8WSX94BG1UI",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "14ASC7WR5PKIBQT76GME8HR0OU30PO",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822935E12,
+									"acceptTime" : 1.269819307E12,
+									"submitTime" : 1.269819335E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects as driving elements of human-computer interaction.  [[In particular,]] we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  [[Simultaneously,]] we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26982297E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12KZV7965VNLTRZP1XEI11NSFWG8Q4",
+									"workerId" : "A1GA6VXI5QH07",
+									"hitId" : "14ASC7WR5PKIBQT76GME8HR0OU30PO",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269824047E12,
+									"acceptTime" : 1.269820393E12,
+									"submitTime" : 1.269820447E12,
+									"answer" : {
+										"brackets" : "Our research [[with the metaDESK system]] focuses on the use of tangible objects as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1W2ZHR3V068RNUWWUYSKMO9ENZCOFU",
+									"workerId" : "A3D2QH24NWAIFC",
+									"hitId" : "14ASC7WR5PKIBQT76GME8HR0OU30PO",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269826831E12,
+									"acceptTime" : 1.269823187E12,
+									"submitTime" : 1.269823231E12,
+									"answer" : {
+										"brackets" : "Our research with the metaDESK system focuses on the use of tangible objects as driving elements of human-computer interaction.  In particular, we are interested in pushing back from the GUI into the real world,[[ physically instantiating many of the metaphorical devices the GUI has popularized.  Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer.]]"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269823198088E12,
+						"printOutput" : "creation time: 1269818040000\r\nno longer waiting for hit: 14ASC7WR5PKIBQT76GME8HR0OU30PO\r\n"
+					},
+					{
+						"creationTime" : 1.269823198095E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269823198224E12,
+						"printOutput" : "rejected assignment 1W2ZHR3V068RNUWWUYSKMO9ENZCOFU\r\n"
+					},
+					{
+						"creationTime" : 1.269823198546E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269823198979E12,
+						"printOutput" : "disabled HIT: 14ASC7WR5PKIBQT76GME8HR0OU30PO\r\n"
+					},
+					{
+						"creationTime" : 1.26982319898E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269823199052E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/lxtw7m47d3hfa796f0tq0sr4883bqmqa.html\r\n"
+					},
+					{
+						"creationTime" : 1.269823199964E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269823199967E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/bjf653ngliojaf8x8hqix3ivifvrlxly.html",
+								"returnTime" : 1.269823200036E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/bjf653ngliojaf8x8hqix3ivifvrlxly.html\r\n"
+							},
+							{
+								"creationTime" : 1.269823200037E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1FQE4LX2WM0V3V13N2L8INEZWBW0UL",
+								"returnTime" : 1.269823200519E12,
+								"printOutput" : "created HIT: 1FQE4LX2WM0V3V13N2L8INEZWBW0UL\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269823200731E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269817990498E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269817990564E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/eh681gmvg9ehthqnwa7eogow2vsnua9n.html",
+						"returnTime" : 1.269817990638E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/eh681gmvg9ehthqnwa7eogow2vsnua9n.html\r\n"
+					},
+					{
+						"creationTime" : 1.269817990641E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1WL9528A27J6RAWZQ02YK1FZWZ5VH5",
+						"returnTime" : 1.269817990838E12,
+						"printOutput" : "created HIT: 1WL9528A27J6RAWZQ02YK1FZWZ5VH5\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269817991039E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "1WL9528A27J6RAWZQ02YK1FZWZ5VH5",
+							"hitTypeId" : "19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/eh681gmvg9ehthqnwa7eogow2vsnua9n.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.26981804E12,
+							"expiration" : 1.27042284E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1AGUQSTTR71TC9AP6DWXM0JPW0I17F",
+									"workerId" : "A2HM35CWB7IIFM",
+									"hitId" : "1WL9528A27J6RAWZQ02YK1FZWZ5VH5",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822147E12,
+									"acceptTime" : 1.269818522E12,
+									"submitTime" : 1.269818547E12,
+									"answer" : {
+										"brackets" : "We [[more broadly]] explore physical affordances within TUI design.  Our active lens looks, acts, and is manipulated like a jeweler\'s magnifying lens.  In this way, the active lens suggests and supports a user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26982237E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1PI0OXZZ68JBGVIFJ827BNV9SRVWNH",
+									"workerId" : "A7R1L4ZYYPOZM",
+									"hitId" : "1WL9528A27J6RAWZQ02YK1FZWZ5VH5",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822246E12,
+									"acceptTime" : 1.269818596E12,
+									"submitTime" : 1.269818646E12,
+									"answer" : {
+										"brackets" : "We more broadly explore physical affordances within TUI design.  [[Our active lens looks, acts, and is manipulated like a jeweler\'s magnifying lens]].  [[In this way, the active lens]] suggests and supports a user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269822371E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "118NTLV71DVO4MY8QNTKMB9MK4NXBM",
+									"workerId" : "A1HI38WI4I4LPV",
+									"hitId" : "1WL9528A27J6RAWZQ02YK1FZWZ5VH5",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269822619E12,
+									"acceptTime" : 1.269818991E12,
+									"submitTime" : 1.269819019E12,
+									"answer" : {
+										"brackets" : "We [[more broadly]] explore physical affordances within TUI design.  Our active lens looks, acts, and is manipulated like a jeweler\'s magnifying lens.  In this way, the active lens suggests and supports a user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.26982267E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1EB3NKNAQ646EV7ZLASTOFDGL0CHUX",
+									"workerId" : "A2I71A09DUDQR9",
+									"hitId" : "1WL9528A27J6RAWZQ02YK1FZWZ5VH5",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269823017E12,
+									"acceptTime" : 1.269819394E12,
+									"submitTime" : 1.269819417E12,
+									"answer" : {
+										"brackets" : "We [[more]] broadly explore physical affordances within TUI design.  Our active lens looks, acts, and is manipulated like a jeweler\'s magnifying lens.  [[In this way,]] the active lens suggests and supports a user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269823268E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1GGQ12ZU5Y8X67E2T13NW12TXK18ST",
+									"workerId" : "A22IHC4Z4IXHLI",
+									"hitId" : "1WL9528A27J6RAWZQ02YK1FZWZ5VH5",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269824213E12,
+									"acceptTime" : 1.269820565E12,
+									"submitTime" : 1.269820613E12,
+									"answer" : {
+										"brackets" : "We [[more]] broadly explore physical affordances within TUI design.  Our active lens looks, acts, and is manipulated like a jeweler\'s magnifying lens.  In this way, the active lens [[suggests and]] supports a user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1XNP337SZWC6ICAZA75O4FYQZ9D63E",
+									"workerId" : "A3I9UOCM5EXMR2",
+									"hitId" : "1WL9528A27J6RAWZQ02YK1FZWZ5VH5",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269826914E12,
+									"acceptTime" : 1.269823239E12,
+									"submitTime" : 1.269823314E12,
+									"answer" : {
+										"brackets" : "We more broadly explore physical affordances within TUI design.  Our active lens looks, acts, and is manipulated like a jeweler\'s magnifying lens.  [[In this way]], the active lens suggests and supports a user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1QXTYWZGBPTV8MITV98X61JOU0ULPD",
+									"workerId" : "A3D2QH24NWAIFC",
+									"hitId" : "1WL9528A27J6RAWZQ02YK1FZWZ5VH5",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269826936E12,
+									"acceptTime" : 1.269823231E12,
+									"submitTime" : 1.269823336E12,
+									"answer" : {
+										"brackets" : "We more broadly explore physical affordances within TUI design.  Our active lens looks[[, acts, and is manipulated ]]like a jeweler\'s magnifying lens.  In this way, the active lens suggests and supports a user\'s natural expectations from the device."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269823350525E12,
+						"printOutput" : "creation time: 1269818040000\r\nno longer waiting for hit: 1WL9528A27J6RAWZQ02YK1FZWZ5VH5\r\n"
+					},
+					{
+						"creationTime" : 1.269823350821E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269823351338E12,
+						"printOutput" : "disabled HIT: 1WL9528A27J6RAWZQ02YK1FZWZ5VH5\r\n"
+					},
+					{
+						"creationTime" : 1.26982335134E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269823351435E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/eh681gmvg9ehthqnwa7eogow2vsnua9n.html\r\n"
+					},
+					{
+						"creationTime" : 1.269823352538E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269823352541E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2aikwj701802ipkesq9xjc60ygfj4l2g.html",
+								"returnTime" : 1.269823352684E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/2aikwj701802ipkesq9xjc60ygfj4l2g.html\r\n"
+							},
+							{
+								"creationTime" : 1.269823352685E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "17MJ3XMFL2XDEMXZ1ZK1YJFDKEDGTC",
+								"returnTime" : 1.269823352933E12,
+								"printOutput" : "created HIT: 17MJ3XMFL2XDEMXZ1ZK1YJFDKEDGTC\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269823353128E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269823353282E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269823353285E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/it5u2lrb6ji0r6istgolgxu1daoja2o2.html",
+								"returnTime" : 1.269823353345E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/it5u2lrb6ji0r6istgolgxu1daoja2o2.html\r\n"
+							},
+							{
+								"creationTime" : 1.269823353347E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1UVP8ZV0ZLV474VC67U940B6YT9J8U",
+								"returnTime" : 1.269823353528E12,
+								"printOutput" : "created HIT: 1UVP8ZV0ZLV474VC67U940B6YT9J8U\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269823353715E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269823353874E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269823353876E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u3rh0czvu3klefa0ak3bxiqfvwzfzfea.html",
+								"returnTime" : 1.269823354259E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u3rh0czvu3klefa0ak3bxiqfvwzfzfea.html\r\n"
+							},
+							{
+								"creationTime" : 1.269823354261E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1C914S9O3T301ONDZRXX8YOCGFLBC7",
+								"returnTime" : 1.269823354649E12,
+								"printOutput" : "created HIT: 1C914S9O3T301ONDZRXX8YOCGFLBC7\r\n        url: https://www.mturk.com/mturk/preview?groupId=1SGFS5SY06L04Z57QXSFX3NYNJ8N9A\r\n"
+							},
+							{
+								"creationTime" : 1.269823354865E12,
+								"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+							}
+						]
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269817991228E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269817991235E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h87mrkb9c3c2lolub6pdzt86ywbmn8ru.html",
+						"returnTime" : 1.269817992867E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/h87mrkb9c3c2lolub6pdzt86ywbmn8ru.html\r\n"
+					},
+					{
+						"creationTime" : 1.269817992872E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1JYTPJ3EMJNNL8FA19FFC0JMLLUSXQ",
+						"returnTime" : 1.269817993141E12,
+						"printOutput" : "created HIT: 1JYTPJ3EMJNNL8FA19FFC0JMLLUSXQ\r\n        url: https://www.mturk.com/mturk/preview?groupId=19B2K8QT0J7Y4RUN9DA3TAHQEQSVPU\r\n"
+					},
+					{
+						"creationTime" : 1.269817993351E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 11.269999999999998,
+	"hitsCreated" : 17
+}
+// end:1f9f

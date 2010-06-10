@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>MTurk Task</title>
+<meta>
+<style>
+
+</style>
+</meta>
+<style>
+
+</style>
+</head>
+<body>
+<script src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
+<script>
+___HEADER_SCRIPT___
+
+$(function () {
+	randomizeClass($('.grammar'));
+	randomizeClass($('.meaning'));
+});
+</script>
+
+
+<form action="." method="GET">
+    <input type="hidden" name="assignmentId" id="assignmentId" value="temp"></input>
+    <input type="hidden" name="randomOrder" id="randomOrder" value="temp"></input>
+    
+    <div id="content" style="width:500px">
+		<p>Here is a sentence with a highlighted section that we need shortened:</p>
+		<p style="font-size: 10pt; font-family: courier; width: 500px">___HIGHLIGHTED___</p>
+		
+		<p>Choose the rewrite which has <b>the most spelling, grammar, or style errors</b> in it.</p>
+		___GRAMMAR_VOTE___
+		
+		<p>Choose the rewrite which <b>most changes the meaning of the original sentence</b>.</p>
+		___MEANING_VOTE___
+    </div>
+	<input type="submit" value="Submit"></input>
+</form>
+
+</body>
+</html>
