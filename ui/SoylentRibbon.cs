@@ -25,7 +25,7 @@ namespace Soylent
 
         private void Ribbon_Load(object sender, RibbonUIEventArgs e)
         {
-            IsTaskPaneVisible = Globals.Soylent.HITView.Visible;
+            //isTaskPaneVisible = Globals.Soylent.HITView.Visible;
         }
 
         private void shortenBtn_Click(object sender, RibbonControlEventArgs e)
@@ -177,21 +177,7 @@ namespace Soylent
 
         private void jobStatus_Click(object sender, RibbonControlEventArgs e)
         {
-             //IsTaskPaneVisible
-        }
-
-        private bool isTaskPaneVisible;
-        public bool IsTaskPaneVisible
-        {
-            get
-            {
-                return isTaskPaneVisible;
-            }
-            set
-            {
-                isTaskPaneVisible = value;
-                jobStatus.Checked = value;
-            }
+            Globals.Soylent.HITView.Visible = ((RibbonToggleButton)sender).Checked;
         }
     }
 }

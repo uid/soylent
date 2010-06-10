@@ -17,7 +17,6 @@ namespace Soylent
         public Microsoft.Office.Tools.CustomTaskPane HITView;
         public SoylentPanel soylent;
         private TurKitSocKit tksc;
-        private SoylentRibbon ribbon;
 
         public static bool DEBUG = false;
 
@@ -25,13 +24,11 @@ namespace Soylent
         {
             soylent = new SoylentPanel();
             HITView = this.CustomTaskPanes.Add(soylent, "Soylent");
-            HITView.Visible = true;
             HITView.VisibleChanged += new EventHandler(hitviewVisibleChanged);
+            HITView.Visible = true;
 
             tksc = new TurKitSocKit();
             tksc.Listen();
-
-            // TODO: figure out ribbon and set it to the private variable
         }
 
 
@@ -42,9 +39,7 @@ namespace Soylent
 
         void hitviewVisibleChanged(object sender, EventArgs e)
         {
-            // TODO: set ribbon here
-            //Globals.Ribbons.SoylentRibbon.IsTaskPaneVisible = ctp.Visible;
-
+            Globals.Ribbons.Ribbon.jobStatus.Checked = HITView.Visible;
         }
 
         #region VSTO generated code
