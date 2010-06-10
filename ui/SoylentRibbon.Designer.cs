@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.Soylent = new Microsoft.Office.Tools.Ribbon.RibbonTab();
+            this.viewGroup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
+            this.jobStatus = new Microsoft.Office.Tools.Ribbon.RibbonToggleButton();
             this.group3 = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.button3 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.group1 = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
@@ -41,14 +43,12 @@
             this.group4 = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.button1 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button2 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.viewGroup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
-            this.jobStatus = new Microsoft.Office.Tools.Ribbon.RibbonToggleButton();
             this.Soylent.SuspendLayout();
+            this.viewGroup.SuspendLayout();
             this.group3.SuspendLayout();
             this.group1.SuspendLayout();
             this.group2.SuspendLayout();
             this.group4.SuspendLayout();
-            this.viewGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // Soylent
@@ -60,6 +60,18 @@
             this.Soylent.Groups.Add(this.group4);
             this.Soylent.Label = "Soylent";
             this.Soylent.Name = "Soylent";
+            // 
+            // viewGroup
+            // 
+            this.viewGroup.Items.Add(this.jobStatus);
+            this.viewGroup.Label = "View";
+            this.viewGroup.Name = "viewGroup";
+            // 
+            // jobStatus
+            // 
+            this.jobStatus.Label = "Job Status";
+            this.jobStatus.Name = "jobStatus";
+            this.jobStatus.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.jobStatus_Click);
             // 
             // group3
             // 
@@ -139,26 +151,16 @@
             this.button2.Name = "button2";
             this.button2.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button2_Click);
             // 
-            // viewGroup
+            // SoylentRibbon
             // 
-            this.viewGroup.Items.Add(this.jobStatus);
-            this.viewGroup.Label = "View";
-            this.viewGroup.Name = "viewGroup";
-            // 
-            // jobStatus
-            // 
-            this.jobStatus.Label = "Job Status";
-            this.jobStatus.Name = "jobStatus";
-            this.jobStatus.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.jobStatus_Click);
-            // 
-            // Ribbon
-            // 
-            this.Name = "Ribbon";
+            this.Name = "SoylentRibbon";
             this.RibbonType = "Microsoft.Word.Document";
             this.Tabs.Add(this.Soylent);
             this.Load += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonUIEventArgs>(this.Ribbon_Load);
             this.Soylent.ResumeLayout(false);
             this.Soylent.PerformLayout();
+            this.viewGroup.ResumeLayout(false);
+            this.viewGroup.PerformLayout();
             this.group3.ResumeLayout(false);
             this.group3.PerformLayout();
             this.group1.ResumeLayout(false);
@@ -167,8 +169,6 @@
             this.group2.PerformLayout();
             this.group4.ResumeLayout(false);
             this.group4.PerformLayout();
-            this.viewGroup.ResumeLayout(false);
-            this.viewGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
