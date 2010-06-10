@@ -12,8 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
+using Soylent.Model;
 
-namespace Soylent
+namespace Soylent.View
 {
     /// <summary>
     /// Interaction logic for HITView.xaml

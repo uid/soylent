@@ -1,4 +1,4 @@
-﻿namespace Soylent
+﻿namespace Soylent.View
 {
     partial class SoylentPanel
     {

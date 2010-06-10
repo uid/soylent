@@ -11,8 +11,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Soylent.Model;
+using Soylent.Model.Shortn;
 
-namespace Soylent
+namespace Soylent.View.Shortn
 {
     /// <summary>
     /// Interaction logic for ShortenDialog.xaml

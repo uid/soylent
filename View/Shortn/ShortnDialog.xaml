@@ -1,6 +1,7 @@
-﻿<UserControl x:Class="Soylent.ShortnDialog"
+﻿<UserControl x:Class="Soylent.View.Shortn.ShortnDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Focusable="False">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Focusable="False"
+    xmlns:turk="clr-namespace:Soylent.View.Shortn">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Name="scroller">
         <Grid Margin="0" Name="grid">
             <Grid.ColumnDefinitions>

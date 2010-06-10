@@ -8,8 +8,9 @@ using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
+using Soylent.View;
 
-namespace Soylent
+namespace Soylent.Model
 {
     public class HITData
     {

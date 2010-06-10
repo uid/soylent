@@ -9,6 +9,10 @@ using System.Web.Script.Serialization;
 using System.Xml.Serialization;
 using System.Text.RegularExpressions;
 
+using Soylent.Model;
+using Soylent.Model.Shortn;
+
+
 namespace Soylent
 {
     /**

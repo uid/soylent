@@ -12,7 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
-namespace Soylent
+namespace Soylent.Model.HumanMacro
 {
     class HumanMacroResult
     {

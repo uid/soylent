@@ -10,7 +10,10 @@ using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 
-namespace Soylent
+using Soylent.View.Shortn;
+using Soylent.View;
+
+namespace Soylent.Model.Shortn
 {
     public class ShortnData: HITData
     {

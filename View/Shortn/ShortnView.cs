@@ -12,8 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
+using Soylent.Model.Shortn;
 
-namespace Soylent
+namespace Soylent.View.Shortn
 {
     public class ShortnView : HITView
     {

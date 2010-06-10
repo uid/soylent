@@ -1,8 +1,8 @@
-﻿<UserControl x:Class="Soylent.HumanMacroDialog"
+﻿<UserControl x:Class="Soylent.View.HumanMacro.HumanMacroDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:dropShadow="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"         
-    xmlns:turk="clr-namespace:Soylent"
+    xmlns:turk="clr-namespace:Soylent.View.HumanMacro"
     Height="600" Width="1219" DataContext="{Binding RelativeSource={RelativeSource Self}}" Background="White">
     <StackPanel Margin="0,5,0,5">
         <Label Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" FontWeight="Bold">The Human Macro</Label>

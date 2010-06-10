@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Soylent
+using Soylent.View;
+
+namespace Soylent.Model
 {
     public class StageData
     {

@@ -9,6 +9,7 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Controls;
 
+using Soylent.View;
 
 namespace Soylent
 {

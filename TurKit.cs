@@ -12,6 +12,8 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Web.Script.Serialization;
 using System.Text.RegularExpressions;
+using Soylent.Model;
+using Soylent.Model.Shortn;
 
 namespace Soylent
 {
