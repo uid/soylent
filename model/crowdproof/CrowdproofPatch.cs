@@ -9,7 +9,7 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
 
-namespace Soylent
+namespace Soylent.Model.Crowdproof
 {
     class CrowdproofPatch : Patch
     {

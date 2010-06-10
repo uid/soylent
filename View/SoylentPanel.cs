@@ -8,7 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 
-namespace Soylent
+using Soylent.Model;
+using Soylent.Model.Shortn;
+using Soylent.View.Shortn;
+
+namespace Soylent.View
 {
     public partial class SoylentPanel : UserControl
     {
@@ -40,7 +44,7 @@ namespace Soylent
 
             //HITView hs = new HITView(name, text);
             HITView hs;
-            if (name == Shortn.HIT_TYPE)
+            if (name == ShortnJob.HIT_TYPE)
             {
                 hs = new ShortnView(name, data as ShortnData);
             }

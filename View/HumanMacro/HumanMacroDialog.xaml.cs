@@ -17,7 +17,7 @@ using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 
-namespace Soylent
+namespace Soylent.View.HumanMacro
 {
     /// <summary>
     /// Interaction logic for HumanMacroDialog.xaml

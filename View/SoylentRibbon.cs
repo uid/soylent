@@ -12,6 +12,14 @@ using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms.Integration;
 using System.Windows.Forms;
 
+using Soylent.Model;
+using Soylent.Model.Crowdproof;
+using Soylent.Model.Shortn;
+using Soylent.Model.HumanMacro;
+using Soylent.View;
+using Soylent.View.Shortn;
+using Soylent.View.HumanMacro;
+
 namespace Soylent
 {
     public partial class SoylentRibbon : OfficeRibbon
@@ -34,7 +42,7 @@ namespace Soylent
             int jobNumber = generateJobNumber();
             ShortnData newHIT = new ShortnData(toShorten, jobNumber);
             allHITs[newHIT.job] = newHIT;
-            Shortn s = new Shortn(newHIT, jobNumber);
+            ShortnJob s = new ShortnJob(newHIT, jobNumber);
         }
 
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)

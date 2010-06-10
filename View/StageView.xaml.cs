@@ -13,7 +13,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 
-namespace Soylent
+using Soylent.Model;
+
+namespace Soylent.View
 {
     /// <summary>
     /// Interaction logic for StageView.xaml

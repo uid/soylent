@@ -11,7 +11,10 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using VSTO = Microsoft.Office.Tools.Word;
 
-namespace Soylent
+using Soylent.Model.HumanMacro;
+using Soylent.View;
+
+namespace Soylent.Model.Crowdproof
 {
     class CrowdproofData : HITData
     {
@@ -24,6 +27,7 @@ namespace Soylent
 
         public void AnnotateResult()
         {
+
             Word.Range text = range;
             foreach (CrowdproofPatch pp in patches)
             {
@@ -40,15 +44,25 @@ namespace Soylent
                     actions.Add(action);
                 }
 
-                foreach (string reason in pp.reasons)
+                /* this doesn't work in Word 2010 */
+                if (WordVersion.currentVersion < WordVersion.OFFICE_2010)
                 {
-                    VSTO.Action action = new VSTO.Action("Error Descriptions///" + reason);
-                    action.Click += new ActionClickEventHandler(HumanMacroResult.replaceText);
-                    actions.Add(action);
+                    foreach (string reason in pp.reasons)
+                    {
+                        VSTO.Action action = new VSTO.Action("Error Descriptions///" + reason);
+                        action.Click += new ActionClickEventHandler(HumanMacroResult.replaceText);
+                        actions.Add(action);
+                    }
                 }
 
                 resultTag.Actions = actions.ToArray();
                 Globals.Soylent.VstoSmartTags.Add(resultTag);
+
+                if (WordVersion.currentVersion >= WordVersion.OFFICE_2010)
+                {
+                    pp.range.Underline = Word.WdUnderline.wdUnderlineWavy;
+                    pp.range.Font.UnderlineColor = Word.WdColor.wdColorAqua;
+                }
             }
         }
 

@@ -9,15 +9,17 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
 
-namespace Soylent
+using Soylent.View.Shortn;
+
+namespace Soylent.Model.Shortn
 {
-    class Shortn
+    class ShortnJob
     {
         public static string HIT_TYPE = "Shortn";
         private ShortnData data;
         private int jobNumber;
 
-        public Shortn(ShortnData data, int jobNumber)
+        public ShortnJob(ShortnData data, int jobNumber)
         {
             this.data = data;
             this.jobNumber = jobNumber;

@@ -216,19 +216,20 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="ui\shortn\ShortnView.cs" />
-    <Compile Include="model\DummyPatch.cs" />
-    <Compile Include="model\StageData.cs" />
-    <Compile Include="model\HITData.cs" />
-    <Compile Include="ui\humanmacro\HumanMacroDialog.xaml.cs">
+    <Compile Include="Model\WordVersion.cs" />
+    <Compile Include="View\Shortn\ShortnView.cs" />
+    <Compile Include="Model\DummyPatch.cs" />
+    <Compile Include="Model\StageData.cs" />
+    <Compile Include="Model\HITData.cs" />
+    <Compile Include="View\HumanMacro\HumanMacroDialog.xaml.cs">
       <DependentUpon>HumanMacroDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="model\humanmacro\HumanMacroResult.cs" />
-    <Compile Include="model\Patch.cs" />
-    <Compile Include="model\crowdproof\CrowdproofData.cs" />
-    <Compile Include="model\crowdproof\CrowdproofPatch.cs" />
-    <Compile Include="model\shortn\ShortnData.cs" />
-    <Compile Include="ui\HITView.xaml.cs">
+    <Compile Include="Model\HumanMacro\HumanMacroResult.cs" />
+    <Compile Include="Model\Patch.cs" />
+    <Compile Include="Model\Crowdproof\CrowdproofData.cs" />
+    <Compile Include="Model\Crowdproof\CrowdproofPatch.cs" />
+    <Compile Include="Model\Shortn\ShortnData.cs" />
+    <Compile Include="View\HITView.xaml.cs">
       <DependentUpon>HITView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -239,10 +240,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ui\SoylentRibbon.resx">
+    <EmbeddedResource Include="View\SoylentRibbon.resx">
       <DependentUpon>SoylentRibbon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ui\SoylentPanel.resx">
+    <EmbeddedResource Include="View\SoylentPanel.resx">
       <DependentUpon>SoylentPanel.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -259,17 +260,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ui\SoylentRibbon.cs">
+    <Compile Include="View\SoylentRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ui\SoylentRibbon.Designer.cs">
+    <Compile Include="View\SoylentRibbon.Designer.cs">
       <DependentUpon>SoylentRibbon.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\shortn\Shortn.cs" />
-    <Compile Include="ui\shortn\ShortnDialog.xaml.cs">
+    <Compile Include="Model\Shortn\ShortnJob.cs" />
+    <Compile Include="View\Shortn\ShortnDialog.xaml.cs">
       <DependentUpon>ShortnDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ui\StageView.xaml.cs">
+    <Compile Include="View\StageView.xaml.cs">
       <DependentUpon>StageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Soylent.cs">
@@ -282,10 +283,10 @@
     <Compile Include="Soylent.Designer.cs">
       <DependentUpon>Soylent.Designer.xml</DependentUpon>
     </Compile>
-    <Compile Include="ui\SoylentPanel.cs">
+    <Compile Include="View\SoylentPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ui\SoylentPanel.Designer.cs">
+    <Compile Include="View\SoylentPanel.Designer.cs">
       <DependentUpon>SoylentPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="TurKit.cs" />
@@ -293,31 +294,31 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ui\HITView.xaml">
+    <Page Include="View\HITView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ui\humanmacro\HumanMacroDialog.xaml">
+    <Page Include="View\HumanMacro\HumanMacroDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ui\shortn\segd-arrow-symbols-icons [WPF Paths].xaml">
+    <Page Include="View\Shortn\segd-arrow-symbols-icons [WPF Paths].xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ui\shortn\ShortnDialog.xaml">
+    <Page Include="View\Shortn\ShortnDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ui\StageView.xaml">
+    <Page Include="View\StageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
