@@ -36,7 +36,7 @@ else {
 }
 
 // imports
-eval(read("../template/fix_errors.js"));
+eval(read("../templates/crowdproof/fix_errors.js"));
 
 main();
 
