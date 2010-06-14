@@ -1,7 +1,7 @@
 // imports
-eval(read("../../library/patch.js"));
-eval(read("../../library/hit_utils.js"));
-eval(read("../../library/diff_match_patch_uncompressed.js"));
+eval(read("../library/patch.js"));
+eval(read("../library/hit_utils.js"));
+eval(read("../library/diff_match_patch_uncompressed.js"));
 
 var buffer_redundancy = 2;	// number of extra assignments to create so that they don't get squatted.
 var wait_time = 20 * 60 * 1000;	// seconds
@@ -9,27 +9,31 @@ var wait_time = 20 * 60 * 1000;	// seconds
 var search_reward = 0.06;
 var search_redundancy = 10;
 var search_minimum_agreement = 0.20
+var search_minimum_workers = 6;
 
 var edit_reward = 0.08;
 var edit_redundancy = 5;
+var edit_minimum_workers = 3;
 
 var verify_redundancy = 5;
 var verify_reward = 0.04;
+var verify_minimum_workers = 3;
 
-var debug = false;
 var time_bounded = true;
 var rejectedWorkers = []
 
-var shit_list = ["A521UZVFXBVWZ"]
-
 if (debug)
 {
-	search_redundancy = 1;
-	edit_redundancy = 1;
-	verify_redundancy = 1;
+	search_redundancy = 2;
+	search_minimum_workers = 1;
+	edit_redundancy = 2;
+	edit_minimum_workers = 1;
+	verify_redundancy = 2;
+	verify_minimum_workers = 1;
+	buffer_redundancy = 0;
 	paragraphs = [ paragraphs[0] ]; 	//remove the parallelism for now
-	wait_time = 5 * 1000;
-	search_minimum_agreement = .6;
+	wait_time = 10 * 1000;
+	search_minimum_agreement = .0001;	
 }
 
 var client = null;
@@ -44,10 +48,10 @@ if (typeof(soylentJob) == "undefined") {
 
 
 function main() {
-	var output = new java.io.FileWriter("fix_errors_results.html");
-	var lag_output = new java.io.FileWriter("fix_errors_lag.csv");
+	var output = new java.io.FileWriter("active-hits/fix_errors_results.html");
+	var lag_output = new java.io.FileWriter("active-hits/fix_errors_lag.csv");
 	lag_output.write("Stage,Assignment,Wait Type,Time,Paragraph\n");
-	var payment_output = new java.io.FileWriter("fix_errors_payment.csv");
+	var payment_output = new java.io.FileWriter("active-hits/fix_errors_payment.csv");
 	payment_output.write("Stage,Assignment,Cost,Paragraph\n");
 	
 	var result = {
@@ -107,7 +111,7 @@ function main() {
 					var reasons = []
 					var corrections = []
 					while (true) {
-						[reasons, corrections] = joinFixes(fix_hit, error.plaintextSentence(), paragraph_index);
+						[reasons, corrections] = joinFixes(fix_hit, error.plaintextSentence(), paragraph_index, i, errors.length);
 						if (reasons.length > 0 && corrections.length > 0) {
 							break;
 						}
@@ -123,7 +127,7 @@ function main() {
 
 
 					while (true) {
-						[reason_votes, fix_votes] = joinVote(vote_hit, paragraph_index);
+						[reason_votes, fix_votes] = joinVote(vote_hit, paragraph_index, i, errors.length);
 						
 						if (numVotes(reason_votes) > 0 && numVotes(fix_votes) > 0) {
 							break;
@@ -164,7 +168,7 @@ function main() {
 	output.close();
 	print(json(result));
 	
-	var patchesOutput = new java.io.FileWriter("fix_patches.json");	
+	var patchesOutput = new java.io.FileWriter("active-hits/fix_patches.json");	
 	patchesOutput.write(json(result));
 	patchesOutput.close();	
 	
@@ -180,10 +184,10 @@ function main() {
 function requestPatches(paragraph) {
 	var text = getParagraph(paragraph);
 
-	var header = read("../../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
+	var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
 				.replace(/___PAGE_NAME___/g, "proofread_identify");
 
-	var webpage = s3.putString(slurp("../template/identify-errors.html")
+	var webpage = s3.putString(slurp("../templates/crowdproof/identify-errors.html")
 					.replace(/___PARAGRAPH___/g, text)
 					.replace(/___ESCAPED_PARAGRAPH___/g, escape(text))
 					.replace(/___HEADER_SCRIPT___/g, header));
@@ -208,9 +212,9 @@ function requestPatches(paragraph) {
 function joinPatches(cut_hit, paragraph, paragraph_index) {
 	var status = mturk.getHIT(cut_hit, true)
 	print("completed by " + status.assignments.length + " turkers");
-	socketStatus(FIND_STAGE, status.assignments.length, paragraph_index);
+	socketStatus(FIND_STAGE, status, paragraph_index, 0, 1);
 	
-	var hit = mturk.boundedWaitForHIT(cut_hit,wait_time, 6, search_redundancy);
+	var hit = mturk.boundedWaitForHIT(cut_hit,wait_time, search_minimum_workers, search_redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
 	
 	var patch_suggestions = generatePatchSuggestions(hit.assignments, paragraph);
@@ -298,11 +302,11 @@ function requestFixes(patch) {
 	var highlighted_sentence = 	patch.highlightedParagraph();
 	var plaintext = patch.plaintextSentence();
 
-	var header = read("../../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
+	var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
 				.replace(/___PAGE_NAME___/g, "proofread_edit");
 	
 	
-	var webpage = s3.putString(slurp("../template/fix_errors.html")
+	var webpage = s3.putString(slurp("../templates/crowdproof/fix_errors.html")
 					.replace(/___HIGHLIGHTED___/g, highlighted_sentence)
 					.replace(/___PLAINTEXT___/g, plaintext)
 					.replace(/___HEADER_SCRIPT___/g, header));
@@ -321,13 +325,13 @@ function requestFixes(patch) {
 	return hitId;
 }
 
-function joinFixes(fix_hit, original_sentence, paragraph_index) {
+function joinFixes(fix_hit, original_sentence, paragraph_index, patchNumber, totalPatches) {
 	print("checking to see if HIT is done")
 	var status = mturk.getHIT(fix_hit, true)
 	print("completed by " + status.assignments.length + " turkers");
-	socketStatus(FIX_STAGE, status.assignments.length, paragraph_index);
+	socketStatus(FIX_STAGE, status, paragraph_index, patchNumber, totalPatches);
 
-	var fix_hit = mturk.boundedWaitForHIT(fix_hit, wait_time, 3, edit_redundancy);
+	var fix_hit = mturk.boundedWaitForHIT(fix_hit, wait_time, edit_minimum_workers, edit_redundancy);
 
 	corrections = []
 	reasons = []
@@ -403,10 +407,10 @@ function requestVote(patch, reasons, corrections, fix_hit) {
 	});
 	t_fix += '</table>';
 	
-	var header = read("../../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, suggestion_workers)
+	var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, suggestion_workers)
 					.replace(/___PAGE_NAME___/g, "grammar_vote");
 	
-	var w = s3.putString(slurp("../template/vote_errors.html")
+	var w = s3.putString(slurp("../templates/crowdproof/vote_errors.html")
 		.replace(/___REASON_TABLE___/g, t_reason)
 		.replace(/___FIX_TABLE___/g, t_fix)		
 		.replace(/___HIGHLIGHTED___/g, patch.highlightedSentence())
@@ -426,15 +430,15 @@ function requestVote(patch, reasons, corrections, fix_hit) {
 	return hitId;
 }
 
-function joinVote(vote_hit, paragraph_index) {
+function joinVote(vote_hit, paragraph_index, patchNumber, totalPatches) {
 	print("checking to see if HIT is done");
 	print(vote_hit);
 	var status = mturk.getHIT(vote_hit, true)
 	print("completed by " + status.assignments.length + " turkers");
-	socketStatus(FILTER_STAGE, status.assignments.length, paragraph_index);
+	socketStatus(FILTER_STAGE, status, paragraph_index, patchNumber, totalPatches);
 	
 	
-	var vote_hit = mturk.boundedWaitForHIT(vote_hit, wait_time, 3, verify_redundancy);
+	var vote_hit = mturk.boundedWaitForHIT(vote_hit, wait_time, verify_minimum_workers, verify_redundancy);
 	foreach(vote_hit.assignments, function(assignment) {
 		if (typeof(assignment.answer.reason) == "undefined" || typeof(assignment.answer.fix) == "undefined") {
 			print("REJECTING: No data.");
