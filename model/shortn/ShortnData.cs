@@ -15,6 +15,9 @@ using Soylent.View;
 
 namespace Soylent.Model.Shortn
 {
+    /// <summary>
+    /// A subclass of HITData that is the Model for a specific Shortn job
+    /// </summary>
     public class ShortnData: HITData
     {
         public List<Patch> patches;
@@ -50,6 +53,11 @@ namespace Soylent.Model.Shortn
 
         private int _longestLength = -1;    // for caching
 
+        /// <summary>
+        /// A subclass of HITData that is the Model for a specific Shortn job
+        /// </summary>
+        /// <param name="toShorten">The Range object selected for this task</param>
+        /// <param name="job">The unique job number for this task</param>
         public ShortnData(Word.Range toShorten, int job) : base(toShorten, job)
         {
             stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
@@ -65,11 +73,19 @@ namespace Soylent.Model.Shortn
             gottenOneYet = new Dictionary<ResultType, List<List<bool>>>();
         }
 
+        /// <summary>
+        /// Registers a View listener for this Model
+        /// </summary>
+        /// <param name="hview">The ShortnView listener</param>
         public override void register(HITView hview)
         {
             shortnview = hview as ShortnView;
         }
 
+        /// <summary>
+        /// Updates the model for a given status update
+        /// </summary>
+        /// <param name="status">The status update delivered by TurKit</param>
         new public void updateStatus(TurKitSocKit.TurKitStatus status)
         {
             string stringtype = status.stage;
@@ -83,6 +99,10 @@ namespace Soylent.Model.Shortn
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
         }
 
+        /// <summary>
+        /// Process a StageComplete message from TurKit
+        /// </summary>
+        /// <param name="donezo"></param>
         public void stageCompleted(TurKitSocKit.TurKitStageComplete donezo){
             ResultType type = typeMap[donezo.stage];
             StageData stage = stages[type];
@@ -151,12 +171,20 @@ namespace Soylent.Model.Shortn
         }
 
         public delegate void popupShortnWindowDelegate();
+        /// <summary>
+        /// Pops up the Shortn dialog window
+        /// </summary>
         public void popupShortnWindow()
         {
             shortnview.shortenDataReceived();
         }
 
         Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();
+        /// <summary>
+        /// Gets the patch selections for this job
+        /// </summary>
+        /// <param name="desiredLength">The desired character length for the returned list of selections</param>
+        /// <returns></returns>
         public List<PatchSelection> getPatchSelections(int desiredLength)
         {
             if (cachedSelections.Keys.Count == 0)
@@ -182,20 +210,24 @@ namespace Soylent.Model.Shortn
             return cachedSelections[lengthList.ElementAt(lengthList.Count()-1)];
         }
 
-        /* This is the way we have to make changes in the document when the slider moves.
-         * What we should be able to do: Range.Text = PatchSelection.selection
-         * What we have to do instead:
-         * Collapse the patch's range to the beginning of the range
-         * Add the new text after this 0-length range.  The range now extends to contain this new text.
-         * Collapse the range to it's end.  This puts a 0-length range between the new text and the old text to be deleted.
-         * Delete the next n characters, where n is the length of the old text.  i.e. delete the old text. 
-         * Move the starting point of the range to the beginning of the new text. Now the range reflects the location of the new text.
-         * 
-         * Why do we have to do this? Ranges behave weirdly when you add/remove text at the point where ranges touch.
-         * By doing this convoluted process, we ensure that we never add/remove text in a way that causes ranges to overlap.
-         */
+        /// <summary>
+        /// Make the desired changes in the document.
+        /// </summary>
+        /// <param name="desiredLength">The desired character length for the region.  Selections will be retrieved and reflected in the document</param>
         public void makeChangesInDocument(int desiredLength)
         {
+            /* This is the way we have to make changes in the document when the slider moves.
+            * What we should be able to do: Range.Text = PatchSelection.selection
+            * What we have to do instead:
+            * Collapse the patch's range to the beginning of the range
+            * Add the new text after this 0-length range.  The range now extends to contain this new text.
+            * Collapse the range to it's end.  This puts a 0-length range between the new text and the old text to be deleted.
+            * Delete the next n characters, where n is the length of the old text.  i.e. delete the old text. 
+            * Move the starting point of the range to the beginning of the new text. Now the range reflects the location of the new text.
+            * 
+            * Why do we have to do this? Ranges behave weirdly when you add/remove text at the point where ranges touch.
+            * By doing this convoluted process, we ensure that we never add/remove text in a way that causes ranges to overlap.
+            */
             List<PatchSelection> pSelections = getPatchSelections(desiredLength);          
             for (int i = 0; i < pSelections.Count; i++)
             {
@@ -204,6 +236,13 @@ namespace Soylent.Model.Shortn
                 int originalLength = selection1.patch.range.End - selection1.patch.range.Start;
                 string newString = selection1.selection;
                 int newLength = newString.Length;
+
+                if (newLength == 0)
+                {
+                    newString = " ";
+                    newLength = 1;
+                }
+
                 selection1.patch.range.Collapse(); //Collapse to the beginning
                 selection1.patch.range.InsertAfter(newString); //Insert the new text
                 int newStart = selection1.patch.range.Start;
@@ -214,6 +253,10 @@ namespace Soylent.Model.Shortn
             }
         }
 
+        /// <summary>
+        /// Returns a list of possible lengths, given the different permutations of selection choices.
+        /// </summary>
+        /// <returns></returns>
         public List<int> possibleLengths()
         {
             return (from entry in cachedSelections orderby entry.Key ascending select entry.Key).ToList();
@@ -260,7 +303,10 @@ namespace Soylent.Model.Shortn
             return results;
         }
 
-
+        /// <summary>
+        /// Gets canned data for testing purposes
+        /// </summary>
+        /// <returns></returns>
         public static ShortnData getCannedData()
         {
             // insert text

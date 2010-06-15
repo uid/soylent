@@ -12,6 +12,9 @@ using Soylent.View;
 
 namespace Soylent.Model
 {
+    /// <summary>
+    /// A superclass that represents the Model for an individual HIT.
+    /// </summary>
     public class HITData
     {
         public int job { get; set; }
@@ -32,6 +35,11 @@ namespace Soylent.Model
             }
         }
 
+        /// <summary>
+        /// A superclass that represents the Model for an individual HIT.
+        /// </summary>
+        /// <param name="range">The Range object selected for this task</param>
+        /// <param name="job">The unique job number for this task</param>
         public HITData(Word.Range range, int job)
         {
             this.range = range;
@@ -59,11 +67,18 @@ namespace Soylent.Model
             tk = new TurKit(this);
         }
 
+        /// <summary>
+        /// Start the task on the TurKit isntance tied to this job
+        /// </summary>
         public void startTask()
         {
             tk.startTask();
         }
 
+        /// <summary>
+        /// Register a View that listens to this Model
+        /// </summary>
+        /// <param name="hview"></param>
         public virtual void register(HITView hview)
         {
             view = hview;

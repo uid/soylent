@@ -7,6 +7,9 @@ using Soylent.View;
 
 namespace Soylent.Model
 {
+    /// <summary>
+    /// Represents the data from a specific stage in a job.  For example: the Find, Fix, or Verify stage.
+    /// </summary>
     public class StageData
     {
         private StageView listener;
@@ -32,6 +35,11 @@ namespace Soylent.Model
         private List<int> numPatches;
         private List<List<bool>> done;
 
+        /// <summary>
+        /// Represents the data from a specific stage in a job.  For example: the Find, Fix, or Verify stage.
+        /// </summary>
+        /// <param name="type">The type of the stage.  For example, Find, Fix, or Verify</param>
+        /// <param name="numParagraphs">The number of paragraphs in this job</param>
         public StageData(HITData.ResultType type, int numParagraphs)
         {
             this.type = type;
@@ -50,11 +58,19 @@ namespace Soylent.Model
                 done[i].Add(false);
             }
         }
+        /// <summary>
+        /// Registers a View as a listener for this Model
+        /// </summary>
+        /// <param name="sview">The view for this stage</param>
         public void registerListener(StageView sview)
         {
             listener = sview;
         }
 
+        /// <summary>
+        /// Updates the Model with a new status message and then notifies the listener
+        /// </summary>
+        /// <param name="status"></param>
         public void updateStage(TurKitSocKit.TurKitStatus status)
         {
             if (numPatches[status.paragraph] != status.totalPatches)  // we need to update the total number of patches
