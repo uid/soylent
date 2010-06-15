@@ -24,7 +24,11 @@ namespace Soylent.View
         public Dictionary<HITData.ResultType, StageView> stageList;
         public HITData data;
 
-        //public HITView(string workType, string originalText)
+        /// <summary>
+        /// The view for a task in the sidebar
+        /// </summary>
+        /// <param name="workType">Job type</param>
+        /// <param name="data">Data Model for this View</param>
         public HITView(string workType, HITData data)
         {
             InitializeComponent();
@@ -37,6 +41,14 @@ namespace Soylent.View
             stageList = new Dictionary<HITData.ResultType,StageView>();
         }
 
+        /// <summary>
+        /// Add a stage to this container
+        /// </summary>
+        /// <param name="stageNum"></param>
+        /// <param name="type"></param>
+        /// <param name="stageType"></param>
+        /// <param name="totalTurkers"></param>
+        /// <param name="totalCost"></param>
         public void addStage(int stageNum, HITData.ResultType type, string stageType, int totalTurkers, double totalCost) {
             StageData stagedata = data.stages[type];
             StageView newStage = new StageView(stageNum, type, stagedata, stageType, totalTurkers, totalCost);
@@ -55,8 +67,6 @@ namespace Soylent.View
             }
              */
         }
-
-        //TODO: Move to subclass
         
     }
 }

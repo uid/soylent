@@ -31,7 +31,13 @@ namespace Soylent.View
         {
         }
 
-        //public HITView addHIT(string name, string text)
+        /// <summary>
+        /// Add a job to this container in the sidebar
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <param name="jobNumber"></param>
+        /// <returns></returns>
         public HITView addHIT(string name, HITData data, int jobNumber)
         {
             // Create the ElementHost control for hosting the

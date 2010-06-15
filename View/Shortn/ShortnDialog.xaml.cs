@@ -23,6 +23,10 @@ namespace Soylent.View.Shortn
     {
         private ShortnData data;
 
+        /// <summary>
+        /// The dialog window that opens when a user wants to interact with returned Shortn data.
+        /// </summary>
+        /// <param name="data">The Model for this Shortn job</param>
         public ShortnDialog(ShortnData data)
         {
             InitializeComponent();
@@ -80,8 +84,8 @@ namespace Soylent.View.Shortn
             makeChangesInDocument((int)Math.Round(data.longestLength * percent));
         }
 
-        public delegate void makeChangesInDocumentDelegate(int var);
-        public void makeChangesInDocument(int var)
+        private delegate void makeChangesInDocumentDelegate(int var);
+        private void makeChangesInDocument(int var)
         {
             data.makeChangesInDocument(var);
         }

@@ -39,7 +39,9 @@ namespace Soylent
             // destructor to make sure that socket is closed
             serverSocket.Close();
         }
-
+        /// <summary>
+        /// Connects to a socket on the local machine and begins listening on the socket.
+        /// </summary>
         public void Listen() {
             IPAddress address = IPAddress.Parse("127.0.0.1");
             IPEndPoint localEP = new IPEndPoint(address, port);
@@ -64,6 +66,9 @@ namespace Soylent
             Console.WriteLine("Closing the listener...");
         }
 
+        /*
+         * Function called as an asynchronous callback when data is received on the socket.
+         */
         private void AcceptCallback(IAsyncResult result)
         {
             Console.WriteLine("Got a connection!");
@@ -184,6 +189,9 @@ catch (SocketException exc)
             public int totalPatches;
         }
 
+        /// <summary>
+        /// Signals that a stage for a specific job, paragraph, and patch has completed
+        /// </summary>
         public class TurKitStageComplete
         {
             public int job;
@@ -205,6 +213,9 @@ catch (SocketException exc)
             public List<TurKitShortnPatch> patches;
         }
 
+        /// <summary>
+        /// Data returning a patch from a Shortn task.
+        /// </summary>
         public class TurKitShortnPatch
         {
             public int start;
@@ -219,6 +230,9 @@ catch (SocketException exc)
             public string originalText;
         }
 
+        /// <summary>
+        /// Data returning an option for a specific patch
+        /// </summary>
         public class TurKitShortnPatchOption
         {
             public string text;

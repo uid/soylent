@@ -13,6 +13,10 @@ namespace Soylent.Model
 {
     class DummyPatch : Patch
     {
+        /// <summary>
+        /// Creates a dummy patch with the only option being its original text.
+        /// </summary>
+        /// <param name="range">A Range object the patch represents</param>
         public DummyPatch(Word.Range range) : base(range, new List<string> { range.Text })
         {
             // Creates a patch with the only option being itself

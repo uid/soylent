@@ -27,7 +27,10 @@ namespace Soylent
         public Timer turkitLoopTimer;
 
         public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
-
+        /// <summary>
+        /// Creates a TurKit job for the selected task.
+        /// </summary>
+        /// <param name="hdata">The HITData representing the desired job</param>
         public TurKit(HITData hdata)
         {
             rootDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -40,6 +43,9 @@ namespace Soylent
             }
             this.hdata = hdata;
         }
+        /// <summary>
+        /// Starts a task.  For a Shortn task, this breaks the selected range into appropriate groupings, overwrites the template file, and runs TurKit on a Timer.
+        /// </summary>
         public void startTask(){
             if (hdata is ShortnData)
             {
@@ -130,7 +136,9 @@ namespace Soylent
                 turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
             }
         }
-        
+        /// <summary>
+        /// Reads in the AMT secret and key from the amazon.xml file so that HITs can be submitted.
+        /// </summary>
         public void InitializeAmazonKeys()
         {
             //System.Xml.XmlTextReader amazonReader = new System.Xml.XmlTextReader("./amazon.template.xml");

@@ -19,6 +19,11 @@ namespace Soylent.View.Shortn
     public class ShortnView : HITView
     {
         Button ShortnButton;
+        /// <summary>
+        /// HITView subclass specific to Shortn tasks.  This adds the Shortn button and additional necessary functionality.
+        /// </summary>
+        /// <param name="workType"></param>
+        /// <param name="data"></param>
         public ShortnView(string workType, ShortnData data) : base(workType, data)
         {
             //Globals.Soylent.soylent.Controls.Add(new System.Windows.Forms.Button());
@@ -35,6 +40,11 @@ namespace Soylent.View.Shortn
             //ShortnButton.Click = Shortn_Clicked;
             stages.Children.Add(ShortnButton);
         }
+        /// <summary>
+        /// CallBack for when the Shortn button is clicked.  Opens the dialog window and changes the color of the status bars.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Shortn_Clicked(object sender, RoutedEventArgs e)
         {
             openShortnDialog(data as ShortnData);

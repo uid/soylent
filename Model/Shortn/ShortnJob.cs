@@ -13,12 +13,20 @@ using Soylent.View.Shortn;
 
 namespace Soylent.Model.Shortn
 {
+    /// <summary>
+    /// The Model for a Shortn job.  This creates the View elements for this task
+    /// </summary>
     class ShortnJob
     {
         public static string HIT_TYPE = "Shortn";
         private ShortnData data;
         private int jobNumber;
 
+        /// <summary>
+        /// The Model for a Shortn job.  This creates the View elements for this task
+        /// </summary>
+        /// <param name="data">The ShortnData instance for this job</param>
+        /// <param name="jobNumber">The unique job number</param>
         public ShortnJob(ShortnData data, int jobNumber)
         {
             this.data = data;

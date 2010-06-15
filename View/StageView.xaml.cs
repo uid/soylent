@@ -42,6 +42,11 @@ namespace Soylent.View
             updateProgress(0, 0);
         }
 
+        /// <summary>
+        /// Update the View with new status information
+        /// </summary>
+        /// <param name="curTurkers">The number of Turkers who have completed this stage</param>
+        /// <param name="curCost">The current cost of those Turkers</param>
         public void updateProgress(int curTurkers, double curCost)
         {
             numTurkers.Content = curTurkers + " of " + totalTurkers + " workers";
@@ -52,6 +57,9 @@ namespace Soylent.View
             DoubleAnimation doubleanimation = new DoubleAnimation(100 * percentDone, duration);
             hitProgress.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
         }
+        /// <summary>
+        /// Update the View with new status information. Reflects all changes in model data.
+        /// </summary>
         public void updateProgress()
         {
             totalTurkers = stagedata.numRequested;
@@ -66,6 +74,9 @@ namespace Soylent.View
             hitProgress.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
         }
         public delegate void updateProgressDelegate();
+        /// <summary>
+        /// Notifies this View of changes in the Model
+        /// </summary>
         public void notify()
         {
             Globals.Soylent.soylent.Invoke(new updateProgressDelegate(this.updateProgress), new object[] { });
