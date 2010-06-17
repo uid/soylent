@@ -1,8 +1,41 @@
-// imports
-eval(read("../library/patch.js"));
-eval(read("../library/hit_utils.js"));
-eval(read("../library/diff_match_patch_uncompressed.js"));
+eval(read("../library/find-fix-verify.js"));
 
+var findFixVerifyOptions = {
+    paragraphs: paragraphs,
+    buffer_redundancy: 2,	// number of extra assignments to create so that they don't get squatted.
+    wait_time: 20 * 60 * 1000,
+    time_bounded: true,
+    find: {
+        HIT_title: "Find unnecessary text",
+        HIT_description: "I need to shorten my paragraph, and need opinions on what to cut.",
+        HTML_template: "../templates/shortn/shortn-find.html",
+        reward: 0.06,
+        minimum_agreement: 0.20,
+        redundancy: 10,
+        minimum_workers: 6, 
+    },
+    fix: {
+        HIT_title: "Shorten Rambling Text",
+        HIT_description: "A sentence in my paper is too long and I need your help cutting out the fat.",
+        HTML_template: "../templates/shortn/shortn-fix.html",
+        reward: 0.08,
+        redundancy: 5,
+        minimum_workers: 3, 
+    },
+    verify: {
+        HIT_title: "Did I shorten text correctly?",
+        HIT_description: "I need to shorten some text -- which version is best?",
+        HTML_template: "../templates/shortn/shortn-verify.html",
+        reward: 0.04,
+        minimum_agreement: 0.20,
+        redundancy: 5,
+        minimum_workers: 3, 
+    },
+    socket: new Socket("shortn", "localhost", 11000, 2000),
+    output: outputEdits
+};
+
+/*
 var buffer_redundancy = 2;	// number of extra assignments to create so that they don't get squatted.
 var wait_time = 20 * 60 * 1000;	// seconds
 
@@ -21,6 +54,7 @@ var verify_minimum_workers = 3;
 
 var time_bounded = true;
 var rejectedWorkers = []
+*/
 
 if (debug)
 {

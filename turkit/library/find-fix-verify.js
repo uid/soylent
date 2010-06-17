@@ -139,7 +139,7 @@ function findPatches(paragraph_index, findFixVerifyOptions, rejectedWorkers) {
             break;
         }
         else {
-            extendHit(find_hit, buffer_redundancy);
+            extendHit(find_hit, findFixVerifyOptions.buffer_redundancy);
         }	
     }
     cleanUp(find_hit);
@@ -155,12 +155,12 @@ function fixPatches(patch, paragraph_index, patchNumber, totalPatches, findFixVe
     var fix_hit = requestFixes(patch, findFixVerifyOptions);        
     var suggestions = []
     while (true) {	
-        suggestions = joinFixes(fix_hit, patch.plaintextSentence(), paragraph_index, patchNumber, totalPatches, rejectedWorkers);
+        suggestions = joinFixes(fix_hit, patch.plaintextSentence(), paragraph_index, patchNumber, totalPatches, rejectedWorkers, findFixVerifyOptions);
         if (suggestions.length > 0) {
             break;
         }
         else {
-            extendHit(fix_hit, buffer_redundancy, patchNumber);
+            extendHit(fix_hit, findFixVerifyOptions.buffer_redundancy, patchNumber);
         }	
     }		
     
@@ -184,7 +184,7 @@ function verifyPatches(patch, fix_hit, suggestions, paragraph_index, patchNumber
             break;
         }
         else {
-            extendHit(verify_hit, buffer_redundancy);
+            extendHit(verify_hit, findFixVerifyOptions.buffer_redundancy);
         }	
     }				
     
@@ -225,12 +225,12 @@ function requestPatches(paragraph_index, findFixVerifyOptions) {
 function joinPatches(find_hit, paragraph_index, findFixVerifyOptions, rejectedWorkers) {
 	var status = mturk.getHIT(find_hit, true)
 	print("completed by " + status.assignments.length + " of " + findFixVerifyOptions.find.minimum_workers + " turkers");
-	findFixVerifyOptions.socket.sendStatus(Socket.FIND_STAGE, status, paragraph_index, 0, 1);
+	findFixVerifyOptions.socket.sendStatus(Socket.FIND_STAGE, status, paragraph_index, 0, 1, findFixVerifyOptions.buffer_redundancy);
 	
 	var hit = mturk.boundedWaitForHIT(find_hit, findFixVerifyOptions.wait_time, findFixVerifyOptions.find.minimum_workers, findFixVerifyOptions.find.redundancy);
 
 	var patch_suggestions = generatePatchSuggestions(hit.assignments, findFixVerifyOptions.paragraphs[paragraph_index], rejectedWorkers);
-	var patches = aggregatePatchSuggestions(patch_suggestions, hit.assignments.length, findFixVerifyOptions.paragraphs[paragraph_index]);
+	var patches = aggregatePatchSuggestions(patch_suggestions, hit.assignments.length, findFixVerifyOptions.paragraphs[paragraph_index], findFixVerifyOptions.find.minimum_agreement);
 
 	print('\n\n\n');
 
@@ -280,12 +280,12 @@ function generatePatchSuggestions(assignments, paragraph, rejectedWorkers) {
  * Passes through all suggested patches and merges any overlapping ones into a single Patch.
  * Tosses out any patches that don't meet the minimum agreement requirements.
  */
-function aggregatePatchSuggestions(patch_suggestions, num_votes, sentences) {
+function aggregatePatchSuggestions(patch_suggestions, num_votes, sentences, minimum_agreement_percentage) {
 	var open = [];
 	var start = null, end = null;
 	var patches = [];
 	
-	var minimum_agreement = Math.max(1, Math.ceil(num_votes * search_minimum_agreement));
+	var minimum_agreement = Math.max(1, Math.ceil(num_votes * minimum_agreement_percentage));
 	print('number of workers: ' + num_votes);
 	print('minimum agreement needed: ' + minimum_agreement + ' overlapping patches');
 	
@@ -326,7 +326,8 @@ function requestFixes(patch, findFixVerifyOptions) {
 	var full_text = patch.highlightedParagraph();
 	var editable = patch.plaintextSentence();
 
-	var webpage = s3.putString(findFixVerifyOptions.fix.HTML_template.replace(/___TEXT___/g, full_text)
+	var webpage = s3.putString(slurp(findFixVerifyOptions.fix.HTML_template)
+                    .replace(/___TEXT___/g, full_text)
 					.replace(/___EDITABLE___/g, editable));
 	
 
@@ -348,14 +349,14 @@ function requestFixes(patch, findFixVerifyOptions) {
  * Waits for all the edits to be completed
  * @return: all the unique strings that turkers suggested
  */
-function joinFixes(fix_hit, originalSentence, paragraph_index, patchNumber, totalPatches, rejectedWorkers) {
+function joinFixes(fix_hit, originalSentence, paragraph_index, patchNumber, totalPatches, rejectedWorkers, findFixVerifyOptions) {
 	var hitId = fix_hit;
 	print("checking to see if HIT is done")
 	var status = mturk.getHIT(hitId, true)	
-	print("completed by " + status.assignments.length + " of " + edit_minimum_workers + " turkers");
-	findFixVerifyOptions.socket.sendStatus(Socket.FIX_STAGE, status, paragraph_index, patchNumber, totalPatches);
+	print("completed by " + status.assignments.length + " of " + findFixVerifyOptions.fix.minimum_workers + " turkers");
+	findFixVerifyOptions.socket.sendStatus(Socket.FIX_STAGE, status, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions.buffer_redundancy);
 	
-	var hit = mturk.boundedWaitForHIT(hitId, wait_time, edit_minimum_workers, edit_redundancy);
+	var hit = mturk.boundedWaitForHIT(hitId, findFixVerifyOptions.wait_time, findFixVerifyOptions.fix.minimum_workers, findFixVerifyOptions.fix.redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
 	
 	var options = new Array();
@@ -459,8 +460,8 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
 	// get the votes
 	var hitId = verify_hit;
 	var status = mturk.getHIT(hitId, true)	
-	print("completed by " + status.assignments.length + " of " + verify_minimum_workers + " turkers");
-	findFixVerifyOptions.socket.sendStatus(Socket.VERIFY_STAGE, status, paragraph_index, patchNumber, totalPatches);
+	print("completed by " + status.assignments.length + " of " + findFixVerifyOptions.verify.minimum_workers + " turkers");
+	findFixVerifyOptions.socket.sendStatus(Socket.VERIFY_STAGE, status, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions.buffer_redundancy);
 	
 	var hit = mturk.boundedWaitForHIT(hitId, findFixVerifyOptions.wait_time, findFixVerifyOptions.verify.minimum_workers, findFixVerifyOptions.verify.redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
