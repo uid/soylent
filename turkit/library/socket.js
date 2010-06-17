@@ -43,7 +43,7 @@ Socket.prototype.close = function() {
     }
 }
 
-Socket.prototype.sendStatus = function(stage, hit, paragraphNum, patchNumber, totalPatches) {
+Socket.prototype.sendStatus = function(stage, hit, paragraphNum, patchNumber, totalPatches, buffer_redundancy) {
 	var url = (javaTurKit.mode == "sandbox"
 					? "https://workersandbox.mturk.com/mturk/preview?groupId="
 					: "https://www.mturk.com/mturk/preview?groupId=")
