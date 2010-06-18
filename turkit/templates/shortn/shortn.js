@@ -765,7 +765,7 @@ function initializeDebug() {
 	{
 		print('debug version');
 		search_redundancy = 2;
-		search_minimum_workers = 1;
+		search_minimum_workers = 2;
 		edit_redundancy = 2;
 		edit_minimum_workers = 1;
 		verify_redundancy = 2;

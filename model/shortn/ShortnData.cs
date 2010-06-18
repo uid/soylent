@@ -237,11 +237,13 @@ namespace Soylent.Model.Shortn
                 string newString = selection1.selection;
                 int newLength = newString.Length;
 
+                /*
                 if (newLength == 0)
                 {
                     newString = " ";
                     newLength = 1;
                 }
+                */
 
                 selection1.patch.range.Collapse(); //Collapse to the beginning
                 selection1.patch.range.InsertAfter(newString); //Insert the new text
@@ -250,6 +252,29 @@ namespace Soylent.Model.Shortn
                 selection1.patch.range.Collapse(Microsoft.Office.Interop.Word.WdCollapseDirection.wdCollapseEnd); //Collapse to the end
                 selection1.patch.range.Delete(Microsoft.Office.Interop.Word.WdUnits.wdCharacter, originalLength); //Delete old text
                 selection1.patch.range.SetRange(newStart, newEnd); // Fix the range
+
+                if (originalLength == 0)
+                {
+                    fixFutureRangeStarts(pSelections, i, newStart);
+                }
+            }
+        }
+
+        public static void fixFutureRangeStarts(List<PatchSelection> pSelections, int i, int start)
+        {
+            PatchSelection first = pSelections[i];
+            if (i + 1 < pSelections.Count)
+            {
+                PatchSelection next = pSelections[i + 1];
+                if (next.patch.range.Start == start)
+                {
+                    next.patch.range.Start = first.patch.range.End;
+                    fixFutureRangeStarts(pSelections, i + 1, start);
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 

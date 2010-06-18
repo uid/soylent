@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 
 using Soylent.Model;
 using Soylent.Model.Shortn;
+using Soylent.Model.Crowdproof;
 
 
 namespace Soylent
@@ -120,19 +121,30 @@ namespace Soylent
                     Match regexResult = typeRegex.Match(incomingString);
                     string messageType = regexResult.Groups["messageType"].Value;
 
+                    Regex jobtypeRegex = new Regex("\"__jobType__\"\\s*:\\s*\"(?<jobType>.*)\"");
+                    Match jobregexResult = jobtypeRegex.Match(incomingString);
+                    string jobType = regexResult.Groups["jobType"].Value;
+
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    if (messageType == "status")
+                     if (messageType == "status")
                     {
                         TurKitStatus receivedObject = serializer.Deserialize<TurKitStatus>(incomingString);
                         
                         HITData concernedHIT = Globals.Soylent.soylent.jobMap[receivedObject.job];
-                        ShortnData shortenData = concernedHIT as ShortnData;
-
+                        
                         Debug.WriteLine(receivedObject.hitURL);
                         
-                        if (shortenData != null)
+                        //if (concernedHIT is ShortnData)
+                        if (jobType == "shortn")
                         {
+                            ShortnData shortenData = concernedHIT as ShortnData;
                             shortenData.updateStatus(receivedObject);
+                        }
+                        //else if (concernedHIT is CrowdproofData)
+                        else if (jobType == "crowdproof")
+                        {
+                            CrowdproofData crowdproofData = concernedHIT as CrowdproofData;
+                            crowdproofData.updateStatus(receivedObject);
                         }
                     }
                     else if (messageType == "stageComplete")
@@ -143,6 +155,7 @@ namespace Soylent
                         ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
                         shortenData.stageCompleted(receivedObject);
                     }
+                    /*
                     else if (messageType == "shortn")
                     {
                         Debug.WriteLine("GOTT SHORTN MESSAGE********************");
@@ -150,6 +163,29 @@ namespace Soylent
                         ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
                         shortenData.processSocKitMessage(receivedObject);
                         
+                    }
+                    else if (messageType == "crowdproof")
+                    {
+                        Debug.WriteLine("GOTT CROWDPROOF MESSAGE********************");
+                        TurKitCrowdproof receivedObject = serializer.Deserialize<TurKitCrowdproof>(incomingString);
+                        CrowdproofData crowdproofData = Globals.Soylent.soylent.jobMap[receivedObject.job] as CrowdproofData;
+                        crowdproofData.processSocKitMessage(receivedObject);
+                    }
+                     */
+                    else if (messageType == "complete")
+                    {
+                        if (jobType == "shortn")
+                        {
+                            TurKitShortn receivedObject = serializer.Deserialize<TurKitShortn>(incomingString);
+                            ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
+                            shortenData.processSocKitMessage(receivedObject);
+                        }
+                        else if (jobType == "crowdproof")
+                        {
+                            TurKitCrowdproof receivedObject = serializer.Deserialize<TurKitCrowdproof>(incomingString);
+                            CrowdproofData crowdproofData = Globals.Soylent.soylent.jobMap[receivedObject.job] as CrowdproofData;
+                            crowdproofData.processSocKitMessage(receivedObject);
+                        }
                     }
                     Debug.WriteLine("got it!");
                      
@@ -201,6 +237,34 @@ catch (SocketException exc)
             public int paragraph;
             public int patchNumber;
             public int totalPatches;
+        }
+
+        public class TurKitCrowdproof
+        {
+            public int job;
+            public int paragraph;
+            public List<TurKitCrowdproofPatch> patches;
+        }
+
+        public class TurKitCrowdproofPatch
+        {
+            public int start;
+            public int end;
+            public int editStart;
+            public int editEnd;
+            public int numEditors;
+            public List<TurKitCrowdproofPatchOption> options;
+            public List<string> reasons;
+            public string originalText;
+        }
+
+        public class TurKitCrowdproofPatchOption
+        {
+            public string text;
+            public int editStart;
+            public int editEnd;
+            public string replacement;
+            //TODO: does this make sense?  multiple reasons?
         }
 
         /// <summary>

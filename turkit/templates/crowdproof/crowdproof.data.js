@@ -1,3 +1,5 @@
+
+/*
 var soylentJob = 1;
 
 var paragraphs = [ 
@@ -8,7 +10,8 @@ var paragraphs = [
 	"In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.",
 	"In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.", 
 	"People still do much tedious and repetitive work in front of a computer."] ];
-
+*/
+	
 if (typeof(soylentJob) != "undefined") {
 	var host = "localhost";
 	var port = 11000;
@@ -36,7 +39,7 @@ else {
 }
 
 // imports
-eval(read("../templates/crowdproof/fix_errors.js"));
+eval(read("../templates/crowdproof/crowdproof.js"));
 
 main();
 

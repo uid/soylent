@@ -216,7 +216,9 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Model\Crowdproof\CrowdproofJob.cs" />
     <Compile Include="Model\WordVersion.cs" />
+    <Compile Include="View\Crowdproof\CrowdproofView.cs" />
     <Compile Include="View\Shortn\ShortnView.cs" />
     <Compile Include="Model\DummyPatch.cs" />
     <Compile Include="Model\StageData.cs" />

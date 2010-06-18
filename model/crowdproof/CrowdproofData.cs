@@ -13,6 +13,7 @@ using VSTO = Microsoft.Office.Tools.Word;
 
 using Soylent.Model.HumanMacro;
 using Soylent.View;
+using Soylent.View.Crowdproof;
 
 namespace Soylent.Model.Crowdproof
 {
@@ -23,6 +24,29 @@ namespace Soylent.Model.Crowdproof
         public CrowdproofData(Word.Range range, int job)
             : base(range, job)
         {
+            stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
+            stages[ResultType.Fix] = new StageData(ResultType.Fix, numParagraphs);
+            stages[ResultType.Verify] = new StageData(ResultType.Verify, numParagraphs);
+
+            patches = new List<CrowdproofPatch>();
+
+            typeMap = new Dictionary<string, ResultType>();
+            typeMap["find"] = ResultType.Find;
+            typeMap["fix"] = ResultType.Fix;
+            typeMap["verify"] = ResultType.Verify;
+        }
+
+        new public void updateStatus(TurKitSocKit.TurKitStatus status)
+        {
+            string stringtype = status.stage;
+            System.Diagnostics.Debug.WriteLine(stringtype);
+            //System.Diagnostics.Debug.WriteLine("^^^^^ stringtype ^^^^^^");
+            ResultType type = typeMap[stringtype];
+            StageData stage = stages[type];
+            //stage.updateStage(status.numCompleted, status.paragraph);
+
+            stage.updateStage(status);
+            //System.Diagnostics.Debug.WriteLine("GOT A ************");
         }
 
         public void AnnotateResult()
@@ -63,6 +87,37 @@ namespace Soylent.Model.Crowdproof
                     pp.range.Underline = Word.WdUnderline.wdUnderlineWavy;
                     pp.range.Font.UnderlineColor = Word.WdColor.wdColorAqua;
                 }
+            }
+        }
+
+        public void processSocKitMessage(TurKitSocKit.TurKitCrowdproof message)
+        {
+            int paragraphsCompleted = 0;
+
+            Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
+            foreach (TurKitSocKit.TurKitCrowdproofPatch tkspatch in message.patches)
+            {
+
+                int start = curParagraphRange.Start + tkspatch.editStart;
+                int end = curParagraphRange.Start + tkspatch.editEnd;
+                Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start, end); //New range for this patch, yay!
+
+                CrowdproofPatch thisPatch = new CrowdproofPatch(patchRange, (from option in tkspatch.options select option.replacement).ToList(), tkspatch.reasons);
+                // add the original as an option
+                //thisPatch.replacements.Add(tkspatch.originalText);
+
+                patches.Add(thisPatch);
+            }
+
+            paragraphsCompleted++;
+
+            if (paragraphsCompleted == numParagraphs) //If we have done all paragraphs, make them available to the user!
+            {
+                //TODO: use a delegate.
+                this.tk.turkitLoopTimer.Dispose();
+                CrowdproofView view = this.view as CrowdproofView;
+                view.crowdproofDataReceived();
+                this.AnnotateResult();
             }
         }
 

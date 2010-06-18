@@ -19,6 +19,7 @@ using Soylent.Model.HumanMacro;
 using Soylent.View;
 using Soylent.View.Shortn;
 using Soylent.View.HumanMacro;
+using Soylent.View.Crowdproof;
 
 namespace Soylent
 {
@@ -47,7 +48,47 @@ namespace Soylent
 
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)
         {
-            ShortnView.openShortnDialog(ShortnData.getCannedData());
+            //ShortnView.openShortnDialog(ShortnData.getCannedData());
+            /*
+            TurKitSocKit.TurKitStatus receivedObject = new TurKitSocKit.TurKitStatus();
+            receivedObject.hitURL = "http://www.google.com";
+            receivedObject.job = 1;
+            receivedObject.numCompleted = 1;
+            receivedObject.paragraph = 0;
+            receivedObject.patchNumber = 0;
+            receivedObject.payment = .05;
+            receivedObject.stage = "find";
+            receivedObject.totalPatches = 1;
+            receivedObject.totalRequested = 7;
+            */
+            TurKitSocKit.TurKitCrowdproof crowdproof = new TurKitSocKit.TurKitCrowdproof();
+            crowdproof.job = 1;
+            crowdproof.paragraph = 0;
+            crowdproof.patches = new List<TurKitSocKit.TurKitCrowdproofPatch>();
+            TurKitSocKit.TurKitCrowdproofPatch patch1 = new TurKitSocKit.TurKitCrowdproofPatch();
+            patch1.start = 2;
+            patch1.end = 2;
+            List<string> reasons = new List<string>();
+            reasons.Add("Subject/Verb agreement");
+            List<TurKitSocKit.TurKitCrowdproofPatchOption> options = new List<TurKitSocKit.TurKitCrowdproofPatchOption>();
+            TurKitSocKit.TurKitCrowdproofPatchOption op1 = new TurKitSocKit.TurKitCrowdproofPatchOption();
+            op1.editStart = 2;
+            op1.editEnd = 4;
+            op1.replacement = "am";
+            op1.text = "is";
+            options.Add(op1);
+            patch1.reasons = reasons;
+            patch1.originalText = "is";
+            patch1.options = options;
+            patch1.numEditors = 2;
+            patch1.editStart = 2;
+            patch1.editEnd = 4;
+            crowdproof.patches.Add(patch1);
+            
+            CrowdproofData cpd = Globals.Soylent.soylent.jobMap[crowdproof.job] as CrowdproofData;
+            cpd.processSocKitMessage(crowdproof);
+            //cpd.updateStatus(receivedObject);
+            
         }
 
         private void humanMacroBtn_Click(object sender, RibbonControlEventArgs e)
@@ -110,8 +151,21 @@ namespace Soylent
 
         private void button1_Click(object sender, RibbonControlEventArgs e)
         {
+            /*
+            Globals.Soylent.Application.ActiveDocument.ShowRevisions = true;//!Globals.Soylent.Application.ActiveDocument.ShowRevisions;
+            Globals.Soylent.Application.ActiveDocument.TrackRevisions = !Globals.Soylent.Application.ActiveDocument.TrackRevisions;
+            Word.Range range = Globals.Soylent.Application.ActiveDocument.Range(0, 4);
+            range.Text = Globals.Soylent.Application.ActiveDocument.TrackRevisions.ToString();
+             * */
+
+            CrowdproofData data = CrowdproofData.getCannedData();
+            CrowdproofView.insertTrackChanges(data);
+
+            //Globals.Soylent.Application.ActiveDocument.TrackRevisions = true;
+            /*
             TurKitSocKit tksc = new TurKitSocKit();
             tksc.Listen();
+            */
         }
 
         private void button2_Click(object sender, RibbonControlEventArgs e)
@@ -179,8 +233,15 @@ namespace Soylent
 
         private void button3_Click(object sender, RibbonControlEventArgs e)
         {
-            CrowdproofData data = CrowdproofData.getCannedData();
-            data.AnnotateResult();
+            //CrowdproofData data = CrowdproofData.getCannedData();
+
+            Word.Range toCrowdproof = Globals.Soylent.Application.Selection.Range;
+            int jobNumber = generateJobNumber();
+            CrowdproofData newHIT = new CrowdproofData(toCrowdproof, jobNumber);
+            allHITs[newHIT.job] = newHIT;
+            CrowdproofJob c = new CrowdproofJob(newHIT, jobNumber);
+            //CrowdproofData data = CrowdproofData.getCannedData();
+            //data.AnnotateResult();
         }
 
         private void jobStatus_Click(object sender, RibbonControlEventArgs e)

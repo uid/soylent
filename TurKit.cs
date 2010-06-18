@@ -14,6 +14,7 @@ using System.Web.Script.Serialization;
 using System.Text.RegularExpressions;
 using Soylent.Model;
 using Soylent.Model.Shortn;
+using Soylent.Model.Crowdproof;
 
 namespace Soylent
 {
@@ -125,6 +126,99 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
+                Debug.Print(arguments);
+
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
+                //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+
+                TimerCallback callback = ExecuteProcess;
+                int timer = 60 * 1000;
+                if (Soylent.DEBUG)
+                {
+                    timer = 30 * 1000;
+                }
+                turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
+            }
+            else if (hdata is CrowdproofData)
+            {
+                CrowdproofData data = hdata as CrowdproofData;
+
+                string[][] pgraphs = new string[data.range.Paragraphs.Count][];
+                // Range.Paragraphs and Range.Sentences are 1 INDEXED
+                for (int i = 0; i < data.range.Paragraphs.Count; i++)
+                {
+                    Word.Paragraph paragraph = data.range.Paragraphs[i + 1];
+                    pgraphs[i] = new string[paragraph.Range.Sentences.Count];
+                    for (int j = 0; j < paragraph.Range.Sentences.Count; j++)
+                    {
+                        Word.Range sentence = paragraph.Range.Sentences[j + 1];
+                        string temp = sentence.Text;
+
+                        // Whitespace characters in the middle of sentences will not be removed
+                        temp = temp.Trim();
+                        pgraphs[i][j] = temp;
+                    }
+                }
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string paragraphs = js.Serialize(pgraphs);
+                //string paragraphs = JsonConvert.SerializeObject(pgraphs);
+
+                paragraphs = "var paragraphs = " + paragraphs + ";";
+
+                // figure out whether there are one or two spaces between sentences
+                string firstSentence = data.range.Paragraphs[1].Range.Sentences[1].Text;
+                string spacesBetweenSentences = " ";
+                if (firstSentence.EndsWith("  "))
+                {
+                    spacesBetweenSentences = "  ";
+                }
+                string numSpaces = "var sentence_separator = '" + spacesBetweenSentences + "';";
+
+                int request = hdata.job;
+                directory = rootDirectory + @"\turkit\templates\crowdproof\";
+
+                string requestLine = "var soylentJob = " + request + ";";
+                string debug = "var debug = " + (Soylent.DEBUG ? "true" : "false") + ";";
+
+                string[] script = File.ReadAllLines(directory + @"\crowdproof.data.js");
+
+                int new_lines = 4;
+                string[] newScript = new string[new_lines + script.Length];
+                newScript[0] = requestLine;
+                newScript[1] = paragraphs;
+                newScript[2] = debug;
+                newScript[3] = numSpaces;
+                Array.Copy(script, 0, newScript, new_lines, script.Length);
+
+                // Delete old files
+                /*
+                if (!Soylent.DEBUG)
+                {
+                    DirectoryInfo di = new DirectoryInfo(rootDirectory + @"\turkit\active-hits\");
+                    FileInfo[] rgFiles = di.GetFiles("shortn." + request + "*");
+                    foreach (FileInfo file in rgFiles)
+                    {
+                        file.Delete();
+                    }
+                }
+                 */
+
+                string requestFile = rootDirectory + @"\turkit\active-hits\crowdproof." + request + ".data.js";
+                File.WriteAllLines(requestFile, newScript, Encoding.UTF8);
+
+                InitializeAmazonKeys();
+
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
+                if (Soylent.DEBUG)
+                {
+                    arguments += " -m sandbox";
+                }
+                else
+                {
+                    arguments += " -m real";
+                }
+
+                
                 ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
                 TimerCallback callback = ExecuteProcess;
@@ -134,6 +228,7 @@ namespace Soylent
                     timer = 30 * 1000;
                 }
                 turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
+                
             }
         }
         /// <summary>
