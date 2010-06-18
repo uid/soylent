@@ -7,6 +7,7 @@ eval(read("../library/socket.js"));
 /*
  *  Input data structure should look like:
  *  {
+ *      jobType: string -- the title of the kind of job being run, e.g. "shortn", "crowdproof", etc.
  *      paragraphs: [[string]] -- array of sentence strings (input),
  *      buffer_redundancy: int -- 2, or the number of extra assignments to create so that they don't get squatted,
  *      wait_time: int -- 20 * 60 * 1000, or the number of milliseconds to wait for each stage before timing out and continuing  with fewer workers than desired,
@@ -19,6 +20,8 @@ eval(read("../library/socket.js"));
  *          minimum_agreement: double -- 0.20, or another percentage of how many turkers must agree on a patch to use it,
  *          redundancy: int -- 10, or the number of workers we want to complete the task
  *          minimum_workers: int -- the smallest number of workers to use. Wait for at least this many even if we time out.
+ *          transformWebpage: function(webpageContents, paragraph) --- returns webpageContents with any user-defined changes made to it. null if no changes are necessary.
+ *          customTest: function(paragraph, patch_start, patch_end) --- returns data structure { passes (boolean), reason (string) } if the patch is valid or invalid (reject work), or null for no extra test
  *      },
  *      fix: {
  *          HIT_title: string,
@@ -27,6 +30,9 @@ eval(read("../library/socket.js"));
  *          reward: double,
  *          redundancy: int,
  *          minimum_workers: int, 
+ *          transformWebpage: function(webpageContents, paragraph) --- returns webpageContents with any user-defined changes made to it. null if no changes are necessary.
+ *          customTest: function({paragraph, start_index, end_index}) --- returns data structure { passes (boolean), reason (string) } if the bracket contents is valid or invalid (reject work), or null for no extra test. Called on every bracketed area.
+ *          mapFixResults: function(answer[]) --- returns a transformed answer array, allowing the programmer to retain only unique suggestions or transform the output. null for no transformation needed.
  *      },
  *      verify: {
  *          HIT_title: string,
@@ -35,11 +41,20 @@ eval(read("../library/socket.js"));
  *          reward: double,
  *          minimum_agreement: double,
  *          redundancy: int,
- *          minimum_workers: int, 
+ *          minimum_workers: int,
+ *          fields: [string] --- a list of the fields being voted on, e.g., "grammar". These field names will be populated into the javascript for each suggestion and then read back out by the verify step.
+ *          transformWebpage: function(webpageContents, options) --- returns webpageContents with any user-defined changes made to it. null if no changes are necessary.
+ *          customTest: functionjiofjhawo;igjweo;ighjweao;ijgfaweio;fFIX ME TODO
  *      },
  *      socket: a Socket object (see socket.js) if you would like status messages sent over the socket, or null if you don't want to write to the socket
- *      output: function pointer to function that is responsible for writing outputs to disk, or null if you don't want to write output to disk,
+ *      writeOutput: boolean -- true if you want outputs written to file as the program runs for lag time, payment, and the final output. slows down runtime considerably.
  */
+ 
+// Outputs
+var HTML_output;
+var lag_output;
+var payment_output;
+var patchesOutput;
  
 /**
  * Performs a Find-Fix-Verify computation on the input text.
@@ -49,6 +64,10 @@ function findFixVerify(options) {
 		paragraphs: []
 	};
     var rejectedWorkers = [];
+    
+    if (options.writeOutput) {
+        initializeOutput();
+    }
 	
 	for (var paragraph_index = 0; paragraph_index < options.paragraphs.length; paragraph_index++) {
 		attempt(function() {
@@ -79,17 +98,18 @@ function findFixVerify(options) {
                     // Fix stage
                     [suggestions, fix_hit] = fixPatches(patch, paragraph_index, i, patches.length, options, rejectedWorkers);
                     fixHITs[i] = fix_hit;
+
                     // Verify stage
-                    [grammar_votes, meaning_votes, verify_hit] = verifyPatches(patch, fix_hit, suggestions, paragraph_index, i, patches.length, options, rejectedWorkers);
+                    [votes, verify_hit] = verifyPatches(patch, fix_hit, suggestions, paragraph_index, i, patches.length, options, rejectedWorkers);
                     verifyHITs[i] = verify_hit;
 					
                     // Create output data structure
-                    var patchOutput = generatePatch(patch, find_hit, fix_hit, verify_hit, grammar_votes, meaning_votes, suggestions, paragraph_index);
+                    var patchOutput = generatePatch(patch, find_hit, fix_hit, verify_hit, votes, suggestions, paragraph_index);
                     paragraphResult.patches.push(patchOutput);
                     
                     // Write file output
-                    if (options.output != null) {
-                        options.output(output, lag_output, payment_output, paragraph, patch, find_hit,
+                    if (options.writeOutput) {
+                        outputEdits(HTML_output, lag_output, payment_output, paragraph, patch, find_hit,
                                     fix_hit, verify_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, patchOutput);
                     }
                     finishedArray[i] = true;
@@ -119,6 +139,10 @@ function findFixVerify(options) {
 		print("Rejected workers:");
 		print(json(rejectedWorkers.sort()));
 	}
+    
+    if (options.writeOutput) {
+        closeOutputs();
+    }
 }
 
 //
@@ -155,7 +179,7 @@ function fixPatches(patch, paragraph_index, patchNumber, totalPatches, findFixVe
     var fix_hit = requestFixes(patch, findFixVerifyOptions);        
     var suggestions = []
     while (true) {	
-        suggestions = joinFixes(fix_hit, patch.plaintextSentence(), paragraph_index, patchNumber, totalPatches, rejectedWorkers, findFixVerifyOptions);
+        suggestions = joinFixes(fix_hit, patch.plaintextSentence(), paragraph_index, patch, patchNumber, totalPatches, rejectedWorkers, findFixVerifyOptions);
         if (suggestions.length > 0) {
             break;
         }
@@ -175,12 +199,18 @@ function fixPatches(patch, paragraph_index, patchNumber, totalPatches, findFixVe
  */
 function verifyPatches(patch, fix_hit, suggestions, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions, rejectedWorkers) {
     var verify_hit = requestVotes(patch, suggestions, fix_hit, findFixVerifyOptions);
-    var grammar_votes = [];
-    var meaning_votes = [];
+    var votes = [];
     while (true) {
-        [grammar_votes, meaning_votes] = joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions, rejectedWorkers);
+        votes = joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions, rejectedWorkers);
         
-        if (numVotes(grammar_votes) > 0 && numVotes(meaning_votes) > 0) {
+        var fields_complete = 0;
+        foreach(findFixVerifyOptions.verify.fields, function(field) {
+            if (numVotes(votes[field]) > 0) {
+                fields_complete++;
+            }
+        });
+        
+        if (fields_complete == findFixVerifyOptions.verify.fields.length) {
             break;
         }
         else {
@@ -190,7 +220,7 @@ function verifyPatches(patch, fix_hit, suggestions, paragraph_index, patchNumber
     
     cleanUp(verify_hit);
     findFixVerifyOptions.socket.sendStageComplete(Socket.VERIFY_STAGE, paragraph_index, mturk.getHIT(verify_hit, true), patchNumber, totalPatches);
-    return [grammar_votes, meaning_votes, verify_hit]
+    return [votes, verify_hit]
 }
 
 //
@@ -206,10 +236,13 @@ function requestPatches(paragraph_index, findFixVerifyOptions) {
     var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
 				.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "find");
 
-	var webpage = s3.putString(slurp(findFixVerifyOptions.find.HTML_template)
-                    .replace(/___PARAGRAPH___/g, text)
-                    .replace(/___ESCAPED_PARAGRAPH___/g, escape(text))
-                    .replace(/___HEADER_SCRIPT___/g, header));
+	var webpageContents = slurp(findFixVerifyOptions.find.HTML_template)
+                          .replace(/___HEADER_SCRIPT___/g, header)
+                          .replace(/___PARAGRAPH___/g, text);
+    if (findFixVerifyOptions.find.transformWebpage != null) {
+        webpageContents = findFixVerifyOptions.find.transformWebpage(webpageContents, text);
+    }                    
+    var webpage = s3.putString(webpageContents);
 
 	// create a HIT on MTurk using the webpage
 	var hitId = mturk.createHIT({
@@ -235,7 +268,7 @@ function joinPatches(find_hit, paragraph_index, findFixVerifyOptions, rejectedWo
 	
 	var hit = mturk.boundedWaitForHIT(find_hit, findFixVerifyOptions.wait_time, findFixVerifyOptions.find.minimum_workers, findFixVerifyOptions.find.redundancy);
 
-	var patch_suggestions = generatePatchSuggestions(hit.assignments, findFixVerifyOptions.paragraphs[paragraph_index], rejectedWorkers);
+	var patch_suggestions = generatePatchSuggestions(hit.assignments, findFixVerifyOptions.paragraphs[paragraph_index], findFixVerifyOptions.find.customPatchTest, rejectedWorkers);
 	var patches = aggregatePatchSuggestions(patch_suggestions, hit.assignments.length, findFixVerifyOptions.paragraphs[paragraph_index], findFixVerifyOptions.find.minimum_agreement);
 
 	print('\n\n\n');
@@ -243,13 +276,11 @@ function joinPatches(find_hit, paragraph_index, findFixVerifyOptions, rejectedWo
 	return patches;
 }
 
-var MAX_PATCH_LENGTH = 250;
 /**
  * Identifies the areas in [[brackets]] and does error checking. If it's up to snuff, creates a Patch object for each [[area]].
  */
-function generatePatchSuggestions(assignments, paragraph, rejectedWorkers) {
+function generatePatchSuggestions(assignments, paragraph, customPatchTest, rejectedWorkers) {
 	var suggestions = [];
-	var paragraph_length = getParagraph(paragraph).length;				
 	
 	for (var i=0; i<assignments.length; i++) {
 		var user_paragraph = assignments[i].answer.brackets;
@@ -259,19 +290,31 @@ function generatePatchSuggestions(assignments, paragraph, rejectedWorkers) {
 		while((match = brackets.exec(user_paragraph)) != null) {
 			var start_index = match.index - (4 * numMatches);	// subtract out [['s
 			var end_index = start_index + match[1].length;
-			
-			var patch_length = end_index - start_index;
-			if (patch_length > MAX_PATCH_LENGTH || (patch_length >= .90 * paragraph_length && paragraph_length >= 100)) {
-				print("WARNING: patch is too long. discarding.");
-				// if they just took the whole paragraph, then reject them!				
-				print("REJECTING: They highlighted over 90% of the paragraph!");
-				rejectedWorkers.push(assignments[i].workerId);
-				try {
-					mturk.rejectAssignment(assignments[i], "Please, it is not fair to just highlight huge chunks of the paragraph. I am looking for specific areas.");
-				} catch(e) {
-					print(e);
-				}
-			} else {			
+
+            var toTest = {
+                paragraph: paragraph,
+                start_index: start_index,
+                end_index: end_index,
+            };
+            var customPassed = testAndReject(customPatchTest, toTest, assignments[i]);
+            var lengthPassed = testAndReject(
+                function(toTest) {
+                	var paragraph_length = getParagraph(toTest.paragraph).length;
+                    var patch_length = toTest.end_index - toTest.start_index;
+                    if (patch_length >= .90 * paragraph_length && paragraph_length >= 100) {
+                        return {
+                            passes: false,
+                            reason: "Please, it is not fair to just highlight huge chunks of the paragraph. I am looking for specific areas."
+                        }
+                    } else {
+                        return {
+                            passes: true,
+                            reason: ""
+                        }
+                    }
+                }, toTest, assignments[i]);
+
+            if (customPassed && lengthPassed) {			
 				var suggestion = new Patch(start_index, end_index, paragraph);
 				suggestions.push(suggestion);
 			}
@@ -292,25 +335,19 @@ function aggregatePatchSuggestions(patch_suggestions, num_votes, sentences, mini
 	var patches = [];
 	
 	var minimum_agreement = Math.max(1, Math.ceil(num_votes * minimum_agreement_percentage));
-	print('number of workers: ' + num_votes);
-	print('minimum agreement needed: ' + minimum_agreement + ' overlapping patches');
 	
 	for (var i=0; i<=getParagraph(sentences).length; i++) {
 		for (var j=0; j<patch_suggestions.length; j++) {
 			if (i == patch_suggestions[j].start) {
 				open.push(patch_suggestions[j]);
-				//print(open.length);
 				if (open.length == minimum_agreement && start == null) {
-					//print('opening');
 					start = open[0].start;
 				}
 			}
 
 			if (i == patch_suggestions[j].end) {
 				open.splice(open.indexOf(open[j]), 1);
-				//print(open.length);
 				if (open.length == 0 && start != null) {
-					//print('closing');
 					end = i;
 					patches.push(new Patch(start, end, sentences));
 					start = end = null;
@@ -335,10 +372,14 @@ function requestFixes(patch, findFixVerifyOptions) {
     var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
 				.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "fix");    
 
-	var webpage = s3.putString(slurp(findFixVerifyOptions.fix.HTML_template)
-                    .replace(/___TEXT___/g, full_text)
-					.replace(/___EDITABLE___/g, editable)
-                    .replace(/___HEADER_SCRIPT___/g, header));	
+	var webpageContents = slurp(findFixVerifyOptions.fix.HTML_template)
+                          .replace(/___HEADER_SCRIPT___/g, header)
+                          .replace(/___TEXT___/g, full_text)
+                          .replace(/___EDITABLE___/g, editable);
+    if (findFixVerifyOptions.fix.transformWebpage != null) {
+        webpageContents = findFixVerifyOptions.fix.transformWebpage(webpageContents, full_text, editable);
+    }                    
+    var webpage = s3.putString(webpageContents);
 
 	// create a HIT on MTurk using the webpage
 	var fix_hit = mturk.createHIT({
@@ -358,7 +399,7 @@ function requestFixes(patch, findFixVerifyOptions) {
  * Waits for all the edits to be completed
  * @return: all the unique strings that turkers suggested
  */
-function joinFixes(fix_hit, originalSentence, paragraph_index, patchNumber, totalPatches, rejectedWorkers, findFixVerifyOptions) {
+function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumber, totalPatches, rejectedWorkers, findFixVerifyOptions) {
 	var hitId = fix_hit;
 	print("checking to see if HIT is done")
 	var status = mturk.getHIT(hitId, true)	
@@ -370,31 +411,18 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patchNumber, tota
 	
 	var options = new Array();
 	foreach(hit.assignments, function(e) {
-		var answer = e.answer.newText;
-		if (answer == originalSentence) {
-			print("REJECTING: They copy/pasted the input.");
-			rejectedWorkers.push(e.workerId);
-			try {
-				mturk.rejectAssignment(e, "Please do not copy/paste the original sentence back in. We're looking for a shorter version.");
-			} catch(e) {
-				print(e);
-			}
-		}
-		else if (answer.length >= originalSentence) {
-			print("REJECTING: They made the sentence longer.");
-			rejectedWorkers.push(e.workerId);
-			try {
-				mturk.rejectAssignment(e, "Your sentence was as long or longer than the original. We're looking for a shorter version.");
-			} catch(e) {
-				print(e);
-			}		
-		}
-		else {
-			options.push(e.answer.newText) 
+        var passed = testAndReject(findFixVerifyOptions.fix.customFixTest, e, e);
+        if (passed) {
+			options.push(e.answer);
 		}
 	});
-	var unique_options = options.unique();	
-	return unique_options;
+    
+    if (findFixVerifyOptions.fix.mapFixResults != null) {
+        return findFixVerifyOptions.fix.mapFixResults(options, patch);
+    }
+    else {
+        return options;
+    }
 }
 
 //
@@ -404,54 +432,49 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patchNumber, tota
 /**
  * Requests a vote filter for the options based on user-requested requirements (e.g., grammaticality)
  */
-function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {		
+function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
 	// Disallow workers from the edit hits from working on the voting hits
-    print('disallowing');
     var fix_hit_complete = mturk.getHIT(fix_hit, true);
-    print(json(fix_hit_complete));
 	edit_workers = []
 	for each (var asst in fix_hit_complete.assignments) { 
 		if (asst.workerId) edit_workers.push(asst.workerId); 
 	}
-    print('banned workers');
-    print(json(edit_workers));
-	
-	var dmp = new diff_match_patch();
-	
+    
+    // Now we create a hit to vote on whether it's good
+	var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, edit_workers)
+					.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "_verify");
+    var webpageContents = slurp(findFixVerifyOptions.verify.HTML_template)
+                            .replace(/___HEADER_SCRIPT___/g, header)
+                            .replace(/___HIGHLIGHTED___/g, patch.highlightedParagraph());
+                            
+	var dmp = new diff_match_patch();	
 	// provide a challenge if there is only one option
 	if (options.length == 1) {
 		var original = patch.plaintextSentence();
 		if (original != options[0]) {
 			options.push(original);
 		}
-	}	
+	}
+    
+    foreach(findFixVerifyOptions.verify.fields, function(field) {    
+        var table = '<table>';
+        foreach(options, function (correction, j) {
+            // Annotate the patch to make clear what's changed via a diff
+            var diff = dmp.diff_main(patch.plaintextSentence(), correction);
+            dmp.diff_cleanupSemantic(diff);		          
+            var diff_html = "<div>" + dmp.diff_prettyHtml(diff) + "</div>";		
+                        
+            var row = '<tr valign="top" class="' + field + '"><td><label><input type="checkbox" name="' + field + '" value="' + escape(correction) + '"></input></label></td><td>' +  diff_html + '</td></tr>';
+            table +=  row;
+        });
+        table += '</table>';
+        webpageContents = webpageContents.replace(new RegExp("___" + field.toUpperCase() + "_VOTE___", "g"), table);
+    });
 
-    // Annotate the patch to make clear what's changed via a diff
-	var t_grammar = '<table>';
-	var t_meaning = '<table>';	
-	foreach(options, function (correction, j) {
-		var diff = dmp.diff_main(patch.plaintextSentence(), correction);
-		dmp.diff_cleanupSemantic(diff);		
-		var diff_html = "<div>" + dmp.diff_prettyHtml(diff) + "</div>";		
-		
-		var grammar_row = '<tr valign="top" class="grammar"><td><label><input type="checkbox" name="grammar" value="' + escape(correction) + '"></input></label></td><td>' +  diff_html + '</td></tr>';
-		t_grammar += grammar_row;
-		
-		var meaning_row = '<tr valign="top" class="meaning"><td><label><input type="checkbox" name="meaning" value="' + escape(correction) + '"></input></td><td>' +  diff_html + '</td></tr>';
-		t_meaning += meaning_row;
-	});
-	t_grammar += '</table>';
-	t_meaning += '</table>';
-	
-	// Now we create a hit to vote on whether it's good
-	var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, edit_workers)
-					.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "_verify");
-					
-	var webpage = s3.putString(slurp(findFixVerifyOptions.verify.HTML_template)
-		.replace(/___HIGHLIGHTED___/g, patch.highlightedParagraph())	
-		.replace(/___GRAMMAR_VOTE___/g, t_grammar)
-		.replace(/___MEANING_VOTE___/g, t_meaning)		
-		.replace(/___HEADER_SCRIPT___/g, header));					
+    if (findFixVerifyOptions.verify.transformWebpage != null) {
+        webpageContents = findFixVerifyOptions.verify.transformWebpage(webpageContents, options);
+    }
+	var webpage = s3.putString(webpageContents);				
 	
 	// create a HIT on MTurk using the webpage
 	var verify_hit = mturk.createHIT({
@@ -471,6 +494,7 @@ function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
  * Error checks the vote stage and returns the vote score for each option.
  */
 function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions, rejectedWorkers) {
+    print('joining');
 	// get the votes
 	var hitId = verify_hit;
 	var status = mturk.getHIT(hitId, true)	
@@ -479,46 +503,50 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
 	
 	var hit = mturk.boundedWaitForHIT(hitId, findFixVerifyOptions.wait_time, findFixVerifyOptions.verify.minimum_workers, findFixVerifyOptions.verify.redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
+
+    foreach(hit.assignments, function(assignment) {
+        var customPassed = testAndReject(findFixVerifyOptions.verify.customTest, assignment, assignment);
+        var missingPassed = testAndReject(
+            function(answer) {
+                // Test each possible field for noncompletion
+                foreach(findFixVerifyOptions.verify.fields, function(field) {                
+                    if (typeof(answer[field]) == "undefined") {
+                        return {
+                            passes: false,
+                            reason: "You submitted an incomplete form."
+                        };
+                    }
+                });
+                
+                // They answered all questions
+                return {
+                        passes: true,
+                        reason: ""
+                };
+            }, assignment);
+    });
+    
+    var votes = Array();
+    foreach(findFixVerifyOptions.verify.fields, function(field) {
+        votes[field] = get_vote(hit.assignments, function(answer) { 
+            if (typeof(answer[field]) == "undefined") return [];
+            
+            var results = [];
+            foreach(answer[field].split('|'), function(checked, i) {
+                results.push(unescape(checked));
+            });
+            return results;
+        }, true); 
+    });
 	
-	foreach(hit.assignments, function(assignment) {
-		if (typeof(assignment.answer.grammar) == "undefined" || typeof(assignment.answer.meaning) == "undefined") {
-			print("REJECTING: No data.");
-			rejectedWorkers.push(assignment.workerId);
-			try {
-				mturk.rejectAssignment(assignment, "You seem to have submitted an empty form.");
-			} catch(e) {
-				print(e);
-			}			
-		}
-	});
-	
-	var grammar_votes = get_vote(hit.assignments, function(answer) { 
-		if (typeof(answer.grammar) == "undefined") return [];
-		
-		var results = [];
-		foreach(answer.grammar.split('|'), function(checked, i) {
-			results.push(unescape(checked));
-		});
-		return results;
-	}, true);
-	var meaning_votes = get_vote(hit.assignments, function(answer) {
-		if (typeof(answer.meaning) == "undefined") return [];
-	
-		var results = [];
-		foreach(answer.meaning.split('|'), function(checked, i) {
-			results.push(unescape(checked));
-		});
-		return results;		
-	}, true);
-	
-	return [grammar_votes, meaning_votes];
+	return votes;
 }
 
 /**
  * Puts together a complete data structure that contains all the options, voting results, and more. 
  * Call this on a patch that has made it through the Verify stage.
  */
-function generatePatch(patch, find_hit, edit_hit, verify_hit, grammar_votes, meaning_votes, suggestions, paragraph_index) {
+function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, suggestions, paragraph_index) {
 	var outputPatch = {
 		start: patch.start,   // beginning of the identified patch
 		end: patch.end,
@@ -526,8 +554,6 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, grammar_votes, mea
         editEnd: patch.end,
 		options: [],
 		paragraph: paragraph_index,
-        canCut: false,
-        cutVotes: 0,
         numEditors: 0,
         merged: false,
         originalText: patch.plaintextSentence()   // also to be changed once we know editStart and editEnd
@@ -540,6 +566,7 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, grammar_votes, mea
 		var verify_hit = mturk.getHIT(verify_hit, true);
     }
 
+    /*
 	if (edit_hit != null) {
 		cuttable_votes = get_vote(edit_hit.assignments, (function(answer) { return answer.cuttable; }));
 		var numSayingCuttable = cuttable_votes['Yes'] ? cuttable_votes['Yes'] : 0;
@@ -548,12 +575,15 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, grammar_votes, mea
 		outputPatch.cutVotes = numSayingCuttable;
 		outputPatch.numEditors = edit_hit.assignments.length;
 	}
+    */
     
     if (suggestions != null) {
         var dmp = new diff_match_patch();
 		for (var i = 0; i < suggestions.length; i++) {
 			// this will be one of the alternatives they generated
 			var newText = suggestions[i];
+            
+            var passesVerify = Array();
 
 			var this_grammar_votes = grammar_votes[newText] ? grammar_votes[newText] : 0;
 			var this_meaning_votes = meaning_votes[newText] ? meaning_votes[newText] : 0;
@@ -812,4 +842,130 @@ function outputTimingData(patches, find_hit, fixHITs, verifyHITs) {
     print('Max Elapsed time (minutes): ' + ((findTime + maxFixVerifyTime) / (1000*60)));
     print('Min Elapsed time (seconds): ' + (findTime + minFixVerifyTime) / 1000);
     print('Min Elapsed time (minutes): ' + ((findTime + minFixVerifyTime) / (1000*60)));			
+}
+
+/**
+ * Runs the user-defined test to see if the user input should be rejected, and rejects the work if so.
+ */
+function testAndReject(testFunction, toTest, assignment) {
+    if (testFunction != null) {
+        var result = testFunction(toTest);
+        if (!result.passes) {
+            print("REJECTING: " + result.reason);
+            rejectedWorkers.push(assignment.workerId);
+            try {
+                mturk.rejectAssignment(assignment, result.reason);
+            } catch(e) {
+                print(e);
+            }
+        }
+        return result.passes;
+    } else {
+        return true;
+    }
+}
+
+//
+// Output methods
+//
+
+/**
+ * Opens the file writers.
+ */
+function initializeOutput() {
+    HTML_output = new java.io.FileWriter("active-hits/shortn-results." + soylentJob + ".html");
+    lag_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_lag.csv");
+    lag_output.write("Stage,Assignment,Wait Type,Time,Paragraph\n");
+    payment_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_payment.csv");
+    payment_output.write("Stage,Assignment,Cost,Paragraph\n");
+    patchesOutput = new java.io.FileWriter("active-hits/shortn-patches." + soylentJob +".json");
+}
+
+/**
+ * Closes all the FileWriters.
+ */
+function closeOutputs() {
+    payment_output.close();
+    lag_output.close();	
+    HTML_output.close();
+    patchesOutput.close();
+}
+
+/**
+ *  Writes human-readable and machine-readable information about thit HITs to disk.
+ *  Can be turned off in a production system; this is for experiments and debugging.
+ */
+function outputEdits(HTML_output, lag_output, payment_output, paragraph, patch, find_hit, edit_hit, verify_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, outputPatch)
+{	
+	HTML_output.write(preWrap(getParagraph(paragraph)));
+
+	if (find_hit != null) {
+		var find_hit = mturk.getHIT(find_hit, true);
+        HTML_output.write(getPaymentString(find_hit, "Find"));	
+        HTML_output.write(getTimingString(find_hit, "Find"));
+
+        writeCSVPayment(payment_output, find_hit, "Find", paragraph_index);
+        writeCSVWait(lag_output, find_hit, "Find", paragraph_index);        
+	}
+	else {
+		print("OUTPUTTING NO FIND HIT");
+	}
+	
+	if (edit_hit != null) {
+		var edit_hit = mturk.getHIT(edit_hit, true)	
+		HTML_output.write(getPaymentString(edit_hit, "Shortened Version Editing"));	
+		HTML_output.write(getTimingString(edit_hit, "Shortened Version Editing"));	
+		HTML_output.write(getPaymentString(edit_hit, "Fix"));
+		HTML_output.write(getTimingString(edit_hit, "Fix"));
+
+		writeCSVPayment(payment_output, edit_hit, "Fixing Error", paragraph_index);
+		writeCSVWait(lag_output, edit_hit, "Fixing Error", paragraph_index);		
+	}
+	else {
+		print("OUTPUTTING NO FIX HIT");
+	}
+	
+	if (verify_hit != null) {
+		var verify_hit = mturk.getHIT(verify_hit, true);
+		HTML_output.write(getPaymentString(verify_hit, "Voting"));	
+		HTML_output.write(getTimingString(verify_hit, "Voting"));				
+		HTML_output.write(getPaymentString(verify_hit, "Vote"));
+		HTML_output.write(getTimingString(edit_hit, "Vote"));
+
+		writeCSVPayment(payment_output, verify_hit, "Voting on Alternatives", paragraph_index);
+		writeCSVWait(lag_output, verify_hit, "Voting on Alternatives", paragraph_index);		
+	}
+	else {
+		print("OUTPUTTING NO FILTER HIT");
+	}
+	
+	HTML_output.write("<h1>Patch</h1>");
+	HTML_output.write("<h2>Original</h2>" + preWrap(patch.highlightedSentence()));
+
+    
+	if (edit_hit != null) {
+		HTML_output.write("<p>Is it cuttable?  <b>" + outputPatch.cutVotes + "</b> of " + edit_hit.assignments.length + " turkers say yes.</p>");
+	}
+	
+	var dmp = new diff_match_patch();    
+	if (suggestions != null) {
+		for (var i = 0; i < suggestions.length; i++) {
+			// this will be one of the alternatives they generated
+			var newText = suggestions[i];
+			
+			var this_grammar_votes = grammar_votes[newText] ? grammar_votes[newText] : 0;
+			var this_meaning_votes = meaning_votes[newText] ? meaning_votes[newText] : 0;
+
+			var diff = dmp.diff_main(patch.plaintextSentence(), newText);
+			dmp.diff_cleanupSemantic(diff);		
+			var diff_html = "<div>" + dmp.diff_prettyHtml(diff) + "</div>";		
+			
+			HTML_output.write(diff_html);
+			HTML_output.write("<div>How many people thought this had the most grammar problems? <b>" + this_grammar_votes + "</b> of " + verify_hit.assignments.length + " turkers.</div>");
+			HTML_output.write("<div>How many people thought this changed the meaning most? <b>" + this_meaning_votes + "</b> of " + verify_hit.assignments.length + " turkers.</div>");		
+			HTML_output.flush();
+		}
+	}   
+    
+    patchesOutput.write(json(outputPatch));
 }

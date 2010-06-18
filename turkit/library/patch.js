@@ -86,7 +86,7 @@ Patch.prototype.plaintextSentence = function() {
 	return this.sentences.slice(range.startSentence, range.endSentence+1).join(sentence_separator);
 };
 
-Patch.prototype.getHole = function() {
+Patch.prototype.getCutSentence = function() {
 	var highlighted = this.highlightedSentence();
-	return highlighted.replace(/<span.*?<\/span>/ig, "___________");
+	return highlighted.replace(/<span.*?<\/span>\s?/ig, "");
 }

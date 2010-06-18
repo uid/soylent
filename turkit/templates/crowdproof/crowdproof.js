@@ -1,23 +1,25 @@
 eval(read("../library/find-fix-verify.js"));
 
 var findFixVerifyOptions = {
+    jobType: "crowdproof",
     paragraphs: paragraphs,
     buffer_redundancy: 2,	// number of extra assignments to create so that they don't get squatted.
     wait_time: 20 * 60 * 1000,
     time_bounded: true,
     find: {
-        HIT_title: "Find unnecessary text",
-        HIT_description: "I need to shorten my paragraph, and need opinions on what to cut.",
-        HTML_template: "../templates/shortn/shortn-find.html",
+		HIT_title : "Find bad writing",
+		HIT_description : "This paragraph needs some help finding errors. You're way better than Microsoft Word's grammar checker.",
+        HTML_template: "../templates/crowdproof/crowdproof-find.html",
         reward: 0.06,
         minimum_agreement: 0.20,
         redundancy: 10,
         minimum_workers: 6, 
+        customPatchTest: null
     },
     fix: {
         HIT_title: "Shorten Rambling Text",
         HIT_description: "A sentence in my paper is too long and I need your help cutting out the fat.",
-        HTML_template: "../templates/shortn/shortn-fix.html",
+        HTML_template: "../templates/crowdproof/crowdproof-fix.html",
         reward: 0.08,
         redundancy: 5,
         minimum_workers: 3, 
@@ -25,68 +27,59 @@ var findFixVerifyOptions = {
     verify: {
         HIT_title: "Did I shorten text correctly?",
         HIT_description: "I need to shorten some text -- which version is best?",
-        HTML_template: "../templates/shortn/shortn-verify.html",
+        HTML_template: "../templates/crowdproof/crowdproof-verify.html",
         reward: 0.04,
         minimum_agreement: 0.20,
         redundancy: 5,
         minimum_workers: 3, 
     },
-    socket: new Socket("shortn", "localhost", 11000, 2000),
+    socket: new Socket("crowdproof", "localhost", 11000, 2000),
     output: outputEdits
 };
 
-/*
-var buffer_redundancy = 2;	// number of extra assignments to create so that they don't get squatted.
-var wait_time = 20 * 60 * 1000;	// seconds
-
-var search_reward = 0.06;
-var search_redundancy = 10;
-var search_minimum_agreement = 0.20
-var search_minimum_workers = 6;
-
-var edit_reward = 0.08;
-var edit_redundancy = 5;
-var edit_minimum_workers = 3;
-
-var verify_redundancy = 5;
-var verify_reward = 0.04;
-var verify_minimum_workers = 3;
-
-var time_bounded = true;
-var rejectedWorkers = []
-*/
-
-if (debug)
-{
-	search_redundancy = 2;
-	search_minimum_workers = 1;
-	edit_redundancy = 2;
-	edit_minimum_workers = 1;
-	verify_redundancy = 2;
-	verify_minimum_workers = 1;
-	buffer_redundancy = 0;
-	paragraphs = [ paragraphs[0] ]; 	//remove the parallelism for now
-	wait_time = 10 * 1000;
-	search_minimum_agreement = .0001;	
-}
-
-var client = null;
-if (typeof(soylentJob) == "undefined") {
-	if (typeof(paragraphs) == "undefined") {
-		paragraphs = [ ["This is the first sentence of the first paragraph."] ]; 
-	}
-
-	main();
-}
-
-
+// Outputs
+var output;
+var lag_output;
+var payment_output;
+var patchesOutput;
 
 function main() {
-	var output = new java.io.FileWriter("active-hits/fix_errors_results.html");
-	var lag_output = new java.io.FileWriter("active-hits/fix_errors_lag.csv");
-	lag_output.write("Stage,Assignment,Wait Type,Time,Paragraph\n");
-	var payment_output = new java.io.FileWriter("active-hits/fix_errors_payment.csv");
-	payment_output.write("Stage,Assignment,Cost,Paragraph\n");
+    initializeDebug();
+    
+    if (typeof(soylentJob) == "undefined") {
+        if (typeof(paragraphs) == "undefined") {
+            paragraphs = [ ["This is the first sentence of the first paragraph."] ]; 
+        }
+    }
+    if (typeof(debug) == "undefined") {
+        var debug = false;
+    }
+    
+    // do the main program, and if it has to wait, close the socket
+    attempt(function() {
+        findFixVerify(findFixVerifyOptions);
+    });  
+    findFixVerifyOptions.socket.close();
+}
+
+function initializeDebug() {
+	if (debug)
+	{
+		print('debug version');
+		findFixVerifyOptions.find.redundancy = 2;
+		findFixVerifyOptions.find.minimum_workers = 1;
+		findFixVerifyOptions.find.minimum_agreement = .0001;        
+		findFixVerifyOptions.fix.redundancy = 2;
+		findFixVerifyOptions.fix.minimum_workers = 1;
+		findFixVerifyOptions.verify.redundancy = 2;
+		findFixVerifyOptions.verify.minimum_workers = 1;
+        findFixVerifyOptions.buffer_redundancy = 0;
+		findFixVerifyOptions.paragraphs = [ paragraphs[0] ]; 	//remove the parallelism for now
+		findFixVerifyOptions.wait_time = 0 * 1000;
+	}
+}
+
+function main() {
 	
 	var result = {
 		paragraphs: []

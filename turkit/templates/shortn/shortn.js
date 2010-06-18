@@ -13,7 +13,9 @@ var findFixVerifyOptions = {
         reward: 0.08,
         minimum_agreement: 0.20,
         redundancy: 10,
-        minimum_workers: 6, 
+        minimum_workers: 6,
+        transformWebpage: shortnFindTransformWebpage,
+        customTest: null
     },
     fix: {
         HIT_title: "Shorten Rambling Text",
@@ -21,7 +23,10 @@ var findFixVerifyOptions = {
         HTML_template: "../templates/shortn/shortn-fix.html",
         reward: 0.05,
         redundancy: 5,
-        minimum_workers: 3, 
+        minimum_workers: 3,
+        transformWebpage: null,
+        customTest: shortnFixTest,
+        mapFixResults: shortnMapFixResults,
     },
     verify: {
         HIT_title: "Did I shorten text correctly?",
@@ -30,53 +35,15 @@ var findFixVerifyOptions = {
         reward: 0.04,
         minimum_agreement: 0.20,
         redundancy: 5,
-        minimum_workers: 3, 
+        minimum_workers: 3,
+        fields: ['grammar', 'meaning'],
+        customTest: null,
     },
     socket: new Socket("shortn", "localhost", 11000, 2000),
-    output: null//outputEdits
+    writeOutput: true
 };
 
-/*
-var wait_time = 20 * 60 * 1000;
-
-var search_reward = 0.08;
-var search_redundancy = 10;
-var search_minimum_agreement = 0.20
-var search_minimum_workers = 6;
-
-var edit_reward = 0.05;
-var edit_redundancy = 5;  // number of turkers requested for each HIT
-var edit_minimum_workers = 3;
-
-var verify_reward = 0.04;
-var verify_redundancy = 5;
-var verify_minimum_workers = 3;
-
-var time_bounded = true;
-var rejectedWorkers = []
-
-var output;
-var lag_output;
-var payment_output;
-var patchesOutput;
-
-var overallFastestParagraph = Number.MAX_VALUE;
-var overallSlowestParagraph = Number.MIN_VALUE;	
-
-var fileOutputOn = false;
-
-var client = null;
-
-var socket = null; // TODO: create Socket.js class to manage all this state
-var socketOut = null; // TODO: create Socket.js class to manage all this state
-
-        var host = "localhost";
-        var port = 11000;
-        var timeout = 2000; // seconds
-*/
-
 function main() {
-    initializeOutput(findFixVerifyOptions);	
     initializeDebug();
     
     if (typeof(soylentJob) == "undefined") {
@@ -93,30 +60,6 @@ function main() {
         findFixVerify(findFixVerifyOptions);
     });  
     findFixVerifyOptions.socket.close();
-    closeOutputs(findFixVerifyOptions);
-}
-
-function initializeOutput(options) {
-    if (options.output != null) {
-        output = new java.io.FileWriter("active-hits/shortn-results." + soylentJob + ".html");
-        lag_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_lag.csv");
-        lag_output.write("Stage,Assignment,Wait Type,Time,Paragraph\n");
-        payment_output = new java.io.FileWriter("active-hits/shortn-" + soylentJob + "-fix_errors_payment.csv");
-        payment_output.write("Stage,Assignment,Cost,Paragraph\n");
-        patchesOutput = new java.io.FileWriter("active-hits/shortn-patches." + soylentJob +".json");
-    }
-}
-
-/**
- * Closes all the FileWriters.
- */
-function closeOutputs(options) {
-    if (options.output != null) {
-        payment_output.close();
-        lag_output.close();	
-        output.close();
-        patchesOutput.close();
-    }
 }
 
 function initializeDebug() {
@@ -136,81 +79,46 @@ function initializeDebug() {
 	}
 }
 
-/**
- *  Writes human-readable and machine-readable information about thit HITs to disk.
- *  Can be turned off in a production system; this is for experiments and debugging.
- */
-function outputEdits(output, lag_output, payment_output, paragraph, patch, find_hit, edit_hit, verify_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, outputPatch)
-{	
-	output.write(preWrap(getParagraph(paragraph)));
+function shortnFindTransformWebpage(webpageContents, paragraph) {
+    return webpageContents.replace(/___ESCAPED_PARAGRAPH___/g, escape(paragraph))
+}
 
-	if (find_hit != null) {
-		var find_hit = mturk.getHIT(find_hit, true);
-        output.write(getPaymentString(find_hit, "Find"));	
-        output.write(getTimingString(find_hit, "Find"));
+function shortnFixTest(answer) {
+    var text = e.answer.newText;
+    if (text == originalSentence) {
+        return {
+                    passes: false,
+                    reason: "Please do not copy/paste the original sentence back in. We're looking for a shorter version."
+                };
+    }
+    else if (text.length >= originalSentence) {
+        return {
+                    passes: false,
+                    reason: "Your sentence was as long or longer than the original. We're looking for a shorter version."
+                };
+    }
+    else {
+        return {
+                    passes: true,
+                    reason: ""
+                };
+    }
+}
 
-        writeCSVPayment(payment_output, find_hit, "Find", paragraph_index);
-        writeCSVWait(lag_output, find_hit, "Find", paragraph_index);        
-	}
-	else {
-		print("OUTPUTTING NO FIND HIT");
-	}
-	
-	if (edit_hit != null) {
-		var edit_hit = mturk.getHIT(edit_hit, true)	
-		output.write(getPaymentString(edit_hit, "Shortened Version Editing"));	
-		output.write(getTimingString(edit_hit, "Shortened Version Editing"));	
-		output.write(getPaymentString(edit_hit, "Fix"));
-		output.write(getTimingString(edit_hit, "Fix"));
-
-		writeCSVPayment(payment_output, edit_hit, "Fixing Error", paragraph_index);
-		writeCSVWait(lag_output, edit_hit, "Fixing Error", paragraph_index);		
-	}
-	else {
-		print("OUTPUTTING NO FIX HIT");
-	}
-	
-	if (verify_hit != null) {
-		var verify_hit = mturk.getHIT(verify_hit, true);
-		output.write(getPaymentString(verify_hit, "Voting"));	
-		output.write(getTimingString(verify_hit, "Voting"));				
-		output.write(getPaymentString(verify_hit, "Vote"));
-		output.write(getTimingString(edit_hit, "Vote"));
-
-		writeCSVPayment(payment_output, verify_hit, "Voting on Alternatives", paragraph_index);
-		writeCSVWait(lag_output, verify_hit, "Voting on Alternatives", paragraph_index);		
-	}
-	else {
-		print("OUTPUTTING NO FILTER HIT");
-	}
-	
-	output.write("<h1>Patch</h1>");
-	output.write("<h2>Original</h2>" + preWrap(patch.highlightedSentence()));
-
+function shortnMapFixResults(answers, patch) {
+    var results = Array();
     
-	if (edit_hit != null) {
-		output.write("<p>Is it cuttable?  <b>" + outputPatch.cutVotes + "</b> of " + edit_hit.assignments.length + " turkers say yes.</p>");
-	}
-	
-	var dmp = new diff_match_patch();    
-	if (suggestions != null) {
-		for (var i = 0; i < suggestions.length; i++) {
-			// this will be one of the alternatives they generated
-			var newText = suggestions[i];
-			
-			var this_grammar_votes = grammar_votes[newText] ? grammar_votes[newText] : 0;
-			var this_meaning_votes = meaning_votes[newText] ? meaning_votes[newText] : 0;
-
-			var diff = dmp.diff_main(patch.plaintextSentence(), newText);
-			dmp.diff_cleanupSemantic(diff);		
-			var diff_html = "<div>" + dmp.diff_prettyHtml(diff) + "</div>";		
-			
-			output.write(diff_html);
-			output.write("<div>How many people thought this had the most grammar problems? <b>" + this_grammar_votes + "</b> of " + verify_hit.assignments.length + " turkers.</div>");
-			output.write("<div>How many people thought this changed the meaning most? <b>" + this_meaning_votes + "</b> of " + verify_hit.assignments.length + " turkers.</div>");		
-			output.flush();
-		}
-	}   
+    var cutVotes = 0
+    foreach(answers, function(answer) {
+        results.push(answer.newText);
+        if (answer.cuttable) {
+            cutVotes++;
+        }
+    });
     
-    patchesOutput.write(json(outputPatch));
+    if (cutVotes >= .5 * answers.length) {
+        results.push(patch.getCutSentence());
+    }
+    
+    return results.unique();
 }
