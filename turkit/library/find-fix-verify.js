@@ -202,8 +202,14 @@ function verifyPatches(patch, fix_hit, suggestions, paragraph_index, patchNumber
  */
 function requestPatches(paragraph_index, findFixVerifyOptions) {
 	var text = getParagraph(findFixVerifyOptions.paragraphs[paragraph_index]);
+    
+    var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
+				.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "find");
 
-	var webpage = s3.putString(slurp(findFixVerifyOptions.find.HTML_template).replace(/___PARAGRAPH___/g, text).replace(/___ESCAPED_PARAGRAPH___/g, escape(text)));
+	var webpage = s3.putString(slurp(findFixVerifyOptions.find.HTML_template)
+                    .replace(/___PARAGRAPH___/g, text)
+                    .replace(/___ESCAPED_PARAGRAPH___/g, escape(text))
+                    .replace(/___HEADER_SCRIPT___/g, header));
 
 	// create a HIT on MTurk using the webpage
 	var hitId = mturk.createHIT({
@@ -325,11 +331,14 @@ function aggregatePatchSuggestions(patch_suggestions, num_votes, sentences, mini
 function requestFixes(patch, findFixVerifyOptions) {
 	var full_text = patch.highlightedParagraph();
 	var editable = patch.plaintextSentence();
+    
+    var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
+				.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "fix");    
 
 	var webpage = s3.putString(slurp(findFixVerifyOptions.fix.HTML_template)
                     .replace(/___TEXT___/g, full_text)
-					.replace(/___EDITABLE___/g, editable));
-	
+					.replace(/___EDITABLE___/g, editable)
+                    .replace(/___HEADER_SCRIPT___/g, header));	
 
 	// create a HIT on MTurk using the webpage
 	var fix_hit = mturk.createHIT({
@@ -397,10 +406,15 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patchNumber, tota
  */
 function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {		
 	// Disallow workers from the edit hits from working on the voting hits
+    print('disallowing');
+    var fix_hit_complete = mturk.getHIT(fix_hit, true);
+    print(json(fix_hit_complete));
 	edit_workers = []
-	for each (var asst in fix_hit.assignments) { 
+	for each (var asst in fix_hit_complete.assignments) { 
 		if (asst.workerId) edit_workers.push(asst.workerId); 
 	}
+    print('banned workers');
+    print(json(edit_workers));
 	
 	var dmp = new diff_match_patch();
 	
@@ -431,7 +445,7 @@ function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
 	
 	// Now we create a hit to vote on whether it's good
 	var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, edit_workers)
-					.replace(/___PAGE_NAME___/g, "shorten_vote");
+					.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "_verify");
 					
 	var webpage = s3.putString(slurp(findFixVerifyOptions.verify.HTML_template)
 		.replace(/___HIGHLIGHTED___/g, patch.highlightedParagraph())	

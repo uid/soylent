@@ -1,6 +1,7 @@
 eval(read("../library/find-fix-verify.js"));
 
 var findFixVerifyOptions = {
+    jobType: "shortn",
     paragraphs: paragraphs,
     buffer_redundancy: 2,	// number of extra assignments to create so that they don't get squatted.
     wait_time: 20 * 60 * 1000,
@@ -32,7 +33,7 @@ var findFixVerifyOptions = {
         minimum_workers: 3, 
     },
     socket: new Socket("shortn", "localhost", 11000, 2000),
-    output: outputEdits
+    output: null//outputEdits
 };
 
 /*
@@ -131,7 +132,7 @@ function initializeDebug() {
 		findFixVerifyOptions.verify.minimum_workers = 1;
         findFixVerifyOptions.buffer_redundancy = 0;
 		findFixVerifyOptions.paragraphs = [ paragraphs[0] ]; 	//remove the parallelism for now
-		findFixVerifyOptions.wait_time = 10 * 1000;
+		findFixVerifyOptions.wait_time = 0 * 1000;
 	}
 }
 
