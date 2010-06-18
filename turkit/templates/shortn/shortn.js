@@ -36,7 +36,16 @@ var findFixVerifyOptions = {
         minimum_agreement: 0.20,
         redundancy: 5,
         minimum_workers: 3,
-        fields: ['grammar', 'meaning'],
+        fields: [
+            {
+                name: 'grammar',
+                passes: function(numVotes, totalVotes) { return (numVotes / totalVotes) < .5; }
+            },
+            {
+                name: 'meaning',
+                passes: function(numVotes, totalVotes) { return (numVotes / totalVotes) < .5; }
+            }
+        ],
         customTest: null,
     },
     socket: new Socket("shortn", "localhost", 11000, 2000),

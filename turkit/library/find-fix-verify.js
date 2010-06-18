@@ -42,7 +42,10 @@ eval(read("../library/socket.js"));
  *          minimum_agreement: double,
  *          redundancy: int,
  *          minimum_workers: int,
- *          fields: [string] --- a list of the fields being voted on, e.g., "grammar". These field names will be populated into the javascript for each suggestion and then read back out by the verify step.
+ *          fields: [ {
+ *                          name: string --- name of the field being voted on, e.g. "grammar"
+ *                          passes: function(numVotes, totalVotes) --- returns true if the option got numVotes votes out of totalVotes. Author your own success requirements.
+ *                    } ] --- a list of the fields being voted on. These field names will be populated into the javascript for each suggestion and then read back out by the verify step.
  *          transformWebpage: function(webpageContents, options) --- returns webpageContents with any user-defined changes made to it. null if no changes are necessary.
  *          customTest: functionjiofjhawo;igjweo;ighjweao;ijgfaweio;fFIX ME TODO
  *      },
@@ -110,7 +113,7 @@ function findFixVerify(options) {
                     // Write file output
                     if (options.writeOutput) {
                         outputEdits(HTML_output, lag_output, payment_output, paragraph, patch, find_hit,
-                                    fix_hit, verify_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, patchOutput);
+                                    fix_hit, verify_hit, votes, suggestions, paragraph_index, patchOutput, options);
                     }
                     finishedArray[i] = true;
 				} );
@@ -205,7 +208,7 @@ function verifyPatches(patch, fix_hit, suggestions, paragraph_index, patchNumber
         
         var fields_complete = 0;
         foreach(findFixVerifyOptions.verify.fields, function(field) {
-            if (numVotes(votes[field]) > 0) {
+            if (numVotes(votes[field.name]) > 0) {
                 fields_complete++;
             }
         });
@@ -464,11 +467,11 @@ function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
             dmp.diff_cleanupSemantic(diff);		          
             var diff_html = "<div>" + dmp.diff_prettyHtml(diff) + "</div>";		
                         
-            var row = '<tr valign="top" class="' + field + '"><td><label><input type="checkbox" name="' + field + '" value="' + escape(correction) + '"></input></label></td><td>' +  diff_html + '</td></tr>';
+            var row = '<tr valign="top" class="' + field.name + '"><td><label><input type="checkbox" name="' + field.name + '" value="' + escape(correction) + '"></input></label></td><td>' +  diff_html + '</td></tr>';
             table +=  row;
         });
         table += '</table>';
-        webpageContents = webpageContents.replace(new RegExp("___" + field.toUpperCase() + "_VOTE___", "g"), table);
+        webpageContents = webpageContents.replace(new RegExp("___" + field.name.toUpperCase() + "_VOTE___", "g"), table);
     });
 
     if (findFixVerifyOptions.verify.transformWebpage != null) {
@@ -510,7 +513,7 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
             function(answer) {
                 // Test each possible field for noncompletion
                 foreach(findFixVerifyOptions.verify.fields, function(field) {                
-                    if (typeof(answer[field]) == "undefined") {
+                    if (typeof(answer[field.name]) == "undefined") {
                         return {
                             passes: false,
                             reason: "You submitted an incomplete form."
@@ -528,11 +531,11 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
     
     var votes = Array();
     foreach(findFixVerifyOptions.verify.fields, function(field) {
-        votes[field] = get_vote(hit.assignments, function(answer) { 
-            if (typeof(answer[field]) == "undefined") return [];
+        votes[field.name] = get_vote(hit.assignments, function(answer) { 
+            if (typeof(answer[field.name]) == "undefined") return [];
             
             var results = [];
-            foreach(answer[field].split('|'), function(checked, i) {
+            foreach(answer[field.name].split('|'), function(checked, i) {
                 results.push(unescape(checked));
             });
             return results;
@@ -565,17 +568,6 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
 	if (verify_hit != null) {
 		var verify_hit = mturk.getHIT(verify_hit, true);
     }
-
-    /*
-	if (edit_hit != null) {
-		cuttable_votes = get_vote(edit_hit.assignments, (function(answer) { return answer.cuttable; }));
-		var numSayingCuttable = cuttable_votes['Yes'] ? cuttable_votes['Yes'] : 0;
-		
-		outputPatch.canCut = ((numSayingCuttable / edit_hit.assignments.length) > .5);
-		outputPatch.cutVotes = numSayingCuttable;
-		outputPatch.numEditors = edit_hit.assignments.length;
-	}
-    */
     
     if (suggestions != null) {
         var dmp = new diff_match_patch();
@@ -583,59 +575,68 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
 			// this will be one of the alternatives they generated
 			var newText = suggestions[i];
             
-            var passesVerify = Array();
-
-			var this_grammar_votes = grammar_votes[newText] ? grammar_votes[newText] : 0;
-			var this_meaning_votes = meaning_votes[newText] ? meaning_votes[newText] : 0;
-			var passesGrammar = (this_grammar_votes / verify_hit.assignments.length) < .5;
-			var passesMeaning = (this_meaning_votes / verify_hit.assignments.length) < .5;
+            var voteFields = Array();
+            foreach(findFixVerifyOptions.verify.fields, function(field) {
+                var numVotes = votes[field.name][newText] ? votes[field.name][newText] : 0;
+                var passes = field.passes(numVotes, verify_hit.assignments.length);
+                voteFields.push({
+                    name: field.name,
+                    numVotes: numVotes,
+                    passes: passes
+                });
+            });
             
-            // Now we calculate the beginning of the edit and the end of the edit region
-            var diff = dmp.diff_main(patch.plaintextSentence(), newText);
-            dmp.diff_cleanupSemantic(diff);
+            // Did we pass all the tests?
+            var passedArray = voteFields.map( function(vote) { return vote.passes; } );
+            var passedAll = passedArray.reduce( function(previousValue, currentValue, index, passedArray) {
+                return previousValue && currentValue;
+            });
             
-            var original_index = 0;
-            var edit_start = -1;
-            var edit_end = -1;
-            for (var j = 0; j < diff.length; j++) {
-                // if it's an insert or delete, and this is the first one, mark it
-                if (diff[j][0] != 0 && edit_start == -1) { 
-                    edit_start = original_index;
+            if (passedAll) {
+                // Now we calculate the beginning of the edit and the end of the edit region
+                var diff = dmp.diff_main(patch.plaintextSentence(), newText);
+                dmp.diff_cleanupSemantic(diff);
+                
+                var original_index = 0;
+                var edit_start = -1;
+                var edit_end = -1;
+                for (var j = 0; j < diff.length; j++) {
+                    // if it's an insert or delete, and this is the first one, mark it
+                    if (diff[j][0] != 0 && edit_start == -1) { 
+                        edit_start = original_index;
+                    }
+                    
+                    // if we are removing something, mark the end of the deletion as a possible last point
+                    if (diff[j][0] == -1) {
+                        edit_end = original_index + diff[j][1].length;
+                    }
+                    // if we are adding something, mark the beginning of the insertion as a possible last point
+                    if (diff[j][0] == 1) {
+                        edit_end = original_index;
+                    }                
+                    
+                    // if it's keeping it the same, or removing things, (meaning we're in the original string), increment the counter
+                    if (diff[j][0] == 0 || diff[j][0] == -1) {
+                        original_index += diff[j][1].length;
+                    }
                 }
                 
-                // if we are removing something, mark the end of the deletion as a possible last point
-                if (diff[j][0] == -1) {
-                    edit_end = original_index + diff[j][1].length;
+                // we need to know what offset the patch starts at, by summing together the lengths of the previous sentences
+                var editOffset = patch.sentences.slice(0, patch.sentenceRange().startSentence).join(sentence_separator).length;
+                if (patch.sentenceRange().startSentence > 0) {
+                    editOffset += sentence_separator.length;   // add the extra space after the previous sentences and before this one.
                 }
-                // if we are adding something, mark the beginning of the insertion as a possible last point
-                if (diff[j][0] == 1) {
-                    edit_end = original_index;
-                }                
-                
-                // if it's keeping it the same, or removing things, (meaning we're in the original string), increment the counter
-                if (diff[j][0] == 0 || diff[j][0] == -1) {
-                    original_index += diff[j][1].length;
-                }
-            }
-            
-            // we need to know what offset the patch starts at, by summing together the lengths of the previous sentences
-            var editOffset = patch.sentences.slice(0, patch.sentenceRange().startSentence).join(sentence_separator).length;
-            if (patch.sentenceRange().startSentence > 0) {
-                editOffset += sentence_separator.length;   // add the extra space after the previous sentences and before this one.
-            }
-            
-			if (passesGrammar && passesMeaning) {
-				outputPatch.options.push({
+                            
+                outputPatch.options.push({
                     text: newText,
                     editedText: newText,    // will be updated in a moment
                     editStart: edit_start + editOffset,
                     editEnd: edit_end + editOffset,
                     numVoters: verify_hit.assignments.length,
-                    meaningVotes: this_meaning_votes,
-                    grammarVotes: this_grammar_votes,
+                    votes: voteFields,
                     diff: diff
                 });
-			}
+            }
 		}
 	}
     
@@ -895,7 +896,7 @@ function closeOutputs() {
  *  Writes human-readable and machine-readable information about thit HITs to disk.
  *  Can be turned off in a production system; this is for experiments and debugging.
  */
-function outputEdits(HTML_output, lag_output, payment_output, paragraph, patch, find_hit, edit_hit, verify_hit, grammar_votes, meaning_votes, suggestions, paragraph_index, outputPatch)
+function outputEdits(HTML_output, lag_output, payment_output, paragraph, patch, find_hit, edit_hit, verify_hit, votes, suggestions, paragraph_index, outputPatch, findFixVerifyOptions)
 {	
 	HTML_output.write(preWrap(getParagraph(paragraph)));
 
@@ -941,28 +942,30 @@ function outputEdits(HTML_output, lag_output, payment_output, paragraph, patch, 
 	
 	HTML_output.write("<h1>Patch</h1>");
 	HTML_output.write("<h2>Original</h2>" + preWrap(patch.highlightedSentence()));
-
-    
-	if (edit_hit != null) {
-		HTML_output.write("<p>Is it cuttable?  <b>" + outputPatch.cutVotes + "</b> of " + edit_hit.assignments.length + " turkers say yes.</p>");
-	}
 	
 	var dmp = new diff_match_patch();    
 	if (suggestions != null) {
 		for (var i = 0; i < suggestions.length; i++) {
 			// this will be one of the alternatives they generated
 			var newText = suggestions[i];
-			
-			var this_grammar_votes = grammar_votes[newText] ? grammar_votes[newText] : 0;
-			var this_meaning_votes = meaning_votes[newText] ? meaning_votes[newText] : 0;
 
 			var diff = dmp.diff_main(patch.plaintextSentence(), newText);
 			dmp.diff_cleanupSemantic(diff);		
 			var diff_html = "<div>" + dmp.diff_prettyHtml(diff) + "</div>";		
+            HTML_output.write(diff_html);
+            
+            foreach(findFixVerifyOptions.verify.fields, function(field) {
+                var numVotes = votes[field.name][newText] ? votes[field.name][newText] : 0;
+                var passes = field.passes(numVotes, verify_hit.assignments.length);
+                HTML_output.write("<div>How many people voted for/against the " + field.name + "? <b>" + numVotes + "</b> of " + verify_hit.assignments.length + " turkers. ");
+                if (passes) {
+                    HTML_output.write('<b>Pass.</b>');
+                } else {
+                    HTML_output.write('<b>Fail.</b>');
+                }
+                HTML_output.write('</div>');
+            });
 			
-			HTML_output.write(diff_html);
-			HTML_output.write("<div>How many people thought this had the most grammar problems? <b>" + this_grammar_votes + "</b> of " + verify_hit.assignments.length + " turkers.</div>");
-			HTML_output.write("<div>How many people thought this changed the meaning most? <b>" + this_meaning_votes + "</b> of " + verify_hit.assignments.length + " turkers.</div>");		
 			HTML_output.flush();
 		}
 	}   
