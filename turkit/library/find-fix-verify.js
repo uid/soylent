@@ -107,7 +107,7 @@ function findFixVerify(options) {
                     verifyHITs[i] = verify_hit;
 					
                     // Create output data structure
-                    var patchOutput = generatePatch(patch, find_hit, fix_hit, verify_hit, votes, suggestions, paragraph_index);
+                    var patchOutput = generatePatch(patch, find_hit, fix_hit, verify_hit, votes, options.verify.fields, suggestions, paragraph_index);
                     paragraphResult.patches.push(patchOutput);
                     
                     // Write file output
@@ -205,6 +205,8 @@ function verifyPatches(patch, fix_hit, suggestions, paragraph_index, patchNumber
     var votes = [];
     while (true) {
         votes = joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions, rejectedWorkers);
+        // note: votes is an associative array, an array with string indices. 
+        // print() and json() may incorrectly show it as empty, even when it is not.
         
         var fields_complete = 0;
         foreach(findFixVerifyOptions.verify.fields, function(field) {
@@ -497,7 +499,6 @@ function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
  * Error checks the vote stage and returns the vote score for each option.
  */
 function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions, rejectedWorkers) {
-    print('joining');
 	// get the votes
 	var hitId = verify_hit;
 	var status = mturk.getHIT(hitId, true)	
@@ -531,7 +532,7 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
     
     var votes = Array();
     foreach(findFixVerifyOptions.verify.fields, function(field) {
-        votes[field.name] = get_vote(hit.assignments, function(answer) { 
+        var fieldVotes = get_vote(hit.assignments, function(answer) {
             if (typeof(answer[field.name]) == "undefined") return [];
             
             var results = [];
@@ -540,8 +541,9 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
             });
             return results;
         }, true); 
+        votes[field.name] = fieldVotes;
     });
-	
+    
 	return votes;
 }
 
@@ -549,7 +551,7 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
  * Puts together a complete data structure that contains all the options, voting results, and more. 
  * Call this on a patch that has made it through the Verify stage.
  */
-function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, suggestions, paragraph_index) {
+function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, suggestions, paragraph_index) {    
 	var outputPatch = {
 		start: patch.start,   // beginning of the identified patch
 		end: patch.end,
@@ -576,7 +578,7 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
 			var newText = suggestions[i];
             
             var voteFields = Array();
-            foreach(findFixVerifyOptions.verify.fields, function(field) {
+            foreach(fields, function(field) {
                 var numVotes = votes[field.name][newText] ? votes[field.name][newText] : 0;
                 var passes = field.passes(numVotes, verify_hit.assignments.length);
                 voteFields.push({
@@ -741,8 +743,6 @@ function mergePatches(patches, startPatch, endPatch, paragraph_index) {
         newPatch.end = Array.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.end; } ) );         // get the largest end value of the patches
         newPatch.editStart = Array.min(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editStart; } ) );
         newPatch.editEnd = Array.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editEnd; } ) );
-        newPatch.canCut = false;    // we're going to embed the individual cuttability estimates in the options, since now you can only cut part of the patch
-        newPatch.cutVotes = 0;
         newPatch.numEditors = Stats.sum(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.numEditors; } ) );
         newPatch.merged = true;
         newPatch.options = new Array();
@@ -761,8 +761,6 @@ function mergePatches(patches, startPatch, endPatch, paragraph_index) {
 function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, editStart, editEnd) {
     var options = new Array();
     
-    print('\n\nPatch merging ' + curPatch);
-	print(json(patches[curPatch]))
     var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].editStart);
     var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd, editEnd);
 	
@@ -779,13 +777,13 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
             editStart: editStart,
             editEnd: editEnd,
             numVoters: option.numVoters,
-            meaningVotes: option.meaningVotes,
-            grammarVotes: option.grammarVotes,
+            votes: option.votes,
 			originalText: getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd)
         }
         options.push(newOption);
     }
     
+    /*
     if (patches[curPatch].canCut) {
         // create an option that cuts the entire original patch, if it was voted cuttable
         var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].start);
@@ -803,6 +801,7 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
         }
         options.push(newOption);
     }
+    */
     
     return options;
 }
