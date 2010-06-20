@@ -21,7 +21,7 @@ eval(read("../library/socket.js"));
  *          redundancy: int -- 10, or the number of workers we want to complete the task
  *          minimum_workers: int -- the smallest number of workers to use. Wait for at least this many even if we time out.
  *          transformWebpage: function(webpageContents, paragraph) --- returns webpageContents with any user-defined changes made to it. null if no changes are necessary.
- *          customTest: function(paragraph, patch_start, patch_end) --- returns data structure { passes (boolean), reason (string) } if the patch is valid or invalid (reject work), or null for no extra test
+ *          customTest: function({paragraph, start_index, end_index}) --- returns data structure { passes (boolean), reason (string) } if the bracket contents is valid or invalid (reject work), or null for no extra test. Called on every bracketed area.
  *      },
  *      fix: {
  *          HIT_title: string,
@@ -44,6 +44,7 @@ eval(read("../library/socket.js"));
  *          minimum_workers: int,
  *          fields: [ {
  *                          name: string --- name of the field being voted on, e.g. "grammar"
+ *                          fixFormElement: string --- name of the input form element in the Fix-stage HTML.
  *                          passes: function(numVotes, totalVotes) --- returns true if the option got numVotes votes out of totalVotes. Author your own success requirements.
  *                    } ] --- a list of the fields being voted on. These field names will be populated into the javascript for each suggestion and then read back out by the verify step.
  *          transformWebpage: function(webpageContents, options) --- returns webpageContents with any user-defined changes made to it. null if no changes are necessary.
@@ -107,7 +108,7 @@ function findFixVerify(options) {
                     verifyHITs[i] = verify_hit;
 					
                     // Create output data structure
-                    var patchOutput = generatePatch(patch, find_hit, fix_hit, verify_hit, votes, options.verify.fields, suggestions, paragraph_index);
+                    var patchOutput = generatePatch(patch, find_hit, fix_hit, verify_hit, votes, options.verify.fields, suggestions, paragraph_index, options);
                     paragraphResult.patches.push(patchOutput);
                     
                     // Write file output
@@ -183,7 +184,17 @@ function fixPatches(patch, paragraph_index, patchNumber, totalPatches, findFixVe
     var suggestions = []
     while (true) {	
         suggestions = joinFixes(fix_hit, patch.plaintextSentence(), paragraph_index, patch, patchNumber, totalPatches, rejectedWorkers, findFixVerifyOptions);
-        if (suggestions.length > 0) {
+        // keep in mind that suggestions is an associative array and may not show up in print(json(arr))
+        
+        // make sure every field has a length of at least one
+        var maxLength = 0;
+        for(var suggestion in suggestions) {
+            if (suggestions.hasOwnProperty(suggestion)) {
+                maxLength = Math.max(suggestion.length, maxLength);
+            }
+        }
+        
+        if (maxLength > 0) {
             break;
         }
         else {
@@ -273,7 +284,7 @@ function joinPatches(find_hit, paragraph_index, findFixVerifyOptions, rejectedWo
 	
 	var hit = mturk.boundedWaitForHIT(find_hit, findFixVerifyOptions.wait_time, findFixVerifyOptions.find.minimum_workers, findFixVerifyOptions.find.redundancy);
 
-	var patch_suggestions = generatePatchSuggestions(hit.assignments, findFixVerifyOptions.paragraphs[paragraph_index], findFixVerifyOptions.find.customPatchTest, rejectedWorkers);
+	var patch_suggestions = generatePatchSuggestions(hit.assignments, findFixVerifyOptions.paragraphs[paragraph_index], findFixVerifyOptions.find.customTest, rejectedWorkers);
 	var patches = aggregatePatchSuggestions(patch_suggestions, hit.assignments.length, findFixVerifyOptions.paragraphs[paragraph_index], findFixVerifyOptions.find.minimum_agreement);
 
 	print('\n\n\n');
@@ -284,7 +295,7 @@ function joinPatches(find_hit, paragraph_index, findFixVerifyOptions, rejectedWo
 /**
  * Identifies the areas in [[brackets]] and does error checking. If it's up to snuff, creates a Patch object for each [[area]].
  */
-function generatePatchSuggestions(assignments, paragraph, customPatchTest, rejectedWorkers) {
+function generatePatchSuggestions(assignments, paragraph, customTest, rejectedWorkers) {
 	var suggestions = [];
 	
 	for (var i=0; i<assignments.length; i++) {
@@ -301,7 +312,7 @@ function generatePatchSuggestions(assignments, paragraph, customPatchTest, rejec
                 start_index: start_index,
                 end_index: end_index,
             };
-            var customPassed = testAndReject(customPatchTest, toTest, assignments[i]);
+            var customPassed = testAndReject(customTest, toTest, assignments[i]);
             var lengthPassed = testAndReject(
                 function(toTest) {
                 	var paragraph_length = getParagraph(toTest.paragraph).length;
@@ -414,19 +425,46 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
 	var hit = mturk.boundedWaitForHIT(hitId, findFixVerifyOptions.wait_time, findFixVerifyOptions.fix.minimum_workers, findFixVerifyOptions.fix.redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
 	
-	var options = new Array();
+	var options = new Array();    
 	foreach(hit.assignments, function(e) {
-        var passed = testAndReject(findFixVerifyOptions.fix.customFixTest, e, e);
+        var toTest = {
+            answer: e.answer,
+            patch: patch
+        };
+        var passed = testAndReject(findFixVerifyOptions.fix.customTest, toTest, e);
+        
         if (passed) {
-			options.push(e.answer);
+            foreach(e.answer, function(answer, propertyName) {
+                addFieldSuggestion(options, propertyName, answer);
+            });
 		}
 	});
     
     if (findFixVerifyOptions.fix.mapFixResults != null) {
-        return findFixVerifyOptions.fix.mapFixResults(options, patch);
+        findFixVerifyOptions.fix.mapFixResults(options, patch);
     }
-    else {
-        return options;
+    
+    // uniqify each field so that we don't have repeats
+    // special foreach variant necessary for the associative array
+    for(var fieldName in options) {
+        if (options.hasOwnProperty(fieldName)) {
+            options[fieldName] = options[fieldName].unique();
+        }
+    }
+    
+    return options;
+}
+
+/**
+ * Tests to see if there's a field with the given name, and if so, adds this suggestion to the list.
+ * If not, adds the field to the list.
+ */
+function addFieldSuggestion(options, fieldName, suggestion) {
+    print('adding ' + suggestion + ' to ' + fieldName);
+    if (fieldName in options) {
+        options[fieldName].push(suggestion);
+    } else {
+        options[fieldName] = [ suggestion ];
     }
 }
 
@@ -452,24 +490,25 @@ function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
                             .replace(/___HEADER_SCRIPT___/g, header)
                             .replace(/___HIGHLIGHTED___/g, patch.highlightedParagraph());
                             
-	var dmp = new diff_match_patch();	
-	// provide a challenge if there is only one option
-	if (options.length == 1) {
-		var original = patch.plaintextSentence();
-		if (original != options[0]) {
-			options.push(original);
-		}
-	}
+	var dmp = new diff_match_patch();
+    
+    print('got here');
     
     foreach(findFixVerifyOptions.verify.fields, function(field) {    
         var table = '<table>';
-        foreach(options, function (correction, j) {
-            // Annotate the patch to make clear what's changed via a diff
-            var diff = dmp.diff_main(patch.plaintextSentence(), correction);
-            dmp.diff_cleanupSemantic(diff);		          
-            var diff_html = "<div>" + dmp.diff_prettyHtml(diff) + "</div>";		
+        var fieldSuggestions = options[field.fixFormElement];
+        foreach(fieldSuggestions, function (suggestion, j) {
+            var entry_html;
+            if (field.fixFormElement == findFixVerifyOptions.verify.editedTextField) {
+                // Annotate the patch to make clear what's changed via a diff
+                var diff = dmp.diff_main(patch.plaintextSentence(), suggestion);
+                dmp.diff_cleanupSemantic(diff);                
+                entry_html = "<div>" + dmp.diff_prettyHtml(diff) + "</div>";
+            } else {
+                entry_html = "<div>" + suggestion + "</div>";
+            }
                         
-            var row = '<tr valign="top" class="' + field.name + '"><td><label><input type="checkbox" name="' + field.name + '" value="' + escape(correction) + '"></input></label></td><td>' +  diff_html + '</td></tr>';
+            var row = '<tr valign="top" class="' + field.name + '"><td><label><input type="checkbox" name="' + field.name + '" value="' + escape(suggestion) + '"></input></label></td><td>' +  entry_html + '</td></tr>';
             table +=  row;
         });
         table += '</table>';
@@ -551,7 +590,7 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
  * Puts together a complete data structure that contains all the options, voting results, and more. 
  * Call this on a patch that has made it through the Verify stage.
  */
-function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, suggestions, paragraph_index) {    
+function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, suggestions, paragraph_index, findFixVerifyOptions) {    
 	var outputPatch = {
 		start: patch.start,   // beginning of the identified patch
 		end: patch.end,
@@ -571,72 +610,89 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
 		var verify_hit = mturk.getHIT(verify_hit, true);
     }
     
-    if (suggestions != null) {
+    if (suggestions != null) {    
         var dmp = new diff_match_patch();
-		for (var i = 0; i < suggestions.length; i++) {
-			// this will be one of the alternatives they generated
-			var newText = suggestions[i];
-            
-            var voteFields = Array();
-            foreach(fields, function(field) {
-                var numVotes = votes[field.name][newText] ? votes[field.name][newText] : 0;
-                var passes = field.passes(numVotes, verify_hit.assignments.length);
-                voteFields.push({
-                    name: field.name,
-                    numVotes: numVotes,
-                    passes: passes
-                });
-            });
-            
-            // Did we pass all the tests?
-            var passedArray = voteFields.map( function(vote) { return vote.passes; } );
-            var passedAll = passedArray.reduce( function(previousValue, currentValue, index, passedArray) {
-                return previousValue && currentValue;
-            });
-            
-            if (passedAll) {
-                // Now we calculate the beginning of the edit and the end of the edit region
-                var diff = dmp.diff_main(patch.plaintextSentence(), newText);
-                dmp.diff_cleanupSemantic(diff);
-                
-                var original_index = 0;
-                var edit_start = -1;
-                var edit_end = -1;
-                for (var j = 0; j < diff.length; j++) {
-                    // if it's an insert or delete, and this is the first one, mark it
-                    if (diff[j][0] != 0 && edit_start == -1) { 
-                        edit_start = original_index;
-                    }
-                    
-                    // if we are removing something, mark the end of the deletion as a possible last point
-                    if (diff[j][0] == -1) {
-                        edit_end = original_index + diff[j][1].length;
-                    }
-                    // if we are adding something, mark the beginning of the insertion as a possible last point
-                    if (diff[j][0] == 1) {
-                        edit_end = original_index;
-                    }                
-                    
-                    // if it's keeping it the same, or removing things, (meaning we're in the original string), increment the counter
-                    if (diff[j][0] == 0 || diff[j][0] == -1) {
-                        original_index += diff[j][1].length;
-                    }
+		for (var formField in suggestions) {
+            if (suggestions.hasOwnProperty(formField)) {
+                var editsText = (findFixVerifyOptions.verify.editedTextField == formField)
+                // First we set up the options object to have entries for that field
+                var fieldOption = {
+                        field: formField,
+                        alternatives: [],
+                        editsText: editsText
                 }
+                outputPatch.options.push(fieldOption);
                 
-                // we need to know what offset the patch starts at, by summing together the lengths of the previous sentences
-                var editOffset = patch.sentences.slice(0, patch.sentenceRange().startSentence).join(sentence_separator).length;
-                if (patch.sentenceRange().startSentence > 0) {
-                    editOffset += sentence_separator.length;   // add the extra space after the previous sentences and before this one.
-                }
+                // Get all suggestions for that form field
+                var suggestionsPerField = suggestions[formField];
+                // Now test each suggestion against all the fields that want to test it
+                foreach(suggestionsPerField, function(suggestion) {            
+                    // We get every field whose fixFormElement is fieldName -- we need to make sure that the
+                    // suggestion passes every such test
+                    var suggestionVotes = {};
+                    var passesAll = true;
+                    var fieldsToTest = findFixVerifyOptions.verify.fields.filter( function(field) { return field.fixFormElement == formField; } );
+                    foreach(fieldsToTest, function(field) {
+                        var numVotes = votes[field.name][suggestion] ? votes[field.name][suggestion] : 0;
+                        suggestionVotes[field] = numVotes;
+                        var passes = field.passes(numVotes, verify_hit.assignments.length);                    
+                        if (!passes) passesAll = false;
+                    });
+                    
+                    if (passesAll) {
+                        // If it's a field that edited the text, include information about the edit area
+                        // Otherwise, just include the raw options
+                        if (editsText) {
+                            // This is a field that edited the original text
+                            // Now we calculate the beginning of the edit and the end of the edit region
+                            var diff = dmp.diff_main(patch.plaintextSentence(), suggestion);
+                            dmp.diff_cleanupSemantic(diff);
                             
-                outputPatch.options.push({
-                    text: newText,
-                    editedText: newText,    // will be updated in a moment
-                    editStart: edit_start + editOffset,
-                    editEnd: edit_end + editOffset,
-                    numVoters: verify_hit.assignments.length,
-                    votes: voteFields,
-                    diff: diff
+                            var original_index = 0;
+                            var edit_start = -1;
+                            var edit_end = -1;
+                            for (var j = 0; j < diff.length; j++) {
+                                // if it's an insert or delete, and this is the first one, mark it
+                                if (diff[j][0] != 0 && edit_start == -1) { 
+                                    edit_start = original_index;
+                                }
+                                
+                                // if we are removing something, mark the end of the deletion as a possible last point
+                                if (diff[j][0] == -1) {
+                                    edit_end = original_index + diff[j][1].length;
+                                }
+                                // if we are adding something, mark the beginning of the insertion as a possible last point
+                                if (diff[j][0] == 1) {
+                                    edit_end = original_index;
+                                }                
+                                
+                                // if it's keeping it the same, or removing things, (meaning we're in the original string), increment the counter
+                                if (diff[j][0] == 0 || diff[j][0] == -1) {
+                                    original_index += diff[j][1].length;
+                                }
+                            }
+                            
+                            // we need to know what offset the patch starts at, by summing together the lengths of the previous sentences
+                            var editOffset = patch.sentences.slice(0, patch.sentenceRange().startSentence).join(sentence_separator).length;
+                            if (patch.sentenceRange().startSentence > 0) {
+                                editOffset += sentence_separator.length;   // add the extra space after the previous sentences and before this one.
+                            }    
+                            
+                            fieldOption.alternatives.push({
+                                text: suggestion,
+                                editedText: suggestion,    // will be updated in a moment
+                                editStart: edit_start + editOffset,
+                                editEnd: edit_end + editOffset,
+                                numVoters: verify_hit.assignments.length,
+                                votes: suggestionVotes,
+                                diff: diff
+                            });                            
+                        }
+                        else {
+                            // This is a field that is providing other information
+                            fieldOption.alternatives.push(suggestion);
+                        }
+                    }
                 });
             }
 		}

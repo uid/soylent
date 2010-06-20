@@ -92,15 +92,17 @@ function shortnFindTransformWebpage(webpageContents, paragraph) {
     return webpageContents.replace(/___ESCAPED_PARAGRAPH___/g, escape(paragraph))
 }
 
-function shortnFixTest(answer) {
-    var text = e.answer.newText;
+function shortnFixTest(toTest) {
+    var text = toTest.answer.newText;
+    var originalSentence = toTest.patch.plaintextSentence();
+
     if (text == originalSentence) {
         return {
                     passes: false,
                     reason: "Please do not copy/paste the original sentence back in. We're looking for a shorter version."
                 };
     }
-    else if (text.length >= originalSentence) {
+    else if (text.length >= originalSentence.length) {
         return {
                     passes: false,
                     reason: "Your sentence was as long or longer than the original. We're looking for a shorter version."
@@ -129,5 +131,13 @@ function shortnMapFixResults(answers, patch) {
         results.push(patch.getCutSentence());
     }
     
-    return results.unique();
+	// provide a challenge if there is only one option
+	if (results.length == 1) {
+		var original = patch.plaintextSentence();
+		if (original != results[0]) {
+			results.push(original);
+		}
+	}    
+    
+    return results;
 }
