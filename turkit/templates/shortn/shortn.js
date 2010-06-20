@@ -39,13 +39,16 @@ var findFixVerifyOptions = {
         fields: [
             {
                 name: 'grammar',
+                fixFormElement: 'revision',
                 passes: function(numVotes, totalVotes) { return (numVotes / totalVotes) < .5; }
             },
             {
                 name: 'meaning',
+                fixFormElement: 'revision',
                 passes: function(numVotes, totalVotes) { return (numVotes / totalVotes) < .5; }
             }
         ],
+        editedTextField: 'revision',
         customTest: null,
     },
     socket: new Socket("shortn", "localhost", 11000, 2000),

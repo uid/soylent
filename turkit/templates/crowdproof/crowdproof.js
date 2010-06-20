@@ -39,16 +39,16 @@ var findFixVerifyOptions = {
         fields: [
             {
                 name: 'fix',
-                fixFormElement: 'newText',
+                fixFormElement: 'revision',
                 passes: function(numVotes, totalVotes) { return (numVotes / totalVotes) >= .3; },
             },
             {
                 name: 'reason',
-                fixFormElement: 'description',
+                fixFormElement: 'reason',
                 passes: function(numVotes, totalVotes) { return (numVotes / totalVotes) >= .3; },
             }
         ],
-        editedTextField: 'newText',
+        editedTextField: 'revision',
         customTest: null,        
     },
     socket: new Socket("crowdproof", "localhost", 11000, 2000),

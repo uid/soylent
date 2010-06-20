@@ -18,7 +18,7 @@
     ___HEADER_SCRIPT___
 
 $(function () {    
-    $.validator.addMethod("newText", function(value, element) {	
+    $.validator.addMethod("revision", function(value, element) {	
         var brackets = /\[\[(.*?)\]\]/g;
         
         //
@@ -39,7 +39,7 @@ $(function () {
     $('#fixform').validate( {
 		debug: false,
 		rules: {
-			newText: "newText",
+			revision: "revision",
 		}
 	});
 });
@@ -53,8 +53,8 @@ $(function () {
 		
 		<p style="font-size: 10pt; font-family: monospace; width: 500px">___TEXT___</p>		
 
-		<label for="newText"><div>Shorten or cut the highlighted text in the copy below:</div></label>
-		<div><textarea id="newText" style="width:500px;height:125px" name="newText" class="required">___EDITABLE___</textarea></div>
+		<label for="revision"><div>Shorten or cut the highlighted text in the copy below:</div></label>
+		<div><textarea id="revision" style="width:500px;height:125px" name="revision" class="required">___EDITABLE___</textarea></div>
 		<br/><br/><br/>
 		
 		<label for='votes'><div>Can the highlighted section be entirely removed without making the text ungrammatical or changing the meaning of the paragraph?</div></label>
