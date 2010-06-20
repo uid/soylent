@@ -50,9 +50,10 @@ var findFixVerifyOptions = {
         ],
         editedTextField: 'revision',
         customTest: null,
+        transformWebpage: null
     },
     socket: new Socket("shortn", "localhost", 11000, 2000),
-    writeOutput: true
+    writeOutput: false
 };
 
 function main() {
@@ -96,7 +97,7 @@ function shortnFindTransformWebpage(webpageContents, paragraph) {
 }
 
 function shortnFixTest(toTest) {
-    var text = toTest.answer.newText;
+    var text = toTest.answer.revision;
     var originalSentence = toTest.patch.plaintextSentence();
 
     if (text == originalSentence) {
@@ -119,28 +120,28 @@ function shortnFixTest(toTest) {
     }
 }
 
-function shortnMapFixResults(answers, patch) {
-    var results = Array();
-    
-    var cutVotes = 0
-    foreach(answers, function(answer) {
-        results.push(answer.newText);
-        if (answer.cuttable) {
+function shortnMapFixResults(answers, patch) {    
+    var cutVotes = 0;
+    foreach(answers, function(answer, index) {
+        if (index == "cuttable" && answer == "Yes") {
             cutVotes++;
         }
     });
     
-    if (cutVotes >= .5 * answers.length) {
-        results.push(patch.getCutSentence());
+    var revisions = answers['revision'];
+    if (cutVotes >= .5 * answers['cuttable'].length) {
+        revisions.push(patch.getCutSentence());
     }
     
+    print(json(revisions));
+    
 	// provide a challenge if there is only one option
-	if (results.length == 1) {
+	if (revisions.length == 1) {
 		var original = patch.plaintextSentence();
-		if (original != results[0]) {
-			results.push(original);
+		if (original != revisions[0]) {
+            revisions.push(original);
 		}
 	}    
     
-    return results;
+    return answers;
 }
