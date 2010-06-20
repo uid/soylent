@@ -49,17 +49,12 @@ var findFixVerifyOptions = {
             }
         ],
         editedTextField: 'revision',
-        customTest: null,        
+        customTest: null,
+        transformWebpage: null
     },
     socket: new Socket("crowdproof", "localhost", 11000, 2000),
-    output: outputEdits
+    writeOutput: false    
 };
-
-// Outputs
-var output;
-var lag_output;
-var payment_output;
-var patchesOutput;
 
 function main() {
     initializeDebug();

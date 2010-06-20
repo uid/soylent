@@ -184,17 +184,14 @@ function fixPatches(patch, paragraph_index, patchNumber, totalPatches, findFixVe
     var suggestions = []
     while (true) {	
         suggestions = joinFixes(fix_hit, patch.plaintextSentence(), paragraph_index, patch, patchNumber, totalPatches, rejectedWorkers, findFixVerifyOptions);
-        // keep in mind that suggestions is an associative array and may not show up in print(json(arr))
         
         // make sure every field has a length of at least one
-        var maxLength = 0;
-        for(var suggestion in suggestions) {
-            if (suggestions.hasOwnProperty(suggestion)) {
-                maxLength = Math.max(suggestion.length, maxLength);
-            }
-        }
-        
-        if (maxLength > 0) {
+        var minLength = Number.MAX_VALUE;
+        foreach(suggestions, function(alternatives, fieldName) {
+            minLength = Math.min(minLength, alternatives.length);
+        });
+                
+        if (minLength >= 1) {
             break;
         }
         else {
@@ -216,8 +213,6 @@ function verifyPatches(patch, fix_hit, suggestions, paragraph_index, patchNumber
     var votes = [];
     while (true) {
         votes = joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions, rejectedWorkers);
-        // note: votes is an associative array, an array with string indices. 
-        // print() and json() may incorrectly show it as empty, even when it is not.
         
         var fields_complete = 0;
         foreach(findFixVerifyOptions.verify.fields, function(field) {
@@ -425,7 +420,7 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
 	var hit = mturk.boundedWaitForHIT(hitId, findFixVerifyOptions.wait_time, findFixVerifyOptions.fix.minimum_workers, findFixVerifyOptions.fix.redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
 	
-	var options = new Array();    
+	var options = new Object();    
 	foreach(hit.assignments, function(e) {
         var toTest = {
             answer: e.answer,
@@ -445,12 +440,9 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
     }
     
     // uniqify each field so that we don't have repeats
-    // special foreach variant necessary for the associative array
-    for(var fieldName in options) {
-        if (options.hasOwnProperty(fieldName)) {
-            options[fieldName] = options[fieldName].unique();
-        }
-    }
+    foreach(options, function(fieldAlternatives, index) {
+        options[index] = fieldAlternatives.unique();
+    });
     
     return options;
 }
@@ -460,12 +452,47 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
  * If not, adds the field to the list.
  */
 function addFieldSuggestion(options, fieldName, suggestion) {
+    /*
+    var added = false;
+    foreach(options, function(field) {
+        if (field.name == fieldName) {
+            field.alternatives.push(suggestion);
+            added = true;
+        }
+    });
+    
+    // it's a new field we don't know about
+    if (!added) {
+        options.push( {
+            name: fieldName,
+            alternatives: [ suggestion ]
+        });
+    }
+    */
+
     if (fieldName in options) {
         options[fieldName].push(suggestion);
     } else {
         options[fieldName] = [ suggestion ];
     }
 }
+
+/**
+ * Gets the alternatives for a given field name
+ */
+ /*
+function getFixAlternativesByField(options, fieldName) {
+    var match = null;
+    foreach(options, function(option) {
+        if (option.name == fieldName) {
+            match = option;
+            return false; // break from foreach
+        }
+    });
+    
+    return match;
+}
+*/
 
 //
 // Vote helper methods
@@ -544,6 +571,7 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
 	var hit = mturk.boundedWaitForHIT(hitId, findFixVerifyOptions.wait_time, findFixVerifyOptions.verify.minimum_workers, findFixVerifyOptions.verify.redundancy);
 	print("done! completed by " + hit.assignments.length + " turkers");
 
+    var passedAssignments = Array();
     foreach(hit.assignments, function(assignment) {
         var customPassed = testAndReject(findFixVerifyOptions.verify.customTest, assignment, assignment);
         var missingPassed = testAndReject(
@@ -564,11 +592,14 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
                         reason: ""
                 };
             }, assignment);
+        if (customPassed && missingPassed) {
+            passedAssignments.push(assignment);
+        }
     });
     
-    var votes = Array();
+    var votes = new Object();
     foreach(findFixVerifyOptions.verify.fields, function(field) {
-        var fieldVotes = get_vote(hit.assignments, function(answer) {
+        var fieldVotes = get_vote(passedAssignments, function(answer) {
             if (typeof(answer[field.name]) == "undefined") return [];
             
             var results = [];
@@ -608,21 +639,18 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
     }
     
     if (suggestions != null) {
-		for (var formField in suggestions) {
-            if (suggestions.hasOwnProperty(formField)) {
-                var editsText = (findFixVerifyOptions.verify.editedTextField == formField)
-                // First we set up the options object to have entries for that field
-                var fieldOption = {
-                        field: formField,
-                        alternatives: [],
-                        editsText: editsText
-                }
-                outputPatch.options.push(fieldOption);
-                
-                fieldOption.alternatives = getFieldAlternatives(formField, patch, suggestions, verify_hit.assignments.length, editsText);
-
+		foreach(suggestions, function(alternatives, fieldName) {
+            var editsText = (findFixVerifyOptions.verify.editedTextField == fieldName)
+            // First we set up the options object to have entries for that field
+            var fieldOption = {
+                    field: fieldName,
+                    alternatives: [],
+                    editsText: editsText
             }
-		}
+            outputPatch.options.push(fieldOption);
+            
+            fieldOption.alternatives = getFieldAlternatives(alternatives, fieldName, patch, votes, verify_hit.assignments.length, editsText);
+		});
 	}
     
     fixEditAreas(outputPatch, patch);
@@ -632,20 +660,18 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
 /**
  * Gets a list of alternatives that pass all required tests for the requested formField
  */
-function getFieldAlternatives(formField, patch, suggestions, numVoters, editsText) {
+function getFieldAlternatives(fieldAlternatives, fieldName, patch, votes, numVoters, editsText) {
     var alternatives = new Array();
     var dmp = new diff_match_patch();
 
-    // Get all suggestions for that form field
-    var suggestionsPerField = suggestions[formField];
     // Now test each suggestion against all the fields that want to test it
-    foreach(suggestionsPerField, function(suggestion) {            
+    foreach(fieldAlternatives, function(suggestion) {            
         // We get every field whose fixFormElement is fieldName -- we need to make sure that the
         // suggestion passes every such test
         var suggestionVotes = {
         };
         var passesAll = true;
-        var fieldsToTest = findFixVerifyOptions.verify.fields.filter( function(field) { return field.fixFormElement == formField; } );
+        var fieldsToTest = findFixVerifyOptions.verify.fields.filter( function(field) { return field.fixFormElement == fieldName; } );
         foreach(fieldsToTest, function(field) {
             var numVotes = votes[field.name][suggestion] ? votes[field.name][suggestion] : 0;
             suggestionVotes[field.name] = numVotes;
@@ -866,23 +892,14 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
     
     var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].editStart);
     var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd, editEnd);
-    
-    print('prefix');
-    print(prefix);
-    print('postfix');
-    print(postfix);
-	
+    	
     var fieldAlternatives = getAlternativesForFieldName(patches[curPatch], fieldName);
     var dmp = new diff_match_patch();
     for (var i=0; i<fieldAlternatives.length; i++) {
         var option = fieldAlternatives[i];
-        print('this option')
-        print(json(option));
         
         // diff[0] and diff[length-1] will always be the edges that are untouched, so we need to subtract them out
         var editRegion = option.text.slice(option.diff[0][1].length, -1 * option.diff[option.diff.length-1][1].length)
-        print('editRegion');
-        print(editRegion);
                 
         var newAlternative = {
             text: prefix + editRegion + postfix,
