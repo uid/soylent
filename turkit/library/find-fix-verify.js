@@ -460,7 +460,6 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
  * If not, adds the field to the list.
  */
 function addFieldSuggestion(options, fieldName, suggestion) {
-    print('adding ' + suggestion + ' to ' + fieldName);
     if (fieldName in options) {
         options[fieldName].push(suggestion);
     } else {
@@ -491,8 +490,6 @@ function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
                             .replace(/___HIGHLIGHTED___/g, patch.highlightedParagraph());
                             
 	var dmp = new diff_match_patch();
-    
-    print('got here');
     
     foreach(findFixVerifyOptions.verify.fields, function(field) {    
         var table = '<table>';
@@ -610,8 +607,7 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
 		var verify_hit = mturk.getHIT(verify_hit, true);
     }
     
-    if (suggestions != null) {    
-        var dmp = new diff_match_patch();
+    if (suggestions != null) {
 		for (var formField in suggestions) {
             if (suggestions.hasOwnProperty(formField)) {
                 var editsText = (findFixVerifyOptions.verify.editedTextField == formField)
@@ -623,100 +619,134 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
                 }
                 outputPatch.options.push(fieldOption);
                 
-                // Get all suggestions for that form field
-                var suggestionsPerField = suggestions[formField];
-                // Now test each suggestion against all the fields that want to test it
-                foreach(suggestionsPerField, function(suggestion) {            
-                    // We get every field whose fixFormElement is fieldName -- we need to make sure that the
-                    // suggestion passes every such test
-                    var suggestionVotes = {};
-                    var passesAll = true;
-                    var fieldsToTest = findFixVerifyOptions.verify.fields.filter( function(field) { return field.fixFormElement == formField; } );
-                    foreach(fieldsToTest, function(field) {
-                        var numVotes = votes[field.name][suggestion] ? votes[field.name][suggestion] : 0;
-                        suggestionVotes[field] = numVotes;
-                        var passes = field.passes(numVotes, verify_hit.assignments.length);                    
-                        if (!passes) passesAll = false;
-                    });
-                    
-                    if (passesAll) {
-                        // If it's a field that edited the text, include information about the edit area
-                        // Otherwise, just include the raw options
-                        if (editsText) {
-                            // This is a field that edited the original text
-                            // Now we calculate the beginning of the edit and the end of the edit region
-                            var diff = dmp.diff_main(patch.plaintextSentence(), suggestion);
-                            dmp.diff_cleanupSemantic(diff);
-                            
-                            var original_index = 0;
-                            var edit_start = -1;
-                            var edit_end = -1;
-                            for (var j = 0; j < diff.length; j++) {
-                                // if it's an insert or delete, and this is the first one, mark it
-                                if (diff[j][0] != 0 && edit_start == -1) { 
-                                    edit_start = original_index;
-                                }
-                                
-                                // if we are removing something, mark the end of the deletion as a possible last point
-                                if (diff[j][0] == -1) {
-                                    edit_end = original_index + diff[j][1].length;
-                                }
-                                // if we are adding something, mark the beginning of the insertion as a possible last point
-                                if (diff[j][0] == 1) {
-                                    edit_end = original_index;
-                                }                
-                                
-                                // if it's keeping it the same, or removing things, (meaning we're in the original string), increment the counter
-                                if (diff[j][0] == 0 || diff[j][0] == -1) {
-                                    original_index += diff[j][1].length;
-                                }
-                            }
-                            
-                            // we need to know what offset the patch starts at, by summing together the lengths of the previous sentences
-                            var editOffset = patch.sentences.slice(0, patch.sentenceRange().startSentence).join(sentence_separator).length;
-                            if (patch.sentenceRange().startSentence > 0) {
-                                editOffset += sentence_separator.length;   // add the extra space after the previous sentences and before this one.
-                            }    
-                            
-                            fieldOption.alternatives.push({
-                                text: suggestion,
-                                editedText: suggestion,    // will be updated in a moment
-                                editStart: edit_start + editOffset,
-                                editEnd: edit_end + editOffset,
-                                numVoters: verify_hit.assignments.length,
-                                votes: suggestionVotes,
-                                diff: diff
-                            });                            
-                        }
-                        else {
-                            // This is a field that is providing other information
-                            fieldOption.alternatives.push(suggestion);
-                        }
-                    }
-                });
+                fieldOption.alternatives = getFieldAlternatives(formField, patch, suggestions, verify_hit.assignments.length, editsText);
+
             }
 		}
 	}
     
+    fixEditAreas(outputPatch, patch);
+    return outputPatch;
+}
+
+/**
+ * Gets a list of alternatives that pass all required tests for the requested formField
+ */
+function getFieldAlternatives(formField, patch, suggestions, numVoters, editsText) {
+    var alternatives = new Array();
+    var dmp = new diff_match_patch();
+
+    // Get all suggestions for that form field
+    var suggestionsPerField = suggestions[formField];
+    // Now test each suggestion against all the fields that want to test it
+    foreach(suggestionsPerField, function(suggestion) {            
+        // We get every field whose fixFormElement is fieldName -- we need to make sure that the
+        // suggestion passes every such test
+        var suggestionVotes = {
+        };
+        var passesAll = true;
+        var fieldsToTest = findFixVerifyOptions.verify.fields.filter( function(field) { return field.fixFormElement == formField; } );
+        foreach(fieldsToTest, function(field) {
+            var numVotes = votes[field.name][suggestion] ? votes[field.name][suggestion] : 0;
+            suggestionVotes[field.name] = numVotes;
+            var passes = field.passes(numVotes, numVoters);                    
+            if (!passes) passesAll = false;
+        });
+        
+        if (passesAll) {
+            var newAlternative = {
+                text: suggestion,
+                votes: suggestionVotes,
+                numVoters: numVoters
+            };
+        
+            // If it's a field that edited the text, include information about the edit area
+            // Otherwise, just include the raw options
+            if (editsText) {
+                // This is a field that edited the original text
+                // Now we calculate the beginning of the edit and the end of the edit region
+                var diff = dmp.diff_main(patch.plaintextSentence(), suggestion);
+                dmp.diff_cleanupSemantic(diff);
+                
+                var original_index = 0;
+                var edit_start = -1;
+                var edit_end = -1;
+                for (var j = 0; j < diff.length; j++) {
+                    // if it's an insert or delete, and this is the first one, mark it
+                    if (diff[j][0] != 0 && edit_start == -1) { 
+                        edit_start = original_index;
+                    }
+                    
+                    // if we are removing something, mark the end of the deletion as a possible last point
+                    if (diff[j][0] == -1) {
+                        edit_end = original_index + diff[j][1].length;
+                    }
+                    // if we are adding something, mark the beginning of the insertion as a possible last point
+                    if (diff[j][0] == 1) {
+                        edit_end = original_index;
+                    }                
+                    
+                    // if it's keeping it the same, or removing things, (meaning we're in the original string), increment the counter
+                    if (diff[j][0] == 0 || diff[j][0] == -1) {
+                        original_index += diff[j][1].length;
+                    }
+                }
+                
+                // we need to know what offset the patch starts at, by summing together the lengths of the previous sentences
+                var editOffset = patch.sentences.slice(0, patch.sentenceRange().startSentence).join(sentence_separator).length;
+                if (patch.sentenceRange().startSentence > 0) {
+                    editOffset += sentence_separator.length;   // add the extra space after the previous sentences and before this one.
+                }    
+                
+                newAlternative.editedText = suggestion;    // will be updated in a moment
+                newAlternative.editStart = edit_start + editOffset;
+                newAlternative.editEnd = edit_end + editOffset;
+                newAlternative.diff = diff;
+            }
+            
+            alternatives.push(newAlternative);
+        }
+    });
+    
+    return alternatives;
+}
+
+/**
+  * Implementation note: for now, we assume that the first option that edits the text is the only one.
+  * I think this is a reasonable assumption given that you probably won't have users write multiple different edits of the same patch.
+  * If this needs to be possible, we'd need to rethink this code model.
+  */
+function getEditedTextOptions(outputPatch) {
+    return outputPatch.options.filter(function(option) { return option.editsText; } )[0];
+}
+
+/**
+  * Fixes the options that change the original text so that they all encompass the same edit area
+  * For example, if one person edited [4, 10] and another [5, 11], we want them all to look like they edited [4, 11].
+  */ 
+function fixEditAreas(outputPatch, patch) {
+    var fieldEditingText = getEditedTextOptions(outputPatch);
+    
     var previousSentences = patch.sentences.slice(0, patch.sentenceRange().startSentence);
     previousSentences.push(""); // to simulate the sentence that we're starting
     var editOffset = previousSentences.join(sentence_separator).length;
-    if (outputPatch.options.length > 0) {
-        outputPatch.options.sort( function(a, b) { return a.editStart - b.editStart; } ); // ascending by location of first edit
-        outputPatch.editStart = outputPatch.options[0].editStart;
-        outputPatch.options.sort( function(a, b) { return b.editEnd - a.editEnd; } ); // descending by location of last edit
-        outputPatch.editEnd = outputPatch.options[0].editEnd;
+    if (fieldEditingText.alternatives.length > 0) {
+        fieldEditingText.alternatives.sort( function(a, b) { return a.editStart - b.editStart; } ); // ascending by location of first edit
+        outputPatch.editStart = fieldEditingText.alternatives[0].editStart;
+        fieldEditingText.alternatives.sort( function(a, b) { return b.editEnd - a.editEnd; } ); // descending by location of last edit
+        outputPatch.editEnd = fieldEditingText.alternatives[0].editEnd;
         
         // We make sure that the original patch location is at least covered by the edit area
-        outputPatch.editStart = Math.min(outputPatch.editStart, outputPatch.start);
-        outputPatch.editEnd = Math.max(outputPatch.editEnd, outputPatch.end);
+        //outputPatch.editStart = Math.min(outputPatch.editStart, outputPatch.start);
+        //outputPatch.editEnd = Math.max(outputPatch.editEnd, outputPatch.end);
         
         // For each option we need to edit it back down to just the changed portion, removing the extraenous parts of the sentence
         // e.g., we need to prune to just [patch.editStart, patch.editEnd]        
-        for (var i=0; i<outputPatch.options.length; i++) {
+        var dmp = new diff_match_patch();
+        for (var i=0; i<fieldEditingText.alternatives.length; i++) {
             // To remove the extraneous parts of the text, we turn the first and last elements of the diff
             // (the prefix and postfix) into deletions
-            var diff_cut = prune(outputPatch.options[i].diff, 1000000);    // copy it very deep
+            var diff_cut = prune(fieldEditingText.alternatives[i].diff, 1000000);    // copy it very deep
             
             // First we remove the unnecessary parts of the prefix from the text, keeping only what everybody has edited
             if (diff_cut[0][0] == 0) {
@@ -740,15 +770,14 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
             }
             
             var editedText = dmp.patch_apply(dmp.patch_make(diff_cut), patch.plaintextSentence())[0];
-            outputPatch.options[i].editedText = editedText;
+            fieldEditingText.alternatives[i].editedText = editedText;
         }
     }
     
     outputPatch.originalText = outputPatch.originalText.substring(outputPatch.editStart - editOffset, outputPatch.editEnd - editOffset);
     
     // return to original sort order
-    outputPatch.options.sort( function(a, b) { return a.start - b.start; } );    
-    return outputPatch;
+    fieldEditingText.alternatives.sort( function(a, b) { return a.start - b.start; } );
 }
 
 //
@@ -786,7 +815,7 @@ function findOverlapsAndMerge(patches, paragraph_index) {
 }
 
 /**
- * 
+ * Merges from startPatch to endPatch and returns the new patch
  */
 function mergePatches(patches, startPatch, endPatch, paragraph_index) {
     if (startPatch == endPatch) {
@@ -801,33 +830,65 @@ function mergePatches(patches, startPatch, endPatch, paragraph_index) {
         newPatch.editEnd = Array.max(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.editEnd; } ) );
         newPatch.numEditors = Stats.sum(map(patches.slice(startPatch, endPatch+1), function(patch) { return patch.numEditors; } ) );
         newPatch.merged = true;
+		newPatch.originalText = getParagraph(paragraphs[paragraph_index]).substring(newPatch.editStart, newPatch.editEnd);        
+        
         newPatch.options = new Array();
-		newPatch.originalText = getParagraph(paragraphs[paragraph_index]).substring(newPatch.editStart, newPatch.editEnd);
+        foreach(patches[startPatch].options, function(fieldOption) {
+            newPatch.options.push( {
+                        field: fieldOption.field,
+                        alternatives: [],
+                        editsText: fieldOption.editsText
+            });
+        });
         
         for (var i=startPatch; i<=endPatch; i++) {
-            newPatch.options = newPatch.options.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index, newPatch.editStart, newPatch.editEnd));
+            foreach(newPatch.options, function(fieldOption) {
+                if (fieldOption.editsText) {
+                    fieldOption.alternatives = fieldOption.alternatives.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index, newPatch.editStart, newPatch.editEnd, fieldOption.field));
+                } else {
+                    fieldOption.alternatives = fieldOption.alternatives.concat(getAlternativesForFieldName(patches[i], fieldOption.field));
+                }
+            });
         }
         return newPatch;
     }
 }
 
 /**
+ * Returns all approved alternatives for a given field name.
+ * NOTE: assumes there is only one option for each field name.
+ */
+function getAlternativesForFieldName(patch, fieldName) {
+    return patch.options.filter(function(option) { return option.field == fieldName; })[0].alternatives;
+}
+
+/**
  * Merges the replacement options for each patch
  */
-function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, editStart, editEnd) {
-    var options = new Array();
+function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, editStart, editEnd, fieldName) {
+    var alternatives = new Array();
     
     var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].editStart);
     var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd, editEnd);
+    
+    print('prefix');
+    print(prefix);
+    print('postfix');
+    print(postfix);
 	
+    var fieldAlternatives = getAlternativesForFieldName(patches[curPatch], fieldName);
     var dmp = new diff_match_patch();
-    for (var i=0; i<patches[curPatch].options.length; i++) {
-        var option = patches[curPatch].options[i];
+    for (var i=0; i<fieldAlternatives.length; i++) {
+        var option = fieldAlternatives[i];
+        print('this option')
+        print(json(option));
         
         // diff[0] and diff[length-1] will always be the edges that are untouched, so we need to subtract them out
         var editRegion = option.text.slice(option.diff[0][1].length, -1 * option.diff[option.diff.length-1][1].length)
-        
-        var newOption = {
+        print('editRegion');
+        print(editRegion);
+                
+        var newAlternative = {
             text: prefix + editRegion + postfix,
             editedText: prefix + editRegion + postfix,   // already cropped to the correct region
             editStart: editStart,
@@ -836,30 +897,10 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
             votes: option.votes,
 			originalText: getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd)
         }
-        options.push(newOption);
+        alternatives.push(newAlternative);
     }
     
-    /*
-    if (patches[curPatch].canCut) {
-        // create an option that cuts the entire original patch, if it was voted cuttable
-        var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].start);
-        var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].end, editEnd);
-
-        var newOption = {
-            text: prefix + postfix,
-			editedText: prefix + postfix,
-            editStart: editStart,
-            editEnd: editEnd,
-            numVoters: patches[curPatch].numEditors,
-            meaningVotes: 0,    // not strictly correct, but hey, what can we do? TODO: we should merge cuttability to create an option earlier in the code before spinning off a verify step
-            grammarVotes: 0,
-			originalText: getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd)
-        }
-        options.push(newOption);
-    }
-    */
-    
-    return options;
+    return alternatives;
 }
 
 /**
