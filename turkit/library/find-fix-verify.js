@@ -307,7 +307,7 @@ function generatePatchSuggestions(assignments, paragraph, customTest, rejectedWo
                 start_index: start_index,
                 end_index: end_index,
             };
-            var customPassed = testAndReject(customTest, toTest, assignments[i]);
+            var customPassed = testAndReject(customTest, toTest, assignments[i], rejectedWorkers);
             var lengthPassed = testAndReject(
                 function(toTest) {
                 	var paragraph_length = getParagraph(toTest.paragraph).length;
@@ -323,7 +323,7 @@ function generatePatchSuggestions(assignments, paragraph, customTest, rejectedWo
                             reason: ""
                         }
                     }
-                }, toTest, assignments[i]);
+                }, toTest, assignments[i], rejectedWorkers);
 
             if (customPassed && lengthPassed) {			
 				var suggestion = new Patch(start_index, end_index, paragraph);
@@ -426,7 +426,7 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
             answer: e.answer,
             patch: patch
         };
-        var passed = testAndReject(findFixVerifyOptions.fix.customTest, toTest, e);
+        var passed = testAndReject(findFixVerifyOptions.fix.customTest, toTest, e, rejectedWorkers);
         
         if (passed) {
             foreach(e.answer, function(answer, propertyName) {
@@ -573,7 +573,7 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
 
     var passedAssignments = Array();
     foreach(hit.assignments, function(assignment) {
-        var customPassed = testAndReject(findFixVerifyOptions.verify.customTest, assignment, assignment);
+        var customPassed = testAndReject(findFixVerifyOptions.verify.customTest, assignment, assignment, rejectedWorkers);
         var missingPassed = testAndReject(
             function(answer) {
                 // Test each possible field for noncompletion
@@ -591,7 +591,7 @@ function joinVotes(verify_hit, paragraph_index, patchNumber, totalPatches, findF
                         passes: true,
                         reason: ""
                 };
-            }, assignment);
+            }, assignment, rejectedWorkers);
         if (customPassed && missingPassed) {
             passedAssignments.push(assignment);
         }
@@ -957,7 +957,7 @@ function outputTimingData(patches, find_hit, fixHITs, verifyHITs) {
 /**
  * Runs the user-defined test to see if the user input should be rejected, and rejects the work if so.
  */
-function testAndReject(testFunction, toTest, assignment) {
+function testAndReject(testFunction, toTest, assignment, rejectedWorkers) {
     if (testFunction != null) {
         var result = testFunction(toTest);
         if (!result.passes) {
