@@ -736,10 +736,6 @@ function fixEditAreas(outputPatch, patch) {
         fieldEditingText.alternatives.sort( function(a, b) { return b.editEnd - a.editEnd; } ); // descending by location of last edit
         outputPatch.editEnd = fieldEditingText.alternatives[0].editEnd;
         
-        // We make sure that the original patch location is at least covered by the edit area
-        //outputPatch.editStart = Math.min(outputPatch.editStart, outputPatch.start);
-        //outputPatch.editEnd = Math.max(outputPatch.editEnd, outputPatch.end);
-        
         // For each option we need to edit it back down to just the changed portion, removing the extraenous parts of the sentence
         // e.g., we need to prune to just [patch.editStart, patch.editEnd]        
         var dmp = new diff_match_patch();
