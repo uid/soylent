@@ -43,6 +43,7 @@
             this.group4 = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.button1 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button2 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            this.button4 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.Soylent.SuspendLayout();
             this.viewGroup.SuspendLayout();
             this.group3.SuspendLayout();
@@ -136,6 +137,7 @@
             // 
             this.group4.Items.Add(this.button1);
             this.group4.Items.Add(this.button2);
+            this.group4.Items.Add(this.button4);
             this.group4.Label = "debug";
             this.group4.Name = "group4";
             // 
@@ -150,6 +152,12 @@
             this.button2.Label = "Start TurKit";
             this.button2.Name = "button2";
             this.button2.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button2_Click);
+            // 
+            // button4
+            // 
+            this.button4.Label = "button4";
+            this.button4.Name = "button4";
+            this.button4.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button4_Click);
             // 
             // SoylentRibbon
             // 
@@ -190,6 +198,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button3;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup viewGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton jobStatus;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
     }
 
     partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonReadOnlyCollection

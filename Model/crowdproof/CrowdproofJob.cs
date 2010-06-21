@@ -9,6 +9,7 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
 using Soylent.View;
+using Soylent.View.Crowdproof;
 
 namespace Soylent.Model.Crowdproof
 {
@@ -31,7 +32,7 @@ namespace Soylent.Model.Crowdproof
             this.data = data;
             this.jobNumber = jobNumber;
 
-            HITView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data, jobNumber);
+            CrowdproofView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data, jobNumber) as CrowdproofView;
             hit.addStage(1, HITData.ResultType.Find, "Identify Errors", 10, 0.10);
             hit.addStage(2, HITData.ResultType.Fix, "Fix Errors", 5, 0.05);
             hit.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
