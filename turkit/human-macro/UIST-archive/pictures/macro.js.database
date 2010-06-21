@@ -1,0 +1,155 @@
+// begin:752b
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269717609207E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269717609214E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/sjbsorb2en2v7v0mttusg0sah5u2dedt.html",
+						"returnTime" : 1.269717609664E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/sjbsorb2en2v7v0mttusg0sah5u2dedt.html\r\n"
+					},
+					{
+						"creationTime" : 1.269717609666E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6",
+						"returnTime" : 1.269717609998E12,
+						"printOutput" : "created HIT: 1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6\r\n        url: https://www.mturk.com/mturk/preview?groupId=1XJSCWIMP1KJDP3VXHROVKKA4IFKKW\r\n"
+					},
+					{
+						"creationTime" : 1.269717610309E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6",
+							"hitTypeId" : "1XJSCWIMP1KJDP3VXHROVKKA4IFKKW",
+							"title" : "Need a Creative Commons image",
+							"description" : "I need to illustrate a paragraph with an image",
+							"keywords" : "undefined",
+							"reward" : 0.15,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/sjbsorb2en2v7v0mttusg0sah5u2dedt.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 600,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269717659E12,
+							"expiration" : 1.270322459E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1GYRLZTM8UZMVH4LLNTNOQ21E8SAIW",
+									"workerId" : "A2RL28EX7BIT15",
+									"hitId" : "1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269717903E12,
+									"acceptTime" : 1.269717737E12,
+									"submitTime" : 1.269717843E12,
+									"answer" : {
+										"userText" : "http://www.americansouthwest.net/california/yosemite/half-dome-view.html"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269717971E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "10W5U4WU3PYEH3AOVPFG5107Z19FXE",
+									"workerId" : "A29T08K39MCP2B",
+									"hitId" : "1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269718095E12,
+									"acceptTime" : 1.269717809E12,
+									"submitTime" : 1.269718035E12,
+									"answer" : {
+										"userText" : "http://upload.wikimedia.org/wikipedia/commons/e/ea/Half_Dom_Yosemite_CA.jpg\r\n\r\nThis is an image of Half Dome.  Evidence that it is a Creative Commons image is at http://commons.wikimedia.org/wiki/File:Half_Dom_Yosemite_CA.jpg"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269718269E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1QHGSX5PFOCCQNWUE0UMRDX5MV00MB",
+									"workerId" : "A2POB8LAVBU8FV",
+									"hitId" : "1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269718578E12,
+									"acceptTime" : 1.269718321E12,
+									"submitTime" : 1.269718518E12,
+									"answer" : {
+										"userText" : "http://farm5.static.flickr.com/4037/4411622504_edd293d72d_o_d.jpg"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269718869E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1YUGMWQK3FYHRJV7LR12XEIU10UBBK",
+									"workerId" : "A3MEY0VP94ITNK",
+									"hitId" : "1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269721655E12,
+									"acceptTime" : 1.269721515E12,
+									"submitTime" : 1.269721595E12,
+									"answer" : {
+										"userText" : "Here is the link.  \r\n\r\nhttp://hubpages.com/slide/Best-Yosemite-National-Park-Sightseeing/930486\r\n\r\nProof that it is creative commons is located directly under the photo.  Thank you."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269721874E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1RQW2Q5TOISYRC5N4N0YXOF77PJUP8",
+									"workerId" : "A2XVLENAJYX691",
+									"hitId" : "1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269734131E12,
+									"acceptTime" : 1.269734047E12,
+									"submitTime" : 1.269734071E12,
+									"answer" : {
+										"userText" : "http://commons.wikimedia.org/wiki/File:Half_Dome_08402.JPG"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269734084024E12,
+						"printOutput" : "hit completed: 1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6\r\n"
+					},
+					{
+						"creationTime" : 1.269734084266E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269734084628E12,
+						"printOutput" : "disabled HIT: 1V6ZF82WG3AKLVOYUUJ4NC1E2DWKN6\r\n"
+					},
+					{
+						"creationTime" : 1.26973408463E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269734084725E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/sjbsorb2en2v7v0mttusg0sah5u2dedt.html\r\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.75,
+	"hitsCreated" : 1
+}
+// end:752b
