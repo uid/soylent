@@ -1,3 +1,5 @@
+try { console.log('Firebug console found.'); } catch(e) { console = { log: function() {} }; }
+
 function setCookie(name, value, days, path, domain, secure) {
 	if (days) {
 		var date = new Date();
@@ -108,4 +110,4 @@ $(function () {
 			dataType: 'jsonp'
 		});
 	}
-})
+});
