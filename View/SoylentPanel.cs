@@ -11,6 +11,8 @@ using System.Windows.Forms.Integration;
 using Soylent.Model;
 using Soylent.Model.Shortn;
 using Soylent.View.Shortn;
+using Soylent.Model.Crowdproof;
+using Soylent.View.Crowdproof;
 
 namespace Soylent.View
 {
@@ -53,6 +55,10 @@ namespace Soylent.View
             if (name == ShortnJob.HIT_TYPE)
             {
                 hs = new ShortnView(name, data as ShortnData);
+            }
+            else if (name == CrowdproofJob.HIT_TYPE)
+            {
+                hs = new CrowdproofView(name, data as CrowdproofData);
             }
             else
             {

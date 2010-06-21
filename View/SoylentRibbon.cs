@@ -84,6 +84,33 @@ namespace Soylent
             patch1.editStart = 2;
             patch1.editEnd = 4;
             crowdproof.patches.Add(patch1);
+
+            TurKitSocKit.TurKitCrowdproofPatch patch2 = new TurKitSocKit.TurKitCrowdproofPatch();
+            patch2.start = 34;
+            patch2.end = 40;
+            List<string> reasons2 = new List<string>();
+            reasons2.Add("'Gooder' is not a word");
+            reasons2.Add("This is awful.  Use 'better'");
+            List<TurKitSocKit.TurKitCrowdproofPatchOption> options2 = new List<TurKitSocKit.TurKitCrowdproofPatchOption>();
+            TurKitSocKit.TurKitCrowdproofPatchOption op2 = new TurKitSocKit.TurKitCrowdproofPatchOption();
+            op2.editStart = 34;
+            op2.editEnd = 40;
+            op2.replacement = "better";
+            op2.text = "gooder";
+            options2.Add(op2);
+            TurKitSocKit.TurKitCrowdproofPatchOption op3 = new TurKitSocKit.TurKitCrowdproofPatchOption();
+            op3.editStart = 34;
+            op3.editEnd = 38;
+            op3.replacement = "well";
+            op3.text = "gooder";
+            options2.Add(op3);
+            patch2.reasons = reasons2;
+            patch2.originalText = "is";
+            patch2.options = options2;
+            patch2.numEditors = 2;
+            patch2.editStart = 34;
+            patch2.editEnd = 40;
+            crowdproof.patches.Add(patch2);
             
             CrowdproofData cpd = Globals.Soylent.soylent.jobMap[crowdproof.job] as CrowdproofData;
             cpd.processSocKitMessage(crowdproof);
@@ -159,7 +186,7 @@ namespace Soylent
              * */
 
             CrowdproofData data = CrowdproofData.getCannedData();
-            CrowdproofView.insertTrackChanges(data);
+            //CrowdproofView.insertTrackChanges(data);
 
             //Globals.Soylent.Application.ActiveDocument.TrackRevisions = true;
             /*
@@ -170,7 +197,9 @@ namespace Soylent
 
         private void button2_Click(object sender, RibbonControlEventArgs e)
         {
-           
+
+            //I is trying to learn how to write gooder.
+
             TurKitSocKit.TurKitShortnPatch p1 = new TurKitSocKit.TurKitShortnPatch();
             p1.start = 4; p1.end = 24;
             p1.options = new List<TurKitSocKit.TurKitShortnPatchOption>();
@@ -247,6 +276,13 @@ namespace Soylent
         private void jobStatus_Click(object sender, RibbonControlEventArgs e)
         {
             Globals.Soylent.HITView.Visible = ((RibbonToggleButton)sender).Checked;
+        }
+
+        private void button4_Click(object sender, RibbonControlEventArgs e)
+        {
+            //Globals.Soylent.Application.ActiveDocument.Final = true;
+            Globals.Soylent.Application.ActiveDocument.DeleteAllComments();
+            Globals.Soylent.Application.ActiveDocument.AcceptAllRevisions();
         }
     }
 }

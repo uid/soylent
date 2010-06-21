@@ -117,7 +117,7 @@ namespace Soylent.Model.Crowdproof
                 this.tk.turkitLoopTimer.Dispose();
                 CrowdproofView view = this.view as CrowdproofView;
                 view.crowdproofDataReceived();
-                this.AnnotateResult();
+                //this.AnnotateResult();
             }
         }
 
@@ -130,7 +130,7 @@ namespace Soylent.Model.Crowdproof
 
             List<CrowdproofPatch> patches = new List<CrowdproofPatch>();
 
-            string[] onesToFind = {"GUI made using computers be more intuitive and easier to learn", "let people be able to control", "Masses only can use"};
+            string[] onesToFind = {"GUI made using computers be more intuitive and easier to learn", "let people be able to control", "Masses only can"};
             foreach (Word.Range r in canned_range.Sentences)
             {
                 foreach(string oneToFind in onesToFind) {
