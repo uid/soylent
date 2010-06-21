@@ -155,13 +155,13 @@ namespace Soylent
                         ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
                         shortenData.stageCompleted(receivedObject);
                     }
-                    /*
-                    else if (messageType == "shortn")
+                    else if (messageType == "complete")
                     {
-                        Debug.WriteLine("GOTT SHORTN MESSAGE********************");
-                        TurKitShortn receivedObject = serializer.Deserialize<TurKitShortn>(incomingString);
+                        Debug.WriteLine("Complete! ********************");
+                        TurKitFindFixVerify receivedObject = serializer.Deserialize<TurKitFindFixVerify>(incomingString);
+                        Debug.WriteLine("Processed");
                         ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
-                        shortenData.processSocKitMessage(receivedObject);
+                        //shortenData.processSocKitMessage(receivedObject);
                         
                     }
                     else if (messageType == "crowdproof")
@@ -239,32 +239,50 @@ catch (SocketException exc)
             public int totalPatches;
         }
 
-        public class TurKitCrowdproof
+        /// <summary>
+        /// Data returned from a Find-Fix-Verify task
+        /// </summary>
+        public class TurKitFindFixVerify
         {
             public int job;
             public int paragraph;
-            public List<TurKitCrowdproofPatch> patches;
+            public List<TurKitFindFixVerifyPatch> patches;
         }
 
-        public class TurKitCrowdproofPatch
+        /// <summary>
+        /// Data returning a patch from a Shortn task.
+        /// </summary>
+        public class TurKitFindFixVerifyPatch
         {
             public int start;
             public int end;
             public int editStart;
             public int editEnd;
+            public List<TurKitFindFixVerifyOption> options;
             public int numEditors;
-            public List<TurKitCrowdproofPatchOption> options;
-            public List<string> reasons;
+            public bool merged;
             public string originalText;
         }
 
-        public class TurKitCrowdproofPatchOption
+
+        /// <summary>
+        /// Data returning an option for a specific patch
+        /// </summary>
+        public class TurKitFindFixVerifyOption
+        {
+            public string field;
+            public List<TurKitFindFixVerifyAlternative> alternatives;
+            public bool editsText;
+        }
+
+        public class TurKitFindFixVerifyAlternative
         {
             public string text;
+            public Dictionary<string, int> votes;
+            public string editsText;
             public int editStart;
             public int editEnd;
-            public string replacement;
-            //TODO: does this make sense?  multiple reasons?
+            public int numVoters;
         }
 
         /// <summary>

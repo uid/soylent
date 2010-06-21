@@ -26,7 +26,7 @@ var findFixVerifyOptions = {
         minimum_workers: 3,
         transformWebpage: null,
         customTest: shortnFixTest,
-        mapFixResults: shortnMapFixResults,
+        mapResults: shortnMapFixResults,
     },
     verify: {
         HIT_title: "Did I shorten text correctly?",
@@ -50,7 +50,8 @@ var findFixVerifyOptions = {
         ],
         editedTextField: 'revision',
         customTest: null,
-        transformWebpage: null
+        transformWebpage: null,
+        mapResults: shortnMapVerifyResults
     },
     socket: new Socket("shortn", "localhost", 11000, 2000),
     writeOutput: false
@@ -72,7 +73,6 @@ function main() {
     attempt(function() {
         findFixVerify(findFixVerifyOptions);
     });  
-    findFixVerifyOptions.socket.close();
 }
 
 function initializeDebug() {
@@ -144,4 +144,19 @@ function shortnMapFixResults(answers, patch) {
 	}    
     
     return answers;
+}
+
+function shortnMapVerifyResults(fieldOption) {
+    if (fieldOption.editsText) {
+        var toRemove = []
+        foreach(fieldOption.alternatives, function(alternative, index) {
+            if (alternative.editStart == -1 && alternative.editEnd == -1) {
+                // it was a copy of the original
+                toRemove.push(alternative);
+            }
+        });
+        foreach(toRemove, function(alternative) {
+            fieldOption.alternatives.splice(fieldOption.alternatives.indexOf(alternative), 1);
+        });
+    }
 }

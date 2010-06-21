@@ -8,7 +8,7 @@ var findFixVerifyOptions = {
     time_bounded: true,
     find: {
 		HIT_title : "Find bad writing",
-		HIT_description : "This paragraph needs some help finding errors. You're way better than Microsoft Word's grammar checker.",
+		HIT_description : "This paragraph needs some help finding errors. You're far better than Microsoft Word's grammar checker.",
         HTML_template: "../templates/crowdproof/crowdproof-find.html",
         reward: 0.06,
         minimum_agreement: 0.20,
@@ -26,7 +26,7 @@ var findFixVerifyOptions = {
         minimum_workers: 3, 
         transformWebpage: null,
         customTest: crowdproofFixTest,
-        mapFixResults: null,        
+        mapResults: null,        
     },
     verify: {
 		HIT_title : "Vote on writing suggestions",
@@ -50,7 +50,8 @@ var findFixVerifyOptions = {
         ],
         editedTextField: 'revision',
         customTest: null,
-        transformWebpage: null
+        transformWebpage: null,
+        mapResults: crowdproofMapVerifyResults,
     },
     socket: new Socket("crowdproof", "localhost", 11000, 2000),
     writeOutput: false    
@@ -72,7 +73,6 @@ function main() {
     attempt(function() {
         findFixVerify(findFixVerifyOptions);
     });  
-    findFixVerifyOptions.socket.close();
 }
 
 function initializeDebug() {
@@ -97,8 +97,8 @@ function crowdproofFindTransformWebpage(webpageContents, paragraph) {
 }
 
 function crowdproofFixTest(toTest) {
-    var correction = toTest.answer.newText;
-    var reason = toTest.answer.description;
+    var correction = toTest.answer.revision;
+    var reason = toTest.answer.reason;
     var originalSentence = toTest.patch.plaintextSentence();    
     
     if (correction == originalSentence) {
@@ -107,13 +107,13 @@ function crowdproofFixTest(toTest) {
                     reason: "Please do not copy/paste the original sentence back in. We're looking for a corrected version."
                 };
     }
-    else if (correction == "") {
+    else if (correction == null || correction == "") {
         return {
                     passes: false,
                     reason: "Your correction is an empty form."
                 };
     }
-    else if (reason == "") {
+    else if (reason == null || reason == "") {
         return {
                     passes: false,
                     reason: "You did not provide a reason for the error."
@@ -124,5 +124,20 @@ function crowdproofFixTest(toTest) {
                     passes: true,
                     reason: ""
                 };
+    }
+}
+
+function crowdproofMapVerifyResults(fieldOption) {
+    if (fieldOption.editsText) {
+        var toRemove = []
+        foreach(fieldOption.alternatives, function(alternative, index) {
+            if (alternative.editStart == -1 && alternative.editEnd == -1) {
+                // it was a copy of the original
+                toRemove.push(alternative);
+            }
+        });
+        foreach(toRemove, function(alternative) {
+            fieldOption.alternatives.splice(fieldOption.alternatives.indexOf(alternative), 1);
+        });
     }
 }

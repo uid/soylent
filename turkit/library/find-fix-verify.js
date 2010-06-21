@@ -31,8 +31,8 @@ eval(read("../library/socket.js"));
  *          redundancy: int,
  *          minimum_workers: int, 
  *          transformWebpage: function(webpageContents, paragraph) --- returns webpageContents with any user-defined changes made to it. null if no changes are necessary.
- *          customTest: function({paragraph, start_index, end_index}) --- returns data structure { passes (boolean), reason (string) } if the bracket contents is valid or invalid (reject work), or null for no extra test. Called on every bracketed area.
- *          mapFixResults: function(answer[]) --- returns a transformed answer array, allowing the programmer to retain only unique suggestions or transform the output. null for no transformation needed.
+ *          customTest: function({answer, patch}) --- returns data structure { passes (boolean), reason (string) } if the fix work is valid or invalid (reject work), or null for no extra test. Called on every submitted result.
+ *          mapResults: function(answer[]) --- returns a transformed answer array, allowing the programmer to retain only unique suggestions or transform the output. null for no transformation needed.
  *      },
  *      verify: {
  *          HIT_title: string,
@@ -46,9 +46,10 @@ eval(read("../library/socket.js"));
  *                          name: string --- name of the field being voted on, e.g. "grammar"
  *                          fixFormElement: string --- name of the input form element in the Fix-stage HTML.
  *                          passes: function(numVotes, totalVotes) --- returns true if the option got numVotes votes out of totalVotes. Author your own success requirements.
- *                    } ] --- a list of the fields being voted on. These field names will be populated into the javascript for each suggestion and then read back out by the verify step.
+ *                    } ] --- a list of the fields being voted on. These field names will be populated into the javascript for each suggestion and then read back out by the verify step,
+ *          editedTextField: string --- the name of the form field that is actually editing the input text, and should be compared with a diff to new versions
  *          transformWebpage: function(webpageContents, options) --- returns webpageContents with any user-defined changes made to it. null if no changes are necessary.
- *          customTest: functionjiofjhawo;igjweo;ighjweao;ijgfaweio;fFIX ME TODO
+ *          customTest: function(answer) --- returns data structure { passes (boolean), reason (string) } if this worker's voting is valid or invalid (reject work), or null for no extra test. Called on every vote.
  *      },
  *      socket: a Socket object (see socket.js) if you would like status messages sent over the socket, or null if you don't want to write to the socket
  *      writeOutput: boolean -- true if you want outputs written to file as the program runs for lag time, payment, and the final output. slows down runtime considerably.
@@ -71,6 +72,9 @@ function findFixVerify(options) {
     
     if (options.writeOutput) {
         initializeOutput();
+    }
+    if (options.socket != null) {
+        options.socket.connect();
     }
 	
 	for (var paragraph_index = 0; paragraph_index < options.paragraphs.length; paragraph_index++) {
@@ -130,6 +134,7 @@ function findFixVerify(options) {
             // If so, we merge the patches together.
             paragraphResult.patches = findOverlapsAndMerge(paragraphResult.patches, paragraph_index);
 			paragraphResult.patches.sort( function(a, b) { return a.start - b.start; } );
+            
 			result.paragraphs.push(paragraphResult);
             
             options.socket.sendMessage("complete", paragraphResult);
@@ -146,6 +151,9 @@ function findFixVerify(options) {
     
     if (options.writeOutput) {
         closeOutputs();
+    }
+    if (options.socket != null) {
+        options.socket.close();
     }
 }
 
@@ -435,8 +443,8 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
 		}
 	});
     
-    if (findFixVerifyOptions.fix.mapFixResults != null) {
-        findFixVerifyOptions.fix.mapFixResults(options, patch);
+    if (findFixVerifyOptions.fix.mapResults != null) {
+        findFixVerifyOptions.fix.mapResults(options, patch);
     }
     
     // uniqify each field so that we don't have repeats
@@ -452,47 +460,12 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
  * If not, adds the field to the list.
  */
 function addFieldSuggestion(options, fieldName, suggestion) {
-    /*
-    var added = false;
-    foreach(options, function(field) {
-        if (field.name == fieldName) {
-            field.alternatives.push(suggestion);
-            added = true;
-        }
-    });
-    
-    // it's a new field we don't know about
-    if (!added) {
-        options.push( {
-            name: fieldName,
-            alternatives: [ suggestion ]
-        });
-    }
-    */
-
     if (fieldName in options) {
         options[fieldName].push(suggestion);
     } else {
         options[fieldName] = [ suggestion ];
     }
 }
-
-/**
- * Gets the alternatives for a given field name
- */
- /*
-function getFixAlternativesByField(options, fieldName) {
-    var match = null;
-    foreach(options, function(option) {
-        if (option.name == fieldName) {
-            match = option;
-            return false; // break from foreach
-        }
-    });
-    
-    return match;
-}
-*/
 
 //
 // Vote helper methods
@@ -633,6 +606,7 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
     
     if (edit_hit != null) {
 		var edit_hit = mturk.getHIT(edit_hit, true);
+        outputPatch.numEditors = edit_hit.assignments.length
     }
 	if (verify_hit != null) {
 		var verify_hit = mturk.getHIT(verify_hit, true);
@@ -650,8 +624,12 @@ function generatePatch(patch, find_hit, edit_hit, verify_hit, votes, fields, sug
             outputPatch.options.push(fieldOption);
             
             fieldOption.alternatives = getFieldAlternatives(alternatives, fieldName, patch, votes, verify_hit.assignments.length, editsText);
+            
+            if (findFixVerifyOptions.verify.mapResults != null) {
+                findFixVerifyOptions.verify.mapResults(fieldOption);
+            }   
 		});
-	}
+	} 
     
     fixEditAreas(outputPatch, patch);
     return outputPatch;
@@ -668,10 +646,10 @@ function getFieldAlternatives(fieldAlternatives, fieldName, patch, votes, numVot
     foreach(fieldAlternatives, function(suggestion) {            
         // We get every field whose fixFormElement is fieldName -- we need to make sure that the
         // suggestion passes every such test
-        var suggestionVotes = {
-        };
+        var suggestionVotes = new Object();
         var passesAll = true;
         var fieldsToTest = findFixVerifyOptions.verify.fields.filter( function(field) { return field.fixFormElement == fieldName; } );
+        
         foreach(fieldsToTest, function(field) {
             var numVotes = votes[field.name][suggestion] ? votes[field.name][suggestion] : 0;
             suggestionVotes[field.name] = numVotes;

@@ -24,7 +24,7 @@ Socket.prototype.connect = function() {
     }
     else {
         try {
-                this.socket.connect(endpoint, timeout);
+                this.socket.connect(endpoint, this.timeout);
                 print("Success: " + endpoint.toString());
                 this.socketOut = new java.io.PrintWriter(this.socket.getOutputStream(), true);
         } catch (e) {
