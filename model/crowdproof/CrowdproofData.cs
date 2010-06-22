@@ -119,7 +119,7 @@ namespace Soylent.Model.Crowdproof
                 List<string> reasons = new List<string>();
                 foreach (TurKitSocKit.TurKitFindFixVerifyOption option in (from option in tkspatch.options where option.field == "reason" select option))
                 {
-                    alternatives.AddRange(from alternative in option.alternatives select alternative.editedText);
+                    reasons.AddRange(from alternative in option.alternatives select alternative.text);
                 }
 
 
@@ -136,13 +136,20 @@ namespace Soylent.Model.Crowdproof
             if (paragraphsCompleted == numParagraphs) //If we have done all paragraphs, make them available to the user!
             {
                 //TODO: use a delegate.
+                Globals.Soylent.soylent.Invoke(new crowdproofDelegate(this.crowdproofDataReceived), new object[] { });
                 this.tk.turkitLoopTimer.Dispose();
-                CrowdproofView view = this.view as CrowdproofView;
-                view.crowdproofDataReceived();
+                //CrowdproofView view = this.view as CrowdproofView;
+                //view.crowdproofDataReceived();
                 //this.AnnotateResult();
             }
-             
         }
+
+        public void crowdproofDataReceived()
+        {
+            CrowdproofView view = this.view as CrowdproofView;
+            view.crowdproofDataReceived();
+        }
+        public delegate void crowdproofDelegate();
 
         public static CrowdproofData getCannedData()
         {

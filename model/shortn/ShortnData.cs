@@ -9,6 +9,7 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
+using System.Diagnostics;
 
 using Soylent.View.Shortn;
 using Soylent.View;
@@ -119,6 +120,8 @@ namespace Soylent.Model.Shortn
             int nextStart = 0; //Is always the location where the next patch (dummy or otherwise) should start.
             int nextEnd; //Is where the last patch ended.  Kinda poorly named. Tells us if we need to add a dummy patch after the last real patch
 
+            //this.tk.turkitLoopTimer.Dispose();
+
             foreach (TurKitSocKit.TurKitFindFixVerifyPatch tkspatch in message.patches)
             {
                 //For text in between patches, we create dummy patches.
@@ -161,6 +164,12 @@ namespace Soylent.Model.Shortn
             {
                 //TODO: use a delegate.
                 this.tk.turkitLoopTimer.Dispose();
+
+                foreach (Patch patch in patches)
+                {
+                    Debug.WriteLine(patch.range.Start + " - " + patch.range.End + " : " + patch.range.Text + " || "+ (patch is DummyPatch));               
+                }
+
                 returnShortnResults();
             }
         }

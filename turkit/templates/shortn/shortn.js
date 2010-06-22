@@ -136,7 +136,7 @@ function shortnMapFixResults(answers, patch) {
     print(json(revisions));
     
 	// provide a challenge if there is only one option
-	if (revisions.length == 1) {
+	if (revisions.unique().length == 1) {
 		var original = patch.plaintextSentence();
 		if (original != revisions[0]) {
             revisions.push(original);
