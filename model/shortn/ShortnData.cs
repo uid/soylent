@@ -113,13 +113,13 @@ namespace Soylent.Model.Shortn
         /// Processes a shortn message, one that contains the final results of the algorithm. One per paragraph
         /// </summary>
         /// <param name="message"></param>
-        public void processSocKitMessage(TurKitSocKit.TurKitShortn message)
+        public void processSocKitMessage(TurKitSocKit.TurKitFindFixVerify message)
         {
             Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
             int nextStart = 0; //Is always the location where the next patch (dummy or otherwise) should start.
             int nextEnd; //Is where the last patch ended.  Kinda poorly named. Tells us if we need to add a dummy patch after the last real patch
 
-            foreach (TurKitSocKit.TurKitShortnPatch tkspatch in message.patches)
+            foreach (TurKitSocKit.TurKitFindFixVerifyPatch tkspatch in message.patches)
             {
                 //For text in between patches, we create dummy patches.
                 if (tkspatch.editStart > nextStart)
@@ -135,14 +135,14 @@ namespace Soylent.Model.Shortn
                 int end = curParagraphRange.Start + tkspatch.editEnd;
                 Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end); //New range for this patch, yay!
 
-                Patch thisPatch = new Patch(patchRange, (from option in tkspatch.options select option.editedText).ToList());
+                List<string> alternatives = new List<string>();
+                foreach (TurKitSocKit.TurKitFindFixVerifyOption option in (from option in tkspatch.options where option.editsText select option)) {
+                    alternatives.AddRange(from alternative in option.alternatives select alternative.editedText);
+                }
+
+                Patch thisPatch = new Patch(patchRange, alternatives);
                 // add the original as an option
                 thisPatch.replacements.Add(tkspatch.originalText);
-                // if it's cuttable, add the empty string as an option
-                if (tkspatch.canCut)
-                {
-                    thisPatch.replacements.Add("");  // means "cuttable" for now
-                }
 
                 patches.Add(thisPatch);
                 nextStart = tkspatch.end;

@@ -157,34 +157,16 @@ namespace Soylent
                     }
                     else if (messageType == "complete")
                     {
-                        Debug.WriteLine("Complete! ********************");
                         TurKitFindFixVerify receivedObject = serializer.Deserialize<TurKitFindFixVerify>(incomingString);
-                        Debug.WriteLine("Processed");
-                        ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
-                        //shortenData.processSocKitMessage(receivedObject);
-                        
-                    }
-                    else if (messageType == "crowdproof")
-                    {
-                        Debug.WriteLine("GOTT CROWDPROOF MESSAGE********************");
-                        TurKitCrowdproof receivedObject = serializer.Deserialize<TurKitCrowdproof>(incomingString);
-                        CrowdproofData crowdproofData = Globals.Soylent.soylent.jobMap[receivedObject.job] as CrowdproofData;
-                        crowdproofData.processSocKitMessage(receivedObject);
-                    }
-                     */
-                    else if (messageType == "complete")
-                    {
                         if (jobType == "shortn")
                         {
-                            TurKitShortn receivedObject = serializer.Deserialize<TurKitShortn>(incomingString);
                             ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
                             shortenData.processSocKitMessage(receivedObject);
                         }
                         else if (jobType == "crowdproof")
                         {
-                            TurKitCrowdproof receivedObject = serializer.Deserialize<TurKitCrowdproof>(incomingString);
                             CrowdproofData crowdproofData = Globals.Soylent.soylent.jobMap[receivedObject.job] as CrowdproofData;
-                            crowdproofData.processSocKitMessage(receivedObject);
+                            //crowdproofData.processSocKitMessage(receivedObject);
                         }
                     }
                     Debug.WriteLine("got it!");
@@ -279,7 +261,7 @@ catch (SocketException exc)
         {
             public string text;
             public Dictionary<string, int> votes;
-            public string editsText;
+            public string editedText;
             public int editStart;
             public int editEnd;
             public int numVoters;
