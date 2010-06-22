@@ -175,7 +175,7 @@ namespace Soylent
                         else if (jobType == "crowdproof")
                         {
                             CrowdproofData crowdproofData = Globals.Soylent.soylent.jobMap[receivedObject.job] as CrowdproofData;
-                            //crowdproofData.processSocKitMessage(receivedObject);
+                            crowdproofData.processSocKitMessage(receivedObject);
                         }
                     }
                     Debug.WriteLine("got it!");
