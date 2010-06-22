@@ -199,28 +199,38 @@ namespace Soylent
         {
 
             //I is trying to learn how to write gooder.
-            /*
-            TurKitSocKit.TurKitShortnPatch p1 = new TurKitSocKit.TurKitShortnPatch();
+            TurKitSocKit.TurKitFindFixVerifyPatch p1 = new TurKitSocKit.TurKitFindFixVerifyPatch();
             p1.start = 4; p1.end = 24;
-            p1.options = new List<TurKitSocKit.TurKitShortnPatchOption>();
-            TurKitSocKit.TurKitShortnPatchOption p1a = new TurKitSocKit.TurKitShortnPatchOption();
-            TurKitSocKit.TurKitShortnPatchOption p1b = new TurKitSocKit.TurKitShortnPatchOption();
-            TurKitSocKit.TurKitShortnPatchOption p1c = new TurKitSocKit.TurKitShortnPatchOption();
+            p1.options = new List<TurKitSocKit.TurKitFindFixVerifyOption>();
+            TurKitSocKit.TurKitFindFixVerifyOption option = new TurKitSocKit.TurKitFindFixVerifyOption();
+            option.editsText = true;
+            option.field = "revision";
+            option.alternatives = new List<TurKitSocKit.TurKitFindFixVerifyAlternative>();
+            p1.options.Add(option);
+
+            TurKitSocKit.TurKitFindFixVerifyAlternative p1a = new TurKitSocKit.TurKitFindFixVerifyAlternative();
+            TurKitSocKit.TurKitFindFixVerifyAlternative p1b = new TurKitSocKit.TurKitFindFixVerifyAlternative();
+            TurKitSocKit.TurKitFindFixVerifyAlternative p1c = new TurKitSocKit.TurKitFindFixVerifyAlternative();
             p1a.text="figuring"; p1b.text="trying to figure"; p1c.text="working out";
-            
-            p1.options.Add(p1a); p1.options.Add(p1b); p1.options.Add(p1c);
 
-            TurKitSocKit.TurKitShortnPatch p2 = new TurKitSocKit.TurKitShortnPatch();
+            option.alternatives.Add(p1a); option.alternatives.Add(p1b); option.alternatives.Add(p1c);
+
+            TurKitSocKit.TurKitFindFixVerifyPatch p2 = new TurKitSocKit.TurKitFindFixVerifyPatch();
             p2.start = 64; p2.end = 70;
-            p2.options = new List<TurKitSocKit.TurKitShortnPatchOption>();
-            TurKitSocKit.TurKitShortnPatchOption p2a = new TurKitSocKit.TurKitShortnPatchOption();
-            TurKitSocKit.TurKitShortnPatchOption p2b = new TurKitSocKit.TurKitShortnPatchOption();
-            TurKitSocKit.TurKitShortnPatchOption p2c = new TurKitSocKit.TurKitShortnPatchOption();
-            p2a.text = "proper"; p2b.text = "right"; p2c.text = "yes";
-            p2.options.Add(p2a); p2.options.Add(p2b); p2.options.Add(p2c);
 
-            TurKitSocKit.TurKitShortn tks = new TurKitSocKit.TurKitShortn();
-            tks.job = 1; tks.paragraph = 1; tks.patches = new List<TurKitSocKit.TurKitShortnPatch>();
+            TurKitSocKit.TurKitFindFixVerifyOption option2 = new TurKitSocKit.TurKitFindFixVerifyOption();
+            option2.editsText = true;
+            option2.field = "revision";
+            option2.alternatives = new List<TurKitSocKit.TurKitFindFixVerifyAlternative>();
+
+            TurKitSocKit.TurKitFindFixVerifyAlternative p2a = new TurKitSocKit.TurKitFindFixVerifyAlternative();
+            TurKitSocKit.TurKitFindFixVerifyAlternative p2b = new TurKitSocKit.TurKitFindFixVerifyAlternative();
+            TurKitSocKit.TurKitFindFixVerifyAlternative p2c = new TurKitSocKit.TurKitFindFixVerifyAlternative();
+            p2a.text = "proper"; p2b.text = "right"; p2c.text = "yes";
+            option2.alternatives.Add(p2a); option2.alternatives.Add(p2b); option2.alternatives.Add(p2c);
+
+            TurKitSocKit.TurKitFindFixVerify tks = new TurKitSocKit.TurKitFindFixVerify();
+            tks.job = 1; tks.paragraph = 1; tks.patches = new List<TurKitSocKit.TurKitFindFixVerifyPatch>();
             tks.patches.Add(p1); tks.patches.Add(p2);
 
             ShortnData shortenData = Globals.Soylent.soylent.jobMap[tks.job] as ShortnData;
@@ -251,7 +261,6 @@ namespace Soylent
             // collection of child controls.
             newForm.Controls.Add(host);
             newForm.Show();
-             */
         }
 
         private static int lastJob = 0;
