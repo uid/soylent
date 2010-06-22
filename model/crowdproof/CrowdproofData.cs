@@ -92,6 +92,7 @@ namespace Soylent.Model.Crowdproof
 
         public void processSocKitMessage(TurKitSocKit.TurKitCrowdproof message)
         {
+            
             int paragraphsCompleted = 0;
 
             Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
@@ -119,6 +120,7 @@ namespace Soylent.Model.Crowdproof
                 view.crowdproofDataReceived();
                 //this.AnnotateResult();
             }
+             
         }
 
         public static CrowdproofData getCannedData()

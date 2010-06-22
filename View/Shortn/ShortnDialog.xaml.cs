@@ -47,6 +47,10 @@ namespace Soylent.View.Shortn
                 {
                     r.Foreground = Brushes.Red;
                 }
+                else if (!(selection.patch is DummyPatch))
+                {
+                    r.Foreground = Brushes.Pink;
+                }
 
                 runs.Add(r);
             }
