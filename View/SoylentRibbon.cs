@@ -113,7 +113,7 @@ namespace Soylent
             crowdproof.patches.Add(patch2);
             
             CrowdproofData cpd = Globals.Soylent.soylent.jobMap[crowdproof.job] as CrowdproofData;
-            cpd.processSocKitMessage(crowdproof);
+            //cpd.processSocKitMessage(crowdproof);
             //cpd.updateStatus(receivedObject);
             
         }
