@@ -24,6 +24,8 @@ namespace Soylent.View.Crowdproof
         static string turkerName = "Turker";
         Button CrowdproofButton;
         Button AcceptRevisions;
+        Button RejectRevisions;
+        StackPanel buttons;
         /// <summary>
         /// HITView subclass specific to Shortn tasks.  This adds the Shortn button and additional necessary functionality.
         /// </summary>
@@ -33,31 +35,41 @@ namespace Soylent.View.Crowdproof
         {
             //Globals.Soylent.soylent.Controls.Add(new System.Windows.Forms.Button());
             CrowdproofButton = new Button();
-            CrowdproofButton.Content = "Show Revisions";
+            CrowdproofButton.Content = "View Revisions";
             CrowdproofButton.Name = "Crowdproof";
             CrowdproofButton.Height = 23;
             //CrowdproofButton.Width = 90;
             CrowdproofButton.IsEnabled = false;
             CrowdproofButton.Click += new RoutedEventHandler(Crowdproof_Clicked);
-
+ 
             AcceptRevisions = new Button();
-            AcceptRevisions.Content = "Accept Revisions";
+            AcceptRevisions.Content = "Accept All";
             AcceptRevisions.Name = "AcceptRevisions";
             AcceptRevisions.Height = 23;
-            //AcceptRevisions.Width = 90;
+            AcceptRevisions.Width = 100;
             AcceptRevisions.IsEnabled = false;
             AcceptRevisions.Click += new RoutedEventHandler(AcceptRevisions_Clicked);
 
-            StackPanel buttons = new StackPanel();
+            RejectRevisions = new Button();
+            RejectRevisions.Content = "Reject All";
+            RejectRevisions.Name = "RejectRevisions";
+            RejectRevisions.Height = 23;
+            RejectRevisions.Width = 100;
+            RejectRevisions.IsEnabled = false;
+            RejectRevisions.Click += new RoutedEventHandler(RejectRevisions_Clicked);
+
+            buttons = new StackPanel();
             buttons.Orientation = System.Windows.Controls.Orientation.Horizontal;
-            buttons.Children.Add(CrowdproofButton);
             buttons.Children.Add(AcceptRevisions);
+            buttons.Children.Add(RejectRevisions);
+                          
+            stages.Children.Add(CrowdproofButton);
+            stages.Children.Add(buttons);
 
             this.data = data;
             data.register(this);
-            //ShortnButton.
-            //ShortnButton.Click = Shortn_Clicked;
-            stages.Children.Add(buttons);
+
+            
         }
         public void AcceptRevisions_Clicked(object sender, RoutedEventArgs e)
         {
@@ -72,6 +84,31 @@ namespace Soylent.View.Crowdproof
             {
 
             }
+            AcceptRevisions.IsEnabled = false;
+            RejectRevisions.IsEnabled = false;
+            CrowdproofButton.IsEnabled = true;
+            //this.stages.Children.Remove(buttons);
+            //this.stages.Children.Add(CrowdproofButton);
+        }
+
+        public void RejectRevisions_Clicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Globals.Soylent.Application.ActiveDocument.DeleteAllComments();
+                Globals.Soylent.Application.ActiveDocument.RejectAllRevisions();
+                Globals.Soylent.Application.ActiveDocument.TrackRevisions = false;
+                Globals.Soylent.Application.ActiveDocument.ShowRevisions = false;
+            }
+            catch
+            {
+
+            }
+            AcceptRevisions.IsEnabled = false;
+            RejectRevisions.IsEnabled = false;
+            CrowdproofButton.IsEnabled = true;
+            //this.stages.Children.Remove(buttons);
+            //this.stages.Children.Add(CrowdproofButton);
         }
         /// <summary>
         /// CallBack for when the Shortn button is clicked.  Opens the dialog window and changes the color of the status bars.
@@ -86,6 +123,7 @@ namespace Soylent.View.Crowdproof
                 stageview.hitProgress.Foreground = Brushes.LightSkyBlue; //Yay light blue
             }
             insertTrackChanges(this.data);
+
         }
 
         /// <summary>
@@ -159,7 +197,12 @@ namespace Soylent.View.Crowdproof
                 c.Initial = turkerName;
             }
 
-            this.AcceptRevisions.IsEnabled = true;
+            //this.AcceptRevisions.IsEnabled = true;
+            //this.stages.Children.Remove(CrowdproofButton);
+            //this.stages.Children.Add(buttons);
+            AcceptRevisions.IsEnabled = true;
+            RejectRevisions.IsEnabled = true;
+            CrowdproofButton.IsEnabled = false;
         }
         
 

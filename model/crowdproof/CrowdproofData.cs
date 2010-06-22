@@ -49,6 +49,13 @@ namespace Soylent.Model.Crowdproof
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
         }
 
+        public void stageCompleted(TurKitSocKit.TurKitStageComplete donezo)
+        {
+            ResultType type = typeMap[donezo.stage];
+            StageData stage = stages[type];
+            stage.terminatePatch(donezo.paragraph, donezo.patchNumber);
+        }
+
         public void AnnotateResult()
         {
 
