@@ -97,20 +97,34 @@ namespace Soylent.Model.Crowdproof
             }
         }
 
-        public void processSocKitMessage(TurKitSocKit.TurKitCrowdproof message)
+        public void processSocKitMessage(TurKitSocKit.TurKitFindFixVerify message)
         {
             
             int paragraphsCompleted = 0;
 
             Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
-            foreach (TurKitSocKit.TurKitCrowdproofPatch tkspatch in message.patches)
+            foreach (TurKitSocKit.TurKitFindFixVerifyPatch tkspatch in message.patches)
             {
 
                 int start = curParagraphRange.Start + tkspatch.editStart;
                 int end = curParagraphRange.Start + tkspatch.editEnd;
                 Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start, end); //New range for this patch, yay!
 
-                CrowdproofPatch thisPatch = new CrowdproofPatch(patchRange, (from option in tkspatch.options select option.replacement).ToList(), tkspatch.reasons);
+                List<string> alternatives = new List<string>();
+                foreach (TurKitSocKit.TurKitFindFixVerifyOption option in (from option in tkspatch.options where option.field == "revision" select option))
+                {
+                    alternatives.AddRange(from alternative in option.alternatives select alternative.editedText);
+                }
+
+                List<string> reasons = new List<string>();
+                foreach (TurKitSocKit.TurKitFindFixVerifyOption option in (from option in tkspatch.options where option.field == "reason" select option))
+                {
+                    alternatives.AddRange(from alternative in option.alternatives select alternative.editedText);
+                }
+
+
+
+                CrowdproofPatch thisPatch = new CrowdproofPatch(patchRange, alternatives, reasons);
                 // add the original as an option
                 //thisPatch.replacements.Add(tkspatch.originalText);
 
