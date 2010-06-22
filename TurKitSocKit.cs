@@ -123,7 +123,7 @@ namespace Soylent
 
                     Regex jobtypeRegex = new Regex("\"__jobType__\"\\s*:\\s*\"(?<jobType>.*)\"");
                     Match jobregexResult = jobtypeRegex.Match(incomingString);
-                    string jobType = regexResult.Groups["jobType"].Value;
+                    string jobType = jobregexResult.Groups["jobType"].Value;
 
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
                      if (messageType == "status")
@@ -137,6 +137,7 @@ namespace Soylent
                         //if (concernedHIT is ShortnData)
                         if (jobType == "shortn")
                         {
+                            Debug.WriteLine("Status update for Shortn");
                             ShortnData shortenData = concernedHIT as ShortnData;
                             shortenData.updateStatus(receivedObject);
                         }
@@ -307,5 +308,34 @@ catch (SocketException exc)
             public int grammarVotes;
             public int numVoters;
         }
+
+        public class TurKitCrowdproof
+        {
+            public int job;
+            public int paragraph;
+            public List<TurKitCrowdproofPatch> patches;
+        }
+
+        public class TurKitCrowdproofPatch
+        {
+            public int start;
+            public int end;
+            public int editStart;
+            public int editEnd;
+            public int numEditors;
+            public List<TurKitCrowdproofPatchOption> options;
+            public List<string> reasons;
+            public string originalText;
+        }
+
+        public class TurKitCrowdproofPatchOption
+        {
+            public string text;
+            public int editStart;
+            public int editEnd;
+            public string replacement;
+            //TODO: does this make sense?  multiple reasons?
+        }
+
     }
 }

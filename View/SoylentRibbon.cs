@@ -199,7 +199,7 @@ namespace Soylent
         {
 
             //I is trying to learn how to write gooder.
-
+            /*
             TurKitSocKit.TurKitShortnPatch p1 = new TurKitSocKit.TurKitShortnPatch();
             p1.start = 4; p1.end = 24;
             p1.options = new List<TurKitSocKit.TurKitShortnPatchOption>();
@@ -251,6 +251,7 @@ namespace Soylent
             // collection of child controls.
             newForm.Controls.Add(host);
             newForm.Show();
+             */
         }
 
         private static int lastJob = 0;
