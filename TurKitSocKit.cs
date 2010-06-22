@@ -153,8 +153,16 @@ namespace Soylent
                         Debug.WriteLine("Stage complete message");
                         TurKitStageComplete receivedObject = serializer.Deserialize<TurKitStageComplete>(incomingString);
 
-                        ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
-                        shortenData.stageCompleted(receivedObject);
+                        if (jobType == "shortn")
+                        {
+                            ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
+                            shortenData.stageCompleted(receivedObject);
+                        }
+                        else if (jobType == "crowdproof")
+                        {
+                            CrowdproofData crowdproofData = Globals.Soylent.soylent.jobMap[receivedObject.job] as CrowdproofData;
+                            crowdproofData.stageCompleted(receivedObject);
+                        }
                     }
                     else if (messageType == "complete")
                     {
