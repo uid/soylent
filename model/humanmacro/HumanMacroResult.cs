@@ -11,27 +11,67 @@ using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Soylent.View.HumanMacro;
 
 namespace Soylent.Model.HumanMacro
 {
-    class HumanMacroResult
+    class HumanMacroResult: HITData
     {
-        public enum ResultType {Comment, SmartTag};
-        
+        public enum ReturnType {Comment, SmartTag};
+
+        public enum Separator { Sentence, Paragraph };
+        public Separator separator;
         private Word.Range text;
         private List<String> results;
+        public List<Patch> patches;
+
+        public double reward;
+        public int redundancy;
+        public string title;
+        public string subtitle;
+        public string instructions;
+        public ReturnType type;
 
         public static string NAMESPACE = "http://uid.csail.mit.edu/soylent";
 
-        public HumanMacroResult(Word.Range text, List<String> results)
+        //public HumanMacroResult(Word.Range text, List<String> results)
+        public HumanMacroResult(Word.Range toShorten, int job, Separator separator, double reward, int redundancy, string title, string subtitle, string instructions, ReturnType type) : base(toShorten, job)
         {
-            this.text = text;
-            this.results = results;
+            this.text = toShorten;
+            this.separator = separator;
+            //this.results = results;
+            patches = new List<Patch>();
+
+            this.reward = reward;
+            this.redundancy = redundancy;
+            this.title = title;
+            this.subtitle = subtitle;
+            this.instructions = instructions;
+            this.type = type;
+
+            stages[HITData.ResultType.Macro] = new StageData(HITData.ResultType.Macro, numParagraphs);
         }
 
-        public void AnnotateResult(ResultType type)
+        public void processSocKitMessage(TurKitSocKit.TurKitHumanMacroResult message)
         {
-            if (type == ResultType.SmartTag)
+            Patch patch = patches[message.input];
+            foreach (string replacement in message.alternatives)
+            {
+                patch.replacements.Add(replacement);
+            }
+            Globals.Soylent.soylent.Invoke(new resultsBackDelegate(this.resultsBack), new object[] { });
+        }
+
+        public void resultsBack()
+        {
+            HumanMacroView hview = view as HumanMacroView;
+            hview.humanMacroDataReceived();
+        }
+        public delegate void resultsBackDelegate();
+
+        public void AnnotateResult(ReturnType type)
+        {
+            if (type == ReturnType.SmartTag)
             {
                 string tag = NAMESPACE + "#soylent" + DateTime.Now.Ticks;
                 SmartTag resultTag = new SmartTag(tag, "Soylent Results: " + text.Text.Substring(0, 10) + "...");
@@ -49,7 +89,7 @@ namespace Soylent.Model.HumanMacro
 
                 Globals.Soylent.VstoSmartTags.Add(resultTag);
             }
-            else if (type == ResultType.Comment)
+            else if (type == ReturnType.Comment)
             {
                 foreach (string result in results)
                 {

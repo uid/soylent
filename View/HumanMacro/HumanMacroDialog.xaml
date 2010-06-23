@@ -15,10 +15,10 @@
             <TextBox Height="23" Margin="5,26,5,0" Name="titleBox" VerticalAlignment="Top" Text="{Binding title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
             <Label FontSize="14" FontWeight="Bold" Height="27" HorizontalAlignment="Left" Margin="0,55,0,0" Name="label11" VerticalAlignment="Top" Width="193">Create Task for Every:</Label>
-        <ComboBox Height="23" HorizontalAlignment="Left" Margin="5,79,0,0" Name="comboBox1" VerticalAlignment="Top" Width="120" SelectedIndex="0">
-            <ComboBoxItem>Paragraph</ComboBoxItem>
-            <ComboBoxItem>Sentence</ComboBoxItem>
-        </ComboBox>
+            <ComboBox Height="23" HorizontalAlignment="Left" Margin="5,79,0,0" Name="separatorBox" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                <ComboBoxItem>Paragraph</ComboBoxItem>
+                <ComboBoxItem>Sentence</ComboBoxItem>
+            </ComboBox>
 
             <Label Height="27" HorizontalAlignment="Left" Margin="0,1,0,0" Name="label1" VerticalAlignment="Top" Width="76" FontWeight="Bold" FontSize="14">Title</Label>
         <Label Height="27" Margin="199,115.156,45,0" Name="label4" VerticalAlignment="Top">Tell the workers exactly what you need.</Label>
@@ -69,7 +69,7 @@
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
         <Label Height="28" Name="label20">Total for Macro:</Label>
         <Label Height="28" Name="totalSpent" Content="{Binding totalPrice}" />
-        <Button Margin="5,0,5,0">Run Entire Macro</Button>
+        <Button Margin="5,0,5,0" Name="RunMacro" Click="RunMacro_Click">Run Entire Macro</Button>
     </StackPanel>
     </StackPanel>
 </UserControl>

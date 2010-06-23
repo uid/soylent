@@ -6,6 +6,7 @@ var socket = new Socket("human-macro", "localhost", 11000, 2000);
 
 function main()
 {
+	socket.connect();
     if (debug) {
         redundancy = 1;
     }
