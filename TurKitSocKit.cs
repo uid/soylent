@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using Soylent.Model;
 using Soylent.Model.Shortn;
 using Soylent.Model.Crowdproof;
+using Soylent.Model.HumanMacro;
 
 
 namespace Soylent
@@ -126,7 +127,7 @@ namespace Soylent
                     string jobType = jobregexResult.Groups["jobType"].Value;
 
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
-                     if (messageType == "status")
+                    if (messageType == "status")
                     {
                         TurKitStatus receivedObject = serializer.Deserialize<TurKitStatus>(incomingString);
                         
@@ -147,6 +148,12 @@ namespace Soylent
                             CrowdproofData crowdproofData = concernedHIT as CrowdproofData;
                             crowdproofData.updateStatus(receivedObject);
                         }
+                        if (jobType == "human-macro")
+                        {
+                            Debug.WriteLine("Status update for human-macro");
+                            HumanMacroResult humanMacro = concernedHIT as HumanMacroResult;
+                            humanMacro.updateStatus(receivedObject);
+                        }
                     }
                     else if (messageType == "stageComplete")
                     {
@@ -166,14 +173,22 @@ namespace Soylent
                     }
                     else if (messageType == "complete")
                     {
-                        TurKitFindFixVerify receivedObject = serializer.Deserialize<TurKitFindFixVerify>(incomingString);
-                        if (jobType == "shortn")
+                        if (jobType == "human-macro")
                         {
+                            TurKitHumanMacroResult receivedObject = serializer.Deserialize<TurKitHumanMacroResult>(incomingString);
+                            Debug.WriteLine("\nHUMAN MACRO COMPLEEETE******");
+                            HumanMacroResult humanMacro = Globals.Soylent.soylent.jobMap[receivedObject.job] as HumanMacroResult;
+                            humanMacro.processSocKitMessage(receivedObject);
+                        }
+                        else if (jobType == "shortn")
+                        {
+                            TurKitFindFixVerify receivedObject = serializer.Deserialize<TurKitFindFixVerify>(incomingString);
                             ShortnData shortenData = Globals.Soylent.soylent.jobMap[receivedObject.job] as ShortnData;
                             shortenData.processSocKitMessage(receivedObject);
                         }
                         else if (jobType == "crowdproof")
                         {
+                            TurKitFindFixVerify receivedObject = serializer.Deserialize<TurKitFindFixVerify>(incomingString);
                             CrowdproofData crowdproofData = Globals.Soylent.soylent.jobMap[receivedObject.job] as CrowdproofData;
                             crowdproofData.processSocKitMessage(receivedObject);
                         }
@@ -228,6 +243,13 @@ catch (SocketException exc)
             public int paragraph;
             public int patchNumber;
             public int totalPatches;
+        }
+
+        public class TurKitHumanMacroResult
+        {
+            public int job;
+            public int input;
+            public List<string> alternatives;
         }
 
         /// <summary>

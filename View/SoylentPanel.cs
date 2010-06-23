@@ -13,6 +13,8 @@ using Soylent.Model.Shortn;
 using Soylent.View.Shortn;
 using Soylent.Model.Crowdproof;
 using Soylent.View.Crowdproof;
+using Soylent.Model.HumanMacro;
+using Soylent.View.HumanMacro;
 
 namespace Soylent.View
 {
@@ -59,6 +61,11 @@ namespace Soylent.View
             else if (name == CrowdproofJob.HIT_TYPE)
             {
                 hs = new CrowdproofView(name, data as CrowdproofData);
+            }
+            else if (name == HumanMacroJob.HIT_TYPE)
+            {
+                HumanMacroResult hdata = data as HumanMacroResult;
+                hs = new HumanMacroView(name, hdata);
             }
             else
             {

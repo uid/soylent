@@ -11,11 +11,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
+using Soylent.Model.HumanMacro;
 
 namespace Soylent.View.HumanMacro
 {
@@ -180,10 +182,24 @@ namespace Soylent.View.HumanMacro
         }
         private string _instructions = "";
 
-        public HumanMacroDialog(Word.Range text)
+        private int jobNumber;
+
+        public string separator
+        {
+            get
+            {
+                return separator;
+            }
+            set
+            {
+                separator = value;
+            }
+        }
+
+        public HumanMacroDialog(Word.Range text, int jobNumber)
         {
             this.text = text;
-
+            this.jobNumber = jobNumber;
             InitializeComponent();
 
 
@@ -193,6 +209,25 @@ namespace Soylent.View.HumanMacro
             textToWorkWith.SetBinding(TextBox.TextProperty, binding);
 
             numItems.Content = numSections + " paragraph" + (numSections == 1 ? "" : "s") + " selected, each as a separate task";
+        }
+
+        public void RunMacro_Click(object sender, RoutedEventArgs e)
+        {
+            HumanMacroResult.Separator separator = HumanMacroResult.Separator.Sentence;
+            string separatorText = "Paragraph";
+            if (separatorText == "Sentence") { separator = HumanMacroResult.Separator.Sentence; }
+            else if (separatorText == "Paragraph") { separator = HumanMacroResult.Separator.Paragraph; }
+
+            double reward = 0.05;
+            int redundancy = 2;
+            string title = "\"Make my novel present tense\"";
+            string subtitle = "\"I need to change some prose from past to present tense\"";
+            string instructions = "'I am changing this section of my novel from the past tense to the present tense. Please read and fix to make everything present tense, e.g., \"Susan swerved and aimed the gun at her assailant. The man recoiled, realizing that his prey had now caught on to the scheme.\" becomes \"Susan swerves and aims the gun at her assailant. The man recoils, realizing that his prey had now caught on to the scheme.\"'";
+            HumanMacroResult.ReturnType type = HumanMacroResult.ReturnType.Comment;
+
+            HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, title, subtitle, instructions, type);
+
+            HumanMacroJob job = new HumanMacroJob(data, jobNumber);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Soylent.Model
     {
         public int job { get; set; }
         public Word.Range range { get; set; }
-        public enum ResultType { Find, Fix, Verify };
+        public enum ResultType { Find, Fix, Verify, Macro };
         public Dictionary<ResultType, StageData> stages;
         public Dictionary<string, ResultType> typeMap;// = new Dictionary<string,ResultType>();
         public int numParagraphs;

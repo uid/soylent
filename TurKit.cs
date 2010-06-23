@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using Soylent.Model;
 using Soylent.Model.Shortn;
 using Soylent.Model.Crowdproof;
+using Soylent.Model.HumanMacro;
 
 namespace Soylent
 {
@@ -220,6 +221,150 @@ namespace Soylent
 
                 
                 ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+
+                TimerCallback callback = ExecuteProcess;
+                int timer = 60 * 1000;
+                if (Soylent.DEBUG)
+                {
+                    timer = 30 * 1000;
+                }
+                turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
+                
+            }
+            else if (hdata is HumanMacroResult)
+            {
+                HumanMacroResult data = hdata as HumanMacroResult;
+
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string inputs;
+
+                if (data.separator == HumanMacroResult.Separator.Paragraph)
+                {
+                    string[] pgraphs;
+
+                    pgraphs = new string[data.range.Paragraphs.Count];
+                    for (int i = 0; i < data.range.Paragraphs.Count; i++)
+                    {
+                        Word.Paragraph paragraph = data.range.Paragraphs[i + 1];
+                        string temp = paragraph.Range.Text;
+                        temp = temp.Trim();
+                        pgraphs[i] = temp;
+
+                        Patch patch = new Patch(paragraph.Range, new List<string>());
+                        patch.original = paragraph.Range.Text;
+                        data.patches.Add(patch);
+                    }
+                    inputs = js.Serialize(pgraphs);
+                }
+                else
+                {
+                    string[] pgraphs;
+
+                    pgraphs = new string[data.range.Sentences.Count];
+                    for (int i = 0; i < data.range.Sentences.Count; i++)
+                    {
+                        Word.Range range = data.range.Sentences[i + 1];
+
+                        string temp = range.Text;
+                        // Whitespace characters in the middle of sentences will not be removed
+                        temp = temp.Trim();
+                        pgraphs[i] = temp;
+
+                        Patch patch = new Patch(range, new List<string>());
+                        patch.original = range.Text;
+                        data.patches.Add(patch);
+                    }
+                    inputs = js.Serialize(pgraphs);
+                }
+                
+                // Range.Paragraphs and Range.Sentences are 1 INDEXED
+                /*for (int i = 0; i < data.range.Paragraphs.Count; i++)
+                {
+                    Word.Paragraph paragraph = data.range.Paragraphs[i + 1];
+                    pgraphs[i] = new string[paragraph.Range.Sentences.Count];
+                    for (int j = 0; j < paragraph.Range.Sentences.Count; j++)
+                    {
+                        Word.Range sentence = paragraph.Range.Sentences[j + 1];
+                        string temp = sentence.Text;
+
+                        // Whitespace characters in the middle of sentences will not be removed
+                        temp = temp.Trim();
+                        pgraphs[i][j] = temp;
+                    }
+                }*/
+                //JavaScriptSerializer js = new JavaScriptSerializer();
+                //string inputs = js.Serialize(pgraphs);
+
+                inputs = "var inputs = " + inputs + ";";
+
+                // figure out whether there are one or two spaces between sentences
+                string firstSentence = data.range.Paragraphs[1].Range.Sentences[1].Text;
+                string spacesBetweenSentences = " ";
+                if (firstSentence.EndsWith("  "))
+                {
+                    spacesBetweenSentences = "  ";
+                }
+                string numSpaces = "var sentence_separator = '" + spacesBetweenSentences + "';";
+
+                int request = hdata.job;
+                directory = rootDirectory + @"\turkit\templates\human-macro\";
+
+                string requestLine = "var soylentJob = " + request + ";";
+                string debug = "var debug = " + (Soylent.DEBUG ? "true" : "false") + ";";
+
+                string reward = "var reward = " + data.reward + ";";
+                string redundancy = "var redundancy = " + data.redundancy + ";";
+                string title = "var title = " + data.title + ";";
+                string subtitle = "var subtitle = " + data.subtitle + ";";
+                string instructions = "var instructions = " + data.instructions + ";";
+
+                string[] script = File.ReadAllLines(directory + @"\macro.data.js");
+
+                int new_lines = 9;
+                string[] newScript = new string[new_lines + script.Length];
+                newScript[0] = requestLine;
+                newScript[1] = inputs;
+                newScript[2] = debug;
+                newScript[3] = numSpaces;
+                newScript[4] = reward;
+                newScript[5] = redundancy;
+                newScript[6] = title;
+                newScript[7] = subtitle;
+                newScript[8] = instructions;
+                Array.Copy(script, 0, newScript, new_lines, script.Length);
+
+                // Delete old files
+                /*
+                if (!Soylent.DEBUG)
+                {
+                    DirectoryInfo di = new DirectoryInfo(rootDirectory + @"\turkit\active-hits\");
+                    FileInfo[] rgFiles = di.GetFiles("shortn." + request + "*");
+                    foreach (FileInfo file in rgFiles)
+                    {
+                        file.Delete();
+                    }
+                }
+                 */
+
+                string requestFile = rootDirectory + @"\turkit\active-hits\macro." + request + ".data.js";
+                File.WriteAllLines(requestFile, newScript, Encoding.UTF8);
+
+                InitializeAmazonKeys();
+
+                
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
+                if (Soylent.DEBUG)
+                {
+                    arguments += " -m sandbox";
+                }
+                else
+                {
+                    arguments += " -m real";
+                }
+
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
+                //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;
