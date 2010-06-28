@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Windows.Interop;
 
 using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
@@ -184,17 +185,26 @@ namespace Soylent.View.HumanMacro
 
         private int jobNumber;
 
+        /*
         public string separator
         {
             get
             {
-                return separator;
+                return _separator;
             }
             set
             {
-                separator = value;
+                _separator = value;
+                separatorBox.GetBindingExpression(ComboBox.).UpdateTarget();
             }
         }
+        private string _separator = "Paragraph";
+        */
+
+        private ComboBoxItem item1;
+        private ComboBoxItem item2;
+        private ComboBoxItem returnAsComments;
+        private ComboBoxItem returnAsInline;
 
         public HumanMacroDialog(Word.Range text, int jobNumber)
         {
@@ -209,25 +219,113 @@ namespace Soylent.View.HumanMacro
             textToWorkWith.SetBinding(TextBox.TextProperty, binding);
 
             numItems.Content = numSections + " paragraph" + (numSections == 1 ? "" : "s") + " selected, each as a separate task";
+
+            item1 = new ComboBoxItem();
+            item1.Content = "Paragraph";
+            item2 = new ComboBoxItem();
+            item2.Content = "Sentence";
+
+            separatorBox.Items.Add(item1);
+            separatorBox.Items.Add(item2);
+            separatorBox.SelectedValue = item1;
+
+            returnAsComments = new ComboBoxItem();
+            returnAsComments.Content = "Comments";
+            returnAsInline = new ComboBoxItem();
+            returnAsInline.Content = "In-Line Changes";
+            returnTypeBox.Items.Add(returnAsComments);
+            returnTypeBox.Items.Add(returnAsInline);
+            returnTypeBox.SelectedValue = returnAsComments;
         }
 
         public void RunMacro_Click(object sender, RoutedEventArgs e)
         {
             HumanMacroResult.Separator separator = HumanMacroResult.Separator.Sentence;
-            string separatorText = "Paragraph";
-            if (separatorText == "Sentence") { separator = HumanMacroResult.Separator.Sentence; }
-            else if (separatorText == "Paragraph") { separator = HumanMacroResult.Separator.Paragraph; }
+            if (separatorBox.SelectedItem == item2) { separator = HumanMacroResult.Separator.Sentence; }
+            else if (separatorBox.SelectedItem == item1) { separator = HumanMacroResult.Separator.Paragraph; }
 
-            double reward = 0.05;
-            int redundancy = 2;
-            string title = "\"Make my novel present tense\"";
-            string subtitle = "\"I need to change some prose from past to present tense\"";
-            string instructions = "'I am changing this section of my novel from the past tense to the present tense. Please read and fix to make everything present tense, e.g., \"Susan swerved and aimed the gun at her assailant. The man recoiled, realizing that his prey had now caught on to the scheme.\" becomes \"Susan swerves and aims the gun at her assailant. The man recoils, realizing that his prey had now caught on to the scheme.\"'";
+            double reward; int redundancy; string localtitle; string localsubtitle; string localinstructions;
+
+            /*
+            if (Soylent.DEBUG == true)
+            {
+                reward = 0.05;
+                redundancy = 2;
+                localtitle = "\"Make my novel present tense\"";
+                localsubtitle = "\"I need to change some prose from past to present tense\"";
+                localinstructions = "'I am changing this section of my novel from the past tense to the present tense. Please read and fix to make everything present tense, e.g., \"Susan swerved and aimed the gun at her assailant. The man recoiled, realizing that his prey had now caught on to the scheme.\" becomes \"Susan swerves and aims the gun at her assailant. The man recoils, realizing that his prey had now caught on to the scheme.\"'";
+            }
+            else
+            {
+             */
+                reward = payment;
+                redundancy = numRepetitions;
+                localtitle = title;
+                localsubtitle = subtitle;
+                localinstructions = instructions;
+            //}
+                
             HumanMacroResult.ReturnType type = HumanMacroResult.ReturnType.Comment;
+            if (returnTypeBox.SelectedItem == returnAsComments) { type = HumanMacroResult.ReturnType.Comment; }
+            else if (returnTypeBox.SelectedItem == returnAsInline) { type = HumanMacroResult.ReturnType.SmartTag; }
 
-            HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, title, subtitle, instructions, type);
+
+            //Debug.WriteLine("########################");
+            //Debug.WriteLine("Reward: " + reward + " || Redundancy: "+redundancy+" || Title: "+localtitle+" || Subtitle: "+localsubtitle+" || Instructions: "+localinstructions);
+            //Debug.WriteLine(separatorBox.SelectedValue.ToString() + " 1 " + (item2 == separatorBox.SelectedValue) + " 2 " + (item2 == separatorBox.SelectionBoxItem) + " 3 " + (item2 == separatorBox.SelectedItem) + " 4 " + (item2.Content == separatorBox.SelectedValuePath));
+
+            HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Real);
 
             HumanMacroJob job = new HumanMacroJob(data, jobNumber);
+
+            HwndSource source = (HwndSource)PresentationSource.FromVisual(sender as Button);
+            System.Windows.Forms.Control ctl = System.Windows.Forms.Control.FromChildHandle(source.Handle);
+            ctl.FindForm().Close();
+        }
+
+        private void TestMacro_Click(object sender, RoutedEventArgs e)
+        {
+            HumanMacroResult.Separator separator = HumanMacroResult.Separator.Sentence;
+            if (separatorBox.SelectedItem == item2) { separator = HumanMacroResult.Separator.Sentence; }
+            else if (separatorBox.SelectedItem == item1) { separator = HumanMacroResult.Separator.Paragraph; }
+
+            double reward; int redundancy; string localtitle; string localsubtitle; string localinstructions;
+
+            /*
+            if (Soylent.DEBUG == true)
+            {
+                reward = 0.05;
+                redundancy = 2;
+                localtitle = "\"Make my novel present tense\"";
+                localsubtitle = "\"I need to change some prose from past to present tense\"";
+                localinstructions = "'I am changing this section of my novel from the past tense to the present tense. Please read and fix to make everything present tense, e.g., \"Susan swerved and aimed the gun at her assailant. The man recoiled, realizing that his prey had now caught on to the scheme.\" becomes \"Susan swerves and aims the gun at her assailant. The man recoils, realizing that his prey had now caught on to the scheme.\"'";
+            }
+            else
+            {
+             */
+            reward = payment;
+            redundancy = numRepetitions;
+            localtitle = title;
+            localsubtitle = subtitle;
+            localinstructions = instructions;
+            //}
+
+            HumanMacroResult.ReturnType type = HumanMacroResult.ReturnType.Comment;
+            if (returnTypeBox.SelectedItem == returnAsComments) { type = HumanMacroResult.ReturnType.Comment; }
+            else if (returnTypeBox.SelectedItem == returnAsInline) { type = HumanMacroResult.ReturnType.SmartTag; }
+
+
+            //Debug.WriteLine("########################");
+            //Debug.WriteLine("Reward: " + reward + " || Redundancy: "+redundancy+" || Title: "+localtitle+" || Subtitle: "+localsubtitle+" || Instructions: "+localinstructions);
+            //Debug.WriteLine(separatorBox.SelectedValue.ToString() + " 1 " + (item2 == separatorBox.SelectedValue) + " 2 " + (item2 == separatorBox.SelectionBoxItem) + " 3 " + (item2 == separatorBox.SelectedItem) + " 4 " + (item2.Content == separatorBox.SelectedValuePath));
+
+            HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Test);
+
+            HumanMacroJob job = new HumanMacroJob(data, jobNumber);
+
+            HwndSource source = (HwndSource)PresentationSource.FromVisual(sender as Button);
+            System.Windows.Forms.Control ctl = System.Windows.Forms.Control.FromChildHandle(source.Handle);
+            ctl.FindForm().Close();
         }
     }
 }

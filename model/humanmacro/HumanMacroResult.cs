@@ -23,24 +23,29 @@ namespace Soylent.Model.HumanMacro
         public Separator separator;
         private Word.Range text;
         private List<String> results;
-        public List<Patch> patches;
+        public List<HumanMacroPatch> patches;
 
+        public int numberReturned;
+
+        public enum TestOrReal { Test, Real };
+        public TestOrReal test;
         public double reward;
         public int redundancy;
         public string title;
         public string subtitle;
         public string instructions;
         public ReturnType type;
+        public string spacesBetweenSentences;
 
         public static string NAMESPACE = "http://uid.csail.mit.edu/soylent";
 
         //public HumanMacroResult(Word.Range text, List<String> results)
-        public HumanMacroResult(Word.Range toShorten, int job, Separator separator, double reward, int redundancy, string title, string subtitle, string instructions, ReturnType type) : base(toShorten, job)
+        public HumanMacroResult(Word.Range toShorten, int job, Separator separator, double reward, int redundancy, string title, string subtitle, string instructions, ReturnType type, TestOrReal test) : base(toShorten, job)
         {
             this.text = toShorten;
             this.separator = separator;
             //this.results = results;
-            patches = new List<Patch>();
+            patches = new List<HumanMacroPatch>();
 
             this.reward = reward;
             this.redundancy = redundancy;
@@ -48,18 +53,61 @@ namespace Soylent.Model.HumanMacro
             this.subtitle = subtitle;
             this.instructions = instructions;
             this.type = type;
+            this.numberReturned = 0;
+            this.test = test;
 
-            stages[HITData.ResultType.Macro] = new StageData(HITData.ResultType.Macro, numParagraphs);
+            stages[HITData.ResultType.Macro] = new StageData(HITData.ResultType.Macro);
+            //stages[HITData.ResultType.Macro] = new HumanMacroStage(HITData.ResultType.Macro, redundancy);
+        }
+
+        new public void updateStatus(TurKitSocKit.TurKitStatus status)
+        {
+            StageData stage = stages[HITData.ResultType.Macro];
+            //stage.updateStage(status.numCompleted, status.paragraph);
+            stage.numParagraphs = patches.Count;
+            stage.updateStage(status);
+            //System.Diagnostics.Debug.WriteLine("GOT A ************");
+        }
+
+        public void prepareRanges()
+        {
+            foreach (HumanMacroPatch patch in patches)
+            {
+                patch.range.SetRange(patch.rangeStart + this.range.Start, patch.rangeEnd + this.range.Start);
+            }
+        }
+
+        public void patchesFound(string spaces)
+        {
+            spacesBetweenSentences = spaces;
+            numParagraphs = patches.Count();
+            stages[ResultType.Macro].FixParagraphNumber(numParagraphs);
         }
 
         public void processSocKitMessage(TurKitSocKit.TurKitHumanMacroResult message)
         {
             Patch patch = patches[message.input];
-            foreach (string replacement in message.alternatives)
+            if (patch.replacements.Count == 0)
             {
-                patch.replacements.Add(replacement);
+                foreach (string replacement in message.alternatives)
+                {
+                    if (this.separator == Separator.Sentence)
+                    {
+                        patch.replacements.Add(replacement + spacesBetweenSentences);
+                    }
+                    else
+                    {
+                        patch.replacements.Add(replacement);
+                    }
+                }
+                numberReturned++;
             }
-            Globals.Soylent.soylent.Invoke(new resultsBackDelegate(this.resultsBack), new object[] { });
+
+            if (numberReturned == patches.Count)
+            {
+                this.tk.turkitLoopTimer.Dispose();
+                Globals.Soylent.soylent.Invoke(new resultsBackDelegate(this.resultsBack), new object[] { });
+            }
         }
 
         public void resultsBack()
