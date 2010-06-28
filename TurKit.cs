@@ -129,8 +129,8 @@ namespace Soylent
 
                 Debug.Print(arguments);
 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
-                //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;
@@ -243,7 +243,14 @@ namespace Soylent
                 {
                     string[] pgraphs;
 
-                    pgraphs = new string[data.range.Paragraphs.Count];
+                    if (data.test == HumanMacroResult.TestOrReal.Test)
+                    {
+                        pgraphs = new string[1];
+                    }
+                    else
+                    {
+                        pgraphs = new string[data.range.Paragraphs.Count];
+                    }
                     for (int i = 0; i < data.range.Paragraphs.Count; i++)
                     {
                         Word.Paragraph paragraph = data.range.Paragraphs[i + 1];
@@ -251,9 +258,17 @@ namespace Soylent
                         temp = temp.Trim();
                         pgraphs[i] = temp;
 
+                        /*
                         Patch patch = new Patch(paragraph.Range, new List<string>());
                         patch.original = paragraph.Range.Text;
+                         */
+                        HumanMacroPatch patch = new HumanMacroPatch(paragraph.Range, paragraph.Range.Start - data.range.Start, paragraph.Range.End - data.range.Start);
+                        patch.original = paragraph.Range.Text;
                         data.patches.Add(patch);
+                        if (data.test == HumanMacroResult.TestOrReal.Test)
+                        {
+                            break;
+                        }
                     }
                     inputs = js.Serialize(pgraphs);
                 }
@@ -261,7 +276,13 @@ namespace Soylent
                 {
                     string[] pgraphs;
 
-                    pgraphs = new string[data.range.Sentences.Count];
+                    if (data.test == HumanMacroResult.TestOrReal.Test)
+                    {
+                        pgraphs = new string[1];
+                    }
+                    else{
+                        pgraphs = new string[data.range.Sentences.Count];
+                    }
                     for (int i = 0; i < data.range.Sentences.Count; i++)
                     {
                         Word.Range range = data.range.Sentences[i + 1];
@@ -271,15 +292,21 @@ namespace Soylent
                         temp = temp.Trim();
                         pgraphs[i] = temp;
 
-                        Patch patch = new Patch(range, new List<string>());
+                        //Patch patch = new Patch(range, new List<string>());
+                        HumanMacroPatch patch = new HumanMacroPatch(range, range.Start - data.range.Start, range.End - data.range.Start);
                         patch.original = range.Text;
                         data.patches.Add(patch);
+
+                        if (data.test == HumanMacroResult.TestOrReal.Test)
+                        {
+                            break;
+                        }
                     }
                     inputs = js.Serialize(pgraphs);
                 }
-                
+                /*
                 // Range.Paragraphs and Range.Sentences are 1 INDEXED
-                /*for (int i = 0; i < data.range.Paragraphs.Count; i++)
+                for (int i = 0; i < data.range.Paragraphs.Count; i++)
                 {
                     Word.Paragraph paragraph = data.range.Paragraphs[i + 1];
                     pgraphs[i] = new string[paragraph.Range.Sentences.Count];
@@ -305,6 +332,8 @@ namespace Soylent
                 {
                     spacesBetweenSentences = "  ";
                 }
+                data.patchesFound(spacesBetweenSentences);
+
                 string numSpaces = "var sentence_separator = '" + spacesBetweenSentences + "';";
 
                 int request = hdata.job;
@@ -315,9 +344,9 @@ namespace Soylent
 
                 string reward = "var reward = " + data.reward + ";";
                 string redundancy = "var redundancy = " + data.redundancy + ";";
-                string title = "var title = " + data.title + ";";
-                string subtitle = "var subtitle = " + data.subtitle + ";";
-                string instructions = "var instructions = " + data.instructions + ";";
+                string title = "var title = '" + data.title + "';";
+                string subtitle = "var subtitle = '" + data.subtitle + "';";
+                string instructions = "var instructions = '" + data.instructions + "';";
 
                 string[] script = File.ReadAllLines(directory + @"\macro.data.js");
 
@@ -363,8 +392,8 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
-                //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;

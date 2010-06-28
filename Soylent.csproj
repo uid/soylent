@@ -217,6 +217,8 @@
   -->
   <ItemGroup>
     <Compile Include="Model\Crowdproof\CrowdproofJob.cs" />
+    <Compile Include="Model\HumanMacro\HumanMacroPatch.cs" />
+    <Compile Include="Model\HumanMacro\HumanMacroStage.cs" />
     <Compile Include="Model\HumanMacro\HumanMacroJob.cs" />
     <Compile Include="Model\WordVersion.cs" />
     <Compile Include="View\Crowdproof\CrowdproofView.cs" />

@@ -28,10 +28,10 @@ namespace Soylent.Model
             }
         }
 
-        private int numParagraphs;
+        public int numParagraphs;
         private List<List<int>> numCompletedperParagraph;   // list of number of workers who completed per patch per paragraph
         public double moneySpent;
-        private List<List<int>> totalRequested;    // list of number of workers requested per patch per paragraph
+        protected List<List<int>> totalRequested;    // list of number of workers requested per patch per paragraph
         private List<int> numPatches;
         private List<List<bool>> done;
 
@@ -43,6 +43,16 @@ namespace Soylent.Model
         public StageData(HITData.ResultType type, int numParagraphs)
         {
             this.type = type;
+            this.FixParagraphNumber(numParagraphs);
+        }
+
+        public StageData(HITData.ResultType type)
+        {
+            this.type = type;
+        }
+
+        public void FixParagraphNumber(int numParagraphs)
+        {
             this.numParagraphs = numParagraphs;
             this.moneySpent = 0;
             this.numPatches = new List<int>();
@@ -52,12 +62,13 @@ namespace Soylent.Model
             for (int i = 0; i < numParagraphs; i++)
             {
                 numPatches.Add(1);
-                numCompletedperParagraph.Add(new List<int> { 0 } );
+                numCompletedperParagraph.Add(new List<int> { 0 });
                 totalRequested.Add(new List<int> { 0 });
                 done.Add(new List<bool>());
                 done[i].Add(false);
             }
         }
+
         /// <summary>
         /// Registers a View as a listener for this Model
         /// </summary>
