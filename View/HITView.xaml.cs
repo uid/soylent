@@ -23,6 +23,7 @@ namespace Soylent.View
     {
         public Dictionary<HITData.ResultType, StageView> stageList;
         public HITData data;
+        public HITViewStub stub;
 
         /// <summary>
         /// The view for a task in the sidebar
@@ -39,6 +40,8 @@ namespace Soylent.View
             data.register(this);
             previewText.Text = data.originalText;
             stageList = new Dictionary<HITData.ResultType,StageView>();
+
+            stub = new HITViewStub(workType, data, this);
         }
 
         /// <summary>
