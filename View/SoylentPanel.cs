@@ -35,6 +35,31 @@ namespace Soylent.View
         {
         }
 
+        public HITView addHITtoList(string name, HITData data, int jobNumber)
+        {
+            HITView hs;
+            if (name == ShortnJob.HIT_TYPE)
+            {
+                hs = new ShortnView(name, data as ShortnData);
+            }
+            else if (name == CrowdproofJob.HIT_TYPE)
+            {
+                hs = new CrowdproofView(name, data as CrowdproofData);
+            }
+            else if (name == HumanMacroJob.HIT_TYPE)
+            {
+                HumanMacroResult hdata = data as HumanMacroResult;
+                hs = new HumanMacroView(name, hdata);
+            }
+            else
+            {
+                hs = new HITView(name, data);
+            }
+            jobMap[jobNumber] = data;
+
+            return hs;
+        }
+
         /// <summary>
         /// Add a job to this container in the sidebar
         /// </summary>

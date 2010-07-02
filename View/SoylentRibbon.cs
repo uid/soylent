@@ -295,9 +295,54 @@ namespace Soylent
 
         private void button4_Click(object sender, RibbonControlEventArgs e)
         {
-            //Globals.Soylent.Application.ActiveDocument.Final = true;
-            Globals.Soylent.Application.ActiveDocument.DeleteAllComments();
-            Globals.Soylent.Application.ActiveDocument.AcceptAllRevisions();
+            ElementHost host = new ElementHost();
+            host.Name = "HITViewHost";
+            host.Dock = DockStyle.Fill;
+
+            Sidebar hs = new Sidebar();
+            host.Child = hs;
+            Globals.Soylent.soylent.Controls.Add(host);
+
+            Word.Range toCrowdproof = Globals.Soylent.Application.Selection.Range;
+            int jobNumber = generateJobNumber();
+            CrowdproofData data = new CrowdproofData(toCrowdproof, jobNumber);
+
+            CrowdproofView hit = Globals.Soylent.soylent.addHITtoList("Crowdproof", data, jobNumber) as CrowdproofView;
+            hit.addStage(1, HITData.ResultType.Find, "Identify Errors", 10, 0.10);
+            hit.addStage(2, HITData.ResultType.Fix, "Fix Errors", 5, 0.05);
+            hit.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
+
+            hs.addHitView(jobNumber,hit);
+
+
+
+            Word.Range toCrowdproof2 = Globals.Soylent.Application.Selection.Range;
+            int jobNumber2 = generateJobNumber();
+            CrowdproofData data2 = new CrowdproofData(toCrowdproof2, jobNumber2);
+
+            CrowdproofView hit2 = Globals.Soylent.soylent.addHITtoList("Crowdproof", data2, jobNumber2) as CrowdproofView;
+            hit2.addStage(1, HITData.ResultType.Find, "Identify Errors", 10, 0.10);
+            hit2.addStage(2, HITData.ResultType.Fix, "Fix Errors", 5, 0.05);
+            hit2.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
+
+            hs.addHitView(jobNumber2, hit2);
+
+
+
+            Word.Range toCrowdproof3 = Globals.Soylent.Application.Selection.Range;
+            int jobNumber3 = generateJobNumber();
+            CrowdproofData data3 = new CrowdproofData(toCrowdproof3, jobNumber3);
+
+            CrowdproofView hit3 = Globals.Soylent.soylent.addHITtoList("Crowdproof", data3, jobNumber3) as CrowdproofView;
+            hit3.addStage(1, HITData.ResultType.Find, "Identify Errors", 10, 0.10);
+            hit3.addStage(2, HITData.ResultType.Fix, "Fix Errors", 5, 0.05);
+            hit3.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
+
+            hs.addHitView(jobNumber3, hit3);
+
+
+
+
         }
     }
 }

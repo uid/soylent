@@ -221,6 +221,12 @@
     <Compile Include="Model\HumanMacro\HumanMacroStage.cs" />
     <Compile Include="Model\HumanMacro\HumanMacroJob.cs" />
     <Compile Include="Model\WordVersion.cs" />
+    <Compile Include="View\HITViewStub.xaml.cs">
+      <DependentUpon>HITViewStub.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sidebar.xaml.cs">
+      <DependentUpon>Sidebar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Crowdproof\CrowdproofView.cs" />
     <Compile Include="View\HumanMacro\HumanMacroView.cs" />
     <Compile Include="View\Shortn\ShortnView.cs" />
@@ -300,6 +306,14 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\HITViewStub.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Sidebar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\HITView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
