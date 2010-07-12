@@ -1,0 +1,139 @@
+// begin:ac86
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269901325325E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269901325333E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p1fmkx6n0deeof1extn1ams3gv0mi1hq.html",
+						"returnTime" : 1.269901325405E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p1fmkx6n0deeof1extn1ams3gv0mi1hq.html\r\n"
+					},
+					{
+						"creationTime" : 1.269901325407E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1L0XKYEPOTZ5B3J70KPOHCF0GQHEFE",
+						"returnTime" : 1.269901325951E12,
+						"printOutput" : "created HIT: 1L0XKYEPOTZ5B3J70KPOHCF0GQHEFE\r\n        url: https://www.mturk.com/mturk/preview?groupId=15A1XO3W5MOXQSYILAUH0WAVKI419H\r\n"
+					},
+					{
+						"creationTime" : 1.26990132612E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1L0XKYEPOTZ5B3J70KPOHCF0GQHEFE",
+							"hitTypeId" : "15A1XO3W5MOXQSYILAUH0WAVKI419H",
+							"title" : "Find me a Creative Commons image that describes this paragraph<br/>",
+							"description" : "I need to illustrate a paragraph with an image<br/>",
+							"keywords" : "undefined",
+							"reward" : 0.2,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p1fmkx6n0deeof1extn1ams3gv0mi1hq.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 4,
+							"assignmentDurationInSeconds" : 600,
+							"autoApprovalDelayInSeconds" : 3600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269901376E12,
+							"expiration" : 1.270506176E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1R9RRVRUFF5EUYQ2NYF9JGRBEFWRI7",
+									"workerId" : "A3P24NWYZX4IB2",
+									"hitId" : "1L0XKYEPOTZ5B3J70KPOHCF0GQHEFE",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269906411E12,
+									"acceptTime" : 1.269902461E12,
+									"submitTime" : 1.269902811E12,
+									"answer" : {
+										"userText" : "http://upload.wikimedia.org/wikipedia/commons/7/72/Half_Dome_at_sunset.jpg"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12LLBDX4U210HVKKH0IE0E5RW0BXLN",
+									"workerId" : "A3T1ZDLZ2R5X66",
+									"hitId" : "1L0XKYEPOTZ5B3J70KPOHCF0GQHEFE",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269906434E12,
+									"acceptTime" : 1.269902694E12,
+									"submitTime" : 1.269902834E12,
+									"answer" : {
+										"userText" : "http://www.flickr.com/photos/21883904@N02/3745704460/\r\nhttp://www.flickr.com/photos/imagesinthebackcountry/472168236/\r\nhttp://www.flickr.com/photos/liquidmoonlightcom/4159036422/"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1GK8S5J0VBU3USU4FRU3RHAPXDMR1G",
+									"workerId" : "A17V9UJOCSM3OF",
+									"hitId" : "1L0XKYEPOTZ5B3J70KPOHCF0GQHEFE",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269907357E12,
+									"acceptTime" : 1.269903464E12,
+									"submitTime" : 1.269903757E12,
+									"answer" : {
+										"userText" : "http://farm1.static.flickr.com/232/535417250_0b01e2b200.jpg"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "10O61IZ8LLF6BKD60T5TSDSN0TTRPL",
+									"workerId" : "AXBFWPVL78IJS",
+									"hitId" : "1L0XKYEPOTZ5B3J70KPOHCF0GQHEFE",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269909294E12,
+									"acceptTime" : 1.2699053E12,
+									"submitTime" : 1.269905694E12,
+									"answer" : {
+										"userText" : "http://pdphoto.org/jons/pictures4/yosemite_22_bg_090404.jpg\r\n\r\n\"Half Dome, the granite mountain that looks like it was sheared in half.\""
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269905747185E12,
+						"printOutput" : "hit completed: 1L0XKYEPOTZ5B3J70KPOHCF0GQHEFE\r\n"
+					},
+					{
+						"creationTime" : 1.269905747405E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269905748258E12,
+						"printOutput" : "disabled HIT: 1L0XKYEPOTZ5B3J70KPOHCF0GQHEFE\r\n"
+					},
+					{
+						"creationTime" : 1.26990574826E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269905748379E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/p1fmkx6n0deeof1extn1ams3gv0mi1hq.html\r\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.8,
+	"hitsCreated" : 1
+}
+// end:ac86
