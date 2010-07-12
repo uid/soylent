@@ -35,6 +35,12 @@ namespace Soylent.View.Shortn
             initSliderTicks();
         }
 
+        private void clickHandler(object sender, RoutedEventArgs e)
+        {
+            Run run = sender as Run;
+            run.Foreground = Brushes.Green;
+        }
+
         private List<Run> getOriginalRuns(List<PatchSelection> selections)
         {
             List<Run> runs = new List<Run>();
@@ -42,6 +48,9 @@ namespace Soylent.View.Shortn
             foreach (PatchSelection selection in selections)
             {
                 Run r = new Run(selection.patch.original);
+
+                r.MouseUp += new MouseButtonEventHandler(clickHandler);
+                r.Cursor = Cursors.Hand;
 
                 if (!selection.isOriginal)
                 {

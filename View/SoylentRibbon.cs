@@ -11,6 +11,7 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms.Integration;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 using Soylent.Model;
 using Soylent.Model.Crowdproof;
@@ -20,6 +21,12 @@ using Soylent.View;
 using Soylent.View.Shortn;
 using Soylent.View.HumanMacro;
 using Soylent.View.Crowdproof;
+
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
+
+
 
 namespace Soylent
 {
@@ -48,7 +55,7 @@ namespace Soylent
 
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)
         {
-            //ShortnView.openShortnDialog(ShortnData.getCannedData());
+            ShortnView.openShortnDialog(ShortnData.getCannedData());
             /*
             TurKitSocKit.TurKitStatus receivedObject = new TurKitSocKit.TurKitStatus();
             receivedObject.hitURL = "http://www.google.com";
@@ -61,6 +68,7 @@ namespace Soylent
             receivedObject.totalPatches = 1;
             receivedObject.totalRequested = 7;
             */
+            /*
             TurKitSocKit.TurKitCrowdproof crowdproof = new TurKitSocKit.TurKitCrowdproof();
             crowdproof.job = 1;
             crowdproof.paragraph = 0;
@@ -115,7 +123,7 @@ namespace Soylent
             CrowdproofData cpd = Globals.Soylent.soylent.jobMap[crowdproof.job] as CrowdproofData;
             //cpd.processSocKitMessage(crowdproof);
             //cpd.updateStatus(receivedObject);
-            
+            */
         }
 
         private void humanMacroBtn_Click(object sender, RibbonControlEventArgs e)
@@ -340,9 +348,61 @@ namespace Soylent
 
             hs.addHitView(jobNumber3, hit3);
 
+        }
 
+        public class fake
+        {
+            public string fieldA;
+            public string fieldB;
+            //public ShortnData sd;
+            public fake2 fieldC;
+            public fake()
+            {
+                //sd = ShortnData.getCannedData();
+                fieldA = "foo";
+                fieldB = "bar";
+                fieldC = new fake2();
+            }
+        }
 
+        public class fake2
+        {
+            public int num;
+            public fake2()
+            {
+                this.num = 1;
+            }
+        }
 
+        private void button5_Click(object sender, RibbonControlEventArgs e)
+        {
+            fake p = new fake();
+            XmlSerializer x = new XmlSerializer(p.GetType());
+            StringWriter sw = new StringWriter();
+            x.Serialize(sw, p);
+            string a = sw.ToString();
+            Debug.Write(a);
+
+            Microsoft.Office.Core.CustomXMLPart employeeXMLPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(a);
+
+            string s = "";
+
+            foreach (Microsoft.Office.Core.CustomXMLPart cus in Globals.Soylent.Application.ActiveDocument.CustomXMLParts)
+            {
+                s = cus.XML;
+
+            }
+
+            XmlSerializer y = new XmlSerializer(p.GetType());
+
+            //StringReader sr = new StringReader(a);
+            StringReader sr = new StringReader(s);
+
+            XmlReader z = XmlReader.Create(sr);
+            object obj = y.Deserialize(z);
+
+            fake q = obj as fake;
+                       
         }
     }
 }

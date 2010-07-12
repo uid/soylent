@@ -44,6 +44,7 @@
             this.button1 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button2 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button4 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            this.button5 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.Soylent.SuspendLayout();
             this.viewGroup.SuspendLayout();
             this.group3.SuspendLayout();
@@ -65,6 +66,7 @@
             // viewGroup
             // 
             this.viewGroup.Items.Add(this.jobStatus);
+            this.viewGroup.Items.Add(this.button5);
             this.viewGroup.Label = "View";
             this.viewGroup.Name = "viewGroup";
             // 
@@ -159,6 +161,12 @@
             this.button4.Name = "button4";
             this.button4.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Label = "button5";
+            this.button5.Name = "button5";
+            this.button5.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button5_Click);
+            // 
             // SoylentRibbon
             // 
             this.Name = "SoylentRibbon";
@@ -199,6 +207,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup viewGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton jobStatus;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button5;
     }
 
     partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonReadOnlyCollection

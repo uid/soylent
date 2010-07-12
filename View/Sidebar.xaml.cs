@@ -20,7 +20,7 @@ using System.Windows.Media.Animation;
 namespace Soylent.View
 {
     /// <summary>
-    /// Interaction logic for HITView.xaml
+    /// This sidebar is the task pane that fills with items representing HITs   
     /// </summary>
     public partial class Sidebar : UserControl
     {
@@ -34,6 +34,25 @@ namespace Soylent.View
             views = new Dictionary<StackPanel,HITView>();
             panels = new Dictionary<int, StackPanel>();
         }
+
+        private void AddCustomXmlPartToActiveDocument(Microsoft.Office.Interop.Word.Document document)
+        {
+            string xmlString =
+                "<?xml version=\"1.0\" encoding=\"utf-8\" ?>" +
+                "<employees xmlns=\"http://schemas.microsoft.com/vsto/samples\">" +
+                    "<employee>" +
+                        "<name>Karina Leal</name>" +
+                        "<hireDate>1999-04-01</hireDate>" +
+                        "<title>Manager</title>" +
+                    "</employee>" +
+                "</employees>";
+
+            Microsoft.Office.Core.CustomXMLPart employeeXMLPart = document.CustomXMLParts.Add(xmlString);
+            
+        }
+
+
+
 
         public void addHitView(int jobNumber,HITView view)
         {
@@ -67,18 +86,6 @@ namespace Soylent.View
             //jobs.Children.Add(ex);
         }
 
-        /*
-        public void child_updated(object sender, EventArgs e)
-        {
-            StackPanel sp = sender as StackPanel;
-            try
-            {
-                sp.Height = sp.DesiredSize.Height;
-            }
-            catch { }
-        }
-        */
-
         public void alertSidebar(int jobNumber)
         {
             StackPanel sp = panels[jobNumber];
@@ -105,13 +112,9 @@ namespace Soylent.View
             {
                 if (anim.TargetElement != null)
                 {
-                    Console.WriteLine("DoubleAnimation TargetElement is set!");
+                    //Console.WriteLine("DoubleAnimation TargetElement is set!");
                     StackPanel sp = anim.TargetElement as StackPanel;
-                    //expand(sp);
                     shrink(sp);
-                    //sp.Height = Double.NaN;
-                    //sp.ClearValue(HeightProperty);
-                    //sp.MaxHeight = sp.MaxHeight + 100;
                 }
             }
         }
@@ -144,11 +147,8 @@ namespace Soylent.View
                 if (anim.TargetElement != null)
                 {
                     Console.WriteLine("DoubleAnimation TargetElement is set!");
-                    StackPanel sp = anim.TargetElement as StackPanel;
-                    expand(sp);
-                    //sp.Height = Double.NaN;
-                    //sp.ClearValue(HeightProperty);
-                    //sp.MaxHeight = sp.MaxHeight + 100;
+                    //StackPanel sp = anim.TargetElement as StackPanel;
+                    //expand(sp);
                 }
             }
         } 
@@ -160,50 +160,31 @@ namespace Soylent.View
 
             if (currentlyExpanded != null)
             {
-                /*
-                if (currentlyExpanded == option1)
-                {
-                    shrink();
-                }
-                else
-                {
-                    oldShrink();
-                }*/
-                double initialHeight = sp.DesiredSize.Height;
+                double initialHeight = usedToBe.DesiredSize.Height;
 
                 StackPanel sub = new StackPanel();
 
                 shrink();
                 this.UpdateLayout();
-                double finalHeight = views[sp].stub.DesiredSize.Height;
+                double finalHeight = views[usedToBe].stub.DesiredSize.Height;
                 sub.Height = initialHeight - finalHeight;
-                sp.Children.Add(sub);
+                usedToBe.Children.Add(sub);
+                //views[sp].stub.Height = initialHeight;
                 this.UpdateLayout();
 
-                //sp.Height = initialHeight;
-                //sp.MinHeight = initialHeight; sp.MaxHeight = initialHeight;     
-                //double percentDone = 0.50;
-
-                //doubleanimation.Completed += new EventHandler(animationDone);
-
                 Duration duration = new Duration(TimeSpan.FromSeconds(0.50));
-                //DoubleAnimation doubleanimation = new DoubleAnimation(finalHeight, duration);
                 DoubleAnimationPlus doubleanimation = new DoubleAnimationPlus();
                 doubleanimation.Duration = duration;
                 doubleanimation.To = 0;
 
-                doubleanimation.TargetElement = sp;
+                doubleanimation.TargetElement = usedToBe;
 
 
                 doubleanimation.Completed += new EventHandler(ShrinkAnimationCompleted);
 
-                //sp.BeginAnimation(MaxHeightProperty, doubleanimation);
+                //views[sp].stub.BeginAnimation(HeightProperty, doubleanimation);
                 sub.BeginAnimation(HeightProperty, doubleanimation);
-                //sp.Height = finalHeight;
-                
-                //sp.BeginAnimation(MinHeightProperty, doubleanimation);
-                //sp.BeginAnimation(MaxHeightProperty, doubleanimation);
-                //sp.Height = Double.NaN;
+
             }
             if (usedToBe != sp)
             {
@@ -212,27 +193,31 @@ namespace Soylent.View
                 expand(sp);
                 this.UpdateLayout();
                 double finalHeight = views[sp].DesiredSize.Height;
-                shrink();
-                //views[sp].Height = initialHeight;
+                //shrink();
+                views[sp].Height = initialHeight;
                 this.UpdateLayout();
 
-                StackPanel sub = new StackPanel();
-                sp.Children.Add(sub);
+                
+       
+                //StackPanel sub = new StackPanel();
+                //sp.Children.Add(sub);
 
-                sub.Height = 0;
+                //sub.Height = 0;
                
                 
                 Duration duration = new Duration(TimeSpan.FromSeconds(0.50));
                 DoubleAnimationPlus doubleanimation = new DoubleAnimationPlus();
                 doubleanimation.Duration = duration;
-                doubleanimation.To = finalHeight - initialHeight;
+                //doubleanimation.To = finalHeight - initialHeight;
+                doubleanimation.To = finalHeight;
+                doubleanimation.From = initialHeight;
 
                 doubleanimation.TargetElement = sp;
                 
                 doubleanimation.Completed += new EventHandler(AnimationCompleted);
                 
-                sub.BeginAnimation(HeightProperty, doubleanimation);
-                //views[sp].BeginAnimation(HeightProperty, doubleanimation);
+                //sub.BeginAnimation(HeightProperty, doubleanimation);
+                views[sp].BeginAnimation(HeightProperty, doubleanimation);
             }
 
         }
@@ -254,59 +239,6 @@ namespace Soylent.View
             currentlyExpanded = sp;
         }
 
-        private void oldExpand(StackPanel sp)
-        {
-            foreach (UIElement elm in sp.Children)
-                {
-                    Label lb = elm as Label;
-                    if (lb != null)
-                    {
-                        lb.FontWeight = FontWeights.Bold;
-                    }
-                }
-                sp.Background = Brushes.WhiteSmoke;
-
-                ProgressBar pb = new ProgressBar(); ProgressBar pb2 = new ProgressBar(); ProgressBar pb3 = new ProgressBar();
-                pb.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch; pb.Height = 20;
-                pb2.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch; pb2.Height = 20;
-                pb3.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch; pb3.Height = 20;
-
-                Label label1 = new Label(); Label label2 = new Label(); Label label3 = new Label();
-                label1.Name = "find"; label1.Content = "Find:";
-                label2.Name = "fixx"; label2.Content = "Fix:";
-                label3.Name = "verify"; label3.Content = "Verify:";
-                //double percentDone = 0.50;
-                //Duration duration = new Duration(TimeSpan.FromSeconds(0.25));
-                //DoubleAnimation doubleanimation = new DoubleAnimation((double)(60), duration);
-                //pb2.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
-                pb2.SetValue(ProgressBar.ValueProperty, 50.0);
-
-                Button button = new Button();
-                button.Content = "Button";
-                button.Click += Button_Click;
-                button.Margin = new Thickness(0.0, 10.0, 0.0, 0.0);
-                button.Height = 30;
-
-                sp.Children.Add(label1);
-                sp.Children.Add(pb);
-                sp.Children.Add(label2);
-                sp.Children.Add(pb2);
-                sp.Children.Add(label3);
-                sp.Children.Add(pb3);
-                sp.Children.Add(button);
-
-                Border border = new Border();
-                border.BorderBrush = Brushes.WhiteSmoke;
-                border.Height = 5;
-
-                sp.Children.Add(border);
-
-                //sp.BeginAnimation(HeightProperty,doubleanimation); 
-
-                currentlyExpanded = sp;
-
-        }
-
         private void shrink()
         {
             currentlyExpanded.Background = Brushes.LightGray;
@@ -319,15 +251,6 @@ namespace Soylent.View
             {
                 currentlyExpanded.Children.Remove(child);
             }
-            /*
-            Label hitType = new Label();
-            hitType.Content = views[option1].hitType.Content;
-            currentlyExpanded.Children.Add(hitType);
-            Label preview = new Label();
-            preview.Content = views[option1].previewText.Text;
-            preview.Height = 38;
-            currentlyExpanded.Children.Add(preview);
-             * */
             currentlyExpanded.Children.Add(views[currentlyExpanded].stub);
             currentlyExpanded = null;
         }
@@ -344,41 +267,6 @@ namespace Soylent.View
                 sp.Children.Remove(child);
             }
             sp.Children.Add(views[sp].stub);
-        }
-
-        private void oldShrink()
-        {
-            currentlyExpanded.Background = Brushes.LightGray;
-                List<UIElement> list = new List<UIElement>();
-                foreach (UIElement element in currentlyExpanded.Children)
-                {
-                    if (element is Label){
-                        if ((element as Label).Name.Substring(0, 4) == "base")
-                        {
-                            (element as Label).FontWeight = FontWeights.Regular;
-                        }
-                        else
-                        {
-                            list.Add(element);
-                        }
-                    }
-                    //if ((element != this.base2) && (element != this.base1) && (element != this.base3))
-                    else
-                    {
-                        list.Add(element);
-                    }
-                    /*
-                    else
-                    {
-                        (element as Label).FontWeight = FontWeights.Regular;
-                    }
-                     * */
-                }
-                foreach (UIElement element in list)
-                {
-                    currentlyExpanded.Children.Remove(element);
-                }
-                currentlyExpanded = null;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
