@@ -59,5 +59,26 @@ namespace Soylent.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap crowdproof {
+            get {
+                object obj = ResourceManager.GetObject("crowdproof", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap humanmacro {
+            get {
+                object obj = ResourceManager.GetObject("humanmacro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap shortn {
+            get {
+                object obj = ResourceManager.GetObject("shortn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
