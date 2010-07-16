@@ -33,9 +33,9 @@ namespace Soylent.Model.Crowdproof
             this.jobNumber = jobNumber;
 
             CrowdproofView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data, jobNumber) as CrowdproofView;
-            hit.addStage(1, HITData.ResultType.Find, "Identify Errors", 10, 0.10);
-            hit.addStage(2, HITData.ResultType.Fix, "Fix Errors", 5, 0.05);
-            hit.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
+            hit.addStage(1, HITData.ResultType.Find, data.findStageData, "Identify Errors", 10, 0.10);
+            hit.addStage(2, HITData.ResultType.Fix, data.fixStageData, "Fix Errors", 5, 0.05);
+            hit.addStage(3, HITData.ResultType.Verify, data.verifyStageData, "Quality Control", 5, 0.05);
 
             data.startTask();
         }

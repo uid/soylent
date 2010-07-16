@@ -33,9 +33,9 @@ namespace Soylent.Model.Shortn
             this.jobNumber = jobNumber;
 
             ShortnView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data, jobNumber) as ShortnView;
-            hit.addStage(1, HITData.ResultType.Find, "Find Verbose Text", 10, 0.10);
-            hit.addStage(2, HITData.ResultType.Fix, "Shorten Verbose Text", 5, 0.05);
-            hit.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
+            hit.addStage(1, HITData.ResultType.Find, data.findStageData, "Find Verbose Text", 10, 0.10);
+            hit.addStage(2, HITData.ResultType.Fix, data.fixStageData, "Shorten Verbose Text", 5, 0.05);
+            hit.addStage(3, HITData.ResultType.Verify, data.verifyStageData, "Quality Control", 5, 0.05);
 
             data.startTask();
         }

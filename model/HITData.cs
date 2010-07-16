@@ -9,6 +9,7 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
 using Soylent.View;
+using System.Xml.Serialization;
 
 namespace Soylent.Model
 {
@@ -17,14 +18,31 @@ namespace Soylent.Model
     /// </summary>
     public class HITData
     {
-        public int job { get; set; }
-        public Word.Range range { get; set; }
+        public int job; 
         public enum ResultType { Find, Fix, Verify, Macro };
-        public Dictionary<ResultType, StageData> stages;
-        public Dictionary<string, ResultType> typeMap;// = new Dictionary<string,ResultType>();
+        //[XmlIgnore] public Dictionary<ResultType, StageData> stages;
         public int numParagraphs;
-        public TurKit tk;
-        public HITView view;
+        [XmlIgnore] public TurKit tk;
+        [XmlIgnore] public HITView view;
+        /*
+        [XmlIgnore]
+        public Word.Range range
+        {
+            get
+            {
+                return _range;
+            }
+            set
+            {
+                _range = value;
+                rangeStart = range.Start;
+                rangeEnd = range.End;
+                
+            }
+        }
+        [XmlIgnore] private Word.Range _range;
+        */
+        [XmlIgnore] public Word.Range range;
 
         public string originalText
         {
@@ -45,13 +63,11 @@ namespace Soylent.Model
             this.range = range;
             this.job = job;
             int unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-            string bookmarkName = "Soylent" + unixTime;
-
-            typeMap = new Dictionary<string,ResultType>();
+            string bookmarkName = "Soylent" + job;
 
             numParagraphs = range.Paragraphs.Count;
 
-            stages = new Dictionary<ResultType, StageData>();
+            //stages = new Dictionary<ResultType, StageData>();
             //TODO: Use Word XML binding to text instead of bookmarks.
             /*
              * Improved Data Mapping Provides Separation Between a Document's Data and Its Formatting
@@ -63,6 +79,31 @@ namespace Soylent.Model
 
             object bkmkRange = (object)range;
             Globals.Soylent.Application.ActiveDocument.Bookmarks.Add(bookmarkName, ref bkmkRange);
+            
+            tk = new TurKit(this);
+        }
+
+        public HITData()
+        {
+            this.range = null;
+            this.job = 0;
+            int unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
+            string bookmarkName = "Soylent" + unixTime;
+
+            numParagraphs = 1;//range.Paragraphs.Count;
+
+            //stages = new Dictionary<ResultType, StageData>();
+            //TODO: Use Word XML binding to text instead of bookmarks.
+            /*
+             * Improved Data Mapping Provides Separation Between a Document's Data and Its Formatting
+             *  XML mapping allows you to attach XML data to Word documents and link XML elements to placeholders in the document. 
+             *  Combined with content controls, XML mapping becomes a powerful tool for developers. 
+             *  These features provide you with the capability to position content controls in the document and then link them to XML elements. 
+             *  This type of data and view separation allows you to access Word document data to repurpose and integrate with other systems and applications.
+             */
+
+            //object bkmkRange = (object)range;
+            //Globals.Soylent.Application.ActiveDocument.Bookmarks.Add(bookmarkName, ref bkmkRange);
 
             tk = new TurKit(this);
         }

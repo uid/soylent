@@ -10,6 +10,7 @@ using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using VSTO = Microsoft.Office.Tools.Word;
+using System.Xml.Serialization;
 
 using Soylent.Model.HumanMacro;
 using Soylent.View;
@@ -17,23 +18,53 @@ using Soylent.View.Crowdproof;
 
 namespace Soylent.Model.Crowdproof
 {
-    class CrowdproofData : HITData
+    public class CrowdproofData : HITData
     {
-        public List<CrowdproofPatch> patches { get; set;}
+        [XmlIgnore] public List<CrowdproofPatch> patches { get; set;}
+        [XmlIgnore] public StageData findStageData;
+        [XmlIgnore] public StageData fixStageData;
+        [XmlIgnore] public StageData verifyStageData;
 
         public CrowdproofData(Word.Range range, int job)
             : base(range, job)
         {
+            findStageData = new StageData(ResultType.Find, numParagraphs);
+            fixStageData = new StageData(ResultType.Fix, numParagraphs);
+            verifyStageData = new StageData(ResultType.Verify, numParagraphs);
+
+            /*
             stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
             stages[ResultType.Fix] = new StageData(ResultType.Fix, numParagraphs);
             stages[ResultType.Verify] = new StageData(ResultType.Verify, numParagraphs);
-
+            */
             patches = new List<CrowdproofPatch>();
-
+            /*
             typeMap = new Dictionary<string, ResultType>();
             typeMap["find"] = ResultType.Find;
             typeMap["fix"] = ResultType.Fix;
             typeMap["verify"] = ResultType.Verify;
+             */
+        }
+
+        public CrowdproofData()
+            : base()
+        {
+            findStageData = new StageData(ResultType.Find, numParagraphs);
+            fixStageData = new StageData(ResultType.Fix, numParagraphs);
+            verifyStageData = new StageData(ResultType.Verify, numParagraphs);
+
+            /*
+            stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
+            stages[ResultType.Fix] = new StageData(ResultType.Fix, numParagraphs);
+            stages[ResultType.Verify] = new StageData(ResultType.Verify, numParagraphs);
+            */
+            patches = new List<CrowdproofPatch>();
+            /*
+            typeMap = new Dictionary<string, ResultType>();
+            typeMap["find"] = ResultType.Find;
+            typeMap["fix"] = ResultType.Fix;
+            typeMap["verify"] = ResultType.Verify;
+             */
         }
 
         new public void updateStatus(TurKitSocKit.TurKitStatus status)
@@ -41,18 +72,30 @@ namespace Soylent.Model.Crowdproof
             string stringtype = status.stage;
             System.Diagnostics.Debug.WriteLine(stringtype);
             //System.Diagnostics.Debug.WriteLine("^^^^^ stringtype ^^^^^^");
+            /*
             ResultType type = typeMap[stringtype];
             StageData stage = stages[type];
+            */
+            StageData stage = null;//stages[type];
+            if (stringtype == "find") { stage = findStageData; }
+            else if (stringtype == "fix") { stage = fixStageData; }
+            else if (stringtype == "verify") { stage = verifyStageData; }
             //stage.updateStage(status.numCompleted, status.paragraph);
 
             stage.updateStage(status);
+            (view as CrowdproofView).updateView();
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
         }
 
         public void stageCompleted(TurKitSocKit.TurKitStageComplete donezo)
         {
-            ResultType type = typeMap[donezo.stage];
-            StageData stage = stages[type];
+            //ResultType type = typeMap[donezo.stage];
+            //StageData stage = stages[type];
+            StageData stage = null;//stages[type];
+            if (donezo.stage == "find") { stage = findStageData; }
+            else if (donezo.stage == "fix") { stage = fixStageData; }
+            else if (donezo.stage == "verify") { stage = verifyStageData; }
+
             stage.terminatePatch(donezo.paragraph, donezo.patchNumber);
         }
 

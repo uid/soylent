@@ -12,7 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
+using System.Windows.Media.Animation;
 using Soylent.Model.Shortn;
+
 
 namespace Soylent.View.Shortn
 {
@@ -52,6 +54,7 @@ namespace Soylent.View.Shortn
             {
                 stageview.hitProgress.Foreground = Brushes.LightSkyBlue; //Yay light blue
             }
+            stub.hitType.FontWeight = FontWeights.ExtraBold;
         }
 
         /// <summary>
@@ -104,6 +107,19 @@ namespace Soylent.View.Shortn
                 stageview.hitProgress.Foreground = Brushes.Blue; //Turn the bars blue
             }
             this.ShortnButton.IsEnabled = true; //Enable the Shortn button
+            stub.ShortnDataReceived();
+        }
+
+        public void updateView()
+        {
+            double find = stageList[Model.HITData.ResultType.Find].percentDone;
+            double fix = stageList[Model.HITData.ResultType.Fix].percentDone;
+            double verify = stageList[Model.HITData.ResultType.Verify].percentDone;
+
+            double total = (find / 3.0) + (fix / 3.0) + (verify / 3.0);
+
+            HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
+            Globals.Soylent.soylent.Invoke(del, total);
         }
     }
 }

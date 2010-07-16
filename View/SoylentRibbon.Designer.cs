@@ -31,6 +31,7 @@
             this.Soylent = new Microsoft.Office.Tools.Ribbon.RibbonTab();
             this.viewGroup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.jobStatus = new Microsoft.Office.Tools.Ribbon.RibbonToggleButton();
+            this.button5 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.group3 = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.button3 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.group1 = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
@@ -44,7 +45,7 @@
             this.button1 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button2 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button4 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.button5 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            this.button6 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.Soylent.SuspendLayout();
             this.viewGroup.SuspendLayout();
             this.group3.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             this.viewGroup.Items.Add(this.jobStatus);
             this.viewGroup.Items.Add(this.button5);
+            this.viewGroup.Items.Add(this.button6);
             this.viewGroup.Label = "View";
             this.viewGroup.Name = "viewGroup";
             // 
@@ -75,6 +77,12 @@
             this.jobStatus.Label = "Job Status";
             this.jobStatus.Name = "jobStatus";
             this.jobStatus.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.jobStatus_Click);
+            // 
+            // button5
+            // 
+            this.button5.Label = "button5";
+            this.button5.Name = "button5";
+            this.button5.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button5_Click);
             // 
             // group3
             // 
@@ -161,11 +169,11 @@
             this.button4.Name = "button4";
             this.button4.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button4_Click);
             // 
-            // button5
+            // button6
             // 
-            this.button5.Label = "button5";
-            this.button5.Name = "button5";
-            this.button5.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button5_Click);
+            this.button6.Label = "button6";
+            this.button6.Name = "button6";
+            this.button6.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button6_Click);
             // 
             // SoylentRibbon
             // 
@@ -208,6 +216,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton jobStatus;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button5;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button6;
     }
 
     partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonReadOnlyCollection

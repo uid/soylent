@@ -12,8 +12,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
+using System.Windows.Media.Animation;
 using Soylent.Model;
 using Soylent.View.Crowdproof;
+using Soylent.View.HumanMacro;
+using Soylent.View.Shortn;
 
 namespace Soylent.View
 {
@@ -26,6 +29,11 @@ namespace Soylent.View
         public HITData data;
         public HITView view;
         public Sidebar sidebar;
+        internal Button ShortnButton;
+        internal Button CrowdproofButton;
+        internal Button AcceptRevisions;
+        internal Button RejectRevisions;
+
 
         /// <summary>
         /// The view for a task in the sidebar
@@ -42,11 +50,34 @@ namespace Soylent.View
             //data.register(this);
             previewText.Text = data.originalText;
             stageList = new Dictionary<HITData.ResultType,StageView>();
-
-            hitProgress.MouseUp += dataReceived;
         }
-        
-        public void dataReceived(){
+
+        public void ShortnDataReceived()
+        {
+            grid.Children.Remove(hitProgress);
+            this.hitType.FontWeight = FontWeights.ExtraBold;
+            
+            ShortnView spv = view as ShortnView;
+
+            ShortnButton = new Button();
+            ShortnButton.Content = "Shortn";
+            ShortnButton.Name = "Shortn";
+            ShortnButton.Height = 23;
+            ShortnButton.Width = 80;
+            //ShortnButton.IsEnabled = false;
+            ShortnButton.Click += new RoutedEventHandler(spv.Shortn_Clicked);
+
+            StackPanel buttonPanel = new StackPanel();
+            buttonPanel.Margin = new Thickness(5.0, 60.0, 5.0, 10.0);
+
+            buttonPanel.Children.Add(ShortnButton);
+
+            grid.Children.Add(buttonPanel);
+
+            sidebar.alertSidebar(this.data.job);
+        }
+
+        public void CrowdproofDataReceived(){
             grid.Children.Remove(hitProgress);
             this.hitType.FontWeight = FontWeights.ExtraBold;
 
@@ -54,7 +85,7 @@ namespace Soylent.View
             {
                 CrowdproofView cpv = view as CrowdproofView;
 
-                Button CrowdproofButton = new Button();
+                CrowdproofButton = new Button();
                 CrowdproofButton.Content = "View Revisions";
                 CrowdproofButton.Name = "Crowdproof";
                 CrowdproofButton.Height = 23;
@@ -62,7 +93,7 @@ namespace Soylent.View
                 //CrowdproofButton.IsEnabled = false;
                 CrowdproofButton.Click += new RoutedEventHandler(cpv.Crowdproof_Clicked);
 
-                Button AcceptRevisions = new Button();
+                AcceptRevisions = new Button();
                 AcceptRevisions.Content = "Accept All";
                 AcceptRevisions.Name = "AcceptRevisions";
                 AcceptRevisions.Height = 23;
@@ -70,7 +101,7 @@ namespace Soylent.View
                 //AcceptRevisions.IsEnabled = false;
                 AcceptRevisions.Click += new RoutedEventHandler(cpv.AcceptRevisions_Clicked);
 
-                Button RejectRevisions = new Button();
+                RejectRevisions = new Button();
                 RejectRevisions.Content = "Reject All";
                 RejectRevisions.Name = "RejectRevisions";
                 RejectRevisions.Height = 23;
@@ -95,16 +126,67 @@ namespace Soylent.View
             }
         }
 
-        public void dataReceived(object sender, RoutedEventArgs e)
+        public void HumanMacroDataReceived()
         {
-            this.dataReceived();
-            e.Handled = true;
-            
+            grid.Children.Remove(hitProgress);
+            this.hitType.FontWeight = FontWeights.ExtraBold;
+
+                HumanMacroView hpv = view as HumanMacroView;
+
+                CrowdproofButton = new Button();
+                CrowdproofButton.Content = "View Revisions";
+                CrowdproofButton.Name = "Crowdproof";
+                CrowdproofButton.Height = 23;
+                //CrowdproofButton.Width = 90;
+                //CrowdproofButton.IsEnabled = false;
+                CrowdproofButton.Click += new RoutedEventHandler(hpv.HumanMacro_Clicked);
+
+                AcceptRevisions = new Button();
+                AcceptRevisions.Content = "Accept All";
+                AcceptRevisions.Name = "AcceptRevisions";
+                AcceptRevisions.Height = 23;
+                AcceptRevisions.Width = 95;
+                //AcceptRevisions.IsEnabled = false;
+                AcceptRevisions.Click += new RoutedEventHandler(hpv.AcceptRevisions_Clicked);
+
+                RejectRevisions = new Button();
+                RejectRevisions.Content = "Reject All";
+                RejectRevisions.Name = "RejectRevisions";
+                RejectRevisions.Height = 23;
+                RejectRevisions.Width = 95;
+                //RejectRevisions.IsEnabled = false;
+                RejectRevisions.Click += new RoutedEventHandler(hpv.RejectRevisions_Clicked);
+
+                StackPanel buttons = new StackPanel();
+                buttons.Orientation = System.Windows.Controls.Orientation.Horizontal;
+                buttons.Children.Add(AcceptRevisions);
+                buttons.Children.Add(RejectRevisions);
+
+                StackPanel buttonPanel = new StackPanel();
+                buttonPanel.Margin = new Thickness(5.0, 60.0, 5.0, 10.0);
+
+                buttonPanel.Children.Add(CrowdproofButton);
+                buttonPanel.Children.Add(buttons);
+
+                grid.Children.Add(buttonPanel);
+
+                sidebar.alertSidebar(this.data.job);
         }
+
 
         public void registerSidebar(Sidebar sidebar)
         {
             this.sidebar = sidebar;
+        }
+
+        public delegate void updateViewDelegate(double percent);
+
+        public void updateView(double percent){
+
+            Duration duration = new Duration(TimeSpan.FromSeconds(0.5));
+            DoubleAnimation doubleanimation = new DoubleAnimation(100 * percent, duration);
+            hitProgress.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
+            //hitProgress.Value = percent * 100;
         }
     }
 }

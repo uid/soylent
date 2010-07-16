@@ -316,9 +316,9 @@ namespace Soylent
             CrowdproofData data = new CrowdproofData(toCrowdproof, jobNumber);
 
             CrowdproofView hit = Globals.Soylent.soylent.addHITtoList("Crowdproof", data, jobNumber) as CrowdproofView;
-            hit.addStage(1, HITData.ResultType.Find, "Identify Errors", 10, 0.10);
-            hit.addStage(2, HITData.ResultType.Fix, "Fix Errors", 5, 0.05);
-            hit.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
+            hit.addStage(1, HITData.ResultType.Find, data.findStageData, "Identify Errors", 10, 0.10);
+            hit.addStage(2, HITData.ResultType.Fix, data.fixStageData, "Fix Errors", 5, 0.05);
+            hit.addStage(3, HITData.ResultType.Verify, data.verifyStageData, "Quality Control", 5, 0.05);
 
             hs.addHitView(jobNumber,hit);
 
@@ -329,9 +329,9 @@ namespace Soylent
             CrowdproofData data2 = new CrowdproofData(toCrowdproof2, jobNumber2);
 
             CrowdproofView hit2 = Globals.Soylent.soylent.addHITtoList("Crowdproof", data2, jobNumber2) as CrowdproofView;
-            hit2.addStage(1, HITData.ResultType.Find, "Identify Errors", 10, 0.10);
-            hit2.addStage(2, HITData.ResultType.Fix, "Fix Errors", 5, 0.05);
-            hit2.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
+            hit2.addStage(1, HITData.ResultType.Find, data2.findStageData, "Identify Errors", 10, 0.10);
+            hit2.addStage(2, HITData.ResultType.Fix, data2.fixStageData, "Fix Errors", 5, 0.05);
+            hit2.addStage(3, HITData.ResultType.Verify, data2.verifyStageData, "Quality Control", 5, 0.05);
 
             hs.addHitView(jobNumber2, hit2);
 
@@ -342,41 +342,23 @@ namespace Soylent
             CrowdproofData data3 = new CrowdproofData(toCrowdproof3, jobNumber3);
 
             CrowdproofView hit3 = Globals.Soylent.soylent.addHITtoList("Crowdproof", data3, jobNumber3) as CrowdproofView;
-            hit3.addStage(1, HITData.ResultType.Find, "Identify Errors", 10, 0.10);
-            hit3.addStage(2, HITData.ResultType.Fix, "Fix Errors", 5, 0.05);
-            hit3.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
+            hit3.addStage(1, HITData.ResultType.Find, data3.findStageData, "Identify Errors", 10, 0.10);
+            hit3.addStage(2, HITData.ResultType.Fix, data3.fixStageData, "Fix Errors", 5, 0.05);
+            hit3.addStage(3, HITData.ResultType.Verify, data3.verifyStageData, "Quality Control", 5, 0.05);
 
             hs.addHitView(jobNumber3, hit3);
 
         }
 
-        public class fake
-        {
-            public string fieldA;
-            public string fieldB;
-            //public ShortnData sd;
-            public fake2 fieldC;
-            public fake()
-            {
-                //sd = ShortnData.getCannedData();
-                fieldA = "foo";
-                fieldB = "bar";
-                fieldC = new fake2();
-            }
-        }
-
-        public class fake2
-        {
-            public int num;
-            public fake2()
-            {
-                this.num = 1;
-            }
-        }
-
         private void button5_Click(object sender, RibbonControlEventArgs e)
         {
-            fake p = new fake();
+            //fake p = new fake();
+
+            //HITData p = new HITData();
+
+            //ShortnData p = ShortnData.getCannedData();
+            CrowdproofData p = CrowdproofData.getCannedData();
+
             XmlSerializer x = new XmlSerializer(p.GetType());
             StringWriter sw = new StringWriter();
             x.Serialize(sw, p);
@@ -385,6 +367,7 @@ namespace Soylent
 
             Microsoft.Office.Core.CustomXMLPart employeeXMLPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(a);
 
+            /*
             string s = "";
 
             foreach (Microsoft.Office.Core.CustomXMLPart cus in Globals.Soylent.Application.ActiveDocument.CustomXMLParts)
@@ -393,6 +376,7 @@ namespace Soylent
 
             }
 
+            
             XmlSerializer y = new XmlSerializer(p.GetType());
 
             //StringReader sr = new StringReader(a);
@@ -401,8 +385,35 @@ namespace Soylent
             XmlReader z = XmlReader.Create(sr);
             object obj = y.Deserialize(z);
 
-            fake q = obj as fake;
-                       
+            CrowdproofData q = obj as CrowdproofData;
+
+            Word.Bookmark b = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + q.job];
+            q.range = b.Range;         
+            */
+        }
+
+        private void button6_Click(object sender, RibbonControlEventArgs e)
+        {
+            string s = "";
+
+            foreach (Microsoft.Office.Core.CustomXMLPart cus in Globals.Soylent.Application.ActiveDocument.CustomXMLParts)
+            {
+                s = cus.XML;
+
+            }
+
+            XmlSerializer y = new XmlSerializer(typeof(CrowdproofData));
+
+            //StringReader sr = new StringReader(a);
+            StringReader sr = new StringReader(s);
+
+            XmlReader z = XmlReader.Create(sr);
+            object obj = y.Deserialize(z);
+
+            CrowdproofData q = obj as CrowdproofData;
+
+            Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + q.job];
+            q.range = a.Range;
         }
     }
 }

@@ -52,23 +52,12 @@ namespace Soylent.View
         /// <param name="stageType"></param>
         /// <param name="totalTurkers"></param>
         /// <param name="totalCost"></param>
-        public void addStage(int stageNum, HITData.ResultType type, string stageType, int totalTurkers, double totalCost) {
-            StageData stagedata = data.stages[type];
+        public void addStage(int stageNum, HITData.ResultType type, StageData sdata, string stageType, int totalTurkers, double totalCost) {
+            StageData stagedata = sdata;
             StageView newStage = new StageView(stageNum, type, stagedata, stageType, totalTurkers, totalCost);
             stages.Children.Insert(stages.Children.IndexOf(cancelBtn), newStage);
             stageList[type] = newStage;
             //stageList.Add(newStage);
-        }
-
-        public void updateView()
-        {
-            
-            /*
-            foreach (StageView stage in stageList)
-            {
-                stage.updateProgress(4,2);
-            }
-             */
         }
         
     }

@@ -10,6 +10,7 @@ using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using System.Diagnostics;
+using System.Xml.Serialization;
 
 using Soylent.View.Shortn;
 using Soylent.View;
@@ -21,10 +22,15 @@ namespace Soylent.Model.Shortn
     /// </summary>
     public class ShortnData: HITData
     {
-        public List<Patch> patches;
-        public int paragraphsCompleted = 0;
-        private ShortnView shortnview;
-        private Dictionary<ResultType, List<List<bool>>> gottenOneYet;
+        //[System.Xml.Serialization.XmlArray("patches")]
+        //[System.Xml.Serialization.XmlArrayItem("patch", typeof(List<Patch>))]
+        [XmlIgnore] public List<Patch> patches;
+        [XmlIgnore] public int paragraphsCompleted = 0;
+        [XmlIgnore] private Dictionary<ResultType, List<List<bool>>> gottenOneYet;
+        [XmlIgnore] public StageData findStageData;
+        [XmlIgnore] public StageData fixStageData;
+        [XmlIgnore] public StageData verifyStageData;
+        [XmlIgnore] Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();
 
         public int shortestLength
         {
@@ -61,27 +67,35 @@ namespace Soylent.Model.Shortn
         /// <param name="job">The unique job number for this task</param>
         public ShortnData(Word.Range toShorten, int job) : base(toShorten, job)
         {
-            stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
-            stages[ResultType.Fix] = new StageData(ResultType.Fix, numParagraphs);
-            stages[ResultType.Verify] = new StageData(ResultType.Verify, numParagraphs);
-
+            
+            findStageData = new StageData(ResultType.Find, numParagraphs);
+            fixStageData = new StageData(ResultType.Fix, numParagraphs);
+            verifyStageData = new StageData(ResultType.Verify, numParagraphs);
+            
+            /*
             typeMap = new Dictionary<string,ResultType>();
             typeMap["find"] = ResultType.Find;
             typeMap["fix"] = ResultType.Fix;
             typeMap["verify"] = ResultType.Verify;
+            */
+
+
+            patches = new List<Patch>();
+            gottenOneYet = new Dictionary<ResultType, List<List<bool>>>();
+        
+        }
+        
+        internal ShortnData()
+            : base()
+        {
+            findStageData = new StageData(ResultType.Find, numParagraphs);
+            fixStageData = new StageData(ResultType.Fix, numParagraphs);
+            verifyStageData = new StageData(ResultType.Verify, numParagraphs);
 
             patches = new List<Patch>();
             gottenOneYet = new Dictionary<ResultType, List<List<bool>>>();
         }
-
-        /// <summary>
-        /// Registers a View listener for this Model
-        /// </summary>
-        /// <param name="hview">The ShortnView listener</param>
-        public override void register(HITView hview)
-        {
-            shortnview = hview as ShortnView;
-        }
+       
 
         /// <summary>
         /// Updates the model for a given status update
@@ -92,12 +106,22 @@ namespace Soylent.Model.Shortn
             string stringtype = status.stage;
             System.Diagnostics.Debug.WriteLine(stringtype);
             //System.Diagnostics.Debug.WriteLine("^^^^^ stringtype ^^^^^^");
-            ResultType type = typeMap[stringtype];
-            StageData stage = stages[type];
+            /*
+            ResultType type = ResultType.Find;// = typeMap[stringtype];
+            if (stringtype == "find"){type = ResultType.Find;}
+            else if (stringtype == "fix") { type = ResultType.Fix; }
+            else if (stringtype == "verify") { type = ResultType.Verify; }
+            */
+            StageData stage = null;//stages[type];
+            if (stringtype == "find") { stage = findStageData; }
+            else if (stringtype == "fix") { stage = fixStageData; }
+            else if (stringtype == "verify") { stage = verifyStageData; }
             //stage.updateStage(status.numCompleted, status.paragraph);
               
             stage.updateStage(status);
+            (view as ShortnView).updateView();
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
+            
         }
 
         /// <summary>
@@ -105,8 +129,19 @@ namespace Soylent.Model.Shortn
         /// </summary>
         /// <param name="donezo"></param>
         public void stageCompleted(TurKitSocKit.TurKitStageComplete donezo){
-            ResultType type = typeMap[donezo.stage];
+            //ResultType type = ResultType.Find;// = typeMap[donezo.stage];
+
+            /*
+            if (donezo.stage == "find") { type = ResultType.Find; }
+            else if (donezo.stage == "fix") { type = ResultType.Fix; }
+            else if (donezo.stage == "verify") { type = ResultType.Verify; }
             StageData stage = stages[type];
+             */
+            StageData stage = null;//stages[type];
+            if (donezo.stage == "find") { stage = findStageData; }
+            else if (donezo.stage == "fix") { stage = fixStageData; }
+            else if (donezo.stage == "verify") { stage = verifyStageData; }
+
             stage.terminatePatch(donezo.paragraph, donezo.patchNumber);
         }
 
@@ -176,7 +211,9 @@ namespace Soylent.Model.Shortn
 
         private void returnShortnResults()
         {
-            Globals.Soylent.soylent.Invoke(new popupShortnWindowDelegate(this.popupShortnWindow), new object[] { });
+            //popupShortnWindow();
+            popupShortnWindowDelegate del = new popupShortnWindowDelegate(this.popupShortnWindow);
+            Globals.Soylent.soylent.Invoke(del, null);
         }
 
         public delegate void popupShortnWindowDelegate();
@@ -185,10 +222,11 @@ namespace Soylent.Model.Shortn
         /// </summary>
         public void popupShortnWindow()
         {
-            shortnview.shortenDataReceived();
+            (view as ShortnView).shortenDataReceived();
         }
 
-        Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();
+        
+        //Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();
         /// <summary>
         /// Gets the patch selections for this job
         /// </summary>

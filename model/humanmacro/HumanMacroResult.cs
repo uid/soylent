@@ -39,6 +39,8 @@ namespace Soylent.Model.HumanMacro
 
         public static string NAMESPACE = "http://uid.csail.mit.edu/soylent";
 
+        public StageData macroStageData;
+
         //public HumanMacroResult(Word.Range text, List<String> results)
         public HumanMacroResult(Word.Range toShorten, int job, Separator separator, double reward, int redundancy, string title, string subtitle, string instructions, ReturnType type, TestOrReal test) : base(toShorten, job)
         {
@@ -56,16 +58,18 @@ namespace Soylent.Model.HumanMacro
             this.numberReturned = 0;
             this.test = test;
 
-            stages[HITData.ResultType.Macro] = new StageData(HITData.ResultType.Macro);
+            //stages[HITData.ResultType.Macro] = new StageData(HITData.ResultType.Macro);
+            macroStageData = new StageData(HITData.ResultType.Macro);
             //stages[HITData.ResultType.Macro] = new HumanMacroStage(HITData.ResultType.Macro, redundancy);
         }
 
         new public void updateStatus(TurKitSocKit.TurKitStatus status)
         {
-            StageData stage = stages[HITData.ResultType.Macro];
+            StageData stage = macroStageData;//stages[HITData.ResultType.Macro];
             //stage.updateStage(status.numCompleted, status.paragraph);
             stage.numParagraphs = patches.Count;
             stage.updateStage(status);
+            (view as HumanMacroView).updateView();
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
         }
 
@@ -81,7 +85,7 @@ namespace Soylent.Model.HumanMacro
         {
             spacesBetweenSentences = spaces;
             numParagraphs = patches.Count();
-            stages[ResultType.Macro].FixParagraphNumber(numParagraphs);
+            macroStageData.FixParagraphNumber(numParagraphs);
         }
 
         public void processSocKitMessage(TurKitSocKit.TurKitHumanMacroResult message)
