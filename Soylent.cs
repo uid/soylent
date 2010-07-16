@@ -8,6 +8,12 @@ using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Controls;
+using System.Windows.Forms.Integration;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Windows.Forms;
+
 
 using Soylent.View;
 
@@ -19,7 +25,7 @@ namespace Soylent
         public SoylentPanel soylent;
         private TurKitSocKit tksc;
 
-        public static bool DEBUG = false;
+        public static bool DEBUG = true;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
@@ -30,8 +36,22 @@ namespace Soylent
 
             tksc = new TurKitSocKit();
             tksc.Listen();
+
+            //Microsoft.Office.Interop.Word.Application.DocumentOpen
+            
+            this.Application.DocumentOpen += new Word.ApplicationEvents4_DocumentOpenEventHandler(Application_DocumentOpen);
+            this.Application.DocumentBeforeSave += new Word.ApplicationEvents4_DocumentBeforeSaveEventHandler(Application_DocumentBeforeSave);
         }
 
+        void Application_DocumentOpen(Word.Document Doc)
+        {
+            throw new NotImplementedException();
+        }
+
+        void Application_DocumentBeforeSave(Word.Document Doc, ref bool SaveAsUI, ref bool Cancel)
+        {
+            throw new NotImplementedException();
+        }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {

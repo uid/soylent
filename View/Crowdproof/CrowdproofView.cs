@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
+using System.Windows.Media.Animation;
 using Soylent.Model;
 using Soylent.Model.Crowdproof;
 
@@ -87,6 +88,10 @@ namespace Soylent.View.Crowdproof
             AcceptRevisions.IsEnabled = false;
             RejectRevisions.IsEnabled = false;
             CrowdproofButton.IsEnabled = true;
+
+            stub.AcceptRevisions.IsEnabled = false;
+            stub.RejectRevisions.IsEnabled = false;
+            stub.CrowdproofButton.IsEnabled = true;
             //this.stages.Children.Remove(buttons);
             //this.stages.Children.Add(CrowdproofButton);
         }
@@ -107,6 +112,10 @@ namespace Soylent.View.Crowdproof
             AcceptRevisions.IsEnabled = false;
             RejectRevisions.IsEnabled = false;
             CrowdproofButton.IsEnabled = true;
+
+            stub.AcceptRevisions.IsEnabled = false;
+            stub.RejectRevisions.IsEnabled = false;
+            stub.CrowdproofButton.IsEnabled = true;
             //this.stages.Children.Remove(buttons);
             //this.stages.Children.Add(CrowdproofButton);
         }
@@ -123,7 +132,7 @@ namespace Soylent.View.Crowdproof
                 stageview.hitProgress.Foreground = Brushes.LightSkyBlue; //Yay light blue
             }
             insertTrackChanges(this.data);
-
+            stub.hitType.FontWeight = FontWeights.ExtraBold;
         }
 
         /// <summary>
@@ -203,8 +212,23 @@ namespace Soylent.View.Crowdproof
             AcceptRevisions.IsEnabled = true;
             RejectRevisions.IsEnabled = true;
             CrowdproofButton.IsEnabled = false;
+
+            stub.AcceptRevisions.IsEnabled = true;
+            stub.RejectRevisions.IsEnabled = true;
+            stub.CrowdproofButton.IsEnabled = false;
         }
-        
+
+        public void updateView()
+        {
+            double find = stageList[Model.HITData.ResultType.Find].percentDone;
+            double fix = stageList[Model.HITData.ResultType.Fix].percentDone;
+            double verify = stageList[Model.HITData.ResultType.Verify].percentDone;
+
+            double total = (find / 3.0) + (fix / 3.0) + (verify / 3.0);
+
+            HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
+            Globals.Soylent.soylent.Invoke(del, total);
+        }
 
         /// <summary>
         /// If the ShortenData model has received the final data, it should call this function. Turns progress bars blue and enables the Shortn button.
@@ -216,6 +240,7 @@ namespace Soylent.View.Crowdproof
                 stageview.hitProgress.Foreground = Brushes.Blue; //Turn the bars blue
             }
             this.CrowdproofButton.IsEnabled = true; //Enable the Shortn button
+            stub.CrowdproofDataReceived();
         }
     }
 }

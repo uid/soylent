@@ -21,6 +21,7 @@ namespace Soylent.View
     public partial class SoylentPanel : UserControl
     {
         public static string HOSTNAME = "HITViewHost";
+        public Sidebar sidebar;
 
         //TODO: figure out where to actually store this.
         public Dictionary<int, HITData> jobMap { get; private set; }
@@ -29,10 +30,51 @@ namespace Soylent.View
         {
             InitializeComponent();
             jobMap = new Dictionary<int,HITData>();
+
+            ElementHost host = new ElementHost();
+            host.Name = "HITViewHost";
+            host.Dock = DockStyle.Fill;
+
+            sidebar = new Sidebar();
+            host.Child = sidebar;
+            this.Controls.Add(host);
         }
 
         private void WPFContainer_Load(object sender, EventArgs e)
         {
+        }
+
+        public HITView addHIT(string name, HITData data, int jobNumber)
+        {
+            HITView hs;
+            if (name == ShortnJob.HIT_TYPE)
+            {
+                hs = new ShortnView(name, data as ShortnData);
+            }
+            else if (name == CrowdproofJob.HIT_TYPE)
+            {
+                hs = new CrowdproofView(name, data as CrowdproofData);
+            }
+            else if (name == HumanMacroJob.HIT_TYPE)
+            {
+                HumanMacroResult hdata = data as HumanMacroResult;
+                hs = new HumanMacroView(name, hdata);
+            }
+            else
+            {
+                hs = new HITView(name, data);
+            }
+            jobMap[jobNumber] = data;
+
+            // Assign the WPF UserControl to the ElementHost control's
+            // Child property.
+            sidebar.addHitView(jobNumber, hs);
+            //host.Child = hs;
+
+            // Add the ElementHost control to the form's
+            // collection of child controls.
+            //this.Controls.Add(host);
+            return hs;
         }
 
         public HITView addHITtoList(string name, HITData data, int jobNumber)
@@ -59,7 +101,7 @@ namespace Soylent.View
 
             return hs;
         }
-
+        /*
         /// <summary>
         /// Add a job to this container in the sidebar
         /// </summary>
@@ -107,7 +149,7 @@ namespace Soylent.View
             this.Controls.Add(host);
             return hs;
         }
-
+        */
         public IEnumerable<HITView> getHITs()
         {
             List<HITView> hits = new List<HITView>();

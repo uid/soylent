@@ -23,7 +23,7 @@ namespace Soylent.Model.HumanMacro
             this.jobNumber = jobNumber;
 
             HITView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data, jobNumber);
-            hit.addStage(1, HITData.ResultType.Macro, "Running Macro", 10, 0.10);
+            hit.addStage(1, HITData.ResultType.Macro, data.macroStageData, "Running Macro", 10, 0.10);
             //hit.addStage(2, HITData.ResultType.Fix, "Fix Errors", 5, 0.05);
             //hit.addStage(3, HITData.ResultType.Verify, "Quality Control", 5, 0.05);
 

@@ -26,6 +26,7 @@ namespace Soylent.View
         private double totalCost;
         private HITData.ResultType type;
         private StageData stagedata;
+        internal double percentDone;
 
         public StageView(int stageNum, HITData.ResultType type, StageData stagedata, string stageType, int totalTurkers, double totalCost)
         {
@@ -52,7 +53,7 @@ namespace Soylent.View
             numTurkers.Content = curTurkers + " of " + totalTurkers + " workers";
             cost.Content = String.Format("{0:c}", curCost);
 
-            double percentDone = ((double)curTurkers) / totalTurkers;
+            percentDone = ((double)curTurkers) / totalTurkers;
             Duration duration = new Duration(TimeSpan.FromSeconds(1));
             DoubleAnimation doubleanimation = new DoubleAnimation(100 * percentDone, duration);
             hitProgress.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
@@ -68,7 +69,7 @@ namespace Soylent.View
             numTurkers.Content = curTurkers + " of " + totalTurkers + " workers";
             cost.Content = String.Format("{0:c}", totalCost);
 
-            double percentDone = ((double)curTurkers) / totalTurkers;
+            percentDone = ((double)curTurkers) / totalTurkers;
             Duration duration = new Duration(TimeSpan.FromSeconds(1));
             DoubleAnimation doubleanimation = new DoubleAnimation(100 * percentDone, duration);
             hitProgress.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);

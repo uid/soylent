@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 using Soylent.View;
 
@@ -12,8 +13,8 @@ namespace Soylent.Model
     /// </summary>
     public class StageData
     {
-        private StageView listener;
-        private HITData.ResultType type;
+        [XmlIgnore] private StageView listener;
+        public HITData.ResultType type;
         public int numCompleted {
             get
             {
@@ -50,6 +51,8 @@ namespace Soylent.Model
         {
             this.type = type;
         }
+
+        internal StageData() { }
 
         public void FixParagraphNumber(int numParagraphs)
         {

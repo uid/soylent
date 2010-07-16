@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Soylent.Model.Crowdproof
 {
-    class CrowdproofPatch : Patch
+    public class CrowdproofPatch : Patch
     {
         public List<string> reasons { get; set; }
 
