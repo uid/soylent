@@ -63,12 +63,12 @@ namespace Soylent.View
             ShortnButton.Content = "Shortn";
             ShortnButton.Name = "Shortn";
             ShortnButton.Height = 23;
-            ShortnButton.Width = 80;
+            //ShortnButton.Width = 80;
             //ShortnButton.IsEnabled = false;
             ShortnButton.Click += new RoutedEventHandler(spv.Shortn_Clicked);
 
             StackPanel buttonPanel = new StackPanel();
-            buttonPanel.Margin = new Thickness(5.0, 60.0, 5.0, 10.0);
+            buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);
 
             buttonPanel.Children.Add(ShortnButton);
 
@@ -115,7 +115,7 @@ namespace Soylent.View
                 buttons.Children.Add(RejectRevisions);
 
                 StackPanel buttonPanel = new StackPanel();
-                buttonPanel.Margin = new Thickness(5.0, 60.0, 5.0, 10.0);
+                buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);
 
                 buttonPanel.Children.Add(CrowdproofButton);
                 buttonPanel.Children.Add(buttons);
@@ -163,7 +163,7 @@ namespace Soylent.View
                 buttons.Children.Add(RejectRevisions);
 
                 StackPanel buttonPanel = new StackPanel();
-                buttonPanel.Margin = new Thickness(5.0, 60.0, 5.0, 10.0);
+                buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);
 
                 buttonPanel.Children.Add(CrowdproofButton);
                 buttonPanel.Children.Add(buttons);
@@ -179,9 +179,10 @@ namespace Soylent.View
             this.sidebar = sidebar;
         }
 
-        public delegate void updateViewDelegate(double percent);
+        public delegate void updateViewDelegate(double percent, double cost);
 
-        public void updateView(double percent){
+        public void updateView(double percent, double cost){
+            this.cost.Content = "$" + cost;
 
             Duration duration = new Duration(TimeSpan.FromSeconds(0.5));
             DoubleAnimation doubleanimation = new DoubleAnimation(100 * percent, duration);

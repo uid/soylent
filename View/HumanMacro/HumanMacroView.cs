@@ -148,7 +148,7 @@ namespace Soylent.View.HumanMacro
                 stageview.hitProgress.Foreground = Brushes.LightSkyBlue; //Yay light blue
             }
             insertTrackChanges();
-            stub.hitType.FontWeight = FontWeights.ExtraBold;
+            stub.hitType.FontWeight = FontWeights.Normal;
         }
 
         /// <summary>
@@ -237,8 +237,10 @@ namespace Soylent.View.HumanMacro
         {
             double total = stageList[Model.HITData.ResultType.Macro].percentDone;
 
+            double cost = stageList[Model.HITData.ResultType.Macro].stagedata.moneySpent;
+
             HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
-            Globals.Soylent.soylent.Invoke(del, total);
+            Globals.Soylent.soylent.Invoke(del, total, cost);
         }
 
         /// <summary>

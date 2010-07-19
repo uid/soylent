@@ -132,7 +132,7 @@ namespace Soylent.View.Crowdproof
                 stageview.hitProgress.Foreground = Brushes.LightSkyBlue; //Yay light blue
             }
             insertTrackChanges(this.data);
-            stub.hitType.FontWeight = FontWeights.ExtraBold;
+            stub.hitType.FontWeight = FontWeights.Normal;
         }
 
         /// <summary>
@@ -226,8 +226,10 @@ namespace Soylent.View.Crowdproof
 
             double total = (find / 3.0) + (fix / 3.0) + (verify / 3.0);
 
+            double cost = stageList[Model.HITData.ResultType.Find].stagedata.moneySpent + stageList[Model.HITData.ResultType.Fix].stagedata.moneySpent + stageList[Model.HITData.ResultType.Verify].stagedata.moneySpent;
+
             HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
-            Globals.Soylent.soylent.Invoke(del, total);
+            Globals.Soylent.soylent.Invoke(del, total, cost);
         }
 
         /// <summary>
