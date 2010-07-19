@@ -25,7 +25,7 @@ namespace Soylent.View
         private int totalTurkers;
         private double totalCost;
         private HITData.ResultType type;
-        private StageData stagedata;
+        internal StageData stagedata;
         internal double percentDone;
 
         public StageView(int stageNum, HITData.ResultType type, StageData stagedata, string stageType, int totalTurkers, double totalCost)

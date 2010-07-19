@@ -33,14 +33,20 @@ namespace Soylent.View.Shortn
             ShortnButton.Content = "Shortn";
             ShortnButton.Name = "Shortn";
             ShortnButton.Height = 23;
-            ShortnButton.Width = 80;
+            //ShortnButton.Width = 80;
             ShortnButton.IsEnabled = false;
             ShortnButton.Click += new RoutedEventHandler(Shortn_Clicked);
 
             data.register(this);
             //ShortnButton.
             //ShortnButton.Click = Shortn_Clicked;
-            stages.Children.Add(ShortnButton);
+            //stages.Children.Add(ShortnButton);
+            StackPanel buttonPanel = new StackPanel();
+            buttonPanel.Margin = new Thickness(5.0, 0.0, 5.0, 0.0);
+
+            buttonPanel.Children.Add(ShortnButton);
+
+            stages.Children.Add(buttonPanel);
         }
         /// <summary>
         /// CallBack for when the Shortn button is clicked.  Opens the dialog window and changes the color of the status bars.
@@ -54,7 +60,7 @@ namespace Soylent.View.Shortn
             {
                 stageview.hitProgress.Foreground = Brushes.LightSkyBlue; //Yay light blue
             }
-            stub.hitType.FontWeight = FontWeights.ExtraBold;
+            stub.hitType.FontWeight = FontWeights.Normal;
         }
 
         /// <summary>
@@ -118,8 +124,10 @@ namespace Soylent.View.Shortn
 
             double total = (find / 3.0) + (fix / 3.0) + (verify / 3.0);
 
+            double cost = stageList[Model.HITData.ResultType.Find].stagedata.moneySpent + stageList[Model.HITData.ResultType.Fix].stagedata.moneySpent + stageList[Model.HITData.ResultType.Verify].stagedata.moneySpent;
+
             HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
-            Globals.Soylent.soylent.Invoke(del, total);
+            Globals.Soylent.soylent.Invoke(del, total, cost);
         }
     }
 }
