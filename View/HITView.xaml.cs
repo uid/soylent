@@ -24,13 +24,14 @@ namespace Soylent.View
         public Dictionary<HITData.ResultType, StageView> stageList;
         public HITData data;
         public HITViewStub stub;
+        public int job;
 
         /// <summary>
         /// The view for a task in the sidebar
         /// </summary>
         /// <param name="workType">Job type</param>
         /// <param name="data">Data Model for this View</param>
-        public HITView(string workType, HITData data)
+        public HITView(string workType, HITData data, int job)
         {
             InitializeComponent();
 
@@ -42,6 +43,8 @@ namespace Soylent.View
             stageList = new Dictionary<HITData.ResultType,StageView>();
 
             stub = new HITViewStub(workType, data, this);
+
+            this.job = job;
         }
 
         /// <summary>
@@ -52,9 +55,9 @@ namespace Soylent.View
         /// <param name="stageType"></param>
         /// <param name="totalTurkers"></param>
         /// <param name="totalCost"></param>
-        public void addStage(int stageNum, HITData.ResultType type, StageData sdata, string stageType, int totalTurkers, double totalCost) {
+        public void addStage(int stageNum, HITData.ResultType type, StageData sdata, string stageType, int totalTurkers, double totalCost, int job) {
             StageData stagedata = sdata;
-            StageView newStage = new StageView(stageNum, type, stagedata, stageType, totalTurkers, totalCost);
+            StageView newStage = new StageView(stageNum, type, stagedata, stageType, totalTurkers, totalCost, job);
             stages.Children.Insert(stages.Children.IndexOf(cancelBtn), newStage);
             stageList[type] = newStage;
             //stageList.Add(newStage);

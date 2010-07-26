@@ -59,7 +59,7 @@ namespace Soylent.Model.HumanMacro
             this.test = test;
 
             //stages[HITData.ResultType.Macro] = new StageData(HITData.ResultType.Macro);
-            macroStageData = new StageData(HITData.ResultType.Macro);
+            macroStageData = new StageData(HITData.ResultType.Macro, job);
             //stages[HITData.ResultType.Macro] = new HumanMacroStage(HITData.ResultType.Macro, redundancy);
         }
 
@@ -110,7 +110,7 @@ namespace Soylent.Model.HumanMacro
             if (numberReturned == patches.Count)
             {
                 this.tk.turkitLoopTimer.Dispose();
-                Globals.Soylent.soylent.Invoke(new resultsBackDelegate(this.resultsBack), new object[] { });
+                Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[this.job]].Invoke(new resultsBackDelegate(this.resultsBack), new object[] { });
             }
         }
 
@@ -146,13 +146,12 @@ namespace Soylent.Model.HumanMacro
                 foreach (string result in results)
                 {
                     object commentText = result;
-                    Globals.Soylent.Application.ActiveDocument.Comments.Add(text, ref commentText);
-                    foreach (Microsoft.Office.Interop.Word.Comment c in Globals.Soylent.Application.ActiveDocument.Comments)
+                    Globals.Soylent.jobToDoc[this.job].Comments.Add(text, ref commentText);
+                    foreach (Microsoft.Office.Interop.Word.Comment c in Globals.Soylent.jobToDoc[this.job].Comments)
                     {
                         c.Author = "Turker";
                         c.Initial = "Turker";
                     }
-                    //Globals.Soylent.Application.ActiveDocument.Comments[0].Author = "Turker";
                 }
             }
         }

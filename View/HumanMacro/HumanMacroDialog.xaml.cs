@@ -274,9 +274,10 @@ namespace Soylent.View.HumanMacro
             //Debug.WriteLine("Reward: " + reward + " || Redundancy: "+redundancy+" || Title: "+localtitle+" || Subtitle: "+localsubtitle+" || Instructions: "+localinstructions);
             //Debug.WriteLine(separatorBox.SelectedValue.ToString() + " 1 " + (item2 == separatorBox.SelectedValue) + " 2 " + (item2 == separatorBox.SelectionBoxItem) + " 3 " + (item2 == separatorBox.SelectedItem) + " 4 " + (item2.Content == separatorBox.SelectedValuePath));
 
-            HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Real);
+            //HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Real);
 
-            HumanMacroJob job = new HumanMacroJob(data, jobNumber);
+            //HumanMacroJob job = new HumanMacroJob(data, jobNumber);
+            HumanMacroJob job = new HumanMacroJob(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Test);
 
             HwndSource source = (HwndSource)PresentationSource.FromVisual(sender as Button);
             System.Windows.Forms.Control ctl = System.Windows.Forms.Control.FromChildHandle(source.Handle);
@@ -319,9 +320,9 @@ namespace Soylent.View.HumanMacro
             //Debug.WriteLine("Reward: " + reward + " || Redundancy: "+redundancy+" || Title: "+localtitle+" || Subtitle: "+localsubtitle+" || Instructions: "+localinstructions);
             //Debug.WriteLine(separatorBox.SelectedValue.ToString() + " 1 " + (item2 == separatorBox.SelectedValue) + " 2 " + (item2 == separatorBox.SelectionBoxItem) + " 3 " + (item2 == separatorBox.SelectedItem) + " 4 " + (item2.Content == separatorBox.SelectedValuePath));
 
-            HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Test);
+            //HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Test);
 
-            HumanMacroJob job = new HumanMacroJob(data, jobNumber);
+            HumanMacroJob job = new HumanMacroJob(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Test);
 
             HwndSource source = (HwndSource)PresentationSource.FromVisual(sender as Button);
             System.Windows.Forms.Control ctl = System.Windows.Forms.Control.FromChildHandle(source.Handle);

@@ -68,9 +68,9 @@ namespace Soylent.Model.Shortn
         public ShortnData(Word.Range toShorten, int job) : base(toShorten, job)
         {
             
-            findStageData = new StageData(ResultType.Find, numParagraphs);
-            fixStageData = new StageData(ResultType.Fix, numParagraphs);
-            verifyStageData = new StageData(ResultType.Verify, numParagraphs);
+            findStageData = new StageData(ResultType.Find, numParagraphs, job);
+            fixStageData = new StageData(ResultType.Fix, numParagraphs, job);
+            verifyStageData = new StageData(ResultType.Verify, numParagraphs, job);
             
             /*
             typeMap = new Dictionary<string,ResultType>();
@@ -88,9 +88,9 @@ namespace Soylent.Model.Shortn
         internal ShortnData()
             : base()
         {
-            findStageData = new StageData(ResultType.Find, numParagraphs);
-            fixStageData = new StageData(ResultType.Fix, numParagraphs);
-            verifyStageData = new StageData(ResultType.Verify, numParagraphs);
+            findStageData = new StageData(ResultType.Find, numParagraphs, job);
+            fixStageData = new StageData(ResultType.Fix, numParagraphs, job);
+            verifyStageData = new StageData(ResultType.Verify, numParagraphs, job);
 
             patches = new List<Patch>();
             gottenOneYet = new Dictionary<ResultType, List<List<bool>>>();
@@ -157,13 +157,19 @@ namespace Soylent.Model.Shortn
 
             //this.tk.turkitLoopTimer.Dispose();
 
+            Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[this.job];
+
             foreach (TurKitSocKit.TurKitFindFixVerifyPatch tkspatch in message.patches)
             {
+                
+
                 //For text in between patches, we create dummy patches.
                 if (tkspatch.editStart > nextStart)
                 {
                     nextEnd = tkspatch.editStart; 
-                    Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
+                    //Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
+                    Word.Range dummyRange = doc.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
+                    
                     DummyPatch dummyPatch = new DummyPatch(dummyRange);
 
                     patches.Add(dummyPatch);
@@ -171,7 +177,8 @@ namespace Soylent.Model.Shortn
 
                 int start = curParagraphRange.Start + tkspatch.editStart;
                 int end = curParagraphRange.Start + tkspatch.editEnd;
-                Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end); //New range for this patch, yay!
+                //Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end); //New range for this patch, yay!
+                Word.Range patchRange = doc.Range(start, end);
 
                 List<string> alternatives = new List<string>();
                 foreach (TurKitSocKit.TurKitFindFixVerifyOption option in (from option in tkspatch.options where option.editsText select option)) {
@@ -188,7 +195,9 @@ namespace Soylent.Model.Shortn
             //If the last patch we found isn't the end of the paragraph, create a DummyPatch
             if (nextStart < (curParagraphRange.Text.Length - 1)){
                 nextEnd = curParagraphRange.Text.Length;
-                Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
+                //Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
+                Word.Range dummyRange = doc.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
+                
                 DummyPatch dummyPatch = new DummyPatch(dummyRange);
 
                 patches.Add(dummyPatch);
@@ -213,7 +222,7 @@ namespace Soylent.Model.Shortn
         {
             //popupShortnWindow();
             popupShortnWindowDelegate del = new popupShortnWindowDelegate(this.popupShortnWindow);
-            Globals.Soylent.soylent.Invoke(del, null);
+            Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[this.job]].Invoke(del, null);
         }
 
         public delegate void popupShortnWindowDelegate();

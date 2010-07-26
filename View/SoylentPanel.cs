@@ -44,25 +44,26 @@ namespace Soylent.View
         {
         }
 
+
         public HITView addHIT(string name, HITData data, int jobNumber)
         {
             HITView hs;
             if (name == ShortnJob.HIT_TYPE)
             {
-                hs = new ShortnView(name, data as ShortnData);
+                hs = new ShortnView(name, data as ShortnData, jobNumber);
             }
             else if (name == CrowdproofJob.HIT_TYPE)
             {
-                hs = new CrowdproofView(name, data as CrowdproofData);
+                hs = new CrowdproofView(name, data as CrowdproofData, jobNumber);
             }
             else if (name == HumanMacroJob.HIT_TYPE)
             {
                 HumanMacroResult hdata = data as HumanMacroResult;
-                hs = new HumanMacroView(name, hdata);
+                hs = new HumanMacroView(name, hdata, jobNumber);
             }
             else
             {
-                hs = new HITView(name, data);
+                hs = new HITView(name, data, jobNumber);
             }
             jobMap[jobNumber] = data;
 
@@ -82,20 +83,20 @@ namespace Soylent.View
             HITView hs;
             if (name == ShortnJob.HIT_TYPE)
             {
-                hs = new ShortnView(name, data as ShortnData);
+                hs = new ShortnView(name, data as ShortnData, jobNumber);
             }
             else if (name == CrowdproofJob.HIT_TYPE)
             {
-                hs = new CrowdproofView(name, data as CrowdproofData);
+                hs = new CrowdproofView(name, data as CrowdproofData, jobNumber);
             }
             else if (name == HumanMacroJob.HIT_TYPE)
             {
                 HumanMacroResult hdata = data as HumanMacroResult;
-                hs = new HumanMacroView(name, hdata);
+                hs = new HumanMacroView(name, hdata, jobNumber);
             }
             else
             {
-                hs = new HITView(name, data);
+                hs = new HITView(name, data, jobNumber);
             }
             jobMap[jobNumber] = data;
 

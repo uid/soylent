@@ -27,8 +27,9 @@ namespace Soylent.View
         private HITData.ResultType type;
         internal StageData stagedata;
         internal double percentDone;
+        public int job;
 
-        public StageView(int stageNum, HITData.ResultType type, StageData stagedata, string stageType, int totalTurkers, double totalCost)
+        public StageView(int stageNum, HITData.ResultType type, StageData stagedata, string stageType, int totalTurkers, double totalCost, int job)
         {
             InitializeComponent();
 
@@ -41,6 +42,8 @@ namespace Soylent.View
             stageName.Content = String.Format("Stage {0}: {1:c}", stageNum, stageType);
 
             updateProgress(0, 0);
+
+            this.job = job;
         }
 
         /// <summary>
@@ -80,7 +83,8 @@ namespace Soylent.View
         /// </summary>
         public void notify()
         {
-            Globals.Soylent.soylent.Invoke(new updateProgressDelegate(this.updateProgress), new object[] { });
+            Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[job]].Invoke(new updateProgressDelegate(this.updateProgress), new object[] { });
+            //Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].Invoke(new updateProgressDelegate(this.updateProgress), new object[] { });
             //updateProgress(stagedata.numCompleted);
         }
     }

@@ -49,7 +49,8 @@ namespace Soylent.Model
             get
             {
                 object bookmark = (object)range.BookmarkID;
-                return ((Microsoft.Office.Interop.Word.Bookmark)Globals.Soylent.Application.ActiveDocument.Bookmarks.get_Item(ref bookmark)).Range.Text;
+                //return ((Microsoft.Office.Interop.Word.Bookmark)Globals.Soylent.Application.ActiveDocument.Bookmarks.get_Item(ref bookmark)).Range.Text;
+                return ((Microsoft.Office.Interop.Word.Bookmark)Globals.Soylent.jobToDoc[this.job].Bookmarks.get_Item(ref bookmark)).Range.Text;
             }
         }
 
@@ -78,7 +79,7 @@ namespace Soylent.Model
              */
 
             object bkmkRange = (object)range;
-            Globals.Soylent.Application.ActiveDocument.Bookmarks.Add(bookmarkName, ref bkmkRange);
+            Globals.Soylent.jobToDoc[this.job].Bookmarks.Add(bookmarkName, ref bkmkRange);
             
             tk = new TurKit(this);
         }

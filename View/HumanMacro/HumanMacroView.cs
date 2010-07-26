@@ -32,7 +32,7 @@ namespace Soylent.View.HumanMacro
         /// </summary>
         /// <param name="workType"></param>
         /// <param name="data"></param>
-        public HumanMacroView(string workType, HumanMacroResult data) : base(workType, data)
+        public HumanMacroView(string workType, HumanMacroResult data, int job) : base(workType, data, job)
         {
             //Globals.Soylent.soylent.Controls.Add(new System.Windows.Forms.Button());
             HumanMacroButton = new Button();
@@ -240,7 +240,7 @@ namespace Soylent.View.HumanMacro
             double cost = stageList[Model.HITData.ResultType.Macro].stagedata.moneySpent;
 
             HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
-            Globals.Soylent.soylent.Invoke(del, total, cost);
+            Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[job]].Invoke(del, total, cost);
         }
 
         /// <summary>

@@ -26,7 +26,7 @@ namespace Soylent.View.Shortn
         /// </summary>
         /// <param name="workType"></param>
         /// <param name="data"></param>
-        public ShortnView(string workType, ShortnData data) : base(workType, data)
+        public ShortnView(string workType, ShortnData data, int job) : base(workType, data, job)
         {
             //Globals.Soylent.soylent.Controls.Add(new System.Windows.Forms.Button());
             ShortnButton = new Button();
@@ -127,7 +127,7 @@ namespace Soylent.View.Shortn
             double cost = stageList[Model.HITData.ResultType.Find].stagedata.moneySpent + stageList[Model.HITData.ResultType.Fix].stagedata.moneySpent + stageList[Model.HITData.ResultType.Verify].stagedata.moneySpent;
 
             HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
-            Globals.Soylent.soylent.Invoke(del, total, cost);
+            Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[job]].Invoke(del, total, cost);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Soylent.View.Crowdproof
         /// </summary>
         /// <param name="workType"></param>
         /// <param name="data"></param>
-        public CrowdproofView(string workType, CrowdproofData data) : base(workType, data)
+        public CrowdproofView(string workType, CrowdproofData data, int job) : base(workType, data, job)
         {
             //Globals.Soylent.soylent.Controls.Add(new System.Windows.Forms.Button());
             CrowdproofButton = new Button();
@@ -229,7 +229,7 @@ namespace Soylent.View.Crowdproof
             double cost = stageList[Model.HITData.ResultType.Find].stagedata.moneySpent + stageList[Model.HITData.ResultType.Fix].stagedata.moneySpent + stageList[Model.HITData.ResultType.Verify].stagedata.moneySpent;
 
             HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
-            Globals.Soylent.soylent.Invoke(del, total, cost);
+            Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[job]].Invoke(del, total, cost);
         }
 
         /// <summary>

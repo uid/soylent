@@ -27,15 +27,33 @@ namespace Soylent.Model.Shortn
         /// </summary>
         /// <param name="data">The ShortnData instance for this job</param>
         /// <param name="jobNumber">The unique job number</param>
+        //public ShortnJob(ShortnData data, int jobNumber)
+        public ShortnJob(int jobNumber, Word.Range range)
+        {
+            //this.data = data;
+            this.jobNumber = jobNumber;
+
+            Globals.Soylent.jobToDoc[jobNumber] = Globals.Soylent.Application.ActiveDocument;
+
+            this.data = new ShortnData(range, jobNumber);
+
+            ShortnView hit = Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].addHIT(HIT_TYPE, data, jobNumber) as ShortnView;
+            hit.addStage(1, HITData.ResultType.Find, data.findStageData, "Find Verbose Text", 10, 0.10, jobNumber);
+            hit.addStage(2, HITData.ResultType.Fix, data.fixStageData, "Shorten Verbose Text", 5, 0.05, jobNumber);
+            hit.addStage(3, HITData.ResultType.Verify, data.verifyStageData, "Quality Control", 5, 0.05, jobNumber);
+
+            data.startTask();
+        }
+
         public ShortnJob(ShortnData data, int jobNumber)
         {
             this.data = data;
             this.jobNumber = jobNumber;
 
-            ShortnView hit = Globals.Soylent.soylent.addHIT(HIT_TYPE, data, jobNumber) as ShortnView;
-            hit.addStage(1, HITData.ResultType.Find, data.findStageData, "Find Verbose Text", 10, 0.10);
-            hit.addStage(2, HITData.ResultType.Fix, data.fixStageData, "Shorten Verbose Text", 5, 0.05);
-            hit.addStage(3, HITData.ResultType.Verify, data.verifyStageData, "Quality Control", 5, 0.05);
+            ShortnView hit = Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].addHIT(HIT_TYPE, data, jobNumber) as ShortnView;
+            hit.addStage(1, HITData.ResultType.Find, data.findStageData, "Find Verbose Text", 10, 0.10, jobNumber);
+            hit.addStage(2, HITData.ResultType.Fix, data.fixStageData, "Shorten Verbose Text", 5, 0.05, jobNumber);
+            hit.addStage(3, HITData.ResultType.Verify, data.verifyStageData, "Quality Control", 5, 0.05, jobNumber);
 
             data.startTask();
         }

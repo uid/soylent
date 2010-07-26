@@ -16,8 +16,8 @@ namespace Soylent.Model.HumanMacro
             }
         }
 
-        public HumanMacroStage(HITData.ResultType type, int redundancy)
-            : base(type)
+        public HumanMacroStage(HITData.ResultType type, int redundancy, int job)
+            : base(type, job)
         {
             this.redundancy = redundancy;
         }

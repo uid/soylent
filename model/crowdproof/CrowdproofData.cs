@@ -28,9 +28,9 @@ namespace Soylent.Model.Crowdproof
         public CrowdproofData(Word.Range range, int job)
             : base(range, job)
         {
-            findStageData = new StageData(ResultType.Find, numParagraphs);
-            fixStageData = new StageData(ResultType.Fix, numParagraphs);
-            verifyStageData = new StageData(ResultType.Verify, numParagraphs);
+            findStageData = new StageData(ResultType.Find, numParagraphs, job);
+            fixStageData = new StageData(ResultType.Fix, numParagraphs, job);
+            verifyStageData = new StageData(ResultType.Verify, numParagraphs, job);
 
             /*
             stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
@@ -49,9 +49,9 @@ namespace Soylent.Model.Crowdproof
         public CrowdproofData()
             : base()
         {
-            findStageData = new StageData(ResultType.Find, numParagraphs);
-            fixStageData = new StageData(ResultType.Fix, numParagraphs);
-            verifyStageData = new StageData(ResultType.Verify, numParagraphs);
+            findStageData = new StageData(ResultType.Find, numParagraphs, job);
+            fixStageData = new StageData(ResultType.Fix, numParagraphs, job);
+            verifyStageData = new StageData(ResultType.Verify, numParagraphs, job);
 
             /*
             stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
@@ -146,12 +146,16 @@ namespace Soylent.Model.Crowdproof
             int paragraphsCompleted = 0;
 
             Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
+
+            Word.Document doc = Globals.Soylent.jobToDoc[job];
+
             foreach (TurKitSocKit.TurKitFindFixVerifyPatch tkspatch in message.patches)
             {
 
                 int start = curParagraphRange.Start + tkspatch.editStart;
                 int end = curParagraphRange.Start + tkspatch.editEnd;
-                Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start, end); //New range for this patch, yay!
+                //Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start, end); //New range for this patch, yay!
+                Word.Range patchRange = doc.Range(start, end);
 
                 List<string> alternatives = new List<string>();
                 foreach (TurKitSocKit.TurKitFindFixVerifyOption option in (from option in tkspatch.options where option.field == "revision" select option))
@@ -179,7 +183,9 @@ namespace Soylent.Model.Crowdproof
             if (paragraphsCompleted == numParagraphs) //If we have done all paragraphs, make them available to the user!
             {
                 //TODO: use a delegate.
-                Globals.Soylent.soylent.Invoke(new crowdproofDelegate(this.crowdproofDataReceived), new object[] { });
+                //Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].Invoke(new crowdproofDelegate(this.crowdproofDataReceived), new object[] { });
+                Globals.Soylent.soylentMap[doc].Invoke(new crowdproofDelegate(this.crowdproofDataReceived), new object[] { });
+                
                 this.tk.turkitLoopTimer.Dispose();
                 //CrowdproofView view = this.view as CrowdproofView;
                 //view.crowdproofDataReceived();

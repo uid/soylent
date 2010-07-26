@@ -35,21 +35,24 @@ namespace Soylent.Model
         protected List<List<int>> totalRequested;    // list of number of workers requested per patch per paragraph
         private List<int> numPatches;
         private List<List<bool>> done;
+        public int job;
 
         /// <summary>
         /// Represents the data from a specific stage in a job.  For example: the Find, Fix, or Verify stage.
         /// </summary>
         /// <param name="type">The type of the stage.  For example, Find, Fix, or Verify</param>
         /// <param name="numParagraphs">The number of paragraphs in this job</param>
-        public StageData(HITData.ResultType type, int numParagraphs)
+        public StageData(HITData.ResultType type, int numParagraphs, int job)
         {
             this.type = type;
             this.FixParagraphNumber(numParagraphs);
+            this.job = job;
         }
 
-        public StageData(HITData.ResultType type)
+        public StageData(HITData.ResultType type, int job)
         {
             this.type = type;
+            this.job = job;
         }
 
         internal StageData() { }

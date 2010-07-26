@@ -32,8 +32,6 @@ namespace Soylent
 {
     public partial class SoylentRibbon : OfficeRibbon
     {
-        public Dictionary<int, HITData> allHITs = new Dictionary<int,HITData>();
-
         public SoylentRibbon()
         {
             InitializeComponent();
@@ -48,82 +46,18 @@ namespace Soylent
         {
             Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
             int jobNumber = generateJobNumber();
-            ShortnData newHIT = new ShortnData(toShorten, jobNumber);
-            allHITs[newHIT.job] = newHIT;
-            ShortnJob s = new ShortnJob(newHIT, jobNumber);
+            //ShortnData newHIT = new ShortnData(toShorten, jobNumber);
+            //ShortnJob s = new ShortnJob(newHIT, jobNumber);
+            ShortnJob s = new ShortnJob(jobNumber, toShorten);
         }
 
-        private void directManipulate_Click(object sender, RibbonControlEventArgs e)
+        private void button3_Click(object sender, RibbonControlEventArgs e)
         {
-            ShortnView.openShortnDialog(ShortnData.getCannedData());
-            /*
-            TurKitSocKit.TurKitStatus receivedObject = new TurKitSocKit.TurKitStatus();
-            receivedObject.hitURL = "http://www.google.com";
-            receivedObject.job = 1;
-            receivedObject.numCompleted = 1;
-            receivedObject.paragraph = 0;
-            receivedObject.patchNumber = 0;
-            receivedObject.payment = .05;
-            receivedObject.stage = "find";
-            receivedObject.totalPatches = 1;
-            receivedObject.totalRequested = 7;
-            */
-            /*
-            TurKitSocKit.TurKitCrowdproof crowdproof = new TurKitSocKit.TurKitCrowdproof();
-            crowdproof.job = 1;
-            crowdproof.paragraph = 0;
-            crowdproof.patches = new List<TurKitSocKit.TurKitCrowdproofPatch>();
-            TurKitSocKit.TurKitCrowdproofPatch patch1 = new TurKitSocKit.TurKitCrowdproofPatch();
-            patch1.start = 2;
-            patch1.end = 2;
-            List<string> reasons = new List<string>();
-            reasons.Add("Subject/Verb agreement");
-            List<TurKitSocKit.TurKitCrowdproofPatchOption> options = new List<TurKitSocKit.TurKitCrowdproofPatchOption>();
-            TurKitSocKit.TurKitCrowdproofPatchOption op1 = new TurKitSocKit.TurKitCrowdproofPatchOption();
-            op1.editStart = 2;
-            op1.editEnd = 4;
-            op1.replacement = "am";
-            op1.text = "is";
-            options.Add(op1);
-            patch1.reasons = reasons;
-            patch1.originalText = "is";
-            patch1.options = options;
-            patch1.numEditors = 2;
-            patch1.editStart = 2;
-            patch1.editEnd = 4;
-            crowdproof.patches.Add(patch1);
-
-            TurKitSocKit.TurKitCrowdproofPatch patch2 = new TurKitSocKit.TurKitCrowdproofPatch();
-            patch2.start = 34;
-            patch2.end = 40;
-            List<string> reasons2 = new List<string>();
-            reasons2.Add("'Gooder' is not a word");
-            reasons2.Add("This is awful.  Use 'better'");
-            List<TurKitSocKit.TurKitCrowdproofPatchOption> options2 = new List<TurKitSocKit.TurKitCrowdproofPatchOption>();
-            TurKitSocKit.TurKitCrowdproofPatchOption op2 = new TurKitSocKit.TurKitCrowdproofPatchOption();
-            op2.editStart = 34;
-            op2.editEnd = 40;
-            op2.replacement = "better";
-            op2.text = "gooder";
-            options2.Add(op2);
-            TurKitSocKit.TurKitCrowdproofPatchOption op3 = new TurKitSocKit.TurKitCrowdproofPatchOption();
-            op3.editStart = 34;
-            op3.editEnd = 38;
-            op3.replacement = "well";
-            op3.text = "gooder";
-            options2.Add(op3);
-            patch2.reasons = reasons2;
-            patch2.originalText = "is";
-            patch2.options = options2;
-            patch2.numEditors = 2;
-            patch2.editStart = 34;
-            patch2.editEnd = 40;
-            crowdproof.patches.Add(patch2);
-            
-            CrowdproofData cpd = Globals.Soylent.soylent.jobMap[crowdproof.job] as CrowdproofData;
-            //cpd.processSocKitMessage(crowdproof);
-            //cpd.updateStatus(receivedObject);
-            */
+            Word.Range toCrowdproof = Globals.Soylent.Application.Selection.Range;
+            int jobNumber = generateJobNumber();
+            //CrowdproofData newHIT = new CrowdproofData(toCrowdproof, jobNumber);
+            //CrowdproofJob c = new CrowdproofJob(newHIT, jobNumber);
+            CrowdproofJob c = new CrowdproofJob(jobNumber, toCrowdproof);
         }
 
         private void humanMacroBtn_Click(object sender, RibbonControlEventArgs e)
@@ -156,6 +90,11 @@ namespace Soylent
             // collection of child controls.
             newForm.Controls.Add(host);
             newForm.Show();
+        }
+
+        private void directManipulate_Click(object sender, RibbonControlEventArgs e)
+        {
+            ShortnView.openShortnDialog(ShortnData.getCannedData());
         }
 
         private void humanMacroInline_Click(object sender, RibbonControlEventArgs e)
@@ -246,7 +185,7 @@ namespace Soylent
             tks.job = 1; tks.paragraph = 1; tks.patches = new List<TurKitSocKit.TurKitFindFixVerifyPatch>();
             tks.patches.Add(p1); tks.patches.Add(p2);
 
-            ShortnData shortenData = Globals.Soylent.soylent.jobMap[tks.job] as ShortnData;
+            ShortnData shortenData = Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[tks.job] as ShortnData;
             shortenData.processSocKitMessage(tks);
             
 
@@ -263,7 +202,7 @@ namespace Soylent
 
             // Create the WPF UserControl.
             //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            ShortnDialog sd = new ShortnDialog(Globals.Soylent.soylent.jobMap[1] as ShortnData);
+            ShortnDialog sd = new ShortnDialog(Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[1] as ShortnData);
 
             // Assign the WPF UserControl to the ElementHost control's
             // Child property.
@@ -275,25 +214,17 @@ namespace Soylent
             newForm.Controls.Add(host);
             newForm.Show();
         }
+        internal static void setLastJob(int i)
+        {
+            lastJob = i;
+        }
 
         private static int lastJob = 0;
         public static int generateJobNumber()
         {
-            System.Diagnostics.Trace.WriteLine(lastJob + 1);
+            //System.Diagnostics.Trace.WriteLine(lastJob + 1);
             return ++lastJob;
-        }
-
-        private void button3_Click(object sender, RibbonControlEventArgs e)
-        {
-            //CrowdproofData data = CrowdproofData.getCannedData();
-
-            Word.Range toCrowdproof = Globals.Soylent.Application.Selection.Range;
-            int jobNumber = generateJobNumber();
-            CrowdproofData newHIT = new CrowdproofData(toCrowdproof, jobNumber);
-            allHITs[newHIT.job] = newHIT;
-            CrowdproofJob c = new CrowdproofJob(newHIT, jobNumber);
-            //CrowdproofData data = CrowdproofData.getCannedData();
-            //data.AnnotateResult();
+            
         }
 
         private void jobStatus_Click(object sender, RibbonControlEventArgs e)
@@ -303,6 +234,10 @@ namespace Soylent
 
         private void button4_Click(object sender, RibbonControlEventArgs e)
         {
+            //int i = generateJobNumber();
+            Word.Document doc = Globals.Soylent.Application.ActiveDocument;
+            
+            /*
             ElementHost host = new ElementHost();
             host.Name = "HITViewHost";
             host.Dock = DockStyle.Fill;
@@ -347,7 +282,7 @@ namespace Soylent
             hit3.addStage(3, HITData.ResultType.Verify, data3.verifyStageData, "Quality Control", 5, 0.05);
 
             hs.addHitView(jobNumber3, hit3);
-
+            */
         }
 
         private void button5_Click(object sender, RibbonControlEventArgs e)
