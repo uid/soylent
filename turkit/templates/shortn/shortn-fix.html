@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>MTurk Task</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</meta>
+<style>
+	label.error {
+		display: none;
+		color: red;
+	}
+</style>
+</head>
+<body>
+<script src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
+<script src="http://people.csail.mit.edu/msbernst/mturk/jquery.validate.min.js"></script>
+<script>
+    ___HEADER_SCRIPT___
+
+$(function () {    
+    $.validator.addMethod("revision", function(value, element) {	
+        var brackets = /\[\[(.*?)\]\]/g;
+        
+        //
+        // <HACK>
+        // ----
+        // For some reason that I cannot comprehend, the second time that the user clicks the submit button
+        // if they failed the test the first time,
+        // brackets.test() returns false even if should be true, and the form submits.
+        // It works fine if something else calls it first. So,
+        // we hack around this by doing an extra call first
+        brackets.test("extra hacked regex iteration");
+        // </HACK>
+        
+        var regexResult = brackets.test(value);
+        return !regexResult;
+    }, "Please do not use [[ and ]] to shorten the text -- edit it directly by removing unnecessary parts or rewriting it as necessary.");
+	
+    $('#fixform').validate( {
+		debug: false,
+		rules: {
+			revision: "revision",
+		}
+	});
+});
+
+</script>
+
+<form id="fixform" action="." method="GET">
+    <input type="hidden" name="assignmentId" id="assignmentId" value="temp"></input>
+    <div>
+		<p>The part of the paragraph <span style='background-color: yellow'>highlighted</span> below is too long.  Please edit the highlighted section to shorten its length without changing the meaning of the paragraph.</p>
+		
+		<p style="font-size: 10pt; font-family: monospace; width: 500px">___TEXT___</p>		
+
+		<label for="revision"><div>Shorten or cut the highlighted text in the copy below:</div></label>
+		<div><textarea id="revision" style="width:500px;height:125px" name="revision" class="required">___EDITABLE___</textarea></div>
+		<br/><br/><br/>
+		
+		<label for='votes'><div>Can the highlighted section be entirely removed without making the text ungrammatical or changing the meaning of the paragraph?</div></label>
+		<div id='votes'>
+			<div class='cuttable'><input type="radio" name="cuttable" value="No" class="required" /> No</div>
+			<div class='cuttable'><input type="radio" name="cuttable" value="Yes" /> Yes</div>
+		</div>
+</table>
+		<input type="submit" value="Submit"></input>
+	</div>
+</form>
+
+</body>
+</html>

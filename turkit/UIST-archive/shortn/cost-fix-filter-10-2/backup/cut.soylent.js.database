@@ -1,0 +1,150 @@
+// begin:2be4
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269933944763E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269933944769E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269933944773E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/36qju7h6pdvelmhdpdxf945f7kozv7pv.html",
+								"returnTime" : 1.269933945302E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/36qju7h6pdvelmhdpdxf945f7kozv7pv.html\r\n"
+							},
+							{
+								"creationTime" : 1.269933945305E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1NAK91VCKFH9YLQNDRGMTOQ5IX5V71",
+								"returnTime" : 1.2699339456E12,
+								"printOutput" : "created HIT: 1NAK91VCKFH9YLQNDRGMTOQ5IX5V71\r\n        url: https://www.mturk.com/mturk/preview?groupId=1V6D2KODZJAQU463TLWUZKQOYGKI0D\r\n"
+							},
+							{
+								"creationTime" : 1.269938062532E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269938063392E12,
+								"printOutput" : "disabled HIT: 1NAK91VCKFH9YLQNDRGMTOQ5IX5V71\r\n"
+							},
+							{
+								"creationTime" : 1.269938063393E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269938063486E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/36qju7h6pdvelmhdpdxf945f7kozv7pv.html\r\n"
+							},
+							{
+								"creationTime" : 1.269938064343E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9bdak7jmzwkaln5x96m48sde4qdh5ods.html",
+								"returnTime" : 1.26993806445E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9bdak7jmzwkaln5x96m48sde4qdh5ods.html\r\n"
+							},
+							{
+								"creationTime" : 1.269938064452E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "12G58LJ6MDI9FMTIGIXYKSVF8WZBWE",
+								"returnTime" : 1.269938064887E12,
+								"printOutput" : "created HIT: 12G58LJ6MDI9FMTIGIXYKSVF8WZBWE\r\n        url: https://www.mturk.com/mturk/preview?groupId=1GFAZRTV6CXHZVWOY881PHO9EGONEK\r\n"
+							},
+							{
+								"creationTime" : 1.269957813195E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269957813846E12,
+								"printOutput" : "disabled HIT: 12G58LJ6MDI9FMTIGIXYKSVF8WZBWE\r\n"
+							},
+							{
+								"creationTime" : 1.269957813848E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.26995781397E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/9bdak7jmzwkaln5x96m48sde4qdh5ods.html\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269933946097E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269933946103E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/81nr8l9f50a9si3o6sf77cjfktpbwia6.html",
+								"returnTime" : 1.269933946272E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/81nr8l9f50a9si3o6sf77cjfktpbwia6.html\r\n"
+							},
+							{
+								"creationTime" : 1.269933946276E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1PWR98KX2B0DYZV6NW8S7OM0THBV8O",
+								"returnTime" : 1.269933946445E12,
+								"printOutput" : "created HIT: 1PWR98KX2B0DYZV6NW8S7OM0THBV8O\r\n        url: https://www.mturk.com/mturk/preview?groupId=1V6D2KODZJAQU463TLWUZKQOYGKI0D\r\n"
+							},
+							{
+								"creationTime" : 1.269937869767E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.rejectAssignmentRaw(assignment, reason);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269937869925E12,
+								"printOutput" : "rejected assignment 15GX7RHBSQ2GELDFJU8DR25LFR21BW\r\n"
+							},
+							{
+								"creationTime" : 1.269937870153E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269937870874E12,
+								"printOutput" : "disabled HIT: 1PWR98KX2B0DYZV6NW8S7OM0THBV8O\r\n"
+							},
+							{
+								"creationTime" : 1.269937870875E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269937870972E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/81nr8l9f50a9si3o6sf77cjfktpbwia6.html\r\n"
+							},
+							{
+								"creationTime" : 1.269937871932E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/se9zz6qt879171c4y752qhao7npp0h59.html",
+								"returnTime" : 1.269937872041E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/se9zz6qt879171c4y752qhao7npp0h59.html\r\n"
+							},
+							{
+								"creationTime" : 1.269937872043E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "1BXBNP4ZVL362GETZNEG6FS3RZ4L79",
+								"returnTime" : 1.269937872555E12,
+								"printOutput" : "created HIT: 1BXBNP4ZVL362GETZNEG6FS3RZ4L79\r\n        url: https://www.mturk.com/mturk/preview?groupId=1GFAZRTV6CXHZVWOY881PHO9EGONEK\r\n"
+							},
+							{
+								"creationTime" : 1.269940557176E12,
+								"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269940557692E12,
+								"printOutput" : "disabled HIT: 1BXBNP4ZVL362GETZNEG6FS3RZ4L79\r\n"
+							},
+							{
+								"creationTime" : 1.269940557696E12,
+								"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+								"returnValue" : undefined,
+								"returnTime" : 1.269940557796E12,
+								"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/se9zz6qt879171c4y752qhao7npp0h59.html\r\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 1.82,
+	"hitsCreated" : 4
+}
+// end:2be4
