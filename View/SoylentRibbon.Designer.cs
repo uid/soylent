@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoylentRibbon));
             this.Soylent = new Microsoft.Office.Tools.Ribbon.RibbonTab();
             this.viewGroup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
-            this.button5 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button3 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.shortenBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.humanMacroBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
@@ -61,15 +60,7 @@
             this.viewGroup.Items.Add(this.shortenBtn);
             this.viewGroup.Items.Add(this.humanMacroBtn);
             this.viewGroup.Items.Add(this.jobStatus);
-            this.viewGroup.Items.Add(this.button5);
-            this.viewGroup.Items.Add(this.button6);
             this.viewGroup.Name = "viewGroup";
-            // 
-            // button5
-            // 
-            this.button5.Label = "button5";
-            this.button5.Name = "button5";
-            this.button5.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button5_Click);
             // 
             // button3
             // 
@@ -184,7 +175,6 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton jobStatus;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton shortenBtn;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton button6;
     }
 
     partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonReadOnlyCollection
