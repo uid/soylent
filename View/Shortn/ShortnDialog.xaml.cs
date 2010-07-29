@@ -60,6 +60,10 @@ namespace Soylent.View.Shortn
                 {
                     r.Foreground = Brushes.Purple;
                 }
+                else
+                {
+                    r.Foreground = Brushes.Black;
+                }
 
                 runs.Add(r);
             }
@@ -77,6 +81,10 @@ namespace Soylent.View.Shortn
                 if (!selection.isOriginal)
                 {
                     r.Foreground = Brushes.Red;
+                }
+                else
+                {
+                    r.Foreground = Brushes.Black;
                 }
 
                 runs.Add(r);

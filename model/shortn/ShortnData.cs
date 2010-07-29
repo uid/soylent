@@ -382,39 +382,68 @@ namespace Soylent.Model.Shortn
         public static ShortnData getCannedData()
         {
             // insert text
-            Globals.Soylent.Application.Selection.Range.InsertAfter("Automatic clustering generally helps separate different kinds of records that need to be edited differently, but it isn't perfect. Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant, and it isn't necessary to split based on those differences.  Conversely, sometimes the clustering isn't fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc.  I agree, that works for XP flat styles. But, if you are using Vista aero glass style, where system widers frames for users to experience good looking transparency, how or where can we get new information for current efective caption hight (not that what program think)? Maybe it's not a relevat question at all. If, for example window is maximised, then caption row is old flat style. Wider aero class style is show when window is in normal view state, if system can render that style.  ");
+            Globals.Soylent.Application.Selection.Range.InsertAfter("Automatic clustering generally helps separate different kinds of records that need to be edited differently, but it isn't perfect. Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant, and it isn't necessary to split based on those differences.  Conversely, sometimes the clustering isn't fine enough, leaving heterogeneous clusters that must be edited one line at a time.  One solution to this problem would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters.  Clustering and selection generalization would also be improved by recognizing common text structure like URLs, filenames, email addresses, dates, times, etc.  ");
             //Globals.Soylent.Application.Selection.Range.InsertAfter("Automatic clustering generally helps separate different kinds of records that need to be edited differently, but it isn't perfect. Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.");
             // select it
             Word.Range canned_range = Globals.Soylent.Application.ActiveDocument.Paragraphs[1].Range;
+
 
             List<Patch> canned_patches = new List<Patch>();
             foreach (Word.Range r in canned_range.Sentences)
             {
                 List<string> options = new List<string>();
-                options.Add(r.Text);
+                //options.Add(r.Text);
+
+                string textToMatch = null;
+                bool found = false;
                 
-                if (r.Text == "Sometimes it creates more clusters than needed, because the differences in structure aren't important to the user's particular editing task.  ")
+                if (r.Text.Contains(textToMatch = "because the differences in structure aren't important to the user's particular editing task"))
                 {
-                    options.Add("Sometimes it creates more clusters than needed, because the differences in structure aren't relevant to a specific task.  ");
-                    options.Add("Sometimes it creates more clusters than needed, as structure differences aren't important to the editing task.  ");
-                    options.Add("Sometimes it creates more clusters than needed, because the structural differences aren't important to the user's editing task.  ");
+                    found = true;
+                    options.Add("because the differences in structure aren't relevant to a specific task");
+                    options.Add("as structure differences aren't important to the editing task");
+                    options.Add("because the structural differences aren't important to the user's editing task");
                 }
-                else if (r.Text == "For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant, and it isn't necessary to split based on those differences.  ")
+                else if (r.Text.Contains(textToMatch = "For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant, and it isn't necessary to split based on those differences.  "))
                 {
+                    found = true;
                     options.Add("For example, if the user only needs to edit near the end of each line, then differences at the start of the line are largely irrelevant.  ");
-                    options.Add("|  ");
+                    options.Add("");
                 }
-                else if (r.Text == "One solution to this problem would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters.  ")
+                else if (r.Text.Contains(textToMatch = "One solution to this problem would be to let the user rearrange the clustering manually, perhaps using drag-and-drop to merge and split clusters.  "))
                 {
-                    options.Add("One solution to this problem would be to let the user rearrange the clustering manually.  ");
+                    found = true;
                     options.Add("One solution to this problem would be to let the user rearrange the clustering manually.  ");
                     options.Add("One solution to this problem would be to let the user rearrange the clustering manually using drag-and-drop edits.  ");
                     options.Add("The user could solve this problem by merging and splitting clusters manually.  ");
-                    options.Add("|  ");
+                    options.Add("");
                 }
-                
 
-                canned_patches.Add(new Patch(r, options));
+                if (found)
+                {
+                    int start = r.Start + r.Text.IndexOf(textToMatch);
+                    int end = start + textToMatch.Length;
+
+                    if (start - r.Start > 0)
+                    {
+                        Word.Range dummy1 = Globals.Soylent.Application.ActiveDocument.Range(r.Start, start);
+                        canned_patches.Add(new DummyPatch(dummy1));
+                    }
+
+                    Word.Range newRange = Globals.Soylent.Application.ActiveDocument.Range(start, end);
+                    options.Add(newRange.Text);
+                    canned_patches.Add(new Patch(newRange, options));
+
+                    if (r.End - end > 0)
+                    {
+                        Word.Range dummy2 = Globals.Soylent.Application.ActiveDocument.Range(end, r.End);
+                        canned_patches.Add(new DummyPatch(dummy2));
+                    }
+                }
+                else
+                {
+                    canned_patches.Add(new DummyPatch(r));
+                }
             }
 
             ShortnData sd = new ShortnData(canned_range, SoylentRibbon.generateJobNumber());
