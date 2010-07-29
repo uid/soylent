@@ -1,0 +1,186 @@
+(function () {
+	var data = {
+	"paragraphs" : [
+		{
+			"sentences" : [
+				"Too often, even the best information retrieval tools cannot help us find what we are seeking, because the information we want was never entered.",
+				"This can happen for many reasons.",
+				"Sometimes, we simply do not recognize that the information might be needed later.",
+				"At other times, the perceived cost to launch and navigate through multiple applications to capture the information seems too high for the currently perceived value of the information.",
+				"Lastly, our strong desire to record some information can be stymied by the fact that there is no natural place for it---no place where we have confidence that we will be able to find it when we need it, or, similarly, no native application that may be associated with the particular kind of data being entered."
+			],
+			"patches" : [
+				{
+					"start" : 181,
+					"end" : 261,
+					"options" : [
+						"We do not always recognize that we may need the information later.",
+						"we simply do not recognize that the information might be needed later.",
+						"We don\'t always recognize information we could need later."
+					],
+					"paragraph" : /* data["paragraphs"][0]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 3,
+					"numEditors" : 7,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 146,
+					"end" : 179,
+					"options" : [
+						"Many reasons cause this.",
+						"This happens for many reasons."
+					],
+					"paragraph" : /* data["paragraphs"][0]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 3,
+					"numEditors" : 7,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"Many of these problems vanish if we turn to a much older recording technology---text.",
+				"Recording a fragment of text simply requires picking up a pen or typing at a keyboard.",
+				"When we enter text, each (pen or key) stroke is being used to record the actual information we care about---none is wasted on application navigation or configuration.",
+				"The linear structure of text means there\'s always an obvious place to put anything---at the end.",
+				"And the free form of text means we can record anything we want to about anything, without worrying whether it fits some application schema or should be split over multiple applications.",
+				"All of this means that we have to do less to record text, which makes it more efficient and also less of an interruption and distraction than using a complex application."
+			],
+			"patches" : [
+				{
+					"start" : 87,
+					"end" : 194,
+					"options" : [
+						"Recording a fragment of text simply requires picking up a pen .  When we enter text, each (pen or key) stroke is being used to record the actual information we care about---none is wasted on application navigation or configuration.",
+						"Recording a fragment of text simply requires picking up a pen or typing at a keyboard.  Each stroke records the information we care about---none is wasted on application navigation or configuration."
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 2,
+					"numEditors" : 7,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"While text is an outstanding solution for recording information, its weakness lies in retrieval.",
+				"Text\'s fixed linear form reduces us to scanning through it for information we need.",
+				"Even with electronic text, the lack of structure means we cannot filter or sort by various properties of the information.",
+				"When we aren\'t sure what we want, a blank text search box offers few cues to help us construct an appropriate query.",
+				"The shorthand we use to record information in a given context can make it incomprehensible when we return to it later without that context.",
+				"And only the text we explicitly enter is recorded, without any of the related information that might be known to a sophisticated application."
+			],
+			"patches" : [
+				{
+					"start" : 424,
+					"end" : 562,
+					"options" : [
+						"The shorthand we use to record information in a given context can make it incomprehensible, without that context.",
+						"The shorthand we use to record information in a given context can make it incomprehensible without that context.",
+						""
+					],
+					"paragraph" : /* data["paragraphs"][2]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 4,
+					"numEditors" : 7,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 306,
+					"end" : 421,
+					"options" : [
+						"When we are unsure, a blank text search box offers a few cues to help us create an appropriate query.",
+						"A blank text search box offers few cues to help us construct an appropriate query."
+					],
+					"paragraph" : /* data["paragraphs"][2]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 4,
+					"numEditors" : 6,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"In this paper we argue that it is possible and desirable to combine the easy input affordances of text with the powerful retrieval and visualization capabilities of graphical applications.",
+				"We present WenSo, a tool that uses lightweight text input to capture richly structured information for later retrieval and navigation in a graphical environment.",
+				"WenSo provides: \n - entry of information by typing arbitrary scraps of text (with all the text-input benefits mentioned above) \n- inclusion of structured information in the text through a natural and extensible \"pidgin\" \n- extraction of structure through lightweight recognition of entities and relationships between them \n- association of automatically-measured context with the information being recorded \n- search and faceted browsing based on tags, entities, and relations for finding relevant text scraps \n- automatic routing of relevant pieces of the entered information to structured applications such as calendar, address book, and web browser so that it can be retrieved and visualized using those domain-specific tools."
+			],
+			"patches" : [
+				{
+					"start" : 190,
+					"end" : 288,
+					"options" : [
+						"We present WenSo, which uses lightweight text input to capture richly structured information for later retrieval and navigation in a graphical environment.",
+						"We present WenSo, a tool using lightweight text input to capture richly structured information for later retrieval and navigation in a graphical environment."
+					],
+					"paragraph" : /* data["paragraphs"][3]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 7,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 0,
+					"end" : 27,
+					"options" : [
+						"In this paper it is possible to combine the easy input affordances of text with the powerful retrieval and visualization capabilities of graphical applications.",
+						"We will argue that it is possible and desirable to combine the easy input affordances of text with the powerful retrieval and visualization capabilities of graphical applications.",
+						"It is possible and desirable to combine the easy input affordances of text with the powerful retrieval and visualization capabilities of graphical applications."
+					],
+					"paragraph" : /* data["paragraphs"][3]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 3,
+					"numEditors" : 7,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"In order to deliver these interactions, we had to solve several key problems: capturing structure from text not entered in a form, modeling capture of desktop state for appropriate association with a scrap, and integration of captured data for use with existing applications.",
+				"In the following sections we present the related work that informs our approach, describe the interaction design and describe in our solutions for the key system implementation challenges.",
+				"We then discuss the future research opportunities both for extending the WenSo platform, but most immediately, for using the platform to determine what happens in terms of information scrap entry and reuse behaviour once these new affordances have been provided."
+			],
+			"patches" : [
+				{
+					"start" : 277,
+					"end" : 465,
+					"options" : [
+						"In the following sections we present the related work that informs our approach,  describe in our solutions for the key system implementation challenges.",
+						"In the following sections we present the work that informs our approach, describe the interaction design and  our solutions for the key system implementation challenges.",
+						"In the following sections we present the work which informs our approach, and describes the interaction design and our solutions for the key system implementation challenges.",
+						"We present the related work that informs our approach, describe the interaction design in our solutions for the key system implementation challenges.",
+						"We present the related work informing our approach, describe the interaction design and present our solutions for the key system implementation challenges."
+					],
+					"paragraph" : /* data["paragraphs"][4]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 3,
+					"numEditors" : 7,
+					"numVoters" : 7,
+					"__type__" : "shorten"
+				}
+			]
+		}
+	]
+}
+	data["paragraphs"][0]["patches"][0]["paragraph"] = data["paragraphs"][0]["sentences"]
+	data["paragraphs"][0]["patches"][1]["paragraph"] = data["paragraphs"][0]["sentences"]
+	data["paragraphs"][1]["patches"][0]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][2]["patches"][0]["paragraph"] = data["paragraphs"][2]["sentences"]
+	data["paragraphs"][2]["patches"][1]["paragraph"] = data["paragraphs"][2]["sentences"]
+	data["paragraphs"][3]["patches"][0]["paragraph"] = data["paragraphs"][3]["sentences"]
+	data["paragraphs"][3]["patches"][1]["paragraph"] = data["paragraphs"][3]["sentences"]
+	data["paragraphs"][4]["patches"][0]["paragraph"] = data["paragraphs"][4]["sentences"]
+	return data
+})()
