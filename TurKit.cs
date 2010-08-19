@@ -220,7 +220,7 @@ namespace Soylent
                 }
 
                 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;
@@ -234,7 +234,7 @@ namespace Soylent
             else if (hdata is HumanMacroResult)
             {
                 HumanMacroResult data = hdata as HumanMacroResult;
-
+                 
 
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string inputs;

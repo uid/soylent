@@ -23,6 +23,7 @@ namespace Soylent.View.Crowdproof
     {
         new CrowdproofData data;
         static string turkerName = "Turker";
+        private string jobTurkerName;
         Button CrowdproofButton;
         Button AcceptRevisions;
         Button RejectRevisions;
@@ -70,21 +71,57 @@ namespace Soylent.View.Crowdproof
             this.data = data;
             data.register(this);
 
-            
+            jobTurkerName = turkerName + job;
         }
+
+        public void acceptRevisions()
+        {
+            foreach (Microsoft.Office.Interop.Word.Revision r in Globals.Soylent.Application.ActiveDocument.Revisions)
+            {
+                if (r.Author == this.jobTurkerName)
+                {
+                    r.Accept();
+                }
+            }
+        }
+        public void rejectRevisions()
+        {
+            foreach (Microsoft.Office.Interop.Word.Revision r in Globals.Soylent.Application.ActiveDocument.Revisions)
+            {
+                if (r.Author == this.jobTurkerName)
+                {
+                    r.Reject();
+                }
+            }
+        }
+        public void deleteComments()
+        {
+            foreach (Microsoft.Office.Interop.Word.Comment c in Globals.Soylent.Application.ActiveDocument.Comments)
+            {
+                if (c.Author == this.jobTurkerName)
+                {
+                    c.Delete();
+                }
+            }
+        }
+
         public void AcceptRevisions_Clicked(object sender, RoutedEventArgs e)
         {
             try
             {
-                Globals.Soylent.Application.ActiveDocument.DeleteAllComments();
-                Globals.Soylent.Application.ActiveDocument.AcceptAllRevisions();
-                Globals.Soylent.Application.ActiveDocument.TrackRevisions = false;
-                Globals.Soylent.Application.ActiveDocument.ShowRevisions = false;
+                deleteComments();
+                acceptRevisions();
             }
             catch
             {
 
             }
+            Globals.Soylent.Application.ActiveDocument.TrackRevisions = false;
+            if (Globals.Soylent.Application.ActiveDocument.Revisions.Count == 0)
+            {
+                Globals.Soylent.Application.ActiveDocument.ShowRevisions = false;
+            }
+
             AcceptRevisions.IsEnabled = false;
             RejectRevisions.IsEnabled = false;
             CrowdproofButton.IsEnabled = true;
@@ -100,15 +137,20 @@ namespace Soylent.View.Crowdproof
         {
             try
             {
-                Globals.Soylent.Application.ActiveDocument.DeleteAllComments();
-                Globals.Soylent.Application.ActiveDocument.RejectAllRevisions();
-                Globals.Soylent.Application.ActiveDocument.TrackRevisions = false;
-                Globals.Soylent.Application.ActiveDocument.ShowRevisions = false;
+                deleteComments();
+                rejectRevisions();
             }
             catch
             {
 
             }
+            Globals.Soylent.Application.ActiveDocument.TrackRevisions = false;
+            if (Globals.Soylent.Application.ActiveDocument.Revisions.Count == 0)
+            {
+                Globals.Soylent.Application.ActiveDocument.ShowRevisions = false;
+            }
+
+
             AcceptRevisions.IsEnabled = false;
             RejectRevisions.IsEnabled = false;
             CrowdproofButton.IsEnabled = true;
@@ -192,20 +234,23 @@ namespace Soylent.View.Crowdproof
                     }
                 }
                 object commentText = comment;
-                Globals.Soylent.Application.ActiveDocument.Comments.Add(patch.range, commentText);
+                Microsoft.Office.Interop.Word.Comment c = Globals.Soylent.Application.ActiveDocument.Comments.Add(patch.range, commentText);
+                c.Author = jobTurkerName;
 
-
-                Globals.Soylent.Application.UserName = turkerName;
+                Globals.Soylent.Application.UserName = jobTurkerName;
                 patch.range.Text = patch.replacements[0];
                 Globals.Soylent.Application.UserName = defaultAuthor;
+                
             }
 
+            /*
             foreach (Microsoft.Office.Interop.Word.Comment c in Globals.Soylent.Application.ActiveDocument.Comments)
             {
-                c.Author = turkerName;
-                c.Initial = turkerName;
+                c.Author = jobTurkerName;
+                c.Initial = jobTurkerName;
             }
-
+            */
+            
             //this.AcceptRevisions.IsEnabled = true;
             //this.stages.Children.Remove(CrowdproofButton);
             //this.stages.Children.Add(buttons);
@@ -216,6 +261,8 @@ namespace Soylent.View.Crowdproof
             stub.AcceptRevisions.IsEnabled = true;
             stub.RejectRevisions.IsEnabled = true;
             stub.CrowdproofButton.IsEnabled = false;
+
+            Globals.Soylent.Application.ActiveDocument.TrackRevisions = false;
         }
 
         public void updateView()

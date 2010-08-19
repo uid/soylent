@@ -35,7 +35,12 @@ namespace Soylent.Model.HumanMacro
 
             data.startTask();
         }
-        public HumanMacroJob(HumanMacroResult data, int jobNumber)
+        /// <summary>
+        /// This constructor used only when recreating a job from XML saved with a document
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="jobNumber"></param>
+        public HumanMacroJob(HumanMacroResult data, int jobNumber, bool startTurk)
         {
             this.data = data;
             this.jobNumber = jobNumber;
@@ -43,7 +48,10 @@ namespace Soylent.Model.HumanMacro
             HITView hit = Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].addHIT(HIT_TYPE, data, jobNumber);
             hit.addStage(1, HITData.ResultType.Macro, data.macroStageData, "Running Macro", 10, 0.10, jobNumber);
 
-            data.startTask();
+            if (startTurk)
+            {
+                data.startTask();
+            }
         }
     }
 }

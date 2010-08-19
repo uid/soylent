@@ -24,6 +24,7 @@ namespace Soylent.Model.Shortn
     {
         //[System.Xml.Serialization.XmlArray("patches")]
         //[System.Xml.Serialization.XmlArrayItem("patch", typeof(List<Patch>))]
+        
         [XmlIgnore] public List<Patch> patches;
         [XmlIgnore] public int paragraphsCompleted = 0;
         [XmlIgnore] private Dictionary<ResultType, List<List<bool>>> gottenOneYet;
@@ -145,12 +146,93 @@ namespace Soylent.Model.Shortn
             stage.terminatePatch(donezo.paragraph, donezo.patchNumber);
         }
 
+        public void postProcessSocKitMessage(TurKitSocKit.TurKitFindFixVerify message)
+        {
+            Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
+            int nextStart = 0; //Is always the location where the next patch (dummy or otherwise) should start.
+            int nextEnd; //Is where the last patch ended.  Kinda poorly named. Tells us if we need to add a dummy patch after the last real patch
+
+            //this.tk.turkitLoopTimer.Dispose();
+
+            Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[this.job];
+
+            foreach (TurKitSocKit.TurKitFindFixVerifyPatch tkspatch in message.patches)
+            {
+
+
+                //For text in between patches, we create dummy patches.
+                if (tkspatch.editStart > nextStart)
+                {
+                    nextEnd = tkspatch.editStart;
+                    //Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
+                    Word.Range dummyRange = doc.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
+
+                    DummyPatch dummyPatch = new DummyPatch(dummyRange);
+
+                    patches.Add(dummyPatch);
+                }
+
+                int start = curParagraphRange.Start + tkspatch.editStart;
+                int end = curParagraphRange.Start + tkspatch.editEnd;
+                //Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end); //New range for this patch, yay!
+                Word.Range patchRange = doc.Range(start, end);
+
+                List<string> alternatives = new List<string>();
+                foreach (TurKitSocKit.TurKitFindFixVerifyOption option in (from option in tkspatch.options where option.editsText select option))
+                {
+                    alternatives.AddRange(from alternative in option.alternatives select alternative.editedText);
+                }
+
+                Patch thisPatch = new Patch(patchRange, alternatives);
+                // add the original as an option
+                thisPatch.replacements.Add(tkspatch.originalText);
+
+                patches.Add(thisPatch);
+                nextStart = tkspatch.end;
+            }
+            //If the last patch we found isn't the end of the paragraph, create a DummyPatch
+            if (nextStart < (curParagraphRange.Text.Length - 1))
+            {
+                nextEnd = curParagraphRange.Text.Length;
+                //Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
+                Word.Range dummyRange = doc.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
+
+                DummyPatch dummyPatch = new DummyPatch(dummyRange);
+
+                patches.Add(dummyPatch);
+            }
+            paragraphsCompleted++;
+
+            if (paragraphsCompleted == numParagraphs) //If we have done all paragraphs, make them available to the user!
+            {
+                //TODO: use a delegate.
+                if (this.tk.turkitLoopTimer != null)
+                {
+                    this.tk.turkitLoopTimer.Dispose();
+                }
+
+                this.jobDone = true;
+
+                /*
+                foreach (Patch patch in patches)
+                {
+                    Debug.WriteLine(patch.range.Start + " - " + patch.range.End + " : " + patch.range.Text + " || " + (patch is DummyPatch));
+                }
+                */
+
+                returnShortnResults();
+            }
+        }
+
         /// <summary>
         /// Processes a shortn message, one that contains the final results of the algorithm. One per paragraph
         /// </summary>
         /// <param name="message"></param>
         public void processSocKitMessage(TurKitSocKit.TurKitFindFixVerify message)
         {
+            findFixVerifies.Add(message);
+            postProcessSocKitMessage(message);
+            /*
             Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
             int nextStart = 0; //Is always the location where the next patch (dummy or otherwise) should start.
             int nextEnd; //Is where the last patch ended.  Kinda poorly named. Tells us if we need to add a dummy patch after the last real patch
@@ -209,6 +291,8 @@ namespace Soylent.Model.Shortn
                 //TODO: use a delegate.
                 this.tk.turkitLoopTimer.Dispose();
 
+                this.jobDone = true;
+
                 foreach (Patch patch in patches)
                 {
                     Debug.WriteLine(patch.range.Start + " - " + patch.range.End + " : " + patch.range.Text + " || "+ (patch is DummyPatch));               
@@ -216,6 +300,7 @@ namespace Soylent.Model.Shortn
 
                 returnShortnResults();
             }
+            */
         }
 
         private void returnShortnResults()
@@ -357,6 +442,7 @@ namespace Soylent.Model.Shortn
 
         private List<List<PatchSelection>> recursiveInitialization(List<Patch> patches)
         {
+            /*
             List<string> string_options = patches[0].replacements;
             List<PatchSelection> options = (from option in string_options select new PatchSelection(patches[0], option)).ToList();
 
@@ -364,6 +450,17 @@ namespace Soylent.Model.Shortn
             if (patches.Count == 1)
             {
                 results.AddRange((from option in options select new List<PatchSelection> { option }).ToList() );
+                return results;
+            }
+            */
+
+            List<string> string_options = patches[0].replacements;
+            List<PatchSelection> options = (from option in string_options select new PatchSelection(patches[0], option)).ToList();
+
+            List<List<PatchSelection>> results = new List<List<PatchSelection>>();
+            if (patches.Count == 1)
+            {
+                results.AddRange((from option in options select new List<PatchSelection> { option }).ToList());
                 return results;
             }
 

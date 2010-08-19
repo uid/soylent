@@ -12,18 +12,22 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Soylent.View.HumanMacro;
+using System.Xml.Serialization;
 
 namespace Soylent.Model.HumanMacro
 {
-    class HumanMacroResult: HITData
+    public class HumanMacroResult: HITData
     {
         public enum ReturnType {Comment, SmartTag};
 
+        public List<TurKitSocKit.TurKitHumanMacroResult> messages = new List<TurKitSocKit.TurKitHumanMacroResult>();
+
+        
         public enum Separator { Sentence, Paragraph };
         public Separator separator;
-        private Word.Range text;
-        private List<String> results;
-        public List<HumanMacroPatch> patches;
+        [XmlIgnore] private Word.Range text;
+        [XmlIgnore] private List<String> results;
+        public List<HumanMacroPatch> patches = new List<HumanMacroPatch>();
 
         public int numberReturned;
 
@@ -39,7 +43,7 @@ namespace Soylent.Model.HumanMacro
 
         public static string NAMESPACE = "http://uid.csail.mit.edu/soylent";
 
-        public StageData macroStageData;
+        [XmlIgnore] public StageData macroStageData;
 
         //public HumanMacroResult(Word.Range text, List<String> results)
         public HumanMacroResult(Word.Range toShorten, int job, Separator separator, double reward, int redundancy, string title, string subtitle, string instructions, ReturnType type, TestOrReal test) : base(toShorten, job)
@@ -47,7 +51,7 @@ namespace Soylent.Model.HumanMacro
             this.text = toShorten;
             this.separator = separator;
             //this.results = results;
-            patches = new List<HumanMacroPatch>();
+            //patches = new List<HumanMacroPatch>();
 
             this.reward = reward;
             this.redundancy = redundancy;
@@ -61,6 +65,12 @@ namespace Soylent.Model.HumanMacro
             //stages[HITData.ResultType.Macro] = new StageData(HITData.ResultType.Macro);
             macroStageData = new StageData(HITData.ResultType.Macro, job);
             //stages[HITData.ResultType.Macro] = new HumanMacroStage(HITData.ResultType.Macro, redundancy);
+        }
+
+        public HumanMacroResult() : base()
+        {
+            //patches = new List<HumanMacroPatch>();
+            macroStageData = new StageData(HITData.ResultType.Macro, job);
         }
 
         new public void updateStatus(TurKitSocKit.TurKitStatus status)
@@ -77,6 +87,7 @@ namespace Soylent.Model.HumanMacro
         {
             foreach (HumanMacroPatch patch in patches)
             {
+                if (patch.range == null) { patch.range = Globals.Soylent.jobToDoc[this.job].Range(); }
                 patch.range.SetRange(patch.rangeStart + this.range.Start, patch.rangeEnd + this.range.Start);
             }
         }
@@ -88,8 +99,45 @@ namespace Soylent.Model.HumanMacro
             macroStageData.FixParagraphNumber(numParagraphs);
         }
 
+        public void postProcessSocKitMessage(TurKitSocKit.TurKitHumanMacroResult message)
+        {
+            prepareRanges();
+
+            Patch patch = patches[message.input];
+            
+            if (patch.replacements.Count == 0)
+            {
+                foreach (string replacement in message.alternatives)
+                {
+                    if (this.separator == Separator.Sentence)
+                    {
+                        patch.replacements.Add(replacement + spacesBetweenSentences);
+                    }
+                    else
+                    {
+                        patch.replacements.Add(replacement);
+                    }
+                }
+                numberReturned++;
+            }
+
+            if (numberReturned == patches.Count)
+            {
+                if (this.tk.turkitLoopTimer != null)
+                {
+                    this.tk.turkitLoopTimer.Dispose();
+                }
+                this.jobDone = true;
+
+                Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[this.job]].Invoke(new resultsBackDelegate(this.resultsBack), new object[] { });
+            }
+        }
+
         public void processSocKitMessage(TurKitSocKit.TurKitHumanMacroResult message)
         {
+            messages.Add(message);
+            postProcessSocKitMessage(message);
+            /*
             Patch patch = patches[message.input];
             if (patch.replacements.Count == 0)
             {
@@ -112,6 +160,7 @@ namespace Soylent.Model.HumanMacro
                 this.tk.turkitLoopTimer.Dispose();
                 Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[this.job]].Invoke(new resultsBackDelegate(this.resultsBack), new object[] { });
             }
+            */
         }
 
         public void resultsBack()

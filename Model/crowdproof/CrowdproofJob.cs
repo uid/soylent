@@ -43,7 +43,12 @@ namespace Soylent.Model.Crowdproof
 
             data.startTask();
         }
-        public CrowdproofJob(CrowdproofData data, int jobNumber)
+        /// <summary>
+        /// This constructor used only when recreating a job from XML saved with a document
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="jobNumber"></param>
+        public CrowdproofJob(CrowdproofData data, int jobNumber, bool startTurk)
         {
             this.data = data;
             this.jobNumber = jobNumber;
@@ -53,7 +58,10 @@ namespace Soylent.Model.Crowdproof
             hit.addStage(2, HITData.ResultType.Fix, data.fixStageData, "Fix Errors", 5, 0.05, jobNumber);
             hit.addStage(3, HITData.ResultType.Verify, data.verifyStageData, "Quality Control", 5, 0.05, jobNumber);
 
-            data.startTask();
+            if (startTurk)
+            {
+                data.startTask();
+            }
         }
 
     }

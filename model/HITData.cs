@@ -22,6 +22,8 @@ namespace Soylent.Model
         public enum ResultType { Find, Fix, Verify, Macro };
         //[XmlIgnore] public Dictionary<ResultType, StageData> stages;
         public int numParagraphs;
+        public bool jobDone = false;
+        public List<TurKitSocKit.TurKitFindFixVerify> findFixVerifies = new List<TurKitSocKit.TurKitFindFixVerify>();
         [XmlIgnore] public TurKit tk;
         [XmlIgnore] public HITView view;
         /*
