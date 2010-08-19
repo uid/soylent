@@ -53,6 +53,8 @@ namespace Soylent
             */
             
 
+            Globals.Ribbons.Ribbon.debug.Visible = true;
+
             tksc = new TurKitSocKit();
             tksc.Listen();
 
