@@ -277,7 +277,7 @@ namespace Soylent.View.HumanMacro
             //HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Real);
 
             //HumanMacroJob job = new HumanMacroJob(data, jobNumber);
-            HumanMacroJob job = new HumanMacroJob(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Test);
+            HumanMacroJob job = new HumanMacroJob(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Real);
 
             HwndSource source = (HwndSource)PresentationSource.FromVisual(sender as Button);
             System.Windows.Forms.Control ctl = System.Windows.Forms.Control.FromChildHandle(source.Handle);

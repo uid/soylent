@@ -23,6 +23,7 @@ namespace Soylent.View.HumanMacro
     {
         new HumanMacroResult data;
         static string turkerName = "Turker";
+        private string jobTurkerName;
         Button HumanMacroButton;
         Button AcceptRevisions;
         Button RejectRevisions;
@@ -70,28 +71,56 @@ namespace Soylent.View.HumanMacro
             this.data = data;
             data.register(this);
 
-            
+            jobTurkerName = turkerName + job;
         }
+
+        public void acceptRevisions()
+        {
+            foreach (Microsoft.Office.Interop.Word.Revision r in Globals.Soylent.Application.ActiveDocument.Revisions)
+            {
+                if (r.Author == this.jobTurkerName)
+                {
+                    r.Accept();
+                }
+            }
+        }
+        public void rejectRevisions()
+        {
+            foreach (Microsoft.Office.Interop.Word.Revision r in Globals.Soylent.Application.ActiveDocument.Revisions)
+            {
+                if (r.Author == this.jobTurkerName)
+                {
+                    r.Reject();
+                }
+            }
+        }
+        public void deleteComments()
+        {
+            foreach (Microsoft.Office.Interop.Word.Comment c in Globals.Soylent.Application.ActiveDocument.Comments)
+            {
+                if (c.Author == this.jobTurkerName)
+                {
+                    c.Delete();
+                }
+            }
+        }
+
         public void AcceptRevisions_Clicked(object sender, RoutedEventArgs e)
         {
             try
             {
-                Globals.Soylent.Application.ActiveDocument.DeleteAllComments();
-            }catch
-            {
-
-            }
-            try
-            {
-                Globals.Soylent.Application.ActiveDocument.AcceptAllRevisions();
+                deleteComments();
+                acceptRevisions();
             }
             catch
             {
 
             }
             Globals.Soylent.Application.ActiveDocument.TrackRevisions = false;
-            Globals.Soylent.Application.ActiveDocument.ShowRevisions = false;
-            
+            if (Globals.Soylent.Application.ActiveDocument.Revisions.Count == 0)
+            {
+                Globals.Soylent.Application.ActiveDocument.ShowRevisions = false;
+            }
             
             AcceptRevisions.IsEnabled = false;
             RejectRevisions.IsEnabled = false;
@@ -108,21 +137,18 @@ namespace Soylent.View.HumanMacro
         {
             try
             {
-                Globals.Soylent.Application.ActiveDocument.DeleteAllComments();
-            }
-            catch
-            {
-
-            }
-            try{
-                Globals.Soylent.Application.ActiveDocument.RejectAllRevisions();
+                deleteComments();
+                rejectRevisions();
             }
             catch
             {
 
             }
             Globals.Soylent.Application.ActiveDocument.TrackRevisions = false;
-            Globals.Soylent.Application.ActiveDocument.ShowRevisions = false;
+            if (Globals.Soylent.Application.ActiveDocument.Revisions.Count == 0)
+            {
+                Globals.Soylent.Application.ActiveDocument.ShowRevisions = false;
+            }
             
             
             AcceptRevisions.IsEnabled = false;
@@ -166,11 +192,13 @@ namespace Soylent.View.HumanMacro
             Microsoft.Office.Core.DocumentProperties properties;
 
             properties = (Microsoft.Office.Core.DocumentProperties) Globals.Soylent.Application.ActiveDocument.BuiltInDocumentProperties;
+            
             string defaultAuthor = properties["Author"].Value as string;
+            /*
             if (defaultAuthor == turkerName)
             {
                 turkerName = turkerName + "B";
-            }
+            }*/
 
             foreach (Patch patch in data.patches)
             {
@@ -204,22 +232,29 @@ namespace Soylent.View.HumanMacro
                 object commentText = comment;
                 if (comment != "")
                 {
-                    Globals.Soylent.Application.ActiveDocument.Comments.Add(patch.range, commentText);
+                    Microsoft.Office.Interop.Word.Comment c = Globals.Soylent.Application.ActiveDocument.Comments.Add(patch.range, commentText);
+                    c.Author = jobTurkerName;
                 }
 
                 if (type == HumanMacroResult.ReturnType.SmartTag)
                 {
-                    Globals.Soylent.Application.UserName = turkerName;
-                    patch.range.Text = patch.replacements[0];
+                    Globals.Soylent.Application.UserName = jobTurkerName;
+                    if (patch.replacements.Count > 0)
+                    {
+                        patch.range.Text = patch.replacements[0];
+                    }
                     Globals.Soylent.Application.UserName = defaultAuthor;
                 }
+
             }
 
+            /*
             foreach (Microsoft.Office.Interop.Word.Comment c in Globals.Soylent.Application.ActiveDocument.Comments)
             {
-                c.Author = turkerName;
-                c.Initial = turkerName;
+                c.Author = jobTurkerName;
+                c.Initial = jobTurkerName;
             }
+             */
 
             //this.AcceptRevisions.IsEnabled = true;
             //this.stages.Children.Remove(CrowdproofButton);
@@ -231,6 +266,8 @@ namespace Soylent.View.HumanMacro
             stub.AcceptRevisions.IsEnabled = true;
             stub.RejectRevisions.IsEnabled = true;
             stub.CrowdproofButton.IsEnabled = false;
+
+            Globals.Soylent.Application.ActiveDocument.TrackRevisions = false;
         }
 
         public void updateView()

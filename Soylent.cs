@@ -123,7 +123,18 @@ namespace Soylent
                     hit.range = a.Range;
 
                     SoylentRibbon.setLastJob(hit.job);
-                    ShortnJob s = new ShortnJob(hit, hit.job);
+
+
+                    if (hit.jobDone){
+                        ShortnJob s = new ShortnJob(hit, hit.job, false); // SOMETHING DIFFERENT
+
+                        foreach (TurKitSocKit.TurKitFindFixVerify message in hit.findFixVerifies){
+                            hit.postProcessSocKitMessage(message);
+                        }
+                    }
+                    else{
+                        ShortnJob s = new ShortnJob(hit, hit.job, true);
+                    }
                 }
 
                 else if (new Regex("</CrowdproofData>").Match(xml).Length > 0)
@@ -137,7 +148,19 @@ namespace Soylent
                     hit.range = a.Range;
 
                     SoylentRibbon.setLastJob(hit.job);
-                    CrowdproofJob s = new CrowdproofJob(hit, hit.job);
+
+                    if (hit.jobDone)
+                    {
+                        CrowdproofJob s = new CrowdproofJob(hit, hit.job, false);
+                        foreach (TurKitSocKit.TurKitFindFixVerify message in hit.findFixVerifies)
+                        {
+                            hit.postProcessSocKitMessage(message);
+                        }
+                    }
+                    else
+                    {
+                        CrowdproofJob s = new CrowdproofJob(hit, hit.job, true);
+                    }
                 }
 
                 else if (new Regex("</HumanMacroResult>").Match(xml).Length > 0)
@@ -151,7 +174,19 @@ namespace Soylent
                     hit.range = a.Range;
 
                     SoylentRibbon.setLastJob(hit.job);
-                    HumanMacroJob s = new HumanMacroJob(hit, hit.job);
+
+                    if (hit.jobDone)
+                    {
+                        HumanMacroJob s = new HumanMacroJob(hit, hit.job, false);
+                        foreach (TurKitSocKit.TurKitHumanMacroResult message in hit.messages)
+                        {
+                            hit.postProcessSocKitMessage(message);
+                        }
+                    }
+                    else
+                    {
+                        HumanMacroJob s = new HumanMacroJob(hit, hit.job, true);
+                    }
                 }
             }
 
@@ -188,7 +223,7 @@ namespace Soylent
 
                     XmlSerializer x = new XmlSerializer(hit.GetType());
                     StringWriter sw = new StringWriter();
-                    x.Serialize(sw, hit);
+                    x.Serialize(sw, hit); 
                     string xml = sw.ToString();
                     Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
                 }

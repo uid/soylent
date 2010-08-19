@@ -301,7 +301,7 @@ catch (SocketException exc)
         public class TurKitFindFixVerifyAlternative
         {
             public string text;
-            public Dictionary<string, int> votes;
+            [XmlIgnore] public Dictionary<string, int> votes;
             public string editedText;
             public int editStart;
             public int editEnd;

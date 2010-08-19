@@ -285,6 +285,16 @@ namespace Soylent
             */
         }
 
+        public class Sample
+        {
+            public List<int> list;
+            public Sample()
+            {
+                list = new List<int>();
+                list.Add(1);
+            }
+        }
+
         private void button5_Click(object sender, RibbonControlEventArgs e)
         {
             //fake p = new fake();
@@ -292,6 +302,29 @@ namespace Soylent
             //HITData p = new HITData();
 
             //ShortnData p = ShortnData.getCannedData();
+            
+            /*
+            TurKitSocKit.TurKitFindFixVerify tks = new TurKitSocKit.TurKitFindFixVerify();
+            //TurKitSocKit.TurKitFindFixVerifyOption tks = new TurKitSocKit.TurKitFindFixVerifyOption();
+            tks.job = 3;
+            tks.paragraph = 2;
+            tks.patches = new List<TurKitSocKit.TurKitFindFixVerifyPatch>();
+            */
+            //Sample tks = new Sample();
+
+            //tks.list.Add(2);
+            //tks.list.Add(3);
+
+            HumanMacroResult tks = new HumanMacroResult();
+            
+
+            XmlSerializer x = new XmlSerializer(tks.GetType());
+            StringWriter sw = new StringWriter();
+            x.Serialize(sw, tks);
+            string a = sw.ToString();
+            Debug.Write(a);
+
+            /*
             CrowdproofData p = CrowdproofData.getCannedData();
 
             XmlSerializer x = new XmlSerializer(p.GetType());
@@ -301,7 +334,8 @@ namespace Soylent
             Debug.Write(a);
 
             Microsoft.Office.Core.CustomXMLPart employeeXMLPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(a);
-
+            */
+             
             /*
             string s = "";
 

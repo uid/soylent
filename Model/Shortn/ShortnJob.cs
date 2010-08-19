@@ -44,8 +44,12 @@ namespace Soylent.Model.Shortn
 
             data.startTask();
         }
-
-        public ShortnJob(ShortnData data, int jobNumber)
+        /// <summary>
+        /// This constructor used only when recreating a job from XML saved with a document
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="jobNumber"></param>
+        public ShortnJob(ShortnData data, int jobNumber, bool startTurk)
         {
             this.data = data;
             this.jobNumber = jobNumber;
@@ -55,7 +59,10 @@ namespace Soylent.Model.Shortn
             hit.addStage(2, HITData.ResultType.Fix, data.fixStageData, "Shorten Verbose Text", 5, 0.05, jobNumber);
             hit.addStage(3, HITData.ResultType.Verify, data.verifyStageData, "Quality Control", 5, 0.05, jobNumber);
 
-            data.startTask();
+            if (startTurk)
+            {
+                data.startTask();
+            }
         }
     }
 }

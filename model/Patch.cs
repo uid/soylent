@@ -9,6 +9,8 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Windows.Forms;
 
+using System.Xml.Serialization;
+
 namespace Soylent.Model
 {
     /// <summary>
@@ -16,7 +18,7 @@ namespace Soylent.Model
     /// </summary>
     public class Patch
     {
-        public Word.Range range;
+        [XmlIgnore] public Word.Range range;
         public List<string> replacements;
         public string original;
 
@@ -30,6 +32,11 @@ namespace Soylent.Model
             this.range = range;
             this.replacements = replacements;
             this.original = range.Text;
+        }
+
+        public Patch()
+        {
+
         }
     }
 

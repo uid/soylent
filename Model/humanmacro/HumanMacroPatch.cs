@@ -7,7 +7,7 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace Soylent.Model.HumanMacro
 {
-    class HumanMacroPatch: Patch
+    public class HumanMacroPatch: Patch
     {
         public int rangeStart;
         public int rangeEnd;
@@ -16,5 +16,7 @@ namespace Soylent.Model.HumanMacro
             rangeStart = start;
             rangeEnd = end;
         }
+
+        public HumanMacroPatch() : base() { }
     }
 }
