@@ -21,7 +21,11 @@ namespace Soylent.View.Shortn
     /// </summary>
     public partial class ShortnDialog : UserControl
     {
+        private Dictionary<Run, PatchSelection> runMap;
         private ShortnData data;
+        private double currentPercent;
+        private string rootDirectory = null;
+        private string unlockText = "(vary)"; //This is the text for the context menu option that unlocks the selection
 
         /// <summary>
         /// The dialog window that opens when a user wants to interact with returned Shortn data.
@@ -35,10 +39,20 @@ namespace Soylent.View.Shortn
             initSliderTicks();
         }
 
+        // Makes left clicks open the context menu
         private void clickHandler(object sender, RoutedEventArgs e)
         {
             Run run = sender as Run;
-            run.Foreground = Brushes.Green;
+            run.ContextMenu.PlacementTarget = this;
+            run.ContextMenu.IsOpen = true;
+        }
+
+        // Makes left clicks open the context menu on the lock icons
+        private void lockClickHandler(object sender, RoutedEventArgs e)
+        {
+            InlineUIContainer iuc = sender as InlineUIContainer;
+            iuc.ContextMenu.PlacementTarget = this;
+            iuc.ContextMenu.IsOpen = true;
         }
 
         private List<Run> getOriginalRuns(List<PatchSelection> selections)
@@ -49,8 +63,6 @@ namespace Soylent.View.Shortn
             {
                 Run r = new Run(selection.patch.original);
 
-                r.MouseUp += new MouseButtonEventHandler(clickHandler);
-                r.Cursor = Cursors.Hand;
 
                 if (!selection.isOriginal)
                 {
@@ -64,8 +76,12 @@ namespace Soylent.View.Shortn
                 {
                     r.Foreground = Brushes.Black;
                 }
+                if ((selection.patch as ShortnPatch).isLocked)
+                {
+                    //r.Foreground = Brushes.Green;
+                }
 
-                runs.Add(r);
+                runs.Add(r);               
             }
             return runs;
         }
@@ -81,15 +97,119 @@ namespace Soylent.View.Shortn
                 if (!selection.isOriginal)
                 {
                     r.Foreground = Brushes.Red;
+                    r.ForceCursor = true;
+                    r.Cursor = Cursors.Hand;
+                    r.MouseUp += new MouseButtonEventHandler(clickHandler);
+
+                    r.TextDecorations.Add(new TextDecoration(TextDecorationLocation.Underline, null, 0, TextDecorationUnit.Pixel, TextDecorationUnit.Pixel));
+
+                    // Add the proper context menu
+                    ContextMenu cm = new ContextMenu();
+
+                    // Make the option to unlock the selection
+                    MenuItem i = new MenuItem();
+                    i.Header = unlockText;
+                    i.Click += new RoutedEventHandler(contextMenuHandler);
+                    i.Tag = r;
+                    cm.Items.Add(i);
+
+                    foreach (string replacement in selection.patch.replacements)
+                    {
+                        MenuItem i1 = new MenuItem();
+                        i1.Header = replacement;
+                        i1.Click += new RoutedEventHandler(contextMenuHandler);
+
+                        i1.Tag = r;
+                        cm.Items.Add(i1);
+                    }
+                    cm.Width = 400; // Wasn't sure what to set this to.
+                    r.ContextMenu = cm;
+                }
+                else if (!(selection.patch is DummyPatch))
+                {
+                    r.Foreground = Brushes.Purple;
+                    r.ForceCursor = true;
+                    r.Cursor = Cursors.Hand;
+                    r.MouseUp += new MouseButtonEventHandler(clickHandler);
+
+                    r.TextDecorations.Add(new TextDecoration(TextDecorationLocation.Underline, null, 0, TextDecorationUnit.Pixel, TextDecorationUnit.Pixel));
+
+                    ContextMenu cm = new ContextMenu();
+
+                    MenuItem i = new MenuItem();
+                    i.Header = unlockText;
+                    i.Click += new RoutedEventHandler(contextMenuHandler);
+                    i.Tag = r;
+                    cm.Items.Add(i);
+
+                    foreach (string replacement in selection.patch.replacements)
+                    {
+                        MenuItem i1 = new MenuItem();
+                        i1.Header = replacement;
+                        i1.Click += new RoutedEventHandler(contextMenuHandler);
+
+                        i1.Tag = r;
+                        cm.Items.Add(i1);
+                    }
+                    cm.Width = 400;
+                    r.ContextMenu = cm;
+
                 }
                 else
                 {
                     r.Foreground = Brushes.Black;
                 }
+                if ((selection.patch as ShortnPatch).isLocked)
+                {
+                    r.Foreground = Brushes.Green;
+                }
 
                 runs.Add(r);
+                runMap.Add(r, selection);
             }
             return runs;
+        }
+
+        /// <summary>
+        /// The handler for the context menu on variable runs.  This locks / unlocks them
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextMenuHandler(System.Object sender, System.EventArgs e)
+        {
+            MenuItem item = sender as MenuItem;
+            Run run = item.Tag as Run;
+
+            ShortnPatch patch = runMap[run].patch as ShortnPatch;
+            if ((item.Header as string) != "(vary)")
+            {
+                int index = 0;
+                foreach (Inline inline in after.Inlines)
+                {
+                    if (!(inline is Run)) {
+                        index++;
+                        continue; 
+                    }
+                    Run tempRun = inline as Run;
+                    if (tempRun == run)
+                    {
+                        break;
+                    }
+                    index++;
+                }
+
+                patch.lockSelection(item.Header as string);
+                run.Foreground = Brushes.Green;
+                updateParagraphs(currentPercent);
+                resetSliderTicks();        
+            }
+            else
+            {
+                patch.unlockSelection();
+                run.Foreground = Brushes.Red;
+                updateParagraphs(currentPercent);
+                resetSliderTicks();
+            }
         }
 
         private void lengthSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -111,13 +231,18 @@ namespace Soylent.View.Shortn
             data.makeChangesInDocument(var);
         }
 
+        /// <summary>
+        /// Updates both text boxes.  Applies lock icons to locked runs in the after box
+        /// </summary>
+        /// <param name="percent"></param>
         private void updateParagraphs(double percent)
         {
-            //int lengthVaration = (data.longestLength - data.shortestLength);
-            //int newLength = (int)Math.Round(lengthVaration * percent) + data.shortestLength;
+            currentPercent = percent;
             int newLength = (int)Math.Round(data.longestLength * percent);
 
             List<PatchSelection> selections = data.getPatchSelections(newLength);
+
+            runMap = new Dictionary<Run, PatchSelection>();
 
             List<Run> beforeRuns = getOriginalRuns(selections);
             before.Inlines.Clear();
@@ -126,6 +251,65 @@ namespace Soylent.View.Shortn
             List<Run> afterRuns = getShortenedRuns(selections);
             after.Inlines.Clear();
             after.Inlines.AddRange(afterRuns);
+
+            if (rootDirectory == null)
+            {
+                rootDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                if (rootDirectory.Length > 10)
+                {
+                    if (rootDirectory.Substring(rootDirectory.Length - 11, 10) == @"\bin\Debug")
+                    {
+                        rootDirectory = rootDirectory.Substring(0, rootDirectory.Length - 10);
+                    }
+                }
+            }
+
+            //The list of locked runs.  Must be dealt with later to avoid altering the collection we're iterating through
+            List<Run> lockedRuns = new List<Run>();
+
+            foreach (Inline inline in after.Inlines)
+            {
+                if (!(inline is Run))
+                {
+                    continue;
+                }
+                Run tempRun = inline as Run;
+
+                if ((runMap[tempRun].patch as ShortnPatch).isLocked)
+                {
+                    lockedRuns.Add(tempRun);
+                }
+            }
+            // Add the lock icon to the locked runs
+            foreach (Run run in lockedRuns)
+            {
+                Image img = new Image();
+                BitmapImage bmi = new BitmapImage(new Uri(rootDirectory + @"lock.png"));
+                img.Source = bmi;
+                img.Height = 9;
+                img.Width = 9;
+
+                InlineUIContainer iuc = new InlineUIContainer(img, run.ContentEnd);
+
+                iuc.ContextMenu = run.ContextMenu;
+                iuc.Cursor = Cursors.Hand;
+                iuc.MouseUp +=new MouseButtonEventHandler(lockClickHandler);
+            }
+        }
+
+        private void resetSliderTicks()
+        {
+            List<int> lengths = data.recalculatePossibleLengths();
+            DoubleCollection tickMarks = new DoubleCollection();
+
+            foreach (int length in lengths)
+            {
+                double percent = ((double)length) / data.longestLength;
+                tickMarks.Add(percent * 100);
+            }
+            lengthSlider.Ticks = tickMarks;
+
+            lengthSlider.SelectionStart = tickMarks[0];
         }
 
         private void initSliderTicks()

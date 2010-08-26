@@ -25,7 +25,7 @@ namespace Soylent.Model.Shortn
         //[System.Xml.Serialization.XmlArray("patches")]
         //[System.Xml.Serialization.XmlArrayItem("patch", typeof(List<Patch>))]
         
-        [XmlIgnore] public List<Patch> patches;
+        [XmlIgnore] public List<ShortnPatch> patches;
         [XmlIgnore] public int paragraphsCompleted = 0;
         [XmlIgnore] private Dictionary<ResultType, List<List<bool>>> gottenOneYet;
         [XmlIgnore] public StageData findStageData;
@@ -81,7 +81,7 @@ namespace Soylent.Model.Shortn
             */
 
 
-            patches = new List<Patch>();
+            patches = new List<ShortnPatch>();
             gottenOneYet = new Dictionary<ResultType, List<List<bool>>>();
         
         }
@@ -93,7 +93,7 @@ namespace Soylent.Model.Shortn
             fixStageData = new StageData(ResultType.Fix, numParagraphs, job);
             verifyStageData = new StageData(ResultType.Verify, numParagraphs, job);
 
-            patches = new List<Patch>();
+            patches = new List<ShortnPatch>();
             gottenOneYet = new Dictionary<ResultType, List<List<bool>>>();
         }
        
@@ -183,7 +183,7 @@ namespace Soylent.Model.Shortn
                     alternatives.AddRange(from alternative in option.alternatives select alternative.editedText);
                 }
 
-                Patch thisPatch = new Patch(patchRange, alternatives);
+                ShortnPatch thisPatch = new ShortnPatch(patchRange, alternatives);
                 // add the original as an option
                 thisPatch.replacements.Add(tkspatch.originalText);
 
@@ -320,37 +320,7 @@ namespace Soylent.Model.Shortn
         }
 
         
-        //Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();
-        /// <summary>
-        /// Gets the patch selections for this job
-        /// </summary>
-        /// <param name="desiredLength">The desired character length for the returned list of selections</param>
-        /// <returns></returns>
-        public List<PatchSelection> getPatchSelections(int desiredLength)
-        {
-            if (cachedSelections.Keys.Count == 0)
-            {
-                initializeSelections();
-            }
-
-            IEnumerable<int> lengthList = cachedSelections.Keys.OrderByDescending(len => len);
-            if (desiredLength > lengthList.ElementAt(0))
-            {
-                return cachedSelections[lengthList.ElementAt(0)];
-            }
-
-            for (int i = 0; i < lengthList.Count(); i++ )
-            {
-                if (lengthList.ElementAt(i) < desiredLength)
-                {
-                    return cachedSelections[lengthList.ElementAt(i-1)];
-                }
-            }
-            //return (from patch in patches select new PatchSelection(patch, patch.replacements[0])).ToList();
-            // return the smallest one we got
-            return cachedSelections[lengthList.ElementAt(lengthList.Count()-1)];
-        }
-
+        
         /// <summary>
         /// Make the desired changes in the document.
         /// </summary>
@@ -419,12 +389,57 @@ namespace Soylent.Model.Shortn
             }
         }
 
+        //Dictionary<int, List<PatchSelection>> cachedSelections = new Dictionary<int, List<PatchSelection>>();
+        /// <summary>
+        /// Gets the patch selections for this job
+        /// </summary>
+        /// <param name="desiredLength">The desired character length for the returned list of selections</param>
+        /// <returns></returns>
+        public List<PatchSelection> getPatchSelections(int desiredLength)
+        {
+            cachedSelections = new Dictionary<int, List<PatchSelection>>();
+
+            if (cachedSelections.Keys.Count == 0)
+            {
+                initializeSelections();
+            }
+
+            IEnumerable<int> lengthList = cachedSelections.Keys.OrderByDescending(len => len);
+            if (desiredLength > lengthList.ElementAt(0))
+            {
+                return cachedSelections[lengthList.ElementAt(0)];
+            }
+
+            for (int i = 0; i < lengthList.Count(); i++)
+            {
+                if (lengthList.ElementAt(i) < desiredLength)
+                {
+                    return cachedSelections[lengthList.ElementAt(i - 1)];
+                }
+            }
+            //return (from patch in patches select new PatchSelection(patch, patch.replacements[0])).ToList();
+            // return the smallest one we got
+            return cachedSelections[lengthList.ElementAt(lengthList.Count() - 1)];
+        }
+
         /// <summary>
         /// Returns a list of possible lengths, given the different permutations of selection choices.
         /// </summary>
         /// <returns></returns>
         public List<int> possibleLengths()
         {
+            return (from entry in cachedSelections orderby entry.Key ascending select entry.Key).ToList();
+        }
+
+        /// <summary>
+        /// Returns a list of possible lengths, given the different permutations of selection choices.  Clears the cache so that
+        /// results reflect lock/unlock changes.
+        /// </summary>
+        /// <returns></returns>
+        public List<int> recalculatePossibleLengths()
+        {
+            cachedSelections = new Dictionary<int, List<PatchSelection>>();
+            initializeSelections();
             return (from entry in cachedSelections orderby entry.Key ascending select entry.Key).ToList();
         }
 
@@ -440,7 +455,7 @@ namespace Soylent.Model.Shortn
             }
         }
 
-        private List<List<PatchSelection>> recursiveInitialization(List<Patch> patches)
+        private List<List<PatchSelection>> recursiveInitialization(List<ShortnPatch> patches)
         {
             /*
             List<string> string_options = patches[0].replacements;
@@ -454,7 +469,16 @@ namespace Soylent.Model.Shortn
             }
             */
 
-            List<string> string_options = patches[0].replacements;
+            List<string> string_options;
+            if (patches[0].isLocked)
+            {
+                string_options = new List<string>();
+                string_options.Add(patches[0].lockedReplacement);
+            }
+            else
+            {
+                string_options = patches[0].replacements;
+            }
             List<PatchSelection> options = (from option in string_options select new PatchSelection(patches[0], option)).ToList();
 
             List<List<PatchSelection>> results = new List<List<PatchSelection>>();
@@ -494,7 +518,7 @@ namespace Soylent.Model.Shortn
             Word.Range canned_range = Globals.Soylent.Application.ActiveDocument.Paragraphs[1].Range;
 
 
-            List<Patch> canned_patches = new List<Patch>();
+            List<ShortnPatch> canned_patches = new List<ShortnPatch>();
             foreach (Word.Range r in canned_range.Sentences)
             {
                 List<string> options = new List<string>();
@@ -538,7 +562,7 @@ namespace Soylent.Model.Shortn
 
                     Word.Range newRange = Globals.Soylent.Application.ActiveDocument.Range(start, end);
                     options.Add(newRange.Text);
-                    canned_patches.Add(new Patch(newRange, options));
+                    canned_patches.Add(new ShortnPatch(newRange, options));
 
                     if (r.End - end > 0)
                     {
