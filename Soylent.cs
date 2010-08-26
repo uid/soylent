@@ -41,35 +41,22 @@ namespace Soylent
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            /*
-            Word.Document doc = this.Application.ActiveDocument;
-            SoylentPanel soylent = new SoylentPanel();
-            soylentMap[doc] = soylent;
-
-
-            HITView = this.CustomTaskPanes.Add(soylent, "Soylent");
-            HITView.VisibleChanged += new EventHandler(hitviewVisibleChanged);
-            HITView.Visible = true;
-            */
-            
-
             Globals.Ribbons.Ribbon.debug.Visible = true;
 
             tksc = new TurKitSocKit();
             tksc.Listen();
 
-            //Microsoft.Office.Interop.Word.Application.DocumentOpen
-            
+            //For save/load of hits
             this.Application.DocumentOpen += new Word.ApplicationEvents4_DocumentOpenEventHandler(Application_DocumentOpen);
             this.Application.DocumentBeforeSave += new Word.ApplicationEvents4_DocumentBeforeSaveEventHandler(Application_DocumentBeforeSave);
             this.Application.DocumentChange += new Word.ApplicationEvents4_DocumentChangeEventHandler(Application_DocumentChange);
         }
 
         void Application_DocumentChange()
-        {
-            
+        {          
             Word.Document doc = this.Application.ActiveDocument;
-            if (!soylentMap.Keys.Contains<Word.Document>(doc)){
+            // If the document is already open, don't worry about it.  If not (e.g. created a new document, loaded old), set up its panel
+            if (!soylentMap.Keys.Contains<Word.Document>(doc)){ 
                 SoylentPanel soylent = new SoylentPanel();
                 
                 HITView = this.CustomTaskPanes.Add(soylent, "Soylent");
@@ -77,9 +64,7 @@ namespace Soylent
                 HITView.Visible = true;
 
                 addDocToMap(soylent);
-            }
-            
-            
+            } 
         }
 
         public void addDocToMap(SoylentPanel sp)
@@ -91,15 +76,9 @@ namespace Soylent
 
         void Application_DocumentOpen(Word.Document doc)
         {
-            
-            //SoylentPanel soylent = new SoylentPanel();
-            //soylentMap[doc] = soylent; 
-            //HITView = this.CustomTaskPanes.Add(soylent, "Soylent");
-            //HITView.VisibleChanged += new EventHandler(hitviewVisibleChanged);
-            //HITView.Visible = true;
             SoylentPanel soylent = soylentMap[doc];
             
-
+            //One problem: loads jobs in reverse order.  This is easy to fix.  But is either correct?
             foreach (Microsoft.Office.Core.CustomXMLPart xmlPart in Globals.Soylent.Application.ActiveDocument.CustomXMLParts)
             {
                 string xml = xmlPart.XML;
@@ -128,8 +107,8 @@ namespace Soylent
 
 
                     if (hit.jobDone){
-                        ShortnJob s = new ShortnJob(hit, hit.job, false); // SOMETHING DIFFERENT
-
+                        ShortnJob s = new ShortnJob(hit, hit.job, false);
+                        //Use saved TurKit messages to recreate the results.
                         foreach (TurKitSocKit.TurKitFindFixVerify message in hit.findFixVerifies){
                             hit.postProcessSocKitMessage(message);
                         }
@@ -154,6 +133,7 @@ namespace Soylent
                     if (hit.jobDone)
                     {
                         CrowdproofJob s = new CrowdproofJob(hit, hit.job, false);
+                        //Use saved TurKit messages to recreate the results.
                         foreach (TurKitSocKit.TurKitFindFixVerify message in hit.findFixVerifies)
                         {
                             hit.postProcessSocKitMessage(message);
@@ -180,6 +160,7 @@ namespace Soylent
                     if (hit.jobDone)
                     {
                         HumanMacroJob s = new HumanMacroJob(hit, hit.job, false);
+                        //Use saved TurKit messages to recreate the results.
                         foreach (TurKitSocKit.TurKitHumanMacroResult message in hit.messages)
                         {
                             hit.postProcessSocKitMessage(message);

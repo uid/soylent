@@ -23,27 +23,10 @@ namespace Soylent.Model
         //[XmlIgnore] public Dictionary<ResultType, StageData> stages;
         public int numParagraphs;
         public bool jobDone = false;
+        // A list of TurKit messages used to recreate the results when the document is reloaded.
         public List<TurKitSocKit.TurKitFindFixVerify> findFixVerifies = new List<TurKitSocKit.TurKitFindFixVerify>();
         [XmlIgnore] public TurKit tk;
         [XmlIgnore] public HITView view;
-        /*
-        [XmlIgnore]
-        public Word.Range range
-        {
-            get
-            {
-                return _range;
-            }
-            set
-            {
-                _range = value;
-                rangeStart = range.Start;
-                rangeEnd = range.End;
-                
-            }
-        }
-        [XmlIgnore] private Word.Range _range;
-        */
         [XmlIgnore] public Word.Range range;
 
         public string originalText

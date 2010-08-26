@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoylentRibbon));
             this.Soylent = new Microsoft.Office.Tools.Ribbon.RibbonTab();
             this.viewGroup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
-            this.button6 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            //this.button6 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button3 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.shortenBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.humanMacroBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
@@ -66,9 +66,9 @@
             this.jobStatus.Checked = true;
             // button6
             // 
-            this.button6.Label = "button6";
-            this.button6.Name = "button6";
-            this.button6.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button6_Click);
+            //this.button6.Label = "button6";
+            //this.button6.Name = "button6";
+            //this.button6.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button6_Click);
             // 
             // button3
             // 
