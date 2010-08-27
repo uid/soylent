@@ -220,7 +220,7 @@ namespace Soylent
                 }
 
                 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;
