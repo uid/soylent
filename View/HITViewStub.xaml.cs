@@ -90,7 +90,6 @@ namespace Soylent.View
                 CrowdproofButton.Content = "View Revisions";
                 CrowdproofButton.Name = "Crowdproof";
                 CrowdproofButton.Height = 23;
-                //CrowdproofButton.Width = 90;
                 //CrowdproofButton.IsEnabled = false;
                 CrowdproofButton.Click += new RoutedEventHandler(cpv.Crowdproof_Clicked);
 
@@ -98,19 +97,15 @@ namespace Soylent.View
                 AcceptRevisions.Content = "Accept All";
                 AcceptRevisions.Name = "AcceptRevisions";
                 AcceptRevisions.Height = 23;
-                //AcceptRevisions.HorizontalAlignment = HorizontalAlignment.Stretch;
-                //AcceptRevisions.HorizontalContentAlignment = HorizontalAlignment.Stretch;
-                //AcceptRevisions.Width = 95;
-                //AcceptRevisions.IsEnabled = false;
+                AcceptRevisions.IsEnabled = false;
                 AcceptRevisions.Click += new RoutedEventHandler(cpv.AcceptRevisions_Clicked);
 
                 RejectRevisions = new Button();
                 RejectRevisions.Content = "Reject All";
                 RejectRevisions.Name = "RejectRevisions";
                 RejectRevisions.Height = 23;
-                //RejectRevisions.Width = 95;
                 RejectRevisions.HorizontalAlignment = HorizontalAlignment.Stretch;
-                //RejectRevisions.IsEnabled = false;
+                RejectRevisions.IsEnabled = false;
                 RejectRevisions.Click += new RoutedEventHandler(cpv.RejectRevisions_Clicked);
 
                 UniformGrid buttons = new UniformGrid();
@@ -146,7 +141,6 @@ namespace Soylent.View
                 CrowdproofButton.Content = "View Revisions";
                 CrowdproofButton.Name = "Crowdproof";
                 CrowdproofButton.Height = 23;
-                //CrowdproofButton.Width = 90;
                 //CrowdproofButton.IsEnabled = false;
                 CrowdproofButton.Click += new RoutedEventHandler(hpv.HumanMacro_Clicked);
 
@@ -154,22 +148,25 @@ namespace Soylent.View
                 AcceptRevisions.Content = "Accept All";
                 AcceptRevisions.Name = "AcceptRevisions";
                 AcceptRevisions.Height = 23;
-                AcceptRevisions.Width = 95;
-                //AcceptRevisions.IsEnabled = false;
+                AcceptRevisions.IsEnabled = false;
                 AcceptRevisions.Click += new RoutedEventHandler(hpv.AcceptRevisions_Clicked);
 
                 RejectRevisions = new Button();
                 RejectRevisions.Content = "Reject All";
                 RejectRevisions.Name = "RejectRevisions";
                 RejectRevisions.Height = 23;
-                RejectRevisions.Width = 95;
-                //RejectRevisions.IsEnabled = false;
+                RejectRevisions.IsEnabled = false;
                 RejectRevisions.Click += new RoutedEventHandler(hpv.RejectRevisions_Clicked);
 
-                StackPanel buttons = new StackPanel();
-                buttons.Orientation = System.Windows.Controls.Orientation.Horizontal;
+                UniformGrid buttons = new UniformGrid();
+                buttons.Rows = 1;
+                buttons.Columns = 2;
                 buttons.Children.Add(AcceptRevisions);
+                Grid.SetColumn(AcceptRevisions, 0);
+                Grid.SetRow(AcceptRevisions, 0);
                 buttons.Children.Add(RejectRevisions);
+                Grid.SetColumn(RejectRevisions, 1);
+                Grid.SetRow(RejectRevisions, 0);
 
                 StackPanel buttonPanel = new StackPanel();
                 buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);

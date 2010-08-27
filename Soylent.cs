@@ -186,6 +186,13 @@ namespace Soylent
 
         void Application_DocumentBeforeSave(Word.Document Doc, ref bool SaveAsUI, ref bool Cancel)
         {
+            foreach (Microsoft.Office.Core.CustomXMLPart xmlPart in Globals.Soylent.Application.ActiveDocument.CustomXMLParts)
+            {
+                if (!(xmlPart.BuiltIn))
+                {
+                    xmlPart.Delete();
+                }
+            }
             foreach (object obj in soylentMap[Doc].sidebar.jobs.Children)
             {
                 if (!(obj is StackPanel)) { continue; }

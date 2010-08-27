@@ -289,6 +289,8 @@ namespace Soylent.View.Crowdproof
                 stageview.hitProgress.Foreground = Brushes.Blue; //Turn the bars blue
             }
             this.CrowdproofButton.IsEnabled = true; //Enable the Shortn button
+            this.AcceptRevisions.IsEnabled = false;
+            this.RejectRevisions.IsEnabled = false;
             stub.CrowdproofDataReceived();
         }
     }
