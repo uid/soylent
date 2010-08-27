@@ -121,7 +121,7 @@ namespace Soylent.Model.HumanMacro
                 numberReturned++;
             }
 
-            if (numberReturned == patches.Count)
+            if (numberReturned >= patches.Count)
             {
                 if (this.tk.turkitLoopTimer != null)
                 {

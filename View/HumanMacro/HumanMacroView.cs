@@ -290,6 +290,9 @@ namespace Soylent.View.HumanMacro
                 stageview.hitProgress.Foreground = Brushes.Blue; //Turn the bars blue
             }
             this.HumanMacroButton.IsEnabled = true; //Enable the Shortn button
+            this.AcceptRevisions.IsEnabled = false;
+            this.RejectRevisions.IsEnabled = false;
+
             stub.HumanMacroDataReceived();
         }
     }
