@@ -1,0 +1,255 @@
+(function () {
+	var data = {
+	"paragraphs" : [
+		{
+			"sentences" : [
+				"The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.",
+				"At the same time, the GUI approach falls short in many respects, particularly in embracing the rich interface modalities between people and the physical environments they inhabit.",
+				"Systems exploring augmented reality and ubiquitous computing have begun to address this challenge.",
+				"However, these efforts have often taken the form of exporting the GUI paradigm to more world-situated devices, falling short of much of the richness of physical-space interaction they seek to augment."
+			],
+			"patches" : [
+				{
+					"start" : 113,
+					"end" : 168,
+					"options" : [
+						"The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction, dominating the last decade of interface design."
+					],
+					"paragraph" : /* data["paragraphs"][0]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 4,
+					"numEditors" : 6,
+					"numVoters" : 5,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) - user interfaces employing physical objects, instruments, surfaces, and spaces as physical interfaces to digital information.",
+				"In particular, we present the metaDESK system, a graphically intensive system driven by interaction with graspable physical objects.",
+				"In addition, we introduce a prototype application driving an interaction with geographical space, Tangible Geospace, to illustrate our approach."
+			],
+			"patches" : [
+				{
+					"start" : 208,
+					"end" : 340,
+					"options" : [
+						"In particular, we present metaDESK, a graphically intensive system driven by interaction with graspable physical objects."
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 2,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 342,
+					"end" : 486,
+					"options" : [
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 2,
+					"numVoters" : 4,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 0,
+					"end" : 206,
+					"options" : [
+						"In this paper, we present research developing \"Tangible User Interfaces\" (TUIs) which employ physical objects, instruments, surfaces, and spaces as physical interfaces to digital information."
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 3,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"The metaDESK effort is part of the larger Tangible Bits project.",
+				"The Tangible Bits vision paper introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.",
+				"Together, these platforms explore both graspable physical objects and ambient environmental displays as means for seamlessly coupling people, digital information, and the physical environment."
+			],
+			"patches" : [
+				{
+					"start" : 0,
+					"end" : 156,
+					"options" : [
+						"The metaDESK effort is part of the larger Tangible Bits project.  The Tangible Bits vision paper introduced the metaDESK along with [[two companion platforms,]] the transBOARD and ambientROOM.",
+						"The metaDESK effort is part of the larger Tangible Bits project, which introduced the metaDESK along with two companion platforms, the transBOARD and ambientROOM.",
+						"The metaDESK effort is part of the Tangible Bits project, which introduced the metaDESK and two companion platforms, the transBOARD and ambientROOM."
+					],
+					"paragraph" : /* data["paragraphs"][2]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 4,
+					"numVoters" : 5,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments which are used on desk\'s surface.",
+				"These components are sensed by an array of optical, mechanical, and electromagnetic field sensors."
+			],
+			"patches" : [
+				{
+					"start" : 251,
+					"end" : 338,
+					"options" : [
+						"The metaDESK system consists of several components: the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and other objects/instruments to use on desk\'s surface."
+					],
+					"paragraph" : /* data["paragraphs"][3]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 2,
+					"numEditors" : 3,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 29,
+					"end" : 51,
+					"options" : [
+						"The metaDESK system consists of the desk, a nearly-horizontal backprojected graphical surface; the active lens, an arm-mounted flat-panel display; the passive lens, an optically transparent surface through which the desk projects; and an assortment of physical objects and instruments which are used on desk\'s surface."
+					],
+					"paragraph" : /* data["paragraphs"][3]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 4,
+					"numVoters" : 4,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"Our research with the metaDESK system focuses on the use of tangible objects - real physical entities which can be touched and grasped - as driving elements of human-computer interaction.",
+				"In particular, we are interested in pushing back from the GUI into the real world, physically instantiating many of the metaphorical devices the GUI has popularized.",
+				"Simultaneously, we have attempted to push forward from the unaugmented physical world, inheriting from the richness of various historical instruments and devices often \"obsoleted\" by the advent of the computer."
+			],
+			"patches" : [
+				{
+					"start" : 77,
+					"end" : 137,
+					"options" : [
+						"Our research with the metaDESK system focuses on the use of tangible objects as driving elements of human-computer interaction."
+					],
+					"paragraph" : /* data["paragraphs"][4]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 3,
+					"numEditors" : 3,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"In addition, we more broadly explore the use of physical affordances within TUI design.",
+				"For example, our active lens is not only grounded in the metaphor of a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device.",
+				"In this way, the active lens has a certain legibility of interface in that its affordances suggest and support user\'s natural expectations from the device."
+			],
+			"patches" : [
+				{
+					"start" : 89,
+					"end" : 246,
+					"options" : [
+						"For example, our active lens is not only metaphorically like a jeweler\'s magnifying lens; it also looks, acts, and is manipulated like such a device."
+					],
+					"paragraph" : /* data["paragraphs"][5]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 2,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 248,
+					"end" : 403,
+					"options" : [
+						"In this way, the active lens has a legibility of interface as its affordances suggest and support natural user expectations."
+					],
+					"paragraph" : /* data["paragraphs"][5]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 3,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 0,
+					"end" : 87,
+					"options" : [
+						"We more broadly explore  physical affordances within TUI design."
+					],
+					"paragraph" : /* data["paragraphs"][5]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 2,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"In the following sections, we present our design approach towards making user interfaces tangible.",
+				"The operating scenario of the Tangible Geospace prototype is then presented.",
+				"This is followed by a description of the metaDESK implementation, including display, sensor, and software architectures. Interaction issues encountered with the prototype are then discussed, followed by future work and conclusions."
+			],
+			"patches" : [
+				{
+					"start" : 242,
+					"end" : 297,
+					"options" : [
+					],
+					"paragraph" : /* data["paragraphs"][6]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 2,
+					"numEditors" : 2,
+					"numVoters" : 4,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 0,
+					"end" : 41,
+					"options" : [
+						"The following sections present our design approach towards making user interfaces tangible.",
+						"We present our design approach  making user interfaces tangible.",
+						"The following will present our design approach towards making user interfaces tangible.",
+						"In the following [[sections,]] we present our design approach towards making user interfaces tangible."
+					],
+					"paragraph" : /* data["paragraphs"][6]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 5,
+					"numVoters" : 4,
+					"__type__" : "shorten"
+				}
+			]
+		}
+	]
+}
+	data["paragraphs"][0]["patches"][0]["paragraph"] = data["paragraphs"][0]["sentences"]
+	data["paragraphs"][1]["patches"][0]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][1]["patches"][1]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][1]["patches"][2]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][2]["patches"][0]["paragraph"] = data["paragraphs"][2]["sentences"]
+	data["paragraphs"][3]["patches"][0]["paragraph"] = data["paragraphs"][3]["sentences"]
+	data["paragraphs"][3]["patches"][1]["paragraph"] = data["paragraphs"][3]["sentences"]
+	data["paragraphs"][4]["patches"][0]["paragraph"] = data["paragraphs"][4]["sentences"]
+	data["paragraphs"][5]["patches"][0]["paragraph"] = data["paragraphs"][5]["sentences"]
+	data["paragraphs"][5]["patches"][1]["paragraph"] = data["paragraphs"][5]["sentences"]
+	data["paragraphs"][5]["patches"][2]["paragraph"] = data["paragraphs"][5]["sentences"]
+	data["paragraphs"][6]["patches"][0]["paragraph"] = data["paragraphs"][6]["sentences"]
+	data["paragraphs"][6]["patches"][1]["paragraph"] = data["paragraphs"][6]["sentences"]
+	return data
+})()

@@ -1,0 +1,1079 @@
+// begin:5787
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269384980145E12,
+				"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+				"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gyn6qk19w4e3eielnnq0egoqzrbbb8ul.html",
+				"returnTime" : 1.269384980272E12,
+				"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gyn6qk19w4e3eielnnq0egoqzrbbb8ul.html\r\n"
+			},
+			{
+				"creationTime" : 1.269384980274E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+				"returnTime" : 1.269384980799E12,
+				"printOutput" : "created HIT: 14BL076P675KAQCNPUO5KP7N9Z84QV\r\n        url: https://www.mturk.com/mturk/preview?groupId=15Q7HFJHEB76DBNHGY4M75L8I9JC2O\r\n"
+			},
+			{
+				"creationTime" : 1.269384981092E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+					"hitTypeId" : "15Q7HFJHEB76DBNHGY4M75L8I9JC2O",
+					"title" : "Find unnecessary text",
+					"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+					"keywords" : "undefined",
+					"reward" : 0.06,
+					"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gyn6qk19w4e3eielnnq0egoqzrbbb8ul.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+					"maxAssignments" : 10,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 60,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.269385019E12,
+					"expiration" : 1.269989819E12,
+					"assignments" : [
+						{
+							"assignmentId" : "10O61IZ8LLF6BKD60T5TSDSN0KJRPT",
+							"workerId" : "A1GA6VXI5QH07",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269385742E12,
+							"acceptTime" : 1.269385581E12,
+							"submitTime" : 1.269385682E12,
+							"answer" : {
+								"brackets" : "Who pays to build data sets?  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators just so they can record a few milliseconds of good data.  But governments willingly provide the money and resources [[to help them gather this data]] because there isn\ufffdt a market for gluon data.  There is, however, a market for your social networking behavior and web advertising clicks, so we shouldn\ufffdt hold our breaths waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269385869E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1UUJEBYB4B20KY57RG1C54LZ4PNRYO",
+							"workerId" : "AG43PYIKKEUA7",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269387239E12,
+							"acceptTime" : 1.269387093E12,
+							"submitTime" : 1.269387179E12,
+							"answer" : {
+								"brackets" : "[[Who pays to build data sets?]]  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators just so they can record a few milliseconds of good data.  But governments willingly provide the money and resources to help them gather this data because there isn\ufffdt a market for gluon data.  There is, however, a market for your social networking behavior and web advertising clicks, so we shouldn\ufffdt hold our breaths waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269387367E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1X7SVQ6PUURWR3FOJI6S8NYNQB1AOP",
+							"workerId" : "A1MEDNRTAZ8LEM",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269389802E12,
+							"acceptTime" : 1.269389461E12,
+							"submitTime" : 1.269389742E12,
+							"answer" : {
+								"brackets" : "[[Who pays to build data sets?]]  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators just so they can record a few milliseconds of good data.  But governments willingly provide the money and resources to help them gather this data because there isn\ufffdt a market for gluon data.  There is, however, a market for your social networking behavior and web advertising clicks, so we shouldn\ufffdt hold our breaths waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269390067E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1Q5HDWE90Z00M657KVQ6TE4Q37WQGP",
+							"workerId" : "A2IYM6FLMJC0A8",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269389926E12,
+							"acceptTime" : 1.269389825E12,
+							"submitTime" : 1.269389866E12,
+							"answer" : {
+								"brackets" : "Who pays to build data sets?  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators just so they can record a few milliseconds of good data.  But governments willingly provide the money and resources to help them gather this data because there isn\u2019t a market for gluon data.  There is, however, a market for your social networking behavior and web advertising clicks, [[so we shouldn\u2019t hold our breaths ]]waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269390067E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1OAUU4C43H2B9BRJVPJ2Z2687EZVVD",
+							"workerId" : "A1F6K45ROSWRG5",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269390066E12,
+							"acceptTime" : 1.269389775E12,
+							"submitTime" : 1.269390006E12,
+							"answer" : {
+								"brackets" : "Who pays to build data sets?  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators just so they can record a few milliseconds of good data.  But governments willingly provide the money and resources to help them gather this data because there isn\ufffdt a market for gluon data.  [[There is, however, a market for your social networking behavior and web advertising clicks, so we shouldn\ufffdt hold our breaths waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data.]]"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269390366E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "124M6SMEHJW9T13135HKPA4IPSDMM8",
+							"workerId" : "A367RBF1ZISBRP",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269392653E12,
+							"acceptTime" : 1.269392501E12,
+							"submitTime" : 1.269392593E12,
+							"answer" : {
+								"brackets" : "Who pays to build data sets?  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators just so they can record a few milliseconds of good data.  But governments willingly [[provide the money and resources to]] help them gather this data because there isn\ufffdt a market for gluon data.  There is, however, a market for your social networking behavior and web advertising clicks, so we shouldn\ufffdt hold our breaths waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.26939277E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "15GK54RNKSGYPLX0IFHS6CSTTOK8BH",
+							"workerId" : "A2XVLENAJYX691",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.26939298E12,
+							"acceptTime" : 1.269392755E12,
+							"submitTime" : 1.26939292E12,
+							"answer" : {
+								"brackets" : "Who pays to build data sets?  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators [[just so they can]] record a few milliseconds of good data.  But governments willingly provide the money and resources to help them gather this data because there isn\ufffdt a market for gluon data.  There is, however, a market for your social networking behavior and web advertising clicks, so we shouldn\ufffdt hold our breaths waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269393067E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1UHEILLFPN3JL4YR8COUI3MTYRI2ZI",
+							"workerId" : "AFPHC88TXJVR3",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269400276E12,
+							"acceptTime" : 1.269400083E12,
+							"submitTime" : 1.269400216E12,
+							"answer" : {
+								"brackets" : "Who pays to build data sets?  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators just so they can record a few milliseconds of good data.  But governments willingly provide the money and resources to help them gather this data [[because there isn\'t a market for gluon data]].  There is, however, a market for your social networking behavior and web advertising clicks, so we shouldn\'t hold our breaths waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269400568E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1W6GOYSU734XHHJ3VV9UZU00VQTFFR",
+							"workerId" : "A3I22FTRJLDXK5",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Approved",
+							"autoApprovalTime" : 1.269400484E12,
+							"acceptTime" : 1.269400214E12,
+							"submitTime" : 1.269400424E12,
+							"answer" : {
+								"brackets" : "Who pays to build data sets?  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators [[just]] so they can record a few milliseconds of good data.  But governments willingly provide the money and resources to help them gather this data because there isn\ufffdt a market for gluon data.  There is, however, a market for your social networking behavior and web advertising clicks, so we shouldn\ufffdt hold our breaths waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : 1.269400568E12,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "1CWSMOB3HD0BLUIVB60Y88TW3XS5M6",
+							"workerId" : "A2RL28EX7BIT15",
+							"hitId" : "14BL076P675KAQCNPUO5KP7N9Z84QV",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.269402691E12,
+							"acceptTime" : 1.269402491E12,
+							"submitTime" : 1.269402631E12,
+							"answer" : {
+								"brackets" : "Who pays to build data sets?  Good data sets are expensive to obtain.  Particle physicists spend billions of dollars constructing particle accelerators [[just so they can record a few milliseconds of good data]].  But governments willingly provide the money and resources to help them gather this data because there isn\ufffdt a market for gluon data.  There is, however, a market for your social networking behavior and web advertising clicks, so we shouldn\ufffdt hold our breaths waiting for the NSFs of the world to fund a multi-billion dollar social network just to gather behavioral data."
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.269402613181E12,
+				"printOutput" : "hit completed: 14BL076P675KAQCNPUO5KP7N9Z84QV\r\n"
+			},
+			{
+				"creationTime" : 1.269402613636E12,
+				"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269402614081E12,
+				"printOutput" : "disabled HIT: 14BL076P675KAQCNPUO5KP7N9Z84QV\r\n"
+			},
+			{
+				"creationTime" : 1.269402614083E12,
+				"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.269402614287E12,
+				"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/gyn6qk19w4e3eielnnq0egoqzrbbb8ul.html\r\n"
+			},
+			{
+				"creationTime" : 1.269402614289E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269402614297E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/jjuq5a6n1vs8v0db093n3bk2jp8xz9vx.html",
+						"returnTime" : 1.269402614376E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/jjuq5a6n1vs8v0db093n3bk2jp8xz9vx.html\r\n"
+					},
+					{
+						"creationTime" : 1.26940261438E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "17PQ6HC9GH23MYA3W7312MGI3S8FZU",
+						"returnTime" : 1.269402614663E12,
+						"printOutput" : "created HIT: 17PQ6HC9GH23MYA3W7312MGI3S8FZU\r\n        url: https://www.mturk.com/mturk/preview?groupId=1ZNB286DNAZJSSK4OH6BO9IOBJ9NBI\r\n"
+					},
+					{
+						"creationTime" : 1.269402614917E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "17PQ6HC9GH23MYA3W7312MGI3S8FZU",
+							"hitTypeId" : "1ZNB286DNAZJSSK4OH6BO9IOBJ9NBI",
+							"title" : "Shorten Rambling Text",
+							"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/jjuq5a6n1vs8v0db093n3bk2jp8xz9vx.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269402653E12,
+							"expiration" : 1.270007453E12,
+							"assignments" : [
+								{
+									"assignmentId" : "12O6NQDJ7U5PMQKZII6ZXZL24RALZR",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "17PQ6HC9GH23MYA3W7312MGI3S8FZU",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402798E12,
+									"acceptTime" : 1.26940273E12,
+									"submitTime" : 1.269402738E12,
+									"answer" : {
+										"newText" : "Who pays to build data sets?",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "16QB4JRD7JA8W8AKR4JTAH5FFJESWM",
+									"workerId" : "AVHF02BYOQDQP",
+									"hitId" : "17PQ6HC9GH23MYA3W7312MGI3S8FZU",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402807E12,
+									"acceptTime" : 1.269402739E12,
+									"submitTime" : 1.269402747E12,
+									"answer" : {
+										"cuttable" : "Yes",
+										"newText" : ""
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12LLBDX4U210HVKKH0IE0E5RWRCLXU",
+									"workerId" : "A6GVEPH4VJWDV",
+									"hitId" : "17PQ6HC9GH23MYA3W7312MGI3S8FZU",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402808E12,
+									"acceptTime" : 1.26940272E12,
+									"submitTime" : 1.269402748E12,
+									"answer" : {
+										"newText" : "Who pays for data?",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1C2ESM82H16F1NVNHXFOLQSCT6T11D",
+									"workerId" : "A2KLRIEEFH9YO7",
+									"hitId" : "17PQ6HC9GH23MYA3W7312MGI3S8FZU",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402847E12,
+									"acceptTime" : 1.269402781E12,
+									"submitTime" : 1.269402787E12,
+									"answer" : {
+										"newText" : "Who pays to build data sets?",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "11FDWS0ZGJPJMAMUJBS33DZ8U81YJB",
+									"workerId" : "A23C8PF66JMSNV",
+									"hitId" : "17PQ6HC9GH23MYA3W7312MGI3S8FZU",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402902E12,
+									"acceptTime" : 1.269402818E12,
+									"submitTime" : 1.269402842E12,
+									"answer" : {
+										"cuttable" : "Yes",
+										"newText" : ""
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269402863397E12,
+						"printOutput" : "hit completed: 17PQ6HC9GH23MYA3W7312MGI3S8FZU\r\n"
+					},
+					{
+						"creationTime" : 1.269402863414E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/m247d69y6ioj2otlqugcgvq29gn8mu9z.html",
+						"returnTime" : 1.269402863502E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/m247d69y6ioj2otlqugcgvq29gn8mu9z.html\r\n"
+					},
+					{
+						"creationTime" : 1.269402863503E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1PWR98KX2B0DYZV6NW8S7OM0SDPV8T",
+						"returnTime" : 1.269402863735E12,
+						"printOutput" : "created HIT: 1PWR98KX2B0DYZV6NW8S7OM0SDPV8T\r\n        url: https://www.mturk.com/mturk/preview?groupId=1NBAAC4IXLCLZ7XRN114NIS8S2PPP1\r\n"
+					},
+					{
+						"creationTime" : 1.269402863941E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1PWR98KX2B0DYZV6NW8S7OM0SDPV8T",
+							"hitTypeId" : "1NBAAC4IXLCLZ7XRN114NIS8S2PPP1",
+							"title" : "Did I shorten text correctly?",
+							"description" : "I need to shorten some text -- which version is best?",
+							"keywords" : "undefined",
+							"reward" : 0.04,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/m247d69y6ioj2otlqugcgvq29gn8mu9z.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269402903E12,
+							"expiration" : 1.270007703E12,
+							"assignments" : [
+								{
+									"assignmentId" : "180TNUUQEJ4WJMQT55D0UGVFAIWZCP",
+									"workerId" : "A2KLRIEEFH9YO7",
+									"hitId" : "1PWR98KX2B0DYZV6NW8S7OM0SDPV8T",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403289E12,
+									"acceptTime" : 1.269403222E12,
+									"submitTime" : 1.269403229E12,
+									"answer" : {
+										"meaning" : "Who pays to build data sets?",
+										"grammar" : "Who pays for data?"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1AJYNTL62A2DZCKNMALH3W2G0PK7C6",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1PWR98KX2B0DYZV6NW8S7OM0SDPV8T",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403308E12,
+									"acceptTime" : 1.26940323E12,
+									"submitTime" : 1.269403248E12,
+									"answer" : {
+										"grammar" : "Who pays to build data sets?",
+										"meaning" : "Who pays to build data sets?"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1MB01BW6MV1Y8RZX9IZN96UXMCOCEX",
+									"workerId" : "A32QBXDPHHSTOD",
+									"hitId" : "1PWR98KX2B0DYZV6NW8S7OM0SDPV8T",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403363E12,
+									"acceptTime" : 1.269403287E12,
+									"submitTime" : 1.269403303E12,
+									"answer" : {
+										"grammar" : "",
+										"meaning" : ""
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1UEN94KTOPLZS35YLKJU3IM0QTKWF7",
+									"workerId" : "AUEAZY2ZOQCYR",
+									"hitId" : "1PWR98KX2B0DYZV6NW8S7OM0SDPV8T",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403403E12,
+									"acceptTime" : 1.269403223E12,
+									"submitTime" : 1.269403343E12,
+									"answer" : {
+										"meaning" : "Who pays for data?",
+										"grammar" : "Who pays for data?"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1P64EQPLSDKWKFRAQGN6MEZ6VEFCMM",
+									"workerId" : "A2HM35CWB7IIFM",
+									"hitId" : "1PWR98KX2B0DYZV6NW8S7OM0SDPV8T",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403497E12,
+									"acceptTime" : 1.269403399E12,
+									"submitTime" : 1.269403437E12,
+									"answer" : {
+										"meaning" : "Who pays for data?",
+										"grammar" : ""
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269403436434E12,
+						"printOutput" : "hit completed: 1PWR98KX2B0DYZV6NW8S7OM0SDPV8T\r\n"
+					},
+					{
+						"creationTime" : 1.269403437519E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403437676E12,
+						"printOutput" : "disabled HIT: 17PQ6HC9GH23MYA3W7312MGI3S8FZU\r\n"
+					},
+					{
+						"creationTime" : 1.269403437677E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403437802E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/jjuq5a6n1vs8v0db093n3bk2jp8xz9vx.html\r\n"
+					},
+					{
+						"creationTime" : 1.269403438006E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403438985E12,
+						"printOutput" : "disabled HIT: 1PWR98KX2B0DYZV6NW8S7OM0SDPV8T\r\n"
+					},
+					{
+						"creationTime" : 1.269403438987E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403439082E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/m247d69y6ioj2otlqugcgvq29gn8mu9z.html\r\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269402614933E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269402614936E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/z3c1k4zffdpjrv91q9qjck81tjgtq6jd.html",
+						"returnTime" : 1.269402615184E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/z3c1k4zffdpjrv91q9qjck81tjgtq6jd.html\r\n"
+					},
+					{
+						"creationTime" : 1.269402615187E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI",
+						"returnTime" : 1.269402615385E12,
+						"printOutput" : "created HIT: 1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI\r\n        url: https://www.mturk.com/mturk/preview?groupId=1ZNB286DNAZJSSK4OH6BO9IOBJ9NBI\r\n"
+					},
+					{
+						"creationTime" : 1.269402615599E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI",
+							"hitTypeId" : "1ZNB286DNAZJSSK4OH6BO9IOBJ9NBI",
+							"title" : "Shorten Rambling Text",
+							"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/z3c1k4zffdpjrv91q9qjck81tjgtq6jd.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269402654E12,
+							"expiration" : 1.270007454E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1E6GDRPQHW3ZHGW0ZN8E46OEBQ6OE5",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402821E12,
+									"acceptTime" : 1.269402739E12,
+									"submitTime" : 1.269402761E12,
+									"answer" : {
+										"newText" : "Particle physicists spend billions of dollars constructing particle accelerators just so they can record a few milliseconds of good data.",
+										"cuttable" : "No"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1CD92RQGB1OO25XDFWRCU5KXWTSJK1",
+									"workerId" : "A2KLRIEEFH9YO7",
+									"hitId" : "1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402851E12,
+									"acceptTime" : 1.269402787E12,
+									"submitTime" : 1.269402791E12,
+									"answer" : {
+										"newText" : "Particle physicists spend billions of dollars constructing particle accelerators just so they can record a few milliseconds of good data.",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1HWJ7JWUBXJZMBFV0W3D95XCLTXJL4",
+									"workerId" : "AVHF02BYOQDQP",
+									"hitId" : "1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402856E12,
+									"acceptTime" : 1.269402782E12,
+									"submitTime" : 1.269402796E12,
+									"answer" : {
+										"newText" : "Particle physicists spend billions of dollars constructing particle accelerators.",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1CBENV70YW6GA77WJGZYRWB7LPJT1D",
+									"workerId" : "A6GVEPH4VJWDV",
+									"hitId" : "1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402883E12,
+									"acceptTime" : 1.269402802E12,
+									"submitTime" : 1.269402823E12,
+									"answer" : {
+										"cuttable" : "Yes",
+										"newText" : "Particle physicists spend billions of dollars constructing particle accelerators for a few milliseconds of good data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "18GCCPCG4W2OO0ROLZOYL4PMEN8VWU",
+									"workerId" : "A220LRHT4JGO52",
+									"hitId" : "1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269402946E12,
+									"acceptTime" : 1.269402797E12,
+									"submitTime" : 1.269402886E12,
+									"answer" : {
+										"cuttable" : "No",
+										"newText" : "Particle physicists spend billions of dollars constructing particle accelerators to record just a few milliseconds of good data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269402864503E12,
+						"printOutput" : "hit completed: 1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI\r\n"
+					},
+					{
+						"creationTime" : 1.269402864524E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rxlwo8hps6y5cblzmvjr8nwvglehej12.html",
+						"returnTime" : 1.269402864594E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rxlwo8hps6y5cblzmvjr8nwvglehej12.html\r\n"
+					},
+					{
+						"creationTime" : 1.269402864596E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT",
+						"returnTime" : 1.269402864746E12,
+						"printOutput" : "created HIT: 1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT\r\n        url: https://www.mturk.com/mturk/preview?groupId=1NBAAC4IXLCLZ7XRN114NIS8S2PPP1\r\n"
+					},
+					{
+						"creationTime" : 1.269402865047E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT",
+							"hitTypeId" : "1NBAAC4IXLCLZ7XRN114NIS8S2PPP1",
+							"title" : "Did I shorten text correctly?",
+							"description" : "I need to shorten some text -- which version is best?",
+							"keywords" : "undefined",
+							"reward" : 0.04,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rxlwo8hps6y5cblzmvjr8nwvglehej12.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269402904E12,
+							"expiration" : 1.270007704E12,
+							"assignments" : [
+								{
+									"assignmentId" : "176RS07ALI3GGP24KCNA0KI69NUC4R",
+									"workerId" : "A2KLRIEEFH9YO7",
+									"hitId" : "1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403282E12,
+									"acceptTime" : 1.269403216E12,
+									"submitTime" : 1.269403222E12,
+									"answer" : {
+										"grammar" : "Particle physicists spend billions of dollars constructing particle accelerators.",
+										"meaning" : "Particle physicists spend billions of dollars constructing particle accelerators to record just a few milliseconds of good data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1XLL076P675KAQCNPUO5KP7ND2V4QO",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403289E12,
+									"acceptTime" : 1.269403197E12,
+									"submitTime" : 1.269403229E12,
+									"answer" : {
+										"meaning" : "Particle physicists spend billions of dollars constructing particle accelerators for a few milliseconds of good data.",
+										"grammar" : "Particle physicists spend billions of dollars constructing particle accelerators to record just a few milliseconds of good data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1BLHVIQVOPQKMRRN29D5PFHS9OX4RP",
+									"workerId" : "AUEAZY2ZOQCYR",
+									"hitId" : "1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403363E12,
+									"acceptTime" : 1.269403217E12,
+									"submitTime" : 1.269403303E12,
+									"answer" : {
+										"meaning" : "Particle physicists spend billions of dollars constructing particle accelerators for a few milliseconds of good data.",
+										"grammar" : "Particle physicists spend billions of dollars constructing particle accelerators to record just a few milliseconds of good data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "17MYTDPLY87VAKMLJLP8WSX943R1UD",
+									"workerId" : "A32QBXDPHHSTOD",
+									"hitId" : "1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403383E12,
+									"acceptTime" : 1.269403303E12,
+									"submitTime" : 1.269403323E12,
+									"answer" : {
+										"meaning" : "Particle physicists spend billions of dollars constructing particle accelerators.",
+										"grammar" : "Particle physicists spend billions of dollars constructing particle accelerators for a few milliseconds of good data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1TLUH886VK70QHGT8DD1B9YSVFHMR1",
+									"workerId" : "AYY0XHTC7WY8I",
+									"hitId" : "1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403432E12,
+									"acceptTime" : 1.269403298E12,
+									"submitTime" : 1.269403372E12,
+									"answer" : {
+										"meaning" : "Particle physicists spend billions of dollars constructing particle accelerators.",
+										"grammar" : "Particle physicists spend billions of dollars constructing particle accelerators for a few milliseconds of good data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269403367728E12,
+						"printOutput" : "hit completed: 1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT\r\n"
+					},
+					{
+						"creationTime" : 1.269403369015E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403369246E12,
+						"printOutput" : "disabled HIT: 1QG8TXWM1QAD4ROIVJFM5PGVI0DBYI\r\n"
+					},
+					{
+						"creationTime" : 1.269403369248E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403369345E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/z3c1k4zffdpjrv91q9qjck81tjgtq6jd.html\r\n"
+					},
+					{
+						"creationTime" : 1.269403369605E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403371092E12,
+						"printOutput" : "disabled HIT: 1OEGKMOZ0CL39ACNKRGQ9C9NTR26WT\r\n"
+					},
+					{
+						"creationTime" : 1.269403371094E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403371148E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/rxlwo8hps6y5cblzmvjr8nwvglehej12.html\r\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269402615605E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269402615607E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qg56wfaariz4a9623v2psbaw18jyqx5x.html",
+						"returnTime" : 1.269402615685E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qg56wfaariz4a9623v2psbaw18jyqx5x.html\r\n"
+					},
+					{
+						"creationTime" : 1.269402615687E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1NAK91VCKFH9YLQNDRGMTOQ5HTJV76",
+						"returnTime" : 1.269402615834E12,
+						"printOutput" : "created HIT: 1NAK91VCKFH9YLQNDRGMTOQ5HTJV76\r\n        url: https://www.mturk.com/mturk/preview?groupId=1ZNB286DNAZJSSK4OH6BO9IOBJ9NBI\r\n"
+					},
+					{
+						"creationTime" : 1.269402616063E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1NAK91VCKFH9YLQNDRGMTOQ5HTJV76",
+							"hitTypeId" : "1ZNB286DNAZJSSK4OH6BO9IOBJ9NBI",
+							"title" : "Shorten Rambling Text",
+							"description" : "A sentence in my paper is too long and I need your help cutting out the fat.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qg56wfaariz4a9623v2psbaw18jyqx5x.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269402655E12,
+							"expiration" : 1.270007455E12,
+							"assignments" : [
+								{
+									"assignmentId" : "12FTLA9Y0IYESIS4P34XAFP7U6D3PB",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1NAK91VCKFH9YLQNDRGMTOQ5HTJV76",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269402827E12,
+									"acceptTime" : 1.269402762E12,
+									"submitTime" : 1.269402767E12,
+									"answer" : {
+										"cuttable" : "No",
+										"newText" : "But governments willingly provide the money and resources to help them gather this data because there isn\u2019t a market for gluon data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269402968E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1Z46SULVYZNFYP8FK31AUMOOX5O5T7",
+									"workerId" : "AVHF02BYOQDQP",
+									"hitId" : "1NAK91VCKFH9YLQNDRGMTOQ5HTJV76",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.26940283E12,
+									"acceptTime" : 1.269402757E12,
+									"submitTime" : 1.26940277E12,
+									"answer" : {
+										"cuttable" : "No",
+										"newText" : "But governments willingly provide the money and resources to help them gather this data because there isn\'t a market for gluon data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269402968E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1IEQUGX932D3H80Y0L1IOF7G11KYF8",
+									"workerId" : "A2KLRIEEFH9YO7",
+									"hitId" : "1NAK91VCKFH9YLQNDRGMTOQ5HTJV76",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.26940284E12,
+									"acceptTime" : 1.269402775E12,
+									"submitTime" : 1.26940278E12,
+									"answer" : {
+										"newText" : "But governments willingly provide the money and resources to help them gather this data because there isn\u2019t a market for gluon data.",
+										"cuttable" : "Yes"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269402968E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1UQEPV4TMW2CLD5K651HVEQVQRESYL",
+									"workerId" : "A6GVEPH4VJWDV",
+									"hitId" : "1NAK91VCKFH9YLQNDRGMTOQ5HTJV76",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269402854E12,
+									"acceptTime" : 1.269402754E12,
+									"submitTime" : 1.269402794E12,
+									"answer" : {
+										"newText" : "But governments willingly fund data collection because there isn\u2019t a market for gluon data.",
+										"cuttable" : "No"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269402969E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1RJRLP243E5MQOALK50ELRB7DN5JSI",
+									"workerId" : "A220LRHT4JGO52",
+									"hitId" : "1NAK91VCKFH9YLQNDRGMTOQ5HTJV76",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403022E12,
+									"acceptTime" : 1.269402886E12,
+									"submitTime" : 1.269402962E12,
+									"answer" : {
+										"newText" : "But governments willingly assist with money and resources because there isn\u2019t a market for gluon data.",
+										"cuttable" : "No"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.269402990091E12,
+						"printOutput" : "hit completed: 1NAK91VCKFH9YLQNDRGMTOQ5HTJV76\r\n"
+					},
+					{
+						"creationTime" : 1.269402990128E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l4gxvtut2q17g12h2y0kxi3synf4hc7w.html",
+						"returnTime" : 1.269402990232E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l4gxvtut2q17g12h2y0kxi3synf4hc7w.html\r\n"
+					},
+					{
+						"creationTime" : 1.269402990233E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J",
+						"returnTime" : 1.269402990487E12,
+						"printOutput" : "created HIT: 1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J\r\n        url: https://www.mturk.com/mturk/preview?groupId=1NBAAC4IXLCLZ7XRN114NIS8S2PPP1\r\n"
+					},
+					{
+						"creationTime" : 1.269402990713E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J",
+							"hitTypeId" : "1NBAAC4IXLCLZ7XRN114NIS8S2PPP1",
+							"title" : "Did I shorten text correctly?",
+							"description" : "I need to shorten some text -- which version is best?",
+							"keywords" : "undefined",
+							"reward" : 0.04,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l4gxvtut2q17g12h2y0kxi3synf4hc7w.html</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269403029E12,
+							"expiration" : 1.270007829E12,
+							"assignments" : [
+								{
+									"assignmentId" : "12C9RTK93Q0QDOVBD6DOTQ5E3P7W8Q",
+									"workerId" : "AYJPLS8NW394H",
+									"hitId" : "1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269403257E12,
+									"acceptTime" : 1.269403177E12,
+									"submitTime" : 1.269403197E12,
+									"answer" : {
+										"grammar" : "But governments willingly assist with money and resources because there isn\u2019t a market for gluon data.",
+										"meaning" : "But governments willingly fund data collection because there isn\u2019t a market for gluon data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269403267E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1W6ZZCYMZD50TFYA1KZT1WXIAS4P8O",
+									"workerId" : "A2KLRIEEFH9YO7",
+									"hitId" : "1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403275E12,
+									"acceptTime" : 1.269403207E12,
+									"submitTime" : 1.269403215E12,
+									"answer" : {
+										"grammar" : "But governments willingly provide the money and resources to help them gather this data because there isn\u2019t a market for gluon data.",
+										"meaning" : "But governments willingly assist with money and resources because there isn\u2019t a market for gluon data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1CBENV70YW6GA77WJGZYRWB7LPK1TM",
+									"workerId" : "AUEAZY2ZOQCYR",
+									"hitId" : "1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.26940333E12,
+									"acceptTime" : 1.269403207E12,
+									"submitTime" : 1.26940327E12,
+									"answer" : {
+										"meaning" : "But governments willingly assist with money and resources because there isn\u2019t a market for gluon data.",
+										"grammar" : "But governments willingly fund data collection because there isn\u2019t a market for gluon data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1XLBJDYQSON6OEW7518BEMDXVI8ZDP",
+									"workerId" : "A32QBXDPHHSTOD",
+									"hitId" : "1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403347E12,
+									"acceptTime" : 1.269403249E12,
+									"submitTime" : 1.269403287E12,
+									"answer" : {
+										"grammar" : "But governments willingly fund data collection because there isn\u2019t a market for gluon data.",
+										"meaning" : "But governments willingly fund data collection because there isn\u2019t a market for gluon data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1MHWZJ3RSN0FU818V4UDYGU1AYNTEW",
+									"workerId" : "AYY0XHTC7WY8I",
+									"hitId" : "1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269403357E12,
+									"acceptTime" : 1.269403211E12,
+									"submitTime" : 1.269403297E12,
+									"answer" : {
+										"grammar" : "But governments willingly provide the money and resources to help them gather this data because there isn\'t a market for gluon data.",
+										"meaning" : "But governments willingly assist with money and resources because there isn\u2019t a market for gluon data."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.26940337205E12,
+						"printOutput" : "hit completed: 1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J\r\n"
+					},
+					{
+						"creationTime" : 1.269403373115E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403373325E12,
+						"printOutput" : "disabled HIT: 1NAK91VCKFH9YLQNDRGMTOQ5HTJV76\r\n"
+					},
+					{
+						"creationTime" : 1.269403373327E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403373373E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/qg56wfaariz4a9623v2psbaw18jyqx5x.html\r\n"
+					},
+					{
+						"creationTime" : 1.269403373644E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403374177E12,
+						"printOutput" : "disabled HIT: 1WT0HPX8HAJCXCHCAJYM5IGFNE7M1J\r\n"
+					},
+					{
+						"creationTime" : 1.269403374179E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269403374237E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/l4gxvtut2q17g12h2y0kxi3synf4hc7w.html\r\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 2.4,
+	"hitsCreated" : 7
+}
+// end:5787

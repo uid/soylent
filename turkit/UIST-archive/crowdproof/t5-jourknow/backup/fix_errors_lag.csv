@@ -1,0 +1,11 @@
+Stage,Assignment,Wait Type,Time
+Error Identification,1,work,109
+Error Identification,1,wait,1377
+Fixing Error,1,work,28
+Fixing Error,1,wait,234
+Voting on Alternatives,1,work,18
+Voting on Alternatives,1,wait,53
+Voting on Alternatives,2,work,20
+Voting on Alternatives,2,wait,133
+Voting on Alternatives,3,work,111
+Voting on Alternatives,3,wait,100
