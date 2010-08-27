@@ -17,6 +17,7 @@ using Soylent.Model;
 using Soylent.View.Crowdproof;
 using Soylent.View.HumanMacro;
 using Soylent.View.Shortn;
+using System.Windows.Controls.Primitives;
 
 namespace Soylent.View
 {
@@ -97,7 +98,9 @@ namespace Soylent.View
                 AcceptRevisions.Content = "Accept All";
                 AcceptRevisions.Name = "AcceptRevisions";
                 AcceptRevisions.Height = 23;
-                AcceptRevisions.Width = 95;
+                //AcceptRevisions.HorizontalAlignment = HorizontalAlignment.Stretch;
+                //AcceptRevisions.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+                //AcceptRevisions.Width = 95;
                 //AcceptRevisions.IsEnabled = false;
                 AcceptRevisions.Click += new RoutedEventHandler(cpv.AcceptRevisions_Clicked);
 
@@ -105,14 +108,20 @@ namespace Soylent.View
                 RejectRevisions.Content = "Reject All";
                 RejectRevisions.Name = "RejectRevisions";
                 RejectRevisions.Height = 23;
-                RejectRevisions.Width = 95;
+                //RejectRevisions.Width = 95;
+                RejectRevisions.HorizontalAlignment = HorizontalAlignment.Stretch;
                 //RejectRevisions.IsEnabled = false;
                 RejectRevisions.Click += new RoutedEventHandler(cpv.RejectRevisions_Clicked);
 
-                StackPanel buttons = new StackPanel();
-                buttons.Orientation = System.Windows.Controls.Orientation.Horizontal;
+                UniformGrid buttons = new UniformGrid();
+                buttons.Rows = 1;
+                buttons.Columns = 2;
                 buttons.Children.Add(AcceptRevisions);
+                Grid.SetColumn(AcceptRevisions, 0);
+                Grid.SetRow(AcceptRevisions, 0);
                 buttons.Children.Add(RejectRevisions);
+                Grid.SetColumn(RejectRevisions, 1);
+                Grid.SetRow(RejectRevisions, 0);
 
                 StackPanel buttonPanel = new StackPanel();
                 buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);

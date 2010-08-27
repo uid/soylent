@@ -137,7 +137,7 @@ namespace Soylent.Model.Crowdproof
                 if (WordVersion.currentVersion >= WordVersion.OFFICE_2010)
                 {
                     pp.range.Underline = Word.WdUnderline.wdUnderlineWavy;
-                    pp.range.Font.UnderlineColor = Word.WdColor.wdColorAqua;
+                    pp.range.Font.UnderlineColor = Word.WdColor.wdColorLavender;
                 }
             }
         }
@@ -262,13 +262,13 @@ namespace Soylent.Model.Crowdproof
         public static CrowdproofData getCannedData()
         {
             // insert text
-            Globals.Soylent.Application.Selection.Range.InsertAfter("However, while GUI made using computers be more intuitive and easier to learn, it didn't let people be able to control computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer.");
+            Globals.Soylent.Application.Selection.Range.InsertAfter("However, while GUIs made using computers be more intuitive and easier to learn, it didn't let people be able to control computers efficiently.  Masses only can use the software developed by software companies, unless they know how to write programs.  In other words, if one who knows nothing about programming needs to click through 100 buttons to complete her job everyday, the only thing she can do is simply to click through those buttons by hand every time.  But if she happens to be a computer programmer, there is a little chance that she can write a program to automate everything.  Why is there only a little chance?  In fact, each GUI application is a big black box, which usually have no outward interfaces for connecting to other programs.  In other words, this truth builds a great wall between each GUI application so that people have difficulty in using computers efficiently.  People still do much tedious and repetitive work in front of a computer.");
             // select it
             Word.Range canned_range = Globals.Soylent.Application.ActiveDocument.Paragraphs[1].Range;
 
             List<CrowdproofPatch> patches = new List<CrowdproofPatch>();
 
-            string[] onesToFind = {"GUI made using computers be more intuitive and easier to learn", "let people be able to control", "Masses only can"};
+            string[] onesToFind = {"GUIs made using computers be more intuitive and easier to learn", "let people be able to control", "Masses only can"};
             foreach (Word.Range r in canned_range.Sentences)
             {
                 foreach(string oneToFind in onesToFind) {
@@ -282,7 +282,7 @@ namespace Soylent.Model.Crowdproof
 
                         if (oneToFind == onesToFind[0])
                         {
-                            replacements.Add("GUI made using computers more intuitive and easier to learn");
+                            replacements.Add("GUIs made using computers more intuitive and easier to learn");
 
                             explanations.Add("The word \"be\" is incorrectly inserted.");
                             explanations.Add("style issues");
