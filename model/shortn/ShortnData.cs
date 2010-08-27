@@ -428,19 +428,22 @@ namespace Soylent.Model.Shortn
         /// <returns></returns>
         public List<int> possibleLengths()
         {
-            return (from entry in cachedSelections orderby entry.Key ascending select entry.Key).ToList();
+            return possibleLengths(true);
+            //return (from entry in cachedSelections orderby entry.Key ascending select entry.Key).ToList();
         }
 
-        /// <summary>
-        /// Returns a list of possible lengths, given the different permutations of selection choices.  Clears the cache so that
-        /// results reflect lock/unlock changes.
-        /// </summary>
-        /// <returns></returns>
-        public List<int> recalculatePossibleLengths()
+        public List<int> possibleLengths(bool useCache)
         {
-            cachedSelections = new Dictionary<int, List<PatchSelection>>();
-            initializeSelections();
-            return (from entry in cachedSelections orderby entry.Key ascending select entry.Key).ToList();
+            if (useCache == true)
+            {
+                return (from entry in cachedSelections orderby entry.Key ascending select entry.Key).ToList();
+            }
+            else
+            {
+                cachedSelections = new Dictionary<int, List<PatchSelection>>();
+                initializeSelections();
+                return (from entry in cachedSelections orderby entry.Key ascending select entry.Key).ToList();
+            }
         }
 
         private void initializeSelections()

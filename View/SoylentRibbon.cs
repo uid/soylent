@@ -216,7 +216,7 @@ namespace Soylent
         }
         internal static void setLastJob(int i)
         {
-            lastJob = i;
+            lastJob = Math.Max(lastJob, i);
         }
 
         private static int lastJob = 0;

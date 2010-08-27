@@ -25,7 +25,7 @@ namespace Soylent.View.Shortn
         private ShortnData data;
         private double currentPercent;
         private string rootDirectory = null;
-        private string unlockText = "(vary)"; //This is the text for the context menu option that unlocks the selection
+        private string UNLOCK_TEXT = "(vary)"; //This is the text for the context menu option that unlocks the selection
 
         /// <summary>
         /// The dialog window that opens when a user wants to interact with returned Shortn data.
@@ -108,11 +108,11 @@ namespace Soylent.View.Shortn
 
                     // Make the option to unlock the selection
                     MenuItem i = new MenuItem();
-                    i.Header = unlockText;
+                    i.Header = UNLOCK_TEXT;
                     i.Click += new RoutedEventHandler(contextMenuHandler);
                     i.Tag = r;
                     cm.Items.Add(i);
-
+                    
                     foreach (string replacement in selection.patch.replacements)
                     {
                         MenuItem i1 = new MenuItem();
@@ -122,7 +122,8 @@ namespace Soylent.View.Shortn
                         i1.Tag = r;
                         cm.Items.Add(i1);
                     }
-                    cm.Width = 400; // Wasn't sure what to set this to.
+                    cm.MaxWidth = 400;
+                    //cm.Width = 400; // Wasn't sure what to set this to.
                     r.ContextMenu = cm;
                 }
                 else if (!(selection.patch is DummyPatch))
@@ -137,7 +138,7 @@ namespace Soylent.View.Shortn
                     ContextMenu cm = new ContextMenu();
 
                     MenuItem i = new MenuItem();
-                    i.Header = unlockText;
+                    i.Header = UNLOCK_TEXT;
                     i.Click += new RoutedEventHandler(contextMenuHandler);
                     i.Tag = r;
                     cm.Items.Add(i);
@@ -151,7 +152,7 @@ namespace Soylent.View.Shortn
                         i1.Tag = r;
                         cm.Items.Add(i1);
                     }
-                    cm.Width = 400;
+                    //cm.Width = 400; // Not sure
                     r.ContextMenu = cm;
 
                 }
@@ -181,9 +182,9 @@ namespace Soylent.View.Shortn
             Run run = item.Tag as Run;
 
             ShortnPatch patch = runMap[run].patch as ShortnPatch;
-            if ((item.Header as string) != "(vary)")
+            if ((item.Header as string) != UNLOCK_TEXT)
             {
-                int index = 0;
+                /*int index = 0;
                 foreach (Inline inline in after.Inlines)
                 {
                     if (!(inline is Run)) {
@@ -196,19 +197,19 @@ namespace Soylent.View.Shortn
                         break;
                     }
                     index++;
-                }
+                }*/
 
                 patch.lockSelection(item.Header as string);
                 run.Foreground = Brushes.Green;
-                updateParagraphs(currentPercent);
-                resetSliderTicks();        
+                updateParagraphs(currentPercent);   //refresh everything
+                initSliderTicks(false);        
             }
             else
             {
                 patch.unlockSelection();
                 run.Foreground = Brushes.Red;
                 updateParagraphs(currentPercent);
-                resetSliderTicks();
+                initSliderTicks(false);
             }
         }
 
@@ -252,6 +253,7 @@ namespace Soylent.View.Shortn
             after.Inlines.Clear();
             after.Inlines.AddRange(afterRuns);
 
+            // Need to get the directory for the image
             if (rootDirectory == null)
             {
                 rootDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -289,7 +291,7 @@ namespace Soylent.View.Shortn
                 img.Height = 9;
                 img.Width = 9;
 
-                InlineUIContainer iuc = new InlineUIContainer(img, run.ContentEnd);
+                InlineUIContainer iuc = new InlineUIContainer(img, run.ContentEnd); // Can kill Word if that run.TextPointer is not currently displayed
 
                 iuc.ContextMenu = run.ContextMenu;
                 iuc.Cursor = Cursors.Hand;
@@ -297,9 +299,9 @@ namespace Soylent.View.Shortn
             }
         }
 
-        private void resetSliderTicks()
+        private void initSliderTicks(bool useCache)
         {
-            List<int> lengths = data.recalculatePossibleLengths();
+            List<int> lengths = data.possibleLengths(useCache);
             DoubleCollection tickMarks = new DoubleCollection();
 
             foreach (int length in lengths)
@@ -314,16 +316,7 @@ namespace Soylent.View.Shortn
 
         private void initSliderTicks()
         {
-            List<int> lengths = data.possibleLengths();
-            DoubleCollection tickMarks = new DoubleCollection();
-
-            foreach (int length in lengths) {
-                double percent = ((double)length) / data.longestLength;
-                tickMarks.Add(percent * 100);
-            }
-            lengthSlider.Ticks = tickMarks;
-
-            lengthSlider.SelectionStart = tickMarks[0];
+            initSliderTicks(true);
         }
     }
 }
