@@ -77,19 +77,26 @@ namespace Soylent
         void Application_DocumentOpen(Word.Document doc)
         {
             SoylentPanel soylent = soylentMap[doc];
+            List<string> rawHITs = new List<string>();
             
             //One problem: loads jobs in reverse order.  This is easy to fix.  But is either correct?
             foreach (Microsoft.Office.Core.CustomXMLPart xmlPart in Globals.Soylent.Application.ActiveDocument.CustomXMLParts)
             {
                 string xml = xmlPart.XML;
-                Regex typeRegex = new Regex("<job>(.*?)</job>");
+                Regex typeRegex = new Regex("<job>(.*?)</job>"); //To filter out Soylent jobs from the xml parts Word automatically saves
                 Match regexResult = typeRegex.Match(xml);
                 string jobString = regexResult.ToString();
                 if (jobString.Length < 6) { continue; }
+
                 int job = Int32.Parse(jobString.Substring(5, jobString.Length - 11));
 
                 jobToDoc[job] = doc;
+                rawHITs.Add(xml);
+            }
+            rawHITs.Reverse();
 
+            foreach(string xml in rawHITs)
+            {
                 StringReader sr = new StringReader(xml);
                 XmlReader xr = XmlReader.Create(sr);
 
@@ -114,6 +121,8 @@ namespace Soylent
                         }
                     }
                     else{
+                        // This will work if you are restarting it on the same machine, where the
+                        // TurKit javascript file still sits. Otherwise, it will restart the job.
                         ShortnJob s = new ShortnJob(hit, hit.job, true);
                     }
                 }
@@ -177,6 +186,56 @@ namespace Soylent
 
         void Application_DocumentBeforeSave(Word.Document Doc, ref bool SaveAsUI, ref bool Cancel)
         {
+            foreach (object obj in soylentMap[Doc].sidebar.jobs.Children)
+            {
+                if (!(obj is StackPanel)) { continue; }
+                StackPanel elem = obj as StackPanel;
+                foreach (object elem2 in elem.Children)
+                {
+                    HITData raw;
+                    if (elem2 is HITView)
+                    {
+                        raw = (elem2 as HITView).data;
+                    }
+                    else
+                    {
+                        raw = (elem2 as HITViewStub).data;
+                    }
+
+                    if (raw is ShortnData)
+                    {
+                        ShortnData hit = raw as ShortnData;
+
+                        XmlSerializer x = new XmlSerializer(hit.GetType());
+                        StringWriter sw = new StringWriter();
+                        x.Serialize(sw, hit);
+                        string xml = sw.ToString();
+                        Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
+                    }
+                    else if (raw is CrowdproofData)
+                    {
+                        CrowdproofData hit = raw as CrowdproofData;
+
+                        XmlSerializer x = new XmlSerializer(hit.GetType());
+                        StringWriter sw = new StringWriter();
+                        x.Serialize(sw, hit);
+                        string xml = sw.ToString();
+                        Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
+                    }
+                    else if (raw is HumanMacroResult)
+                    {
+                        HumanMacroResult hit = raw as HumanMacroResult;
+
+                        XmlSerializer x = new XmlSerializer(hit.GetType());
+                        StringWriter sw = new StringWriter();
+                        x.Serialize(sw, hit);
+                        string xml = sw.ToString();
+                        Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
+                    }
+
+                }
+            }
+            /*
             for (int i = 1; i <= soylentMap[Doc].jobMap.Keys.Count; i++)
             {
                 HITData raw = soylentMap[Doc].jobMap[i];
@@ -210,7 +269,8 @@ namespace Soylent
                     string xml = sw.ToString();
                     Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
                 }
-            }
+             
+            }*/
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
