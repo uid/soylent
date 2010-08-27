@@ -98,7 +98,7 @@ namespace Soylent.View
                 AcceptRevisions.Name = "AcceptRevisions";
                 AcceptRevisions.Height = 23;
                 AcceptRevisions.Width = 95;
-                //AcceptRevisions.IsEnabled = false;
+                AcceptRevisions.IsEnabled = false;
                 AcceptRevisions.Click += new RoutedEventHandler(cpv.AcceptRevisions_Clicked);
 
                 RejectRevisions = new Button();
@@ -106,7 +106,7 @@ namespace Soylent.View
                 RejectRevisions.Name = "RejectRevisions";
                 RejectRevisions.Height = 23;
                 RejectRevisions.Width = 95;
-                //RejectRevisions.IsEnabled = false;
+                RejectRevisions.IsEnabled = false;
                 RejectRevisions.Click += new RoutedEventHandler(cpv.RejectRevisions_Clicked);
 
                 StackPanel buttons = new StackPanel();
@@ -146,7 +146,7 @@ namespace Soylent.View
                 AcceptRevisions.Name = "AcceptRevisions";
                 AcceptRevisions.Height = 23;
                 AcceptRevisions.Width = 95;
-                //AcceptRevisions.IsEnabled = false;
+                AcceptRevisions.IsEnabled = false;
                 AcceptRevisions.Click += new RoutedEventHandler(hpv.AcceptRevisions_Clicked);
 
                 RejectRevisions = new Button();
@@ -154,7 +154,7 @@ namespace Soylent.View
                 RejectRevisions.Name = "RejectRevisions";
                 RejectRevisions.Height = 23;
                 RejectRevisions.Width = 95;
-                //RejectRevisions.IsEnabled = false;
+                RejectRevisions.IsEnabled = false;
                 RejectRevisions.Click += new RoutedEventHandler(hpv.RejectRevisions_Clicked);
 
                 StackPanel buttons = new StackPanel();
