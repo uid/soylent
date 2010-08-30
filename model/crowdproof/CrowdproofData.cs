@@ -86,19 +86,30 @@ namespace Soylent.Model.Crowdproof
 
             stage.updateStage(status);
             (view as CrowdproofView).updateView();
+            cost = (view as CrowdproofView).cost;
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
         }
 
         public void stageCompleted(TurKitSocKit.TurKitStageComplete donezo)
         {
-            //ResultType type = typeMap[donezo.stage];
-            //StageData stage = stages[type];
-            StageData stage = null;//stages[type];
+            stageCompletes.Add(donezo);
+
+            StageData stage = null;
             if (donezo.stage == "find") { stage = findStageData; }
             else if (donezo.stage == "fix") { stage = fixStageData; }
             else if (donezo.stage == "verify") { stage = verifyStageData; }
 
             stage.terminatePatch(donezo.paragraph, donezo.patchNumber);
+        }
+        public void terminateStage(TurKitSocKit.TurKitStageComplete donezo)
+        {
+            StageData stage = null;
+            if (donezo.stage == "find") { stage = findStageData; }
+            else if (donezo.stage == "fix") { stage = fixStageData; }
+            else if (donezo.stage == "verify") { stage = verifyStageData; }
+
+            stage.terminateStage(donezo);
+            (view as CrowdproofView).updateView();
         }
 
         public void AnnotateResult()
@@ -107,7 +118,7 @@ namespace Soylent.Model.Crowdproof
             Word.Range text = range;
             foreach (CrowdproofPatch pp in patches)
             {
-                string tag = HumanMacroResult.NAMESPACE + "#soylent" + DateTime.Now.Ticks;
+                string tag = HumanMacroData.NAMESPACE + "#soylent" + DateTime.Now.Ticks;
                 SmartTag resultTag = new SmartTag(tag, pp.reasons[0]);
                 Regex pattern = new Regex(pp.range.Text.Trim().Replace(" ", "\\s"), RegexOptions.IgnorePatternWhitespace);
                 resultTag.Expressions.Add(pattern);
@@ -116,7 +127,7 @@ namespace Soylent.Model.Crowdproof
                 foreach (string result in pp.replacements)
                 {
                     VSTO.Action action = new VSTO.Action(result);
-                    action.Click += new ActionClickEventHandler(HumanMacroResult.replaceText);
+                    action.Click += new ActionClickEventHandler(HumanMacroData.replaceText);
                     actions.Add(action);
                 }
 
@@ -126,7 +137,7 @@ namespace Soylent.Model.Crowdproof
                     foreach (string reason in pp.reasons)
                     {
                         VSTO.Action action = new VSTO.Action("Error Descriptions///" + reason);
-                        action.Click += new ActionClickEventHandler(HumanMacroResult.replaceText);
+                        action.Click += new ActionClickEventHandler(HumanMacroData.replaceText);
                         actions.Add(action);
                     }
                 }

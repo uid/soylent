@@ -25,10 +25,11 @@ namespace Soylent.Model
         public bool jobDone = false;
         // A list of TurKit messages used to recreate the results when the document is reloaded.
         public List<TurKitSocKit.TurKitFindFixVerify> findFixVerifies = new List<TurKitSocKit.TurKitFindFixVerify>();
+        public List<TurKitSocKit.TurKitStageComplete> stageCompletes = new List<TurKitSocKit.TurKitStageComplete>();
         [XmlIgnore] public TurKit tk;
         [XmlIgnore] public HITView view;
         [XmlIgnore] public Word.Range range;
-
+        public double cost;
         public string originalText
         {
             get

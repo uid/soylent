@@ -132,5 +132,68 @@ namespace Soylent.Model
                 listener.notify();
             }
         }
+
+        /// <summary>
+        /// This function should only be used to reprocess a StageComplete message after loading a saved document
+        /// </summary>
+        /// <param name="message"></param>
+        public void terminateStage(TurKitSocKit.TurKitStageComplete message)
+        {
+            //totalRequested[message.paragraph] = new List<int>();
+            while (totalRequested.Count < message.paragraph + 1)
+            {
+                totalRequested.Add(new List<int>());
+            }
+            while (totalRequested[message.paragraph].Count < message.patchNumber + 1)
+            {
+                totalRequested[message.paragraph].Add(0);
+            }
+            totalRequested[message.paragraph][message.patchNumber] = message.totalRequested;
+
+            /*
+            done[message.paragraph] = new List<bool>();
+            done[message.paragraph].Add(true);
+            */
+
+            while (numCompletedperParagraph.Count < message.paragraph + 1)
+            {
+                numCompletedperParagraph.Add(new List<int>());
+            }
+            while (numCompletedperParagraph[message.paragraph].Count < message.patchNumber + 1)
+            {
+                numCompletedperParagraph[message.paragraph].Add(0);
+            }
+            numCompletedperParagraph[message.paragraph][message.patchNumber] = message.totalRequested;
+
+            moneySpent = message.payment * numCompleted;
+
+            if (listener != null)
+            {
+                listener.notify();
+            }
+        }
+
+        /// <summary>
+        /// When a job has finished, absolutely set the correct numbers for the view.  Used on loading saved Human Macro hits.
+        /// </summary>
+        /// <param name="totalWorkers"></param>
+        /// <param name="totalCost"></param>
+        public void setFinishedData(int totalWorkers, double totalCost)
+        {
+            moneySpent = totalCost;
+
+            totalRequested = new List<List<int>>();
+            totalRequested.Add(new List<int>());
+            totalRequested[0].Add(totalWorkers);
+
+            numCompletedperParagraph = new List<List<int>>();
+            numCompletedperParagraph.Add(new List<int>());
+            numCompletedperParagraph[0].Add(totalWorkers);
+
+            if (listener != null)
+            {
+                listener.notify();
+            }
+        }
     }
 }

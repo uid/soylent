@@ -16,7 +16,7 @@ using System.Xml.Serialization;
 
 namespace Soylent.Model.HumanMacro
 {
-    public class HumanMacroResult: HITData
+    public class HumanMacroData: HITData
     {
         public enum ReturnType {Comment, SmartTag};
 
@@ -45,8 +45,8 @@ namespace Soylent.Model.HumanMacro
 
         [XmlIgnore] public StageData macroStageData;
 
-        //public HumanMacroResult(Word.Range text, List<String> results)
-        public HumanMacroResult(Word.Range toShorten, int job, Separator separator, double reward, int redundancy, string title, string subtitle, string instructions, ReturnType type, TestOrReal test) : base(toShorten, job)
+        //public HumanMacroData(Word.Range text, List<String> results)
+        public HumanMacroData(Word.Range toShorten, int job, Separator separator, double reward, int redundancy, string title, string subtitle, string instructions, ReturnType type, TestOrReal test) : base(toShorten, job)
         {
             this.text = toShorten;
             this.separator = separator;
@@ -67,7 +67,7 @@ namespace Soylent.Model.HumanMacro
             //stages[HITData.ResultType.Macro] = new HumanMacroStage(HITData.ResultType.Macro, redundancy);
         }
 
-        public HumanMacroResult() : base()
+        public HumanMacroData() : base()
         {
             //patches = new List<HumanMacroPatch>();
             macroStageData = new StageData(HITData.ResultType.Macro, job);
@@ -80,7 +80,20 @@ namespace Soylent.Model.HumanMacro
             stage.numParagraphs = patches.Count;
             stage.updateStage(status);
             (view as HumanMacroView).updateView();
+            cost = (view as HumanMacroView).cost;
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
+        }
+
+        /// <summary>
+        /// When this is loaded from a saved file and is finished, set the stage data accordingly.
+        /// </summary>
+        public void finishStageData()
+        {
+            int totalCompleted = numParagraphs * redundancy;
+            double totalCost = totalCompleted * reward;
+
+            this.macroStageData.setFinishedData(totalCompleted, totalCost);
+            (view as HumanMacroView).updateView();
         }
 
         public void prepareRanges()

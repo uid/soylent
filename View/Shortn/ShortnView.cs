@@ -21,6 +21,7 @@ namespace Soylent.View.Shortn
     public class ShortnView : HITView
     {
         Button ShortnButton;
+        public double cost;
         /// <summary>
         /// HITView subclass specific to Shortn tasks.  This adds the Shortn button and additional necessary functionality.
         /// </summary>
@@ -124,7 +125,7 @@ namespace Soylent.View.Shortn
 
             double total = (find / 3.0) + (fix / 3.0) + (verify / 3.0);
 
-            double cost = stageList[Model.HITData.ResultType.Find].stagedata.moneySpent + stageList[Model.HITData.ResultType.Fix].stagedata.moneySpent + stageList[Model.HITData.ResultType.Verify].stagedata.moneySpent;
+            cost = stageList[Model.HITData.ResultType.Find].stagedata.moneySpent + stageList[Model.HITData.ResultType.Fix].stagedata.moneySpent + stageList[Model.HITData.ResultType.Verify].stagedata.moneySpent;
 
             HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
             Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[job]].Invoke(del, total, cost);

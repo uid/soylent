@@ -23,6 +23,7 @@ using Soylent.Model.Shortn;
 using Soylent.Model.Crowdproof;
 using Soylent.Model.HumanMacro;
 using Soylent.View;
+using Soylent.View.Crowdproof;
 
 using System.Text.RegularExpressions;
 
@@ -116,15 +117,22 @@ namespace Soylent
                     if (hit.jobDone){
                         ShortnJob s = new ShortnJob(hit, hit.job, false);
                         //Use saved TurKit messages to recreate the results.
+                        foreach (TurKitSocKit.TurKitStageComplete message in hit.stageCompletes)
+                        {
+                            hit.terminateStage(message);
+                        }
                         foreach (TurKitSocKit.TurKitFindFixVerify message in hit.findFixVerifies){
                             hit.postProcessSocKitMessage(message);
                         }
+                        
                     }
                     else{
                         // This will work if you are restarting it on the same machine, where the
                         // TurKit javascript file still sits. Otherwise, it will restart the job.
                         ShortnJob s = new ShortnJob(hit, hit.job, true);
                     }
+
+
                 }
 
                 else if (new Regex("</CrowdproofData>").Match(xml).Length > 0)
@@ -143,6 +151,10 @@ namespace Soylent
                     {
                         CrowdproofJob s = new CrowdproofJob(hit, hit.job, false);
                         //Use saved TurKit messages to recreate the results.
+                        foreach (TurKitSocKit.TurKitStageComplete message in hit.stageCompletes)
+                        {
+                            hit.terminateStage(message);
+                        }
                         foreach (TurKitSocKit.TurKitFindFixVerify message in hit.findFixVerifies)
                         {
                             hit.postProcessSocKitMessage(message);
@@ -154,12 +166,12 @@ namespace Soylent
                     }
                 }
 
-                else if (new Regex("</HumanMacroResult>").Match(xml).Length > 0)
+                else if (new Regex("</HumanMacroData>").Match(xml).Length > 0)
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(HumanMacroResult));
+                    XmlSerializer serializer = new XmlSerializer(typeof(HumanMacroData));
                     object raw = serializer.Deserialize(xr);
 
-                    HumanMacroResult hit = raw as HumanMacroResult;
+                    HumanMacroData hit = raw as HumanMacroData;
 
                     Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + hit.job];
                     hit.range = a.Range;
@@ -174,6 +186,7 @@ namespace Soylent
                         {
                             hit.postProcessSocKitMessage(message);
                         }
+                        hit.finishStageData();
                     }
                     else
                     {
@@ -229,9 +242,9 @@ namespace Soylent
                         string xml = sw.ToString();
                         Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
                     }
-                    else if (raw is HumanMacroResult)
+                    else if (raw is HumanMacroData)
                     {
-                        HumanMacroResult hit = raw as HumanMacroResult;
+                        HumanMacroData hit = raw as HumanMacroData;
 
                         XmlSerializer x = new XmlSerializer(hit.GetType());
                         StringWriter sw = new StringWriter();
@@ -266,9 +279,9 @@ namespace Soylent
                     string xml = sw.ToString();
                     Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
                 }
-                else if (raw is HumanMacroResult)
+                else if (raw is HumanMacroData)
                 {
-                    HumanMacroResult hit = raw as HumanMacroResult;
+                    HumanMacroData hit = raw as HumanMacroData;
 
                     XmlSerializer x = new XmlSerializer(hit.GetType());
                     StringWriter sw = new StringWriter();
