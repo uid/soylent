@@ -21,19 +21,20 @@ namespace Soylent.View.HumanMacro
 {
     class HumanMacroView : HITView
     {
-        new HumanMacroResult data;
+        new HumanMacroData data;
         static string turkerName = "Turker";
         private string jobTurkerName;
         Button HumanMacroButton;
         Button AcceptRevisions;
         Button RejectRevisions;
         StackPanel buttons;
+        public double cost;
         /// <summary>
         /// HITView subclass specific to Shortn tasks.  This adds the Shortn button and additional necessary functionality.
         /// </summary>
         /// <param name="workType"></param>
         /// <param name="data"></param>
-        public HumanMacroView(string workType, HumanMacroResult data, int job) : base(workType, data, job)
+        public HumanMacroView(string workType, HumanMacroData data, int job) : base(workType, data, job)
         {
             //Globals.Soylent.soylent.Controls.Add(new System.Windows.Forms.Button());
             HumanMacroButton = new Button();
@@ -185,7 +186,7 @@ namespace Soylent.View.HumanMacro
         public void insertTrackChanges()
         {
             data.prepareRanges();
-            HumanMacroResult.ReturnType type = data.type;
+            HumanMacroData.ReturnType type = data.type;
             Globals.Soylent.Application.ActiveDocument.TrackRevisions = true;
             Globals.Soylent.Application.ActiveDocument.ShowRevisions = true;
 
@@ -207,7 +208,7 @@ namespace Soylent.View.HumanMacro
                 {
                     if (patch.replacements.IndexOf(suggestion) == 0)
                     {
-                        if (type == HumanMacroResult.ReturnType.Comment)
+                        if (type == HumanMacroData.ReturnType.Comment)
                         {
                             comment += suggestion;
                             if (patch.replacements.Count > 1)
@@ -236,7 +237,7 @@ namespace Soylent.View.HumanMacro
                     c.Author = jobTurkerName;
                 }
 
-                if (type == HumanMacroResult.ReturnType.SmartTag)
+                if (type == HumanMacroData.ReturnType.SmartTag)
                 {
                     Globals.Soylent.Application.UserName = jobTurkerName;
                     if (patch.replacements.Count > 0)
@@ -274,7 +275,7 @@ namespace Soylent.View.HumanMacro
         {
             double total = stageList[Model.HITData.ResultType.Macro].percentDone;
 
-            double cost = stageList[Model.HITData.ResultType.Macro].stagedata.moneySpent;
+            cost = stageList[Model.HITData.ResultType.Macro].stagedata.moneySpent;
 
             HITViewStub.updateViewDelegate del = new HITViewStub.updateViewDelegate(stub.updateView);
             Globals.Soylent.soylentMap[Globals.Soylent.jobToDoc[job]].Invoke(del, total, cost);

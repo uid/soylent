@@ -231,19 +231,19 @@ namespace Soylent
                 turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
                 
             }
-            else if (hdata is HumanMacroResult)
+            else if (hdata is HumanMacroData)
             {
-                HumanMacroResult data = hdata as HumanMacroResult;
+                HumanMacroData data = hdata as HumanMacroData;
                  
 
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string inputs;
 
-                if (data.separator == HumanMacroResult.Separator.Paragraph)
+                if (data.separator == HumanMacroData.Separator.Paragraph)
                 {
                     string[] pgraphs;
 
-                    if (data.test == HumanMacroResult.TestOrReal.Test)
+                    if (data.test == HumanMacroData.TestOrReal.Test)
                     {
                         pgraphs = new string[1];
                     }
@@ -265,7 +265,7 @@ namespace Soylent
                         HumanMacroPatch patch = new HumanMacroPatch(paragraph.Range, paragraph.Range.Start - data.range.Start, paragraph.Range.End - data.range.Start);
                         patch.original = paragraph.Range.Text;
                         data.patches.Add(patch);
-                        if (data.test == HumanMacroResult.TestOrReal.Test)
+                        if (data.test == HumanMacroData.TestOrReal.Test)
                         {
                             break;
                         }
@@ -276,7 +276,7 @@ namespace Soylent
                 {
                     string[] pgraphs;
 
-                    if (data.test == HumanMacroResult.TestOrReal.Test)
+                    if (data.test == HumanMacroData.TestOrReal.Test)
                     {
                         pgraphs = new string[1];
                     }
@@ -297,7 +297,7 @@ namespace Soylent
                         patch.original = range.Text;
                         data.patches.Add(patch);
 
-                        if (data.test == HumanMacroResult.TestOrReal.Test)
+                        if (data.test == HumanMacroData.TestOrReal.Test)
                         {
                             break;
                         }

@@ -75,7 +75,7 @@ namespace Soylent
 
             //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
             int jobNumber = generateJobNumber();
-            //HumanMacroResult newHIT = new HumanMacroResult(Globals.Soylent.Application.Selection.Range, jobNumber, HumanMacroResult.Separator.Sentence);
+            //HumanMacroData newHIT = new HumanMacroData(Globals.Soylent.Application.Selection.Range, jobNumber, HumanMacroData.Separator.Sentence);
             //allHITs[newHIT.job] = newHIT;
 
             // Create the WPF UserControl.
@@ -108,8 +108,8 @@ namespace Soylent
                                     "Dugan, C., Muller, M., Millen, D.R., et al. 2007. The Dogear Game: A Social Bookmark Recommender System. In Proc. GROUP '07, 387-390.",
                                     "DUGAN, C., MULLER, M., MILLEN, D.R., ET AL. 2007. The dogear game: a social book-mark recommender system. In Proc. of GROUP '07, ACM Press, 387–390."
                                    };
-            //HumanMacroResult result = new HumanMacroResult(canned_range, results);
-            //result.AnnotateResult(HumanMacroResult.ResultType.SmartTag);
+            //HumanMacroData result = new HumanMacroData(canned_range, results);
+            //result.AnnotateResult(HumanMacroData.ResultType.SmartTag);
         }
 
         private void humanMacroComment_Click(object sender, RibbonControlEventArgs e)
@@ -124,8 +124,8 @@ namespace Soylent
                                     "I hear he's a big fan of Terminator 1."
                                    };
 
-            //HumanMacroResult result = new HumanMacroResult(canned_range, results);
-            //result.AnnotateResult(HumanMacroResult.ResultType.Comment);
+            //HumanMacroData result = new HumanMacroData(canned_range, results);
+            //result.AnnotateResult(HumanMacroData.ResultType.Comment);
         }
 
         private void button1_Click(object sender, RibbonControlEventArgs e)
@@ -315,7 +315,7 @@ namespace Soylent
             //tks.list.Add(2);
             //tks.list.Add(3);
 
-            HumanMacroResult tks = new HumanMacroResult();
+            HumanMacroData tks = new HumanMacroData();
             
 
             XmlSerializer x = new XmlSerializer(tks.GetType());

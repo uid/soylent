@@ -152,7 +152,7 @@ namespace Soylent
                         if (jobType == "human-macro")
                         {
                             Debug.WriteLine("Status update for human-macro");
-                            HumanMacroResult humanMacro = concernedHIT as HumanMacroResult;
+                            HumanMacroData humanMacro = concernedHIT as HumanMacroData;
                             humanMacro.updateStatus(receivedObject);
                         }
                     }
@@ -183,8 +183,8 @@ namespace Soylent
                             TurKitHumanMacroResult receivedObject = serializer.Deserialize<TurKitHumanMacroResult>(incomingString);
                             Debug.WriteLine("\nHUMAN MACRO COMPLEEETE******");
                             Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
-                            HumanMacroResult humanMacro = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as HumanMacroResult;
-                            //HumanMacroResult humanMacro = fixthis;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as HumanMacroResult;
+                            HumanMacroData humanMacro = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as HumanMacroData;
+                            //HumanMacroData humanMacro = fixthis;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as HumanMacroData;
                             humanMacro.processSocKitMessage(receivedObject);
                         }
                         else if (jobType == "shortn")

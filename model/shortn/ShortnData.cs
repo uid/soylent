@@ -121,6 +121,7 @@ namespace Soylent.Model.Shortn
               
             stage.updateStage(status);
             (view as ShortnView).updateView();
+            cost = (view as ShortnView).cost;
             //System.Diagnostics.Debug.WriteLine("GOT A ************");
             
         }
@@ -130,20 +131,25 @@ namespace Soylent.Model.Shortn
         /// </summary>
         /// <param name="donezo"></param>
         public void stageCompleted(TurKitSocKit.TurKitStageComplete donezo){
-            //ResultType type = ResultType.Find;// = typeMap[donezo.stage];
+            stageCompletes.Add(donezo);
 
-            /*
-            if (donezo.stage == "find") { type = ResultType.Find; }
-            else if (donezo.stage == "fix") { type = ResultType.Fix; }
-            else if (donezo.stage == "verify") { type = ResultType.Verify; }
-            StageData stage = stages[type];
-             */
-            StageData stage = null;//stages[type];
+            StageData stage = null;
             if (donezo.stage == "find") { stage = findStageData; }
             else if (donezo.stage == "fix") { stage = fixStageData; }
             else if (donezo.stage == "verify") { stage = verifyStageData; }
 
             stage.terminatePatch(donezo.paragraph, donezo.patchNumber);
+        }
+
+        public void terminateStage(TurKitSocKit.TurKitStageComplete donezo)
+        {
+            StageData stage = null;
+            if (donezo.stage == "find") { stage = findStageData; }
+            else if (donezo.stage == "fix") { stage = fixStageData; }
+            else if (donezo.stage == "verify") { stage = verifyStageData; }
+
+            stage.terminateStage(donezo);
+            (view as ShortnView).updateView();
         }
 
         public void postProcessSocKitMessage(TurKitSocKit.TurKitFindFixVerify message)
@@ -232,75 +238,6 @@ namespace Soylent.Model.Shortn
         {
             findFixVerifies.Add(message);
             postProcessSocKitMessage(message);
-            /*
-            Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
-            int nextStart = 0; //Is always the location where the next patch (dummy or otherwise) should start.
-            int nextEnd; //Is where the last patch ended.  Kinda poorly named. Tells us if we need to add a dummy patch after the last real patch
-
-            //this.tk.turkitLoopTimer.Dispose();
-
-            Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[this.job];
-
-            foreach (TurKitSocKit.TurKitFindFixVerifyPatch tkspatch in message.patches)
-            {
-                
-
-                //For text in between patches, we create dummy patches.
-                if (tkspatch.editStart > nextStart)
-                {
-                    nextEnd = tkspatch.editStart; 
-                    //Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
-                    Word.Range dummyRange = doc.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
-                    
-                    DummyPatch dummyPatch = new DummyPatch(dummyRange);
-
-                    patches.Add(dummyPatch);
-                }
-
-                int start = curParagraphRange.Start + tkspatch.editStart;
-                int end = curParagraphRange.Start + tkspatch.editEnd;
-                //Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end); //New range for this patch, yay!
-                Word.Range patchRange = doc.Range(start, end);
-
-                List<string> alternatives = new List<string>();
-                foreach (TurKitSocKit.TurKitFindFixVerifyOption option in (from option in tkspatch.options where option.editsText select option)) {
-                    alternatives.AddRange(from alternative in option.alternatives select alternative.editedText);
-                }
-
-                Patch thisPatch = new Patch(patchRange, alternatives);
-                // add the original as an option
-                thisPatch.replacements.Add(tkspatch.originalText);
-
-                patches.Add(thisPatch);
-                nextStart = tkspatch.end;
-            }
-            //If the last patch we found isn't the end of the paragraph, create a DummyPatch
-            if (nextStart < (curParagraphRange.Text.Length - 1)){
-                nextEnd = curParagraphRange.Text.Length;
-                //Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
-                Word.Range dummyRange = doc.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
-                
-                DummyPatch dummyPatch = new DummyPatch(dummyRange);
-
-                patches.Add(dummyPatch);
-            }
-            paragraphsCompleted++;
-
-            if (paragraphsCompleted == numParagraphs) //If we have done all paragraphs, make them available to the user!
-            {
-                //TODO: use a delegate.
-                this.tk.turkitLoopTimer.Dispose();
-
-                this.jobDone = true;
-
-                foreach (Patch patch in patches)
-                {
-                    Debug.WriteLine(patch.range.Start + " - " + patch.range.End + " : " + patch.range.Text + " || "+ (patch is DummyPatch));               
-                }
-
-                returnShortnResults();
-            }
-            */
         }
 
         private void returnShortnResults()

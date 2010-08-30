@@ -58,7 +58,7 @@ namespace Soylent.View
             }
             else if (name == HumanMacroJob.HIT_TYPE)
             {
-                HumanMacroResult hdata = data as HumanMacroResult;
+                HumanMacroData hdata = data as HumanMacroData;
                 hs = new HumanMacroView(name, hdata, jobNumber);
             }
             else
@@ -91,7 +91,7 @@ namespace Soylent.View
             }
             else if (name == HumanMacroJob.HIT_TYPE)
             {
-                HumanMacroResult hdata = data as HumanMacroResult;
+                HumanMacroData hdata = data as HumanMacroData;
                 hs = new HumanMacroView(name, hdata, jobNumber);
             }
             else
@@ -132,7 +132,7 @@ namespace Soylent.View
             }
             else if (name == HumanMacroJob.HIT_TYPE)
             {
-                HumanMacroResult hdata = data as HumanMacroResult;
+                HumanMacroData hdata = data as HumanMacroData;
                 hs = new HumanMacroView(name, hdata);
             }
             else

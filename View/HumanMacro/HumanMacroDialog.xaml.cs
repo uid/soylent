@@ -240,9 +240,9 @@ namespace Soylent.View.HumanMacro
 
         public void RunMacro_Click(object sender, RoutedEventArgs e)
         {
-            HumanMacroResult.Separator separator = HumanMacroResult.Separator.Sentence;
-            if (separatorBox.SelectedItem == item2) { separator = HumanMacroResult.Separator.Sentence; }
-            else if (separatorBox.SelectedItem == item1) { separator = HumanMacroResult.Separator.Paragraph; }
+            HumanMacroData.Separator separator = HumanMacroData.Separator.Sentence;
+            if (separatorBox.SelectedItem == item2) { separator = HumanMacroData.Separator.Sentence; }
+            else if (separatorBox.SelectedItem == item1) { separator = HumanMacroData.Separator.Paragraph; }
 
             double reward; int redundancy; string localtitle; string localsubtitle; string localinstructions;
 
@@ -265,19 +265,19 @@ namespace Soylent.View.HumanMacro
                 localinstructions = instructions;
             //}
                 
-            HumanMacroResult.ReturnType type = HumanMacroResult.ReturnType.Comment;
-            if (returnTypeBox.SelectedItem == returnAsComments) { type = HumanMacroResult.ReturnType.Comment; }
-            else if (returnTypeBox.SelectedItem == returnAsInline) { type = HumanMacroResult.ReturnType.SmartTag; }
+            HumanMacroData.ReturnType type = HumanMacroData.ReturnType.Comment;
+            if (returnTypeBox.SelectedItem == returnAsComments) { type = HumanMacroData.ReturnType.Comment; }
+            else if (returnTypeBox.SelectedItem == returnAsInline) { type = HumanMacroData.ReturnType.SmartTag; }
 
 
             //Debug.WriteLine("########################");
             //Debug.WriteLine("Reward: " + reward + " || Redundancy: "+redundancy+" || Title: "+localtitle+" || Subtitle: "+localsubtitle+" || Instructions: "+localinstructions);
             //Debug.WriteLine(separatorBox.SelectedValue.ToString() + " 1 " + (item2 == separatorBox.SelectedValue) + " 2 " + (item2 == separatorBox.SelectionBoxItem) + " 3 " + (item2 == separatorBox.SelectedItem) + " 4 " + (item2.Content == separatorBox.SelectedValuePath));
 
-            //HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Real);
+            //HumanMacroData data = new HumanMacroData(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroData.TestOrReal.Real);
 
             //HumanMacroJob job = new HumanMacroJob(data, jobNumber);
-            HumanMacroJob job = new HumanMacroJob(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Real);
+            HumanMacroJob job = new HumanMacroJob(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroData.TestOrReal.Real);
 
             HwndSource source = (HwndSource)PresentationSource.FromVisual(sender as Button);
             System.Windows.Forms.Control ctl = System.Windows.Forms.Control.FromChildHandle(source.Handle);
@@ -286,9 +286,9 @@ namespace Soylent.View.HumanMacro
 
         private void TestMacro_Click(object sender, RoutedEventArgs e)
         {
-            HumanMacroResult.Separator separator = HumanMacroResult.Separator.Sentence;
-            if (separatorBox.SelectedItem == item2) { separator = HumanMacroResult.Separator.Sentence; }
-            else if (separatorBox.SelectedItem == item1) { separator = HumanMacroResult.Separator.Paragraph; }
+            HumanMacroData.Separator separator = HumanMacroData.Separator.Sentence;
+            if (separatorBox.SelectedItem == item2) { separator = HumanMacroData.Separator.Sentence; }
+            else if (separatorBox.SelectedItem == item1) { separator = HumanMacroData.Separator.Paragraph; }
 
             double reward; int redundancy; string localtitle; string localsubtitle; string localinstructions;
 
@@ -311,18 +311,18 @@ namespace Soylent.View.HumanMacro
             localinstructions = instructions;
             //}
 
-            HumanMacroResult.ReturnType type = HumanMacroResult.ReturnType.Comment;
-            if (returnTypeBox.SelectedItem == returnAsComments) { type = HumanMacroResult.ReturnType.Comment; }
-            else if (returnTypeBox.SelectedItem == returnAsInline) { type = HumanMacroResult.ReturnType.SmartTag; }
+            HumanMacroData.ReturnType type = HumanMacroData.ReturnType.Comment;
+            if (returnTypeBox.SelectedItem == returnAsComments) { type = HumanMacroData.ReturnType.Comment; }
+            else if (returnTypeBox.SelectedItem == returnAsInline) { type = HumanMacroData.ReturnType.SmartTag; }
 
 
             //Debug.WriteLine("########################");
             //Debug.WriteLine("Reward: " + reward + " || Redundancy: "+redundancy+" || Title: "+localtitle+" || Subtitle: "+localsubtitle+" || Instructions: "+localinstructions);
             //Debug.WriteLine(separatorBox.SelectedValue.ToString() + " 1 " + (item2 == separatorBox.SelectedValue) + " 2 " + (item2 == separatorBox.SelectionBoxItem) + " 3 " + (item2 == separatorBox.SelectedItem) + " 4 " + (item2.Content == separatorBox.SelectedValuePath));
 
-            //HumanMacroResult data = new HumanMacroResult(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Test);
+            //HumanMacroData data = new HumanMacroData(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroData.TestOrReal.Test);
 
-            HumanMacroJob job = new HumanMacroJob(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroResult.TestOrReal.Test);
+            HumanMacroJob job = new HumanMacroJob(text, jobNumber, separator, reward, redundancy, localtitle, localsubtitle, localinstructions, type, HumanMacroData.TestOrReal.Test);
 
             HwndSource source = (HwndSource)PresentationSource.FromVisual(sender as Button);
             System.Windows.Forms.Control ctl = System.Windows.Forms.Control.FromChildHandle(source.Handle);
