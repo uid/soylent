@@ -77,6 +77,8 @@ function findFixVerify(options) {
         options.socket.connect();
     }
 	
+	print("number of paragraphs: " + options.paragraphs.length);
+	
 	for (var paragraph_index = 0; paragraph_index < options.paragraphs.length; paragraph_index++) {
 		attempt(function() {
 			print('\n\n\n');		

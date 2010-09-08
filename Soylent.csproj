@@ -221,6 +221,7 @@
   -->
   <ItemGroup>
     <Compile Include="Model\Crowdproof\CrowdproofJob.cs" />
+    <Compile Include="Model\HumanMacro\HumanMacroData.cs" />
     <Compile Include="Model\HumanMacro\HumanMacroPatch.cs" />
     <Compile Include="Model\HumanMacro\HumanMacroStage.cs" />
     <Compile Include="Model\HumanMacro\HumanMacroJob.cs" />
@@ -241,7 +242,6 @@
     <Compile Include="View\HumanMacro\HumanMacroDialog.xaml.cs">
       <DependentUpon>HumanMacroDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\HumanMacro\HumanMacroResult.cs" />
     <Compile Include="Model\Patch.cs" />
     <Compile Include="Model\Crowdproof\CrowdproofData.cs" />
     <Compile Include="Model\Crowdproof\CrowdproofPatch.cs" />

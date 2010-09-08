@@ -158,8 +158,6 @@ namespace Soylent.Model.Shortn
             int nextStart = 0; //Is always the location where the next patch (dummy or otherwise) should start.
             int nextEnd; //Is where the last patch ended.  Kinda poorly named. Tells us if we need to add a dummy patch after the last real patch
 
-            //this.tk.turkitLoopTimer.Dispose();
-
             Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[this.job];
 
             foreach (TurKitSocKit.TurKitFindFixVerifyPatch tkspatch in message.patches)
@@ -170,8 +168,9 @@ namespace Soylent.Model.Shortn
                 if (tkspatch.editStart > nextStart)
                 {
                     nextEnd = tkspatch.editStart;
-                    //Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
-                    Word.Range dummyRange = doc.Range(curParagraphRange.Start + nextStart, curParagraphRange.Start + nextEnd);
+                    int dummyStart = curParagraphRange.Start + nextStart;
+                    int dummyEnd = curParagraphRange.Start + nextEnd;
+                    Word.Range dummyRange = doc.Range(dummyStart, dummyEnd);
 
                     DummyPatch dummyPatch = new DummyPatch(dummyRange);
 
@@ -180,7 +179,6 @@ namespace Soylent.Model.Shortn
 
                 int start = curParagraphRange.Start + tkspatch.editStart;
                 int end = curParagraphRange.Start + tkspatch.editEnd;
-                //Word.Range patchRange = Globals.Soylent.Application.ActiveDocument.Range(start,end); //New range for this patch, yay!
                 Word.Range patchRange = doc.Range(start, end);
 
                 List<string> alternatives = new List<string>();
@@ -194,13 +192,14 @@ namespace Soylent.Model.Shortn
                 thisPatch.replacements.Add(tkspatch.originalText);
 
                 patches.Add(thisPatch);
-                nextStart = tkspatch.end;
+                nextStart = tkspatch.editEnd;
             }
+
+
             //If the last patch we found isn't the end of the paragraph, create a DummyPatch
             if (nextStart < (curParagraphRange.Text.Length - 1))
             {
                 nextEnd = curParagraphRange.Text.Length;
-                //Word.Range dummyRange = Globals.Soylent.Application.ActiveDocument.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
                 Word.Range dummyRange = doc.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
 
                 DummyPatch dummyPatch = new DummyPatch(dummyRange);
