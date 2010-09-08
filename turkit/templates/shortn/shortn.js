@@ -87,7 +87,7 @@ function initializeDebug() {
 		findFixVerifyOptions.verify.redundancy = 2;
 		findFixVerifyOptions.verify.minimum_workers = 1;
         findFixVerifyOptions.buffer_redundancy = 0;
-		findFixVerifyOptions.paragraphs = [ paragraphs[0] ]; 	//remove the parallelism for now
+		//findFixVerifyOptions.paragraphs = [ paragraphs[0] ]; 	//remove the parallelism for now
 		findFixVerifyOptions.wait_time = 0 * 1000;
 	}
 }
