@@ -15,6 +15,8 @@ Socket.FIND_STAGE = "find";
 Socket.FIX_STAGE = "fix";
 Socket.VERIFY_STAGE = "verify";
 
+Socket.prototype.connect = function () {}
+/*
 Socket.prototype.connect = function() {
     this.socket = new java.net.Socket();
     var endpoint = new java.net.InetSocketAddress(this.host, this.port);
@@ -24,15 +26,20 @@ Socket.prototype.connect = function() {
     }
     else {
         try {
+				this.socket.setSendBufferSize(100000);
                 this.socket.connect(endpoint, this.timeout);
                 print("Success: " + endpoint.toString());
+				print("Output buffer size: " + this.socket.getSendBufferSize()); 
                 this.socketOut = new java.io.PrintWriter(this.socket.getOutputStream(), true);
         } catch (e) {
             print("Failure: " + e.rhinoException);
         }
     }
 }
+*/
 
+Socket.prototype.close = function() {}
+/*
 Socket.prototype.close = function() {
     if (this.socket != null) {
         try {
@@ -42,6 +49,7 @@ Socket.prototype.close = function() {
         }
     }
 }
+*/
 
 Socket.prototype.sendStatus = function(stage, hit, paragraphNum, patchNumber, totalPatches, buffer_redundancy) {
 	var url = (javaTurKit.mode == "sandbox"
@@ -90,9 +98,42 @@ Socket.prototype.sendMessage = function(messageType, message) {
 	stringMessage = stringMessage.substring(1, stringMessage.length-1); // remove the { } encasing the JSON. C# hates that.
     print(stringMessage);
     
+	var url = new java.net.URL("http://localhost:11000/");
+	var connection = url.openConnection();
+	connection.setRequestMethod("GET");
+	connection.setReadTimeout(15*1000);
+	connection.setDoOutput(true);
+	
+	connection.connect();	
+	var out = new java.io.OutputStreamWriter(connection.getOutputStream());
+	out.write(stringMessage);
+	out.close();
+	
+		// read the output from the server
+      var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream()));
+      var stringBuilder = new java.lang.StringBuilder();
+
+      var line = null;
+      while ((line = reader.readLine()) != null)
+      {
+        stringBuilder.append(line + "\n");
+      }
+	print(stringBuilder.toString());
+	
+	//connection.setRequestMethod("POST");
+	//connection.setDoOutput(true);
+
+	//var out = new java.io.OutputStreamWriter(connection.getOutputStream());
+	//out.write("foo");
+	//out.close();
+	
+	
+	/*
     if (this.socketOut == null) {
 		print("Not in socket mode, not writing.");
 	} else {
-    	this.socketOut.println(stringMessage);
+    	this.socketOut.print(stringMessage);
+		this.socketOut.flush();
     }
+	*/
 }

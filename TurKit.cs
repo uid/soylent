@@ -28,6 +28,9 @@ namespace Soylent
         private HITData hdata;
         public Timer turkitLoopTimer;
 
+        private bool isRunning;
+
+
         public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
         /// <summary>
         /// Creates a TurKit job for the selected task.
@@ -44,6 +47,8 @@ namespace Soylent
                 }
             }
             this.hdata = hdata;
+
+            isRunning = false;
         }
         /// <summary>
         /// Starts a task.  For a Shortn task, this breaks the selected range into appropriate groupings, overwrites the template file, and runs TurKit on a Timer.
@@ -226,7 +231,7 @@ namespace Soylent
                 int timer = 60 * 1000;
                 if (Soylent.DEBUG)
                 {
-                    timer = 30 * 1000;
+                    timer = 60 * 1000;
                 }
                 turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
                 
@@ -429,6 +434,17 @@ namespace Soylent
         ///<returns>Process exit code</returns>
         private void ExecuteProcess(object infoObject)
         {
+            lock (this)
+            {
+                if (isRunning)
+                {
+                    return; // there's another TurKit already running; exit and wait for it to finish
+                }
+                else
+                {
+                    isRunning = true;
+                }
+            }
             string output, error;
 
             ProcessInformation info = (ProcessInformation) infoObject;
@@ -461,6 +477,11 @@ namespace Soylent
                 error = null;
             }
             process.WaitForExit();
+
+            lock (this)
+            {
+                isRunning = false;
+            }
         }
 
         private class ProcessInformation
