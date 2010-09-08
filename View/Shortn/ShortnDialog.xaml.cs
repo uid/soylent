@@ -61,7 +61,12 @@ namespace Soylent.View.Shortn
 
             foreach (PatchSelection selection in selections)
             {
-                Run r = new Run(selection.patch.original);
+                string runText = selection.patch.original;
+                if (runText.EndsWith("\r"))
+                {
+                    runText += "\r"; // line break between paragraphs
+                }
+                Run r = new Run(runText);
 
                 if (!selection.isOriginal)
                 {
@@ -80,8 +85,11 @@ namespace Soylent.View.Shortn
                     //r.Foreground = Brushes.Green;
                 }
 
-                runs.Add(r);               
+                runs.Add(r);
             }
+
+            Run lastRun = runs[runs.Count - 1];
+            lastRun.Text = lastRun.Text.TrimEnd(new char[] {'\r'});
 
             return runs;
         }
@@ -92,7 +100,12 @@ namespace Soylent.View.Shortn
 
             foreach (PatchSelection selection in selections)
             {
-                Run r = new Run(selection.selection);
+                string runText = selection.selection;
+                if (runText.EndsWith("\r"))
+                {
+                    runText += "\r"; // line break between paragraphs
+                }
+                Run r = new Run(runText);
 
                 if (!selection.isOriginal)
                 {
@@ -168,6 +181,9 @@ namespace Soylent.View.Shortn
                 runs.Add(r);
                 runMap.Add(r, selection);
             }
+
+            Run lastRun = runs[runs.Count - 1];
+            lastRun.Text = lastRun.Text.TrimEnd(new char[] { '\r' });
             return runs;
         }
 

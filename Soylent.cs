@@ -33,7 +33,8 @@ namespace Soylent
     {
         public Microsoft.Office.Tools.CustomTaskPane HITView;
         //public SoylentPanel soylent;
-        private TurKitSocKit tksc;
+        //private TurKitSocKit tksc;
+        private TurKitHTTP tkhttp;
         SoylentPanel first;
         public Dictionary<Word.Document, SoylentPanel> soylentMap = new Dictionary<Word.Document,SoylentPanel>();
         public Dictionary<int, Word.Document> jobToDoc = new Dictionary<int, Word.Document>();
@@ -44,8 +45,10 @@ namespace Soylent
         {
             Globals.Ribbons.Ribbon.debug.Visible = true;
 
-            tksc = new TurKitSocKit();
-            tksc.Listen();
+            //tksc = new TurKitSocKit();
+            //tksc.Listen();
+            tkhttp = new TurKitHTTP();
+            tkhttp.Listen();
 
             //For save/load of hits
             this.Application.DocumentOpen += new Word.ApplicationEvents4_DocumentOpenEventHandler(Application_DocumentOpen);

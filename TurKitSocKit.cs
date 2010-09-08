@@ -49,6 +49,7 @@ namespace Soylent
             IPEndPoint localEP = new IPEndPoint(address, port);
             Debug.WriteLine("Local address and port : " + localEP.ToString());
             serverSocket = new Socket(localEP.Address.AddressFamily, SocketType.Stream, ProtocolType.IP);
+            serverSocket.ReceiveBufferSize = 100000;
 
             try
             {
@@ -61,11 +62,11 @@ namespace Soylent
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Debug.WriteLine(e.Message);
                 throw e;
             }
 
-            Console.WriteLine("Closing the listener...");
+            Debug.WriteLine("Closing the listener...");
         }
 
         /*
@@ -79,8 +80,10 @@ namespace Soylent
             {
                 // Finish Accept
                 Socket s = (Socket)result.AsyncState;
+                s.ReceiveBufferSize = 100000;
                 connection.Socket = s.EndAccept(result);
-                connection.Buffer = new byte[10000];
+                connection.Socket.ReceiveBufferSize = 100000;
+                connection.Buffer = new byte[100000];
                 lock (_connections) _connections.Add(connection);
 
                 // Start Receive and a new Accept
@@ -101,128 +104,129 @@ namespace Soylent
 
         private void ReceiveCallback(IAsyncResult result)
         {
-            Console.WriteLine("Receiving data");
+            Debug.Write("Receiving data: ");
             ConnectionInfo connection = (ConnectionInfo)result.AsyncState;
-            /*try
-            {*/
-                int bytesRead = connection.Socket.EndReceive(result);
-                if (0 != bytesRead)
-                {
-                    /**
-                     * TurKit sends us information that looks like JSON
-                     * {
-                     *      "__type__": "status",
-                     *      "percent": 43.5,
-                     *      ...
-                     * }
-                     */
-                    string incomingString = System.Text.ASCIIEncoding.ASCII.GetString(connection.Buffer, 0, bytesRead); 
-                    Debug.WriteLine(incomingString);
-                    Regex typeRegex = new Regex("\"__type__\"\\s*:\\s*\"(?<messageType>.*)\"");
-                    Match regexResult = typeRegex.Match(incomingString);
-                    string messageType = regexResult.Groups["messageType"].Value;
 
-                    Regex jobtypeRegex = new Regex("\"__jobType__\"\\s*:\\s*\"(?<jobType>.*)\"");
-                    Match jobregexResult = jobtypeRegex.Match(incomingString);
-                    string jobType = jobregexResult.Groups["jobType"].Value;
+            int bytesRead = connection.Socket.EndReceive(result);
+            Debug.WriteLine(bytesRead + " bytes");
+            if (0 != bytesRead)
+            {
+                /**
+                    * TurKit sends us information that looks like JSON
+                    * {
+                    *      "__type__": "status",
+                    *      "percent": 43.5,
+                    *      ...
+                    * }
+                    */
+                string incomingString = System.Text.ASCIIEncoding.ASCII.GetString(connection.Buffer, 0, bytesRead); 
+                Debug.WriteLine(incomingString);
 
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    if (messageType == "status")
-                    {
-                        TurKitStatus receivedObject = serializer.Deserialize<TurKitStatus>(incomingString);
-
-                        Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
-                        HITData concernedHIT = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job];//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job];
-                        
-                        Debug.WriteLine(receivedObject.hitURL);
-                        
-                        //if (concernedHIT is ShortnData)
-                        if (jobType == "shortn")
-                        {
-                            Debug.WriteLine("Status update for Shortn");
-                            ShortnData shortenData = concernedHIT as ShortnData;
-                            shortenData.updateStatus(receivedObject);
-                        }
-                        //else if (concernedHIT is CrowdproofData)
-                        else if (jobType == "crowdproof")
-                        {
-                            CrowdproofData crowdproofData = concernedHIT as CrowdproofData;
-                            crowdproofData.updateStatus(receivedObject);
-                        }
-                        if (jobType == "human-macro")
-                        {
-                            Debug.WriteLine("Status update for human-macro");
-                            HumanMacroData humanMacro = concernedHIT as HumanMacroData;
-                            humanMacro.updateStatus(receivedObject);
-                        }
-                    }
-                    else if (messageType == "stageComplete")
-                    {
-                        Debug.WriteLine("Stage complete message");
-                        TurKitStageComplete receivedObject = serializer.Deserialize<TurKitStageComplete>(incomingString);
-
-                        if (jobType == "shortn")
-                        {
-                            Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
-                            ShortnData shortenData = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as ShortnData;
-                            //Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as ShortnData;
-                            shortenData.stageCompleted(receivedObject);
-                        }
-                        else if (jobType == "crowdproof")
-                        {
-                            Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
-                            CrowdproofData crowdproofData = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as CrowdproofData;
-                            //CrowdproofData crowdproofData = fixthis;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as CrowdproofData;
-                            crowdproofData.stageCompleted(receivedObject);
-                        }
-                    }
-                    else if (messageType == "complete")
-                    {
-                        if (jobType == "human-macro")
-                        {
-                            TurKitHumanMacroResult receivedObject = serializer.Deserialize<TurKitHumanMacroResult>(incomingString);
-                            Debug.WriteLine("\nHUMAN MACRO COMPLEEETE******");
-                            Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
-                            HumanMacroData humanMacro = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as HumanMacroData;
-                            //HumanMacroData humanMacro = fixthis;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as HumanMacroData;
-                            humanMacro.processSocKitMessage(receivedObject);
-                        }
-                        else if (jobType == "shortn")
-                        {
-                            TurKitFindFixVerify receivedObject = serializer.Deserialize<TurKitFindFixVerify>(incomingString);
-                            Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
-                            ShortnData shortenData = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as ShortnData;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as ShortnData;
-                            shortenData.processSocKitMessage(receivedObject);
-                        }
-                        else if (jobType == "crowdproof")
-                        {
-                            TurKitFindFixVerify receivedObject = serializer.Deserialize<TurKitFindFixVerify>(incomingString);
-                            Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
-                            CrowdproofData crowdproofData = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as CrowdproofData;
-                            //CrowdproofData crowdproofData = fixthis;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as CrowdproofData;
-                            crowdproofData.processSocKitMessage(receivedObject);
-                        }
-                    }
-                    Debug.WriteLine("got it!");
+                HandleSocketMessage(incomingString);
                      
-                    connection.Socket.BeginReceive(connection.Buffer, 0, 
-                        connection.Buffer.Length, SocketFlags.None, 
-                        new AsyncCallback(ReceiveCallback), connection);
-                }
-                else CloseConnection(connection);
-            /*}
-catch (SocketException exc)
-{
-    CloseConnection(connection);
-    Console.WriteLine("Socket exception: " + exc.SocketErrorCode);
-}
- */
+                connection.Socket.BeginReceive(connection.Buffer, 0, 
+                    connection.Buffer.Length, SocketFlags.None, 
+                    new AsyncCallback(ReceiveCallback), connection);
+            }
+            else CloseConnection(connection);
+
         }
 
         private void CloseConnection(ConnectionInfo ci)
         {
             ci.Socket.Close();
             lock (_connections) _connections.Remove(ci);
+        }
+
+        public static void HandleSocketMessage(string incomingString) {
+
+                Regex typeRegex = new Regex("\"__type__\"\\s*:\\s*\"(?<messageType>.*)\"");
+                Match regexResult = typeRegex.Match(incomingString);
+                string messageType = regexResult.Groups["messageType"].Value;
+
+                Regex jobtypeRegex = new Regex("\"__jobType__\"\\s*:\\s*\"(?<jobType>.*)\"");
+                Match jobregexResult = jobtypeRegex.Match(incomingString);
+                string jobType = jobregexResult.Groups["jobType"].Value;
+
+                
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                if (messageType == "status")
+                {
+                    TurKitStatus receivedObject = serializer.Deserialize<TurKitStatus>(incomingString);
+
+                    Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
+                    HITData concernedHIT = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job];//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job];
+                        
+                    Debug.WriteLine(receivedObject.hitURL);
+                        
+                    //if (concernedHIT is ShortnData)
+                    if (jobType == "shortn")
+                    {
+                        Debug.WriteLine("Status update for Shortn");
+                        ShortnData shortenData = concernedHIT as ShortnData;
+                        shortenData.updateStatus(receivedObject);
+                    }
+                    //else if (concernedHIT is CrowdproofData)
+                    else if (jobType == "crowdproof")
+                    {
+                        CrowdproofData crowdproofData = concernedHIT as CrowdproofData;
+                        crowdproofData.updateStatus(receivedObject);
+                    }
+                    if (jobType == "human-macro")
+                    {
+                        Debug.WriteLine("Status update for human-macro");
+                        HumanMacroData humanMacro = concernedHIT as HumanMacroData;
+                        humanMacro.updateStatus(receivedObject);
+                    }
+                }
+                else if (messageType == "stageComplete")
+                {
+                    Debug.WriteLine("Stage complete message");
+                    TurKitStageComplete receivedObject = serializer.Deserialize<TurKitStageComplete>(incomingString);
+
+                    if (jobType == "shortn")
+                    {
+                        Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
+                        ShortnData shortenData = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as ShortnData;
+                        //Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as ShortnData;
+                        shortenData.stageCompleted(receivedObject);
+                    }
+                    else if (jobType == "crowdproof")
+                    {
+                        Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
+                        CrowdproofData crowdproofData = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as CrowdproofData;
+                        //CrowdproofData crowdproofData = fixthis;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as CrowdproofData;
+                        crowdproofData.stageCompleted(receivedObject);
+                    }
+                }
+                else if (messageType == "complete")
+                {
+                    if (jobType == "human-macro")
+                    {
+                        TurKitHumanMacroResult receivedObject = serializer.Deserialize<TurKitHumanMacroResult>(incomingString);
+                        Debug.WriteLine("\nHUMAN MACRO COMPLEEETE******");
+                        Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
+                        HumanMacroData humanMacro = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as HumanMacroData;
+                        //HumanMacroData humanMacro = fixthis;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as HumanMacroData;
+                        humanMacro.processSocKitMessage(receivedObject);
+                    }
+                    else if (jobType == "shortn")
+                    {
+                        TurKitFindFixVerify receivedObject = serializer.Deserialize<TurKitFindFixVerify>(incomingString);
+                        Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
+                        ShortnData shortenData = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as ShortnData;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as ShortnData;
+                        shortenData.processSocKitMessage(receivedObject);
+                    }
+                    else if (jobType == "crowdproof")
+                    {
+                        TurKitFindFixVerify receivedObject = serializer.Deserialize<TurKitFindFixVerify>(incomingString);
+                        Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
+                        CrowdproofData crowdproofData = Globals.Soylent.soylentMap[doc].jobMap[receivedObject.job] as CrowdproofData;
+                        //CrowdproofData crowdproofData = fixthis;//Globals.Soylent.soylentMap[Globals.Soylent.Application.ActiveDocument].jobMap[receivedObject.job] as CrowdproofData;
+                        crowdproofData.processSocKitMessage(receivedObject);
+                    }
+                }
+                //Debug.WriteLine("got it!");
         }
 
         /// <summary>
