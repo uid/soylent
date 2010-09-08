@@ -63,7 +63,6 @@ namespace Soylent.View.Shortn
             {
                 Run r = new Run(selection.patch.original);
 
-
                 if (!selection.isOriginal)
                 {
                     r.Foreground = Brushes.Red;
@@ -83,6 +82,7 @@ namespace Soylent.View.Shortn
 
                 runs.Add(r);               
             }
+
             return runs;
         }
 
