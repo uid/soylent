@@ -51,27 +51,31 @@ namespace Soylent
             listener.Start();
             Debug.WriteLine("Listening...");
 
-            while (true)
-            {
-                // Note: The GetContext method blocks while waiting for a request. 
-                HttpListenerContext context = listener.GetContext();
-                HttpListenerRequest request = context.Request;
+            IAsyncResult results = listener.BeginGetContext(new AsyncCallback(GetRequest), listener);
+        }
 
-                HandleRequestData(request);
+        public static void GetRequest(IAsyncResult result)
+        {
+            HttpListener listener = (HttpListener)result.AsyncState;
+            // Call EndGetContext to complete the asynchronous operation.
+            HttpListenerContext context = listener.EndGetContext(result);
+            HttpListenerRequest request = context.Request;
 
-                // Obtain a response object.
-                HttpListenerResponse response = context.Response;
-                // Construct a response.
-                string responseString = "received by c#";
-                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
-                // Get a response stream and write the response to it.
-                response.ContentLength64 = buffer.Length;
-                System.IO.Stream output = response.OutputStream;
-                output.Write(buffer, 0, buffer.Length);
-                // You must close the output stream.
-                output.Close();
-                
-            }
+            HandleRequestData(request);
+
+            // Obtain a response object.
+            HttpListenerResponse response = context.Response;
+            // Construct a response.
+            string responseString = "received by c#";
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
+            // Get a response stream and write the response to it.
+            response.ContentLength64 = buffer.Length;
+            System.IO.Stream output = response.OutputStream;
+            output.Write(buffer, 0, buffer.Length);
+            // You must close the output stream.
+            output.Close();
+
+            IAsyncResult results = listener.BeginGetContext(new AsyncCallback(GetRequest), listener);
         }
 
         public static void HandleRequestData(HttpListenerRequest request)

@@ -79,16 +79,16 @@ function initializeDebug() {
 	if (debug)
 	{
 		print('debug version');
-		findFixVerifyOptions.find.redundancy = 1;//2;
+		findFixVerifyOptions.find.redundancy = 2;
 		findFixVerifyOptions.find.minimum_workers = 1;
 		findFixVerifyOptions.find.minimum_agreement = .0001;        
-		findFixVerifyOptions.fix.redundancy = 3;//2;
+		findFixVerifyOptions.fix.redundancy = 2;
 		findFixVerifyOptions.fix.minimum_workers = 1;
-		findFixVerifyOptions.verify.redundancy = 1;//2;
+		findFixVerifyOptions.verify.redundancy = 2;
 		findFixVerifyOptions.verify.minimum_workers = 1;
         findFixVerifyOptions.buffer_redundancy = 0;
 		//findFixVerifyOptions.paragraphs = [ paragraphs[0] ]; 	//remove the parallelism for now
-		//findFixVerifyOptions.wait_time = 0 * 1000;
+		findFixVerifyOptions.wait_time = 0 * 1000;
 	}
 }
 

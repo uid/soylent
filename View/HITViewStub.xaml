@@ -11,6 +11,6 @@
             </Hyperlink>
         </TextBlock>
         <ProgressBar HorizontalContentAlignment="Stretch" Margin="12,88,8,12" Height="20" Name="hitProgress" />
-        <Label Content="$0.00" Height="28" HorizontalAlignment="Right" Margin="71,62,0,0" Name="cost" VerticalAlignment="Top" Width="42" />
+        <Label Content="0.00" Height="28" HorizontalAlignment="Right" Margin="71,62,0,0" Name="cost" VerticalAlignment="Top" Width="42" />
     </Grid>
 </UserControl>
