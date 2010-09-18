@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using System.Diagnostics;
 using Soylent.Model;
 using Soylent.Model.Shortn;
 
@@ -237,9 +239,26 @@ namespace Soylent.View.Shortn
             double percent = e.NewValue / max;
 
             updateParagraphs(percent);
-            //data.makeChangesInDocument((int)Math.Round(data.longestLength * percent));
-            //Globals.Soylent.soylent.Invoke(new makeChangesInDocumentDelegate(this.makeChangesInDocument), new object[] { (int)Math.Round(data.longestLength * percent) });
-            makeChangesInDocument((int)Math.Round(data.longestLength * percent));
+
+            // set a timer to go off a few moments later and see if they're still at that tick mark. If so,
+            // update the document. Otherwise, just update the UI.
+            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(changeDocumentTick);
+            dispatcherTimer.Tag = percent;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 250);
+            dispatcherTimer.Start();
+        }
+
+        private delegate void changeDocumentTickDelegate(object sender, EventArgs e);
+        private void changeDocumentTick(object sender, EventArgs e) {
+            double curPercent = lengthSlider.Value / lengthSlider.Maximum;
+            DispatcherTimer timer = sender as DispatcherTimer;
+            timer.Stop();
+            double savedPercent = ((double) timer.Tag);
+
+            if (curPercent == savedPercent) {
+                makeChangesInDocument((int)Math.Round(data.longestLength * curPercent));
+            }
         }
 
         private delegate void makeChangesInDocumentDelegate(int var);

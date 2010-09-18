@@ -6,7 +6,7 @@
     <Grid Margin="0">
         <ProgressBar HorizontalContentAlignment="Stretch" Margin="5.5,36,4.5,5" Name="hitProgress" />
         <Label Height="28" HorizontalAlignment="Left" Margin="0,0,0,0" Name="stageName" VerticalAlignment="Top">Stage 1: Find</Label>
-        <Label HorizontalAlignment="Right" HorizontalContentAlignment="Right" Name="cost" Width="78" Height="28" VerticalAlignment="Top">$0.10 / $0.20</Label>
+        <Label HorizontalAlignment="Right" HorizontalContentAlignment="Right" Name="cost" Width="78" Height="28" VerticalAlignment="Top" ContentStringFormat="c">0.10</Label>
         <Label HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,14,0,20" Name="numTurkers" Width="103">0 of 10 workers</Label>
     </Grid>
 </UserControl>
