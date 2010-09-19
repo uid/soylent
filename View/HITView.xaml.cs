@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
 using Soylent.Model;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace Soylent.View
 {
@@ -61,6 +62,16 @@ namespace Soylent.View
             stages.Children.Insert(stages.Children.IndexOf(cancelBtn), newStage);
             stageList[type] = newStage;
             //stageList.Add(newStage);
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            object missing = System.Reflection.Missing.Value;
+            object what = Word.WdGoToItem.wdGoToLine;
+            object which = Word.WdGoToDirection.wdGoToFirst;
+            data.range.GoTo(ref what, ref which, ref missing, ref missing);
+             */
         }
         
     }

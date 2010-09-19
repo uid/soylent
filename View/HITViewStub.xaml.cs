@@ -188,7 +188,7 @@ namespace Soylent.View
         public delegate void updateViewDelegate(double percent, double cost);
 
         public void updateView(double percent, double cost){
-            this.cost.Content = "$" + cost;
+            this.cost.Content = String.Format("{0:C}", cost);
 
             Duration duration = new Duration(TimeSpan.FromSeconds(0.5));
             DoubleAnimation doubleanimation = new DoubleAnimation(100 * percent, duration);
