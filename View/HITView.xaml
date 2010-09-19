@@ -6,7 +6,7 @@
     <Grid Margin="0">
         <Label HorizontalAlignment="Left" Name="hitType" Width="120" FontSize="16" FontWeight="Regular" Margin="0,0,0,30">Label</Label>
         <TextBlock Margin="0,20,0,0" Height="38" VerticalAlignment="Top" Padding="5" Name="previewTextBlock">
-            <Hyperlink>
+            <Hyperlink Click="Hyperlink_Click">
                 <TextBlock Margin="0,0,0,0" Name="previewText" VerticalAlignment="Top" TextWrapping="Wrap" TextTrimming="WordEllipsis" Text="preview text" FontStyle="Normal" TextDecorations="None" Foreground="Gray" HorizontalAlignment="Left" />
             </Hyperlink>
         </TextBlock>
