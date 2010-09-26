@@ -1,0 +1,59 @@
+// begin:659f
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269970053196E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269970053202E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269970053205E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u8g9ksbxmoj1qsyvet2a0j6oahzwdyte.html",
+								"returnTime" : 1.269970053328E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/u8g9ksbxmoj1qsyvet2a0j6oahzwdyte.html\r\n"
+							},
+							{
+								"creationTime" : 1.26997005333E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "10JLYFKFMTPDZPPGNY419YFSVLW9UI",
+								"returnTime" : 1.269970053487E12,
+								"printOutput" : "created HIT: 10JLYFKFMTPDZPPGNY419YFSVLW9UI\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1GZR7AS960Q47QCWHONSVTNYCGERBO\r\n"
+							}
+						]
+					},
+					{
+						"creationTime" : 1.269970053781E12,
+						"sequencialFrames" : [
+							{
+								"creationTime" : 1.269970053786E12,
+								"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+								"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/03cwy5grf3qlfojn5tzj2t1ixfrjrwxa.html",
+								"returnTime" : 1.269970053886E12,
+								"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/03cwy5grf3qlfojn5tzj2t1ixfrjrwxa.html\r\n"
+							},
+							{
+								"creationTime" : 1.269970053888E12,
+								"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+								"returnValue" : "11NUFTH5DY85N6OZT9SCVTMOF3JDAR",
+								"returnTime" : 1.269970054125E12,
+								"printOutput" : "created HIT: 11NUFTH5DY85N6OZT9SCVTMOF3JDAR\r\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=1GZR7AS960Q47QCWHONSVTNYCGERBO\r\n"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 1.4000000000000001,
+	"hitsCreated" : 2
+}
+// end:659f

@@ -1,0 +1,214 @@
+// begin:cda4
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269783394593E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269783394605E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5o7dkjwi83ci7e5dv2ddot9ne0iaden1.html",
+						"returnTime" : 1.269783395044E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5o7dkjwi83ci7e5dv2ddot9ne0iaden1.html\r\n"
+					},
+					{
+						"creationTime" : 1.26978339505E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "114N94KTOPLZS35YLKJU3IM0NTSWFG",
+						"returnTime" : 1.269783395318E12,
+						"printOutput" : "created HIT: 114N94KTOPLZS35YLKJU3IM0NTSWFG\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.269783395557E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n",
+						"returnValue" : {
+							"hitId" : "114N94KTOPLZS35YLKJU3IM0NTSWFG",
+							"hitTypeId" : "1H5OKCVIGDPGJRIMUDXO4AC04LWVOD",
+							"title" : "Find unnecessary text",
+							"description" : "I need to shorten my paragraph, and need opinions on what to cut.",
+							"keywords" : "undefined",
+							"reward" : 0.08,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>https://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/5o7dkjwi83ci7e5dv2ddot9ne0iaden1.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 14,
+							"assignmentDurationInSeconds" : 300,
+							"autoApprovalDelayInSeconds" : 60,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Assignable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269783445E12,
+							"expiration" : 1.270388245E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1GK8S5J0VBU3USU4FRU3RHAPXBV1RV",
+									"workerId" : "AWQA4T219D3PS",
+									"hitId" : "114N94KTOPLZS35YLKJU3IM0NTSWFG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269783626E12,
+									"acceptTime" : 1.269783486E12,
+									"submitTime" : 1.269783566E12,
+									"answer" : {
+										"brackets" : "Print publishers [[are in a tizzy over Apple\'s new iPad because they]] hope to [[finally be able to]] charge for their digital editions.  [[But in order ]]to get people to pay for their magazine and newspaper apps, they [[are going to]] have to offer something different that readers cannot get at the newsstand or on the open Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269783668E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "12RVX7EUJWCLJXXZJ49W6NS8VNJ9RC",
+									"workerId" : "A1F6ZP6L8NLWUT",
+									"hitId" : "114N94KTOPLZS35YLKJU3IM0NTSWFG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269783697E12,
+									"acceptTime" : 1.269783474E12,
+									"submitTime" : 1.269783637E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.  But [[in order]] to get [[people to]] pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269783966E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1S20R8ZNOT5AJT96E3ATZHYW9NCA5E",
+									"workerId" : "A3S23W6900IDMN",
+									"hitId" : "114N94KTOPLZS35YLKJU3IM0NTSWFG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269783936E12,
+									"acceptTime" : 1.269783856E12,
+									"submitTime" : 1.269783876E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad [[because they hope to finally be able to charge for their digital editions]].  But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269783967E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1FD8IJZ3BXZ5YDXF77N7Y869N15WM1",
+									"workerId" : "A2T3MP92LA6X7S",
+									"hitId" : "114N94KTOPLZS35YLKJU3IM0NTSWFG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269783954E12,
+									"acceptTime" : 1.269783816E12,
+									"submitTime" : 1.269783894E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.  [[But]] in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the [[open]] Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269783967E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1QXTYWZGBPTV8MITV98X61JOUZCPLX",
+									"workerId" : "A2EPQ8PT6MK3TP",
+									"hitId" : "114N94KTOPLZS35YLKJU3IM0NTSWFG",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269784145E12,
+									"acceptTime" : 1.26978399E12,
+									"submitTime" : 1.269784085E12,
+									"answer" : {
+										"brackets" : "Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.  But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different [[that readers cannot get at the newsstand or on the open Web.]]  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269784267E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "18GCCPCG4W2OO0ROLZOYL4PMEUHVWH",
+									"workerId" : "A3FDZ18585Y0Q4",
+									"hitId" : "114N94KTOPLZS35YLKJU3IM0NTSWFG",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269784626E12,
+									"acceptTime" : 1.26978454E12,
+									"submitTime" : 1.269784566E12,
+									"answer" : {
+										"brackets" : "[[Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.]]  But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web.  We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : false
+						},
+						"returnTime" : 1.269784655136E12,
+						"printOutput" : "no longer waiting for hit: 114N94KTOPLZS35YLKJU3IM0NTSWFG\r\n"
+					},
+					{
+						"creationTime" : 1.269784655469E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269784655858E12,
+						"printOutput" : "disabled HIT: 114N94KTOPLZS35YLKJU3IM0NTSWFG\r\n"
+					},
+					{
+						"creationTime" : 1.26978465586E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.269783395896E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.2697833959E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/68miycjk4wune5kbxcslnimsjvqtkimr.html",
+						"returnTime" : 1.269783396056E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/68miycjk4wune5kbxcslnimsjvqtkimr.html\r\n"
+					},
+					{
+						"creationTime" : 1.269783396061E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "195TLA9Y0IYESIS4P34XAFP7R6L3PK",
+						"returnTime" : 1.269783396326E12,
+						"printOutput" : "created HIT: 195TLA9Y0IYESIS4P34XAFP7R6L3PK\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.269783396528E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+					}
+				]
+			},
+			{
+				"creationTime" : 1.26978339672E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269783396725E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6h6vrmmkwec78x06co6z93n9c44k4rvo.html",
+						"returnTime" : 1.269783396797E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/6h6vrmmkwec78x06co6z93n9c44k4rvo.html\r\n"
+					},
+					{
+						"creationTime" : 1.269783396802E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "1FJTH5KI60GZSUTJPGJMAKFHW273QB",
+						"returnTime" : 1.269783397172E12,
+						"printOutput" : "created HIT: 1FJTH5KI60GZSUTJPGJMAKFHW273QB\r\n        url: https://www.mturk.com/mturk/preview?groupId=1H5OKCVIGDPGJRIMUDXO4AC04LWVOD\r\n"
+					},
+					{
+						"creationTime" : 1.269783397423E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            return boundedStop(hitId, maximumWait, minWorkers);\n        }\n    }\n    var hit = mturk.getHIT(hitId, true);\n    if (typeof (maxWorkers) == \"undefined\") {\n        maxWorkers = hit.maxAssignments;\n    }\n    if (hit.done || hit.assignments.length >= maxWorkers) {\n        verbosePrint(\"hit completed: \" + hitId);\n        return hit;\n    } else {\n        return boundedStop(hitId, maximumWait, minWorkers);\n    }\n}\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 3.3600000000000003,
+	"hitsCreated" : 3
+}
+// end:cda4

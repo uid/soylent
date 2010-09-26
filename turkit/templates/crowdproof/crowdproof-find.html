@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>MTurk Task</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+	label.error {
+		display: none;
+		color: red;
+	}
+</style>
+</meta>
+<style>
+
+</style>
+</head>
+<body>
+<script src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
+<script src="http://people.csail.mit.edu/msbernst/mturk/jquery.validate.min.js"></script>
+<script src="http://people.csail.mit.edu/msbernst/mturk/diff_match_patch.js"></script>
+<!--<script src="http://people.csail.mit.edu/msbernst/mturk/jquery.metadata.js"></script>-->
+
+<script>
+___HEADER_SCRIPT___
+
+$(function () {
+    // add a form-validation function to the submit buttons
+	var validation_error = "You have either changed the text beyond adding [[double brackets]] or have not produced enough cuts.  Please see below:";
+	$.validator.addMethod("brackets", function(value) {
+		var isOK = true;
+		$('#errorlist li').remove();
+		var openBracketCount = 0;
+		var totalBracketCount = 0;
+		
+		var dmp = new diff_match_patch();
+		var diffResult = dmp.diff_main(originalParagraph, value);
+		//dmp.diff_cleanupSemantic(diffResult);		
+		
+		for (var i=0; i<diffResult.length; i++) {
+			var edit = diffResult[i];
+			if (edit[0] == 1) {	//insertion
+				if (!(edit[1] == '[[' || edit[1] == ']]')) {
+					var li = $("<li>You accidentally added extra text to the paragraph.  Please remove: " + edit[1] + "</li>")
+					$('#errorlist').append(li);
+					isOK = false;
+				}
+				else {
+					if (edit[1] == '[[') {
+						openBracketCount++;
+						if (openBracketCount != 1) {
+							var li = $("<li>You opened a second pair of brackets [[ before closing the first with ]].</li>")
+							$('#errorlist').append(li);
+							isOK = false;
+						}
+					} else if (edit[1] == ']]') {
+						openBracketCount--;
+						if (openBracketCount != 0) {
+							var li = $("<li>You closed a second pair of brackets ]] before opening a pair with [[.</li>")
+							$('#errorlist').append(li);
+							isOK = false;
+						}
+						totalBracketCount++;
+					}
+				}
+			}
+			else if (edit[0] == -1) {
+				$('#errorlist').append($("<li>You accidentally removed text from the paragraph.  Please re-insert: " + edit[1] + "</li>"));
+				isOK = false;
+			}
+		}
+		
+		if (totalBracketCount < 1) {
+			$('#errorlist').append($("<li>You have " + totalBracketCount + " potential errors" + (totalBracketCount == 1 ? "" : "s") + " enclosed in [[double brackets]]. We need you to have at least " + 1 + " of them.</li>"));
+			isOK = false;		
+		}
+		
+		if (isOK) {
+			$('#diffarea').css('display', 'none');
+		}
+		else {
+			$('#diffarea').html(dmp.diff_prettyHtml(diffResult)).css('display', 'block');				
+		}
+		
+		return isOK;
+	}, validation_error);
+    $('#patchesForm').validate( {
+//		debug: true,
+		errorElement: "div",
+		errorContainer: $("#errors"),
+		errorPlacement: function(error, element) {
+				error.prependTo( $('#errors') );
+		},
+		onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		rules: {
+			brackets: "brackets",
+		}
+	});
+});
+var originalParagraph = unescape("___ESCAPED_PARAGRAPH___");
+
+function resetText() {
+	$('#brackets').val(originalParagraph);
+}
+</script>
+
+<style>
+	#errors {
+		color: red;
+		font-weight: bold;
+		padding: 15px 0 15px 0;
+		display: none;
+	}
+	#errorlist {
+		color:black;
+		padding-left: 15px;
+	}
+	#diffarea {
+		display: none;
+		margin-left: 15px;
+		font-family: monospace;
+		width: 500px;
+	}
+</style>
+
+<form id="patchesForm" action="." method="GET">
+	<fieldset>
+		<input type="hidden" name="assignmentId" id="assignmentId" value="temp"></input>
+		<div width: 500px;>
+			<p>Please read the paragraph below to find <b>at least one spelling, grammar, or style error</b>.  Mark it in [[double brackets]].</p>
+
+			<div><label for="brackets">Mark <b>at least one</b> section of text that has a spelling, grammar, or style (awkwardness) error in [[double brackets]] below:</label></div>
+			<table><tr><td><textarea id="brackets" style="width:500px;height:400px" name="brackets" class="required">___PARAGRAPH___</textarea></td>
+			<td id="diffarea" valign="top"></td></tr></table>
+			<br/>
+			<input type="submit" value="Submit"></input>
+			<div id="errors"><div id="errortext"></div><ol id="errorlist"></ol><div><a href="javascript:resetText()">Reset original text</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:patchesForm.submit()">No thanks, I'm sure it's right.</a></div></div>
+		</div>
+	</fieldset>
+</form>
+
+</body>
+</html>

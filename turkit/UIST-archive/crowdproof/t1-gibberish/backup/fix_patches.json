@@ -1,0 +1,91 @@
+({
+	"paragraphs" : [
+		{
+			"sentences" : [
+				"Marketing are bad for brand big and small.",
+				"You Know What I am Saying.",
+				"It is no wondering that advertisings are bad for company in America, Chicago and Germany.",
+				"Updating of brand image are bad for processes in one company and many companies."
+			],
+			"patches" : [
+				{
+					"start" : 0,
+					"end" : 42,
+					"options" : [
+						"Marketing is bad for brands big and small."
+					],
+					"reasons" : [
+						"Grammar/spelling",
+						"The word are should be changed to is, the word brand should be changed to the plural brands, and \"big and small\" should be changed to something like \"popular and obscure.\"",
+						"Written by someone for who English is a second language."
+					],
+					"numVotes" : 5
+				},
+				{
+					"start" : 44,
+					"end" : 72,
+					"options" : [
+						"You know what I am saying.  It is no wondering that advertisings are bad for company in America, Chicago and Germany.",
+						"You know what I am saying?.  It is no wondering that advertisings are bad for company in America, Chicago and Germany."
+					],
+					"reasons" : [
+						"Incorrect usage of capital letters"
+					],
+					"numVotes" : 5
+				},
+				{
+					"start" : 78,
+					"end" : 90,
+					"options" : [
+						"It is no wonder that advertisings are bad for company in America, Chicago and Germany."
+					],
+					"reasons" : [
+						"wrong word ending",
+						"Wondering shouldn\'t have the -ing. It sounds better without it and is a bit more grammtically correct."
+					],
+					"numVotes" : 6
+				},
+				{
+					"start" : 96,
+					"end" : 116,
+					"options" : [
+						"It is no wondering that advertising is bad for company in America, Chicago and Germany.",
+						"It is no wondering that advertisements are bad for company in America, Chicago and Germany.",
+						"It is no surprise that advertising is bad for companies in America, Chicago and Germany."
+					],
+					"reasons" : [
+						"noun-verb relation not correct; incorrect plural",
+						"The word advertisings should be changed to the singular advertising, and the word are should be changed to is."
+					],
+					"numVotes" : 5
+				},
+				{
+					"start" : 121,
+					"end" : 128,
+					"options" : [
+						"It is no wonder that advertising is bad for companies in America, Chicago and Germany."
+					],
+					"reasons" : [
+						"singular instead of plural",
+						"This word should be plural, considering that it\'s talking about more than one country.",
+						"must be in plural",
+						"it must be plural"
+					],
+					"numVotes" : 5
+				},
+				{
+					"start" : 187,
+					"end" : 194,
+					"options" : [
+						"Updating of brand image is bad for processes in one company and many companies."
+					],
+					"reasons" : [
+						"The word are should be changed to is.",
+						"plural instead of singular"
+					],
+					"numVotes" : 5
+				}
+			]
+		}
+	]
+})

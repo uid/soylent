@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Soylent.View.HITView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:turk="clr-namespace:Soylent"
+    HorizontalContentAlignment="Stretch">
+    <Grid Margin="0">
+        <Label HorizontalAlignment="Left" Name="hitType" Width="120" FontSize="16" FontWeight="Regular" Margin="0,0,0,30">Label</Label>
+        <TextBlock Margin="0,20,0,0" Height="38" VerticalAlignment="Top" Padding="5" Name="previewTextBlock">
+            <Hyperlink Click="Hyperlink_Click">
+                <TextBlock Margin="0,0,0,0" Name="previewText" VerticalAlignment="Top" TextWrapping="Wrap" TextTrimming="WordEllipsis" Text="preview text" FontStyle="Normal" TextDecorations="None" Foreground="Gray" HorizontalAlignment="Left" />
+            </Hyperlink>
+        </TextBlock>
+        <StackPanel Margin="0,50,0,10" Name="stages">
+            <Button VerticalAlignment="Bottom" Height="22.725" Name="cancelBtn" Width="51.813" HorizontalAlignment="Right" FontSize="10" Margin="5">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
