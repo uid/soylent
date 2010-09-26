@@ -242,11 +242,14 @@ namespace Soylent.View.Shortn
 
             // set a timer to go off a few moments later and see if they're still at that tick mark. If so,
             // update the document. Otherwise, just update the UI.
+            
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(changeDocumentTick);
             dispatcherTimer.Tag = percent;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 250);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatcherTimer.Start();
+            
+            //makeChangesInDocument((int)Math.Round(data.longestLength * percent));
         }
 
         private delegate void changeDocumentTickDelegate(object sender, EventArgs e);

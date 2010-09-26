@@ -56,7 +56,7 @@ namespace Soylent.View
         public void ShortnDataReceived()
         {
             grid.Children.Remove(hitProgress);
-            this.hitType.FontWeight = FontWeights.ExtraBold;
+            //this.hitType.FontWeight = FontWeights.ExtraBold;
             
             ShortnView spv = view as ShortnView;
 
@@ -80,7 +80,7 @@ namespace Soylent.View
 
         public void CrowdproofDataReceived(){
             grid.Children.Remove(hitProgress);
-            this.hitType.FontWeight = FontWeights.ExtraBold;
+            //this.hitType.FontWeight = FontWeights.ExtraBold;
 
             if (((string) hitType.Content) == "Crowdproof")
             {
@@ -133,7 +133,7 @@ namespace Soylent.View
         public void HumanMacroDataReceived()
         {
             grid.Children.Remove(hitProgress);
-            this.hitType.FontWeight = FontWeights.ExtraBold;
+            //this.hitType.FontWeight = FontWeights.ExtraBold;
 
                 HumanMacroView hpv = view as HumanMacroView;
 

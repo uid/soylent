@@ -221,6 +221,7 @@
   -->
   <ItemGroup>
     <Compile Include="Model\Crowdproof\CrowdproofJob.cs" />
+    <Compile Include="Model\Shortn\DummyPatch.cs" />
     <Compile Include="Model\HumanMacro\HumanMacroData.cs" />
     <Compile Include="Model\HumanMacro\HumanMacroPatch.cs" />
     <Compile Include="Model\HumanMacro\HumanMacroStage.cs" />
@@ -237,7 +238,6 @@
     <Compile Include="View\Crowdproof\CrowdproofView.cs" />
     <Compile Include="View\HumanMacro\HumanMacroView.cs" />
     <Compile Include="View\Shortn\ShortnView.cs" />
-    <Compile Include="Model\Shortn\DummyPatch.cs" />
     <Compile Include="Model\StageData.cs" />
     <Compile Include="Model\HITData.cs" />
     <Compile Include="View\HumanMacro\HumanMacroDialog.xaml.cs">

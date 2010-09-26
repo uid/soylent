@@ -39,7 +39,7 @@ namespace Soylent.View
         {
             StackPanel sp = new StackPanel();
             sp.MouseUp += option1_click;
-            sp.Background = Brushes.LightGray;
+            //sp.Background = Brushes.LightGray;
 
             panels[jobNumber] = sp;
             views.Add(sp, view);
@@ -216,13 +216,13 @@ namespace Soylent.View
             }
 
             sp.Children.Add(views[sp]);
-            sp.Background = Brushes.WhiteSmoke;
+            //sp.Background = Brushes.WhiteSmoke;
             currentlyExpanded = sp;
         }
 
         private void shrink()
         {
-            currentlyExpanded.Background = Brushes.LightGray;
+            //currentlyExpanded.Background = Brushes.LightGray;
             List<UIElement> list = new List<UIElement>();
             foreach (UIElement child in currentlyExpanded.Children)
             {

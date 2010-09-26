@@ -43,7 +43,7 @@ namespace Soylent
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            Globals.Ribbons.Ribbon.debug.Visible = true;
+            //Globals.Ribbons.Ribbon.debug.Visible = true;
 
             //tksc = new TurKitSocKit();
             //tksc.Listen();

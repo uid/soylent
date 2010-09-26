@@ -173,6 +173,7 @@ namespace Soylent.Model.Shortn
                     Word.Range dummyRange = doc.Range(dummyStart, dummyEnd);
 
                     DummyPatch dummyPatch = new DummyPatch(dummyRange);
+                    Debug.WriteLine("dummy patch: " + dummyRange.Text);
 
                     patches.Add(dummyPatch);
                 }
@@ -180,6 +181,7 @@ namespace Soylent.Model.Shortn
                 int start = curParagraphRange.Start + tkspatch.editStart;
                 int end = curParagraphRange.Start + tkspatch.editEnd;
                 Word.Range patchRange = doc.Range(start, end);
+                Debug.WriteLine("new patch: " + patchRange.Text);
 
                 List<string> alternatives = new List<string>();
                 foreach (TurKitSocKit.TurKitFindFixVerifyOption option in (from option in tkspatch.options where option.editsText select option))
@@ -201,6 +203,7 @@ namespace Soylent.Model.Shortn
             {
                 nextEnd = curParagraphRange.Text.Length;
                 Word.Range dummyRange = doc.Range(curParagraphRange.Start + nextStart, curParagraphRange.End);
+                Debug.WriteLine("dummy patch: " + dummyRange.Text);
 
                 DummyPatch dummyPatch = new DummyPatch(dummyRange);
 
