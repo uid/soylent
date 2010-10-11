@@ -109,31 +109,14 @@ Socket.prototype.sendMessage = function(messageType, message) {
 	out.write(stringMessage);
 	out.close();
 	
-		// read the output from the server
-      var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream()));
-      var stringBuilder = new java.lang.StringBuilder();
+	// read the output from the server
+    var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream()));
+    var stringBuilder = new java.lang.StringBuilder();
 
-      var line = null;
-      while ((line = reader.readLine()) != null)
-      {
-        stringBuilder.append(line + "\n");
-      }
-	print(stringBuilder.toString());
-	
-	//connection.setRequestMethod("POST");
-	//connection.setDoOutput(true);
-
-	//var out = new java.io.OutputStreamWriter(connection.getOutputStream());
-	//out.write("foo");
-	//out.close();
-	
-	
-	/*
-    if (this.socketOut == null) {
-		print("Not in socket mode, not writing.");
-	} else {
-    	this.socketOut.print(stringMessage);
-		this.socketOut.flush();
+    var line = null;
+    while ((line = reader.readLine()) != null)
+    {
+		stringBuilder.append(line + "\n");
     }
-	*/
+	print(stringBuilder.toString());
 }
