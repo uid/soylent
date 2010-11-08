@@ -27,7 +27,8 @@ namespace Soylent.View.Shortn
         private ShortnData data;
         private double currentPercent;
         private string rootDirectory = null;
-        private string UNLOCK_TEXT = "(vary)"; //This is the text for the context menu option that unlocks the selection
+        private string UNLOCK_TEXT = "Allow all"; //This is the text for the context menu option that unlocks the selection
+        private string REMOVE_TEXT = "Cut"; //This is the text for the context menu option that replaces the selection with the empty string.
 
         /// <summary>
         /// The dialog window that opens when a user wants to interact with returned Shortn data.
@@ -131,9 +132,15 @@ namespace Soylent.View.Shortn
                     foreach (string replacement in selection.patch.replacements)
                     {
                         MenuItem i1 = new MenuItem();
-                        i1.Header = replacement;
+                        if (replacement.Equals(""))
+                        {
+                            i1.Header = REMOVE_TEXT;
+                        }
+                        else
+                        {
+                            i1.Header = replacement;
+                        }
                         i1.Click += new RoutedEventHandler(contextMenuHandler);
-
                         i1.Tag = r;
                         cm.Items.Add(i1);
                     }
@@ -161,7 +168,14 @@ namespace Soylent.View.Shortn
                     foreach (string replacement in selection.patch.replacements)
                     {
                         MenuItem i1 = new MenuItem();
-                        i1.Header = replacement;
+                        if (replacement.Equals(""))
+                        {
+                            i1.Header = REMOVE_TEXT;
+                        }
+                        else
+                        {
+                            i1.Header = replacement;
+                        }
                         i1.Click += new RoutedEventHandler(contextMenuHandler);
 
                         i1.Tag = r;
@@ -216,8 +230,14 @@ namespace Soylent.View.Shortn
                     }
                     index++;
                 }*/
-
-                patch.lockSelection(item.Header as string);
+                if((item.Header as string).Equals(REMOVE_TEXT))
+                {
+                    patch.lockSelection("");
+                }
+                else
+                {
+                    patch.lockSelection(item.Header as string);
+                }
                 run.Foreground = Brushes.Green;
                 updateParagraphs(currentPercent);   //refresh everything
                 initSliderTicks(false);        
