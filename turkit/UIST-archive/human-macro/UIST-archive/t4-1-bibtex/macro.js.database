@@ -1,0 +1,155 @@
+// begin:5ddf
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.269932591541E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.269932591545E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/bx92gihdwhygdi19l8yakdpezjm4cz0e.html",
+						"returnTime" : 1.269932591657E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/bx92gihdwhygdi19l8yakdpezjm4cz0e.html\r\n"
+					},
+					{
+						"creationTime" : 1.269932591659E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+						"returnValue" : "14ZMVR7ORAIS0RB870Y9PQW6594575",
+						"returnTime" : 1.269932592193E12,
+						"printOutput" : "created HIT: 14ZMVR7ORAIS0RB870Y9PQW6594575\r\n        url: https://www.mturk.com/mturk/preview?groupId=10OCNRYZWM23I7A2NJY4O79KQW4425\r\n"
+					},
+					{
+						"creationTime" : 1.269932592451E12,
+						"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+						"returnValue" : {
+							"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6594575",
+							"hitTypeId" : "10OCNRYZWM23I7A2NJY4O79KQW4425",
+							"title" : "BibTeX Citations",
+							"description" : "I need BibTeX citations for the papers described in each of three brackets.",
+							"keywords" : "undefined",
+							"reward" : 0.4,
+							"question" : "<ExternalQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd\"><ExternalURL>http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/bx92gihdwhygdi19l8yakdpezjm4cz0e.html</ExternalURL><FrameHeight>1200</FrameHeight></ExternalQuestion>",
+							"maxAssignments" : 5,
+							"assignmentDurationInSeconds" : 600,
+							"autoApprovalDelayInSeconds" : 600,
+							"requesterAnnotation" : null,
+							"hitStatus" : "Reviewable",
+							"hitReviewStatus" : "NotReviewed",
+							"creationTime" : 1.269932642E12,
+							"expiration" : 1.270537442E12,
+							"assignments" : [
+								{
+									"assignmentId" : "1PQQSBOW8D66WYMT7Z31JYDN4S7QN4",
+									"workerId" : "A314P18JVOOOOD",
+									"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6594575",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269935107E12,
+									"acceptTime" : 1.269934183E12,
+									"submitTime" : 1.269934507E12,
+									"answer" : {
+										"userText" : "@conference{snow2008cheap,\r\n  title={{Cheap and fast---but is it good?: evaluating non-expert annotations for natural language tasks}},\r\n  author={Snow, R. and O\'Connor, B. and Jurafsky, D. and Ng, A.Y.},\r\n  booktitle={Proceedings of the Conference on Empirical Methods in Natural Language Processing},\r\n  pages={254--263},\r\n  year={2008},\r\n  organization={Association for Computational Linguistics}\r\n}\r\n\r\n@conference{kittur2008crowdsourcing,\r\n  title={{Crowdsourcing user studies with Mechanical Turk}},\r\n  author={Kittur, A. and Chi, E.H. and Suh, B.},\r\n  booktitle={Proceeding of the twenty-sixth annual SIGCHI conference on Human factors in computing systems},\r\n  pages={453--456},\r\n  year={2008},\r\n  organization={ACM}\r\n}\r\n\r\n@conference{mason2009financial,\r\n  title={{Financial incentives and the performance of crowds}},\r\n  author={Mason, W. and Watts, D.J.},\r\n  booktitle={Proceedings of the ACM SIGKDD Workshop on Human Computation},\r\n  pages={77--85},\r\n  year={2009},\r\n  organization={ACM}\r\n}"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269935167E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1EKME9B6192DMG39SQP3DTWW4RW6NO",
+									"workerId" : "A1J8GDYHOT5FBH",
+									"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6594575",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269935453E12,
+									"acceptTime" : 1.26993479E12,
+									"submitTime" : 1.269934853E12,
+									"answer" : {
+										"userText" : "Research on Mechanical Turk is growing quickly. Artificial Intelligence researchers have latched onto Mechanical Turk as a means of collecting labeled training data on the cheap. This approach produces results comparable to expert labeling o\'connor emnlp cheap and easy but is it.Kittur et al. Crowdsourcing user studies on mturk found that Turk-led user studies produce reliable data when the experimenter includes an additional, verifiable question that requires the worker to pay attention to the task, for example summarizing a paragraph in a sentence. Duncan and Watts Duncan and watts HCOMP 09 anchoring found that Turkers will do more work when you pay more, but that the quality is no higher."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269935467E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1BPER22ZLX9COORU6YMWFVKIDCP3B1",
+									"workerId" : "APVNFMFG23J5V",
+									"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6594575",
+									"assignmentStatus" : "Approved",
+									"autoApprovalTime" : 1.269951647E12,
+									"acceptTime" : 1.269950764E12,
+									"submitTime" : 1.269951047E12,
+									"answer" : {
+										"userText" : "@inproceedings{1613751,\r\n\tAuthor = {Snow, Rion and O\'Connor, Brendan and Jurafsky, Daniel and Ng, Andrew Y.},\r\n\tBooktitle = {Proceedings of EMNLP 2008},\r\n\tDate-Added = {2010-02-03 16:39:59 +0100},\r\n\tDate-Modified = {2010-02-15 14:22:23 +0100},\r\n\tTitle = {Cheap and fast---but is it good?: evaluating non-expert annotations for natural language tasks},\r\n\tYear = {2008}}\r\n\r\n@inproceedings{1357127,\r\n author = {Kittur, Aniket and Chi, Ed H. and Suh, Bongwon},\r\n title = {Crowdsourcing user studies with Mechanical Turk},\r\n booktitle = {CHI \'08: Proceeding of the twenty-sixth annual SIGCHI conference on Human factors in computing systems},\r\n year = {2008},\r\n isbn = {978-1-60558-011-1},\r\n pages = {453--456},\r\n location = {Florence, Italy},\r\n doi = {http://doi.acm.org/10.1145/1357054.1357127},\r\n publisher = {ACM},\r\n address = {New York, NY, USA},\r\n }\r\n\r\n@inproceedings{1600175,\r\n author = {Mason, Winter and Watts, Duncan J.},\r\n title = {Financial incentives and the \"performance of crowds\"},\r\n booktitle = {HCOMP \'09: Proceedings of the ACM SIGKDD Workshop on Human Computation},\r\n year = {2009},\r\n isbn = {978-1-60558-672-4},\r\n pages = {77--85},\r\n location = {Paris, France},\r\n doi = {http://doi.acm.org/10.1145/1600150.1600175},\r\n publisher = {ACM},\r\n address = {New York, NY, USA},\r\n }"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : 1.269951668E12,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "1XIY21ONZXLQULCIUHBUNAQ9QVGV6E",
+									"workerId" : "A1LDS7FXQNGLEN",
+									"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6594575",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269959978E12,
+									"acceptTime" : 1.269959082E12,
+									"submitTime" : 1.269959378E12,
+									"answer" : {
+										"userText" : "I just used Google. BibTeX is confusing me.\r\n\r\n3. It\'s not Duncan and Watts, it\'s \"Duncan J. Watts\"\r\nhttp://behind-the-enemy-lines.blogspot.com/2009/06/liveblogging-from-hcomp-2009.html\r\n\"Live Blogging from HCOMP 2009\"\r\nsays: \"The last talk of the workshop was \"Financial Incentives and the Performance of Crowds\" by Winter Mason and Duncan J. Watts. The authors examine how Turkers respond to various levels of payment. Confirming my own observations, generally Turkers work more for higher pay but do not do much better work in terms of quality. So, paying higher gets more things done but the quality remains statistically the same ...\"\r\n\r\nand since you are only offering 10 minutes and 40 cents, buddy, that\'s all I\'m offering back."
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								},
+								{
+									"assignmentId" : "11Z0GF3DN4QA22N8Z9JTSYCGAWODT9",
+									"workerId" : "A2XVLENAJYX691",
+									"hitId" : "14ZMVR7ORAIS0RB870Y9PQW6594575",
+									"assignmentStatus" : "Submitted",
+									"autoApprovalTime" : 1.269960315E12,
+									"acceptTime" : 1.269959601E12,
+									"submitTime" : 1.269959715E12,
+									"answer" : {
+										"userText" : "@inproceedings{1613751,\r\n author = {Snow, Rion and O\'Connor, Brendan and Jurafsky, Daniel and Ng, Andrew Y.},\r\n title = {Cheap and fast---but is it good?: evaluating non-expert annotations for natural language tasks},\r\n booktitle = {EMNLP \'08: Proceedings of the Conference on Empirical Methods in Natural Language Processing},\r\n year = {2008},\r\n pages = {254--263},\r\n location = {Honolulu, Hawaii},\r\n publisher = {Association for Computational Linguistics},\r\n address = {Morristown, NJ, USA},\r\n }\r\n\r\n@inproceedings{1357127,\r\n author = {Kittur, Aniket and Chi, Ed H. and Suh, Bongwon},\r\n title = {Crowdsourcing user studies with Mechanical Turk},\r\n booktitle = {CHI \'08: Proceeding of the twenty-sixth annual SIGCHI conference on Human factors in computing systems},\r\n year = {2008},\r\n isbn = {978-1-60558-011-1},\r\n pages = {453--456},\r\n location = {Florence, Italy},\r\n doi = {http://doi.acm.org/10.1145/1357054.1357127},\r\n publisher = {ACM},\r\n address = {New York, NY, USA},\r\n }\r\n\r\n@inproceedings{1600175,\r\n author = {Mason, Winter and Watts, Duncan J.},\r\n title = {Financial incentives and the \"performance of crowds\"},\r\n booktitle = {HCOMP \'09: Proceedings of the ACM SIGKDD Workshop on Human Computation},\r\n year = {2009},\r\n isbn = {978-1-60558-672-4},\r\n pages = {77--85},\r\n location = {Paris, France},\r\n doi = {http://doi.acm.org/10.1145/1600150.1600175},\r\n publisher = {ACM},\r\n address = {New York, NY, USA},\r\n }"
+									},
+									"requesterFeedback" : null,
+									"approvalTime" : null,
+									"deadline" : null,
+									"rejectionTime" : null
+								}
+							],
+							"done" : true
+						},
+						"returnTime" : 1.26995972417E12,
+						"printOutput" : "hit completed: 14ZMVR7ORAIS0RB870Y9PQW6594575\r\n"
+					},
+					{
+						"creationTime" : 1.269959724422E12,
+						"onceFunc" : "\nfunction () {\n    mturk.deleteHITRaw(hit);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269959724765E12,
+						"printOutput" : "disabled HIT: 14ZMVR7ORAIS0RB870Y9PQW6594575\r\n"
+					},
+					{
+						"creationTime" : 1.269959724767E12,
+						"onceFunc" : "\nfunction () {\n    return s3.deleteObjectRaw(bucketName, key);\n}\n",
+						"returnValue" : undefined,
+						"returnTime" : 1.269959724874E12,
+						"printOutput" : "deleted S3 object at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/bx92gihdwhygdi19l8yakdpezjm4cz0e.html\r\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 2,
+	"hitsCreated" : 1
+}
+// end:5ddf

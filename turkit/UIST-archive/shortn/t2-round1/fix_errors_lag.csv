@@ -1,0 +1,265 @@
+Stage,Assignment,Wait Type,Time,Paragraph
+Find,1,work,89,0
+Find,1,wait,36,0
+Find,2,work,77,0
+Find,2,wait,343,0
+Find,3,work,94,0
+Find,3,wait,620,0
+Find,4,work,80,0
+Find,4,wait,1050,0
+Find,5,work,116,0
+Find,5,wait,1215,0
+Find,6,work,46,0
+Find,6,wait,1793,0
+Find,7,work,38,0
+Find,7,wait,2688,0
+Fixing Error,1,work,81,0
+Fixing Error,1,wait,146,0
+Fixing Error,2,work,39,0
+Fixing Error,2,wait,253,0
+Fixing Error,3,work,56,0
+Fixing Error,3,wait,631,0
+Fixing Error,4,work,13,0
+Fixing Error,4,wait,707,0
+Fixing Error,5,work,36,0
+Fixing Error,5,wait,855,0
+Fixing Error,6,work,27,0
+Fixing Error,6,wait,967,0
+Voting on Alternatives,1,work,14,0
+Voting on Alternatives,1,wait,337,0
+Voting on Alternatives,2,work,57,0
+Voting on Alternatives,2,wait,1165,0
+Voting on Alternatives,3,work,14,0
+Voting on Alternatives,3,wait,1211,0
+Voting on Alternatives,4,work,92,0
+Voting on Alternatives,4,wait,1169,0
+Voting on Alternatives,5,work,93,0
+Voting on Alternatives,5,wait,1225,0
+Find,1,work,52,1
+Find,1,wait,132,1
+Find,2,work,43,1
+Find,2,wait,216,1
+Find,3,work,141,1
+Find,3,wait,175,1
+Find,4,work,210,1
+Find,4,wait,409,1
+Find,5,work,99,1
+Find,5,wait,1525,1
+Find,6,work,50,1
+Find,6,wait,1673,1
+Fixing Error,1,work,70,1
+Fixing Error,1,wait,194,1
+Fixing Error,2,work,74,1
+Fixing Error,2,wait,496,1
+Fixing Error,3,work,176,1
+Fixing Error,3,wait,442,1
+Voting on Alternatives,1,work,40,1
+Voting on Alternatives,1,wait,122,1
+Voting on Alternatives,2,work,62,1
+Voting on Alternatives,2,wait,707,1
+Voting on Alternatives,3,work,60,1
+Voting on Alternatives,3,wait,822,1
+Fixing Error,1,work,131,1
+Fixing Error,1,wait,231,1
+Fixing Error,2,work,42,1
+Fixing Error,2,wait,571,1
+Voting on Alternatives,1,work,13,1
+Voting on Alternatives,1,wait,376,1
+Voting on Alternatives,2,work,23,1
+Voting on Alternatives,2,wait,485,1
+Voting on Alternatives,3,work,13,1
+Voting on Alternatives,3,wait,960,1
+Fixing Error,1,work,98,1
+Fixing Error,1,wait,186,1
+Fixing Error,2,work,51,1
+Fixing Error,2,wait,853,1
+Voting on Alternatives,1,work,14,1
+Voting on Alternatives,1,wait,315,1
+Voting on Alternatives,2,work,15,1
+Voting on Alternatives,2,wait,1043,1
+Voting on Alternatives,3,work,56,1
+Voting on Alternatives,3,wait,1424,1
+Voting on Alternatives,4,work,44,1
+Voting on Alternatives,4,wait,1449,1
+Find,1,work,68,2
+Find,1,wait,97,2
+Find,2,work,67,2
+Find,2,wait,519,2
+Find,3,work,82,2
+Find,3,wait,544,2
+Find,4,work,67,2
+Find,4,wait,973,2
+Find,5,work,67,2
+Find,5,wait,1723,2
+Find,6,work,33,2
+Find,6,wait,2155,2
+Fixing Error,1,work,48,2
+Fixing Error,1,wait,95,2
+Fixing Error,2,work,33,2
+Fixing Error,2,wait,589,2
+Fixing Error,3,work,70,2
+Fixing Error,3,wait,908,2
+Fixing Error,4,work,54,2
+Fixing Error,4,wait,950,2
+Voting on Alternatives,1,work,21,2
+Voting on Alternatives,1,wait,351,2
+Voting on Alternatives,2,work,150,2
+Voting on Alternatives,2,wait,1003,2
+Voting on Alternatives,3,work,102,2
+Voting on Alternatives,3,wait,1123,2
+Voting on Alternatives,4,work,15,2
+Voting on Alternatives,4,wait,1317,2
+Voting on Alternatives,5,work,32,2
+Voting on Alternatives,5,wait,1346,2
+Find,1,work,71,3
+Find,1,wait,103,3
+Find,2,work,37,3
+Find,2,wait,259,3
+Find,3,work,122,3
+Find,3,wait,190,3
+Find,4,work,59,3
+Find,4,wait,737,3
+Find,5,work,41,3
+Find,5,wait,1433,3
+Find,6,work,94,3
+Find,6,wait,1838,3
+Find,7,work,125,3
+Find,7,wait,1910,3
+Fixing Error,1,work,28,3
+Fixing Error,1,wait,170,3
+Fixing Error,2,work,41,3
+Fixing Error,2,wait,768,3
+Fixing Error,3,work,32,3
+Fixing Error,3,wait,988,3
+Fixing Error,4,work,35,3
+Fixing Error,4,wait,1001,3
+Voting on Alternatives,1,work,19,3
+Voting on Alternatives,1,wait,413,3
+Voting on Alternatives,2,work,16,3
+Voting on Alternatives,2,wait,1096,3
+Voting on Alternatives,3,work,83,3
+Voting on Alternatives,3,wait,1263,3
+Voting on Alternatives,4,work,31,3
+Voting on Alternatives,4,wait,1404,3
+Fixing Error,1,work,46,3
+Fixing Error,1,wait,422,3
+Fixing Error,2,work,104,3
+Fixing Error,2,wait,794,3
+Fixing Error,3,work,104,3
+Fixing Error,3,wait,806,3
+Voting on Alternatives,1,work,66,3
+Voting on Alternatives,1,wait,212,3
+Voting on Alternatives,2,work,27,3
+Voting on Alternatives,2,wait,280,3
+Voting on Alternatives,3,work,12,3
+Voting on Alternatives,3,wait,1232,3
+Find,1,work,45,4
+Find,1,wait,295,4
+Find,2,work,136,4
+Find,2,wait,407,4
+Find,3,work,117,4
+Find,3,wait,595,4
+Find,4,work,93,4
+Find,4,wait,712,4
+Find,5,work,100,4
+Find,5,wait,1371,4
+Find,6,work,31,4
+Find,6,wait,1599,4
+Fixing Error,1,work,33,4
+Fixing Error,1,wait,161,4
+Fixing Error,2,work,32,4
+Fixing Error,2,wait,358,4
+Fixing Error,3,work,49,4
+Fixing Error,3,wait,878,4
+Voting on Alternatives,1,work,55,4
+Voting on Alternatives,1,wait,63,4
+Voting on Alternatives,2,work,13,4
+Voting on Alternatives,2,wait,209,4
+Voting on Alternatives,3,work,37,4
+Voting on Alternatives,3,wait,368,4
+Find,1,work,79,5
+Find,1,wait,16,5
+Find,2,work,67,5
+Find,2,wait,42,5
+Find,3,work,94,5
+Find,3,wait,319,5
+Find,4,work,81,5
+Find,4,wait,625,5
+Find,5,work,48,5
+Find,5,wait,1473,5
+Find,6,work,116,5
+Find,6,wait,1482,5
+Fixing Error,1,work,68,5
+Fixing Error,1,wait,94,5
+Fixing Error,2,work,43,5
+Fixing Error,2,wait,843,5
+Voting on Alternatives,1,work,10,5
+Voting on Alternatives,1,wait,330,5
+Voting on Alternatives,2,work,31,5
+Voting on Alternatives,2,wait,425,5
+Voting on Alternatives,3,work,24,5
+Voting on Alternatives,3,wait,1260,5
+Fixing Error,1,work,114,5
+Fixing Error,1,wait,214,5
+Fixing Error,2,work,192,5
+Fixing Error,2,wait,181,5
+Voting on Alternatives,1,work,13,5
+Voting on Alternatives,1,wait,138,5
+Voting on Alternatives,2,work,13,5
+Voting on Alternatives,2,wait,243,5
+Voting on Alternatives,3,work,11,5
+Voting on Alternatives,3,wait,1151,5
+Fixing Error,1,work,84,5
+Fixing Error,1,wait,459,5
+Fixing Error,2,work,80,5
+Fixing Error,2,wait,760,5
+Fixing Error,3,work,44,5
+Fixing Error,3,wait,1113,5
+Voting on Alternatives,1,work,15,5
+Voting on Alternatives,1,wait,387,5
+Voting on Alternatives,2,work,25,5
+Voting on Alternatives,2,wait,740,5
+Voting on Alternatives,3,work,13,5
+Voting on Alternatives,3,wait,984,5
+Find,1,work,49,6
+Find,1,wait,163,6
+Find,2,work,91,6
+Find,2,wait,313,6
+Find,3,work,81,6
+Find,3,wait,418,6
+Find,4,work,91,6
+Find,4,wait,803,6
+Find,5,work,130,6
+Find,5,wait,840,6
+Find,6,work,39,6
+Find,6,wait,1629,6
+Fixing Error,1,work,35,6
+Fixing Error,1,wait,58,6
+Fixing Error,2,work,52,6
+Fixing Error,2,wait,86,6
+Fixing Error,3,work,79,6
+Fixing Error,3,wait,429,6
+Fixing Error,4,work,46,6
+Fixing Error,4,wait,1147,6
+Fixing Error,5,work,119,6
+Fixing Error,5,wait,1326,6
+Voting on Alternatives,1,work,23,6
+Voting on Alternatives,1,wait,215,6
+Voting on Alternatives,2,work,19,6
+Voting on Alternatives,2,wait,888,6
+Voting on Alternatives,3,work,54,6
+Voting on Alternatives,3,wait,1195,6
+Voting on Alternatives,4,work,25,6
+Voting on Alternatives,4,wait,1323,6
+Fixing Error,1,work,93,6
+Fixing Error,1,wait,469,6
+Fixing Error,2,work,61,6
+Fixing Error,2,wait,809,6
+Voting on Alternatives,1,work,14,6
+Voting on Alternatives,1,wait,369,6
+Voting on Alternatives,2,work,13,6
+Voting on Alternatives,2,wait,839,6
+Voting on Alternatives,3,work,26,6
+Voting on Alternatives,3,wait,1355,6
+Voting on Alternatives,4,work,71,6
+Voting on Alternatives,4,wait,1332,6
