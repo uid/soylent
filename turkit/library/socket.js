@@ -123,21 +123,4 @@ Socket.prototype.sendMessage = function(messageType, message) {
 	} catch(e) {
 		print(e.rhinoException);
 	}
-	
-	//connection.setRequestMethod("POST");
-	//connection.setDoOutput(true);
-
-	//var out = new java.io.OutputStreamWriter(connection.getOutputStream());
-	//out.write("foo");
-	//out.close();
-	
-	
-	/*
-    if (this.socketOut == null) {
-		print("Not in socket mode, not writing.");
-	} else {
-    	this.socketOut.print(stringMessage);
-		this.socketOut.flush();
-    }
-	*/
 }
