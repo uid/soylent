@@ -73,6 +73,13 @@ namespace Soylent.View
             data.range.GoTo(ref what, ref which, ref missing, ref missing);
              */
         }
+
+        private void cancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Word.Document doc = Globals.Soylent.Application.ActiveDocument;
+            UIElementCollection uiec = Globals.Soylent.soylentMap[doc].sidebar.jobs.Children;
+            Globals.Soylent.soylentMap[doc].sidebar.jobs.Children.Remove((UIElement) this.Parent);
+        }
         
     }
 }

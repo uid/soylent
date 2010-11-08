@@ -18,8 +18,8 @@ var findFixVerifyOptions = {
         customTest: null
     },
     fix: {
-        HIT_title: "Shorten Rambling Text",
-        HIT_description: "A sentence in my paper is too long and I need your help cutting out the fat.",
+        HIT_title: "Fix a writing error",
+        HIT_description: "My writing has a problem in it. Can you help fix it?",
         HTML_template: "../templates/crowdproof/crowdproof-fix.html",
         reward: 0.08,
         redundancy: 5,

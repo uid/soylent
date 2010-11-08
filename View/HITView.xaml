@@ -11,7 +11,7 @@
             </Hyperlink>
         </TextBlock>
         <StackPanel Margin="0,50,0,10" Name="stages">
-            <Button VerticalAlignment="Bottom" Height="22.725" Name="cancelBtn" Width="51.813" HorizontalAlignment="Right" FontSize="10" Margin="5">Cancel</Button>
+            <Button VerticalAlignment="Bottom" Height="22.725" Name="cancelBtn" Width="51.813" HorizontalAlignment="Right" FontSize="10" Margin="5" Click="cancelBtn_Click">Cancel</Button>
         </StackPanel>
     </Grid>
 </UserControl>

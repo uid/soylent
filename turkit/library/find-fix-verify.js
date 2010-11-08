@@ -103,6 +103,7 @@ function findFixVerify(options) {
 			for (var i=0; i<patches.length; i++) {
 				print('Patch #' + i + '\n\n');
 				var patch = patches[i];
+				print(json(patch));
                 
 				attempt(function() {
                     // Fix stage
@@ -869,17 +870,49 @@ function getAlternativesForFieldName(patch, fieldName) {
  */
 function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, editStart, editEnd, fieldName) {
     var alternatives = new Array();
+	var dmp = new diff_match_patch();	
     
     var prefix = getParagraph(paragraphs[paragraph_index]).substring(editStart, patches[curPatch].editStart);
     var postfix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd, editEnd);
     	
     var fieldAlternatives = getAlternativesForFieldName(patches[curPatch], fieldName);
-    var dmp = new diff_match_patch();
     for (var i=0; i<fieldAlternatives.length; i++) {
         var option = fieldAlternatives[i];
+		//print("option");
+		//print(json(option));
         
-        // diff[0] and diff[length-1] will always be the edges that are untouched, so we need to subtract them out
-        var editRegion = option.text.slice(option.diff[0][1].length, -1 * option.diff[option.diff.length-1][1].length)
+		// We need to subtract out the left- and right-most edges of the diff object if they haven't been touched
+		var startPosition = 0;
+		for (var j=0; j<option.diff.length; j++) {
+			if (option.diff[j][0] == 0) { // it's not a "leave it alone" diff element
+				startPosition += option.diff[j][1].length;
+			}
+			else {
+				break;
+			}
+		}
+		var endPosition = 0;
+		for (var j=option.diff.length-1; j>=0; j--) {
+			if(option.diff[j][0] == 0) {
+				endPosition += option.diff[j][1].length;
+			}
+			else {
+				break;
+			}
+		}
+		
+		
+		//var originalParagraph = getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd);		
+		//var betterdiff = dmp.diff_main(originalParagraph, option.text);
+        //dmp.diff_cleanupSemantic(betterdiff);
+        //print('betterdiff');
+		//print(json(betterdiff));
+		
+		
+        //var editRegion = option.text.slice(option.diff[0][1].length, -1 * option.diff[option.diff.length-1][1].length)
+		var editRegion = option.text.slice(startPosition, -1 * endPosition)
+		editRegion = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editStart, patches[curPatch].editStart + startPosition) + editRegion + getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd - endPosition, patches[curPatch].editEnd - endPosition);
+		//var editRegion = option.text
                 
         var newAlternative = {
             text: prefix + editRegion + postfix,
@@ -888,7 +921,16 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
             editEnd: editEnd,
             numVoters: option.numVoters,
             votes: option.votes,
-			originalText: getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd)
+			originalText: getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd),
+			footext: option.text,
+			fooregion: editRegion,
+			foostart: startPosition,
+			fooend: endPosition,
+			foodiff: option.diff,
+			//betterdiff: betterdiff,
+			fooprefix: prefix,
+			foopostfix: postfix,
+			foooriginal: option,
         }
         alternatives.push(newAlternative);
     }
