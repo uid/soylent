@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoylentRibbon));
             this.Soylent = new Microsoft.Office.Tools.Ribbon.RibbonTab();
             this.viewGroup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
-            //this.button6 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button3 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.shortenBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.humanMacroBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
@@ -43,6 +42,7 @@
             this.directManipulate = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.humanMacroInline = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.humanMacroComment = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            this.amazon = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.Soylent.SuspendLayout();
             this.viewGroup.SuspendLayout();
             this.debug.SuspendLayout();
@@ -61,14 +61,8 @@
             this.viewGroup.Items.Add(this.shortenBtn);
             this.viewGroup.Items.Add(this.humanMacroBtn);
             this.viewGroup.Items.Add(this.jobStatus);
+            this.viewGroup.Items.Add(this.amazon);
             this.viewGroup.Name = "viewGroup";
-            // 
-            this.jobStatus.Checked = true;
-            // button6
-            // 
-            //this.button6.Label = "button6";
-            //this.button6.Name = "button6";
-            //this.button6.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button6_Click);
             // 
             // button3
             // 
@@ -100,6 +94,7 @@
             // 
             // jobStatus
             // 
+            this.jobStatus.Checked = true;
             this.jobStatus.Label = "Job Status";
             this.jobStatus.Name = "jobStatus";
             this.jobStatus.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.jobStatus_Click);
@@ -135,6 +130,7 @@
             this.button4.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button4_Click);
             // 
             // directManipulate
+            // 
             this.directManipulate.Label = "Shorten Window";
             this.directManipulate.Name = "directManipulate";
             this.directManipulate.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.directManipulate_Click);
@@ -150,6 +146,13 @@
             this.humanMacroComment.Label = "Comment";
             this.humanMacroComment.Name = "humanMacroComment";
             this.humanMacroComment.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.humanMacroComment_Click);
+            // 
+            // amazon
+            // 
+            this.amazon.Label = "Amazon Keys";
+            this.amazon.Name = "amazon";
+            this.amazon.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.amazon_Click);
+            // 
             // SoylentRibbon
             // 
             this.Name = "SoylentRibbon";
@@ -181,6 +184,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton jobStatus;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton shortenBtn;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton amazon;
     }
 
     partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonReadOnlyCollection

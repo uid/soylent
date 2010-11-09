@@ -220,6 +220,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Model\AmazonKeys.cs" />
     <Compile Include="Model\Crowdproof\CrowdproofJob.cs" />
     <Compile Include="Model\Shortn\DummyPatch.cs" />
     <Compile Include="Model\HumanMacro\HumanMacroData.cs" />
@@ -229,6 +230,9 @@
     <Compile Include="Model\Shortn\ShortnPatch.cs" />
     <Compile Include="Model\WordVersion.cs" />
     <Compile Include="TurKitHTTP.cs" />
+    <Compile Include="View\Amazon.xaml.cs">
+      <DependentUpon>Amazon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HITViewStub.xaml.cs">
       <DependentUpon>HITViewStub.xaml</DependentUpon>
     </Compile>
@@ -312,6 +316,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\Amazon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HITViewStub.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

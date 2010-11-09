@@ -23,8 +23,8 @@ namespace Soylent
     {
         public string directory;
         public string rootDirectory;
-        private string amazonSECRET;
-        private string amazonKEY;
+        //private string amazonSECRET;
+        //private string amazonKEY;
         private HITData hdata;
         public Timer turkitLoopTimer;
 
@@ -38,18 +38,25 @@ namespace Soylent
         /// <param name="hdata">The HITData representing the desired job</param>
         public TurKit(HITData hdata)
         {
-            rootDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            if (rootDirectory.Length > 10)
-            {
-                if (rootDirectory.Substring(rootDirectory.Length - 11, 10) == @"\bin\Debug")
-                {
-                    rootDirectory = rootDirectory.Substring(0, rootDirectory.Length - 10);
-                }
-            }
+            rootDirectory = getRootDirectory();
             this.hdata = hdata;
 
             isRunning = false;
         }
+
+        public static string getRootDirectory()
+        {
+            string root = AppDomain.CurrentDomain.BaseDirectory;
+            if (root.Length > 10)
+            {
+                if (root.Substring(root.Length - 11, 10) == @"\bin\Debug")
+                {
+                    root = root.Substring(0, root.Length - 10);
+                }
+            }
+            return root; 
+        }
+
         /// <summary>
         /// Starts a task.  For a Shortn task, this breaks the selected range into appropriate groupings, overwrites the template file, and runs TurKit on a Timer.
         /// </summary>
@@ -120,9 +127,9 @@ namespace Soylent
                 string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".data.js";
                 File.WriteAllLines(requestFile, newScript, Encoding.UTF8);
 
-                InitializeAmazonKeys();
+                AmazonKeys keys = AmazonKeys.GetAmazonKeys(rootDirectory);
 
-                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
                 if (Soylent.DEBUG)
                 {
                     arguments += " -m sandbox";
@@ -212,9 +219,9 @@ namespace Soylent
                 string requestFile = rootDirectory + @"\turkit\active-hits\crowdproof." + request + ".data.js";
                 File.WriteAllLines(requestFile, newScript, Encoding.UTF8);
 
-                InitializeAmazonKeys();
+                AmazonKeys keys = AmazonKeys.GetAmazonKeys(rootDirectory);
 
-                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
                 if (Soylent.DEBUG)
                 {
                     arguments += " -m sandbox";
@@ -384,10 +391,10 @@ namespace Soylent
                 string requestFile = rootDirectory + @"\turkit\active-hits\macro." + request + ".data.js";
                 File.WriteAllLines(requestFile, newScript, Encoding.UTF8);
 
-                InitializeAmazonKeys();
+                AmazonKeys keys = AmazonKeys.GetAmazonKeys(rootDirectory);
 
-                
-                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + amazonKEY + " -s " + amazonSECRET + " -o 100 -h 1000";
+
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
                 if (Soylent.DEBUG)
                 {
                     arguments += " -m sandbox";
@@ -409,18 +416,6 @@ namespace Soylent
                 turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
                 
             }
-        }
-        /// <summary>
-        /// Reads in the AMT secret and key from the amazon.xml file so that HITs can be submitted.
-        /// </summary>
-        public void InitializeAmazonKeys()
-        {
-            //System.Xml.XmlTextReader amazonReader = new System.Xml.XmlTextReader("./amazon.template.xml");
-            XDocument doc = XDocument.Load(rootDirectory+@"\amazon.xml");
-            XElement secret = doc.Root.Element("amazonSECRET");
-            XElement key = doc.Root.Element("amazonKEY");
-            amazonSECRET = secret.Value;
-            amazonKEY = key.Value;
         }
          
         ///<summary>

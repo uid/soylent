@@ -9,6 +9,7 @@ using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
+using System.Windows;
 using System.Windows.Forms.Integration;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -383,6 +384,18 @@ namespace Soylent
 
             Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + q.job];
             q.range = a.Range;
+        }
+
+        private void amazon_Click(object sender, RibbonControlEventArgs e)
+        {
+            Window amazonWindow = new Window
+            {
+                Title = "Amazon Keys",
+                Content = new Amazon(),
+                SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.NoResize
+            };
+            amazonWindow.ShowDialog();
         }
     }
 }
