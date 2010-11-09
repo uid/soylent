@@ -1,0 +1,32 @@
+// begin:ddca
+__HITs = {
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.270083433476E12,
+				"sequencialFrames" : [
+					{
+						"creationTime" : 1.270083433483E12,
+						"onceFunc" : "\nfunction () {\n    return s3.putStringRaw(bucketName, key, stringData);\n}\n",
+						"returnValue" : "http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ondwipto504au5toowvcswlzeuvr92hl.html",
+						"returnTime" : 1.270083433634E12,
+						"printOutput" : "S3 object put at: http://s3.amazonaws.com/AKIAIHH5IY7RZC34EF4Q.TurKit/ondwipto504au5toowvcswlzeuvr92hl.html\r\n"
+					},
+					{
+						"creationTime" : 1.270083433637E12,
+						"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n"
+					}
+				]
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 14,
+	"hitsCreated" : 2
+}
+// end:ddca

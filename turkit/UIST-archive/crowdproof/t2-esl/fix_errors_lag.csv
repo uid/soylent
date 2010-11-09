@@ -1,0 +1,77 @@
+Stage,Assignment,Wait Type,Time,Paragraph
+Error Identification,1,work,47,0
+Error Identification,1,wait,198,0
+Error Identification,2,work,152,0
+Error Identification,2,wait,193,0
+Error Identification,3,work,26,0
+Error Identification,3,wait,321,0
+Error Identification,4,work,121,0
+Error Identification,4,wait,479,0
+Error Identification,5,work,121,0
+Error Identification,5,wait,510,0
+Error Identification,6,work,70,0
+Error Identification,6,wait,580,0
+Error Identification,7,work,130,0
+Error Identification,7,wait,1275,0
+Fixing Error,1,work,24,0
+Fixing Error,1,wait,139,0
+Fixing Error,2,work,45,0
+Fixing Error,2,wait,119,0
+Fixing Error,3,work,120,0
+Fixing Error,3,wait,294,0
+Fixing Error,4,work,66,0
+Fixing Error,4,wait,532,0
+Voting on Alternatives,1,work,67,0
+Voting on Alternatives,1,wait,54,0
+Voting on Alternatives,2,work,46,0
+Voting on Alternatives,2,wait,173,0
+Voting on Alternatives,3,work,132,0
+Voting on Alternatives,3,wait,232,0
+Voting on Alternatives,4,work,45,0
+Voting on Alternatives,4,wait,325,0
+Voting on Alternatives,5,work,107,0
+Voting on Alternatives,5,wait,504,0
+Fixing Error,1,work,12,0
+Fixing Error,1,wait,122,0
+Fixing Error,2,work,102,0
+Fixing Error,2,wait,155,0
+Fixing Error,3,work,117,0
+Fixing Error,3,wait,217,0
+Fixing Error,4,work,48,0
+Fixing Error,4,wait,315,0
+Fixing Error,5,work,48,0
+Fixing Error,5,wait,614,0
+Voting on Alternatives,1,work,52,0
+Voting on Alternatives,1,wait,99,0
+Voting on Alternatives,2,work,50,0
+Voting on Alternatives,2,wait,113,0
+Voting on Alternatives,3,work,85,0
+Voting on Alternatives,3,wait,153,0
+Voting on Alternatives,4,work,69,0
+Voting on Alternatives,4,wait,192,0
+Voting on Alternatives,5,work,105,0
+Voting on Alternatives,5,wait,326,0
+Fixing Error,1,work,21,0
+Fixing Error,1,wait,86,0
+Fixing Error,2,work,97,0
+Fixing Error,2,wait,78,0
+Fixing Error,3,work,56,0
+Fixing Error,3,wait,230,0
+Fixing Error,4,work,126,0
+Fixing Error,4,wait,220,0
+Fixing Error,5,work,138,0
+Fixing Error,5,wait,326,0
+Fixing Error,6,work,109,0
+Fixing Error,6,wait,464,0
+Voting on Alternatives,1,work,84,0
+Voting on Alternatives,1,wait,88,0
+Voting on Alternatives,2,work,28,0
+Voting on Alternatives,2,wait,366,0
+Voting on Alternatives,3,work,189,0
+Voting on Alternatives,3,wait,289,0
+Voting on Alternatives,4,work,45,0
+Voting on Alternatives,4,wait,469,0
+Voting on Alternatives,5,work,58,0
+Voting on Alternatives,5,wait,631,0
+Voting on Alternatives,6,work,192,0
+Voting on Alternatives,6,wait,639,0
