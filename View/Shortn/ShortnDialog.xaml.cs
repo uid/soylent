@@ -258,18 +258,37 @@ namespace Soylent.View.Shortn
             double max = lengthSlider.Maximum;
             double percent = e.NewValue / max;
 
-            updateParagraphs(percent);
+            // set a timer to go off a few moments later and see if they're still at that tick mark. If so,
+            // update the UI.  
+            System.Windows.Threading.DispatcherTimer UIdispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            UIdispatcherTimer.Tick += new EventHandler(changeSliderRunsTick);
+            UIdispatcherTimer.Tag = percent;
+            UIdispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 15);
+            UIdispatcherTimer.Start();
+
 
             // set a timer to go off a few moments later and see if they're still at that tick mark. If so,
-            // update the document. Otherwise, just update the UI.
-            
+            // update the document.            
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(changeDocumentTick);
             dispatcherTimer.Tag = percent;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
             dispatcherTimer.Start();
-            
-            //makeChangesInDocument((int)Math.Round(data.longestLength * percent));
+        }
+
+        private delegate void changeSliderRunsTickDelegate(object sender, EventArgs e);
+        private void changeSliderRunsTick(object sender, EventArgs e)
+        {
+            double curPercent = lengthSlider.Value / lengthSlider.Maximum;
+            DispatcherTimer timer = sender as DispatcherTimer;
+            timer.Stop();
+            double savedPercent = ((double)timer.Tag);
+
+            if (curPercent == savedPercent)
+            {
+                updateParagraphs(curPercent);
+            }
+
         }
 
         private delegate void changeDocumentTickDelegate(object sender, EventArgs e);
