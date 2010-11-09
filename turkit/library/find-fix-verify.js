@@ -848,7 +848,21 @@ function mergePatches(patches, startPatch, endPatch, paragraph_index) {
         for (var i=startPatch; i<=endPatch; i++) {
             foreach(newPatch.options, function(fieldOption) {
                 if (fieldOption.editsText) {
-                    fieldOption.alternatives = fieldOption.alternatives.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index, newPatch.editStart, newPatch.editEnd, fieldOption.field));
+                    var suggestedAlternatives = fieldOption.alternatives.concat(mergeOptions(patches, startPatch, endPatch, i, paragraph_index, newPatch.editStart, newPatch.editEnd, fieldOption.field));
+					fieldOption.alternatives = new Array();
+					
+					// We need to iterate through and remove duplicates again, since the duplicates may have been generated in different patches
+					var knownAlternatives = new Array();
+					for (var j=0; j<suggestedAlternatives.length; j++) {
+						print(json(knownAlternatives));
+						var thisText = suggestedAlternatives[j].text;
+						if (knownAlternatives.indexOf(thisText) == -1) {
+							print("adding unique: " + thisText);
+							knownAlternatives.push(thisText);
+							fieldOption.alternatives.push(suggestedAlternatives[j]);
+						}
+					}
+					
                 } else {
                     fieldOption.alternatives = fieldOption.alternatives.concat(getAlternativesForFieldName(patches[i], fieldOption.field));
                 }
@@ -879,52 +893,7 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
     var fieldAlternatives = getAlternativesForFieldName(patches[curPatch], fieldName);
     for (var i=0; i<fieldAlternatives.length; i++) {
         var option = fieldAlternatives[i];
-        
-        //var textalicious = option.text.slice(	patches[curPatch].editStart - patches[curPatch].patchOffset,
-        //										patches[curPatch].editEnd - patches[curPatch].patchOffset);
-        
-        var optionPrefix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editStart, option.editStart);
-        var optionPostfix = getParagraph(paragraphs[paragraph_index]).substring(option.editEnd, patches[curPatch].editEnd);
-        //var editRegion = optionPrefix + option.editedText + optionPostfix;
         var editRegion = option.editedText;
-        
-		//print("option");
-		//print(json(option));
-		
-		// We need to subtract out the left- and right-most edges of the diff object if they haven't been touched
-		var startPosition = 0;
-		for (var j=0; j<option.diff.length; j++) {
-			if (option.diff[j][0] == 0) { // it's not a "leave it alone" diff element
-				startPosition += option.diff[j][1].length;
-			}
-			else {
-				break;
-			}
-		}
-		var endPosition = 0;
-		for (var j=option.diff.length-1; j>=0; j--) {
-			if(option.diff[j][0] == 0) {
-				endPosition += option.diff[j][1].length;
-			}
-			else {
-				break;
-			}
-		}
-		
-		//var originalParagraph = getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd);		
-		//var betterdiff = dmp.diff_main(originalParagraph, option.text);
-        //dmp.diff_cleanupSemantic(betterdiff);
-        //print('betterdiff');
-		//print(json(betterdiff));
-		
-		
-        //var editRegion = option.text.slice(option.diff[0][1].length, -1 * option.diff[option.diff.length-1][1].length)
-		//var editRegion = option.text.slice(startPosition, -1 * endPosition)
-		//editRegion = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editStart, patches[curPatch].editStart + startPosition) + editRegion + getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd - endPosition, patches[curPatch].editEnd - endPosition);
-		//var editRegion = option.text
-		
-		
-		//var editRegion = textalicious;
                 
         var newAlternative = {
             text: prefix + editRegion + postfix,
@@ -934,25 +903,9 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
             numVoters: option.numVoters,
             votes: option.votes,
 			originalText: getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd),
-			foooptionPrefix: optionPrefix,
-			foooptionPrefixIndex: [patches[curPatch].editStart, option.editStart],
-			foooptionPostfix: optionPostfix,
-			foooptionPostfixIndex: [option.editEnd, patches[curPatch].editEnd],
-			fooeditregion: editRegion,
-			foooriginaledited: option.editedText,
-			/*
-			footext: option.text,
-			fooregion: editRegion,
-			foostart: startPosition,
-			fooend: endPosition,
-			foodiff: option.diff,
-			//betterdiff: betterdiff,
-			fooprefix: prefix,
-			foopostfix: postfix,
-			foooriginal: option,
-			*/
         }
-        alternatives.push(newAlternative);
+		
+		alternatives.push(newAlternative);
     }
     
     return alternatives;
