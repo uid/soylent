@@ -708,6 +708,7 @@ function getFieldAlternatives(fieldAlternatives, fieldName, patch, votes, numVot
                 newAlternative.editedText = suggestion;    // will be updated in a moment
                 newAlternative.editStart = edit_start + editOffset;
                 newAlternative.editEnd = edit_end + editOffset;
+                newAlternative.patchOffset = editOffset;
                 newAlternative.diff = diff;
             }
             
@@ -878,9 +879,18 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
     var fieldAlternatives = getAlternativesForFieldName(patches[curPatch], fieldName);
     for (var i=0; i<fieldAlternatives.length; i++) {
         var option = fieldAlternatives[i];
+        
+        //var textalicious = option.text.slice(	patches[curPatch].editStart - patches[curPatch].patchOffset,
+        //										patches[curPatch].editEnd - patches[curPatch].patchOffset);
+        
+        var optionPrefix = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editStart, option.editStart);
+        var optionPostfix = getParagraph(paragraphs[paragraph_index]).substring(option.editEnd, patches[curPatch].editEnd);
+        //var editRegion = optionPrefix + option.editedText + optionPostfix;
+        var editRegion = option.editedText;
+        
 		//print("option");
 		//print(json(option));
-        
+		
 		// We need to subtract out the left- and right-most edges of the diff object if they haven't been touched
 		var startPosition = 0;
 		for (var j=0; j<option.diff.length; j++) {
@@ -901,7 +911,6 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
 			}
 		}
 		
-		
 		//var originalParagraph = getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd);		
 		//var betterdiff = dmp.diff_main(originalParagraph, option.text);
         //dmp.diff_cleanupSemantic(betterdiff);
@@ -910,9 +919,12 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
 		
 		
         //var editRegion = option.text.slice(option.diff[0][1].length, -1 * option.diff[option.diff.length-1][1].length)
-		var editRegion = option.text.slice(startPosition, -1 * endPosition)
-		editRegion = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editStart, patches[curPatch].editStart + startPosition) + editRegion + getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd - endPosition, patches[curPatch].editEnd - endPosition);
+		//var editRegion = option.text.slice(startPosition, -1 * endPosition)
+		//editRegion = getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editStart, patches[curPatch].editStart + startPosition) + editRegion + getParagraph(paragraphs[paragraph_index]).substring(patches[curPatch].editEnd - endPosition, patches[curPatch].editEnd - endPosition);
 		//var editRegion = option.text
+		
+		
+		//var editRegion = textalicious;
                 
         var newAlternative = {
             text: prefix + editRegion + postfix,
@@ -922,6 +934,13 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
             numVoters: option.numVoters,
             votes: option.votes,
 			originalText: getParagraph(paragraphs[paragraph_index]).substring(editStart, editEnd),
+			foooptionPrefix: optionPrefix,
+			foooptionPrefixIndex: [patches[curPatch].editStart, option.editStart],
+			foooptionPostfix: optionPostfix,
+			foooptionPostfixIndex: [option.editEnd, patches[curPatch].editEnd],
+			fooeditregion: editRegion,
+			foooriginaledited: option.editedText,
+			/*
 			footext: option.text,
 			fooregion: editRegion,
 			foostart: startPosition,
@@ -931,6 +950,7 @@ function mergeOptions(patches, startPatch, endPatch, curPatch, paragraph_index, 
 			fooprefix: prefix,
 			foopostfix: postfix,
 			foooriginal: option,
+			*/
         }
         alternatives.push(newAlternative);
     }
