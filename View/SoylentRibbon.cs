@@ -9,6 +9,7 @@ using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
+using System.Windows;
 using System.Windows.Forms.Integration;
 using System.Windows.Forms;
 using System.Diagnostics;
@@ -383,6 +384,50 @@ namespace Soylent
 
             Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + q.job];
             q.range = a.Range;
+        }
+
+        /// <summary>
+        /// Prompt for the Amazon Keys
+        /// </summary>
+        /// <param name="callback">A callback if we got keys</param>
+        /// <param name="cancel">A callback if the user didn't provide keys</param>
+        public void AskForKeys(TurKit.startTaskDelegate callback, TurKit.noKeysDelegate cancel)
+        {
+            Amazon amazon = new Amazon();
+            Window amazonWindow = new Window
+            {
+                Title = "Amazon Keys",
+                Content = amazon,
+                SizeToContent = SizeToContent.WidthAndHeight,
+                ResizeMode = ResizeMode.NoResize
+            };
+
+           amazon.okButton.Click += (sender, e) => {
+                AmazonKeys keys = new AmazonKeys();
+                keys.amazonID = amazon.accessKey.Text;
+                keys.secretKey = amazon.secretKey.Text;
+
+                if (callback != null)
+                {
+                    callback(keys);
+                }
+                amazonWindow.Close();
+            };
+
+           amazon.cancelButton.Click += (sender, e) =>
+           {
+               if (cancel != null)
+               {
+                   cancel();
+               }
+           };
+
+            amazonWindow.ShowDialog();
+        }
+
+        public void amazon_Click(object sender, RibbonControlEventArgs e)
+        {
+            AskForKeys(null, null);
         }
     }
 }

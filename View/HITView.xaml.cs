@@ -78,8 +78,26 @@ namespace Soylent.View
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.data.tk.cancelTask();
+            AmazonKeys.AskForAmazonKeys((AmazonKeys keys) =>
+            {
+                data.tk.cancelTask(keys);
+                RemoveHITVIew();
+            }, null);
         }
-        //Globals.Soylent.soylentMap[doc].sidebar.jobs.Children.Remove((UIElement) this.Parent);
+
+        /// <summary>
+        /// Removes the HITView from the sidebar
+        /// </summary>
+        public void RemoveHITVIew()
+        {
+            Word.Document doc = Globals.Soylent.Application.ActiveDocument;
+
+            UIElementCollection children = Globals.Soylent.soylentMap[doc].sidebar.jobs.Children;
+
+            // We might be in stub mode or in full mode
+            children.Remove((UIElement)this.Parent);
+            children.Remove(((UIElement)stub.Parent));
+            //Globals.Soylent.soylentMap[doc].sidebar.jobs.Children.Clear();
+        }
     }
 }
