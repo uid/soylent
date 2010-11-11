@@ -65,6 +65,8 @@ namespace Soylent.Model.HumanMacro
             //stages[HITData.ResultType.Macro] = new StageData(HITData.ResultType.Macro);
             macroStageData = new StageData(HITData.ResultType.Macro, job);
             //stages[HITData.ResultType.Macro] = new HumanMacroStage(HITData.ResultType.Macro, redundancy);
+
+            results = new List<string>();
         }
 
         public HumanMacroData() : base()

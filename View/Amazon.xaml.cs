@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Text.RegularExpressions;
+using Soylent.Model;
 
 namespace Soylent.View
 {
@@ -24,25 +25,23 @@ namespace Soylent.View
         public Amazon()
         {
             InitializeComponent();
-            Model.AmazonKeys keys = Model.AmazonKeys.GetAmazonKeys(TurKit.getRootDirectory());
+
+            AmazonKeys keys = AmazonKeys.LoadAmazonKeys();
+            if (keys != null)
+            {
+                fillTextField(keys);
+            }
+        }
+
+        private void fillTextField(AmazonKeys keys)
+        {
             accessKey.Text = keys.amazonID;
             secretKey.Text = keys.secretKey;
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            string rootDirectory = TurKit.getRootDirectory();
-
-            StreamReader reader = new StreamReader(rootDirectory + "amazon.template.xml");
-            string content = reader.ReadToEnd();
-            reader.Close();
-
-            content = Regex.Replace(content, "AmazonKeyHere", accessKey.Text);
-            content = Regex.Replace(content, "AmazonSecretHere", secretKey.Text);
-
-            StreamWriter writer = new StreamWriter(rootDirectory + "amazon.xml", false);
-            writer.Write(content);
-            writer.Close();
+            Model.AmazonKeys.SetAmazonKeys(accessKey.Text, secretKey.Text);
         }
     }
 }

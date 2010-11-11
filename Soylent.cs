@@ -35,11 +35,10 @@ namespace Soylent
         //public SoylentPanel soylent;
         //private TurKitSocKit tksc;
         private TurKitHTTP tkhttp;
-        SoylentPanel first;
         public Dictionary<Word.Document, SoylentPanel> soylentMap = new Dictionary<Word.Document,SoylentPanel>();
         public Dictionary<int, Word.Document> jobToDoc = new Dictionary<int, Word.Document>();
 
-        public static bool DEBUG = false;
+        public static bool DEBUG = true;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {

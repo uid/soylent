@@ -8,7 +8,7 @@ namespace Soylent.Model.HumanMacro
     class HumanMacroStage: StageData
     {
         public int redundancy;
-        public int numRequested
+        public override int numRequested
         {
             get
             {
