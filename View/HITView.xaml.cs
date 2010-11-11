@@ -80,8 +80,6 @@ namespace Soylent.View
         {
             this.data.tk.cancelTask();
         }
-            Globals.Soylent.soylentMap[doc].sidebar.jobs.Children.Remove((UIElement) this.Parent);
-        }
-        
+        //Globals.Soylent.soylentMap[doc].sidebar.jobs.Children.Remove((UIElement) this.Parent);
     }
 }

@@ -28,7 +28,8 @@ namespace Soylent
         private HITData hdata;
         public Timer turkitLoopTimer;
 
-        private bool isRunning;
+        private ProcessInformation info;
+        //private bool isRunning;
 
         public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
         /// <summary>
@@ -47,13 +48,20 @@ namespace Soylent
             }
             this.hdata = hdata;
 
-            isRunning = false;
+            //isRunning = false;
         }
 
         public void cancelTask()
         {
             // Stop TurKit timer
             turkitLoopTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            //if (isRunning)
+            //{
+                if (info.process != null && !info.process.HasExited)
+                {
+                    info.process.Kill();
+                }
+            //}
 
             // Call the cancelTask() method
             int request = hdata.job;
@@ -75,8 +83,8 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
-                ExecuteProcess(info);
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
+                ExecuteProcess(cancel_info);
             }
             else if (hdata is CrowdproofData)
             {
@@ -95,8 +103,8 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
-                ExecuteProcess(info);
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
+                ExecuteProcess(cancel_info);
             }
             else if (hdata is HumanMacroData)
             {
@@ -115,8 +123,8 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
-                ExecuteProcess(info);
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
+                ExecuteProcess(cancel_info);
             }
         }
 
@@ -205,7 +213,7 @@ namespace Soylent
                 Debug.Print(arguments);
 
                 //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;
@@ -295,7 +303,7 @@ namespace Soylent
                 }
 
                 
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                info = new  ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;
@@ -468,7 +476,7 @@ namespace Soylent
                 }
 
                 //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
-                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
                 TimerCallback callback = ExecuteProcess;
                 int timer = 60 * 1000;
@@ -506,51 +514,56 @@ namespace Soylent
         {
             lock (this)
             {
-                if (isRunning)
+                //if (isRunning)
+                if (info.process != null && !info.process.HasExited)
                 {
                     return; // there's another TurKit already running; exit and wait for it to finish
                 }
-                else
+                /*else
                 {
                     isRunning = true;
-                }
+                }*/
             }
             string output, error;
 
-            ProcessInformation info = (ProcessInformation) infoObject;
-            if (info.showWindow)
+            ProcessInformation execute_info = (ProcessInformation) infoObject;
+            if (execute_info.showWindow)
             {
-                info.cmdParams = " /k " + info.cmd + info.cmdParams;
-                info.cmd = "cmd";
+                execute_info.cmdParams = " /k " + execute_info.cmd + execute_info.cmdParams;
+                execute_info.cmd = "cmd";
             }
 
-            Process process = new Process();
-            process.StartInfo = new ProcessStartInfo(info.cmd, info.cmdParams);
-            process.StartInfo.WorkingDirectory = info.workingDirectory;
-            process.StartInfo.UseShellExecute = false;
-            if (!info.showWindow)
+            execute_info.process = new Process();
+            execute_info.process.StartInfo = new ProcessStartInfo(execute_info.cmd, execute_info.cmdParams);
+            execute_info.process.StartInfo.WorkingDirectory = execute_info.workingDirectory;
+            execute_info.process.StartInfo.UseShellExecute = false;
+            if (!execute_info.showWindow)
             {
-                process.StartInfo.CreateNoWindow = true;
-                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                process.StartInfo.RedirectStandardOutput = true;
-                process.StartInfo.RedirectStandardError = true;
+                execute_info.process.StartInfo.CreateNoWindow = true;
+                execute_info.process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                execute_info.process.StartInfo.RedirectStandardOutput = true;
+                execute_info.process.StartInfo.RedirectStandardError = true;
             }
-            process.Start( );
-            if (!info.showWindow)
+            execute_info.process.Start();
+            if (!execute_info.showWindow)
             {
-                output = process.StandardOutput.ReadToEnd();
-                error = process.StandardError.ReadToEnd();
+                output = execute_info.process.StandardOutput.ReadToEnd();
+                error = execute_info.process.StandardError.ReadToEnd();
             }
             else
             {
                 output = null;
                 error = null;
             }
-            process.WaitForExit();
+            //process.WaitForExit();
+            execute_info.process.Exited += new EventHandler(process_Exited);
+        }
 
+        void process_Exited(object sender, EventArgs e)
+        {
             lock (this)
             {
-                isRunning = false;
+                //isRunning = false;
             }
         }
 
@@ -560,12 +573,14 @@ namespace Soylent
             public string cmdParams { get; set; }
             public string workingDirectory { get ; set; }
             public bool showWindow { get; set; }
+            public Process process { get; set; }
 
             public ProcessInformation(string cmd, string cmdParams, string workingDirectory, bool showWindow) {
                 this.cmd = cmd;
                 this.cmdParams = cmdParams;
                 this.workingDirectory = workingDirectory;
                 this.showWindow = showWindow;
+                this.process = null;
             }
         }
     }

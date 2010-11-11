@@ -337,8 +337,9 @@ if (!Array.prototype.reduce)
   };
 
   function cancelAllHITs(){
-  print ("cancelAllHITS() called!");
-	foreach(database.query("return keys(ensure('__HITs'))"), function (hit) 
+	print ("cancelAllHITS() called!");
+	foreach(database.query("return keys(ensure('__HITs'))"), 
+		function (hit) 
 		{
 			var m = hit.match(/^(real|sandbox):(.*)$/)
 			if (m)

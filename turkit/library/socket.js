@@ -98,10 +98,9 @@ Socket.prototype.sendMessage = function(messageType, message) {
 	stringMessage = stringMessage.substring(1, stringMessage.length-1); // remove the { } encasing the JSON. C# hates that.
     print(stringMessage);
     
-	try {
-		var url = new java.net.URL("http://localhost:11000/");
-	try
+	try 
 	{
+		var url = new java.net.URL("http://localhost:11000/");
 		var connection = url.openConnection();
 		connection.setRequestMethod("GET");
 		connection.setReadTimeout(15*1000);
@@ -122,7 +121,7 @@ Socket.prototype.sendMessage = function(messageType, message) {
 			stringBuilder.append(line + "\n");
 		}
 		print(stringBuilder.toString());
-		}
+	}
 	catch (e) 
 	{
         print("Caught socket failure: " + e.rhinoException);
