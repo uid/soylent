@@ -386,16 +386,35 @@ namespace Soylent
             q.range = a.Range;
         }
 
-        private void amazon_Click(object sender, RibbonControlEventArgs e)
+        public void AskForKeys(TurKit.startTaskDelegate callback)
         {
+            Amazon amazon = new Amazon();
             Window amazonWindow = new Window
             {
                 Title = "Amazon Keys",
-                Content = new Amazon(),
+                Content = amazon,
                 SizeToContent = SizeToContent.WidthAndHeight,
                 ResizeMode = ResizeMode.NoResize
             };
+
+            ((Amazon)amazonWindow.Content).okButton.Click += (sender, e) => {
+                AmazonKeys keys = new AmazonKeys();
+                keys.amazonID = amazon.accessKey.Text;
+                keys.secretKey = amazon.secretKey.Text;
+
+                if (callback != null)
+                {
+                    callback(keys);
+                }
+                amazonWindow.Close();
+            };
+
             amazonWindow.ShowDialog();
+        }
+
+        public void amazon_Click(object sender, RibbonControlEventArgs e)
+        {
+            AskForKeys(null);
         }
     }
 }

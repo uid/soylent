@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace Soylent.Model
 {
@@ -11,13 +14,34 @@ namespace Soylent.Model
         public string amazonID;
         public string secretKey;
 
+        public static AmazonKeys LoadAmazonKeys()
+        {
+            string rootDirectory = TurKit.getRootDirectory();
+            string keyFile = rootDirectory + @"\amazon.xml";
+
+
+            if (!File.Exists(keyFile))
+            {
+                return null;
+            }
+            else
+            {
+                AmazonKeys keys = getKeysFromFile(keyFile);
+                return keys;
+            }
+        }
+
         /// <summary>
         /// Reads in the AMT secret and key from the amazon.xml file so that HITs can be submitted.
         /// </summary>
-        public static AmazonKeys GetAmazonKeys(string rootDirectory)
+        public static void AskForAmazonKeys(TurKit.startTaskDelegate callback)
         {
-            //System.Xml.XmlTextReader amazonReader = new System.Xml.XmlTextReader("./amazon.template.xml");
-            XDocument doc = XDocument.Load(rootDirectory + @"\amazon.xml");
+            Globals.Ribbons.Ribbon.AskForKeys(callback);
+        }
+
+        public static AmazonKeys getKeysFromFile(string keyFile)
+        {
+            XDocument doc = XDocument.Load(keyFile);
             XElement secret = doc.Root.Element("amazonSECRET");
             XElement key = doc.Root.Element("amazonKEY");
 
@@ -26,6 +50,22 @@ namespace Soylent.Model
                 amazonID = key.Value,
                 secretKey = secret.Value
             };
+        }
+
+        public static void SetAmazonKeys(string key, string secret)
+        {
+            string rootDirectory = TurKit.getRootDirectory();
+
+            StreamReader reader = new StreamReader(rootDirectory + "amazon.template.xml");
+            string content = reader.ReadToEnd();
+            reader.Close();
+
+            content = Regex.Replace(content, "AmazonKeyHere", key);
+            content = Regex.Replace(content, "AmazonSecretHere", secret);
+
+            StreamWriter writer = new StreamWriter(rootDirectory + "amazon.xml", false);
+            writer.Write(content);
+            writer.Close();
         }
     }
 }
