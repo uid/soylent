@@ -30,7 +30,6 @@ namespace Soylent
 
         private bool isRunning;
 
-
         public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
         /// <summary>
         /// Creates a TurKit job for the selected task.
@@ -43,6 +42,71 @@ namespace Soylent
 
             isRunning = false;
         }
+
+        public void cancelTask(AmazonKeys keys)
+        {
+            // Stop TurKit timer
+            turkitLoopTimer.Change(Timeout.Infinite, Timeout.Infinite);
+
+            // Call the cancelTask() method
+            int request = hdata.job;
+            string cancelLine = "\n" + "cancelTask();";
+            if (hdata is ShortnData)
+            {
+                string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".data.js";
+                File.AppendAllText(requestFile, cancelLine);
+
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
+                if (Soylent.DEBUG)
+                {
+                    arguments += " -m sandbox";
+                }
+                else
+                {
+                    arguments += " -m real";
+                }
+
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
+                ExecuteProcess(info);
+            }
+            else if (hdata is CrowdproofData)
+            {
+                string requestFile = rootDirectory + @"\turkit\active-hits\crowdproof." + request + ".data.js";
+                File.AppendAllText(requestFile, cancelLine);
+
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
+                if (Soylent.DEBUG)
+                {
+                    arguments += " -m sandbox";
+                }
+                else
+                {
+                    arguments += " -m real";
+                }
+
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
+                ExecuteProcess(info);
+            }
+            else if (hdata is HumanMacroData)
+            {
+                string requestFile = rootDirectory + @"\turkit\active-hits\macro." + request + ".data.js";
+                File.AppendAllText(requestFile, cancelLine);
+
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
+                if (Soylent.DEBUG)
+                {
+                    arguments += " -m sandbox";
+                }
+                else
+                {
+                    arguments += " -m real";
+                }
+
+                ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", true);
+                ExecuteProcess(info);
+            }
+        }
+
 
         public static string getRootDirectory()
         {

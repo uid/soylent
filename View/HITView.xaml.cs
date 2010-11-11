@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
 using Soylent.Model;
 using Word = Microsoft.Office.Interop.Word;
+using System.Diagnostics;
 
 namespace Soylent.View
 {
@@ -46,6 +47,7 @@ namespace Soylent.View
             stub = new HITViewStub(workType, data, this);
 
             this.job = job;
+            cancelBtn.IsEnabled = true;
         }
 
         /// <summary>
@@ -76,6 +78,8 @@ namespace Soylent.View
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
+            AmazonKeys.AskForAmazonKeys(data.tk.cancelTask);
+
             Word.Document doc = Globals.Soylent.Application.ActiveDocument;
             UIElementCollection uiec = Globals.Soylent.soylentMap[doc].sidebar.jobs.Children;
             Globals.Soylent.soylentMap[doc].sidebar.jobs.Children.Remove((UIElement) this.Parent);

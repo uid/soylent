@@ -76,6 +76,7 @@ namespace Soylent.View
             grid.Children.Add(buttonPanel);
 
             sidebar.alertSidebar(this.data.job);
+            view.cancelBtn.IsEnabled = false; 
         }
 
         public void CrowdproofDataReceived(){
@@ -127,6 +128,7 @@ namespace Soylent.View
                 grid.Children.Add(buttonPanel);
 
                 sidebar.alertSidebar(this.data.job);
+                view.cancelBtn.IsEnabled = false; 
             }
         }
 
@@ -177,6 +179,7 @@ namespace Soylent.View
                 grid.Children.Add(buttonPanel);
 
                 sidebar.alertSidebar(this.data.job);
+                view.cancelBtn.IsEnabled = false; 
         }
 
 

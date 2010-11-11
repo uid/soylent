@@ -110,17 +110,19 @@ Socket.prototype.sendMessage = function(messageType, message) {
 		out.write(stringMessage);
 		out.close();
 		
-			// read the output from the server
-		  var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream()));
-		  var stringBuilder = new java.lang.StringBuilder();
+		// read the output from the server
+		var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream()));
+		var stringBuilder = new java.lang.StringBuilder();
 
-		  var line = null;
-		  while ((line = reader.readLine()) != null)
-		  {
+		var line = null;
+		while ((line = reader.readLine()) != null)
+		{
 			stringBuilder.append(line + "\n");
-		  }
+		}
 		print(stringBuilder.toString());
-	} catch(e) {
-		print(e.rhinoException);
-	}
+		}
+	catch (e) 
+	{
+        print("Caught socket failure: " + e.rhinoException);
+    }
 }
