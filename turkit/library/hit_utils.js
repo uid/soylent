@@ -335,4 +335,31 @@ if (!Array.prototype.reduce)
 
     return rv;
   };
+
+  function cancelAllHITs(){
+  print ("cancelAllHITS() called!");
+	foreach(database.query("return keys(ensure('__HITs'))"), function (hit) 
+		{
+			var m = hit.match(/^(real|sandbox):(.*)$/)
+			if (m)
+			{
+				setMode(m[1])
+				mturk.deleteHITRaw(m[2])
+				print ("hit_utils: The cancel was successful! Hit " + m[2]);
+			} 
+			else 
+			{
+				mturk.deleteHITRaw(hit)
+				print ("hit_utils: The cancel was successful! Hit " + hit);
+			}
+		}
+	)
+	foreach(database.query("return keys(ensure('__S3_Objects'))"), 
+		function (obj) 
+		{
+			s3.deleteObjectRaw(obj);
+			print ("hit_utils: Deleted S3 object " + obj);
+		}
+	);
+	}
 }
