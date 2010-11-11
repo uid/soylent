@@ -27,8 +27,8 @@ namespace Soylent.View.Shortn
         private ShortnData data;
         private double currentPercent;
         private string rootDirectory = null;
-        private string UNLOCK_TEXT = "Allow all"; //This is the text for the context menu option that unlocks the selection
-        private string REMOVE_TEXT = "Cut"; //This is the text for the context menu option that replaces the selection with the empty string.
+        private static string UNLOCK_TEXT = "Allow all"; //This is the text for the context menu option that unlocks the selection
+        private static string REMOVE_TEXT = "Cut"; //This is the text for the context menu option that replaces the selection with the empty string.
 
         /// <summary>
         /// The dialog window that opens when a user wants to interact with returned Shortn data.
@@ -123,26 +123,26 @@ namespace Soylent.View.Shortn
                     ContextMenu cm = new ContextMenu();
 
                     // Make the option to unlock the selection
-                    MenuItem i = new MenuItem();
-                    i.Header = UNLOCK_TEXT;
-                    i.Click += new RoutedEventHandler(contextMenuHandler);
-                    i.Tag = r;
-                    cm.Items.Add(i);
+                    MenuItem menuItem = new MenuItem();
+                    menuItem.Header = UNLOCK_TEXT;
+                    menuItem.Click += new RoutedEventHandler(contextMenuHandler);
+                    menuItem.Tag = r;
+                    cm.Items.Add(menuItem);
                     
                     foreach (string replacement in selection.patch.replacements)
                     {
-                        MenuItem i1 = new MenuItem();
-                        if (replacement.Equals(""))
+                        MenuItem menuItem1 = new MenuItem();
+                        if (replacement == "")
                         {
-                            i1.Header = REMOVE_TEXT;
+                            menuItem1.Header = REMOVE_TEXT;
                         }
                         else
                         {
-                            i1.Header = replacement;
+                            menuItem1.Header = replacement;
                         }
-                        i1.Click += new RoutedEventHandler(contextMenuHandler);
-                        i1.Tag = r;
-                        cm.Items.Add(i1);
+                        menuItem1.Click += new RoutedEventHandler(contextMenuHandler);
+                        menuItem1.Tag = r;
+                        cm.Items.Add(menuItem1);
                     }
                     cm.MaxWidth = 400;
                     //cm.Width = 400; // Wasn't sure what to set this to.
@@ -159,27 +159,27 @@ namespace Soylent.View.Shortn
 
                     ContextMenu cm = new ContextMenu();
 
-                    MenuItem i = new MenuItem();
-                    i.Header = UNLOCK_TEXT;
-                    i.Click += new RoutedEventHandler(contextMenuHandler);
-                    i.Tag = r;
-                    cm.Items.Add(i);
+                    MenuItem menuItem = new MenuItem();
+                    menuItem.Header = UNLOCK_TEXT;
+                    menuItem.Click += new RoutedEventHandler(contextMenuHandler);
+                    menuItem.Tag = r;
+                    cm.Items.Add(menuItem);
 
                     foreach (string replacement in selection.patch.replacements)
                     {
-                        MenuItem i1 = new MenuItem();
-                        if (replacement.Equals(""))
+                        MenuItem menuItem1 = new MenuItem();
+                        if (replacement == "")
                         {
-                            i1.Header = REMOVE_TEXT;
+                            menuItem1.Header = REMOVE_TEXT;
                         }
                         else
                         {
-                            i1.Header = replacement;
+                            menuItem1.Header = replacement;
                         }
-                        i1.Click += new RoutedEventHandler(contextMenuHandler);
+                        menuItem1.Click += new RoutedEventHandler(contextMenuHandler);
 
-                        i1.Tag = r;
-                        cm.Items.Add(i1);
+                        menuItem1.Tag = r;
+                        cm.Items.Add(menuItem1);
                     }
                     //cm.Width = 400; // Not sure
                     r.ContextMenu = cm;
@@ -230,7 +230,7 @@ namespace Soylent.View.Shortn
                     }
                     index++;
                 }*/
-                if((item.Header as string).Equals(REMOVE_TEXT))
+                if((item.Header as string) == REMOVE_TEXT)
                 {
                     patch.lockSelection("");
                 }

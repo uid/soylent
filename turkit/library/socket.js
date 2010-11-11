@@ -99,24 +99,31 @@ Socket.prototype.sendMessage = function(messageType, message) {
     print(stringMessage);
     
 	var url = new java.net.URL("http://localhost:11000/");
-	var connection = url.openConnection();
-	connection.setRequestMethod("GET");
-	connection.setReadTimeout(15*1000);
-	connection.setDoOutput(true);
-	
-	connection.connect();	
-	var out = new java.io.OutputStreamWriter(connection.getOutputStream());
-	out.write(stringMessage);
-	out.close();
-	
-	// read the output from the server
-    var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream()));
-    var stringBuilder = new java.lang.StringBuilder();
+	try
+	{
+		var connection = url.openConnection();
+		connection.setRequestMethod("GET");
+		connection.setReadTimeout(15*1000);
+		connection.setDoOutput(true);
+		
+		connection.connect();	
+		var out = new java.io.OutputStreamWriter(connection.getOutputStream());
+		out.write(stringMessage);
+		out.close();
+		
+		// read the output from the server
+		var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream()));
+		var stringBuilder = new java.lang.StringBuilder();
 
-    var line = null;
-    while ((line = reader.readLine()) != null)
-    {
-		stringBuilder.append(line + "\n");
+		var line = null;
+		while ((line = reader.readLine()) != null)
+		{
+			stringBuilder.append(line + "\n");
+		}
+		print(stringBuilder.toString());
+		}
+	catch (e) 
+	{
+        print("Caught socket failure: " + e.rhinoException);
     }
-	print(stringBuilder.toString());
 }

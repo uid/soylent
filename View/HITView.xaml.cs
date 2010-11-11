@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms.Integration;
 using Soylent.Model;
 using Word = Microsoft.Office.Interop.Word;
+using System.Diagnostics;
 
 namespace Soylent.View
 {
@@ -46,6 +47,7 @@ namespace Soylent.View
             stub = new HITViewStub(workType, data, this);
 
             this.job = job;
+            cancelBtn.IsEnabled = true;
         }
 
         /// <summary>
@@ -73,6 +75,10 @@ namespace Soylent.View
             data.range.GoTo(ref what, ref which, ref missing, ref missing);
              */
         }
-        
+
+        private void cancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.data.tk.cancelTask();
+        }
     }
 }
