@@ -1076,3 +1076,9 @@ function outputEdits(HTML_output, lag_output, payment_output, paragraph, patch, 
     
     patchesOutput.write(json(outputPatch));
 }
+
+function cancelTask()
+{
+	print ("find-fix-verify: cancelTask() was called!");
+	cancelAllHITs();
+}
