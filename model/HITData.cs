@@ -100,7 +100,12 @@ namespace Soylent.Model
         /// </summary>
         public void startTask()
         {
-            tk.startTask();
+            TurKit.noKeysDelegate cancel = () =>
+            {
+                this.view.RemoveHITVIew();
+            };
+
+            tk.startTask(cancel);
         }
 
         /// <summary>

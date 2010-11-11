@@ -21,7 +21,7 @@ namespace Soylent.Model
                 return (from numCompletedThisParagraph in numCompletedperParagraph select numCompletedThisParagraph.Sum()).Sum();
             }
         }
-        public int numRequested
+        public virtual int numRequested
         {
             get
             {
