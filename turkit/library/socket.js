@@ -89,6 +89,15 @@ Socket.prototype.sendStageComplete = function(stage, paragraphNum, hit, patchNum
 	this.sendMessage("stageComplete", message);
 }
 
+Socket.prototype.sendException = function(exceptionCode, exceptionString) {
+	var message = {
+		exceptionCode: exceptionCode,
+		exceptionString: exceptionString
+	}
+	
+	this.sendMessage("exception", message);
+}
+
 Socket.prototype.sendMessage = function(messageType, message) {
     message.job = soylentJob;
     message.__type__ = messageType;

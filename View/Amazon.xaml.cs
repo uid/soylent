@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Text.RegularExpressions;
 using Soylent.Model;
+using System.Diagnostics;
 
 namespace Soylent.View
 {
@@ -42,6 +43,17 @@ namespace Soylent.View
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
             Model.AmazonKeys.SetAmazonKeys(accessKey.Text, secretKey.Text);
+        }
+
+        // Example from http://laurenlavoie.com/avalon/159
+        void HandleRequestNavigate(object sender, RoutedEventArgs e)
+        {
+            string navigateUri = ((Hyperlink) sender).NavigateUri.ToString();
+            // if the URI somehow came from an untrusted source, make sure to
+            // validate it before calling Process.Start(), e.g. check to see
+            // the scheme is HTTP, etc.
+            Process.Start(new ProcessStartInfo(navigateUri));
+            e.Handled = true;
         }
     }
 }

@@ -57,7 +57,7 @@ function requestWork(input) {
 					.replace(/___INSTRUCTIONS___/g, instructions));
 	
 	// create a HIT on MTurk using the webpage
-	var hitId = mturk.createHIT({
+	var hitId = createHIT({
 		title : title,
 		desc : subtitle,
 		url : webpage,
@@ -65,7 +65,8 @@ function requestWork(input) {
 		assignments: redundancy,
 		reward : reward,
 		autoApprovalDelayInSeconds : 60 * 10,	// 10 minutes
-		assignmentDurationInSeconds: 60 * 10
+		assignmentDurationInSeconds: 60 * 10,
+		socket: socket
 	})
 	return hitId;
 }

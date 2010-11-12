@@ -226,6 +226,13 @@ namespace Soylent
                         crowdproofData.processSocKitMessage(receivedObject);
                     }
                 }
+                else if (messageType == "exception")
+                {
+                    Debug.WriteLine("TurKit exception thrown:");
+                    TurKitException receivedObject = serializer.Deserialize<TurKitException>(incomingString);
+                    Debug.WriteLine(receivedObject.exceptionCode);
+                    Debug.WriteLine(receivedObject.exceptionString);
+                }
                 //Debug.WriteLine("got it!");
         }
 
@@ -379,6 +386,13 @@ namespace Soylent
             public int editEnd;
             public string replacement;
             //TODO: does this make sense?  multiple reasons?
+        }
+
+        public class TurKitException
+        {
+            public int job;
+            public string exceptionCode;
+            public string exceptionString;
         }
 
     }
