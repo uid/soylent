@@ -64,7 +64,7 @@ var patchesOutput;
 /**
  * Performs a Find-Fix-Verify computation on the input text.
  */
-function findFixVerify(options) {	
+function findFixVerify(options) {
 	var result = {
 		paragraphs: []
 	};
@@ -267,7 +267,7 @@ function requestPatches(paragraph_index, findFixVerifyOptions) {
     var webpage = s3.putString(webpageContents);
 
 	// create a HIT on MTurk using the webpage
-	var hitId = mturk.createHIT({
+	var hitId = createHIT({
 		title : findFixVerifyOptions.find.HIT_title,
 		desc : findFixVerifyOptions.find.HIT_description,
 		url : webpage,
@@ -275,7 +275,8 @@ function requestPatches(paragraph_index, findFixVerifyOptions) {
 		assignments: findFixVerifyOptions.find.redundancy + 2 * findFixVerifyOptions.buffer_redundancy,
 		reward : findFixVerifyOptions.find.reward,
 		autoApprovalDelayInSeconds : 60 * 60,
-		assignmentDurationInSeconds: 60 * 5		
+		assignmentDurationInSeconds: 60 * 5,
+		socket: findFixVerifyOptions.socket
 	})
 	return hitId;
 }
@@ -404,7 +405,7 @@ function requestFixes(patch, findFixVerifyOptions) {
     var webpage = s3.putString(webpageContents);
 
 	// create a HIT on MTurk using the webpage
-	var fix_hit = mturk.createHIT({
+	var fix_hit = createHIT({
 		title : findFixVerifyOptions.fix.HIT_title,
 		desc : findFixVerifyOptions.fix.HIT_description,
 		url : webpage,
@@ -412,7 +413,8 @@ function requestFixes(patch, findFixVerifyOptions) {
 		assignments: findFixVerifyOptions.fix.redundancy + findFixVerifyOptions.buffer_redundancy,
 		reward : findFixVerifyOptions.fix.reward,
 		autoApprovalDelayInSeconds : 60 * 60,
-		assignmentDurationInSeconds: 60 * 5
+		assignmentDurationInSeconds: 60 * 5,
+		socket: findFixVerifyOptions.socket
 	})
 	return fix_hit;
 }
@@ -521,7 +523,7 @@ function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
 	var webpage = s3.putString(webpageContents);				
 	
 	// create a HIT on MTurk using the webpage
-	var verify_hit = mturk.createHIT({
+	var verify_hit = createHIT({
 		title : findFixVerifyOptions.verify.HIT_title,
 		desc : findFixVerifyOptions.verify.HIT_description,
 		url : webpage,
@@ -529,7 +531,8 @@ function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
 		assignments: findFixVerifyOptions.verify.redundancy + findFixVerifyOptions.buffer_redundancy, 
 		reward : findFixVerifyOptions.verify.reward,
 		autoApprovalDelayInSeconds : 60 * 60,
-		assignmentDurationInSeconds: 60 * 5
+		assignmentDurationInSeconds: 60 * 5,
+		socket: findFixVerifyOptions.socket
 	})
 	return verify_hit;
 }

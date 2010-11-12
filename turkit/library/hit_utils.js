@@ -1,4 +1,34 @@
-/** * Deletes all HIT resources
+/**
+ * A wrapper around mturk.createHIT. Catches errors like
+ * running out of money, and returns them to the client.
+ */
+function createHIT(hitOptions)
+{
+	var exceptionSocket = hitOptions.socket;
+	delete hitOptions.socket;
+	
+	try {
+		return mturk.createHIT(hitOptions);
+	} catch (e) {
+		if (exceptionSocket != null) {
+			print("Throwing exception to C#")
+			
+			var codeRegex = /<Code>(.*)<\/Code>/g
+			var match = codeRegex.exec(e);
+			
+			if (match != null) {
+				var code = match[1];
+				exceptionSocket.sendException(code, e);
+			} 
+		}
+			
+		// We rethrow it so that it halts execution
+		throw e;
+	}
+}
+
+/**
+ * Deletes all HIT resources
  */
 function cleanUp(hitId) {
 	var hit = mturk.getHIT(hitId, true);
@@ -336,7 +366,7 @@ if (!Array.prototype.reduce)
     return rv;
   };
 
-  function cancelAllHITs(){
+function cancelAllHITs() {
 	print ("cancelAllHITS() called!");
 	foreach(database.query("return keys(ensure('__HITs'))"), 
 		function (hit) 
