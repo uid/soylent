@@ -15,6 +15,7 @@ using System.Windows.Forms.Integration;
 using Soylent.Model;
 using Word = Microsoft.Office.Interop.Word;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Soylent.View
 {
@@ -98,6 +99,41 @@ namespace Soylent.View
             children.Remove((UIElement)this.Parent);
             children.Remove(((UIElement)stub.Parent));
             //Globals.Soylent.soylentMap[doc].sidebar.jobs.Children.Clear();
+        }
+
+        public void showError(string exceptionCode)
+        {
+            // First we remove old errors, so they don't get added multiple times
+            IEnumerable<UIElement> errors = stages.Children.Cast<UIElement>().Where(child => child.GetType() == typeof(HITError)).ToList();
+            foreach (UIElement error in errors) {
+                stages.Children.Remove(error);
+            }
+
+            IEnumerable<UIElement> stubErrors = stub.details.Children.Cast<UIElement>().Where(child => child.GetType() == typeof(HITError)).ToList();
+            foreach (UIElement error in stubErrors)
+            {
+                stub.details.Children.Remove(error);
+            }
+
+
+            if (exceptionCode == "AWS.MechanicalTurk.InsufficientFunds")
+            {
+                string errorText = @"You have run out of Mechanical Turk funds. Soylent cannot continue to post tasks.";
+                string resolutionText = @"Purchase more Mechanical Turk credit.";
+                string url = @"https://requester.mturk.com/mturk/prepurchase";
+                HITError error = new HITError(errorText, resolutionText, url);
+                stages.Children.Insert(0, error);
+                
+                HITError stubError = new HITError(errorText, resolutionText, url);
+                stub.details.Children.Insert(0, stubError);
+            }
+            else
+            {
+                HITError error = new HITError(exceptionCode);
+                HITError stubError = new HITError(exceptionCode);
+                stages.Children.Insert(0, error);
+                stub.details.Children.Insert(0, stubError);
+            }
         }
     }
 }

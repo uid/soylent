@@ -10,7 +10,9 @@
                 <TextBlock Margin="0,0,0,0" Name="previewText" VerticalAlignment="Top" TextWrapping="Wrap" TextTrimming="WordEllipsis" Text="preview text" FontStyle="Normal" TextDecorations="None" Foreground="Gray" HorizontalAlignment="Left" />
             </Hyperlink>
         </TextBlock>
-        <ProgressBar HorizontalContentAlignment="Stretch" Margin="12,88,8,12" Height="20" Name="hitProgress" />
-        <Label Content="0.00" Height="28" HorizontalAlignment="Right" Margin="71,62,0,0" Name="cost" VerticalAlignment="Top" Width="42" />
+        <StackPanel Name="details" Margin="0, 55, 0, 5">
+            <Label Content="0.00" Height="28" HorizontalAlignment="Right" Name="cost" VerticalAlignment="Top" Width="42" ContentStringFormat="c" />
+            <ProgressBar HorizontalContentAlignment="Stretch" Height="20" Name="hitProgress" Margin="5, 0, 5, 0" />
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -38,7 +38,7 @@ namespace Soylent
         public Dictionary<Word.Document, SoylentPanel> soylentMap = new Dictionary<Word.Document,SoylentPanel>();
         public Dictionary<int, Word.Document> jobToDoc = new Dictionary<int, Word.Document>();
 
-        public static bool DEBUG = true;
+        public static bool DEBUG = false;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {

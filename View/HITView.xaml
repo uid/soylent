@@ -10,7 +10,7 @@
                 <TextBlock Margin="0,0,0,0" Name="previewText" VerticalAlignment="Top" TextWrapping="Wrap" TextTrimming="WordEllipsis" Text="preview text" FontStyle="Normal" TextDecorations="None" Foreground="Gray" HorizontalAlignment="Left" />
             </Hyperlink>
         </TextBlock>
-        <StackPanel Margin="0,50,0,10" Name="stages">
+        <StackPanel Margin="0,55,0,10" Name="stages">
             <Button VerticalAlignment="Bottom" Height="22.725" Name="cancelBtn" Width="51.813" HorizontalAlignment="Right" FontSize="10" Margin="5" Click="cancelBtn_Click">Cancel</Button>
         </StackPanel>
     </Grid>

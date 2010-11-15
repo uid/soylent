@@ -13,6 +13,8 @@ using Soylent.Model;
 using Soylent.Model.Shortn;
 using Soylent.Model.Crowdproof;
 using Soylent.Model.HumanMacro;
+using System.Windows.Forms;
+using Soylent.View;
 
 
 namespace Soylent
@@ -232,6 +234,14 @@ namespace Soylent
                     TurKitException receivedObject = serializer.Deserialize<TurKitException>(incomingString);
                     Debug.WriteLine(receivedObject.exceptionCode);
                     Debug.WriteLine(receivedObject.exceptionString);
+
+                    Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
+                    SoylentPanel panel = Globals.Soylent.soylentMap[doc];
+                    HITData concernedHIT = panel.jobMap[receivedObject.job];
+
+                    panel.Invoke(new HITData.showErrorDelegate(concernedHIT.showError), new object[] { receivedObject.exceptionCode });
+                    //concernedHIT.showError(receivedObject.exceptionCode);
+
                 }
                 //Debug.WriteLine("got it!");
         }
