@@ -23,7 +23,8 @@ function createHIT(hitOptions)
 		}
 			
 		// We rethrow it so that it halts execution
-		throw e;
+		//throw e;
+		java.lang.System.exit(1);
 	}
 }
 

@@ -29,6 +29,9 @@ namespace Soylent
         private ProcessInformation info;
 
         public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
+        public static int TIMER_LOOP_SECONDS = 60;
+        public static int TIMER_LOOP_SECONDS_DEBUG = 30;
+
         /// <summary>
         /// Creates a TurKit job for the selected task.
         /// </summary>
@@ -40,75 +43,6 @@ namespace Soylent
 
             //isRunning = false;
         }
-
-        public void cancelTask(AmazonKeys keys)
-        {
-            // Stop TurKit timer
-            turkitLoopTimer.Change(Timeout.Infinite, Timeout.Infinite);
-            if (info.process != null && !info.process.HasExited)
-            {
-                info.process.Kill();    // release the lock on the file; we don't need TurKit to run any more
-            }
-
-            // Call the cancelTask() method
-            int request = hdata.job;
-            string cancelLine = "\n" + "cancelTask();";
-            if (hdata is ShortnData)
-            {
-                string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".data.js";
-                File.AppendAllText(requestFile, cancelLine);
-
-                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
-                if (Soylent.DEBUG)
-                {
-                    arguments += " -m sandbox";
-                }
-                else
-                {
-                    arguments += " -m real";
-                }
-
-                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
-                ExecuteProcess(cancel_info);
-            }
-            else if (hdata is CrowdproofData)
-            {
-                string requestFile = rootDirectory + @"\turkit\active-hits\crowdproof." + request + ".data.js";
-                File.AppendAllText(requestFile, cancelLine);
-
-                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
-                if (Soylent.DEBUG)
-                {
-                    arguments += " -m sandbox";
-                }
-                else
-                {
-                    arguments += " -m real";
-                }
-
-                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
-                ExecuteProcess(cancel_info);
-            }
-            else if (hdata is HumanMacroData)
-            {
-                string requestFile = rootDirectory + @"\turkit\active-hits\macro." + request + ".data.js";
-                File.AppendAllText(requestFile, cancelLine);
-
-                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
-                if (Soylent.DEBUG)
-                {
-                    arguments += " -m sandbox";
-                }
-                else
-                {
-                    arguments += " -m real";
-                }
-
-                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
-                ExecuteProcess(cancel_info);
-            }
-        }
-
 
         public static string getRootDirectory()
         {
@@ -197,7 +131,7 @@ namespace Soylent
                 arguments += " -m real";
             }
 
-            info = new  ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+            info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
 
             TimerCallback callback = ExecuteProcess;
             int timer = 60 * 1000;
@@ -372,6 +306,74 @@ namespace Soylent
             GetKeysAndExecute(taskDelegate, cancelDelegate);
         }
 
+        public void cancelTask(AmazonKeys keys)
+        {
+            // Stop TurKit timer
+            turkitLoopTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            if (info.process != null && !info.process.HasExited)
+            {
+                info.process.Kill();    // release the lock on the file; we don't need TurKit to run any more
+            }
+
+            // Call the cancelTask() method
+            int request = hdata.job;
+            string cancelLine = "\n" + "cancelTask();";
+            if (hdata is ShortnData)
+            {
+                string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".data.js";
+                File.AppendAllText(requestFile, cancelLine);
+
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
+                if (Soylent.DEBUG)
+                {
+                    arguments += " -m sandbox";
+                }
+                else
+                {
+                    arguments += " -m real";
+                }
+
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                ExecuteProcess(cancel_info);
+            }
+            else if (hdata is CrowdproofData)
+            {
+                string requestFile = rootDirectory + @"\turkit\active-hits\crowdproof." + request + ".data.js";
+                File.AppendAllText(requestFile, cancelLine);
+
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
+                if (Soylent.DEBUG)
+                {
+                    arguments += " -m sandbox";
+                }
+                else
+                {
+                    arguments += " -m real";
+                }
+
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                ExecuteProcess(cancel_info);
+            }
+            else if (hdata is HumanMacroData)
+            {
+                string requestFile = rootDirectory + @"\turkit\active-hits\macro." + request + ".data.js";
+                File.AppendAllText(requestFile, cancelLine);
+
+                string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
+                if (Soylent.DEBUG)
+                {
+                    arguments += " -m sandbox";
+                }
+                else
+                {
+                    arguments += " -m real";
+                }
+
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                ExecuteProcess(cancel_info);
+            }
+        }
+
         /// <summary>
         /// Asks for Amazon Keys if necessary and then executes the task
         /// </summary>
@@ -392,12 +394,12 @@ namespace Soylent
         ///<returns>Process exit code</returns>
         private void ExecuteProcess(object infoObject)
         {
+            // Start fixing here. Why is this info and not execute_info?
             if (info.process != null && !info.process.HasExited)
             {
+                Debug.WriteLine("ExecuteProcess exiting; previous process " + info.process.Id + " still running.");
                 return; // there's another TurKit already running; exit and wait for it to finish
             }
-
-            string output, error;
 
             ProcessInformation execute_info = (ProcessInformation) infoObject;
             if (execute_info.showWindow)
@@ -418,7 +420,12 @@ namespace Soylent
                 execute_info.process.StartInfo.RedirectStandardError = true;
             }
             execute_info.process.Start();
-            /*
+
+            info.process = execute_info.process;
+
+            execute_info.process.WaitForExit();
+
+            string output, error;
             if (!execute_info.showWindow)
             {
                 output = execute_info.process.StandardOutput.ReadToEnd();
@@ -429,7 +436,6 @@ namespace Soylent
                 output = null;
                 error = null;
             }
-             */
         }
 
         private class ProcessInformation

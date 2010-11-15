@@ -233,6 +233,9 @@
     <Compile Include="View\Amazon.xaml.cs">
       <DependentUpon>Amazon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\HITError.xaml.cs">
+      <DependentUpon>HITError.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HITViewStub.xaml.cs">
       <DependentUpon>HITViewStub.xaml</DependentUpon>
     </Compile>
@@ -317,6 +320,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\Amazon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HITError.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

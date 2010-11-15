@@ -46,14 +46,18 @@ namespace Soylent.View
         }
 
         // Example from http://laurenlavoie.com/avalon/159
-        void HandleRequestNavigate(object sender, RoutedEventArgs e)
+        public void HandleRequestNavigate(object sender, RoutedEventArgs e)
         {
-            string navigateUri = ((Hyperlink) sender).NavigateUri.ToString();
+            NavigateToUrl(((Hyperlink)sender).NavigateUri.ToString());
+            e.Handled = true;
+        }
+
+        public static void NavigateToUrl(string url)
+        {
             // if the URI somehow came from an untrusted source, make sure to
             // validate it before calling Process.Start(), e.g. check to see
             // the scheme is HTTP, etc.
-            Process.Start(new ProcessStartInfo(navigateUri));
-            e.Handled = true;
+            Process.Start(new ProcessStartInfo(url));
         }
     }
 }

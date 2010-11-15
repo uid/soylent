@@ -127,5 +127,11 @@ namespace Soylent.Model
             stage.updateStage(status.numCompleted);
             */
         }
+
+        public delegate void showErrorDelegate(string exceptionCode);
+        public void showError(string exceptionCode)
+        {
+            view.showError(exceptionCode);
+        }
     }
 }
