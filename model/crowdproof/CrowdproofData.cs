@@ -20,8 +20,7 @@ namespace Soylent.Model.Crowdproof
 {
     public class CrowdproofData : HITData
     {
-        int paragraphsCompleted = 0;
-
+        [XmlIgnore] int paragraphsCompleted = 0;
         [XmlIgnore] public List<CrowdproofPatch> patches { get; set;}
         [XmlIgnore] public StageData findStageData;
         [XmlIgnore] public StageData fixStageData;

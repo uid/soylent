@@ -29,7 +29,7 @@ namespace Soylent.Model.HumanMacro
         [XmlIgnore] private List<String> results;
         public List<HumanMacroPatch> patches = new List<HumanMacroPatch>();
 
-        public int numberReturned;
+        [XmlIgnore] public int numberReturned = 0;
 
         public enum TestOrReal { Test, Real };
         public TestOrReal test;
@@ -133,10 +133,10 @@ namespace Soylent.Model.HumanMacro
                         patch.replacements.Add(replacement);
                     }
                 }
-                numberReturned++;
             }
+            numberReturned++;
 
-            if (numberReturned >= patches.Count)
+            if (numberReturned == patches.Count)
             {
                 if (this.tk.turkitLoopTimer != null)
                 {

@@ -6,3 +6,4 @@ obj
 amazon.xml
 turkit\active-hits\*
 turkit\turkit.properties
+turkit\code*.js*
