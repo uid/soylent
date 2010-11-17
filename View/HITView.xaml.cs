@@ -15,7 +15,6 @@ using System.Windows.Forms.Integration;
 using Soylent.Model;
 using Word = Microsoft.Office.Interop.Word;
 using System.Diagnostics;
-using System.Linq;
 
 namespace Soylent.View
 {

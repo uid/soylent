@@ -16,40 +16,7 @@ Socket.FIX_STAGE = "fix";
 Socket.VERIFY_STAGE = "verify";
 
 Socket.prototype.connect = function () {}
-/*
-Socket.prototype.connect = function() {
-    this.socket = new java.net.Socket();
-    var endpoint = new java.net.InetSocketAddress(this.host, this.port);
-
-    if (endpoint.isUnresolved()) {
-        print("Failure :" + endpoint.toString());
-    }
-    else {
-        try {
-				this.socket.setSendBufferSize(100000);
-                this.socket.connect(endpoint, this.timeout);
-                print("Success: " + endpoint.toString());
-				print("Output buffer size: " + this.socket.getSendBufferSize()); 
-                this.socketOut = new java.io.PrintWriter(this.socket.getOutputStream(), true);
-        } catch (e) {
-            print("Failure: " + e.rhinoException);
-        }
-    }
-}
-*/
-
 Socket.prototype.close = function() {}
-/*
-Socket.prototype.close = function() {
-    if (this.socket != null) {
-        try {
-            this.socket.close();
-        } catch (e) {
-            print(e.rhinoException);
-        }
-    }
-}
-*/
 
 Socket.prototype.sendStatus = function(stage, hit, paragraphNum, patchNumber, totalPatches, buffer_redundancy) {
 	var url = (javaTurKit.mode == "sandbox"
@@ -98,10 +65,17 @@ Socket.prototype.sendException = function(exceptionCode, exceptionString) {
 	this.sendMessage("exception", message);
 }
 
-Socket.prototype.sendMessage = function(messageType, message) {
+Socket.prototype.sendMessage = function(messageType, message, urlLocation) {
+	// Default behavior is to send to C#
+	if (urlLocation == null) {
+		urlLocation = "http://localhost:11000/";
+	}
+
     message.job = soylentJob;
     message.__type__ = messageType;
     message.__jobType__ = this.jobType;
+	message.__awsAccessKeyId__ = javaTurKit.awsAccessKeyID;
+	message.__protocolVersion__ = 0.01;		// increment as the protocol changes
     
     var stringMessage = json(message);
 	stringMessage = stringMessage.substring(1, stringMessage.length-1); // remove the { } encasing the JSON. C# hates that.
@@ -109,7 +83,7 @@ Socket.prototype.sendMessage = function(messageType, message) {
     
 	try 
 	{
-		var url = new java.net.URL("http://localhost:11000/");
+		var url = new java.net.URL(urlLocation);
 		var connection = url.openConnection();
 		connection.setRequestMethod("GET");
 		connection.setReadTimeout(15*1000);
@@ -123,6 +97,7 @@ Socket.prototype.sendMessage = function(messageType, message) {
 		// read the output from the server
 		var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream()));
 		var stringBuilder = new java.lang.StringBuilder();
+		stringBuilder.append("response:\n");
 
 		var line = null;
 		while ((line = reader.readLine()) != null)
