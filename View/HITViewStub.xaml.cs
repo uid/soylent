@@ -30,10 +30,11 @@ namespace Soylent.View
         public HITData data;
         public HITView view;
         public Sidebar sidebar;
-        internal Button ShortnButton;
-        internal Button CrowdproofButton;
-        internal Button AcceptRevisions;
-        internal Button RejectRevisions;
+        public Button ShortnButton;
+        public Button CrowdproofButton;
+        public  Button HumanMacroButton;
+        public  Button AcceptRevisions;
+        public Button RejectRevisions;
 
 
         /// <summary>
@@ -64,16 +65,17 @@ namespace Soylent.View
             ShortnButton.Content = "Shortn";
             ShortnButton.Name = "Shortn";
             ShortnButton.Height = 23;
+            ShortnButton.Margin = new Thickness(0.0, 5.0, 0.0, 0.0);
             //ShortnButton.Width = 80;
             //ShortnButton.IsEnabled = false;
             ShortnButton.Click += new RoutedEventHandler(spv.Shortn_Clicked);
 
-            StackPanel buttonPanel = new StackPanel();
-            buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);
+            //StackPanel buttonPanel = new StackPanel();
+            //buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);
 
-            buttonPanel.Children.Add(ShortnButton);
+            //buttonPanel.Children.Add(ShortnButton);
 
-            grid.Children.Add(buttonPanel);
+            details.Children.Add(ShortnButton);
 
             sidebar.alertSidebar(this.data.job);
             view.cancelBtn.IsEnabled = false; 
@@ -91,6 +93,7 @@ namespace Soylent.View
                 CrowdproofButton.Content = "View Revisions";
                 CrowdproofButton.Name = "Crowdproof";
                 CrowdproofButton.Height = 23;
+                CrowdproofButton.Margin = new Thickness(0.0, 5.0, 0.0, 0.0);
                 //CrowdproofButton.IsEnabled = false;
                 CrowdproofButton.Click += new RoutedEventHandler(cpv.Crowdproof_Clicked);
 
@@ -119,13 +122,16 @@ namespace Soylent.View
                 Grid.SetColumn(RejectRevisions, 1);
                 Grid.SetRow(RejectRevisions, 0);
 
-                StackPanel buttonPanel = new StackPanel();
-                buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);
+                //StackPanel buttonPanel = new StackPanel();
+                //buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);
 
-                buttonPanel.Children.Add(CrowdproofButton);
-                buttonPanel.Children.Add(buttons);
+                //buttonPanel.Children.Add(CrowdproofButton);
+                //buttonPanel.Children.Add(buttons);
 
-                grid.Children.Add(buttonPanel);
+                //grid.Children.Add(buttonPanel);
+
+                details.Children.Add(CrowdproofButton);
+                details.Children.Add(buttons);
 
                 sidebar.alertSidebar(this.data.job);
                 view.cancelBtn.IsEnabled = false; 
@@ -137,49 +143,53 @@ namespace Soylent.View
             grid.Children.Remove(hitProgress);
             //this.hitType.FontWeight = FontWeights.ExtraBold;
 
-                HumanMacroView hpv = view as HumanMacroView;
+            HumanMacroView hpv = view as HumanMacroView;
 
-                CrowdproofButton = new Button();
-                CrowdproofButton.Content = "View Revisions";
-                CrowdproofButton.Name = "Crowdproof";
-                CrowdproofButton.Height = 23;
-                //CrowdproofButton.IsEnabled = false;
-                CrowdproofButton.Click += new RoutedEventHandler(hpv.HumanMacro_Clicked);
+            CrowdproofButton = new Button();
+            CrowdproofButton.Content = "View Revisions";
+            CrowdproofButton.Name = "Crowdproof";
+            CrowdproofButton.Height = 23;
+            CrowdproofButton.Margin = new Thickness(0.0, 5.0, 0.0, 0.0);
+            //CrowdproofButton.IsEnabled = false;
+            CrowdproofButton.Click += new RoutedEventHandler(hpv.HumanMacro_Clicked);
 
-                AcceptRevisions = new Button();
-                AcceptRevisions.Content = "Accept All";
-                AcceptRevisions.Name = "AcceptRevisions";
-                AcceptRevisions.Height = 23;
-                AcceptRevisions.IsEnabled = false;
-                AcceptRevisions.Click += new RoutedEventHandler(hpv.AcceptRevisions_Clicked);
+            AcceptRevisions = new Button();
+            AcceptRevisions.Content = "Accept All";
+            AcceptRevisions.Name = "AcceptRevisions";
+            AcceptRevisions.Height = 23;
+            AcceptRevisions.IsEnabled = false;
+            AcceptRevisions.Click += new RoutedEventHandler(hpv.AcceptRevisions_Clicked);
 
-                RejectRevisions = new Button();
-                RejectRevisions.Content = "Reject All";
-                RejectRevisions.Name = "RejectRevisions";
-                RejectRevisions.Height = 23;
-                RejectRevisions.IsEnabled = false;
-                RejectRevisions.Click += new RoutedEventHandler(hpv.RejectRevisions_Clicked);
+            RejectRevisions = new Button();
+            RejectRevisions.Content = "Reject All";
+            RejectRevisions.Name = "RejectRevisions";
+            RejectRevisions.Height = 23;
+            RejectRevisions.IsEnabled = false;
+            RejectRevisions.Click += new RoutedEventHandler(hpv.RejectRevisions_Clicked);
 
-                UniformGrid buttons = new UniformGrid();
-                buttons.Rows = 1;
-                buttons.Columns = 2;
-                buttons.Children.Add(AcceptRevisions);
-                Grid.SetColumn(AcceptRevisions, 0);
-                Grid.SetRow(AcceptRevisions, 0);
-                buttons.Children.Add(RejectRevisions);
-                Grid.SetColumn(RejectRevisions, 1);
-                Grid.SetRow(RejectRevisions, 0);
+            UniformGrid buttons = new UniformGrid();
+            buttons.Rows = 1;
+            buttons.Columns = 2;
+            buttons.Children.Add(AcceptRevisions);
+            Grid.SetColumn(AcceptRevisions, 0);
+            Grid.SetRow(AcceptRevisions, 0);
+            buttons.Children.Add(RejectRevisions);
+            Grid.SetColumn(RejectRevisions, 1);
+            Grid.SetRow(RejectRevisions, 0);
 
-                StackPanel buttonPanel = new StackPanel();
-                buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);
+            //StackPanel buttonPanel = new StackPanel();
+            //buttonPanel.Margin = new Thickness(5.0, 88.0, 5.0, 10.0);
 
-                buttonPanel.Children.Add(CrowdproofButton);
-                buttonPanel.Children.Add(buttons);
+            //buttonPanel.Children.Add(CrowdproofButton);
+            //buttonPanel.Children.Add(buttons);
 
-                grid.Children.Add(buttonPanel);
+            //grid.Children.Add(buttonPanel);
 
-                sidebar.alertSidebar(this.data.job);
-                view.cancelBtn.IsEnabled = false; 
+            details.Children.Add(CrowdproofButton);
+            details.Children.Add(buttons);
+
+            sidebar.alertSidebar(this.data.job);
+            view.cancelBtn.IsEnabled = false; 
         }
 
 
