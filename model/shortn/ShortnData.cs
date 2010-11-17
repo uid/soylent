@@ -517,7 +517,7 @@ namespace Soylent.Model.Shortn
                 }
             }
 
-            ShortnData sd = new ShortnData(canned_range, SoylentRibbon.generateJobNumber());
+            ShortnData sd = new ShortnData(canned_range, Globals.Soylent.jobManager.generateJobNumber());
             sd.patches = canned_patches;
             return sd;
         }

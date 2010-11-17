@@ -394,7 +394,6 @@ namespace Soylent
         ///<returns>Process exit code</returns>
         private void ExecuteProcess(object infoObject)
         {
-            // Start fixing here. Why is this info and not execute_info?
             if (info.process != null && !info.process.HasExited)
             {
                 Debug.WriteLine("ExecuteProcess exiting; previous process " + info.process.Id + " still running.");
@@ -420,7 +419,6 @@ namespace Soylent
                 execute_info.process.StartInfo.RedirectStandardError = true;
             }
             execute_info.process.Start();
-
             info.process = execute_info.process;
 
             execute_info.process.WaitForExit();

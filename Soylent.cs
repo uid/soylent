@@ -35,6 +35,8 @@ namespace Soylent
         //public SoylentPanel soylent;
         //private TurKitSocKit tksc;
         private TurKitHTTP tkhttp;
+        public JobManager jobManager;
+
         public Dictionary<Word.Document, SoylentPanel> soylentMap = new Dictionary<Word.Document,SoylentPanel>();
         public Dictionary<int, Word.Document> jobToDoc = new Dictionary<int, Word.Document>();
 
@@ -44,8 +46,8 @@ namespace Soylent
         {
             //Globals.Ribbons.Ribbon.debug.Visible = true;
 
-            //tksc = new TurKitSocKit();
-            //tksc.Listen();
+            jobManager = new JobManager();
+
             tkhttp = new TurKitHTTP();
             tkhttp.Listen();
 
@@ -113,7 +115,7 @@ namespace Soylent
                     Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + hit.job];
                     hit.range = a.Range;
 
-                    SoylentRibbon.setLastJob(hit.job);
+                    //SoylentRibbon.setLastJob(hit.job);
 
 
                     if (hit.jobDone){
@@ -147,7 +149,7 @@ namespace Soylent
                     Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + hit.job];
                     hit.range = a.Range;
 
-                    SoylentRibbon.setLastJob(hit.job);
+                    //SoylentRibbon.setLastJob(hit.job);
 
                     if (hit.jobDone)
                     {
@@ -178,7 +180,7 @@ namespace Soylent
                     Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + hit.job];
                     hit.range = a.Range;
 
-                    SoylentRibbon.setLastJob(hit.job);
+                    //SoylentRibbon.setLastJob(hit.job);
 
                     if (hit.jobDone)
                     {

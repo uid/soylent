@@ -46,7 +46,7 @@ namespace Soylent
         private void shortenBtn_Click(object sender, RibbonControlEventArgs e)
         {
             Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            int jobNumber = generateJobNumber();
+            int jobNumber = Globals.Soylent.jobManager.generateJobNumber();
             //ShortnData newHIT = new ShortnData(toShorten, jobNumber);
             //ShortnJob s = new ShortnJob(newHIT, jobNumber);
             ShortnJob s = new ShortnJob(jobNumber, toShorten);
@@ -55,7 +55,7 @@ namespace Soylent
         private void button3_Click(object sender, RibbonControlEventArgs e)
         {
             Word.Range toCrowdproof = Globals.Soylent.Application.Selection.Range;
-            int jobNumber = generateJobNumber();
+            int jobNumber = Globals.Soylent.jobManager.generateJobNumber();
             //CrowdproofData newHIT = new CrowdproofData(toCrowdproof, jobNumber);
             //CrowdproofJob c = new CrowdproofJob(newHIT, jobNumber);
             CrowdproofJob c = new CrowdproofJob(jobNumber, toCrowdproof);
@@ -75,7 +75,7 @@ namespace Soylent
             host.Height = newForm.Height;
 
             //Word.Range toShorten = Globals.Soylent.Application.Selection.Range;
-            int jobNumber = generateJobNumber();
+            int jobNumber = Globals.Soylent.jobManager.generateJobNumber();
             //HumanMacroData newHIT = new HumanMacroData(Globals.Soylent.Application.Selection.Range, jobNumber, HumanMacroData.Separator.Sentence);
             //allHITs[newHIT.job] = newHIT;
 
@@ -214,18 +214,6 @@ namespace Soylent
             // collection of child controls.
             newForm.Controls.Add(host);
             newForm.Show();
-        }
-        internal static void setLastJob(int i)
-        {
-            lastJob = Math.Max(lastJob, i);
-        }
-
-        private static int lastJob = 0;
-        public static int generateJobNumber()
-        {
-            //System.Diagnostics.Trace.WriteLine(lastJob + 1);
-            return ++lastJob;
-            
         }
 
         private void jobStatus_Click(object sender, RibbonControlEventArgs e)

@@ -321,7 +321,7 @@ namespace Soylent.Model.Crowdproof
                 }
             }
 
-            CrowdproofData pd = new CrowdproofData(canned_range, SoylentRibbon.generateJobNumber());
+            CrowdproofData pd = new CrowdproofData(canned_range, Globals.Soylent.jobManager.generateJobNumber());
             pd.patches = patches;
             return pd;
         }
