@@ -100,11 +100,11 @@ namespace Soylent.View
             //Globals.Soylent.soylentMap[doc].sidebar.jobs.Children.Clear();
         }
 
-        public void showError(string exceptionCode)
+        public void clearErrors()
         {
-            // First we remove old errors, so they don't get added multiple times
             IEnumerable<UIElement> errors = stages.Children.Cast<UIElement>().Where(child => child.GetType() == typeof(HITError)).ToList();
-            foreach (UIElement error in errors) {
+            foreach (UIElement error in errors)
+            {
                 stages.Children.Remove(error);
             }
 
@@ -113,7 +113,12 @@ namespace Soylent.View
             {
                 stub.details.Children.Remove(error);
             }
+        }
 
+        public void showError(string exceptionCode)
+        {
+            // First we remove old errors, so they don't get added multiple times
+            clearErrors();
 
             if (exceptionCode == "AWS.MechanicalTurk.InsufficientFunds")
             {

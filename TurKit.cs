@@ -31,6 +31,7 @@ namespace Soylent
         public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
         public static int TIMER_LOOP_SECONDS = 60;
         public static int TIMER_LOOP_SECONDS_DEBUG = 30;
+        public static bool SHOW_WINDOW = false;
 
         /// <summary>
         /// Creates a TurKit job for the selected task.
@@ -131,7 +132,7 @@ namespace Soylent
                 arguments += " -m real";
             }
 
-            info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+            info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
 
             TimerCallback callback = ExecuteProcess;
             int timer = 60 * 1000;
@@ -270,7 +271,7 @@ namespace Soylent
             }
 
             //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
-            info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+            info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
 
             TimerCallback callback = ExecuteProcess;
             int timer = 60 * 1000;
@@ -333,7 +334,7 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
                 ExecuteProcess(cancel_info);
             }
             else if (hdata is CrowdproofData)
@@ -351,7 +352,7 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
                 ExecuteProcess(cancel_info);
             }
             else if (hdata is HumanMacroData)
@@ -369,7 +370,7 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", false);
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
                 ExecuteProcess(cancel_info);
             }
         }
