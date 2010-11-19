@@ -280,7 +280,8 @@ function requestPatches(paragraph_index, findFixVerifyOptions) {
 		autoApprovalDelayInSeconds : 60 * 60,
 		assignmentDurationInSeconds: 60 * 5,
 		socket: findFixVerifyOptions.socket
-	})
+	});
+	
 	return hitId;
 }
 
@@ -418,7 +419,7 @@ function requestFixes(patch, findFixVerifyOptions) {
 		autoApprovalDelayInSeconds : 60 * 60,
 		assignmentDurationInSeconds: 60 * 5,
 		socket: findFixVerifyOptions.socket
-	})
+	});
 	return fix_hit;
 }
 

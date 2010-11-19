@@ -66,7 +66,7 @@ namespace Soylent
                 
                 HITView = this.CustomTaskPanes.Add(soylent, "Soylent");
                 HITView.VisibleChanged += new EventHandler(hitviewVisibleChanged);
-                HITView.Visible = true;
+                //HITView.Visible = true;
 
                 addDocToMap(soylent);
             } 

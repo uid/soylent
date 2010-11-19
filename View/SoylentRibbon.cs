@@ -50,6 +50,8 @@ namespace Soylent
             //ShortnData newHIT = new ShortnData(toShorten, jobNumber);
             //ShortnJob s = new ShortnJob(newHIT, jobNumber);
             ShortnJob s = new ShortnJob(jobNumber, toShorten);
+
+            Globals.Soylent.HITView.Visible = true;
         }
 
         private void button3_Click(object sender, RibbonControlEventArgs e)
@@ -59,6 +61,8 @@ namespace Soylent
             //CrowdproofData newHIT = new CrowdproofData(toCrowdproof, jobNumber);
             //CrowdproofJob c = new CrowdproofJob(newHIT, jobNumber);
             CrowdproofJob c = new CrowdproofJob(jobNumber, toCrowdproof);
+
+            Globals.Soylent.HITView.Visible = true;
         }
 
         private void humanMacroBtn_Click(object sender, RibbonControlEventArgs e)
@@ -91,6 +95,8 @@ namespace Soylent
             // collection of child controls.
             newForm.Controls.Add(host);
             newForm.Show();
+
+            Globals.Soylent.HITView.Visible = true;
         }
 
         private void directManipulate_Click(object sender, RibbonControlEventArgs e)

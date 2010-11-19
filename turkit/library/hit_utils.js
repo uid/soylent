@@ -24,6 +24,7 @@ function createHIT(hitOptions)
 			
 		// halt execution
 		java.lang.System.exit(1);
+		//throw e;
 	}
 }
 
