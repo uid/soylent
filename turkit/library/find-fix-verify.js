@@ -141,8 +141,13 @@ function findFixVerify(options) {
 			result.paragraphs.push(paragraphResult);
             
             options.socket.sendMessage("complete", paragraphResult);
-			// log to the server
-			options.socket.sendMessage("complete", paragraphResult, "http://projects.csail.mit.edu/soylent/logger/logger.php");
+			
+			attempt(function() {	// only do this once
+				// log to the server
+				var resultLog = prune(paragraphResult, 1000000);    // copy it very deep
+				resultLog.paragraphText = paragraph;
+				options.socket.sendMessage("complete", resultLog, "http://projects.csail.mit.edu/soylent/logger/logger.php");
+			});
 			
             outputTimingData(patches, find_hit, fixHITs, verifyHITs);
 		});	

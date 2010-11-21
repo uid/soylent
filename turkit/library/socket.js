@@ -97,7 +97,7 @@ Socket.prototype.sendMessage = function(messageType, message, urlLocation) {
 		// read the output from the server
 		var reader = new java.io.BufferedReader(new java.io.InputStreamReader(connection.getInputStream()));
 		var stringBuilder = new java.lang.StringBuilder();
-		stringBuilder.append("response:\n");
+		stringBuilder.append("response from " + url + ":\n");
 
 		var line = null;
 		while ((line = reader.readLine()) != null)
