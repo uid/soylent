@@ -397,9 +397,10 @@ namespace Soylent
         {
             if (info.process != null && !info.process.HasExited)
             {
-                Debug.WriteLine("ExecuteProcess exiting; previous process " + info.process.Id + " still running.");
+                Debug.WriteLine("ExecuteProcess exiting; previous process " + info.process.Id + " for job " + hdata.job + " still running.");
                 return; // there's another TurKit already running; exit and wait for it to finish
             }
+            Debug.WriteLine("Running process for job " + this.hdata.job);
 
             ProcessInformation execute_info = (ProcessInformation) infoObject;
             if (execute_info.showWindow)
@@ -416,25 +417,17 @@ namespace Soylent
             {
                 execute_info.process.StartInfo.CreateNoWindow = true;
                 execute_info.process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                execute_info.process.StartInfo.RedirectStandardOutput = true;
-                execute_info.process.StartInfo.RedirectStandardError = true;
+                // NOTICE: if you redirect stdout or stderr, you will need to consume it 
+                // using StandardOutput.ReadToEnd() each time you wake up or the process will never exit.
+                // E.g., ExecuteProcess reads, then sleeps for 2 seconds so the processes die, then it can move on.
+                // Recommendation: If you need the output, show the window instead.
+                execute_info.process.StartInfo.RedirectStandardOutput = false; 
+                execute_info.process.StartInfo.RedirectStandardError = false;
             }
             execute_info.process.Start();
             info.process = execute_info.process;
 
             execute_info.process.WaitForExit();
-
-            string output, error;
-            if (!execute_info.showWindow)
-            {
-                output = execute_info.process.StandardOutput.ReadToEnd();
-                error = execute_info.process.StandardError.ReadToEnd();
-            }
-            else
-            {
-                output = null;
-                error = null;
-            }
         }
 
         private class ProcessInformation
