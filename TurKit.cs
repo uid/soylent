@@ -307,14 +307,22 @@ namespace Soylent
             GetKeysAndExecute(taskDelegate, cancelDelegate);
         }
 
-        public void cancelTask(AmazonKeys keys)
+        public void stopTurKitTimer()
         {
-            // Stop TurKit timer
-            turkitLoopTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            if (turkitLoopTimer == null)
+            {
+                turkitLoopTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            }
             if (info.process != null && !info.process.HasExited)
             {
                 info.process.Kill();    // release the lock on the file; we don't need TurKit to run any more
             }
+        }
+
+        public void cancelTask(AmazonKeys keys)
+        {
+            // Stop TurKit timer
+            stopTurKitTimer();
 
             // Call the cancelTask() method
             int request = hdata.job;

@@ -16,7 +16,7 @@ namespace Soylent.Model
     /// <summary>
     /// A superclass that represents the Model for an individual HIT.
     /// </summary>
-    public class HITData
+    public abstract class HITData
     {
         public int job; 
         public enum ResultType { Find, Fix, Verify, Macro };
@@ -39,6 +39,7 @@ namespace Soylent.Model
                 return ((Microsoft.Office.Interop.Word.Bookmark)Globals.Soylent.jobToDoc[this.job].Bookmarks.get_Item(ref bookmark)).Range.Text;
             }
         }
+        public List<string> errors = new List<string>();
 
         /// <summary>
         /// A superclass that represents the Model for an individual HIT.
@@ -117,21 +118,13 @@ namespace Soylent.Model
             view = hview;
         }
 
-        public void updateStatus(TurKitSocKit.TurKitStatus status)
-        {
-            System.Diagnostics.Debug.WriteLine("GOT A STATUSSSSSSS");
-            /* moved to ShortenData.cs
-            string stringtype = status.method;
-            ResultType type = typeMap[stringtype];
-            StageData stage = stages[type];
-            stage.updateStage(status.numCompleted);
-            */
-        }
+        public abstract void updateStatus(TurKitSocKit.TurKitStatus status);
 
         public delegate void showErrorDelegate(string exceptionCode);
         public void showError(string exceptionCode)
         {
             view.showError(exceptionCode);
         }
+
     }
 }

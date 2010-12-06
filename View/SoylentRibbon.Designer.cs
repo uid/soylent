@@ -35,6 +35,7 @@
             this.shortenBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.humanMacroBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.jobStatus = new Microsoft.Office.Tools.Ribbon.RibbonToggleButton();
+            this.amazon = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.debug = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.button1 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.button2 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
@@ -42,7 +43,6 @@
             this.directManipulate = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.humanMacroInline = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.humanMacroComment = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.amazon = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.Soylent.SuspendLayout();
             this.viewGroup.SuspendLayout();
             this.debug.SuspendLayout();
@@ -94,10 +94,15 @@
             // 
             // jobStatus
             // 
-            this.jobStatus.Checked = true;
             this.jobStatus.Label = "Job Status";
             this.jobStatus.Name = "jobStatus";
             this.jobStatus.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.jobStatus_Click);
+            // 
+            // amazon
+            // 
+            this.amazon.Label = "Amazon Keys";
+            this.amazon.Name = "amazon";
+            this.amazon.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.amazon_Click);
             // 
             // debug
             // 
@@ -146,12 +151,6 @@
             this.humanMacroComment.Label = "Comment";
             this.humanMacroComment.Name = "humanMacroComment";
             this.humanMacroComment.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.humanMacroComment_Click);
-            // 
-            // amazon
-            // 
-            this.amazon.Label = "Amazon Keys";
-            this.amazon.Name = "amazon";
-            this.amazon.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.amazon_Click);
             // 
             // SoylentRibbon
             // 

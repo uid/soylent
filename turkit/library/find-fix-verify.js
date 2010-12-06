@@ -209,8 +209,8 @@ function fixPatches(patch, paragraph_index, patchNumber, totalPatches, findFixVe
         foreach(suggestions, function(alternatives, fieldName) {
             minLength = Math.min(minLength, alternatives.length);
         });
-                
-        if (minLength >= 1) {
+        
+        if (minLength >= 1 && suggestions.length > 0) {
             break;
         }
         else {
@@ -456,8 +456,8 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
             });
 		}
 	});
-    
-    if (findFixVerifyOptions.fix.mapResults != null) {
+	
+    if (findFixVerifyOptions.fix.mapResults != null && options.length > 0) {
         findFixVerifyOptions.fix.mapResults(options, patch);
     }
     
