@@ -102,7 +102,7 @@ namespace Soylent.Model.Shortn
         /// Updates the model for a given status update
         /// </summary>
         /// <param name="status">The status update delivered by TurKit</param>
-        new public void updateStatus(TurKitSocKit.TurKitStatus status)
+        public override void updateStatus(TurKitSocKit.TurKitStatus status)
         {
             string stringtype = status.stage;
             System.Diagnostics.Debug.WriteLine(stringtype);

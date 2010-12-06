@@ -68,7 +68,7 @@ namespace Soylent.Model.Crowdproof
              */
         }
 
-        new public void updateStatus(TurKitSocKit.TurKitStatus status)
+        public override void updateStatus(TurKitSocKit.TurKitStatus status)
         {
             string stringtype = status.stage;
             System.Diagnostics.Debug.WriteLine(stringtype);

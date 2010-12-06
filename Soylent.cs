@@ -55,6 +55,7 @@ namespace Soylent
             this.Application.DocumentOpen += new Word.ApplicationEvents4_DocumentOpenEventHandler(Application_DocumentOpen);
             this.Application.DocumentBeforeSave += new Word.ApplicationEvents4_DocumentBeforeSaveEventHandler(Application_DocumentBeforeSave);
             this.Application.DocumentChange += new Word.ApplicationEvents4_DocumentChangeEventHandler(Application_DocumentChange);
+            this.Application.DocumentBeforeClose += new Word.ApplicationEvents4_DocumentBeforeCloseEventHandler(Application_DocumentBeforeClose);
         }
 
         void Application_DocumentChange()
@@ -259,42 +260,30 @@ namespace Soylent
 
                 }
             }
-            /*
-            for (int i = 1; i <= soylentMap[Doc].jobMap.Keys.Count; i++)
+        }
+
+        private void Application_DocumentBeforeClose(Word.Document doc, ref bool cancel)
+        {
+            // We need to stop the timer
+            foreach (object obj in soylentMap[doc].sidebar.jobs.Children)
             {
-                HITData raw = soylentMap[Doc].jobMap[i];
-                if (raw is ShortnData)
+                if (!(obj is StackPanel)) { continue; }
+                StackPanel elem = obj as StackPanel;
+                foreach (object elem2 in elem.Children)
                 {
-                    ShortnData hit = raw as ShortnData;
+                    HITData raw;
+                    if (elem2 is HITView)
+                    {
+                        raw = (elem2 as HITView).data;
+                    }
+                    else
+                    {
+                        raw = (elem2 as HITViewStub).data;
+                    }
 
-                    XmlSerializer x = new XmlSerializer(hit.GetType());
-                    StringWriter sw = new StringWriter();
-                    x.Serialize(sw, hit);
-                    string xml = sw.ToString();
-                    Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
+                    raw.tk.stopTurKitTimer();
                 }
-                else if (raw is CrowdproofData)
-                {
-                    CrowdproofData hit = raw as CrowdproofData;
-
-                    XmlSerializer x = new XmlSerializer(hit.GetType());
-                    StringWriter sw = new StringWriter();
-                    x.Serialize(sw, hit);
-                    string xml = sw.ToString();
-                    Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
-                }
-                else if (raw is HumanMacroData)
-                {
-                    HumanMacroData hit = raw as HumanMacroData;
-
-                    XmlSerializer x = new XmlSerializer(hit.GetType());
-                    StringWriter sw = new StringWriter();
-                    x.Serialize(sw, hit); 
-                    string xml = sw.ToString();
-                    Microsoft.Office.Core.CustomXMLPart xmlPart = Globals.Soylent.Application.ActiveDocument.CustomXMLParts.Add(xml);
-                }
-             
-            }*/
+            }
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

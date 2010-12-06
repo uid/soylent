@@ -75,7 +75,7 @@ namespace Soylent.Model.HumanMacro
             macroStageData = new StageData(HITData.ResultType.Macro, job);
         }
 
-        new public void updateStatus(TurKitSocKit.TurKitStatus status)
+        public override void updateStatus(TurKitSocKit.TurKitStatus status)
         {
             StageData stage = macroStageData;//stages[HITData.ResultType.Macro];
             //stage.updateStage(status.numCompleted, status.paragraph);
