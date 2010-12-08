@@ -137,9 +137,7 @@ function shortnMapFixResults(answers, patch) {
 	// provide a challenge if there is only one option
 	if (answers['revision'].unique().length == 1) {
 		var original = patch.plaintextSentence();
-		if (original != answers['revision'][0]) {
-            answers['revision'].push(original);
-		}
+		answers['revision'].push(original);
 		answers['revision'].push(patch.getCutSentence());
 	}    
     
