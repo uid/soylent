@@ -410,6 +410,12 @@ namespace Soylent
             }
             Debug.WriteLine("Running process for job " + this.hdata.job);
 
+            // TODO: Clearing the error console each time the program runs is a bit of a hack,
+            // but it's the best time/benefit tradeoff to avoid having error messages
+            // stick around forever
+            Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[hdata.job];
+            Globals.Soylent.soylentMap[doc].Invoke(new HITData.clearErrorDelegate(hdata.clearErrors), new object[] { });
+
             ProcessInformation execute_info = (ProcessInformation) infoObject;
             if (execute_info.showWindow)
             {

@@ -36,6 +36,10 @@ $(function () {
         return !regexResult;
     }, "Please do not use [[ and ]] to shorten the text -- edit it directly by removing unnecessary parts or rewriting it as necessary.");
 	
+    $.validator.addMethod("revision", function(value, element) {	        
+        return value != unescape("___EDITABLE_ESCAPED___");
+    }, "Please do not submit the original text -- shorten it directly in the textbox.");	
+	
     $('#fixform').validate( {
 		debug: false,
 		rules: {
@@ -49,7 +53,7 @@ $(function () {
 <form id="fixform" action="." method="GET">
     <input type="hidden" name="assignmentId" id="assignmentId" value="temp"></input>
     <div>
-		<p>The part of the paragraph <span style='background-color: yellow'>highlighted</span> below is too long.  Please edit the highlighted section to shorten its length without changing the meaning of the paragraph.</p>
+		<p>The part of the paragraph <span style='background-color: yellow'>highlighted</span> below is too long.  Please edit or cut the highlighted section to shorten its length. Do not make the sentence ungrammatical or change its meaning.</p>
 		
 		<p style="font-size: 10pt; font-family: monospace; width: 500px">___TEXT___</p>		
 
@@ -57,11 +61,13 @@ $(function () {
 		<div><textarea id="revision" style="width:500px;height:125px" name="revision" class="required">___EDITABLE___</textarea></div>
 		<br/><br/><br/>
 		
+		<!-- This is obsolete now
 		<label for='votes'><div>Can the highlighted section be entirely removed without making the text ungrammatical or changing the meaning of the paragraph?</div></label>
 		<div id='votes'>
 			<div class='cuttable'><input type="radio" name="cuttable" value="No" class="required" /> No</div>
 			<div class='cuttable'><input type="radio" name="cuttable" value="Yes" /> Yes</div>
 		</div>
+		-->
 </table>
 		<input type="submit" value="Submit"></input>
 	</div>
