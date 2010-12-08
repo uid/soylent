@@ -121,26 +121,26 @@ function shortnFixTest(toTest) {
 }
 
 function shortnMapFixResults(answers, patch) {    
-    var cutVotes = 0;
+    /*
+	var cutVotes = 0;
     foreach(answers, function(answer, index) {
         if (index == "cuttable" && answer == "Yes") {
             cutVotes++;
         }
     });
     
-    var revisions = answers['revision'];
     if (cutVotes >= .5 * answers['cuttable'].length) {
         revisions.push(patch.getCutSentence());
     }
-    
-    print(json(revisions));
+	*/
     
 	// provide a challenge if there is only one option
-	if (revisions.unique().length == 1) {
+	if (answers['revision'].unique().length == 1) {
 		var original = patch.plaintextSentence();
-		if (original != revisions[0]) {
-            revisions.push(original);
+		if (original != answers['revision'][0]) {
+            answers['revision'].push(original);
 		}
+		answers['revision'].push(patch.getCutSentence());
 	}    
     
     return answers;

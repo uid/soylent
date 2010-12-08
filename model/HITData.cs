@@ -126,5 +126,11 @@ namespace Soylent.Model
             view.showError(exceptionCode);
         }
 
+        public delegate void clearErrorDelegate();
+        public void clearErrors()
+        {
+            view.clearErrors();
+        }
+
     }
 }

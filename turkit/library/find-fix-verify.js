@@ -200,7 +200,7 @@ function findPatches(paragraph_index, findFixVerifyOptions, rejectedWorkers) {
  */
 function fixPatches(patch, paragraph_index, patchNumber, totalPatches, findFixVerifyOptions, rejectedWorkers) {
     var fix_hit = requestFixes(patch, findFixVerifyOptions);        
-    var suggestions = []
+    var suggestions = new Object();
     while (true) {	
         suggestions = joinFixes(fix_hit, patch.plaintextSentence(), paragraph_index, patch, patchNumber, totalPatches, rejectedWorkers, findFixVerifyOptions);
         
@@ -210,10 +210,11 @@ function fixPatches(patch, paragraph_index, patchNumber, totalPatches, findFixVe
             minLength = Math.min(minLength, alternatives.length);
         });
         
-        if (minLength >= 1 && suggestions.length > 0) {
+        if (minLength >= 1 && countKeys(suggestions) > 0) {
             break;
         }
         else {
+			print("Not enough viable fix suggestions: " + countKeys(suggestions)) + " non-rejected submissions and " + minLength + " minimum suggestions.";
             extendHit(fix_hit, findFixVerifyOptions.buffer_redundancy, patchNumber);
         }	
     }		
@@ -222,6 +223,16 @@ function fixPatches(patch, paragraph_index, patchNumber, totalPatches, findFixVe
     findFixVerifyOptions.socket.sendStageComplete(Socket.FIX_STAGE, paragraph_index, mturk.getHIT(fix_hit, true), patchNumber, totalPatches);
     
     return [suggestions, fix_hit];
+}
+
+function countKeys(suggestions) {
+	var count = 0;
+	for (k in suggestions) {
+		if (suggestions.hasOwnProperty(k)) {
+			count++;
+		}
+	}
+	return count;
 }
 
 /**
@@ -407,7 +418,8 @@ function requestFixes(patch, findFixVerifyOptions) {
 	var webpageContents = slurp(findFixVerifyOptions.fix.HTML_template)
                           .replace(/___HEADER_SCRIPT___/g, header)
                           .replace(/___TEXT___/g, full_text)
-                          .replace(/___EDITABLE___/g, editable);
+                          .replace(/___EDITABLE___/g, editable)
+						  .replace(/___EDITABLE_ESCAPED___/g, escape(editable));
     if (findFixVerifyOptions.fix.transformWebpage != null) {
         webpageContents = findFixVerifyOptions.fix.transformWebpage(webpageContents, full_text, editable);
     }                    
@@ -457,8 +469,8 @@ function joinFixes(fix_hit, originalSentence, paragraph_index, patch, patchNumbe
 		}
 	});
 	
-    if (findFixVerifyOptions.fix.mapResults != null && options.length > 0) {
-        findFixVerifyOptions.fix.mapResults(options, patch);
+    if (findFixVerifyOptions.fix.mapResults != null && countKeys(options) > 0) {
+        options = findFixVerifyOptions.fix.mapResults(options, patch);
     }
     
     // uniqify each field so that we don't have repeats
