@@ -30,8 +30,11 @@ namespace Soylent.Model.Crowdproof
             : base(range, job)
         {
             findStageData = new StageData(ResultType.Find, numParagraphs, job);
+            stages.Add(findStageData);
             fixStageData = new StageData(ResultType.Fix, numParagraphs, job);
+            stages.Add(fixStageData);
             verifyStageData = new StageData(ResultType.Verify, numParagraphs, job);
+            stages.Add(verifyStageData);
 
             /*
             stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);
@@ -51,8 +54,11 @@ namespace Soylent.Model.Crowdproof
             : base()
         {
             findStageData = new StageData(ResultType.Find, numParagraphs, job);
+            stages.Add(findStageData);
             fixStageData = new StageData(ResultType.Fix, numParagraphs, job);
+            stages.Add(fixStageData);
             verifyStageData = new StageData(ResultType.Verify, numParagraphs, job);
+            stages.Add(verifyStageData);
 
             /*
             stages[ResultType.Find] = new StageData(ResultType.Find, numParagraphs);

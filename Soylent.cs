@@ -113,11 +113,13 @@ namespace Soylent
 
                     ShortnData hit = raw as ShortnData;
 
+                    // HACK: have to do this after deserialization because numParagraphs is 0 when the object is deserialized
+                    foreach(StageData stage in hit.stages) {
+                        stage.FixParagraphNumber(hit.numParagraphs);
+                    }
+
                     Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + hit.job];
                     hit.range = a.Range;
-
-                    //SoylentRibbon.setLastJob(hit.job);
-
 
                     if (hit.jobDone){
                         ShortnJob s = new ShortnJob(hit, hit.job, false);
@@ -146,6 +148,11 @@ namespace Soylent
                     object raw = serializer.Deserialize(xr);
 
                     CrowdproofData hit = raw as CrowdproofData;
+
+                    foreach (StageData stage in hit.stages)
+                    {
+                        stage.FixParagraphNumber(hit.numParagraphs);
+                    }
 
                     Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + hit.job];
                     hit.range = a.Range;
@@ -177,6 +184,11 @@ namespace Soylent
                     object raw = serializer.Deserialize(xr);
 
                     HumanMacroData hit = raw as HumanMacroData;
+
+                    foreach (StageData stage in hit.stages)
+                    {
+                        stage.FixParagraphNumber(hit.numParagraphs);
+                    }
 
                     Word.Bookmark a = Globals.Soylent.Application.ActiveDocument.Bookmarks["Soylent" + hit.job];
                     hit.range = a.Range;
