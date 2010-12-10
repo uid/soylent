@@ -70,8 +70,11 @@ namespace Soylent.Model.Shortn
         {
             
             findStageData = new StageData(ResultType.Find, numParagraphs, job);
+            stages.Add(findStageData);
             fixStageData = new StageData(ResultType.Fix, numParagraphs, job);
+            stages.Add(fixStageData);
             verifyStageData = new StageData(ResultType.Verify, numParagraphs, job);
+            stages.Add(verifyStageData);
             
             /*
             typeMap = new Dictionary<string,ResultType>();
@@ -90,8 +93,11 @@ namespace Soylent.Model.Shortn
             : base()
         {
             findStageData = new StageData(ResultType.Find, numParagraphs, job);
+            stages.Add(findStageData);
             fixStageData = new StageData(ResultType.Fix, numParagraphs, job);
+            stages.Add(fixStageData);
             verifyStageData = new StageData(ResultType.Verify, numParagraphs, job);
+            stages.Add(verifyStageData);
 
             patches = new List<ShortnPatch>();
             gottenOneYet = new Dictionary<ResultType, List<List<bool>>>();

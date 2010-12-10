@@ -64,6 +64,7 @@ namespace Soylent.Model.HumanMacro
 
             //stages[HITData.ResultType.Macro] = new StageData(HITData.ResultType.Macro);
             macroStageData = new StageData(HITData.ResultType.Macro, job);
+            stages.Add(macroStageData);
             //stages[HITData.ResultType.Macro] = new HumanMacroStage(HITData.ResultType.Macro, redundancy);
 
             results = new List<string>();
@@ -73,6 +74,7 @@ namespace Soylent.Model.HumanMacro
         {
             //patches = new List<HumanMacroPatch>();
             macroStageData = new StageData(HITData.ResultType.Macro, job);
+            stages.Add(macroStageData);
         }
 
         public override void updateStatus(TurKitSocKit.TurKitStatus status)

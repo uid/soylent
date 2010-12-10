@@ -21,7 +21,6 @@ namespace Soylent.Model
         public int job; 
         public enum ResultType { Find, Fix, Verify, Macro };
         //[XmlIgnore] public Dictionary<ResultType, StageData> stages;
-        public int numParagraphs;
         public bool jobDone = false;
         // A list of TurKit messages used to recreate the results when the document is reloaded.
         public List<TurKitSocKit.TurKitFindFixVerify> findFixVerifies = new List<TurKitSocKit.TurKitFindFixVerify>();
@@ -29,6 +28,7 @@ namespace Soylent.Model
         [XmlIgnore] public TurKit tk;
         [XmlIgnore] public HITView view;
         [XmlIgnore] public Word.Range range;
+        [XmlIgnore] public List<StageData> stages;
         public double cost;
         public string originalText
         {
@@ -39,6 +39,8 @@ namespace Soylent.Model
                 return ((Microsoft.Office.Interop.Word.Bookmark)Globals.Soylent.jobToDoc[this.job].Bookmarks.get_Item(ref bookmark)).Range.Text;
             }
         }
+        public int numParagraphs;
+
         public List<string> errors = new List<string>();
 
         /// <summary>
@@ -52,6 +54,7 @@ namespace Soylent.Model
             this.job = job;
             int unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
             string bookmarkName = "Soylent" + job;
+            this.stages = new List<StageData>();
 
             numParagraphs = range.Paragraphs.Count;
 
@@ -74,25 +77,9 @@ namespace Soylent.Model
         public HITData()
         {
             this.range = null;
-            this.job = 0;
-            int unixTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-            string bookmarkName = "Soylent" + unixTime;
-
-            numParagraphs = 1;//range.Paragraphs.Count;
-
-            //stages = new Dictionary<ResultType, StageData>();
-            //TODO: Use Word XML binding to text instead of bookmarks.
-            /*
-             * Improved Data Mapping Provides Separation Between a Document's Data and Its Formatting
-             *  XML mapping allows you to attach XML data to Word documents and link XML elements to placeholders in the document. 
-             *  Combined with content controls, XML mapping becomes a powerful tool for developers. 
-             *  These features provide you with the capability to position content controls in the document and then link them to XML elements. 
-             *  This type of data and view separation allows you to access Word document data to repurpose and integrate with other systems and applications.
-             */
-
-            //object bkmkRange = (object)range;
-            //Globals.Soylent.Application.ActiveDocument.Bookmarks.Add(bookmarkName, ref bkmkRange);
-
+            this.job = -1;
+            numParagraphs = 0;
+            this.stages = new List<StageData>();
             tk = new TurKit(this);
         }
 
