@@ -346,7 +346,7 @@ function generatePatchSuggestions(assignments, paragraph, customTest, rejectedWo
                 function(toTest) {
                 	var paragraph_length = getParagraph(toTest.paragraph).length;
                     var patch_length = toTest.end_index - toTest.start_index;
-                    if (patch_length >= .90 * paragraph_length && paragraph_length >= 100) {
+                    if (patch_length >= .70 * paragraph_length && paragraph_length >= 100) {
                         return {
                             passes: false,
                             reason: "Please, it is not fair to just highlight huge chunks of the paragraph. I am looking for specific areas."
