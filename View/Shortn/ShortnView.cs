@@ -98,7 +98,7 @@ namespace Soylent.View.Shortn
             newForm.Height = (int)(sd.DesiredSize.Height + newForm.Padding.Vertical + System.Windows.Forms.SystemInformation.CaptionHeight + System.Windows.SystemParameters.ScrollWidth);
             sd.grid.Height = sd.grid.DesiredSize.Height;
             newForm.Width = 1200;
-            host.MaximumSize = new System.Drawing.Size(1200, System.Windows.Forms.SystemInformation.VirtualScreen.Height);
+            host.MaximumSize = new System.Drawing.Size(1200, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
             newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 
             newForm.Visible = true;

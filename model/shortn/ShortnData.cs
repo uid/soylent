@@ -26,7 +26,7 @@ namespace Soylent.Model.Shortn
         //[System.Xml.Serialization.XmlArrayItem("patch", typeof(List<Patch>))]
         
         [XmlIgnore] public List<ShortnPatch> patches;
-        [XmlIgnore] public int paragraphsCompleted = 0;
+        [XmlIgnore] public HashSet<int> paragraphsCompleted = new HashSet<int>();
         [XmlIgnore] private Dictionary<ResultType, List<List<bool>>> gottenOneYet;
         [XmlIgnore] public StageData findStageData;
         [XmlIgnore] public StageData fixStageData;
@@ -160,6 +160,11 @@ namespace Soylent.Model.Shortn
 
         public void postProcessSocKitMessage(TurKitSocKit.TurKitFindFixVerify message)
         {
+            if (paragraphsCompleted.Contains(message.paragraph))
+            {
+                return; // we've already processed this paragraph
+            }
+
             Word.Range curParagraphRange = range.Paragraphs[message.paragraph + 1].Range;
             int nextStart = 0; //Is always the location where the next patch (dummy or otherwise) should start.
             int nextEnd; //Is where the last patch ended.  Kinda poorly named. Tells us if we need to add a dummy patch after the last real patch
@@ -215,9 +220,9 @@ namespace Soylent.Model.Shortn
 
                 patches.Add(dummyPatch);
             }
-            paragraphsCompleted++;
+            paragraphsCompleted.Add(message.paragraph);
 
-            if (paragraphsCompleted == numParagraphs) //If we have done all paragraphs, make them available to the user!
+            if (paragraphsCompleted.Count() == numParagraphs) //If we have done all paragraphs, make them available to the user!
             {
                 //TODO: use a delegate.
                 if (this.tk.turkitLoopTimer != null)
