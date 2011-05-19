@@ -1,0 +1,159 @@
+Stage,Assignment,Wait Type,Time,Paragraph
+Error Identification,1,work,135,0
+Error Identification,1,wait,71,0
+Error Identification,2,work,59,0
+Error Identification,2,wait,230,0
+Error Identification,3,work,14,0
+Error Identification,3,wait,399,0
+Error Identification,4,work,35,0
+Error Identification,4,wait,515,0
+Error Identification,5,work,48,0
+Error Identification,5,wait,539,0
+Error Identification,6,work,17,0
+Error Identification,6,wait,799,0
+Error Identification,7,work,69,0
+Error Identification,7,wait,861,0
+Error Identification,8,work,115,0
+Error Identification,8,wait,1028,0
+Fixing Error,1,work,24,0
+Fixing Error,1,wait,32,0
+Fixing Error,2,work,101,0
+Fixing Error,2,wait,346,0
+Fixing Error,3,work,126,0
+Fixing Error,3,wait,340,0
+Fixing Error,4,work,67,0
+Fixing Error,4,wait,515,0
+Fixing Error,5,work,134,0
+Fixing Error,5,wait,1184,0
+Voting on Alternatives,1,work,33,0
+Voting on Alternatives,1,wait,223,0
+Voting on Alternatives,2,work,38,0
+Voting on Alternatives,2,wait,277,0
+Voting on Alternatives,3,work,11,0
+Voting on Alternatives,3,wait,448,0
+Voting on Alternatives,4,work,60,0
+Voting on Alternatives,4,wait,430,0
+Voting on Alternatives,5,work,60,0
+Voting on Alternatives,5,wait,650,0
+Fixing Error,1,work,15,0
+Fixing Error,1,wait,59,0
+Fixing Error,2,work,65,0
+Fixing Error,2,wait,331,0
+Fixing Error,3,work,62,0
+Fixing Error,3,wait,363,0
+Fixing Error,4,work,18,0
+Fixing Error,4,wait,558,0
+Fixing Error,5,work,32,0
+Fixing Error,5,wait,824,0
+Voting on Alternatives,1,work,18,0
+Voting on Alternatives,1,wait,59,0
+Voting on Alternatives,2,work,27,0
+Voting on Alternatives,2,wait,218,0
+Voting on Alternatives,3,work,64,0
+Voting on Alternatives,3,wait,542,0
+Voting on Alternatives,4,work,55,0
+Voting on Alternatives,4,wait,606,0
+Voting on Alternatives,5,work,9,0
+Voting on Alternatives,5,wait,849,0
+Fixing Error,1,work,15,0
+Fixing Error,1,wait,90,0
+Fixing Error,2,work,160,0
+Fixing Error,2,wait,37,0
+Fixing Error,3,work,79,0
+Fixing Error,3,wait,248,0
+Fixing Error,4,work,58,0
+Fixing Error,4,wait,454,0
+Fixing Error,5,work,19,0
+Fixing Error,5,wait,533,0
+Voting on Alternatives,1,work,42,0
+Voting on Alternatives,1,wait,29,0
+Voting on Alternatives,2,work,54,0
+Voting on Alternatives,2,wait,46,0
+Voting on Alternatives,3,work,54,0
+Voting on Alternatives,3,wait,266,0
+Voting on Alternatives,4,work,57,0
+Voting on Alternatives,4,wait,354,0
+Voting on Alternatives,5,work,21,0
+Voting on Alternatives,5,wait,537,0
+Fixing Error,1,work,45,0
+Fixing Error,1,wait,107,0
+Fixing Error,2,work,161,0
+Fixing Error,2,wait,72,0
+Fixing Error,3,work,59,0
+Fixing Error,3,wait,394,0
+Fixing Error,4,work,49,0
+Fixing Error,4,wait,472,0
+Fixing Error,5,work,37,0
+Fixing Error,5,wait,775,0
+Voting on Alternatives,1,work,22,0
+Voting on Alternatives,1,wait,73,0
+Voting on Alternatives,2,work,23,0
+Voting on Alternatives,2,wait,284,0
+Voting on Alternatives,3,work,76,0
+Voting on Alternatives,3,wait,461,0
+Voting on Alternatives,4,work,59,0
+Voting on Alternatives,4,wait,532,0
+Voting on Alternatives,5,work,70,0
+Voting on Alternatives,5,wait,695,0
+Error Identification,1,work,61,1
+Error Identification,1,wait,206,1
+Error Identification,2,work,30,1
+Error Identification,2,wait,292,1
+Error Identification,3,work,26,1
+Error Identification,3,wait,342,1
+Error Identification,4,work,41,1
+Error Identification,4,wait,362,1
+Error Identification,5,work,43,1
+Error Identification,5,wait,471,1
+Error Identification,6,work,57,1
+Error Identification,6,wait,481,1
+Error Identification,7,work,122,1
+Error Identification,7,wait,585,1
+Error Identification,8,work,13,1
+Error Identification,8,wait,815,1
+Error Identification,9,work,187,1
+Error Identification,9,wait,659,1
+Error Identification,10,work,60,1
+Error Identification,10,wait,960,1
+Fixing Error,1,work,32,1
+Fixing Error,1,wait,25,1
+Fixing Error,2,work,20,1
+Fixing Error,2,wait,50,1
+Fixing Error,3,work,76,1
+Fixing Error,3,wait,65,1
+Fixing Error,4,work,91,1
+Fixing Error,4,wait,198,1
+Fixing Error,5,work,148,1
+Fixing Error,5,wait,262,1
+Voting on Alternatives,1,work,21,1
+Voting on Alternatives,1,wait,111,1
+Voting on Alternatives,2,work,81,1
+Voting on Alternatives,2,wait,128,1
+Voting on Alternatives,3,work,36,1
+Voting on Alternatives,3,wait,335,1
+Voting on Alternatives,4,work,25,1
+Voting on Alternatives,4,wait,363,1
+Voting on Alternatives,5,work,37,1
+Voting on Alternatives,5,wait,410,1
+Voting on Alternatives,6,work,50,1
+Voting on Alternatives,6,wait,527,1
+Fixing Error,1,work,17,1
+Fixing Error,1,wait,29,1
+Fixing Error,2,work,11,1
+Fixing Error,2,wait,66,1
+Fixing Error,3,work,44,1
+Fixing Error,3,wait,172,1
+Fixing Error,4,work,188,1
+Fixing Error,4,wait,333,1
+Fixing Error,5,work,18,1
+Fixing Error,5,wait,832,1
+Voting on Alternatives,1,work,31,1
+Voting on Alternatives,1,wait,24,1
+Voting on Alternatives,2,work,40,1
+Voting on Alternatives,2,wait,33,1
+Voting on Alternatives,3,work,22,1
+Voting on Alternatives,3,wait,248,1
+Voting on Alternatives,4,work,19,1
+Voting on Alternatives,4,wait,481,1
+Voting on Alternatives,5,work,25,1
+Voting on Alternatives,5,wait,610,1

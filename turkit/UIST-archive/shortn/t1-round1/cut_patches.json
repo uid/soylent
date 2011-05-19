@@ -1,0 +1,160 @@
+(function () {
+	var data = {
+	"paragraphs" : [
+		{
+			"sentences" : [
+				"Print publishers are in a tizzy over Apple\'s new iPad because they hope to finally be able to charge for their digital editions.",
+				"But in order to get people to pay for their magazine and newspaper apps, they are going to have to offer something different that readers cannot get at the newsstand or on the open Web.",
+				"We\'ve already seen plenty of prototypes  from magazine publishers which include interactive graphics, photo slide shows, and embedded videos."
+			],
+			"patches" : [
+				{
+					"start" : 208,
+					"end" : 221,
+					"options" : [
+						"But in order to get people to pay for their magazine and newspaper apps, they will have to offer something different that readers cannot get at the newsstand or on the open Web."
+					],
+					"paragraph" : /* data["paragraphs"][0]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 2,
+					"numEditors" : 3,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 316,
+					"end" : 458,
+					"options" : [
+					],
+					"paragraph" : /* data["paragraphs"][0]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 0,
+					"numEditors" : 2,
+					"numVoters" : 1,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 54,
+					"end" : 127,
+					"options" : [
+						"Print publishers are in a tizzy over Apple\'s new iPad because they hope to be able to charge for their digital editions."
+					],
+					"paragraph" : /* data["paragraphs"][0]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 1,
+					"numEditors" : 3,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"But what should a magazine cover look like on the iPad?",
+				"After all, the cover is still the gateway to the magazine.",
+				"Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue.",
+				"One way these covers could change is that instead of simply repurposing the static photographs from the print edition, the background image itself could be some sort of video loop.",
+				"Jesse Rosten, a photographer in California, created the video mockup below of what a cover of Sunset Magazine might look like on the iPad (see video below)."
+			],
+			"patches" : [
+				{
+					"start" : 253,
+					"end" : 296,
+					"options" : [
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 2,
+					"numEditors" : 3,
+					"numVoters" : 4,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 573,
+					"end" : 591,
+					"options" : [
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 2,
+					"numEditors" : 3,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 56,
+					"end" : 148,
+					"options" : [
+						"After all, the cover is still the gateway to the magazine.  Theoretically, it will still be the first page people see, giving them hints of what\'s inside and enticing them to dive into the issue."
+					],
+					"paragraph" : /* data["paragraphs"][1]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 1,
+					"numEditors" : 2,
+					"numVoters" : 4,
+					"__type__" : "shorten"
+				}
+			]
+		},
+		{
+			"sentences" : [
+				"The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear on the page almost like movie credits.",
+				"He points out that these kinds of videos will have to be shot in a vertical orientation rather than a horizontal landscape one.",
+				"This is just a mockup Rosten came up with on his own, but the designers of these new magazine apps should take note.",
+				"The only way people are going to pay for these apps is if they create new experiences for readers."
+			],
+			"patches" : [
+				{
+					"start" : 160,
+					"end" : 287,
+					"options" : [
+						"He points out that these videos will have to be shot in a vertical orientation rather than a horizontal one."
+					],
+					"paragraph" : /* data["paragraphs"][2]["sentences"] */0,
+					"canCut" : false,
+					"cutVotes" : 1,
+					"numEditors" : 3,
+					"numVoters" : 2,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 289,
+					"end" : 408,
+					"options" : [
+						"This is just a mockup Rosten came up with, but the designers of new magazine apps should take note.  People will pay for these apps only if they create new experiences for readers."
+					],
+					"paragraph" : /* data["paragraphs"][2]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 2,
+					"numEditors" : 3,
+					"numVoters" : 3,
+					"__type__" : "shorten"
+				},
+				{
+					"start" : 120,
+					"end" : 157,
+					"options" : [
+						"The video shows ocean waves gently lapping a beach as the title of the magazine and other typographical elements appear almost like movie credits."
+					],
+					"paragraph" : /* data["paragraphs"][2]["sentences"] */0,
+					"canCut" : true,
+					"cutVotes" : 3,
+					"numEditors" : 3,
+					"numVoters" : 2,
+					"__type__" : "shorten"
+				}
+			]
+		}
+	]
+}
+	data["paragraphs"][0]["patches"][0]["paragraph"] = data["paragraphs"][0]["sentences"]
+	data["paragraphs"][0]["patches"][1]["paragraph"] = data["paragraphs"][0]["sentences"]
+	data["paragraphs"][0]["patches"][2]["paragraph"] = data["paragraphs"][0]["sentences"]
+	data["paragraphs"][1]["patches"][0]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][1]["patches"][1]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][1]["patches"][2]["paragraph"] = data["paragraphs"][1]["sentences"]
+	data["paragraphs"][2]["patches"][0]["paragraph"] = data["paragraphs"][2]["sentences"]
+	data["paragraphs"][2]["patches"][1]["paragraph"] = data["paragraphs"][2]["sentences"]
+	data["paragraphs"][2]["patches"][2]["paragraph"] = data["paragraphs"][2]["sentences"]
+	return data
+})()

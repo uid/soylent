@@ -1,0 +1,73 @@
+Stage,Assignment,Wait Type,Time
+Error Identification,1,work,19
+Error Identification,1,wait,137
+Error Identification,2,work,97
+Error Identification,2,wait,123
+Error Identification,3,work,88
+Error Identification,3,wait,313
+Error Identification,4,work,90
+Error Identification,4,wait,336
+Error Identification,5,work,25
+Error Identification,5,wait,1082
+Fixing Error,1,work,22
+Fixing Error,1,wait,194
+Fixing Error,2,work,95
+Fixing Error,2,wait,216
+Fixing Error,3,work,29
+Fixing Error,3,wait,489
+Fixing Error,4,work,60
+Fixing Error,4,wait,1120
+Voting on Alternatives,1,work,98
+Voting on Alternatives,1,wait,37
+Voting on Alternatives,2,work,75
+Voting on Alternatives,2,wait,77
+Voting on Alternatives,3,work,93
+Voting on Alternatives,3,wait,170
+Voting on Alternatives,4,work,87
+Voting on Alternatives,4,wait,230
+Voting on Alternatives,5,work,65
+Voting on Alternatives,5,wait,894
+Fixing Error,1,work,99
+Fixing Error,1,wait,62
+Fixing Error,2,work,41
+Fixing Error,2,wait,154
+Fixing Error,3,work,67
+Fixing Error,3,wait,129
+Fixing Error,4,work,105
+Fixing Error,4,wait,111
+Fixing Error,5,work,48
+Fixing Error,5,wait,307
+Fixing Error,6,work,239
+Fixing Error,6,wait,181
+Voting on Alternatives,1,work,158
+Voting on Alternatives,1,wait,82
+Voting on Alternatives,2,work,145
+Voting on Alternatives,2,wait,494
+Voting on Alternatives,3,work,183
+Voting on Alternatives,3,wait,783
+Voting on Alternatives,4,work,289
+Voting on Alternatives,4,wait,738
+Voting on Alternatives,5,work,100
+Voting on Alternatives,5,wait,934
+Fixing Error,1,work,24
+Fixing Error,1,wait,165
+Fixing Error,2,work,16
+Fixing Error,2,wait,205
+Fixing Error,3,work,26
+Fixing Error,3,wait,199
+Fixing Error,4,work,40
+Fixing Error,4,wait,311
+Fixing Error,5,work,25
+Fixing Error,5,wait,425
+Fixing Error,6,work,42
+Fixing Error,6,wait,439
+Voting on Alternatives,1,work,49
+Voting on Alternatives,1,wait,249
+Voting on Alternatives,2,work,23
+Voting on Alternatives,2,wait,461
+Voting on Alternatives,3,work,28
+Voting on Alternatives,3,wait,706
+Voting on Alternatives,4,work,163
+Voting on Alternatives,4,wait,614
+Voting on Alternatives,5,work,215
+Voting on Alternatives,5,wait,621
