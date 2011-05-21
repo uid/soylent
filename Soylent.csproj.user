@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>C:\Users\msbernst\Desktop\soylent-deploy\</PublishUrlHistory>
+    <PublishUrlHistory>C:\Users\msbernst\Desktop\soylent-deploy\soylent-deploy\|C:\Users\msbernst\Desktop\soylent-deploy\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory>http://soylent.csail.mit.edu</SupportUrlHistory>
     <ProjectView>ShowAllFiles</ProjectView>
