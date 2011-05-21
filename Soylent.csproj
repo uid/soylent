@@ -39,10 +39,10 @@
     <IsWebBootstrapper>False</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>C:\Users\msbernst\Desktop\soylent-deploy\</PublishUrl>
+    <PublishUrl>C:\Users\msbernst\Desktop\soylent-deploy\soylent-deploy\</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.6</ApplicationVersion>
+    <ApplicationVersion>1.0.0.9</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -321,12 +321,6 @@
     <Compile Include="TurKitSocKit.cs" />
     <AppDesigner Include="Properties\" />
     <None Include="Soylent_TemporaryKey.pfx" />
-    <None Include="turkit\block\block.js.database" />
-    <None Include="turkit\block\block.js.properties" />
-    <None Include="turkit\block\turkit.properties" />
-    <None Include="turkit\code.js.database" />
-    <None Include="turkit\code.js.properties" />
-    <None Include="turkit\turkit.properties" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\Amazon.xaml">
@@ -386,35 +380,74 @@
     <None Include="Resources\humanmacro.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="amazon.template.xml" />
+    <Content Include="amazon.template.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="lock.png" />
     <Content Include="turkit\active-hits\README.txt" />
-    <Content Include="turkit\block\block.js" />
-    <Content Include="turkit\block\TurKit-0.2.3.jar" />
-    <Content Include="turkit\code.js" />
-    <Content Include="turkit\library\._find-fix-verify.js" />
-    <Content Include="turkit\library\._socket.js" />
-    <Content Include="turkit\library\diff_match_patch.js" />
-    <Content Include="turkit\library\diff_match_patch_uncompressed.js" />
-    <Content Include="turkit\library\find-fix-verify.js" />
-    <Content Include="turkit\library\hit_header.js" />
-    <Content Include="turkit\library\hit_utils.js" />
-    <Content Include="turkit\library\patch.js" />
-    <Content Include="turkit\library\socket.js" />
-    <Content Include="turkit\templates\crowdproof\crowdproof-find.html" />
-    <Content Include="turkit\templates\crowdproof\crowdproof-fix.html" />
-    <Content Include="turkit\templates\crowdproof\crowdproof-verify.html" />
-    <Content Include="turkit\templates\crowdproof\crowdproof.data.js" />
-    <Content Include="turkit\templates\crowdproof\crowdproof.js" />
-    <Content Include="turkit\templates\human-macro\macro.data.js" />
-    <Content Include="turkit\templates\human-macro\macro.html" />
-    <Content Include="turkit\templates\human-macro\macro.js" />
-    <Content Include="turkit\templates\shortn\shortn-find.html" />
-    <Content Include="turkit\templates\shortn\shortn-fix.html" />
-    <Content Include="turkit\templates\shortn\shortn-verify.html" />
-    <Content Include="turkit\templates\shortn\shortn.data.js" />
-    <Content Include="turkit\templates\shortn\shortn.js" />
-    <Content Include="turkit\TurKit-0.2.4.jar" />
+    <Content Include="turkit\library\diff_match_patch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\library\diff_match_patch_uncompressed.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\library\find-fix-verify.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\library\hit_header.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\library\hit_utils.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\library\patch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\library\socket.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\crowdproof\crowdproof-find.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\crowdproof\crowdproof-fix.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\crowdproof\crowdproof-verify.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\crowdproof\crowdproof.data.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\crowdproof\crowdproof.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\human-macro\macro.data.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\human-macro\macro.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\human-macro\macro.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\shortn\shortn-find.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\shortn\shortn-fix.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\shortn\shortn-verify.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\shortn\shortn.data.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\templates\shortn\shortn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="turkit\TurKit-0.2.4.jar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

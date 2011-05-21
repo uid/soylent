@@ -43,21 +43,51 @@ namespace Soylent
 
         public static bool DEBUG = false;
 
+        /// <summary>
+        /// Get the directory where the application stores its deployed data files (e.g., *.xml)
+        /// </summary>
+        /// <returns></returns>
         public static string GetDataDirectory()
         {
             if (ApplicationDeployment.IsNetworkDeployed)
             {
-
+                return ApplicationDeployment.CurrentDeployment.DataDirectory;
             }
             else
             {
+                return getDebugRootDirectory();
             }
-            return null;
         }
 
-        public static string GetPermanentApplicationDirectory()
+        public static string GetAppDirectory()
         {
-            return null;
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                return AppDomain.CurrentDomain.BaseDirectory;
+            }
+            else
+            {
+                return getDebugRootDirectory();
+            }
+        }
+
+        public static string getDebugRootDirectory()
+        {
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                throw new Exception("Attempting to access Debug Root directory while deployed.");
+            }
+
+            // dcrowell wrote this --- what is the length test looking at?
+            String root = AppDomain.CurrentDomain.BaseDirectory;
+            if (root.Length > 10)
+            {
+                if (root.Substring(root.Length - 11, 10) == @"\bin\Debug")
+                {
+                    root = root.Substring(0, root.Length - 10);
+                }
+            }
+            return root;
         }
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
@@ -77,6 +107,8 @@ namespace Soylent
 
             MessageBox.Show("AppDomain: " + AppDomain.CurrentDomain.BaseDirectory);
             MessageBox.Show("Deploy: " + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory);
+            MessageBox.Show("Assembly Location: " + System.Reflection.Assembly.GetExecutingAssembly().Location);
+            MessageBox.Show("Assembly CodeBase: " + System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
         }
 
         void Application_DocumentChange()
