@@ -1,5 +1,5 @@
 // run the program
-eval(read("../templates/crowdproof/crowdproof.js"));
+eval(read(fileDirectory + "/templates/crowdproof/crowdproof.js"));
 main();
 
 
@@ -9,6 +9,7 @@ main();
 var debug = false;
 var soylentJob = 1;
 var sentence_separator = "  ";
+var fileDirectory = "C:\path\to\turkit\files"
 
 var paragraphs = [ 
 	["However, while GUI made using computers be more intuitive and easier to learn, it didn't let people be able to control computers efficiently.",

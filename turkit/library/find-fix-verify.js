@@ -1,8 +1,8 @@
 // imports
-eval(read("../library/patch.js"));
-eval(read("../library/hit_utils.js"));
-eval(read("../library/diff_match_patch_uncompressed.js"));
-eval(read("../library/socket.js"));
+eval(read(fileDirectory + "/library/patch.js"));
+eval(read(fileDirectory + "/library/hit_utils.js"));
+eval(read(fileDirectory + "/library/diff_match_patch_uncompressed.js"));
+eval(read(fileDirectory + "/library/socket.js"));
 
 /*
  *  Input data structure should look like:
@@ -276,7 +276,7 @@ function verifyPatches(patch, fix_hit, suggestions, paragraph_index, patchNumber
 function requestPatches(paragraph_index, findFixVerifyOptions) {
 	var text = getParagraph(findFixVerifyOptions.paragraphs[paragraph_index]);
     
-    var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
+    var header = read(fileDirectory + "/library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
 				.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "find");
 
 	var webpageContents = slurp(findFixVerifyOptions.find.HTML_template)
@@ -414,7 +414,7 @@ function requestFixes(patch, findFixVerifyOptions) {
 	var full_text = patch.highlightedParagraph();
 	var editable = patch.plaintextSentence();
     
-    var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
+    var header = read(fileDirectory + "/library/hit_header.js").replace(/___BLOCK_WORKERS___/g, [])
 				.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "fix");    
 
 	var webpageContents = slurp(findFixVerifyOptions.fix.HTML_template)
@@ -511,7 +511,7 @@ function requestVotes(patch, options, fix_hit, findFixVerifyOptions) {
 	}
     
     // Now we create a hit to vote on whether it's good
-	var header = read("../library/hit_header.js").replace(/___BLOCK_WORKERS___/g, edit_workers)
+	var header = read(fileDirectory + "/library/hit_header.js").replace(/___BLOCK_WORKERS___/g, edit_workers)
 					.replace(/___PAGE_NAME___/g, findFixVerifyOptions.jobType + "_verify");
     var webpageContents = slurp(findFixVerifyOptions.verify.HTML_template)
                             .replace(/___HEADER_SCRIPT___/g, header)

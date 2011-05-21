@@ -1,5 +1,5 @@
-eval(read("../library/hit_utils.js"));
-eval(read("../library/socket.js"));
+eval(read(fileDirectory + "/library/hit_utils.js"));
+eval(read(fileDirectory + "/library/socket.js"));
 
 var write_output = false;
 var socket = new Socket("human-macro", "localhost", 11000, 2000);
@@ -47,11 +47,11 @@ function main()
 
 function requestWork(input) {
 	// Now we create a hit to vote on whether it's good
-	var header = read("../library/hit_header.js")
+	var header = read(fileDirectory + "/library/hit_header.js")
 					.replace(/___BLOCK_WORKERS___/g, [])
 					.replace(/___PAGE_NAME___/g, "human_macro");
 
-	var webpage = s3.putString(slurp("../templates/human-macro/macro.html")
+	var webpage = s3.putString(slurp(fileDirectory + "/templates/human-macro/macro.html")
 					.replace(/___HEADER_SCRIPT___/g, header)
 					.replace(/___INPUT___/g, input)
 					.replace(/___INSTRUCTIONS___/g, instructions));

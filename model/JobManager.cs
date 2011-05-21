@@ -14,7 +14,7 @@ namespace Soylent.Model
         public JobManager()
         {
             // Search the active-hits directory to find the most recent job number
-            DirectoryInfo activeHits = new DirectoryInfo(Soylent.GetDataDirectory() + @"\active-hits\");
+            DirectoryInfo activeHits = new DirectoryInfo(Soylent.GetDataDirectory() + @"active-hits\");
             FileInfo[] hits = activeHits.GetFiles(@"*.data.js");
 
             foreach (FileInfo file in hits)

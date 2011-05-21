@@ -55,41 +55,13 @@ namespace Soylent
             }
             else
             {
-                return getDebugRootDirectory();
+                return AppDomain.CurrentDomain.BaseDirectory;
             }
         }
 
         public static string GetAppDirectory()
         {
-            if (ApplicationDeployment.IsNetworkDeployed)
-            {
-                return AppDomain.CurrentDomain.BaseDirectory;
-            }
-            else
-            {
-                return getDebugRootDirectory();
-            }
-        }
-
-        public static string getDebugRootDirectory()
-        {
-            if (ApplicationDeployment.IsNetworkDeployed)
-            {
-                throw new Exception("Attempting to access Debug Root directory while deployed.");
-            }
-
-            // dcrowell wrote this --- what is the length test looking at?
-            String root = AppDomain.CurrentDomain.BaseDirectory;
-            /*
-            if (root.Length > 10)
-            {
-                if (root.Substring(root.Length - 11, 10) == @"\bin\Debug")
-                {
-                    root = root.Substring(0, root.Length - 10);
-                }
-            }
-            */ 
-            return root;
+            return AppDomain.CurrentDomain.BaseDirectory;
         }
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
@@ -107,10 +79,12 @@ namespace Soylent
             this.Application.DocumentChange += new Word.ApplicationEvents4_DocumentChangeEventHandler(Application_DocumentChange);
             this.Application.DocumentBeforeClose += new Word.ApplicationEvents4_DocumentBeforeCloseEventHandler(Application_DocumentBeforeClose);
 
+            /*
             MessageBox.Show("AppDomain: " + AppDomain.CurrentDomain.BaseDirectory);
             MessageBox.Show("Deploy: " + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory);
             MessageBox.Show("Assembly Location: " + System.Reflection.Assembly.GetExecutingAssembly().Location);
             MessageBox.Show("Assembly CodeBase: " + System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
+             */
         }
 
         /// <summary>
@@ -119,11 +93,11 @@ namespace Soylent
         private void InitializeActiveHitsDirectory()
         {
             String root = GetDataDirectory();
-            String path = root + @"\active-hits";
+            String path = root + @"active-hits";
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
-                File.Copy(GetAppDirectory()+@"\turkit\active-hits\README.txt", path+@"\");
+                File.Copy(GetAppDirectory()+@"turkit\active-hits\README.txt", path+@"\README.txt");
             }
         }
 

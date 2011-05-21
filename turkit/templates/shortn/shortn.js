@@ -1,4 +1,4 @@
-eval(read("../library/find-fix-verify.js"));
+eval(read(fileDirectory + "/library/find-fix-verify.js"));
 
 var findFixVerifyOptions = {
     jobType: "shortn",
@@ -9,7 +9,7 @@ var findFixVerifyOptions = {
     find: {
         HIT_title: "Find unnecessary text",
         HIT_description: "I need to shorten my paragraph, and need opinions on what to cut.",
-        HTML_template: "../templates/shortn/shortn-find.html",
+        HTML_template: fileDirectory + "/templates/shortn/shortn-find.html",
         reward: 0.08,
         minimum_agreement: 0.20,
         redundancy: 10,
@@ -20,7 +20,7 @@ var findFixVerifyOptions = {
     fix: {
         HIT_title: "Shorten Rambling Text",
         HIT_description: "A sentence in my paper is too long and I need your help cutting out the fat.",
-        HTML_template: "../templates/shortn/shortn-fix.html",
+        HTML_template: fileDirectory + "/templates/shortn/shortn-fix.html",
         reward: 0.05,
         redundancy: 5,
         minimum_workers: 3,
@@ -31,7 +31,7 @@ var findFixVerifyOptions = {
     verify: {
         HIT_title: "Did I shorten text correctly?",
         HIT_description: "I need to shorten some text -- which version is best?",
-        HTML_template: "../templates/shortn/shortn-verify.html",
+        HTML_template: fileDirectory + "/templates/shortn/shortn-verify.html",
         reward: 0.04,
         minimum_agreement: 0.20,
         redundancy: 5,

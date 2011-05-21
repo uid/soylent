@@ -88,9 +88,9 @@ namespace Soylent
             int request = hdata.job;
             string requestLine = "var soylentJob = " + request + ";";
             string debug = "var debug = " + (Soylent.DEBUG ? "true" : "false") + ";";
-            string fileDirectory = "var fileDirectory = " + Soylent.GetAppDirectory() + @"\turkit";
+            string fileDirectory = "var fileDirectory = " + js.Serialize(Soylent.GetAppDirectory() + @"turkit");
 
-            string[] script = File.ReadAllLines(Soylent.GetAppDirectory() + @"\turkit\templates\" 
+            string[] script = File.ReadAllLines(Soylent.GetAppDirectory() + @"turkit\templates\" 
                                                 + tasktype + @"\" + tasktype + @".data.js");
 
             int new_lines = 5;
@@ -102,7 +102,7 @@ namespace Soylent
             newScript[4] = fileDirectory;
             Array.Copy(script, 0, newScript, new_lines, script.Length);
 
-            string requestFile = Soylent.GetDataDirectory() + @"\active-hits\" + tasktype + @"." + request + ".data.js";
+            string requestFile = Soylent.GetDataDirectory() + @"active-hits\" + tasktype + @"." + request + ".data.js";
             File.WriteAllLines(requestFile, newScript, Encoding.UTF8);
 
             string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";

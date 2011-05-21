@@ -1,4 +1,4 @@
-eval(read("../library/find-fix-verify.js"));
+eval(read(fileDirectory + "/library/find-fix-verify.js"));
 
 var findFixVerifyOptions = {
     jobType: "crowdproof",
@@ -9,7 +9,7 @@ var findFixVerifyOptions = {
     find: {
 		HIT_title : "Find bad writing",
 		HIT_description : "This paragraph needs some help finding errors. You're far better than Microsoft Word's grammar checker.",
-        HTML_template: "../templates/crowdproof/crowdproof-find.html",
+        HTML_template: fileDirectory + "/templates/crowdproof/crowdproof-find.html",
         reward: 0.06,
         minimum_agreement: 0.20,
         redundancy: 10,
@@ -20,7 +20,7 @@ var findFixVerifyOptions = {
     fix: {
         HIT_title: "Fix a writing error",
         HIT_description: "My writing has a problem in it. Can you help fix it?",
-        HTML_template: "../templates/crowdproof/crowdproof-fix.html",
+        HTML_template: fileDirectory + "/templates/crowdproof/crowdproof-fix.html",
         reward: 0.08,
         redundancy: 5,
         minimum_workers: 3, 
@@ -31,7 +31,7 @@ var findFixVerifyOptions = {
     verify: {
 		HIT_title : "Vote on writing suggestions",
 		HIT_description : "I have several rewrites of this sentence. Which one is best?",
-        HTML_template: "../templates/crowdproof/crowdproof-verify.html",
+        HTML_template: fileDirectory + "/templates/crowdproof/crowdproof-verify.html",
         reward: 0.04,
         minimum_agreement: 0.20,
         redundancy: 5,
