@@ -56,5 +56,5 @@ var title = "Address Fixing";
 var subtitle = "I have some badly-formatted addresses and need help making them look right.";
 */
 
-eval(read("../templates/human-macro/macro.js"));
+eval(read(fileDirectory + "/templates/human-macro/macro.js"));
 main();

@@ -384,7 +384,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="lock.png" />
-    <Content Include="turkit\active-hits\README.txt" />
+    <Content Include="turkit\active-hits\README.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="turkit\library\diff_match_patch.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
