@@ -21,8 +21,6 @@ namespace Soylent
 {
     public class TurKit
     {
-        public string directory;
-        public string rootDirectory;
         private HITData hdata;
         public Timer turkitLoopTimer;
 
@@ -31,7 +29,7 @@ namespace Soylent
         public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
         public static int TIMER_LOOP_SECONDS = 60;
         public static int TIMER_LOOP_SECONDS_DEBUG = 30;
-        public static bool SHOW_WINDOW = false;
+        public static bool SHOW_WINDOW = true;
 
         /// <summary>
         /// Creates a TurKit job for the selected task.
@@ -39,23 +37,7 @@ namespace Soylent
         /// <param name="hdata">The HITData representing the desired job</param>
         public TurKit(HITData hdata)
         {
-            rootDirectory = getRootDirectory();
             this.hdata = hdata;
-
-            //isRunning = false;
-        }
-
-        public static string getRootDirectory()
-        {
-            string root = AppDomain.CurrentDomain.BaseDirectory;
-            if (root.Length > 10)
-            {
-                if (root.Substring(root.Length - 11, 10) == @"\bin\Debug")
-                {
-                    root = root.Substring(0, root.Length - 10);
-                }
-            }
-            return root; 
         }
 
         public delegate void startTaskDelegate(AmazonKeys keys);
@@ -104,22 +86,23 @@ namespace Soylent
             string numSpaces = "var sentence_separator = '" + spacesBetweenSentences + "';";
 
             int request = hdata.job;
-            directory = rootDirectory + @"\turkit\templates\" + tasktype + @"\";
-
             string requestLine = "var soylentJob = " + request + ";";
             string debug = "var debug = " + (Soylent.DEBUG ? "true" : "false") + ";";
+            string fileDirectory = "var fileDirectory = " + Soylent.GetAppDirectory() + @"\turkit";
 
-            string[] script = File.ReadAllLines(directory + @"\" + tasktype + @".data.js");
+            string[] script = File.ReadAllLines(Soylent.GetAppDirectory() + @"\turkit\templates\" 
+                                                + tasktype + @"\" + tasktype + @".data.js");
 
-            int new_lines = 4;
+            int new_lines = 5;
             string[] newScript = new string[new_lines + script.Length];
             newScript[0] = requestLine;
             newScript[1] = paragraphs;
             newScript[2] = debug;
             newScript[3] = numSpaces;
+            newScript[4] = fileDirectory;
             Array.Copy(script, 0, newScript, new_lines, script.Length);
 
-            string requestFile = rootDirectory + @"\turkit\active-hits\" + tasktype + @"." + request + ".data.js";
+            string requestFile = Soylent.GetDataDirectory() + @"\active-hits\" + tasktype + @"." + request + ".data.js";
             File.WriteAllLines(requestFile, newScript, Encoding.UTF8);
 
             string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
@@ -132,7 +115,7 @@ namespace Soylent
                 arguments += " -m real";
             }
 
-            info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
+            info = new ProcessInformation("java", arguments, Soylent.GetAppDirectory() + @"\turkit", SHOW_WINDOW);
 
             TimerCallback callback = ExecuteProcess;
             int timer = 60 * 1000;
@@ -231,7 +214,6 @@ namespace Soylent
             string numSpaces = "var sentence_separator = '" + spacesBetweenSentences + "';";
 
             int request = hdata.job;
-            directory = rootDirectory + @"\turkit\templates\human-macro\";
 
             string requestLine = "var soylentJob = " + request + ";";
             string debug = "var debug = " + (Soylent.DEBUG ? "true" : "false") + ";";
@@ -242,7 +224,7 @@ namespace Soylent
             string subtitle = "var subtitle = '" + data.subtitle + "';";
             string instructions = "var instructions = '" + data.instructions + "';";
 
-            string[] script = File.ReadAllLines(directory + @"\macro.data.js");
+            string[] script = File.ReadAllLines(Soylent.GetAppDirectory() + @"\turkit\templates\human-macro\macro.data.js");
 
             int new_lines = 9;
             string[] newScript = new string[new_lines + script.Length];
@@ -257,7 +239,7 @@ namespace Soylent
             newScript[8] = instructions;
             Array.Copy(script, 0, newScript, new_lines, script.Length);
 
-            string requestFile = rootDirectory + @"\turkit\active-hits\macro." + request + ".data.js";
+            string requestFile = Soylent.GetDataDirectory() + @"\active-hits\macro." + request + ".data.js";
             File.WriteAllLines(requestFile, newScript, Encoding.UTF8);
 
             string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
@@ -271,7 +253,7 @@ namespace Soylent
             }
 
             //ProcessInformation info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", Soylent.DEBUG);
-            info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
+            info = new ProcessInformation("java", arguments, Soylent.GetAppDirectory() + @"\turkit", SHOW_WINDOW);
 
             TimerCallback callback = ExecuteProcess;
             int timer = 60 * 1000;
@@ -280,14 +262,13 @@ namespace Soylent
                 timer = 30 * 1000;
             }
             turkitLoopTimer = new Timer(callback, info, 0, timer);  // starts the timer every 60 seconds
-
         }
-
 
         /// <summary>
         /// Starts a task.  For a Shortn task, this breaks the selected range into appropriate groupings, overwrites the template file, and runs TurKit on a Timer.
         /// </summary>
-        public void startTask(noKeysDelegate cancelDelegate){
+        public void startTask(noKeysDelegate cancelDelegate)
+        {
             startTaskDelegate taskDelegate = null;
 
             if (hdata is ShortnData)
@@ -329,7 +310,7 @@ namespace Soylent
             string cancelLine = "\n" + "cancelTask();";
             if (hdata is ShortnData)
             {
-                string requestFile = rootDirectory + @"\turkit\active-hits\shortn." + request + ".data.js";
+                string requestFile = Soylent.GetAppDirectory() + @"\turkit\active-hits\shortn." + request + ".data.js";
                 File.AppendAllText(requestFile, cancelLine);
 
                 string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
@@ -342,12 +323,12 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, Soylent.GetAppDirectory() + @"\turkit", SHOW_WINDOW);
                 ExecuteProcess(cancel_info);
             }
             else if (hdata is CrowdproofData)
             {
-                string requestFile = rootDirectory + @"\turkit\active-hits\crowdproof." + request + ".data.js";
+                string requestFile = Soylent.GetDataDirectory() + @"\active-hits\crowdproof." + request + ".data.js";
                 File.AppendAllText(requestFile, cancelLine);
 
                 string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
@@ -360,12 +341,12 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, Soylent.GetAppDirectory() + @"\turkit", SHOW_WINDOW);
                 ExecuteProcess(cancel_info);
             }
             else if (hdata is HumanMacroData)
             {
-                string requestFile = rootDirectory + @"\turkit\active-hits\macro." + request + ".data.js";
+                string requestFile = Soylent.GetDataDirectory() + @"\active-hits\macro." + request + ".data.js";
                 File.AppendAllText(requestFile, cancelLine);
 
                 string arguments = " -jar " + TURKIT_VERSION + " -f \"" + requestFile + "\" -a " + keys.amazonID + " -s " + keys.secretKey + " -o 100 -h 1000";
@@ -378,7 +359,7 @@ namespace Soylent
                     arguments += " -m real";
                 }
 
-                ProcessInformation cancel_info = new ProcessInformation("java", arguments, rootDirectory + @"\turkit", SHOW_WINDOW);
+                ProcessInformation cancel_info = new ProcessInformation("java", arguments, Soylent.GetAppDirectory() + @"\turkit", SHOW_WINDOW);
                 ExecuteProcess(cancel_info);
             }
         }

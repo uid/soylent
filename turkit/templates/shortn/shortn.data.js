@@ -1,7 +1,7 @@
 
 
 // run the program
-eval(read("../templates/shortn/shortn.js"));
+eval(read(fileDirectory + "/templates/shortn/shortn.js"));
 main();
 
 /*
@@ -10,6 +10,7 @@ main();
 var debug = false;
 var soylentJob = 1;
 var sentence_separator = "  ";
+var fileDirectory = "..";
 
 var paragraphs =	[
 	[	"The graphical user interface (GUI) has proven both a successful and durable model for human-computer interaction which has dominated the last decade of interface design.",

@@ -16,7 +16,7 @@ namespace Soylent.Model
 
         public static AmazonKeys LoadAmazonKeys()
         {
-            string rootDirectory = TurKit.getRootDirectory();
+            string rootDirectory = Soylent.GetDataDirectory();
             string keyFile = rootDirectory + @"\amazon.xml";
 
 
@@ -62,7 +62,7 @@ namespace Soylent.Model
 
         public static void SetAmazonKeys(string key, string secret)
         {
-            string rootDirectory = TurKit.getRootDirectory();
+            string rootDirectory = Soylent.GetDataDirectory();
 
             StreamReader reader = new StreamReader(rootDirectory + "amazon.template.xml");
             string content = reader.ReadToEnd();
