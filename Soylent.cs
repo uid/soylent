@@ -41,7 +41,7 @@ namespace Soylent
         public Dictionary<Word.Document, SoylentPanel> soylentMap = new Dictionary<Word.Document,SoylentPanel>();
         public Dictionary<int, Word.Document> jobToDoc = new Dictionary<int, Word.Document>();
 
-        public static bool DEBUG = false;
+        public static bool DEBUG = true;
 
         /// <summary>
         /// Get the directory where the application stores its deployed data files (e.g., *.xml)
@@ -80,6 +80,7 @@ namespace Soylent
 
             // dcrowell wrote this --- what is the length test looking at?
             String root = AppDomain.CurrentDomain.BaseDirectory;
+            /*
             if (root.Length > 10)
             {
                 if (root.Substring(root.Length - 11, 10) == @"\bin\Debug")
@@ -87,13 +88,14 @@ namespace Soylent
                     root = root.Substring(0, root.Length - 10);
                 }
             }
+            */ 
             return root;
         }
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             //Globals.Ribbons.Ribbon.debug.Visible = true;
-
+            InitializeActiveHitsDirectory();
             jobManager = new JobManager();
 
             tkhttp = new TurKitHTTP();
@@ -109,6 +111,20 @@ namespace Soylent
             MessageBox.Show("Deploy: " + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory);
             MessageBox.Show("Assembly Location: " + System.Reflection.Assembly.GetExecutingAssembly().Location);
             MessageBox.Show("Assembly CodeBase: " + System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
+        }
+
+        /// <summary>
+        /// Creates the active hits directory if it doesn't exist yet
+        /// </summary>
+        private void InitializeActiveHitsDirectory()
+        {
+            String root = GetDataDirectory();
+            String path = root + @"\active-hits";
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+                File.Copy(GetAppDirectory()+@"\turkit\active-hits\README.txt", path+@"\");
+            }
         }
 
         void Application_DocumentChange()
