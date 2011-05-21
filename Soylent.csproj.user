@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PublishUrlHistory>C:\Users\msbernst\Desktop\soylent-deploy\</PublishUrlHistory>
     <InstallUrlHistory />
-    <SupportUrlHistory />
+    <SupportUrlHistory>http://soylent.csail.mit.edu</SupportUrlHistory>
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <ProjectExtensions />

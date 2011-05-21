@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
+using System.Deployment.Application;
 
 using System.IO;
 using System.Xml;
@@ -42,6 +43,23 @@ namespace Soylent
 
         public static bool DEBUG = false;
 
+        public static string GetDataDirectory()
+        {
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+
+            }
+            else
+            {
+            }
+            return null;
+        }
+
+        public static string GetPermanentApplicationDirectory()
+        {
+            return null;
+        }
+
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             //Globals.Ribbons.Ribbon.debug.Visible = true;
@@ -56,6 +74,9 @@ namespace Soylent
             this.Application.DocumentBeforeSave += new Word.ApplicationEvents4_DocumentBeforeSaveEventHandler(Application_DocumentBeforeSave);
             this.Application.DocumentChange += new Word.ApplicationEvents4_DocumentChangeEventHandler(Application_DocumentChange);
             this.Application.DocumentBeforeClose += new Word.ApplicationEvents4_DocumentBeforeCloseEventHandler(Application_DocumentBeforeClose);
+
+            MessageBox.Show("AppDomain: " + AppDomain.CurrentDomain.BaseDirectory);
+            MessageBox.Show("Deploy: " + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.DataDirectory);
         }
 
         void Application_DocumentChange()
