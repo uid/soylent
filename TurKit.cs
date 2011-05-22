@@ -29,7 +29,7 @@ namespace Soylent
         public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
         public static int TIMER_LOOP_SECONDS = 60;
         public static int TIMER_LOOP_SECONDS_DEBUG = 30;
-        public static bool SHOW_WINDOW = true;
+        public static bool SHOW_WINDOW = false;
 
         /// <summary>
         /// Creates a TurKit job for the selected task.

@@ -26,7 +26,6 @@ namespace Soylent.View.Shortn
         private Dictionary<Run, PatchSelection> runMap;
         private ShortnData data;
         private double currentPercent;
-        private string rootDirectory = null;
         private static string UNLOCK_TEXT = "Allow all"; //This is the text for the context menu option that unlocks the selection
         private static string REMOVE_TEXT = "Cut"; //This is the text for the context menu option that replaces the selection with the empty string.
 
@@ -330,19 +329,6 @@ namespace Soylent.View.Shortn
             after.Inlines.Clear();
             after.Inlines.AddRange(afterRuns);
 
-            // Need to get the directory for the image
-            if (rootDirectory == null)
-            {
-                rootDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                if (rootDirectory.Length > 10)
-                {
-                    if (rootDirectory.Substring(rootDirectory.Length - 11, 10) == @"\bin\Debug")
-                    {
-                        rootDirectory = rootDirectory.Substring(0, rootDirectory.Length - 10);
-                    }
-                }
-            }
-
             //The list of locked runs.  Must be dealt with later to avoid altering the collection we're iterating through
             List<Run> lockedRuns = new List<Run>();
 
@@ -363,7 +349,7 @@ namespace Soylent.View.Shortn
             foreach (Run run in lockedRuns)
             {
                 Image img = new Image();
-                BitmapImage bmi = new BitmapImage(new Uri(rootDirectory + @"lock.png"));
+                BitmapImage bmi = new BitmapImage(new Uri(Soylent.GetAppDirectory() + @"lock.png"));
                 img.Source = bmi;
                 img.Height = 9;
                 img.Width = 9;
