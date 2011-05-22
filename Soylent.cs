@@ -41,7 +41,7 @@ namespace Soylent
         public Dictionary<Word.Document, SoylentPanel> soylentMap = new Dictionary<Word.Document,SoylentPanel>();
         public Dictionary<int, Word.Document> jobToDoc = new Dictionary<int, Word.Document>();
 
-        public static bool DEBUG = true;
+        public static bool DEBUG = false;
 
         /// <summary>
         /// Get the directory where the application stores its deployed data files (e.g., *.xml)
