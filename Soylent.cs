@@ -49,19 +49,31 @@ namespace Soylent
         /// <returns></returns>
         public static string GetDataDirectory()
         {
+            string result;
             if (ApplicationDeployment.IsNetworkDeployed)
             {
-                return ApplicationDeployment.CurrentDeployment.DataDirectory;
+                result = ApplicationDeployment.CurrentDeployment.DataDirectory;
             }
             else
             {
-                return AppDomain.CurrentDomain.BaseDirectory;
+                result = AppDomain.CurrentDomain.BaseDirectory;
             }
+
+            if (!result.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            {
+                result = result + Path.DirectorySeparatorChar;
+            }
+            return result;
         }
 
         public static string GetAppDirectory()
         {
-            return AppDomain.CurrentDomain.BaseDirectory;
+            string result = AppDomain.CurrentDomain.BaseDirectory;
+            if (!result.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            {
+                result = result + Path.DirectorySeparatorChar;
+            }
+            return result;
         }
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
