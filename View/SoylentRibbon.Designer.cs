@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoylentRibbon));
-            this.Soylent = new Microsoft.Office.Tools.Ribbon.RibbonTab();
-            this.viewGroup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
-            this.button3 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.shortenBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.humanMacroBtn = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.jobStatus = new Microsoft.Office.Tools.Ribbon.RibbonToggleButton();
-            this.amazon = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.debug = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
-            this.button1 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.button2 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.button4 = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.directManipulate = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.humanMacroInline = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.humanMacroComment = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            this.Soylent = this.Factory.CreateRibbonTab();
+            this.viewGroup = this.Factory.CreateRibbonGroup();
+            this.button3 = this.Factory.CreateRibbonButton();
+            this.shortenBtn = this.Factory.CreateRibbonButton();
+            this.humanMacroBtn = this.Factory.CreateRibbonButton();
+            this.jobStatus = this.Factory.CreateRibbonToggleButton();
+            this.amazon = this.Factory.CreateRibbonButton();
+            this.debug = this.Factory.CreateRibbonGroup();
+            this.button1 = this.Factory.CreateRibbonButton();
+            this.button2 = this.Factory.CreateRibbonButton();
+            this.button4 = this.Factory.CreateRibbonButton();
+            this.directManipulate = this.Factory.CreateRibbonButton();
+            this.humanMacroInline = this.Factory.CreateRibbonButton();
+            this.humanMacroComment = this.Factory.CreateRibbonButton();
             this.Soylent.SuspendLayout();
             this.viewGroup.SuspendLayout();
             this.debug.SuspendLayout();
@@ -71,7 +71,7 @@
             this.button3.Label = "Crowdproof";
             this.button3.Name = "button3";
             this.button3.ShowImage = true;
-            this.button3.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button3_Click);
+            this.button3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button3_Click);
             // 
             // shortenBtn
             // 
@@ -81,7 +81,7 @@
             this.shortenBtn.Name = "shortenBtn";
             this.shortenBtn.ScreenTip = "Shortn";
             this.shortenBtn.ShowImage = true;
-            this.shortenBtn.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.shortenBtn_Click);
+            this.shortenBtn.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.shortenBtn_Click);
             // 
             // humanMacroBtn
             // 
@@ -90,19 +90,19 @@
             this.humanMacroBtn.Label = "Human Macro";
             this.humanMacroBtn.Name = "humanMacroBtn";
             this.humanMacroBtn.ShowImage = true;
-            this.humanMacroBtn.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.humanMacroBtn_Click);
+            this.humanMacroBtn.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.humanMacroBtn_Click);
             // 
             // jobStatus
             // 
             this.jobStatus.Label = "Job Status";
             this.jobStatus.Name = "jobStatus";
-            this.jobStatus.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.jobStatus_Click);
+            this.jobStatus.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.jobStatus_Click);
             // 
             // amazon
             // 
             this.amazon.Label = "Amazon Keys";
             this.amazon.Name = "amazon";
-            this.amazon.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.amazon_Click);
+            this.amazon.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.amazon_Click);
             // 
             // debug
             // 
@@ -120,44 +120,44 @@
             // 
             this.button1.Label = "Start Socket Server";
             this.button1.Name = "button1";
-            this.button1.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button1_Click);
+            this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Label = "Start TurKit";
             this.button2.Name = "button2";
-            this.button2.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button2_Click);
+            this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button2_Click);
             // 
             // button4
             // 
             this.button4.Label = "button4";
             this.button4.Name = "button4";
-            this.button4.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.button4_Click);
+            this.button4.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button4_Click);
             // 
             // directManipulate
             // 
             this.directManipulate.Label = "Shorten Window";
             this.directManipulate.Name = "directManipulate";
-            this.directManipulate.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.directManipulate_Click);
+            this.directManipulate.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.directManipulate_Click);
             // 
             // humanMacroInline
             // 
             this.humanMacroInline.Label = "Inline";
             this.humanMacroInline.Name = "humanMacroInline";
-            this.humanMacroInline.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.humanMacroInline_Click);
+            this.humanMacroInline.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.humanMacroInline_Click);
             // 
             // humanMacroComment
             // 
             this.humanMacroComment.Label = "Comment";
             this.humanMacroComment.Name = "humanMacroComment";
-            this.humanMacroComment.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.humanMacroComment_Click);
+            this.humanMacroComment.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.humanMacroComment_Click);
             // 
             // SoylentRibbon
             // 
             this.Name = "SoylentRibbon";
             this.RibbonType = "Microsoft.Word.Document";
             this.Tabs.Add(this.Soylent);
-            this.Load += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonUIEventArgs>(this.Ribbon_Load);
+            this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon_Load);
             this.Soylent.ResumeLayout(false);
             this.Soylent.PerformLayout();
             this.viewGroup.ResumeLayout(false);

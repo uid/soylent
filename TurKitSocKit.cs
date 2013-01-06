@@ -232,14 +232,13 @@ namespace Soylent
                 {
                     Debug.WriteLine("TurKit exception thrown:");
                     TurKitException receivedObject = serializer.Deserialize<TurKitException>(incomingString);
-                    Debug.WriteLine(receivedObject.exceptionCode);
                     Debug.WriteLine(receivedObject.exceptionString);
 
                     Microsoft.Office.Interop.Word.Document doc = Globals.Soylent.jobToDoc[receivedObject.job];
                     SoylentPanel panel = Globals.Soylent.soylentMap[doc];
                     HITData concernedHIT = panel.jobMap[receivedObject.job];
 
-                    panel.Invoke(new HITData.showErrorDelegate(concernedHIT.showError), new object[] { receivedObject.exceptionCode });
+                    panel.Invoke(new HITData.showErrorDelegate(concernedHIT.showError), new object[] { receivedObject.exceptionString });
                     //concernedHIT.showError(receivedObject.exceptionCode);
 
                 }
@@ -401,7 +400,6 @@ namespace Soylent
         public class TurKitException
         {
             public int job;
-            public string exceptionCode;
             public string exceptionString;
         }
 

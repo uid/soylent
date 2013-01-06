@@ -26,7 +26,7 @@ namespace Soylent
 
         private ProcessInformation info;
 
-        public static string TURKIT_VERSION = "TurKit-0.2.4.jar";
+        public static string TURKIT_VERSION = "TurKit-0.2.8.jar";
         public static int TIMER_LOOP_SECONDS = 60;
         public static int TIMER_LOOP_SECONDS_DEBUG = 30;
         public static bool SHOW_WINDOW = false;
