@@ -31,9 +31,9 @@ using System.Xml.Serialization;
 
 namespace Soylent
 {
-    public partial class SoylentRibbon : OfficeRibbon
+    public partial class SoylentRibbon : RibbonBase
     {
-        public SoylentRibbon()
+        public SoylentRibbon() : base(Globals.Factory.GetRibbonFactory())
         {
             InitializeComponent();
         }

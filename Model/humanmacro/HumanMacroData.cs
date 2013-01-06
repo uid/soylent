@@ -192,14 +192,14 @@ namespace Soylent.Model.HumanMacro
             if (type == ReturnType.SmartTag)
             {
                 string tag = NAMESPACE + "#soylent" + DateTime.Now.Ticks;
-                SmartTag resultTag = new SmartTag(tag, "Soylent Results: " + text.Text.Substring(0, 10) + "...");
+                SmartTag resultTag = Globals.Factory.CreateSmartTag(tag, "Soylent Results: " + text.Text.Substring(0, 10) + "...");
                 Regex pattern = new Regex(text.Text.Trim().Replace(" ", "\\s"), RegexOptions.IgnorePatternWhitespace);
                 resultTag.Expressions.Add(pattern);
 
                 List<VSTO.Action> actions = new List<Microsoft.Office.Tools.Word.Action>();
                 foreach (string result in results)
                 {
-                    VSTO.Action action = new VSTO.Action(result);
+                    VSTO.Action action = Globals.Factory.CreateAction(result);
                     action.Click += new ActionClickEventHandler(replaceText);
                     actions.Add(action);
                 }

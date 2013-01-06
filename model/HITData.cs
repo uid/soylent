@@ -107,10 +107,10 @@ namespace Soylent.Model
 
         public abstract void updateStatus(TurKitSocKit.TurKitStatus status);
 
-        public delegate void showErrorDelegate(string exceptionCode);
-        public void showError(string exceptionCode)
+        public delegate void showErrorDelegate(string exceptionString);
+        public void showError(string exceptionString)
         {
-            view.showError(exceptionCode);
+            view.showError(exceptionString);
         }
 
         public delegate void clearErrorDelegate();

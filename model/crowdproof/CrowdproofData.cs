@@ -124,14 +124,14 @@ namespace Soylent.Model.Crowdproof
             foreach (CrowdproofPatch pp in patches)
             {
                 string tag = HumanMacroData.NAMESPACE + "#soylent" + DateTime.Now.Ticks;
-                SmartTag resultTag = new SmartTag(tag, pp.reasons[0]);
+                SmartTag resultTag = Globals.Factory.CreateSmartTag(tag, pp.reasons[0]);
                 Regex pattern = new Regex(pp.range.Text.Trim().Replace(" ", "\\s"), RegexOptions.IgnorePatternWhitespace);
                 resultTag.Expressions.Add(pattern);
 
                 List<VSTO.Action> actions = new List<Microsoft.Office.Tools.Word.Action>();
                 foreach (string result in pp.replacements)
                 {
-                    VSTO.Action action = new VSTO.Action(result);
+                    VSTO.Action action = Globals.Factory.CreateAction(result);
                     action.Click += new ActionClickEventHandler(HumanMacroData.replaceText);
                     actions.Add(action);
                 }
@@ -141,7 +141,7 @@ namespace Soylent.Model.Crowdproof
                 {
                     foreach (string reason in pp.reasons)
                     {
-                        VSTO.Action action = new VSTO.Action("Error Descriptions///" + reason);
+                        VSTO.Action action = Globals.Factory.CreateAction("Error Descriptions///" + reason);
                         action.Click += new ActionClickEventHandler(HumanMacroData.replaceText);
                         actions.Add(action);
                     }
